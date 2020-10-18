@@ -109,8 +109,8 @@ function fread(fn){
         return obj;
     }
 
-    win.onload = function () {
-        var search = win.location.search;
+    window.onload = function () {
+        var search = window.location.search;
         var getData =  _GET(search);
         seq = getData.val;
     }
