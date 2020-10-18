@@ -89,7 +89,7 @@ function fread(fn){
 };
 
   //--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-  var seq = "339"; //--- (산행기)  seq>"000",   "" : 전체목록표	
+  var seq = "337"; //--- (산행기)  seq>"000",   "" : 전체목록표	
   var opn = "y"; //--- (사진공개)   "y": 전체공개, "n": 일부공개tlistg();
   //--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   var num = 0;
@@ -119,7 +119,7 @@ function itiner(){
 				}
 var mntname = (skds[num][2]).replace(/\s*\(.*?\)\s*/g, " ");
 
- 	titin.push('<div class="canvas"><div class="header"><button class="btn" onclick="cme();">RETURN</button><h2>' + mntname + ' 산행사진</h2></div><div id="canva1"><div class="slid1"><img id="image1" class="mg"></div><div class="slid2"><img id="image2" class="mg"></div><div class="slid3"><img id="image3" class="mg"></div><div class="slid4"><img id="image4" class="mg"></div><div class="slid5"><img id="image5" class="mg"></div><div class="slid6"><img id="image6" class="mg"></div></div><div class="itiner"><p class="ta">배경음악은..... <span class="tb">'+titlm+'</span></p><p class="tc">'+titln+'</p><ul><li>1. 산행일시 : &nbsp; ' + skds[num][1] + ' </li><li>2. 산행지 &nbsp; : &nbsp; ' + skds[num][2] + '_____' + skds[num][3] + ' </li><li>3. 산행코스 : &nbsp; ' + skds[num][4] + ' </li><li>4. 산행시간 : &nbsp; ' + skds[num][5] + ' &nbsp;(휴식/식사 시간 포함)&nbsp; </li><li class="mem">' + skds[num][7] + '</li></ul></div><div class="map"><p>↓ &nbsp; ' + skds[num][2] + ' &nbsp; 등산지도와 코스.....</p><img src="' + skds[num][6] + '"></div><div class="img">');
+ 	titin.push('<div class="canvas"><div class="header"><h2>' + mntname + ' 산행사진</h2></div><div id="canva1"><div class="slid1"><img id="image1" class="mg"></div><div class="slid2"><img id="image2" class="mg"></div><div class="slid3"><img id="image3" class="mg"></div><div class="slid4"><img id="image4" class="mg"></div><div class="slid5"><img id="image5" class="mg"></div><div class="slid6"><img id="image6" class="mg"></div></div><div class="itiner"><p class="ta">배경음악은..... <span class="tb">'+titlm+'</span></p><p class="tc">'+titln+'</p><ul><li>1. 산행일시 : &nbsp; ' + skds[num][1] + ' </li><li>2. 산행지 &nbsp; : &nbsp; ' + skds[num][2] + '_____' + skds[num][3] + ' </li><li>3. 산행코스 : &nbsp; ' + skds[num][4] + ' </li><li>4. 산행시간 : &nbsp; ' + skds[num][5] + ' &nbsp;(휴식/식사 시간 포함)&nbsp; </li><li class="mem">' + skds[num][7] + '</li></ul></div><div class="map"><p>↓ &nbsp; ' + skds[num][2] + ' &nbsp; 등산지도와 코스.....</p><img src="' + skds[num][6] + '"></div><div class="img">');
 
 //================== 이미지 & description 화면================
 	for (var i=0 ; i < trimgs.length ; i++ )
