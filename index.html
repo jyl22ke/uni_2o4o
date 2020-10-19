@@ -63,10 +63,11 @@ fread("ytbm");
 	
 function fread(fn){
     $(function (){
-	var fileName = "./" + fn + ".csv";	// 파일 이름
+	var fileName = "../uni2o4o-1/" + fn + ".csv";	// 파일 이름
 
 	$.ajax({
 		url:fileName,
+		headers: {  'Access-Control-Allow-Origin': '../uni2o4o-1/' },
 		dataType:'text',
 		success: function(da) {
 			var textLine = '<script type="text/javascript">var ' + fn + '=[';
