@@ -63,11 +63,11 @@ fread("ytbm");
 	
 function fread(fn){
     $(function (){
-	var fileName = '../uni2o4o-1/' + fn + '.csv';	// 파일 이름
+	var fileName = 'https://github.com/Hanultaree/uni2o4o/' + fn + '.csv';	// 파일 이름
 
 	$.ajax({
 		url:fileName,
-		headers: {  'Access-Control-Allow-Origin': '../uni2o4o-1/' },
+		headers: {  'Access-Control-Allow-Origin': 'https://github.com/Hanultaree/uni2o4o/' },
 		dataType:'text',
 		success: function(da) {
 			var textLine = '<script type="text/javascript">var ' + fn + '=[';
