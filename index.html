@@ -57,9 +57,11 @@
 
 	<script type="text/javascript">
 
-fread("skds");
-fread("trimgs");
-fread("ytbm");
+$(function (){
+    fread("skds");
+    fread("trimgs");
+    fread("ytbm");
+});	
 	
 function fread(fn){
     $(function (){
@@ -118,7 +120,7 @@ function fread(fn){
 		
 //================== 산행기 alprpt()함수 구동 ================
 	$(function() {
-		setTimeout(() => alprpt(seq, opn), 700);
+		setTimeout(() => alprpt(seq, opn), 1000);
 	});
 
   //--■■■■■■■■■■■■■■■■■999_alprpt.js■■■■■■■■■■■■■■■■■■
