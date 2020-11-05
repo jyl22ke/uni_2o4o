@@ -630,10 +630,10 @@ else{
   //*== ●●●●●●●●     ----음악 감상 X_player ----start==========
 function Xplayer(){
 	$(function (){
+		$(".container1").hide();
 		$('#canv').empty();
-        setTimeout(musbox(null,5), 2000);
-		document.getElementById("canv").innerHTML = titlm;
-		document.getElementById("canv").innerHTML = titln;
+		$('#canv').append('<input type="button" id="unmute" value="음악on/off" onClick="volumeMute();"/>	<br><br><div id="player"></div><hr/>' + titlm + '<br/>' + titln);
+	        setTimeout(musbox(null,5), 2000);
 	});
 };
 
