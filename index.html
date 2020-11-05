@@ -97,8 +97,8 @@ function Xplayer(){
 		$('#canv').empty();
 		$('#canv').append('<input type="button" id="unmute" value="음악on/off" onClick="volumeMute();"/>	<br><br><div id="player"></div><hr/>');
 		musbox(null,5);
-		document.getElementById("canv").innerHTML = titlm;
-		document.getElementById("canv").innerHTML = titln;
+		$('#canv').append(titlm);
+		$('#canv').append(titln);
 	});
 };
 
@@ -215,9 +215,10 @@ var dur = null; var t = null; var num=null;
             , videoId : selm
             , playerVars: {
                 'autoplay': 1                     // 자동재생
-               , 'loop' : 1                         // 반복 0 : off, 1 : on
+               , 'loop' : 1                        // 반복 0 : off, 1 : on
                , 'playlist' : seln                 // 반복 playlist
-               , 'cc_load_policy' : 0           // 자막 0 : on, 1 : off
+	       , 'mute': 1			  // N.B. here the mute settings.
+ 	       , 'cc_load_policy' : 0             // 자막 0 : on, 1 : off
                , 'controls': 1                     // 동영상 플레이어 컨트롤 표기
                , 'disablekb' : 0                  // 키보드 컨트롤 사용 중지
             }
