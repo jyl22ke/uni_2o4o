@@ -95,8 +95,10 @@ function Xplayer(){
 	$(function (){
 		$(".container1").hide();
 		$('#canv').empty();
-		$('#canv').append('<input type="button" id="unmute" value="음악on/off" onClick="volumeMute();"/>	<br><br><div id="player"></div><hr/>' + titlm + '<br/>' + titln);
-	        musbox(null,5);
+		$('#canv').append('<input type="button" id="unmute" value="음악on/off" onClick="volumeMute();"/>	<br><br><div id="player"></div><hr/>');
+		musbox(null,5);
+		document.getElementById("canv").innerHTML = titlm;
+		document.getElementById("canv").innerHTML = titln;
 	});
 };
 
@@ -107,7 +109,7 @@ function Xplayer(){
 
 	if (a==null){a = Math.floor(Math.random() * ytbm.length);}
 	selm = ytbm[a][1];
-	titlm = ytbm[a][3] +" - "+ ytbm[a][4];
+	titlm = ytbm[a][3] +" - "+ ytbm[a][4] +"<br/>";
 
 	if (b==1){seln=selm}
 	else{
