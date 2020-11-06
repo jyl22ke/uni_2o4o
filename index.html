@@ -221,8 +221,9 @@ var dur = null; var t = null; var num=null;
             }
             , events: {
                 'onReady' : onPlayerReady
-			   ,'onError' : onPlayerError
-            }
+	       ,'onError' : onPlayerError
+               ,'onStateChange': onPlayerStateChange
+           }
         });
     };
 
@@ -231,6 +232,14 @@ var dur = null; var t = null; var num=null;
 	if(xo == "X"){player.mute();};
 	    event.target.playVideo();
     };
+		
+    // StateChange
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && xo == "X") {
+          setTimeout(volumeMute, 2000);
+        }
+      }
+		
     // 일시정지
     function pauseVideo() {player.pauseVideo();};
     // 종료
