@@ -99,7 +99,6 @@ function Xplayer(){
 		musbox(null,5);
 		$('#canv').append(titlm);
 		$('#canv').append(titln);
-		setTimeout(volumeMute, 6000);
 	});
 };
 
@@ -223,7 +222,6 @@ var dur = null; var t = null; var num=null;
             , events: {
                 'onReady' : onPlayerReady
 	       ,'onError' : onPlayerError
-//               ,'onStateChange': onPlayerStateChange
            }
         });
     };
@@ -231,15 +229,8 @@ var dur = null; var t = null; var num=null;
     // 재생
     function onPlayerReady(event) {
 	if(xo == "X"){player.mute();};
-	    event.target.playVideo();
+	event.target.playVideo();
     };
-		
-    // StateChange
-//    function onPlayerStateChange(event) {
-//        if (event.data == YT.PlayerState.PLAYING && xo == "X") {
-//          setTimeout(volumeMute, 6000);
-//        }
-//      }
 		
     // 일시정지
     function pauseVideo() {player.pauseVideo();};
