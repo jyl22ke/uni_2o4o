@@ -105,7 +105,7 @@ function Xplayer(){
 //================ X_player 음악 재생 playlist ==========
  function musbox(a,b){
 	selm = ""; titlm = ""; seln = ""; titln = "";
-	h = '1'; w = '1';
+	h = '140'; w = '250';
 
 	if (a==null){a = Math.floor(Math.random() * ytbm.length);}
 	selm = ytbm[a][1];
@@ -121,30 +121,12 @@ function Xplayer(){
 		seln=seln+ytbm[a+b][1];
 		titln=titln+ytbm[k+a][3] +" - "+ ytbm[k+a][4];
 	}
-
-   // 영상의 세부정보를 player 변수에 담는다.
-   function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-              height : h
-            , width : w
-            , videoId : selm
-            , playerVars: {
-                'autoplay': 1                     // 자동재생
-               , 'loop' : 1                        // 반복 0 : off, 1 : on
-               , 'playlist' : seln                 // 반복 playlist
-	       , 'mute': 1			  // N.B. here the mute settings.
- 	       , 'cc_load_policy' : 0             // 자막 0 : on, 1 : off
-               , 'controls': 1                     // 동영상 플레이어 컨트롤 표기
-               , 'disablekb' : 0                  // 키보드 컨트롤 사용 중지
-            }
-            , events: {
-                'onReady' : onPlayerReady
-			   ,'onError' : onPlayerError
-            }
-        });
-    };	 
+	// HTML 문서가 모두 준비되면
+	$(function () {
+	    onYouTubeIframeAPIReady();
+	});
  };
-
+		
    //--■■■■■■■■■■■■■■■■■음악 __Oplayer.js■■■■■■■■■■■■■■■■■■
 
 var selm = ""; var titlm = ""; var h = '1'; var w = '1';
@@ -233,7 +215,8 @@ var dur = null; var t = null; var num=null;
                 'autoplay': 1                     // 자동재생
                , 'loop' : 1                        // 반복 0 : off, 1 : on
                , 'playlist' : seln                 // 반복 playlist
- 	       , 'cc_load_policy' : 0             // 자막 0 : on, 1 : off
+	       , 'mute': 1			  // N.B. here the mute settings.
+   	       , 'cc_load_policy' : 0             // 자막 0 : on, 1 : off
                , 'controls': 1                     // 동영상 플레이어 컨트롤 표기
                , 'disablekb' : 0                  // 키보드 컨트롤 사용 중지
             }
@@ -250,10 +233,8 @@ var dur = null; var t = null; var num=null;
     function pauseVideo() {player.pauseVideo();};
     // 종료
     function stopVideo() {player.stopVideo();};
-	// Error
-	function onPlayerError(){
-	  	  player.nextVideo();
-	};
+    // Error
+    function onPlayerError(){player.nextVideo();};
 
     // 음소거 On / Off
     function volumeMute() {
