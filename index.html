@@ -124,7 +124,6 @@ function Xplayer(){
 	// HTML 문서가 모두 준비되면
 	$(function () {
 	    onYouTubeIframeAPIReady();
-	    player.mute();
 	});	 
  };
 		
@@ -228,7 +227,10 @@ var dur = null; var t = null; var num=null;
     };
 
     // 재생
-    function onPlayerReady(event) {event.target.playVideo();	};
+    function onPlayerReady(event) {
+	if(xo == "X"){player.mute();};
+	    event.target.playVideo();
+    };
     // 일시정지
     function pauseVideo() {player.pauseVideo();};
     // 종료
