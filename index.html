@@ -124,7 +124,8 @@ function Xplayer(){
 	// HTML 문서가 모두 준비되면
 	$(function () {
 	    onYouTubeIframeAPIReady();
-	});
+	    player.mute();
+	});	 
  };
 		
    //--■■■■■■■■■■■■■■■■■음악 __Oplayer.js■■■■■■■■■■■■■■■■■■
@@ -215,7 +216,6 @@ var dur = null; var t = null; var num=null;
                 'autoplay': 1                     // 자동재생
                , 'loop' : 1                        // 반복 0 : off, 1 : on
                , 'playlist' : seln                 // 반복 playlist
-	       , 'mute': 1			  // N.B. here the mute settings.
    	       , 'cc_load_policy' : 0             // 자막 0 : on, 1 : off
                , 'controls': 1                     // 동영상 플레이어 컨트롤 표기
                , 'disablekb' : 0                  // 키보드 컨트롤 사용 중지
