@@ -214,7 +214,12 @@ var dur = null; var t = null; var num=null;
 	$(function () {
 		selm = ytbm[num][1];
 	    h = '280';   w = '500';
-	 $('#canv').append('<div id="lyr"><button id="rtn" class="btn1" onClick="retn();">RETURN</button><br><div><div id="player"></div><hr/> <input type="button" value="재생" onClick="playVideo();"/> <input type="button" value="일시정지" onClick="pauseVideo();"/> <input type="button" value="종료" onClick="stopVideo();"/> <input type="button" id="volumeMute" value="음소거" onClick="volumeMute();"/> 볼륨 : <input type="range" value="50" min="0" max="100" onChange="soundControl(this.value);"/></div><img src="./mel01.gif" class="mi"><img src="./mel02.gif"  class="mi"> <img src="./mel03.gif" class="mi"><img src="./mel02.gif" class="mi"><img src="./mel01.gif" class="mi"><br><br><br><h3>' + ytbm[num][3] + ' - ' + ytbm[num][4] + '</h3><br><br><div class="wd">' + ytbm[num][5] + '</div><br><img src="./iou.gif"><br><br></div><br><br>');
+	    $('#canv').append('<div id="lyr"><button id="rtn" class="btn1" onClick="retn();">RETURN</button><br><div><div id="player"></div><hr/> <input type="button" value="재생" onClick="playVideo();"/> <input type="button" value="일시정지" onClick="pauseVideo();"/> <input type="button" value="종료" onClick="stopVideo();"/> <input type="button" id="volumeMute" value="음소거" onClick="volumeMute();"/> 볼륨 : <input type="range" value="50" min="0" max="100" onChange="soundControl(this.value);"/></div><img src="./mel01.gif" class="mi"><img src="./mel02.gif"  class="mi"> <img src="./mel03.gif" class="mi"><img src="./mel02.gif" class="mi"><img src="./mel01.gif" class="mi"><br><br><br><h3>' + ytbm[num][3] + ' - ' + ytbm[num][4] + '</h3><br><br><div class="wd">' + ytbm[num][5] + '</div><br><img src="./iou.gif"><br><br></div><br><br>');
+	});
+
+	// HTML 문서가 모두 준비되면
+	$(function () {
+	    onYouTubeIframeAPIReady();
 	});
 };
 
