@@ -137,15 +137,7 @@ var dur = null; var t = null; var num=null;
   	$( function() {
 //================ 음악 List 자동재생================
 		$( 'button#submita' ).click(
-			selm = ytbm[0][1];
- 			for (i=1; i<ytbm.length; i++){	
-				if(i==(ytbm.length-1)){
-					seln=seln+ytbm[i][1];
-				}else{
-					seln=seln+ytbm[i][1]+",";
-				};
-			};	
-			
+			musbox(0,ytbm.length-1);
 			
 //		async function () {
 //			$('.rk').remove();
