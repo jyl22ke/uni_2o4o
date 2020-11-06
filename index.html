@@ -232,6 +232,8 @@ var dur = null; var t = null; var num=null;
 	event.target.playVideo();
     };
 		
+    // play
+    function playVideo() {player.playVideo();};
     // 일시정지
     function pauseVideo() {player.pauseVideo();};
     // 종료
@@ -242,10 +244,9 @@ var dur = null; var t = null; var num=null;
     // 음소거 On / Off
     function volumeMute() {
         // 음소거
-        if(player.isMuted()) {player.unMute(); $("#volumeMute").val("음소거");}
-//        if(player.isMuted() == true) {player.unMute(); jQuery("#volumeMute").val("음소거");}
+        if(player.isMuted() == true) {player.unMute(); $("#volumeMute").val("음소거");}
         // 음소거 해제
-        else{player.mute(); $("#volumeMute").val("음소거 해제");}
+        else if(player.isMuted() == false) {player.mute(); $("#volumeMute").val("음소거 해제");}
     };
     // 볼륨 조절
     function soundControl(number) { player.setVolume(number); };
