@@ -137,21 +137,19 @@ var dur = null; var t = null; var num=null;
   	$( function() {
 //================ 음악 List 자동재생================
 		$( 'button#submita' ).click(
-			musbox(0,ytbm.length-1);
-			);
-//		async function () {
-//			$('.rk').remove();
-//			$(".container1").hide();
-//			for (i=0; i<ytbm.length; i++){	
-//				rank = ytbm[i][0];			
-//				title = ytbm[i][3] + ' - ' + ytbm[i][4];
-//				num = i;
-//				$('#canv').empty();
-//				disp(num);
-//				duet = ytbm[i][2];
-//				await foo(num,duet);
-//			}
-//		});
+ 		async function () {
+ 			$('.rk').remove();
+ 			$(".container1").hide();
+ 			for (i=0; i<ytbm.length; i++){	
+ 				rank = ytbm[i][0];			
+ 				title = ytbm[i][3] + ' - ' + ytbm[i][4];
+ 				num = i;
+ 				$('#canv').empty();
+ 				disp(num);
+ 				duet = ytbm[i][2];
+ 				await foo(num,duet);
+ 			}
+ 		});
 	});
 //================ 음악 재생 player ==========
 	$(document).on("click", ".mus", 
