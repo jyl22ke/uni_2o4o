@@ -206,8 +206,6 @@ $(function(){
 
 function vwpriv(){
 $(function (){
-	setTimeout(musbox( null,5), 500);
-	
 	var ccds = '<div class="combo"><select id="combo"><option value="-1" selected="selected">년도 선택</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2012">2012~14</option><option value="2007">2007~11</option></select></div>';
 	$('.mmenu').append(ccds);
 
@@ -226,6 +224,7 @@ $(function (){
 
 	$(".mmenu").hide();
 	var ccdn = new Array; var ccdsum = "";
+	setTimeout(musbox( null,5), 500);
 
 	ccdn.push('<div class="pcanvas"><div class="header"><button class="btn" onClick="vme();">RETURN</button><h2>' + c_cd0 + c_cd + ' 사진모음......</h2></div><div class="main"><p class="ta">배경음악은..... <span class="tb">'+titlm+'</span></p><p class="tc">'+titln+'</p>');
 
