@@ -225,7 +225,7 @@ $(function (){
 	$(".mmenu").hide();
 	var ccdn = new Array; var ccdsum = "";
 
-	ccdn.push('<div class="pcanvas"><div class="header"><button class="btn" onClick="vme();">RETURN</button><h2>' + c_cd0 + c_cd + ' 사진모음......</h2></div><div class="main">');
+	ccdn.push('<div class="pcanvas"><div class="header"><button class="btn" onClick="vme();">RETURN</button><h2>' + c_cd0 + c_cd + ' 사진모음......</h2></div><div class="main"><p class="ta">배경음악은..... <span class="tb">'+titlm+'</span></p><p class="tc">'+titln+'</p>');
 
 		c_cda = Number(c_cd1);
 		for (k=0;k<rec ;k++ ){
@@ -244,13 +244,14 @@ $(function (){
 		}
 
 //================== 하단 꼬리말 footer 화면==================
- 		ccdn.push('</div><div class="footer"><p>끝까지 즐감해 주셔서 감사합니다......</p><img src="http://cfs2.planet.daum.net/upload_control/pcp_download.php?fhandle=NHZoUzBAZnMyLnBsYW5ldC5kYXVtLm5ldDovMTA3OTIyNDkvMi8yOTMuZ2lm&amp;filename=8.gif"></div></div>');
+ 		ccdn.push('</div><div id="player"></div><div class="footer"><p>끝까지 즐감해 주셔서 감사합니다......</p><img src="./iou.gif"></div></div>');
 
  for (i=0; i<ccdn.length; i++){ccdsum=ccdsum+ccdn[i]};
   $('.container').append(ccdsum);
 
 		});
 	});
+musbox( null,5);
 });
 };
 
@@ -260,7 +261,7 @@ $(function (){
   $(".mmenu").hide();
 var ccdn = new Array; var ccdsum = "";
 
- 		ccdn.push('<div class="pcanvas"><div class="header"><button class="btn" onClick="vme();">RETURN</button><h2>' + c_cd0 + c_cd + ' 사진모음......</h2></div><div class="main">');
+ 		ccdn.push('<div class="pcanvas"><div class="header"><button class="btn" onClick="vme();">RETURN</button><h2>' + c_cd0 + c_cd + ' 사진모음......</h2></div><div class="main"><p class="ta">배경음악은..... <span class="tb">'+titlm+'</span></p><p class="tc">'+titln+'</p>');
 
 //================== 이미지 & description 화면================
 	for ( i=0 ; i < trimgs.length ; i++ )
@@ -275,10 +276,11 @@ var ccdn = new Array; var ccdsum = "";
 		}
 
 //================== 하단 꼬리말 footer 화면==================
- 		ccdn.push('</div><div class="footer"><p>끝까지 즐감해 주셔서 감사합니다......</p><img src="http://cfs2.planet.daum.net/upload_control/pcp_download.php?fhandle=NHZoUzBAZnMyLnBsYW5ldC5kYXVtLm5ldDovMTA3OTIyNDkvMi8yOTMuZ2lm&amp;filename=8.gif"></div></div>');
+ 		ccdn.push('</div><div id="player"></div><div class="footer"><p>끝까지 즐감해 주셔서 감사합니다......</p><img src="./iou.gif"></div></div>');
 
  for (i=0; i<ccdn.length; i++){ccdsum=ccdsum+ccdn[i]};
   $('.container').append([ccdsum]);
+musbox( null,5);
 });
 };
 
@@ -561,7 +563,7 @@ var mntname = (skds[num][2]).replace(/\s*\(.*?\)\s*/g, " ");
 		}
 
 //================== 하단 꼬리말 footer 화면==================
- 		titin.push('</div><div id="player"></div><div class="footer"><p>끝까지 즐감해 주셔서 감사합니다......</p><br/><img src="http://cfs2.planet.daum.net/upload_control/pcp_download.php?fhandle=NHZoUzBAZnMyLnBsYW5ldC5kYXVtLm5ldDovMTA3OTIyNDkvMi8yOTMuZ2lm&amp;filename=8.gif"></div></div></div>');
+ 		titin.push('</div><div id="player"></div><div class="footer"><p>끝까지 즐감해 주셔서 감사합니다......</p><br/><img src="./iou.gif"></div></div></div>');
 
  for (i=0; i<titin.length; i++){tsum=tsum+titin[i]};
   $(".item").hide();
