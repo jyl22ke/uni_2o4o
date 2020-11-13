@@ -282,15 +282,20 @@ $(function (){
 		for (k=0;k<rec ;k++ ){
 			cod = '내' + (String(c_cda)).substr(2,2);
 
-			for ( i=0 ; i < trimgs.length ; i++ ){
-				if (trimgs[i][5].indexOf(cod) !== -1) { //=== "내19", "폭포", "바위 나무"
-					if (trimgs[i][3] ==""){}
-					else{
-						if (trimgs[i][4] ==""){}
-						else{	ccdn.push('<p>↓ &nbsp;' + trimgs[i][4] + '</p>');}
-					ccdn.push('<p><img src="' + trimgs[i][3] + '"></p>');	}
-				}
-			}
+			  var telists = $.map(trimgs, function(element, index) {
+				  if (element[5] == c_cd) { //=== "내19", "폭포", "바위 나무"
+					return [element]
+				  };
+			  });
+
+				for ( i=0 ; i < telists.length ; i++ )
+					{
+						if (telists[i][3] ==""){}
+						else{
+							if (telists[i][4] ==""){}
+							else{	ccdn.push('<p>↓ &nbsp;' + telists[i][4] + '</p>');}
+						ccdn.push('<p><img src="' + telists[i][3] + '"></p>');	}
+					}
 				c_cda = c_cda + 1;
 		}
 
@@ -315,15 +320,19 @@ $(function (){
  		ccdn.push('<div class="pcanvas"><div class="header"><button class="btn" onClick="vme();">RETURN</button><h2>' + c_cd0 + c_cd + ' 사진모음......</h2></div><div class="main"><p class="ta">배경음악은..... <span class="tb">'+titlm+'</span></p><p class="tc">'+titln+'</p>');
 
 //================== 이미지 & description 화면================
-	for ( i=0 ; i < trimgs.length ; i++ )
+  var telists = $.map(trimgs, function(element, index) {
+   	  if (element[5] == c_cd) { //=== "내19", "폭포", "바위 나무"
+  	 	return [element]
+  	  };
+  });
+
+	for ( i=0 ; i < telists.length ; i++ )
 		{
-        if (trimgs[i][5].indexOf(c_cd) != -1) { //=== "내19", "폭포", "바위 나무"
-					if (trimgs[i][3] ==""){}
-					else{
-						if (trimgs[i][4] ==""){}
-						else{	ccdn.push('<p>↓ &nbsp;' + trimgs[i][4] + '</p>');}
-			 		ccdn.push('<p><img src="' + trimgs[i][3] + '"></p>');	}
-			}
+			if (telists[i][3] ==""){}
+			else{
+				if (telists[i][4] ==""){}
+				else{	ccdn.push('<p>↓ &nbsp;' + telists[i][4] + '</p>');}
+			ccdn.push('<p><img src="' + telists[i][3] + '"></p>');	}
 		}
 
 //================== 하단 꼬리말 footer 화면==================
