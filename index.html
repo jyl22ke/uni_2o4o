@@ -283,7 +283,7 @@ $(function (){
 			cod = '내' + (String(c_cda)).substr(2,2);
 
 			  var telists = $.map(trimgs, function(element, index) {
-				  if (element[5] == c_cd) { //=== "내19", "폭포", "바위 나무"
+				  if (element[5] == cod) { //=== "내19", "폭포", "바위 나무"
 					return [element]
 				  };
 			  });
