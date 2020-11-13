@@ -47,7 +47,7 @@
 	.lit.u0{grid-column:span 8;padding:2em;}
 	.lit.u1{grid-column:span 2;}
 	.lit.u6{grid-column:span 2;}
-    .stitle{text-align:center;font-weight:bold;border:1px solid gray;}
+    	.stitle{text-align:center;font-weight:bold;border:1px solid gray;}
 	.stitle:hover{color:red;cursor:pointer;}
 
  /*------------  alprpt(); ----산행지 별 산행사진/슬라이드 용 css------------ */
@@ -117,7 +117,7 @@
 		<div class="priv" onclick="bran(2);">2내사진</div>
 		<div class="wfall" onclick="bran(3);">3폭포</div>
 		<div class="rock" onclick="bran(4);">4기묘한 바위 나무</div>
-		<div class="bl-a">5</div>
+ 		<div class="bl-a">5</div>
 		<div class="ostr" onclick="location.href='https://jyl22ke.github.io/uni2o4o/';">6해외 여행사진</div>
 		<div class="yms" onclick="bran(5);">7음악감상</div>
 		<div class="right"></div>
@@ -146,10 +146,11 @@ fread("ytbm");
 	
 function fread(fn){
     $(function (){
-	var fileName = "./" + fn + ".csv";	// 파일 이름
+	var fileName = "../uni2o4o-1/" + fn + ".csv";	// 파일 이름
 
 	$.ajax({
 		url:fileName,
+    headers: {  'Access-Control-Allow-Origin': '../uni2o4o-1/' },
 		dataType:'text',
 		success: function(da) {
 			var textLine = '<script type="text/javascript">var ' + fn + '=[';
@@ -176,32 +177,80 @@ function fread(fn){
   var club = ""; //--- (산악회)  "부중산", "산술애",   "" : 전체
   var opn = "y"; //--- (사진공개)   "y": 전체공개, "n": 일부공개tlistg();
   //--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-  var num = 0;
+  var num = 0; 	var uval = ""; var clb = "";
   var ctg = "" ;var c_cd = ""; var c_cd0 = ""; var c_cd1 = ""; var cod = "";
-
-function bran(ctg){
-$(function(){
-	if (ctg == "1"){
-		alplist();
-		$(".item").show();
-
-		$(function() {
-			$(document).on("click", ".mnt", function(){
-				seq=$(this).attr('title');  //*변수생성하여 클릭한 title을 대입
-				$(".item").hide();
-				alprpt();
-			});
-		});
-		$(".mmenu").hide();
-
-	}else {if (ctg == "2"){c_cd0 = "";c_cd = "내"; vwpriv();    //===== :contains("내")
-	}else	{if (ctg == "3"){c_cd0 = "";c_cd = "폭포"; cod = c_cd; vwphoto();
-	}else	{if (ctg == "4"){c_cd0 = "기묘한 ";c_cd = "바위 나무"; cod = c_cd; vwphoto();
-	}else	{if (ctg == "5"){yms();}
-	}}}}
-});
+/* 
+//================== seq 값 읽어오기 ================
+    function _GET(search) {
+        var obj = {};
+        var uri = decodeURI(search);
+            uri = uri.slice(1,uri.length);
+ 
+        var param = uri.split('&');
+        
+        for (var i = 0; i < param.length; i++) {
+            var devide = param[i].split('=');
+            obj[devide[0]] = devide[1];
+        }
+        return obj;
+    }
+window.onload = function () {
+	var search = window.location.search;
+	var getData =  _GET(search);
+	uval = getData.val;
+}
+//====== club, seq, opn 지정 =====
+if (uval.length == 0){
+	clb = ""; club = ""; opn = "n";
+	seq = "";
+}else if (uval.length == 1){
+	clb = uval.substr(0,1);
+	seq = "";
+}else if (uval.length == 4){
+	clb = uval.substr(0,1);
+	seq = uval.substr(1,3);
+}
+switch (clb) {
+  case "a" :
+    club = "산술애"; opn = "y";
+    break;
+  case "b" :
+    club = "부중산"; opn = "y";
+    break;
+  case "c" :
+    club = ""; opn = "y";
+    break;
 };
+//====== mmenu / alprpt(seq 지정시) 실행
+if (seq !== ""){
+	$(".mmenu").hide();
+	alprpt(seq);
+}else {
+*/
+	function bran(ctg){
+		$(function(){
+			if (ctg == "1"){
+				alplist();
+				$(".item").show();
 
+				$(function() {
+					$(document).on("click", ".mnt", function(){
+						seq=$(this).attr('title');  //*변수생성하여 클릭한 title을 대입
+						$(".item").hide();
+						alprpt(seq);
+					});
+				});
+				$(".mmenu").hide();
+
+			}else {if (ctg == "2"){c_cd0 = "";c_cd = "내"; vwpriv();    //===== :contains("내")
+			}else	{if (ctg == "3"){c_cd0 = "";c_cd = "폭포"; cod = c_cd; vwphoto();
+			}else	{if (ctg == "4"){c_cd0 = "기묘한 ";c_cd = "바위 나무"; cod = c_cd; vwphoto();
+			}else	{if (ctg == "5"){yms();}
+			}}}}
+		});
+	};
+//};
+ 			
   //*== ●●●●●●●● vwpriv();      ----내 사진모음 ----start==========
 	 var c_cda = 0; var rec = 1;
 
@@ -225,7 +274,7 @@ $(function (){
 
 	$(".mmenu").hide();
 	var ccdn = new Array; var ccdsum = "";
-	setTimeout(musbox( null,5),1000);
+	musbox( null,5);
 
 	ccdn.push('<div class="pcanvas"><div class="header"><button class="btn" onClick="vme();">RETURN</button><h2>' + c_cd0 + c_cd + ' 사진모음......</h2></div><div class="main"><p class="ta">배경음악은..... <span class="tb">'+titlm+'</span></p><p class="tc">'+titln+'</p>');
 
@@ -246,7 +295,7 @@ $(function (){
 		}
 
 //================== 하단 꼬리말 footer 화면==================
- 		ccdn.push('</div><div class="footer"><div id="player"></div><p>끝까지 즐감해 주셔서 감사합니다......</p><img src="./iou.gif"></div></div>');
+ 		ccdn.push('</div><div class="footer"><div id="player"></div><p>끝까지 즐감해 주셔서 감사합니다......</p><img src="../uni2o4o-3/iou.gif"></div></div>');
 
  for (i=0; i<ccdn.length; i++){ccdsum=ccdsum+ccdn[i]};
   $('.container').append(ccdsum);
@@ -260,7 +309,7 @@ $(function (){
 function vwphoto(){
 $(function (){
   $(".mmenu").hide();
-  setTimeout(musbox( null,5),1000);
+  musbox( null,5);
 
   var ccdn = new Array; var ccdsum = "";
  		ccdn.push('<div class="pcanvas"><div class="header"><button class="btn" onClick="vme();">RETURN</button><h2>' + c_cd0 + c_cd + ' 사진모음......</h2></div><div class="main"><p class="ta">배경음악은..... <span class="tb">'+titlm+'</span></p><p class="tc">'+titln+'</p>');
@@ -268,7 +317,7 @@ $(function (){
 //================== 이미지 & description 화면================
 	for ( i=0 ; i < trimgs.length ; i++ )
 		{
-        if (trimgs[i][5].indexOf(c_cd) !== -1) { //=== "내19", "폭포", "바위 나무"
+        if (trimgs[i][5].indexOf(c_cd) != -1) { //=== "내19", "폭포", "바위 나무"
 					if (trimgs[i][3] ==""){}
 					else{
 						if (trimgs[i][4] ==""){}
@@ -278,7 +327,7 @@ $(function (){
 		}
 
 //================== 하단 꼬리말 footer 화면==================
- 		ccdn.push('</div><div class="footer"><div id="player"></div><p>끝까지 즐감해 주셔서 감사합니다......</p><img src="./iou.gif"></div></div>');
+ 		ccdn.push('</div><div class="footer"><div id="player"></div><p>끝까지 즐감해 주셔서 감사합니다......</p><img src="../uni2o4o-3/iou.gif"></div></div>');
 
  for (i=0; i<ccdn.length; i++){ccdsum=ccdsum+ccdn[i]};
   $('.container').append([ccdsum]);
@@ -300,7 +349,7 @@ function ime(){		//-- 계절별 테이블에서 RETURN 할때
 	$(".item").hide();
 	$(".contents").remove();
 	location.reload();
-    $(".mmenu").show();
+        $(".mmenu").show();
 };
 
 function item(){		//-- 산행지list에서 계절별 테이블로 RETURN 할때
@@ -319,12 +368,11 @@ function cme(){		//-- 산행사진에서 계절별 테이블로 RETURN 할때
 	$(".canvas").remove();
 	$(".item").show();
 };
-
-function vme(){		//-- 테마별 사진모음에서 RETURN 할때
+function vme(){		//-- 테마별 사진모음/산행기에서 RETURN 할때
 	stopVideo();
 	$(".pcanvas").remove();
 	$(".combo").remove();
-    $(".mmenu").show();
+        $(".mmenu").show();
 };
 
 function yme(){		//-- 음악감상에서 RETURN 할때
@@ -531,7 +579,7 @@ function yme(){		//-- 음악감상에서 RETURN 할때
 
   //--■■■■■■■■■■■■■■■■■999_alprpt.js■■■■■■■■■■■■■■■■■■
 //*== ●●●●●●●● alprpt();      ----해당(seq)산행기 (음악,일정,사진,슬라이드)영역==
-function alprpt(){
+function alprpt(seq){
 	$(function (){
 		itiner();
 		sli();
@@ -547,14 +595,18 @@ function itiner(){
 				for (i=0; i<skds.length; i++)
 					{if (skds[i][0] == seq){ num = [i]}
 				}
-var mntname = (skds[num][2]).replace(/\s*\(.*?\)\s*/g, " ");
-
- 	titin.push('<div class="canvas"><div class="header"><button class="btn" onclick="cme();">RETURN</button><h2>' + mntname + ' 산행사진</h2></div><div id="canva1"><div class="slid1"><img id="image1" class="mg"></div><div class="slid2"><img id="image2" class="mg"></div><div class="slid3"><img id="image3" class="mg"></div><div class="slid4"><img id="image4" class="mg"></div><div class="slid5"><img id="image5" class="mg"></div><div class="slid6"><img id="image6" class="mg"></div></div><div class="itiner"><p class="ta">배경음악은..... <span class="tb">'+titlm+'</span></p><p class="tc">'+titln+'</p><ul><li>1. 산행일시 : &nbsp; ' + skds[num][1] + ' </li><li>2. 산행지 &nbsp; : &nbsp; ' + skds[num][2] + '_____' + skds[num][3] + ' </li><li>3. 산행코스 : &nbsp; ' + skds[num][4] + ' </li><li>4. 산행시간 : &nbsp; ' + skds[num][5] + ' &nbsp;(휴식/식사 시간 포함)&nbsp; </li><li class="mem">' + skds[num][7] + '</li></ul></div><div class="map"><p>↓ &nbsp; ' + skds[num][2] + ' &nbsp; 등산지도와 코스.....</p><img src="' + skds[num][6] + '"></div><div class="img">');
+				var mntname = (skds[num][2]).replace(/\s*\(.*?\)\s*/g, " ");
+/*				if (club == skds[num][10]){
+					opn = "y";
+					mntname = club + " " + mntname;
+				}else{opn = "n";}
+*/
+        titin.push('<div class="canvas"><div class="header"><button class="btn" onclick="cme();">RETURN</button><h2>' + mntname + ' 산행사진</h2></div><div id="canva1"><div class="slid1"><img id="image1" class="mg"></div><div class="slid2"><img id="image2" class="mg"></div><div class="slid3"><img id="image3" class="mg"></div><div class="slid4"><img id="image4" class="mg"></div><div class="slid5"><img id="image5" class="mg"></div><div class="slid6"><img id="image6" class="mg"></div></div><div class="itiner"><p class="ta">배경음악은..... <span class="tb">'+titlm+'</span></p><p class="tc">'+titln+'</p><ul><li>1. 산행일시 : &nbsp; ' + skds[num][1] + ' </li><li>2. 산행지 &nbsp; : &nbsp; ' + skds[num][2] + '_____' + skds[num][3] + ' </li><li>3. 산행코스 : &nbsp; ' + skds[num][4] + ' </li><li>4. 산행시간 : &nbsp; ' + skds[num][5] + ' &nbsp;(휴식/식사 시간 포함)&nbsp; </li><li class="mem">' + skds[num][7] + '</li></ul></div><div class="map"><p>↓ &nbsp; ' + skds[num][2] + ' &nbsp; 등산지도와 코스.....</p><img src="' + skds[num][6] + '"></div><div class="img">');
 
 //================== 이미지 & description 화면================
 	for (var i=0 ; i < trimgs.length ; i++ )
 		{
-		if (trimgs[i][0] ==seq && trimgs[i][2] != opn)
+		if (trimgs[i][0] == seq && trimgs[i][2] != opn)
 			{
 					if (trimgs[i][3] ==""){}
 					else{
@@ -565,7 +617,7 @@ var mntname = (skds[num][2]).replace(/\s*\(.*?\)\s*/g, " ");
 		}
 
 //================== 하단 꼬리말 footer 화면==================
- 		titin.push('</div><div class="footer"><div id="player"></div><p>끝까지 즐감해 주셔서 감사합니다......</p><br/><img src="./iou.gif"></div></div></div>');
+ 		titin.push('</div><div class="footer"><div id="player"></div><p>끝까지 즐감해 주셔서 감사합니다......</p><br/><img src="../uni2o4o-3/iou.gif"></div></div></div>');
 
  for (i=0; i<titin.length; i++){tsum=tsum+titin[i]};
   $(".item").hide();
@@ -736,7 +788,7 @@ var dur = null; var t = null; var num=null;
         onYouTubeIframeAPIReady();
     });
 
-	 $('#canv').append('<div id="lyr"><button id="rtn" class="btn1" onClick="retn();">RETURN</button><br><div><div id="player"></div><hr/> <input type="button" value="재생" onClick="playVideo();"/> <input type="button" value="일시정지" onClick="pauseVideo();"/> <input type="button" value="종료" onClick="stopVideo();"/> <input type="button" id="volumeMute" value="음소거" onClick="volumeMute();"/> 볼륨 : <input type="range" value="50" min="0" max="100" onChange="soundControl(this.value);"/></div><img src="./mel01.gif" class="mi"><img src="./mel02.gif"  class="mi"> <img src="./mel03.gif" class="mi"><img src="./mel02.gif" class="mi"><img src="./mel01.gif" class="mi"><br><br><br><h3>' + ytbm[num][3] + ' - ' + ytbm[num][4] + '</h3><br><br><div class="wd">' + ytbm[num][5] + '</div><br><img src="./iou.gif"><br><br></div><br><br>');
+	 $('#canv').append('<div id="lyr"><button id="rtn" class="btn1" onClick="retn();">RETURN</button><br><div><div id="player"></div><hr/> <input type="button" value="재생" onClick="playVideo();"/> <input type="button" value="일시정지" onClick="pauseVideo();"/> <input type="button" value="종료" onClick="stopVideo();"/> <input type="button" id="volumeMute" value="음소거" onClick="volumeMute();"/> 볼륨 : <input type="range" value="50" min="0" max="100" onChange="soundControl(this.value);"/></div><img src="../uni2o4o-3/mel01.gif" class="mi"><img src="../uni2o4o-3/mel02.gif"  class="mi"> <img src="../uni2o4o-3/mel03.gif" class="mi"><img src="../uni2o4o-3/mel02.gif" class="mi"><img src="../uni2o4o-3/mel01.gif" class="mi"><br><br><br><h3>' + ytbm[num][3] + ' - ' + ytbm[num][4] + '</h3><br><br><div class="wd">' + ytbm[num][5] + '</div><br><img src="../uni2o4o-3/iou.gif"><br><br></div><br><br>');
 
 	});
 };
