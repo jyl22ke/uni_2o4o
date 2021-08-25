@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.5">
+  <link rel="shortcut icon" href="#" type="image/x-icon">
+  <link rel="icon" href="#" type="image/x-icon">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />        
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+  <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>      
+
+  <style type="text/css">
+
+	input,button{font-size:14px; text-align:center; font-weight:bold;}
+	input:focus,#ctg:focus{outline:none;}
+	#fileUpload,#upload,#skds,#bctg{margin:10px;}
+
+	*{margin:0;padding:0px;list-style:none;text-decoration:none;}
+	body{font-size:100%;}
+	.container{width:100%; min-height: 950px;}
+	.canvas {
+		background: url(./bga.jpg) fixed;
+		display:grid; 
+		grid-template-columns: repeat(15,30px);
+		padding: 20px;
+		background-size:cover; 
+		grid-gap: 0px;
+		text-align:center;
+		}
+	.ifo {margin: 15px; font-size: 1.2em; height: 25px;}
+	#nm {font-size: 1.0em; font-weight: bold; width:70px;}
+	#sj {font-size: 1.0em; font-weight:bold;width:170px;}
+	.sjt {grid-column: 1/span 3;grid-row: 2/span 5; color: #000; font-weight: bold;border:1px solid black;}
+	.sjo,.sjot,.sja,.sjat,.sjb,.sjbt {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
+	.sja { font-size: 0.9em;}
+	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
+	#output { min-height: 790px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em;max-width:1000px;}
+	#output2 { float: left; min-height: 400px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em;max-width:500px;}
+	#submit1 {padding: 0 10px; font-weight: bold;}
+	#clear1 {padding: 0 5px;}
+	@media screen and (min-width: 950px) {.canvas {float: left;} #output {float: right;min-width:800px;}}
+
+  </style>
+
+<script type="text/javascript">
+
+fread("gan");
+fread("jiji");
+fread("sibsung");
+fread("ganji_habchung");
+fread("dgan_charac");
+fread("dgabja60_charac");
+fread("mjdjss_charac");
+	
+function fread(fn){
+    $(function (){
+	var fileName = "./" + fn + ".csv";	// 파일 이름
+
+	$.ajax({
+		url:fileName,
+		dataType:'text',
+		success: function(da) {
+			var textLine = '<script type="text/javascript">var ' + fn + '=[';
+                        var rows = da.split('\n');
+                        for (var i = 0; i < rows.length; i++) {
+				if (i == 0){textLine += '['}else{textLine += ',['};
+				var cells = rows[i].split(',');
+                                for (var j = 0; j < cells.length; j++) {
+					textLine += '"';
+					textLine += cells[j].trim();;
+					if (j == cells.length-1){textLine += '"'}else{textLine += '",'};
+				}
+				textLine += ']';
+			}	
+			textLine += ']';			
+			$('head').append(textLine);
+		}
+	});
+    });
+};
+
+</script>
+
+
+
+<script type="text/javascript">
+
+   //--■■■■■■■■■■■■■■■■■ Image data 수정 ■■■■■■■■■■■■■■■■■■
+	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //=== 사주 (년월일시)간
+	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //=== 사주 (년월일시)지
+	var sjh_yg = ""; var sjh_mg = ""; var sjh_dg = ""; var sjh_tg = "";  //=== 사주한자 (한글자씩)
+	var sjh_yj = ""; var sjh_mj = ""; var sjh_dj = ""; var sjh_tj = "";
+	var saju = ""; var sajuh = "";  var sajugan = ""; var sajuji = "";  //=== 사주 (8자), 사주 (8한자), 사주간(4자), 사주지(4자)
+	var yjsjj = ""; var mjsjj = ""; var djsjj = ""; var tjsjj = "";  //=== 지지배열 (한글자씩)
+	var mipl_yg = ""; var mipl_mg = ""; var mipl_dg = ""; var mipl_tg = "";  //=== 음양오행 (한글자씩)
+	var mipl_yj = ""; var mipl_mj = ""; var mipl_dj = ""; var mipl_tj = ""; 
+	var titl1 = ""; var titl2 = ""; var titl3 = ""; var titl4 = "";    //=== 십성이름 (한글자씩)
+	var titl6 = ""; var titl7 = ""; var titl8 = ""; var titl5 = "일간(나)"; 
+	var ygssg = ""; var mgssg = ""; var dgssg = ""; var tgssg = "";  //=== 십성배열 (한글자씩)
+	var sjupm5 = ""; var vr1 = ""; var vr2 = ""; var vr3 = "";
+	var ssung = new Array; var ssunj = new Array; var ji_hab = new Array;
+	var myssg = ""; var myssj = ""; var sstit = "";
+	var mgssg = ""; var mjssj = ""; 
+	var ssng1 = ""; var ssng2 = ""; var ssng3 = "";
+	var djssj = ""; var tjssj = "";
+
+//=========== 사주 입력시 실행되는 main 함수 ===========
+$( function() {
+	$( 'button#submit1' ).click( function() {
+		$('#output').empty();
+		$('.sj').empty();
+		$('.sja').empty();
+		$('.sjb').empty();
+		$('.sjo').empty();
+		chg_bgcolor('.sj','#fff');
+
+		dispSaju();
+
+		sstit = ""; dgssg = ""; 
+		myssj = ""; 	mgssg = "";	mjssj = ""; djssj = ""; 	tjssj = ""; 
+
+		sstit = sibsung.slice(0, 1);  //===십성 이름
+		subj = sj_dg;
+		dgssg = sibsung.filter(isFind);  //===십성(간)
+		dgssg.unshift(sstit[0]);  //===십성(간) + 이름 추가
+		dgssj = sibsung.filter(isFindj);  //===십성(지)
+		dgssj.unshift(sstit[0]);  //===십성(지) + 이름 추가
+
+		jjganSibsng();
+		ganhab();
+		ganchng();
+		jichng();
+		ji6hab();
+		ji3hab();
+		jibhab();
+		jishab();
+		dgjmcharac();
+	} );
+} );
+
+function jjgan_find(a,b){			
+	idex = dgssg[1].lastIndexOf(a[0][6]);
+	ssng1 = dgssg[0][idex];
+	//------------------------
+	if (a[0][7] === ""){ssng2 = "";
+	}else{
+		idex = dgssg[1].lastIndexOf(a[0][7]);
+		ssng2 = dgssg[0][idex];};
+	//------------------------
+	idex = dgssg[1].lastIndexOf(a[0][8]);
+	ssng3 = dgssg[0][idex];
+
+	jjgan = a[0][6] + " ." + ssng1 + "\n" + a[0][7] + " ." + ssng2 + "\n" + a[0][8] + " ." + ssng3 + "\n";
+	document.getElementById(b).innerText +=  jjgan;
+};
+
+//=========== 십성판별 및 지장간 파악하는 함수 ===========
+function jjganSibsng(){
+
+	//================= 지장간 =================
+ 	jjgan_find(yjsjj,"sj2b");
+ 	jjgan_find(mjsjj,"sj4b");
+ 	jjgan_find(djsjj,"sj6b");
+ 	jjgan_find(tjsjj,"sj8b");
+
+	//================= 십성(간) =================
+	ssg_find(sj_yg,"sj1a"); titl1 = titl;
+	ssg_find(sj_mg,"sj3a"); titl3 = titl;
+	ssg_find(sj_tg,"sj7a"); titl7 = titl;
+	document.getElementById("sj5a").innerText +=  titl5 + "\n";
+
+	//================= 십성(지) =================
+	ssj_find(sj_yj,"sj2a");  titl2 = titl;
+	ssj_find(sj_mj,"sj4a"); titl4 = titl;
+	ssj_find(sj_dj,"sj6a"); titl6 = titl;
+	ssj_find(sj_tj,"sj8a"); titl8 = titl;
+};
+
+function ssg_find(a,b) {
+	idex = dgssg[1].lastIndexOf(a);
+	titl = dgssg[0][idex];
+	document.getElementById(b).innerText +=  titl + "\n";
+};
+
+function ssj_find(a,b) {
+	if (a === "진" || a === "술" || a === "축" || a === "미")	{
+		var idx = dgssj[1].lastIndexOf("진술" || "축미");
+	}else{
+		var idx = dgssj[1].lastIndexOf(a);
+	}
+	titl = dgssj[0][idx];
+	document.getElementById(b).innerText +=  titl + "\n";
+};
+
+//=========== 천간합 =============
+function ganhab(){
+	//-------- 일간과 시간,월간 -------- 
+	if (sj_dg === "기" || sj_dg === "경"){
+		if (dgssg[1][1].substr(0,1) === "양"){
+			idex = dgssg[0].lastIndexOf("정재");
+			ghab = dgssg[1][idex];
+		}else{
+			idex = dgssg[0].lastIndexOf("정관");
+			ghab = dgssg[1][idex];
+		};
+		if (sj_tg === ghab){
+			document.getElementById("sj7a").innerText += "합(" + sj_dg + ghab + ")\n";
+			document.getElementById("sj5a").innerText += "합(" + sj_dg + ghab + ")\n";
+			document.getElementById("output").innerText += "합(" + sj_dg + ghab + ")\n";
+		};
+		if (sj_mg === ghab){
+			document.getElementById("sj3a").innerText += "합(" + sj_dg + ghab + ")\n";
+			document.getElementById("sj5a").innerText += "합(" + sj_dg + ghab + ")\n";
+			document.getElementById("output").innerText += "합(" + sj_dg + ghab + ")\n";
+		};
+	};
+	//-------- 월간과 년간 -------- 
+	subj = sj_mg;
+	mgssg = sibsung.filter(isFind);  //===십성(월간)
+	mgssg.unshift(sstit[0]);  //===십성(월간) + 이름 추가
+
+	if (mgssg[1][1].substr(0,1) === "양"){
+		idex = mgssg[0].lastIndexOf("정재");
+		ghab = mgssg[1][idex];
+	}else{
+		idex = mgssg[0].lastIndexOf("정관");
+		ghab = mgssg[1][idex];
+	};
+	if (sj_yg === ghab){
+		document.getElementById("sj1a").innerText += "합(" + sj_mg + ghab + ")\n";
+		document.getElementById("sj3a").innerText += "합(" + sj_mg + ghab + ")\n";
+		document.getElementById("output").innerText += "합(" + sj_mg + ghab + ")\n";
+	};
+};
+
+//========== 천간충 ==========
+function ganchng(){
+	//-------- 일간과 시간,월간,년간 -------- 
+
+	subj = "천간충";
+	habchng = ganji_habchung.filter(isFind);  //===천간충
+
+	//-------- 일간,시간,월간,년간 -------- 
+	var outpt = ""; var fndList = "";
+
+	for (i=1; i<5; i++){
+		texstr = habchng[0][i];
+		n=0; aa=""; bb="";
+		for (k=0; k<2; k++){
+			aa1 = texstr.substr(k,1);
+			txtSearch(sajugan,aa1);
+			if (fndList === "-1" || fndList === null){
+				aa1 = "";
+			}else{
+				n += 1;	
+			};
+		};
+
+		if (aa.length < 2){
+			ganchngtitl = "";
+		} else {
+			if (aa.length === 2){
+				ganchngtitl = "충(" + aa + ")\n";
+			}};
+
+			for (j=0; j<bb.length; j++){
+				pon = Number(bb.substr(j,1)) * 2 + 1;
+				loc = "sj" + String(pon) + "a";
+				document.getElementById(loc).innerText += ganchngtitl;
+			}
+			document.getElementById("output").innerText += ganchngtitl;
+		};
+	};
+
+//========== 지지충 ==========
+function jichng(){
+	//-------- 일지와 시지,월지,년지 -------- 
+
+	subj = "지지충";
+	habchng = ganji_habchung.filter(isFind);  //===지지충
+
+	//-------- 일간,시간,월간,년간 -------- 
+	var outpt = ""; var fndList = "";
+
+	for (i=1; i<7; i++){
+		texstr = habchng[0][i];
+		n=0; aa=""; bb="";
+		for (k=0; k<2; k++){
+			aa1 = texstr.substr(k,1);
+			txtSearch(sajuji,aa1);
+			if (fndList === "-1" || fndList === null){
+				aa1 = "";
+			}else{
+				n += 1;	
+			};
+		};
+
+		if (aa.length < 2){
+			jichngtitl = "";
+		} else {
+			if (aa.length === 2){
+				jichngtitl = "충(" + aa + ")\n";
+			}};
+
+			for (j=0; j<bb.length; j++){
+				pon = (Number(bb.substr(j,1)) + 1) * 2 ;
+				loc = "sj" + String(pon) + "a";
+				document.getElementById(loc).innerText += jichngtitl;
+			}
+			document.getElementById("output").innerText += jichngtitl;
+		};
+	};
+
+//========== 지지육합 ==========
+function ji6hab(){
+
+	subj = "지지육합";
+	habchng = ganji_habchung.filter(isFind);  //===지지육합
+
+	//-------- 일간,시간,월간,년간 -------- 
+	var outpt = ""; var fndList = "";
+
+	for (i=1; i<7; i++){
+		texstr = habchng[0][i];
+		n=0; aa=""; bb="";
+		for (k=0; k<2; k++){
+			aa1 = texstr.substr(k,1);
+			txtSearch(sajuji,aa1);
+			if (fndList === "-1" || fndList === null){
+				aa1 = "";
+			}else{
+				n += 1;	
+			};
+		};
+
+		if (aa.length < 2){
+			ji6habtitl = "";
+		} else {
+			if (aa.length === 2){
+				ji6habtitl = "합(" + aa + ")\n";
+			}};
+
+			for (j=0; j<bb.length; j++){
+				pon = (Number(bb.substr(j,1)) + 1) * 2;
+				loc = "sj" + String(pon) + "a";
+				document.getElementById(loc).innerText += ji6habtitl;
+			}
+			document.getElementById("output").innerText += ji6habtitl;
+		};
+	};
+
+//========== 지지삼합 ==========
+function ji3hab(){
+
+	subj = "지지삼합";
+	habchng = ganji_habchung.filter(isFind);  //===지지삼합
+
+	//-------- 일지,시지,월지,년지 -------- 
+	var outpt = ""; var fndList = "";
+
+	for (i=1; i<5; i++){
+		texstr = habchng[0][i];
+		n=0; aa=""; bb="";
+		for (k=0; k<3; k++){
+			aa1 = texstr.substr(k,1);
+			txtSearch(sajuji,aa1);
+			if (fndList === "-1" || fndList === null){
+				aa1 = "";
+			}else{
+				n += 1;	
+			};
+		};
+
+		if (aa.length < 2){
+			ji3titl = "";
+		} else {
+			if (aa.length === 3){
+				ji3titl = "삼합(" + aa + ")\n";
+			}else{
+				if (aa.length === 2){ji3titl = "반3합(" + aa + ")\n";}};
+
+			for (j=0; j<bb.length; j++){
+				pon = (Number(bb.substr(j,1))+1) * 2;
+				loc = "sj" + String(pon) + "a";
+				document.getElementById(loc).innerText += ji3titl;
+			}
+			document.getElementById("output").innerText += ji3titl;
+		};
+	};
+};
+
+//========== 문자 검색 함수 ==========
+function txtSearch(str, searchvalue){
+	let pos = 0; fndList = ""; outpt = "";
+	while (true) {
+		let foundPos = str.indexOf(searchvalue, pos);
+		if (foundPos == -1) {
+			break;
+		}else{
+			if (foundPos==null){
+				fndList = "";
+				searchvalue = "";
+			}else{
+				fndList += String(foundPos) ;
+				pos = foundPos + 1; }};
+	};
+	if (fndList){
+		aa += searchvalue;
+		bb += fndList;
+	}
+};
+
+//========== 지지방합 ==========
+function jibhab(){
+
+	subj = "지지방합";
+	habchng = ganji_habchung.filter(isFind);  //===지지방합
+
+	//-------- 일지,시지,월지,년지 -------- 
+	var outpt = ""; var fndList = "";
+
+	for (i=1; i<5; i++){
+		texstr = habchng[0][i];
+		n=0; aa=""; bb="";
+		for (k=0; k<3; k++){
+			aa1 = texstr.substr(k,1);
+			txtSearch(sajuji,aa1);
+			if (fndList === "-1" || fndList === null){
+				aa1 = "";
+			}else{
+				n += 1;	
+			};
+		};
+
+		if (aa.length < 2){
+			ji3titl = "";
+		} else {
+			if (aa.length === 3){
+				jibtitl = "방합(" + aa + ")\n";
+			}else{
+				if (aa.length === 2){jibtitl = "반b합(" + aa + ")\n";}};
+
+			for (j=0; j<bb.length; j++){
+				pon = (Number(bb.substr(j,1))+1) * 2;
+				loc = "sj" + String(pon) + "a";
+				document.getElementById(loc).innerText += jibtitl;
+			}
+			document.getElementById("output").innerText += jibtitl;
+		};
+	};
+};
+
+//========== 암합 ==========
+function jishab(){
+
+	subj = "간지암합";
+	habchng = ganji_habchung.filter(isFind);  //===간지암합
+	
+	//-------- 천간과 지장간 -------- 
+	var outpt = ""; var fndList = "";
+
+	for (i=1; i<5; i++){
+		texstr = habchng[0][i];
+		n=0; aa=""; bb="";
+		aa1 = texstr.substr(0,1);
+		txtSearch(sajugan,aa1);
+		if (fndList === "-1" || fndList === null){
+			aa1 = "";
+		}else{
+			n += 1;	
+		};
+
+		aa1 = texstr.substr(1,1);
+		txtSearch(sajuji,aa1);
+		if (fndList === "-1" || fndList === null){
+			aa1 = "";
+		}else{
+			n += 1;	
+		};
+
+		if (aa.length === 2){
+			jistitl = "암합(" + aa + ")\n";
+		}else{
+			jistitl = "";
+		};
+
+		pon = Number(bb.substr(0,1)) * 2 + 1;
+		loc = "sj" + String(pon) + "a";
+		document.getElementById(loc).innerText += jistitl;
+		pon = (Number(bb.substr(1,1))+1) * 2;
+		loc = "sj" + String(pon) + "a";
+		document.getElementById(loc).innerText += jistitl;
+		document.getElementById("output").innerText += jistitl;
+	};
+
+	//-------- 지장간과 지장간 -------- 
+	subj = "지지암합";
+	habchng = ganji_habchung.filter(isFind);  //===지지암합
+
+	for (i=1; i<6; i++){
+		texstr = habchng[0][i];
+		n=0; aa=""; bb="";
+		for (k=0; k<2; k++){
+			aa1 = texstr.substr(k,1);
+			txtSearch(sajuji,aa1);
+			if (fndList === "-1" || fndList === null){
+				aa1 = "";
+			}else{
+				n += 1;	
+			};
+		};
+
+		if (aa.length === 2){
+			jistitl = "암합(" + aa + ")\n";
+		}else{
+			jistitl = "";
+		};
+
+		for (j=0; j<bb.length; j++){
+			pon = (Number(bb.substr(j,1))+1) * 2;
+			loc = "sj" + String(pon) + "a";
+			document.getElementById(loc).innerText += jistitl ;
+		}
+		document.getElementById("output").innerText += jistitl;
+	};
+};
+
+
+//====== 배열에서 subj를 가져오는 함수 ======
+function isFind(element)  {
+	if(element[0] === subj)  {
+		return true;
+	};
+};
+
+//====== 일간과 같은 음양오행을 가진 지지의 십성 배열 ======
+function isFindj(element)  {
+	if (element[1] === mipl_dg && element[2].substr(0,1) === "지") {
+		return true;
+	};
+};
+
+
+//========= 간지 배경색 =========
+function chg_bgcolor(a,b) {
+	$(a).css("background-color",b);
+}
+
+//========= 음양 판별 함수 ========
+function chkOdd(num) { return (num % 2)? "양":"음"; }
+
+//========= 화면 지우기 ========
+$( function() {
+	$( 'button#clear1' ).click( function() {
+		$( 'input#sj' ).val('');
+		$('#output').empty();
+		$('.sj').empty();
+		$('.sja').empty();
+		$('.sjb').empty();
+		$('.sjo').empty();
+		chg_bgcolor('.sj','#fff');
+	} );
+} );
+
+//========= 사주 input시 화면에 사주 display ========
+function dispSaju(){
+    saju = document.getElementById('sj').value;
+	sj_yg = saju.substr(0,1);
+	sj_yj = saju.substr(1,1);
+	sj_mg = saju.substr(2,1);
+	sj_mj = saju.substr(3,1);
+	sj_dg = saju.substr(4,1);
+	sj_dj = saju.substr(5,1);
+	sj_tg = saju.substr(6,1);
+	sj_tj = saju.substr(7,1);
+
+	//--------------------------------
+	subj = sj_yg;
+	ygsga = gan.filter(isFind);  //===년간(천간배열)
+	sjh_yg = ygsga[0][1];  //===년간(한자)
+	mipl_yg = ygsga[0][4].substr(1,2);  //===년간(음양오행)
+	b1 = ygsga[0][5];  //===년간(오행색)
+	//--------------------------------
+	subj = sj_yj;
+	yjsjj = jiji.filter(isFind);  //===년지(지지배열)
+	sjh_yj = yjsjj[0][1];  //===년지(한자)
+	mipl_yj = yjsjj[0][4].substr(1,2);  //===년지(음양오행)
+	b2 = yjsjj[0][5];  //===년지(오행색)
+	//--------------------------------
+	subj = sj_mg;
+	mgsga = gan.filter(isFind);  //===월간(천간배열)
+	sjh_mg = mgsga[0][1];  //===월간(한자)
+	mipl_mg = mgsga[0][4].substr(1,2);  //===월간(음양오행)
+	b3 = mgsga[0][5];  //===월간(오행색)
+	//--------------------------------
+	subj = sj_mj;
+	mjsjj = jiji.filter(isFind);  //===월지(지지배열)
+	sjh_mj = mjsjj[0][1];  //===월지(한자)
+	mipl_mj = mjsjj[0][4].substr(1,2);  //===월지(음양오행)
+	b4 = mjsjj[0][5];  //===월지(오행색)
+	//--------------------------------
+	subj = sj_dg;
+	dgsga = gan.filter(isFind);  //===일간(천간배열)
+	sjh_dg = dgsga[0][1];  //===일간(한자)
+	mipl_dg = dgsga[0][4].substr(1,2);  //===일간(음양오행)
+	b5 = dgsga[0][5];  //===일간(오행색)
+	//--------------------------------
+	subj = sj_dj;
+	djsjj = jiji.filter(isFind);  //===일지(지지배열)
+	sjh_dj = djsjj[0][1];  //===일지(한자)
+	mipl_dj = djsjj[0][4].substr(1,2);  //===일지(음양오행)
+	b6 = djsjj[0][5];  //===일지(오행색)
+	//--------------------------------
+	subj = sj_tg;
+	tgsga = gan.filter(isFind);  //===시간(천간배열)
+	sjh_tg = tgsga[0][1];  //===시간(한자)
+	mipl_tg = tgsga[0][4].substr(1,2);  //===시간(음양오행)
+	b7 = tgsga[0][5];  //===시간(오행색)
+	//--------------------------------
+	subj = sj_tj;
+	tjsjj = jiji.filter(isFind);  //===시지(지지배열)
+	sjh_tj = tjsjj[0][1];  //===시지(한자)
+	mipl_tj = tjsjj[0][4].substr(1,2);  //===시지(음양오행)
+	b8 = tjsjj[0][5];  //===시지(오행색)
+	//--------------------------------
+
+	sajuh = sjh_yg + sjh_yj + sjh_mg + sjh_mj + sjh_dg + sjh_dj + sjh_tg + sjh_tj;
+	sajugan = sj_yg + sj_mg + sj_dg + sj_tg;
+	sajuji = sj_yj + sj_mj + sj_dj + sj_tj;
+
+	document.getElementById("sj1").innerText +=  sjh_yg;
+	document.getElementById("sjg1").innerText +=  mipl_yg;
+	chg_bgcolor("#sj1",b1);
+	document.getElementById("sj2").innerText +=  sjh_yj;
+	document.getElementById("sjg2").innerText +=  mipl_yj;
+	chg_bgcolor("#sj2",b2);
+	document.getElementById("sj3").innerText +=  sjh_mg;
+	document.getElementById("sjg3").innerText +=  mipl_mg;
+	chg_bgcolor("#sj3",b3);
+	document.getElementById("sj4").innerText +=  sjh_mj;
+	document.getElementById("sjg4").innerText +=  mipl_mj;
+	chg_bgcolor("#sj4",b4);
+	document.getElementById("sj5").innerText +=  sjh_dg;
+	document.getElementById("sjg5").innerText +=  mipl_dg;
+	chg_bgcolor("#sj5",b5);
+	document.getElementById("sj6").innerText +=  sjh_dj;
+	document.getElementById("sjg6").innerText +=  mipl_dj;
+	chg_bgcolor("#sj6",b6);
+	document.getElementById("sj7").innerText +=  sjh_tg;
+	document.getElementById("sjg7").innerText +=  mipl_tg;
+	chg_bgcolor("#sj7",b7);
+	document.getElementById("sj8").innerText +=  sjh_tj;
+	document.getElementById("sjg8").innerText +=  mipl_tj;
+	chg_bgcolor("#sj8",b8);
+};
+
+  </script>  
+
+<script type="text/javascript">
+
+function dgjmcharac(){
+
+//========= 일간에 따른 성격 display ========
+	subj = sj_dg;
+	dgcharac = dgan_charac.filter(isFind);  //===일간성격
+
+	dgtext = "\n<성격> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][3] + "\n" + dgcharac[0][4] + "\n" + dgcharac[0][5] + "\n" + dgcharac[0][6] + "\n" + dgcharac[0][7] + "\n" + dgcharac[0][8] + "\n\n";
+	
+	dgtext1 = "<성격> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][9] + "\n" + dgcharac[0][10] + "--표면심리--" + dgcharac[0][11] + "\n" + dgcharac[0][12] + "--내면심리--" + dgcharac[0][13] + "\n" + "\n";
+
+	document.getElementById("output").innerText += dgtext;
+	document.getElementById("output2").innerText += dgtext1;
+
+//========= 일주에 따른 성격 display ========
+	subj = sj_dg + sj_dj;
+	dgjcharac = dgabja60_charac.filter(isFind);  //===일주성격
+	dgjtext = "<성격> 일주 " + dgjcharac[0][1] + " ==> "  + dgjcharac[0][2] + "\n" + dgjcharac[0][3] + "\n" + dgjcharac[0][4] + "\n" + dgjcharac[0][5] + "\n" + dgjcharac[0][6] + "\n" + dgjcharac[0][7] + "\n\n";
+
+	document.getElementById("output").innerText += dgjtext;
+
+//========= 월지(십성)에 따른 성격 display ========
+	subj = titl4;
+	mjcharac = mjdjss_charac.filter(isFind);  //===월지성격
+	mjtext = "<성격> 월지십성 " + mjcharac[0][0] + " " + mjcharac[0][1] + "\n" + mjcharac[0][2] + "\n" + mjcharac[0][3] + "\n" + mjcharac[0][4] + "\n" + mjcharac[0][5] + "\n\n";
+
+	document.getElementById("output").innerText += mjtext;
+
+//========= 일지(십성)에 따른 성격 display ========
+	subj = titl6;
+	djcharac = mjdjss_charac.filter(isFind);  //===일지성격
+	djtext = "<성격> 일지십성=배우자 " + djcharac[0][0] + " " + djcharac[0][1] + "\n" + djcharac[0][6] + "\n" + djcharac[0][7] + "\n\n";
+
+	document.getElementById("output").innerText += djtext;
+};
+
+
+
+
+
+
+
+
+
+</script>
+
+
+ </head>
+ <body>
+<div id="dvCSV">
+</div>    
+
+
+<!-- 메인메뉴 mmenu part -->
+<div class="container">
+
+<p class="ifo"> 사주: <input type="text" id="sj" maxlength="8"> &nbsp; &nbsp;<button id="clear1">지우기</button> &nbsp; &nbsp;<button id="submit1">제 출</button></p> 
+
+<hr/>
+	<div class="canvas">
+
+		<div class="sjat">십성(간)</div>
+		<div class="sja" id="sj7a"></div>
+		<div class="sja" id="sj5a"></div>
+		<div class="sja" id="sj3a"></div>
+		<div class="sja" id="sj1a"></div>
+		<div class="sjt">사주</div>
+		<div class="sjot">시</div>
+		<div class="sjot">일</div>
+		<div class="sjot">월</div>
+		<div class="sjot">년</div>
+		<div class="sj" id="sj7"></div>
+		<div class="sj" id="sj5"></div>
+		<div class="sj" id="sj3"></div>
+		<div class="sj" id="sj1"></div>
+		<div class="sjo" id="sjg7"></div>
+		<div class="sjo" id="sjg5"></div>
+		<div class="sjo" id="sjg3"></div>
+		<div class="sjo" id="sjg1"></div>
+		<div class="sj" id="sj8"></div>
+		<div class="sj" id="sj6"></div>
+		<div class="sj" id="sj4"></div>
+		<div class="sj" id="sj2"></div>
+		<div class="sjo" id="sjg8"></div>
+		<div class="sjo" id="sjg6"></div>
+		<div class="sjo" id="sjg4"></div>
+		<div class="sjo" id="sjg2"></div>
+		<div class="sjat">십성(지)</div>
+		<div class="sja" id="sj8a"></div>
+		<div class="sja" id="sj6a"></div>
+		<div class="sja" id="sj4a"></div>
+		<div class="sja" id="sj2a"></div>
+		<div class="sjbt">지장간</div>
+		<div class="sjb" id="sj8b"></div>
+		<div class="sjb" id="sj6b"></div>
+		<div class="sjb" id="sj4b"></div>
+		<div class="sjb" id="sj2b"></div>
+
+	</div>
+	<div id="output"></div>
+	<div id="output2"></div>
+</div>
+
+    </body>
+</html>
+
