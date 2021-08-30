@@ -826,10 +826,11 @@ function mpohng(){
 	var mp3 = sar.match(/양토/g).length; var mp3m = sar.match(/음토/g).length; 	
 	var mp4 = sar.match(/양금/g).length; var mp4m = sar.match(/음금/g).length; 	
 	var mp5 = sar.match(/양수/g).length; var mp5m = sar.match(/음수/g).length; 	
-	document.getElementById("output2").innerText += "오행.木..火..土..金..水\n";
-	document.getElementById("output2").innerText += "..양.." + String(mp1) + ".." + String(mp2) + ".." + String(mp3) + ".." + String(mp4) + ".." + String(mp5) + "\n";
-	document.getElementById("output2").innerText += "..음.." + String(mp1m) + ".." + String(mp2m) + ".." + String(mp3m) + ".." + String(mp4m) + ".." + String(mp5m) + "\n";
+	document.getElementById("output").innerText += "오행.木..火..土..金..水\n";
+	document.getElementById("output").innerText += "..양.." + String(mp1) + ".."  + String(mp2) + ".." + String(mp3) + ".." + String(mp4) + ".." + String(mp5) + "\n";
+	document.getElementById("output").innerText += "..음.." + String(mp1m) + ".." + String(mp2m) + ".." + String(mp3m) + ".." + String(mp4m) + ".." + String(mp5m) + "\n";
 };
+
 </script>
 
     </body>
