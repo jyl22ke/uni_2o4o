@@ -200,6 +200,7 @@ $( function() {
 		jishab();
 		dgjmcharac();
 		rootgchk();
+		mjtugan();
 	} );
 } );
 
@@ -800,6 +801,19 @@ function dgroot(pos,a){
 	}else{document.getElementById("output").innerText += "일간 " + fail;};
 };
 
+//=========== 월지의 투간 상황 확인===========
+function mjtugan(){
+	if (sajugan.indexOf(jjgan4) != -1){
+		document.getElementById("output").innerText += "월지 투간(정기)" + jjgan4 + "成格\n";
+	}else{
+		if (sajugan.indexOf(jjgan4a) != -1 || sajugan.indexOf(jjgan4b) != -1){
+			document.getElementById("output").innerText += "월지 투간" + "成格\n";
+		}else{document.getElementById("output").innerText += "월지 투간 실패" + jjgan4 + "敗格\n";}};
+};
+	
+	
+	
+	
 
 </script>
 
