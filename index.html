@@ -153,13 +153,20 @@ function fread(fn){
 	var titl1 = ""; var titl2 = ""; var titl3 = ""; var titl4 = "";    //--- 십성이름 (한글자씩)
 	var titl6 = ""; var titl7 = ""; var titl8 = ""; var titl5 = "일간(나)"; 
 	var ygssg = ""; var mgssg = ""; var dgssg = ""; var tgssg = "";  //--- 십성배열 (한글자씩)
-	var sjupm5 = ""; var vr1 = ""; var vr2 = ""; var vr3 = "";
+	var sjupm5 = ""; 
 	var ssung = new Array; var ssunj = new Array; var ji_hab = new Array;
 	var myssg = ""; var myssj = ""; var sstit = "";
 	var mgssg = ""; var mjssj = ""; 
 	var ssng1 = ""; var ssng2 = ""; var ssng3 = "";
 	var djssj = ""; var tjssj = "";
-
+	//-----------지장간 변수 -----------
+	var jjtitl8a = ""; var jjtitl6a = ""; var jjtitl4a = ""; var jjtitl2a = "";     //--- 십성이름 (지장간)
+	var jjtitl8b = ""; var jjtitl6b = ""; var jjtitl4b = ""; var jjtitl2b = "";
+	var jjtitl8 = ""; var jjtitl6 = ""; var jjtitl4 = ""; var jjtitl2 = "";
+	var jjgan8a = ""; var jjgan6a = ""; var jjgan4a = ""; var jjgan2a = "";    //--- 지장간 (여기)
+	var jjgan8b = ""; var jjgan6b = ""; var jjgan4b = ""; var jjgan2b = "";    //--- 지장간 (중기)
+	var jjgan8 = ""; var jjgan6 = ""; var jjgan4 = ""; var jjgan2 = "";    //--- 지장간 (정기)
+	
 //=========== 사주 입력시 실행되는 main 함수 ===========
 $( function() {
 	$( 'button#submit1' ).click( function() {
@@ -196,15 +203,22 @@ $( function() {
 } );
 
 function jjgan_find(a,b){			
+	vr = b.substr(2,1);
+	eval("jjgan" + vr + "a = a[0][6]");
 	idex = dgssg[1].lastIndexOf(a[0][6]);
+	eval("jjtitl" + vr + "a = dgssg[0][idex]");
 	ssng1 = dgssg[0][idex];
 	//------------------------
 	if (a[0][7] === ""){ssng2 = "";
 	}else{
+		eval("jjgan" + vr + "b = a[0][7]");
 		idex = dgssg[1].lastIndexOf(a[0][7]);
+		eval("jjtitl" + vr + "b = dgssg[0][idex]");
 		ssng2 = dgssg[0][idex];};
 	//------------------------
+	eval("jjgan" + vr + "= a[0][8]");
 	idex = dgssg[1].lastIndexOf(a[0][8]);
+	eval("jjtitl" + vr + "= dgssg[0][idex]");
 	ssng3 = dgssg[0][idex];
 
 	jjgan = a[0][6] + " ." + ssng1 + "\n" + a[0][7] + " ." + ssng2 + "\n" + a[0][8] + " ." + ssng3 + "\n";
