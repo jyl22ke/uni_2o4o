@@ -815,12 +815,21 @@ function mjtugan(){
 			if (tub != -1){
 				document.getElementById("output2").innerText += "월지 투간" + jjgan4b + "成格\n";
 			}else{document.getElementById("output2").innerText += "월지 투간 실패" + "敗格\n";}}};
+	mpohng();
 };
 	
-	
-	
-	
-
+//========== 오행의 갯수 check 하는 함수 ==========
+function mpohng(){
+	sar = mipl_yg + mipl_yj + mipl_mg + mipl_mj + mipl_dg + mipl_dj + mipl_tg + mipl_tj;  //--- 음양오행
+	mp1 = sar.match(/양목/g).length; mp1m = sar.match(/음목/g).length; 	
+	mp2 = sar.match(/양목/g).length; mp2m = sar.match(/음목/g).length; 	
+	mp3 = sar.match(/양목/g).length; mp3m = sar.match(/음목/g).length; 	
+	mp4 = sar.match(/양목/g).length; mp4m = sar.match(/음목/g).length; 	
+	mp5 = sar.match(/양목/g).length; mp5m = sar.match(/음목/g).length; 	
+	document.getElementById("output2").innerText += "오행  木   火   土   金   水\n";
+	document.getElementById("output2").innerText += " 양  " + mp1 + "   " + mp2 + "   " + mp3 + "   " + mp4 + "   " + mp5 + "\n";
+	document.getElementById("output2").innerText += " 음  " + mp1m + "   " + mp2m + "   " + mp3m + "   " + mp4m + "   " + mp5m + "\n";
+};
 </script>
 
     </body>
