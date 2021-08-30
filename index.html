@@ -820,15 +820,15 @@ function mjtugan(){
 	
 //========== 오행의 갯수 check 하는 함수 ==========
 function mpohng(){
-	sar = mipl_yg + mipl_yj + mipl_mg + mipl_mj + mipl_dg + mipl_dj + mipl_tg + mipl_tj;  //--- 음양오행
-	mp1 = sar.match(/양목/g).length; mp1m = sar.match(/음목/g).length; 	
-	mp2 = sar.match(/양화/g).length; mp2m = sar.match(/음화/g).length; 	
-	mp3 = sar.match(/양토/g).length; mp3m = sar.match(/음토/g).length; 	
-	mp4 = sar.match(/양금/g).length; mp4m = sar.match(/음금/g).length; 	
-	mp5 = sar.match(/양수/g).length; mp5m = sar.match(/음수/g).length; 	
-	document.getElementById("output2").innerText += "오행  木   火   土   金   水\n";
-	document.getElementById("output2").innerText += " 양  " + mp1 + "   " + mp2 + "   " + mp3 + "   " + mp4 + "   " + mp5 + "\n";
-	document.getElementById("output2").innerText += " 음  " + mp1m + "   " + mp2m + "   " + mp3m + "   " + mp4m + "   " + mp5m + "\n";
+	var sar = mipl_yg + mipl_yj + mipl_mg + mipl_mj + mipl_dg + mipl_dj + mipl_tg + mipl_tj;  //--- 음양오행
+	var mp1 = sar.match(/양목/g).length; var mp1m = sar.match(/음목/g).length; 	
+	var mp2 = sar.match(/양화/g).length; var mp2m = sar.match(/음화/g).length; 	
+	var mp3 = sar.match(/양토/g).length; var mp3m = sar.match(/음토/g).length; 	
+	var mp4 = sar.match(/양금/g).length; var mp4m = sar.match(/음금/g).length; 	
+	var mp5 = sar.match(/양수/g).length; var mp5m = sar.match(/음수/g).length; 	
+	document.getElementById("output2").innerText += "오행.木..火..土..金..水\n";
+	document.getElementById("output2").innerText += "..양.." + mp1 + ".." + mp2 + ".." + mp3 + ".." + mp4 + ".." + mp5 + "\n";
+	document.getElementById("output2").innerText += "..음.." + mp1m + ".." + mp2m + ".." + mp3m + ".." + mp4m + ".." + mp5m + "\n";
 };
 </script>
 
