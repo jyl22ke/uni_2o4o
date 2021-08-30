@@ -199,6 +199,7 @@ $( function() {
 		jibhab();
 		jishab();
 		dgjmcharac();
+		rootgchk();
 	} );
 } );
 
@@ -761,6 +762,41 @@ function dgjmcharac(){
 	djtext = "<성격> 일지십성=배우자 " + djcharac[0][0] + " " + djcharac[0][1] + "\n" + djcharac[0][6] + "\n" + djcharac[0][7] + "\n\n";
 
 	document.getElementById("output").innerText += djtext;
+};
+
+//=========== 일간의 통근 상황 확인===========
+function rootgchk(){
+	//----- 일지 = 인성/비겁 여부 -----
+	dgroot("titl6");
+	//----- 월지 = 인성/비겁 여부 -----
+	dgroot("titl4");
+	//----- 시지 = 인성/비겁 여부 -----
+	dgroot("titl8");
+	//----- 지장간 = 인성/비겁 여부 -----
+	dgroot("jjtitl6");
+	dgroot("jjtitl6a");
+	dgroot("jjtitl6b");
+	dgroot("jjtitl4");
+	dgroot("jjtitl4a");
+	dgroot("jjtitl4b");
+	dgroot("jjtitl8");
+	dgroot("jjtitl8a");
+	dgroot("jjtitl8b");
+	dgroot("jjtitl2");
+	dgroot("jjtitl2a");
+	dgroot("jjtitl2b");
+};
+
+//========= 일간의 통근 check 하는 함수 ========
+
+function dgroot(pos){
+	if (pos === "titl6"){ pass = "득지"; fail = "실지";}
+	if (pos === "titl4"){ pass = "득령"; fail = "실령";}else{
+		pass = "통근"; fail = "통근실패";}
+
+	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
+		document.getElementById("output").innerText += "일간 " + pass;
+	}else{document.getElementById("output").innerText += "일간 " + fail;}
 };
 
 
