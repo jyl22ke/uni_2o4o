@@ -790,6 +790,7 @@ function rootgchk(){
 //========= 일간의 통근 check 하는 함수 ========
 
 function dgroot(pos,a){
+	pass = ""; fail = "";
 	if (a === "1"){ pass = "득지\n"; fail = "실지\n";}else{
 	if (a === "2"){ pass = "득령\n"; fail = "실령\n";}else{
 		pass = "통근\n"; fail = "통근실패\n";}};
