@@ -201,6 +201,7 @@ $( function() {
 		dgjmcharac();
 		rootgchk();
 		mjtugan();
+		mpohcnt();
 	} );
 } );
 
@@ -815,11 +816,10 @@ function mjtugan(){
 			if (tub != -1){
 				document.getElementById("output2").innerText += "월지 투간" + jjgan4b + "成格\n";
 			}else{document.getElementById("output2").innerText += "월지 투간 실패" + "敗格\n";}}};
-	mpohng();
 };
 	
 //========== 오행의 갯수 check 하는 함수 ==========
-function mpohng(){
+function mpohcnt(){
 	var sar = mipl_yg + mipl_yj + mipl_mg + mipl_mj + mipl_dg + mipl_dj + mipl_tg + mipl_tj;  //--- 음양오행
 	var s1 = sar.match(/양목/g).length; var s1m = sar.match(/음목/g).length; 	
 	var s2 = sar.match(/양화/g).length; var s2m = sar.match(/음화/g).length; 	
