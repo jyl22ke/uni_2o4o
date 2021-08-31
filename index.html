@@ -779,16 +779,16 @@ function rootgchk(){
 	pn = pointr.match(/Y/g);
 	if(pn != null) {
 		if(pn.length === 3){
-			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr + "\n";
+			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr + "\n\n";
 		}else{
 			if(pn.length === 2){
-				document.getElementById("output2").innerText += "신강 사주 ..." + pointr + "\n";
+				document.getElementById("output2").innerText += "신강 사주 ..." + pointr + "\n\n";
 			}else{
 				if(pn.length === 1){
-					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n";
+					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n\n";
 				}else{
 					if(pn.length === 0){
-						document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n";
+						document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";
 					}}}};
 	};
 	
