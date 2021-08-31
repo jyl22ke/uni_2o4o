@@ -795,7 +795,7 @@ function dgroot(pos,a){
 	pass = ""; fail = "";
 	if (a === 1){ pass = "득지\n"; fail = "실지\n";}else{
 	if (a === 2){ pass = "득령\n"; fail = "실령\n";}else{
-		pass = pos + "통근\n"; fail = "--";}};
+		pass = pos + " 통근\n"; fail = "";}};
 
 	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
 		document.getElementById("output2").innerText += "일간 " + pass;
@@ -806,16 +806,16 @@ function dgroot(pos,a){
 function mjtugan(){
 	tu = sajugan.indexOf(jjgan4);
 	if (tu != -1){
-		document.getElementById("output2").innerText += "월지 투간(정기)" + jjgan4 + "成格\n";
+		document.getElementById("output2").innerText += "월지 투간(정기) ..." + jjgan4 + ".. 成格\n";
 	}else{
 		tua = sajugan.indexOf(jjgan4a);
 		if (tua != -1){
-			document.getElementById("output2").innerText += "월지 투간" + jjgan4a + "成格\n";
+			document.getElementById("output2").innerText += "월지 투간 ..." + jjgan4a + ".. 成格\n";
 		}else{
 			tub = sajugan.indexOf(jjgan4b);
 			if (tub != -1){
-				document.getElementById("output2").innerText += "월지 투간" + jjgan4b + "成格\n";
-			}else{document.getElementById("output2").innerText += "월지 투간 실패" + "敗格\n";}}};
+				document.getElementById("output2").innerText += "월지 투간 ..." + jjgan4b + ".. 成格\n";
+			}else{document.getElementById("output2").innerText += "월지 투간 실패 ..." + "敗格\n";}}};
 };
 	
 //========== 오행의 갯수 check 하는 함수 ==========
