@@ -153,7 +153,7 @@ function fread(fn){
 	var titl1 = ""; var titl2 = ""; var titl3 = ""; var titl4 = "";    //--- 십성이름 (한글자씩)
 	var titl6 = ""; var titl7 = ""; var titl8 = ""; var titl5 = "일간(나)"; 
 	var ygssg = ""; var mgssg = ""; var dgssg = ""; var tgssg = "";  //--- 십성배열 (한글자씩)
-	var sjupm5 = ""; 
+	var sjupm5 = ""; var pointr = "";
 	var ssung = new Array; var ssunj = new Array; var ji_hab = new Array;
 	var myssg = ""; var myssj = ""; var sstit = "";
 	var mgssg = ""; var mjssj = ""; 
@@ -768,12 +768,30 @@ function dgjmcharac(){
 
 //=========== 일간의 통근 상황 확인===========
 function rootgchk(){
+	pointr = "";
 	//----- 일지 = 인성/비겁 여부 -----
 	dgroot(titl6,1);
 	//----- 월지 = 인성/비겁 여부 -----
 	dgroot(titl4,2);
 	//----- 일간의 세력상태 확인 -----	
 	pwrcnt();
+	
+	pn = pointr.match(/Y/g);
+	if(pn != null) {
+		if(pn.length === 3){
+			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr;
+		}else{
+			if(pn.length === 2){
+				document.getElementById("output2").innerText += "신강 사주 ..." + pointr;
+			}else{
+				if(pn.length === 1){
+					document.getElementById("output2").innerText += "신약 사주 ..." + pointr;
+				}else{
+					if(pn.length === 0){
+						document.getElementById("output2").innerText += "극신약 사주 ..." + pointr;
+					}}}};
+	};
+	
 	//----- 시지 = 인성/비겁 여부 -----
 	dgroot(titl8,3);
 	//----- 지장간 = 인성/비겁 여부 -----
@@ -802,6 +820,7 @@ function pwrcnt(){
 	
 	r0 = r1 + r2 + r3 + r4;
 	if (r0 > 3){
+		pointr += "득세Y";
 		document.getElementById("output2").innerText += "일간 득세 " + String(r0) + " / " + String(7-r0) + "\n";
 	}else{
 		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n";};
@@ -816,6 +835,9 @@ function dgroot(pos,a){
 		pass = pos + " 통근\n"; fail = "";}};
 
 	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
+		if (a === 1){ pointr += "득지Y";}else{
+			if (a === 2){ pointr += "득령Y";}};
+
 		document.getElementById("output2").innerText += "일간 " + pass;
 	}else{document.getElementById("output2").innerText += fail;};
 };
