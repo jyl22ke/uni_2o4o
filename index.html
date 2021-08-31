@@ -820,7 +820,7 @@ function pwrcnt(){
 	
 	r0 = r1 + r2 + r3 + r4;
 	if (r0 > 3){
-		pointr += "득세Y";
+		pointr = pointr + "득세Y";
 		document.getElementById("output2").innerText += "일간 득세 " + String(r0) + " / " + String(7-r0) + "\n";
 	}else{
 		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n";};
@@ -835,8 +835,8 @@ function dgroot(pos,a){
 		pass = pos + " 통근\n"; fail = "";}};
 
 	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
-		if (a === 1){ pointr += "득지Y";}else{
-			if (a === 2){ pointr += "득령Y";}};
+		if (a === 1){ pointr = pointr + "득지Y";}else{
+			if (a === 2){ pointr = pointr + "득령Y";}};
 
 		document.getElementById("output2").innerText += "일간 " + pass;
 	}else{document.getElementById("output2").innerText += fail;};
