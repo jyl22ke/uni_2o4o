@@ -237,6 +237,7 @@ $( function() {
 		jibhab();
 		jishab();
 		dgjmcharac();
+		pwrcnt();
 		rootgchk();
 		mjtugan();
 		mpohcnt();
@@ -812,7 +813,7 @@ function rootgchk(){
 	//----- 월지 = 인성/비겁 여부 -----
 	dgroot(titl4,2);
 	//----- 일간의 세력상태 확인 -----	
-	pwrcnt();
+//	pwrcnt();
 	
 	pn = pointr.match(/Y/g);
 	pn1 = pointr.match(/N/g);
@@ -923,7 +924,7 @@ function findText(sar,wrd,mm){
 	eval("cn = sar.match(/" + wrd + "/g)");
 	if(cn != null) {
 		eval(mm + "= cn.length");
-	}else{mm = 0;};
+	}else{eval(mm + "= 0")};
 };
 	
 	
