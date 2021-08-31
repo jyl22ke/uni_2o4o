@@ -817,14 +817,14 @@ function rootgchk(){
 	
 	pn = pointr.match(/Y/g);
 	pn1 = pointr.match(/N/g);
-	if(pn != null || pn1 != null) {
+	if(pn != null) {
 		if(pn.length === 3){
 			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr + "\n\n";
 		}else{
-			if(pn.length === 2 || pn1.length === 1){
+			if(pn.length === 2){
 				document.getElementById("output2").innerText += "신강 사주 ..." + pointr + "\n\n";
 			}else{
-				if(pn.length === 1 || pn1.length === 2){
+				if(pn.length === 1){
 					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n\n";
 				}else{
 					if(pn1.length === 3){
