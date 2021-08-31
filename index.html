@@ -819,8 +819,8 @@ function mjtugan(){
 };
 	
 //========== 오행의 갯수 check 하는 함수 ==========
-//var s1 = ""; var s2 = ""; var s3 = ""; var s4 = ""; var s5 = ""; 
-//var s1m = ""; var s2m = ""; var s3m = ""; var s4m = ""; var s5m = ""; 
+var s1 = ""; var s2 = ""; var s3 = ""; var s4 = ""; var s5 = ""; 
+var s1m = ""; var s2m = ""; var s3m = ""; var s4m = ""; var s5m = ""; 
 	
 function mpohcnt(){
 	var sar = mipl_yg + mipl_yj + mipl_mg + mipl_mj + mipl_dg + mipl_dj + mipl_tg + mipl_tj;  //--- 음양오행
@@ -834,16 +834,13 @@ function mpohcnt(){
 	wrd = "음토"; mm = "s3m"; findText(sar,wrd,mm);
 	wrd = "음금"; mm = "s4m"; findText(sar,wrd,mm);
 	wrd = "음수"; mm = "s5m"; findText(sar,wrd,mm);
-//	document.getElementById("output2").innerText += "오행.木..火..土..金..水\n";
-//	document.getElementById("output2").innerText += "..양.." + s1 + ".."  + s2 + ".." + s3 + ".." + s4 + ".." + s5 + "\n";
-//	document.getElementById("output2").innerText += "..음.." + s1m + ".." + s2m + ".." + s3m + ".." + s4m + ".." + s5m + "\n";
 	
 	document.getElementById("output2").innerText += "오행...양...음\n";
-	document.getElementById("output2").innerText += ".木......" + s1 + "...." + s1m + "\n";
-	document.getElementById("output2").innerText += ".火......" + s2 + "...." + s2m + "\n";
-	document.getElementById("output2").innerText += ".土......" + s3 + "...." + s3m + "\n";
-	document.getElementById("output2").innerText += ".金......" + s4 + "...." + s4m + "\n";
-	document.getElementById("output2").innerText += ".水......" + s5 + "...." + s5m + "\n";
+	document.getElementById("output2").innerText += "...木......" + s1 + "......" + s1m + "\n";
+	document.getElementById("output2").innerText += "...火......" + s2 + "......" + s2m + "\n";
+	document.getElementById("output2").innerText += "...土......" + s3 + "......" + s3m + "\n";
+	document.getElementById("output2").innerText += "...金......" + s4 + "......" + s4m + "\n";
+	document.getElementById("output2").innerText += "...水......" + s5 + "......" + s5m + "\n";
 };
 
 	
