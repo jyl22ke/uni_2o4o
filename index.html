@@ -779,16 +779,16 @@ function rootgchk(){
 	pn = pointr.match(/Y/g);
 	if(pn != null) {
 		if(pn.length === 3){
-			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr;
+			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr + "\n";
 		}else{
 			if(pn.length === 2){
-				document.getElementById("output2").innerText += "신강 사주 ..." + pointr;
+				document.getElementById("output2").innerText += "신강 사주 ..." + pointr + "\n";
 			}else{
 				if(pn.length === 1){
-					document.getElementById("output2").innerText += "신약 사주 ..." + pointr;
+					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n";
 				}else{
 					if(pn.length === 0){
-						document.getElementById("output2").innerText += "극신약 사주 ..." + pointr;
+						document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n";
 					}}}};
 	};
 	
@@ -823,6 +823,7 @@ function pwrcnt(){
 		pointr = pointr + "득세Y";
 		document.getElementById("output2").innerText += "일간 득세 " + String(r0) + " / " + String(7-r0) + "\n";
 	}else{
+		pointr = pointr + "실세N";
 		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n";};
 };
 		
@@ -835,11 +836,13 @@ function dgroot(pos,a){
 		pass = pos + " 통근\n"; fail = "";}};
 
 	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
-		if (a === 1){ pointr = pointr + "득지Y";}else{
-			if (a === 2){ pointr = pointr + "득령Y";}};
-
+		if (a === 1){ pointr = pointr + "득지Y";
+		}else{if (a === 2){ pointr = pointr + "득령Y";}};
 		document.getElementById("output2").innerText += "일간 " + pass;
-	}else{document.getElementById("output2").innerText += fail;};
+	}else{
+		if (a === 1){ pointr = pointr + "실지N";
+		}else{if (a === 2){ pointr = pointr + "실령N";}};
+		document.getElementById("output2").innerText += fail;};
 };
 
 //=========== 월지의 투간 상황 확인===========
