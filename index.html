@@ -166,10 +166,48 @@ function fread(fn){
 	var jjgan8a = ""; var jjgan6a = ""; var jjgan4a = ""; var jjgan2a = "";    //--- 지장간 (여기)
 	var jjgan8b = ""; var jjgan6b = ""; var jjgan4b = ""; var jjgan2b = "";    //--- 지장간 (중기)
 	var jjgan8 = ""; var jjgan6 = ""; var jjgan4 = ""; var jjgan2 = "";    //--- 지장간 (정기)
+	//-----------오행갯수 check 변수 -----------
+	var s1 = 0; var s2 = 0; var s3 = 0; var s4 = 0; var s5 = 0; 
+	var s1m = 0; var s2m = 0; var s3m = 0; var s4m = 0; var s5m = 0; 
+	//--------- 일간의 세력 check 하는 변수 ---------
+	var sstext = ""; var r0 = 0; var r1 = 0; var r2 = 0; var r3 = 0; var r4 = 0; 
 	
 //=========== 사주 입력시 실행되는 main 함수 ===========
 $( function() {
 	$( 'button#submit1' ).click( function() {
+		
+	//------------------ 변수값 clear RESET start -------------------
+	sj_yg = ""; sj_mg = ""; sj_dg = ""; sj_tg = "";  //--- 사주 (년월일시)간
+	sj_yj = ""; sj_mj = ""; sj_dj = ""; sj_tj = "";  //--- 사주 (년월일시)지
+	sjh_yg = ""; sjh_mg = ""; sjh_dg = ""; sjh_tg = "";  //--- 사주한자 (한글자씩)
+	sjh_yj = ""; sjh_mj = ""; sjh_dj = ""; sjh_tj = "";
+	saju = ""; sajuh = "";  sajugan = ""; sajuji = "";  //--- 사주 (8자), 사주 (8한자), 사주간(4자), 사주지(4자)
+	yjsjj = ""; mjsjj = ""; djsjj = ""; tjsjj = "";  //--- 지지배열 (한글자씩)
+	mipl_yg = ""; mipl_mg = ""; mipl_dg = ""; mipl_tg = "";  //--- 음양오행 (한글자씩)
+	mipl_yj = ""; mipl_mj = ""; mipl_dj = ""; mipl_tj = ""; 
+	titl1 = ""; titl2 = ""; titl3 = ""; titl4 = "";    //--- 십성이름 (한글자씩)
+	titl6 = ""; titl7 = ""; titl8 = ""; titl5 = "일간(나)"; 
+	ygssg = ""; mgssg = ""; dgssg = ""; tgssg = "";  //--- 십성배열 (한글자씩)
+	sjupm5 = ""; pointr = "";
+	ssung = []; ssunj = []; ji_hab = [];
+	myssg = ""; myssj = ""; sstit = "";
+	mgssg = ""; mjssj = ""; 
+	ssng1 = ""; ssng2 = ""; ssng3 = "";
+	djssj = ""; tjssj = "";
+	//-----------지장간 변수 -----------
+	jjtitl8a = ""; jjtitl6a = ""; jjtitl4a = ""; jjtitl2a = "";     //--- 십성이름 (지장간)
+	jjtitl8b = ""; jjtitl6b = ""; jjtitl4b = ""; jjtitl2b = "";
+	jjtitl8 = ""; jjtitl6 = ""; jjtitl4 = ""; jjtitl2 = "";
+	jjgan8a = ""; jjgan6a = ""; jjgan4a = ""; jjgan2a = "";    //--- 지장간 (여기)
+	jjgan8b = ""; jjgan6b = ""; jjgan4b = ""; jjgan2b = "";    //--- 지장간 (중기)
+	jjgan8 = ""; jjgan6 = ""; jjgan4 = ""; jjgan2 = "";    //--- 지장간 (정기)
+	//-----------오행갯수 check 변수 -----------
+	s1 = 0; s2 = 0; s3 = 0; s4 = 0; s5 = 0; 
+	s1m = 0; s2m = 0; s3m = 0; s4m = 0; s5m = 0; 
+	//--------- 일간의 세력 check 하는 변수 ---------
+	sstext = ""; r0 = 0; r1 = 0; r2 = 0; r3 = 0; r4 = 0; 
+	//------------------ 변수값 clear RESET end ---------------------
+		
 		$('#output').empty();
 		$('#output2').empty();
 		$('.sj').empty();
@@ -811,7 +849,6 @@ function rootgchk(){
 };
 
 //========= 일간의 세력 check 하는 함수 =========
-var sstext = ""; var r0 = 0; var r1 = 0; var r2 = 0; var r3 = 0; var r4 = 0; 
 function pwrcnt(){
 	sstext = titl1 + titl2 + titl3 + titl4 + titl6 + titl7 + titl8;  //--- 십성
 	wrd = "비견"; mm = "r1"; findText(sstext,wrd,mm); 
@@ -859,9 +896,6 @@ function mjtugan(){
 };
 	
 //========== 오행의 갯수 check 하는 함수 ==========
-var s1 = 0; var s2 = 0; var s3 = 0; var s4 = 0; var s5 = 0; 
-var s1m = 0; var s2m = 0; var s3m = 0; var s4m = 0; var s5m = 0; 
-	
 function mpohcnt(){
 	var sar = mipl_yg + mipl_yj + mipl_mg + mipl_mj + mipl_dg + mipl_dj + mipl_tg + mipl_tj;  //--- 음양오행
 	wrd = "양목"; mm = "s1"; findText(sar,wrd,mm); 
