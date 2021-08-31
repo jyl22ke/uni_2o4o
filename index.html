@@ -825,12 +825,8 @@ function rootgchk(){
 				document.getElementById("output2").innerText += "신강 사주 ..." + pointr + "\n\n";
 			}else{
 				if(pn.length === 1){
-					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n\n";
-				}else{
-					if(pn1.length === 3){
-						document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";
-					}}}};
-	};
+					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n\n";}}};
+	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";};
 	
 	//----- 시지 = 인성/비겁 여부 -----
 	dgroot(titl8,3);
