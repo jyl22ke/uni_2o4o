@@ -778,17 +778,17 @@ function rootgchk(){
 	
 	pn = pointr.match(/Y/g);
 	pn1 = pointr.match(/N/g);
-	if(pn != null) {
-		if(pn.length === 3 && pn1.length === 0){
+	if(pn != null || pn1 != null) {
+		if(pn.length === 3 || pn1.length === 0){
 			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr + "\n\n";
 		}else{
-			if(pn.length === 2 && pn1.length === 1){
+			if(pn.length === 2 || pn1.length === 1){
 				document.getElementById("output2").innerText += "신강 사주 ..." + pointr + "\n\n";
 			}else{
-				if(pn.length === 1 && pn1.length === 2){
+				if(pn.length === 1 || pn1.length === 2){
 					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n\n";
 				}else{
-					if(pn.length === 0 && pn1.length === 3){
+					if(pn.length === 0 || pn1.length === 3){
 						document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";
 					}}}};
 	};
@@ -832,17 +832,13 @@ function pwrcnt(){
 
 function dgroot(pos,a){
 	pass = ""; fail = "";
-	if (a === 1){ pass = "득지\n"; fail = "실지\n";}else{
-	if (a === 2){ pass = "득령\n"; fail = "실령\n";}else{
-		pass = pos + " 통근\n"; fail = "";}};
-
 	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
-		if (a === 1){ pointr = pointr + "득지Y";
-		}else{if (a === 2){ pointr = pointr + "득령Y";}};
+		if (a === 1){ pointr = pointr + "득지Y"; pass = "득지\n";
+		}else{if (a === 2){ pointr = pointr + "득령Y"; pass = "득령\n";}else{pass = pos + " 통근\n";}};
 		document.getElementById("output2").innerText += "일간 " + pass;
 	}else{
-		if (a === 1){ pointr = pointr + "실지N";
-		}else{if (a === 2){ pointr = pointr + "실령N";}};
+		if (a === 1){ pointr = pointr + "실지N"; fail = "실지\n";
+		}else{if (a === 2){ pointr = pointr + "실령N"; fail = "실령\n";}else{ fail = " ";}};
 		document.getElementById("output2").innerText += fail;};
 };
 
