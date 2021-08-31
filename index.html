@@ -821,16 +821,16 @@ function mjtugan(){
 //========== 오행의 갯수 check 하는 함수 ==========
 function mpohcnt(){
 	var sar = mipl_yg + mipl_yj + mipl_mg + mipl_mj + mipl_dg + mipl_dj + mipl_tg + mipl_tj;  //--- 음양오행
-	wrd = "양목"; findText(sar,wrd,s1); 
-	wrd = "양화"; findText(sar,wrd,s2);
-	wrd = "양토"; findText(sar,wrd,s3);
-	wrd = "양금"; findText(sar,wrd,s4);
-	wrd = "양수"; findText(sar,wrd,s5);
-	wrd = "음목"; findText(sar,wrd,s1m);
-	wrd = "음화"; findText(sar,wrd,s2m);
-	wrd = "음토"; findText(sar,wrd,s3m);
-	wrd = "음금"; findText(sar,wrd,s4m);
-	wrd = "음수"; findText(sar,wrd,s5m);
+	wrd = "양목"; mm = "s1"; findText(sar,wrd,mm); 
+	wrd = "양화"; mm = "s2"; findText(sar,wrd,mm);
+	wrd = "양토"; mm = "s3"; findText(sar,wrd,mm);
+	wrd = "양금"; mm = "s4"; findText(sar,wrd,mm);
+	wrd = "양수"; mm = "s5"; findText(sar,wrd,mm);
+	wrd = "음목"; mm = "s1m"; findText(sar,wrd,mm);
+	wrd = "음화"; mm = "s2m"; findText(sar,wrd,mm);
+	wrd = "음토"; mm = "s3m"; findText(sar,wrd,mm);
+	wrd = "음금"; mm = "s4m"; findText(sar,wrd,mm);
+	wrd = "음수"; mm = "s5m"; findText(sar,wrd,mm);
 	document.getElementById("output2").innerText += "오행.木..火..土..金..水\n";
 	document.getElementById("output2").innerText += "..양.." + s1 + ".."  + s2 + ".." + s3 + ".." + s4 + ".." + s5 + "\n";
 	document.getElementById("output2").innerText += "..음.." + s1m + ".." + s2m + ".." + s3m + ".." + s4m + ".." + s5m + "\n";
@@ -838,8 +838,8 @@ function mpohcnt(){
 
 	
 //===== 오행갯수를 변수에 저장하는 함수 =====	
-function findText(str,wrd,mm){
-	cn = str.match(/wrd/g);
+function findText(sar,wrd,mm){
+	cn = sar.match(/wrd/g);
 	if(cn != null) {
 		mm = String(cn.length);
 	}else{mm = "";};
