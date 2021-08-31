@@ -772,6 +772,8 @@ function rootgchk(){
 	dgroot(titl6,1);
 	//----- 월지 = 인성/비겁 여부 -----
 	dgroot(titl4,2);
+	//----- 일간의 세력상태 확인 -----	
+	pwrcnt();
 	//----- 시지 = 인성/비겁 여부 -----
 	dgroot(titl8,3);
 	//----- 지장간 = 인성/비겁 여부 -----
@@ -790,20 +792,20 @@ function rootgchk(){
 };
 
 //========= 일간의 세력 check 하는 함수 ========
-//function pwrcnt(){
-//	sstext = titl1 + titl2 + titl3 + titl4 + titl6 + titl7 + titl8;  //--- 십성
-//	wrd = "비견"; mm = "r1"; findText(sstext,wrd,mm); 
-//	wrd = "겁재"; mm = "r2"; findText(sstext,wrd,mm);
-//	wrd = "편인"; mm = "r3"; findText(sstext,wrd,mm);
-//	wrd = "정인"; mm = "r4"; findText(sstext,wrd,mm);
+function pwrcnt(){
+	sstext = titl1 + titl2 + titl3 + titl4 + titl6 + titl7 + titl8;  //--- 십성
+	wrd = "비견"; mm = "r1"; findText(sstext,wrd,mm); 
+	wrd = "겁재"; mm = "r2"; findText(sstext,wrd,mm);
+	wrd = "편인"; mm = "r3"; findText(sstext,wrd,mm);
+	wrd = "정인"; mm = "r4"; findText(sstext,wrd,mm);
 	
-//	if (
-	
-	
-	
-	
-	
-	
+	r0 = r1 + r2 + r3 + r4;
+	if (r0 > 3){
+		document.getElementById("output2").innerText += "일간 득세 " + String(r0) + " / " + String(7-r0) + "\n";
+	}else{
+		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n";};
+};
+		
 //========= 일간의 통근 check 하는 함수 ========
 
 function dgroot(pos,a){
@@ -834,8 +836,8 @@ function mjtugan(){
 };
 	
 //========== 오행의 갯수 check 하는 함수 ==========
-//var s1 = ""; var s2 = ""; var s3 = ""; var s4 = ""; var s5 = ""; 
-//var s1m = ""; var s2m = ""; var s3m = ""; var s4m = ""; var s5m = ""; 
+//var s1 = 0; var s2 = 0; var s3 = 0; var s4 = 0; var s5 = 0; 
+//var s1m = 0; var s2m = 0; var s3m = 0; var s4m = 0; var s5m = 0; 
 	
 function mpohcnt(){
 	var sar = mipl_yg + mipl_yj + mipl_mg + mipl_mj + mipl_dg + mipl_dj + mipl_tg + mipl_tj;  //--- 음양오행
@@ -851,11 +853,11 @@ function mpohcnt(){
 	wrd = "음수"; mm = "s5m"; findText(sar,wrd,mm);
 	
 	document.getElementById("output2").innerText += "오행...양...음\n";
-	document.getElementById("output2").innerText += "...木......" + s1 + "......" + s1m + "\n";
-	document.getElementById("output2").innerText += "...火......" + s2 + "......" + s2m + "\n";
-	document.getElementById("output2").innerText += "...土......" + s3 + "......" + s3m + "\n";
-	document.getElementById("output2").innerText += "...金......" + s4 + "......" + s4m + "\n";
-	document.getElementById("output2").innerText += "...水......" + s5 + "......" + s5m + "\n";
+	document.getElementById("output2").innerText += "...木......" + String(s1) + "......" + String(s1m) + "\n";
+	document.getElementById("output2").innerText += "...火......" + String(s2) + "......" + String(s2m) + "\n";
+	document.getElementById("output2").innerText += "...土......" + String(s3) + "......" + String(s3m) + "\n";
+	document.getElementById("output2").innerText += "...金......" + String(s4) + "......" + String(s4m) + "\n";
+	document.getElementById("output2").innerText += "...水......" + String(s5) + "......" + String(s5m) + "\n";
 };
 
 	
@@ -863,11 +865,9 @@ function mpohcnt(){
 function findText(sar,wrd,mm){
 	eval("cn = sar.match(/" + wrd + "/g)");
 	if(cn != null) {
-		eval(mm + "= String(cn.length)");
-	}else{mm = "";};
+		eval(mm + "= cn.length");
+	}else{mm = 0;};
 };
-	
-	
 	
 	
 </script>
