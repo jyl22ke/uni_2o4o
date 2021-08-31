@@ -839,7 +839,7 @@ function mpohcnt(){
 	
 //===== 오행갯수를 변수에 저장하는 함수 =====	
 function findText(str,wrd,mm){
-	if str.includes(wrd){
+	if (str.includes(wrd) === true){
 		cn = str.match(/wrd/g).length;
 		mm = String(cn);
 	}else{mm = "";};
