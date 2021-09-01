@@ -789,7 +789,7 @@ function dgjmcharac(){
 
 	dgtext = "\n<성격의 성향> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][3] + "\n" + dgcharac[0][4] + "\n" + dgcharac[0][5] + "\n" + dgcharac[0][6] + "\n" + dgcharac[0][7] + "\n" + dgcharac[0][8] + "\n\n";
 	
-	dgtext1 = "<성격의 성향> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][9] + "\n" + dgcharac[0][10] + "--표면심리--" + dgcharac[0][11] + "\n" + dgcharac[0][12] + "--내면심리--" + dgcharac[0][13] + "\n" + "\n";
+	dgtext1 = "<성격의 성향>\n 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][9] + "\n" + dgcharac[0][10] + "--표면심리--" + dgcharac[0][11] + "\n" + dgcharac[0][12] + "--내면심리--" + dgcharac[0][13] + "\n" + "\n";
 
 	document.getElementById("output").innerText += dgtext;
 	document.getElementById("output2").innerText += dgtext1;
@@ -839,21 +839,6 @@ function rootgchk(){
 					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n\n";}}};
 	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";};
 	
-	//----- 시지 = 인성/비겁 여부 -----
-//	dgroot(titl8,3);
-	//----- 지장간 = 인성/비겁 여부 -----
-//	dgroot(jjtitl6,3);
-//	dgroot(jjtitl6a,3);
-//	dgroot(jjtitl6b,3);
-//	dgroot(jjtitl4,3);
-//	dgroot(jjtitl4a,3);
-//	dgroot(jjtitl4b,3);
-//	dgroot(jjtitl8,3);
-//	dgroot(jjtitl8a,3);
-//	dgroot(jjtitl8b,3);
-//	dgroot(jjtitl2,3);
-//	dgroot(jjtitl2a,3);
-//	dgroot(jjtitl2b,3);
 	//------ 모든 천간의 통근 확인 -----------
 	ssg1_find("년간 ",ygssg1,"비견","겁재","편인","정인","output2");
 	ssg1_find("월간 ",mgssg1,"비견","겁재","편인","정인","output2");
