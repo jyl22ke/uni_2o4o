@@ -219,16 +219,20 @@ $( function() {
 		sstit1 = sibsungX1.slice(0, 2);  //---십성 이름 (둘째줄=지지) 가져오기
 		subj = sj_yg;
 		ygssg1 = sibsungX1.filter(isFind);  //---십성(년간)
-		ygssg1.unshift(sstit1);  //---십성(간) + 이름 추가
+		ygssg1.unshift(sstit1[1]);  //---십성(지) + 이름 추가
+		ygssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 		subj = sj_mg;
 		mgssg1 = sibsungX1.filter(isFind);  //---십성(월간)
-		mgssg1.unshift(sstit1);  //---십성(간) + 이름 추가
+		mgssg1.unshift(sstit1[1]);  //---십성(지) + 이름 추가
+		mgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 		subj = sj_dg;
 		dgssg1 = sibsungX1.filter(isFind);  //---십성(시간)
-		dgssg1.unshift(sstit1);  //---십성(간) + 이름 추가
+		dgssg1.unshift(sstit1[1]);  //---십성(지) + 이름 추가
+		dgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 		subj = sj_tg;
 		tgssg1 = sibsungX1.filter(isFind);  //---십성(시간)
-		tgssg1.unshift(sstit1);  //---십성(간) + 이름 추가
+		tgssg1.unshift(sstit1[1]);  //---십성(지) + 이름 추가
+		tgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 	//----------- 일간의 통근 check를 위한 십성배열 만들기 -----------
 		subj = sj_dg;
 		dgssg = sibsung.filter(isFind);  //---십성(일간)
