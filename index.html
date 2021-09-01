@@ -839,21 +839,6 @@ function rootgchk(){
 					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n\n";}}};
 	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";};
 	
-	//----- 시지 = 인성/비겁 여부 -----
-	dgroot(titl8,3);
-	//----- 지장간 = 인성/비겁 여부 -----
-	dgroot(jjtitl6,3);
-	dgroot(jjtitl6a,3);
-	dgroot(jjtitl6b,3);
-	dgroot(jjtitl4,3);
-	dgroot(jjtitl4a,3);
-	dgroot(jjtitl4b,3);
-	dgroot(jjtitl8,3);
-	dgroot(jjtitl8a,3);
-	dgroot(jjtitl8b,3);
-	dgroot(jjtitl2,3);
-	dgroot(jjtitl2a,3);
-	dgroot(jjtitl2b,3);
 	//------ 모든 천간의 통근 확인 -----------
 	ssg1_find("년간 ",ygssg1,"비견","겁재","편인","정인","output2");
 	ssg1_find("월간 ",mgssg1,"비견","겁재","편인","정인","output2");
@@ -886,11 +871,9 @@ function dgroot(pos,a){
 	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
 		if (a === 1){ pointr = pointr + "득지Y"; pass = "득지\n";
 		}else{if (a === 2){ pointr = pointr + "득령Y"; pass = "득령\n";}else{pass = pos + " 통근\n";}};
-		document.getElementById("output2").innerText += "일간 " + pass;
 	}else{
 		if (a === 1){ pointr = pointr + "실지N"; fail = "실지\n";
 		}else{if (a === 2){ pointr = pointr + "실령N"; fail = "실령\n";}else{ fail = " ";}};
-		document.getElementById("output2").innerText += fail;};
 };
 
 //========== 천간의 통근을 확인하는 함수 ==========
@@ -904,11 +887,11 @@ function ssg1_find(a,b,c,d,e,f,g) {
 	tit += b[1][idx];
 	idx = b[2].lastIndexOf(f); 
 	tit += b[1][idx];
-
-	if (tit.includes(sj_mj)==true){document.getElementById(g).innerText += a + " 월지통근 " + sj_mj + "\n"; cfm = "y"};
-	if (tit.includes(sj_dj)==true){document.getElementById(g).innerText += a + " 일지통근 " + sj_dj + "\n"; cfm = "y"};
-	if (tit.includes(sj_tj)==true){document.getElementById(g).innerText += a + " 시지통근 " + sj_tj + "\n"; cfm = "y"};
-	if (tit.includes(sj_yj)==true){document.getElementById(g).innerText += a + " 년지통근 " + sj_yj + "\n"; cfm = "y"};
+	document.getElementById(g).innerText += a + " 통근\n";
+	if (tit.includes(sj_mj)==true){document.getElementById(g).innerText += " 월지 " + sj_mj + "\n"; cfm = "y"};
+	if (tit.includes(sj_dj)==true){document.getElementById(g).innerText += " 일지 " + sj_dj + "\n"; cfm = "y"};
+	if (tit.includes(sj_tj)==true){document.getElementById(g).innerText += " 시지 " + sj_tj + "\n"; cfm = "y"};
+	if (tit.includes(sj_yj)==true){document.getElementById(g).innerText += " 년지 " + sj_yj + "\n"; cfm = "y"};
 	if (cfm != "y"){
 		idx = b[2].lastIndexOf(c); 
 		tit += b[0][idx];
@@ -918,18 +901,18 @@ function ssg1_find(a,b,c,d,e,f,g) {
 		tit += b[0][idx];
 		idx = b[2].lastIndexOf(f); 
 		tit += b[0][idx];		
-		if (tit.includes(jjgan4)==true){document.getElementById(g).innerText += a + " 월지장간통근 " + jjgan4 + "\n";};
-		if (tit.includes(jjgan4a)==true){document.getElementById(g).innerText += a + " 월지장간통근 " + jjgan4a + "\n";};
-		if (jjgan4b != "" && tit.includes(jjgan4b)==true){document.getElementById(g).innerText += a + " 월지장간통근 " + jjgan4b + "\n";};
-		if (tit.includes(jjgan6)==true){document.getElementById(g).innerText += a + " 일지장간통근 " + jjgan6 + "\n";};
-		if (tit.includes(jjgan6a)==true){document.getElementById(g).innerText += a + " 일지장간통근 " + jjgan6a + "\n";};
-		if (jjgan6b != "" && tit.includes(jjgan6b)==true){document.getElementById(g).innerText += a + " 일지장간통근 " + jjgan6b + "\n";};
-		if (tit.includes(jjgan8)==true){document.getElementById(g).innerText += a + " 시지장간통근 " + jjgan8 + "\n";};
-		if (tit.includes(jjgan8a)==true){document.getElementById(g).innerText += a + " 시지장간통근 " + jjgan8a + "\n";};
-		if (jjgan8b != "" && tit.includes(jjgan8b)==true){document.getElementById(g).innerText += a + " 시지장간통근 " + jjgan8b + "\n";};
-		if (tit.includes(jjgan2)==true){document.getElementById(g).innerText += a + " 년지장간통근 " + jjgan2 + "\n";};
-		if (tit.includes(jjgan2a)==true){document.getElementById(g).innerText += a + " 년지장간통근 " + jjgan2a + "\n";};
-		if (jjgan2b != "" && tit.includes(jjgan2b)==true){document.getElementById(g).innerText += a + " 년지장간통근 " + jjgan2b + "\n";};
+		if (tit.includes(jjgan4)==true){document.getElementById(g).innerText += " 월지장간 " + jjgan4 + "\n";};
+		if (tit.includes(jjgan4a)==true){document.getElementById(g).innerText += " 월지장간 " + jjgan4a + "\n";};
+		if (jjgan4b != "" && tit.includes(jjgan4b)==true){document.getElementById(g).innerText += " 월지장간 " + jjgan4b + "\n";};
+		if (tit.includes(jjgan6)==true){document.getElementById(g).innerText += " 일지장간 " + jjgan6 + "\n";};
+		if (tit.includes(jjgan6a)==true){document.getElementById(g).innerText += " 일지장간 " + jjgan6a + "\n";};
+		if (jjgan6b != "" && tit.includes(jjgan6b)==true){document.getElementById(g).innerText += " 일지장간 " + jjgan6b + "\n";};
+		if (tit.includes(jjgan8)==true){document.getElementById(g).innerText += " 시지장간 " + jjgan8 + "\n";};
+		if (tit.includes(jjgan8a)==true){document.getElementById(g).innerText += " 시지장간 " + jjgan8a + "\n";};
+		if (jjgan8b != "" && tit.includes(jjgan8b)==true){document.getElementById(g).innerText += " 시지장간 " + jjgan8b + "\n";};
+		if (tit.includes(jjgan2)==true){document.getElementById(g).innerText += " 년지장간 " + jjgan2 + "\n";};
+		if (tit.includes(jjgan2a)==true){document.getElementById(g).innerText += " 년지장간 " + jjgan2a + "\n";};
+		if (jjgan2b != "" && tit.includes(jjgan2b)==true){document.getElementById(g).innerText += " 년지장간 " + jjgan2b + "\n";};
 	};
 };	
 	
