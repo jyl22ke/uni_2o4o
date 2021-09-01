@@ -152,6 +152,7 @@ function fread(fn){
 	var titl6 = ""; var titl7 = ""; var titl8 = ""; var titl5 = "일간(나)"; 
 	var ygssg = ""; var mgssg = ""; var dgssg = ""; var tgssg = "";  //--- 십성배열 (한글자씩)
 	var sstit = ""; var mjssj = ""; var djssj = ""; var tjssj = "";
+	var ygssg1 = ""; var mgssg1 = ""; var dgssg1 = ""; var tgssg1 = "";  //--- 십성배열 (한글자씩)
 	var sjupm5 = ""; var pointr = "";
 	var ssung = new Array; var ssunj = new Array; var ji_hab = new Array;
 	var ssng1 = ""; var ssng2 = ""; var ssng3 = "";
@@ -185,6 +186,7 @@ $( function() {
 	titl6 = ""; titl7 = ""; titl8 = ""; titl5 = "일간(나)"; 
 	ygssg = ""; mgssg = ""; dgssg = ""; tgssg = "";  //--- 십성배열 (한글자씩)
 	sstit = ""; mjssj = ""; djssj = ""; tjssj = "";
+	ygssg1 = ""; mgssg1 = ""; dgssg1 = ""; tgssg1 = "";  //--- 십성배열 (한글자씩)
 	sjupm5 = ""; pointr = "";
 	ssung = []; ssunj = []; ji_hab = [];
 	ssng1 = ""; ssng2 = ""; ssng3 = "";
@@ -212,25 +214,22 @@ $( function() {
 
 		dispSaju();
 
-		sstit = ""; dgssg = ""; 
-		myssj = ""; 	mgssg = "";	mjssj = ""; djssj = ""; 	tjssj = ""; 
-
 		sstit = sibsung.slice(0, 1);  //---십성 이름
 	//----------- 년,월,시간의 통근 check를 위한 십성배열 만들기 -----------
 		sstit1 = sibsungX1.slice(1, 2);  //---십성 이름 (둘째줄=지지) 가져오기
 
 		subj = sj_yg;
-		ygssg = sibsungX1.filter(isFind);  //---십성(년간)
-		ygssg.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		ygssg1 = sibsungX1.filter(isFind);  //---십성(년간)
+		ygssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 		subj = sj_mg;
-		mgssg = sibsungX1.filter(isFind);  //---십성(월간)
-		mgssg.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		mgssg1 = sibsungX1.filter(isFind);  //---십성(월간)
+		mgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 		subj = sj_dg;
 		dgssg1 = sibsungX1.filter(isFind);  //---십성(시간)
 		dgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 		subj = sj_tg;
-		tgssg = sibsungX1.filter(isFind);  //---십성(시간)
-		tgssg.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		tgssg1 = sibsungX1.filter(isFind);  //---십성(시간)
+		tgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 	//----------- 일간의 통근 check를 위한 십성배열 만들기 -----------
 		subj = sj_dg;
 		dgssg = sibsung.filter(isFind);  //---십성(일간)
