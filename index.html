@@ -891,20 +891,20 @@ function dgroot(pos,a){
 
 //========== 천간의 통근을 확인하는 함수 ==========
 function ssg1_find(a,b,c,d,e,f,g) {
-	titl = "";
-	idex = b[1].lastIndexOf(c); 
-	titl += b[0][idex];
-	idex = b[1].lastIndexOf(d); 
-	titl += b[0][idex];
-	idex = b[1].lastIndexOf(e); 
-	titl += b[0][idex];
-	idex = b[1].lastIndexOf(f); 
-	titl += b[0][idex];
+	tit = "";
+	idx = b[1].lastIndexOf(c); 
+	tit += b[0][idx];
+	idx = b[1].lastIndexOf(d); 
+	tit += b[0][idx];
+	idx = b[1].lastIndexOf(e); 
+	tit += b[0][idx];
+	idx = b[1].lastIndexOf(f); 
+	tit += b[0][idx];
 
-	if (titl.includes(sj_yj)===true){document.getElementById(g).innerText += a + " 년지통근 " + sj_yj + "\n";};
-	if (titl.includes(sj_mj)===true){document.getElementById(g).innerText += a + " 월지통근 " + sj_mj + "\n";};
-	if (titl.includes(sj_dj)===true){document.getElementById(g).innerText += a + " 일지통근 " + sj_dj + "\n";};
-	if (titl.includes(sj_tj)===true){document.getElementById(g).innerText += a + " 시지통근 " + sj_tj + "\n";};
+	if (tit.includes(sj_yj)==true){document.getElementById(g).innerText += a + " 년지통근 " + sj_yj + "\n";};
+	if (tit.includes(sj_mj)==true){document.getElementById(g).innerText += a + " 월지통근 " + sj_mj + "\n";};
+	if (tit.includes(sj_dj)==true){document.getElementById(g).innerText += a + " 일지통근 " + sj_dj + "\n";};
+	if (tit.includes(sj_tj)==true){document.getElementById(g).innerText += a + " 시지통근 " + sj_tj + "\n";};
 };	
 	
 //=========== 월지의 투간 상황 확인===========
