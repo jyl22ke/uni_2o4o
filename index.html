@@ -216,20 +216,19 @@ $( function() {
 
 		sstit = sibsung.slice(0, 1);  //---십성 이름
 	//----------- 년,월,시간의 통근 check를 위한 십성배열 만들기 -----------
-		sstit1 = sibsungX1.slice(1, 2);  //---십성 이름 (둘째줄=지지) 가져오기
-
+		sstit1 = sibsungX1.slice(0, 2);  //---십성 이름 (둘째줄=지지) 가져오기
 		subj = sj_yg;
 		ygssg1 = sibsungX1.filter(isFind);  //---십성(년간)
-		ygssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		ygssg1.unshift(sstit1);  //---십성(간) + 이름 추가
 		subj = sj_mg;
 		mgssg1 = sibsungX1.filter(isFind);  //---십성(월간)
-		mgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		mgssg1.unshift(sstit1);  //---십성(간) + 이름 추가
 		subj = sj_dg;
 		dgssg1 = sibsungX1.filter(isFind);  //---십성(시간)
-		dgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		dgssg1.unshift(sstit1);  //---십성(간) + 이름 추가
 		subj = sj_tg;
 		tgssg1 = sibsungX1.filter(isFind);  //---십성(시간)
-		tgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		tgssg1.unshift(sstit1);  //---십성(간) + 이름 추가
 	//----------- 일간의 통근 check를 위한 십성배열 만들기 -----------
 		subj = sj_dg;
 		dgssg = sibsung.filter(isFind);  //---십성(일간)
@@ -893,20 +892,28 @@ function dgroot(pos,a){
 //========== 천간의 통근을 확인하는 함수 ==========
 function ssg1_find(a,b,c,d,e,f,g) {
 	tit = ""; cfm = "";
-	idx = b[1].lastIndexOf(c); 
-	tit += b[0][idx];
-	idx = b[1].lastIndexOf(d); 
-	tit += b[0][idx];
-	idx = b[1].lastIndexOf(e); 
-	tit += b[0][idx];
-	idx = b[1].lastIndexOf(f); 
-	tit += b[0][idx];
+	idx = b[2].lastIndexOf(c); 
+	tit += b[1][idx];
+	idx = b[2].lastIndexOf(d); 
+	tit += b[1][idx];
+	idx = b[2].lastIndexOf(e); 
+	tit += b[1][idx];
+	idx = b[2].lastIndexOf(f); 
+	tit += b[1][idx];
 
 	if (tit.includes(sj_mj)==true){document.getElementById(g).innerText += a + " 월지통근 " + sj_mj + "\n"; cfm = "y"};
 	if (tit.includes(sj_dj)==true){document.getElementById(g).innerText += a + " 일지통근 " + sj_dj + "\n"; cfm = "y"};
 	if (tit.includes(sj_tj)==true){document.getElementById(g).innerText += a + " 시지통근 " + sj_tj + "\n"; cfm = "y"};
 	if (tit.includes(sj_yj)==true){document.getElementById(g).innerText += a + " 년지통근 " + sj_yj + "\n"; cfm = "y"};
 	if (cfm != "y"){
+		idx = b[2].lastIndexOf(c); 
+		tit += b[0][idx];
+		idx = b[2].lastIndexOf(d); 
+		tit += b[0][idx];
+		idx = b[2].lastIndexOf(e); 
+		tit += b[0][idx];
+		idx = b[2].lastIndexOf(f); 
+		tit += b[0][idx];		
 		if (tit.includes(jjgan4)==true){document.getElementById(g).innerText += a + " 월지장간통근 " + jjgan4 + "\n";};
 		if (tit.includes(jjgan4a)==true){document.getElementById(g).innerText += a + " 월지장간통근 " + jjgan4a + "\n";};
 		if (tit.includes(jjgan4b)==true){document.getElementById(g).innerText += a + " 월지장간통근 " + jjgan4b + "\n";};
