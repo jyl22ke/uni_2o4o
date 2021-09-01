@@ -153,12 +153,10 @@ function fread(fn){
 	var titl1 = ""; var titl2 = ""; var titl3 = ""; var titl4 = "";    //--- 십성이름 (한글자씩)
 	var titl6 = ""; var titl7 = ""; var titl8 = ""; var titl5 = "일간(나)"; 
 	var ygssg = ""; var mgssg = ""; var dgssg = ""; var tgssg = "";  //--- 십성배열 (한글자씩)
+	var sstit = ""; var mjssj = ""; var djssj = ""; var tjssj = "";
 	var sjupm5 = ""; var pointr = "";
 	var ssung = new Array; var ssunj = new Array; var ji_hab = new Array;
-	var myssg = ""; var myssj = ""; var sstit = "";
-	var mgssg = ""; var mjssj = ""; 
 	var ssng1 = ""; var ssng2 = ""; var ssng3 = "";
-	var djssj = ""; var tjssj = "";
 	//-----------지장간 변수 -----------
 	var jjtitl8a = ""; var jjtitl6a = ""; var jjtitl4a = ""; var jjtitl2a = "";     //--- 십성이름 (지장간)
 	var jjtitl8b = ""; var jjtitl6b = ""; var jjtitl4b = ""; var jjtitl2b = "";
@@ -188,12 +186,10 @@ $( function() {
 	titl1 = ""; titl2 = ""; titl3 = ""; titl4 = "";    //--- 십성이름 (한글자씩)
 	titl6 = ""; titl7 = ""; titl8 = ""; titl5 = "일간(나)"; 
 	ygssg = ""; mgssg = ""; dgssg = ""; tgssg = "";  //--- 십성배열 (한글자씩)
+	sstit = ""; mjssj = ""; djssj = ""; tjssj = "";
 	sjupm5 = ""; pointr = "";
 	ssung = []; ssunj = []; ji_hab = [];
-	myssg = ""; myssj = ""; sstit = "";
-	mgssg = ""; mjssj = ""; 
 	ssng1 = ""; ssng2 = ""; ssng3 = "";
-	djssj = ""; tjssj = "";
 	//-----------지장간 변수 -----------
 	jjtitl8a = ""; jjtitl6a = ""; jjtitl4a = ""; jjtitl2a = "";     //--- 십성이름 (지장간)
 	jjtitl8b = ""; jjtitl6b = ""; jjtitl4b = ""; jjtitl2b = "";
@@ -222,12 +218,23 @@ $( function() {
 		myssj = ""; 	mgssg = "";	mjssj = ""; djssj = ""; 	tjssj = ""; 
 
 		sstit = sibsung.slice(0, 1);  //---십성 이름
+	//----------- 년,월,시간의 통근 check를 위한 십성배열 만들기 -----------
+		subj = sj_yg;
+		ygssg = sibsung.filter(isFind);  //---십성(년간)
+		ygssg.unshift(sstit[0]);  //---십성(간) + 이름 추가
+		subj = sj_mg;
+		mgssg = sibsung.filter(isFind);  //---십성(월간)
+		mgssg.unshift(sstit[0]);  //---십성(간) + 이름 추가
+		subj = sj_tg;
+		tgssg = sibsung.filter(isFind);  //---십성(시간)
+		tgssg.unshift(sstit[0]);  //---십성(간) + 이름 추가
+	//----------- 일간의 통근 check를 위한 십성배열 만들기 -----------
 		subj = sj_dg;
-		dgssg = sibsung.filter(isFind);  //---십성(간)
+		dgssg = sibsung.filter(isFind);  //---십성(일간)
 		dgssg.unshift(sstit[0]);  //---십성(간) + 이름 추가
 		dgssj = sibsung.filter(isFindj);  //---십성(지)
 		dgssj.unshift(sstit[0]);  //---십성(지) + 이름 추가
-
+		
 		jjganSibsng();
 		ganhab();
 		ganchng();
