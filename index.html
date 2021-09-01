@@ -856,6 +856,7 @@ function rootgchk(){
 	ssg1_find("월간 ",mgssg1,"비견","겁재","편인","정인","output2");
 	ssg1_find("일간 ",dgssg1,"비견","겁재","편인","정인","output2");
 	ssg1_find("시간 ",tgssg1,"비견","겁재","편인","정인","output2");
+	document.getElementById("output2").innerText += "\n";
 };
 
 //========= 일간의 세력 check 하는 함수 =========
@@ -887,7 +888,6 @@ function dgroot(pos,a){
 		if (a === 1){ pointr = pointr + "실지N"; fail = "실지\n";
 		}else{if (a === 2){ pointr = pointr + "실령N"; fail = "실령\n";}else{ fail = " ";}};
 		document.getElementById("output2").innerText += fail;};
-		document.getElementById("output2").innerText += "\n";
 };
 
 //========== 천간의 통근을 확인하는 함수 ==========
