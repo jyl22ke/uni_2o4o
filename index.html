@@ -258,21 +258,30 @@ $( function() {
 function jjgan_find(a,b){			
 	vr = b.substr(2,1);
 	eval("jjgan" + vr + "a = a[0][6]");
-	idex = dgssg[1].lastIndexOf(a[0][6]);
-	eval("jjtitl" + vr + "a = dgssg[0][idex]");
-	ssng1 = dgssg[0][idex];
+//  idex = dgssg[1].lastIndexOf(a[0][6]); //===> 9
+	idex = dgssg1[0].lastIndexOf(a[0][6]); //===> 5
+//	eval("jjtitl" + vr + "a = dgssg[0][idex]");
+	eval("jjtitl" + vr + "a = dgssg1[2][idex]"); //===> 편관
+//	ssng1 = dgssg[0][idex];
+	ssng1 = dgssg1[2][idex];
 	//------------------------
 	if (a[0][7] === ""){ssng2 = "";
 	}else{
 		eval("jjgan" + vr + "b = a[0][7]");
-		idex = dgssg[1].lastIndexOf(a[0][7]);
-		eval("jjtitl" + vr + "b = dgssg[0][idex]");
-		ssng2 = dgssg[0][idex];};
+//		idex = dgssg[1].lastIndexOf(a[0][7]);
+		idex = dgssg1[0].lastIndexOf(a[0][7]);
+//		eval("jjtitl" + vr + "b = dgssg[0][idex]");
+		eval("jjtitl" + vr + "b = dgssg1[2][idex]");
+//		ssng2 = dgssg[0][idex];};
+		ssng2 = dgssg1[2][idex];};
 	//------------------------
 	eval("jjgan" + vr + "= a[0][8]");
-	idex = dgssg[1].lastIndexOf(a[0][8]);
-	eval("jjtitl" + vr + "= dgssg[0][idex]");
-	ssng3 = dgssg[0][idex];
+//	idex = dgssg[1].lastIndexOf(a[0][8]);
+	idex = dgssg1[0].lastIndexOf(a[0][8]);
+//	eval("jjtitl" + vr + "= dgssg[0][idex]");
+	eval("jjtitl" + vr + "= dgssg1[2][idex]");
+//	ssng3 = dgssg[0][idex];
+	ssng3 = dgssg1[2][idex];
 
 	jjgan = a[0][6] + " ." + ssng1 + "\n" + a[0][7] + " ." + ssng2 + "\n" + a[0][8] + " ." + ssng3 + "\n";
 	document.getElementById(b).innerText +=  jjgan;
@@ -301,18 +310,23 @@ function jjganSibsng(){
 };
 
 function ssg_find(a,b) {
-	idex = dgssg[1].lastIndexOf(a);
-	titl = dgssg[0][idex];
+//	idex = dgssg[1].lastIndexOf(a);
+	idex = dgssg1[0].lastIndexOf(a);
+//	titl = dgssg[0][idex];
+	titl = dgssg1[2][idex];
 	document.getElementById(b).innerText +=  titl + "\n";
 };
 
 function ssj_find(a,b) {
 	if (a === "진" || a === "술" || a === "축" || a === "미")	{
-		var idx = dgssj[1].lastIndexOf("진술" || "축미");
+//		var idx = dgssj[1].lastIndexOf("진술" || "축미");
+		var idx = dgssj1[1].lastIndexOf("진술" || "축미");
 	}else{
-		var idx = dgssj[1].lastIndexOf(a);
+//		var idx = dgssj[1].lastIndexOf(a);
+		var idx = dgssj1[1].lastIndexOf(a);
 	}
-	titl = dgssj[0][idx];
+//	titl = dgssj[0][idx];
+	titl = dgssj1[2][idx];
 	document.getElementById(b).innerText +=  titl + "\n";
 };
 
@@ -320,12 +334,15 @@ function ssj_find(a,b) {
 function ganhab(){
 	//-------- 일간과 시간,월간 -------- 
 	if (sj_dg === "기" || sj_dg === "경"){
-		if (dgssg[1][1].substr(0,1) === "양"){
-			idex = dgssg[0].lastIndexOf("정재");
-			ghab = dgssg[1][idex];
+//		if (dgssg[1][1].substr(0,1) === "양"){
+		if (dgssg1[2][2].substr(0,1) === "양"){
+//			idex = dgssg[0].lastIndexOf("정재");
+			idex = dgssg1[2].lastIndexOf("정재");
+//			ghab = dgssg[1][idex];
+			ghab = dgssg1[0][idex];
 		}else{
-			idex = dgssg[0].lastIndexOf("정관");
-			ghab = dgssg[1][idex];
+			idex = dgssg1[2].lastIndexOf("정관");
+			ghab = dgssg1[0][idex];
 		};
 		if (sj_tg === ghab){
 			document.getElementById("sj7a").innerText += "합(" + sj_dg + ghab + ")\n";
@@ -339,16 +356,16 @@ function ganhab(){
 		};
 	};
 	//-------- 월간과 년간 -------- 
-	subj = sj_mg;
-	mgssg = sibsung.filter(isFind);  //===십성(월간)
-	mgssg.unshift(sstit[0]);  //===십성(월간) + 이름 추가
+//	subj = sj_mg;
+//	mgssg = sibsung.filter(isFind);  //===십성(월간)
+//	mgssg.unshift(sstit[0]);  //===십성(월간) + 이름 추가
 
-	if (mgssg[1][1].substr(0,1) === "양"){
-		idex = mgssg[0].lastIndexOf("정재");
-		ghab = mgssg[1][idex];
+	if (mgssg1[2][2].substr(0,1) === "양"){
+		idex = mgssg1[2].lastIndexOf("정재");
+		ghab = mgssg1[0][idex];
 	}else{
-		idex = mgssg[0].lastIndexOf("정관");
-		ghab = mgssg[1][idex];
+		idex = mgssg1[2].lastIndexOf("정관");
+		ghab = mgssg1[0][idex];
 	};
 	if (sj_yg === ghab){
 		document.getElementById("sj1a").innerText += "합(" + sj_mg + ghab + ")\n";
