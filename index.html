@@ -212,23 +212,23 @@ $( function() {
 		dispSaju();
 
 	//----------- 년,월,시간의 통근 check를 위한 십성배열 만들기 -----------
-		sstit1 = sibsungX1.slice(0, 2);  //---십성 이름 (둘째줄=지지) 가져오기
+		sstit = sibsungX1.slice(0, 2);  //---십성 이름 (첫째줄=천간 둘째줄=지지) 가져오기
 		subj = sj_yg;
 		ygssg = sibsungX1.filter(isFind);  //---십성(년간)
-		ygssg.unshift(sstit1[1]);  //---십성(지) + 이름 추가
-		ygssg.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		ygssg.unshift(sstit[1]);  //---십성(지) + 이름 추가
+		ygssg.unshift(sstit[0]);  //---십성(간) + 이름 추가
 		subj = sj_mg;
 		mgssg = sibsungX1.filter(isFind);  //---십성(월간)
-		mgssg.unshift(sstit1[1]);  //---십성(지) + 이름 추가
-		mgssg.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		mgssg.unshift(sstit[1]);  //---십성(지) + 이름 추가
+		mgssg.unshift(sstit[0]);  //---십성(간) + 이름 추가
 		subj = sj_dg;
 		dgssg = sibsungX1.filter(isFind);  //---십성(시간)
-		dgssg.unshift(sstit1[1]);  //---십성(지) + 이름 추가
-		dgssg.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		dgssg.unshift(sstit[1]);  //---십성(지) + 이름 추가
+		dgssg.unshift(sstit[0]);  //---십성(간) + 이름 추가
 		subj = sj_tg;
 		tgssg = sibsungX1.filter(isFind);  //---십성(시간)
-		tgssg.unshift(sstit1[1]);  //---십성(지) + 이름 추가
-		tgssg.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		tgssg.unshift(sstit[1]);  //---십성(지) + 이름 추가
+		tgssg.unshift(sstit[0]);  //---십성(간) + 이름 추가
 		
 		jjganSibsng();
 		ganhab();
