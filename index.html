@@ -339,7 +339,7 @@ function ganhab(){
 	if (sj_yg === ghab){
 		document.getElementById("sj1a").innerText += "합(" + sj_mg + ghab + ")\n";
 		document.getElementById("sj3a").innerText += "합(" + sj_mg + ghab + ")\n";
-		document.getElementById("output").innerText += "합(" + sj_mg + ghab + ")\n";
+		document.getElementById("output2").innerText += "합(" + sj_mg + ghab + ")\n";
 	};
 };
 
@@ -378,7 +378,7 @@ function ganchng(){
 				loc = "sj" + String(pon) + "a";
 				document.getElementById(loc).innerText += ganchngtitl;
 			}
-			document.getElementById("output").innerText += ganchngtitl;
+			document.getElementById("output2").innerText += ganchngtitl;
 		};
 	};
 
@@ -417,7 +417,7 @@ function jichng(){
 				loc = "sj" + String(pon) + "a";
 				document.getElementById(loc).innerText += jichngtitl;
 			}
-			document.getElementById("output").innerText += jichngtitl;
+			document.getElementById("output2").innerText += jichngtitl;
 		};
 	};
 
@@ -455,7 +455,7 @@ function ji6hab(){
 				loc = "sj" + String(pon) + "a";
 				document.getElementById(loc).innerText += ji6habtitl;
 			}
-			document.getElementById("output").innerText += ji6habtitl;
+			document.getElementById("output2").innerText += ji6habtitl;
 		};
 	};
 
@@ -494,7 +494,7 @@ function ji3hab(){
 				loc = "sj" + String(pon) + "a";
 				document.getElementById(loc).innerText += ji3titl;
 			}
-			document.getElementById("output").innerText += ji3titl;
+			document.getElementById("output2").innerText += ji3titl;
 		};
 	};
 };
@@ -555,7 +555,7 @@ function jibhab(){
 				loc = "sj" + String(pon) + "a";
 				document.getElementById(loc).innerText += jibtitl;
 			}
-			document.getElementById("output").innerText += jibtitl;
+			document.getElementById("output2").innerText += jibtitl;
 		};
 	};
 };
@@ -600,7 +600,7 @@ function jishab(){
 		pon = (Number(bb.substr(1,1))+1) * 2;
 		loc = "sj" + String(pon) + "a";
 		document.getElementById(loc).innerText += jistitl;
-		document.getElementById("output").innerText += jistitl;
+		document.getElementById("output2").innerText += jistitl;
 	};
 
 	//-------- 지장간과 지장간 -------- 
@@ -631,7 +631,7 @@ function jishab(){
 			loc = "sj" + String(pon) + "a";
 			document.getElementById(loc).innerText += jistitl ;
 		}
-		document.getElementById("output").innerText += jistitl;
+		document.getElementById("output2").innerText += jistitl;
 	};
 };
 
@@ -778,7 +778,7 @@ function dgjmcharac(){
 	dgtext1 = "<성격의 성향>\n 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][9] + "\n" + dgcharac[0][10] + "--표면심리--" + dgcharac[0][11] + "\n" + dgcharac[0][12] + "--내면심리--" + dgcharac[0][13] + "\n" + "\n";
 
 	document.getElementById("output").innerText += dgtext;
-	document.getElementById("output2").innerText += dgtext1;
+//	document.getElementById("output2").innerText += dgtext1;
 
 //--------- 일주에 따른 성격 display ---------
 	subj = sj_dg + sj_dj;
