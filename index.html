@@ -830,6 +830,7 @@ function rootgchk(){
 	ssg1_find("월간 ",mgssg,"비견","겁재","편인","정인","output2");
 	ssg1_find("일간 ",dgssg,"비견","겁재","편인","정인","output2");
 	ssg1_find("시간 ",tgssg,"비견","겁재","편인","정인","output2");
+	
 	document.getElementById("output2").innerText += "\n";
 };
 
@@ -875,12 +876,47 @@ function ssg1_find(a,b,c,d,e,f,g) {
 	tit += b[1][idx];
 	idx = b[2].lastIndexOf(f); 
 	tit += b[1][idx];
+	
+	if (a.substr(0,1) == "년")	{aa = "y";
+	}else{if (a.substr(0,1) == "월")	{aa = "m";
+		}else{if (a.substr(0,1) == "일")	{aa = "d";
+			}else{if (a.substr(0,1) == "시")	{aa = "t";}}}
+	};
+	
+	if (tit.includes(sj_mj)==true){document.getElementById(g).innerText += ".... 월지 " + sj_mj + "\n"; cfm += "km";};
+	if (tit.includes(sj_dj)==true){document.getElementById(g).innerText += ".... 일지 " + sj_dj + "\n"; cfm += "kd";};
+	if (tit.includes(sj_tj)==true){document.getElementById(g).innerText += ".... 시지 " + sj_tj + "\n"; cfm += "kt";};
+	if (tit.includes(sj_yj)==true){document.getElementById(g).innerText += ".... 년지 " + sj_yj + "\n"; cfm += "ky";};
+
+	groot_tgan("y", "m", "d" || "t");
+	groot_tgan("m", "d" || "y", "t");
+	groot_tgan("d", "m" || "t", "y");
+	groot_tgan("t", "d", "m" || "y");
+
+	document.getElementById(g).innerText += "........................... " + a + " 통근........" + aatx + "\n";
+	
+	/*
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	document.getElementById(g).innerText += a + " 통근\n";
 	if (tit.includes(sj_mj)==true){document.getElementById(g).innerText += ".... 월지 " + sj_mj + "\n"; cfm = "y"};
 	if (tit.includes(sj_dj)==true){document.getElementById(g).innerText += ".... 일지 " + sj_dj + "\n"; cfm = "y"};
 	if (tit.includes(sj_tj)==true){document.getElementById(g).innerText += ".... 시지 " + sj_tj + "\n"; cfm = "y"};
-	if (tit.includes(sj_yj)==true){document.getElementById(g).innerText += ".... 년지 " + sj_yj + "\n"; cfm = "y"};
-	if (cfm != "y"){
+	if (tit.includes(sj_yj)==true){document.getElementById(g).innerText += ".... 년지 " + sj_yj + "\n"; cfm = "y"};*/
+	if (cfm.includes("k") == false){
 		idx = b[2].lastIndexOf(c); 
 		tit += b[0][idx];
 		idx = b[2].lastIndexOf(d); 
@@ -903,6 +939,14 @@ function ssg1_find(a,b,c,d,e,f,g) {
 		if (tit.includes(jjgan2a)==true){document.getElementById(g).innerText += ".... 년지장간 " + jjgan2a + "\n";};
 	};
 };	
+	
+//=========== 천간통근 및 지지투간 상황 확인 함수 ===========
+function groot_tgan(a,b,c){
+
+	if (aa == a){
+		eval('if (cfm.includes(a)){' + a + 'groot = "3"; aatx = "강";}else{if (cfm.includes(b)){' + a + 'groot = "2"; aatx = "중";	}else{if (cfm.includes(c)){' + a + 'groot = "1"; aatx = "약";}else{'+ a + 'groot = "0"; aatx = "고립"; }}};');
+	};
+};
 	
 //=========== 월지의 투간 상황 확인===========
 function mjtugan(){
