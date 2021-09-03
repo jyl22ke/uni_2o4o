@@ -150,8 +150,7 @@ function fread(fn){
 	var titl1 = ""; var titl2 = ""; var titl3 = ""; var titl4 = "";    //--- 십성이름 (한글자씩)
 	var titl6 = ""; var titl7 = ""; var titl8 = ""; var titl5 = "일간(나)"; 
 	var ygssg = ""; var mgssg = ""; var dgssg = ""; var tgssg = "";  //--- 십성배열 (한글자씩)
-	var sstit = ""; var mjssj = ""; var djssj = ""; var tjssj = "";
-	var ygssg1 = ""; var mgssg1 = ""; var dgssg1 = ""; var tgssg1 = "";  //--- 십성배열 (한글자씩)
+	var sstit = "";
 	var sjupm5 = ""; var pointr = "";
 	var ssung = new Array; var ssunj = new Array; var ji_hab = new Array;
 	var ssng1 = ""; var ssng2 = ""; var ssng3 = "";
@@ -184,8 +183,7 @@ $( function() {
 	titl1 = ""; titl2 = ""; titl3 = ""; titl4 = "";    //--- 십성이름 (한글자씩)
 	titl6 = ""; titl7 = ""; titl8 = ""; titl5 = "일간(나)"; 
 	ygssg = ""; mgssg = ""; dgssg = ""; tgssg = "";  //--- 십성배열 (한글자씩)
-	sstit = ""; mjssj = ""; djssj = ""; tjssj = "";
-	ygssg1 = ""; mgssg1 = ""; dgssg1 = ""; tgssg1 = "";  //--- 십성배열 (한글자씩)
+	sstit = "";
 	sjupm5 = ""; pointr = "";
 	ssung = []; ssunj = []; ji_hab = [];
 	ssng1 = ""; ssng2 = ""; ssng3 = "";
@@ -216,21 +214,21 @@ $( function() {
 	//----------- 년,월,시간의 통근 check를 위한 십성배열 만들기 -----------
 		sstit1 = sibsungX1.slice(0, 2);  //---십성 이름 (둘째줄=지지) 가져오기
 		subj = sj_yg;
-		ygssg1 = sibsungX1.filter(isFind);  //---십성(년간)
-		ygssg1.unshift(sstit1[1]);  //---십성(지) + 이름 추가
-		ygssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		ygssg = sibsungX1.filter(isFind);  //---십성(년간)
+		ygssg.unshift(sstit1[1]);  //---십성(지) + 이름 추가
+		ygssg.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 		subj = sj_mg;
-		mgssg1 = sibsungX1.filter(isFind);  //---십성(월간)
-		mgssg1.unshift(sstit1[1]);  //---십성(지) + 이름 추가
-		mgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		mgssg = sibsungX1.filter(isFind);  //---십성(월간)
+		mgssg.unshift(sstit1[1]);  //---십성(지) + 이름 추가
+		mgssg.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 		subj = sj_dg;
-		dgssg1 = sibsungX1.filter(isFind);  //---십성(시간)
-		dgssg1.unshift(sstit1[1]);  //---십성(지) + 이름 추가
-		dgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		dgssg = sibsungX1.filter(isFind);  //---십성(시간)
+		dgssg.unshift(sstit1[1]);  //---십성(지) + 이름 추가
+		dgssg.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 		subj = sj_tg;
-		tgssg1 = sibsungX1.filter(isFind);  //---십성(시간)
-		tgssg1.unshift(sstit1[1]);  //---십성(지) + 이름 추가
-		tgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
+		tgssg = sibsungX1.filter(isFind);  //---십성(시간)
+		tgssg.unshift(sstit1[1]);  //---십성(지) + 이름 추가
+		tgssg.unshift(sstit1[0]);  //---십성(간) + 이름 추가
 		
 		jjganSibsng();
 		ganhab();
@@ -250,21 +248,21 @@ $( function() {
 function jjgan_find(a,b){			
 	vr = b.substr(2,1);
 	eval("jjgan" + vr + "a = a[0][6]");
-	idex = dgssg1[0].lastIndexOf(a[0][6]); 
-	eval("jjtitl" + vr + "a = dgssg1[2][idex]"); 
-	ssng1 = dgssg1[2][idex];
+	idex = dgssg[0].lastIndexOf(a[0][6]); 
+	eval("jjtitl" + vr + "a = dgssg[2][idex]"); 
+	ssng1 = dgssg[2][idex];
 	//------------------------
 	if (a[0][7] === ""){ssng2 = "";
 	}else{
 		eval("jjgan" + vr + "b = a[0][7]");
-		idex = dgssg1[0].lastIndexOf(a[0][7]);
-		eval("jjtitl" + vr + "b = dgssg1[2][idex]");
-		ssng2 = dgssg1[2][idex];};
+		idex = dgssg[0].lastIndexOf(a[0][7]);
+		eval("jjtitl" + vr + "b = dgssg[2][idex]");
+		ssng2 = dgssg[2][idex];};
 	//------------------------
 	eval("jjgan" + vr + "= a[0][8]");
-	idex = dgssg1[0].lastIndexOf(a[0][8]);
-	eval("jjtitl" + vr + "= dgssg1[2][idex]");
-	ssng3 = dgssg1[2][idex];
+	idex = dgssg[0].lastIndexOf(a[0][8]);
+	eval("jjtitl" + vr + "= dgssg[2][idex]");
+	ssng3 = dgssg[2][idex];
 
 	jjgan = a[0][6] + " ." + ssng1 + "\n" + a[0][7] + " ." + ssng2 + "\n" + a[0][8] + " ." + ssng3 + "\n";
 	document.getElementById(b).innerText +=  jjgan;
@@ -293,18 +291,18 @@ function jjganSibsng(){
 };
 
 function ssg_find(a,b) {
-	idex = dgssg1[0].lastIndexOf(a);
-	titl = dgssg1[2][idex];
+	idex = dgssg[0].lastIndexOf(a);
+	titl = dgssg[2][idex];
 	document.getElementById(b).innerText +=  titl + "\n";
 };
 
 function ssj_find(a,b) {
 	if (a === "진" || a === "술" || a === "축" || a === "미")	{
-		var idx = dgssg1[1].lastIndexOf("진술" || "축미");
+		var idx = dgssg[1].lastIndexOf("진술" || "축미");
 	}else{
-		var idx = dgssg1[1].lastIndexOf(a);
+		var idx = dgssg[1].lastIndexOf(a);
 	}
-	titl = dgssg1[2][idx];
+	titl = dgssg[2][idx];
 	document.getElementById(b).innerText +=  titl + "\n";
 };
 
@@ -312,12 +310,12 @@ function ssj_find(a,b) {
 function ganhab(){
 	//-------- 일간과 시간,월간 -------- 
 	if (sj_dg === "기" || sj_dg === "경"){
-		if (dgssg1[2][2].substr(0,1) === "양"){
-			idex = dgssg1[2].lastIndexOf("정재");
-			ghab = dgssg1[0][idex];
+		if (dgssg[2][2].substr(0,1) === "양"){
+			idex = dgssg[2].lastIndexOf("정재");
+			ghab = dgssg[0][idex];
 		}else{
-			idex = dgssg1[2].lastIndexOf("정관");
-			ghab = dgssg1[0][idex];
+			idex = dgssg[2].lastIndexOf("정관");
+			ghab = dgssg[0][idex];
 		};
 		if (sj_tg === ghab){
 			document.getElementById("sj7a").innerText += "합(" + sj_dg + ghab + ")\n";
@@ -331,12 +329,12 @@ function ganhab(){
 		};
 	};
 	//-------- 월간과 년간 -------- 
-	if (mgssg1[2][2].substr(0,1) === "양"){
-		idex = mgssg1[2].lastIndexOf("정재");
-		ghab = mgssg1[0][idex];
+	if (mgssg[2][2].substr(0,1) === "양"){
+		idex = mgssg[2].lastIndexOf("정재");
+		ghab = mgssg[0][idex];
 	}else{
-		idex = mgssg1[2].lastIndexOf("정관");
-		ghab = mgssg1[0][idex];
+		idex = mgssg[2].lastIndexOf("정관");
+		ghab = mgssg[0][idex];
 	};
 	if (sj_yg === ghab){
 		document.getElementById("sj1a").innerText += "합(" + sj_mg + ghab + ")\n";
@@ -828,10 +826,10 @@ function rootgchk(){
 	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";};
 	
 	//------ 모든 천간의 통근 확인 -----------
-	ssg1_find("년간 ",ygssg1,"비견","겁재","편인","정인","output2");
-	ssg1_find("월간 ",mgssg1,"비견","겁재","편인","정인","output2");
-	ssg1_find("일간 ",dgssg1,"비견","겁재","편인","정인","output2");
-	ssg1_find("시간 ",tgssg1,"비견","겁재","편인","정인","output2");
+	ssg1_find("년간 ",ygssg,"비견","겁재","편인","정인","output2");
+	ssg1_find("월간 ",mgssg,"비견","겁재","편인","정인","output2");
+	ssg1_find("일간 ",dgssg,"비견","겁재","편인","정인","output2");
+	ssg1_find("시간 ",tgssg,"비견","겁재","편인","정인","output2");
 	document.getElementById("output2").innerText += "\n";
 };
 
