@@ -773,7 +773,7 @@ function dgjmcharac(){
 	subj = sj_dg;
 	dgcharac = dgan_charac.filter(isFind);  //---일간성격
 
-	dgtext = "\n<성격의 성향> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][3] + "\n" + dgcharac[0][4] + "\n" + dgcharac[0][5] + "\n" + dgcharac[0][6] + "\n" + dgcharac[0][7] + "\n" + dgcharac[0][8] + "\n\n";
+	dgtext = "<성격의 성향> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][3] + "\n" + dgcharac[0][4] + "\n" + dgcharac[0][5] + "\n" + dgcharac[0][6] + "\n" + dgcharac[0][7] + "\n" + dgcharac[0][8] + "\n\n";
 	
 	dgtext1 = "<성격의 성향>\n 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][9] + "\n" + dgcharac[0][10] + "--표면심리--" + dgcharac[0][11] + "\n" + dgcharac[0][12] + "--내면심리--" + dgcharac[0][13] + "\n" + "\n";
 
@@ -826,6 +826,7 @@ function rootgchk(){
 	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";};
 	
 	//------ 모든 천간의 통근 확인 -----------
+	document.getElementById("output2").innerText += "\n";
 	ssg1_find("년간 ",ygssg,"비견","겁재","편인","정인","output2");
 	ssg1_find("월간 ",mgssg,"비견","겁재","편인","정인","output2");
 	ssg1_find("일간 ",dgssg,"비견","겁재","편인","정인","output2");
