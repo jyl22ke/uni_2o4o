@@ -214,7 +214,6 @@ $( function() {
 
 		dispSaju();
 
-		sstit = sibsung.slice(0, 1);  //---십성 이름
 	//----------- 년,월,시간의 통근 check를 위한 십성배열 만들기 -----------
 		sstit1 = sibsungX1.slice(0, 2);  //---십성 이름 (둘째줄=지지) 가져오기
 		subj = sj_yg;
@@ -233,12 +232,6 @@ $( function() {
 		tgssg1 = sibsungX1.filter(isFind);  //---십성(시간)
 		tgssg1.unshift(sstit1[1]);  //---십성(지) + 이름 추가
 		tgssg1.unshift(sstit1[0]);  //---십성(간) + 이름 추가
-	//----------- 일간의 통근 check를 위한 십성배열 만들기 -----------
-		subj = sj_dg;
-		dgssg = sibsung.filter(isFind);  //---십성(일간)
-		dgssg.unshift(sstit[0]);  //---십성(간) + 이름 추가
-		dgssj = sibsung.filter(isFindj);  //---십성(지)
-		dgssj.unshift(sstit[0]);  //---십성(지) + 이름 추가
 		
 		jjganSibsng();
 		ganhab();
@@ -258,29 +251,20 @@ $( function() {
 function jjgan_find(a,b){			
 	vr = b.substr(2,1);
 	eval("jjgan" + vr + "a = a[0][6]");
-//  idex = dgssg[1].lastIndexOf(a[0][6]); //===> 9
-	idex = dgssg1[0].lastIndexOf(a[0][6]); //===> 5
-//	eval("jjtitl" + vr + "a = dgssg[0][idex]");
-	eval("jjtitl" + vr + "a = dgssg1[2][idex]"); //===> 편관
-//	ssng1 = dgssg[0][idex];
+	idex = dgssg1[0].lastIndexOf(a[0][6]); 
+	eval("jjtitl" + vr + "a = dgssg1[2][idex]"); 
 	ssng1 = dgssg1[2][idex];
 	//------------------------
 	if (a[0][7] === ""){ssng2 = "";
 	}else{
 		eval("jjgan" + vr + "b = a[0][7]");
-//		idex = dgssg[1].lastIndexOf(a[0][7]);
 		idex = dgssg1[0].lastIndexOf(a[0][7]);
-//		eval("jjtitl" + vr + "b = dgssg[0][idex]");
 		eval("jjtitl" + vr + "b = dgssg1[2][idex]");
-//		ssng2 = dgssg[0][idex];};
 		ssng2 = dgssg1[2][idex];};
 	//------------------------
 	eval("jjgan" + vr + "= a[0][8]");
-//	idex = dgssg[1].lastIndexOf(a[0][8]);
 	idex = dgssg1[0].lastIndexOf(a[0][8]);
-//	eval("jjtitl" + vr + "= dgssg[0][idex]");
 	eval("jjtitl" + vr + "= dgssg1[2][idex]");
-//	ssng3 = dgssg[0][idex];
 	ssng3 = dgssg1[2][idex];
 
 	jjgan = a[0][6] + " ." + ssng1 + "\n" + a[0][7] + " ." + ssng2 + "\n" + a[0][8] + " ." + ssng3 + "\n";
@@ -310,22 +294,17 @@ function jjganSibsng(){
 };
 
 function ssg_find(a,b) {
-//	idex = dgssg[1].lastIndexOf(a);
 	idex = dgssg1[0].lastIndexOf(a);
-//	titl = dgssg[0][idex];
 	titl = dgssg1[2][idex];
 	document.getElementById(b).innerText +=  titl + "\n";
 };
 
 function ssj_find(a,b) {
 	if (a === "진" || a === "술" || a === "축" || a === "미")	{
-//		var idx = dgssj[1].lastIndexOf("진술" || "축미");
 		var idx = dgssg1[1].lastIndexOf("진술" || "축미");
 	}else{
-//		var idx = dgssj[1].lastIndexOf(a);
 		var idx = dgssg1[1].lastIndexOf(a);
 	}
-//	titl = dgssj[0][idx];
 	titl = dgssg1[2][idx];
 	document.getElementById(b).innerText +=  titl + "\n";
 };
@@ -334,11 +313,8 @@ function ssj_find(a,b) {
 function ganhab(){
 	//-------- 일간과 시간,월간 -------- 
 	if (sj_dg === "기" || sj_dg === "경"){
-//		if (dgssg[1][1].substr(0,1) === "양"){
 		if (dgssg1[2][2].substr(0,1) === "양"){
-//			idex = dgssg[0].lastIndexOf("정재");
 			idex = dgssg1[2].lastIndexOf("정재");
-//			ghab = dgssg[1][idex];
 			ghab = dgssg1[0][idex];
 		}else{
 			idex = dgssg1[2].lastIndexOf("정관");
@@ -356,10 +332,6 @@ function ganhab(){
 		};
 	};
 	//-------- 월간과 년간 -------- 
-//	subj = sj_mg;
-//	mgssg = sibsung.filter(isFind);  //===십성(월간)
-//	mgssg.unshift(sstit[0]);  //===십성(월간) + 이름 추가
-
 	if (mgssg1[2][2].substr(0,1) === "양"){
 		idex = mgssg1[2].lastIndexOf("정재");
 		ghab = mgssg1[0][idex];
