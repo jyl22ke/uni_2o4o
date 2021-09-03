@@ -320,13 +320,13 @@ function ssg_find(a,b) {
 function ssj_find(a,b) {
 	if (a === "진" || a === "술" || a === "축" || a === "미")	{
 //		var idx = dgssj[1].lastIndexOf("진술" || "축미");
-		var idx = dgssj1[1].lastIndexOf("진술" || "축미");
+		var idx = dgssg1[1].lastIndexOf("진술" || "축미");
 	}else{
 //		var idx = dgssj[1].lastIndexOf(a);
-		var idx = dgssj1[1].lastIndexOf(a);
+		var idx = dgssg1[1].lastIndexOf(a);
 	}
 //	titl = dgssj[0][idx];
-	titl = dgssj1[2][idx];
+	titl = dgssg1[2][idx];
 	document.getElementById(b).innerText +=  titl + "\n";
 };
 
