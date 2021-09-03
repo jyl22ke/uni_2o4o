@@ -805,6 +805,7 @@ function dgjmcharac(){
 //=========== 일간의 통근 상황 확인===========
 function rootgchk(){
 	pointr = "";
+	document.getElementById("output2").innerText += "\n";
 	//----- 일지 = 인성/비겁 여부 -----
 	dgroot(titl6,1);
 	//----- 월지 = 인성/비겁 여부 -----
@@ -826,7 +827,6 @@ function rootgchk(){
 	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";};
 	
 	//------ 모든 천간의 통근 확인 -----------
-	document.getElementById("output2").innerText += "\n";
 	ssg1_find("년간 ",ygssg,"비견","겁재","편인","정인","output2");
 	ssg1_find("월간 ",mgssg,"비견","겁재","편인","정인","output2");
 	ssg1_find("일간 ",dgssg,"비견","겁재","편인","정인","output2");
