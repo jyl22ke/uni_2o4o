@@ -877,27 +877,20 @@ function ssg1_find(a,b,c,d,e,f,g) {
 	idx = b[2].lastIndexOf(f); 
 	tit += b[1][idx];
 	
-	if (a.substr(0,1) == "년")	{aa = "y";
-	}else{if (a.substr(0,1) == "월")	{aa = "m";
-		}else{if (a.substr(0,1) == "일")	{aa = "d";
-			}else{if (a.substr(0,1) == "시")	{aa = "t";}}}
+	if (a.substr(0,1) == "년"){aa = "y";
+	}else{if (a.substr(0,1) == "월"){aa = "m";
+		}else{if (a.substr(0,1) == "일"){aa = "d";
+			}else{if (a.substr(0,1) == "시"){aa = "t";}}}
 	};
-	
 	if (tit.includes(sj_mj)==true){document.getElementById(g).innerText += ".... 월지 " + sj_mj + "\n"; cfm += "km";};
 	if (tit.includes(sj_dj)==true){document.getElementById(g).innerText += ".... 일지 " + sj_dj + "\n"; cfm += "kd";};
 	if (tit.includes(sj_tj)==true){document.getElementById(g).innerText += ".... 시지 " + sj_tj + "\n"; cfm += "kt";};
 	if (tit.includes(sj_yj)==true){document.getElementById(g).innerText += ".... 년지 " + sj_yj + "\n"; cfm += "ky";};
-
-
 	if (cfm.includes("k") == false){
-		idx = b[2].lastIndexOf(c); 
-		tit += b[0][idx];
-		idx = b[2].lastIndexOf(d); 
-		tit += b[0][idx];
-		idx = b[2].lastIndexOf(e); 
-		tit += b[0][idx];
-		idx = b[2].lastIndexOf(f); 
-		tit += b[0][idx];		
+		idx = b[2].lastIndexOf(c); tit += b[0][idx];
+		idx = b[2].lastIndexOf(d); tit += b[0][idx];
+		idx = b[2].lastIndexOf(e); tit += b[0][idx];
+		idx = b[2].lastIndexOf(f); tit += b[0][idx];		
 		if (tit.includes(jjgan4)==true){document.getElementById(g).innerText += ".... 월지장간 " + jjgan4 + "\n"; cfm += "kj";};
 		if (jjgan4b != "" && tit.includes(jjgan4b)==true){document.getElementById(g).innerText += ".... 월지장간 " + jjgan4b + "\n"; cfm += "kj";};
 		if (tit.includes(jjgan4a)==true){document.getElementById(g).innerText += ".... 월지장간 " + jjgan4a + "\n"; cfm += "kj";};
@@ -917,7 +910,6 @@ function ssg1_find(a,b,c,d,e,f,g) {
 	groot_tgan("t", "d", "m" || "y");
 
 	document.getElementById(g).innerText += "........................... " + a + " 통근........" + aatx + "\n";
-	
 };	
 	
 //=========== 천간통근 및 지지투간 상황 확인 함수 ===========
