@@ -320,7 +320,9 @@ function find_ggss(gan,css,jjg,no){
 };
 
 function find_gjss(ji,css,no){
-	idx = gjsgj[1].lastIndexOf(ji);
+	if (ji == "진" || ji == "술"){idx = gjsgj[1].lastIndexOf("진술");
+	}else{if (ji == "축" || ji == "미"){idx = gjsgj[1].lastIndexOf("축미");
+		}else{idx = gjsgj[1].lastIndexOf(ji);};};
 	document.getElementById(css).innerText += gjsgj[no][idx] + "\n";
 };
 
