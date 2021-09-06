@@ -435,7 +435,7 @@ function tugan(){
 
 //===== 오행갯수를 변수에 저장하는 함수 =====	
 function findText(sar,wrd,mm){
-	eval("cn = sar.match(/" + wrd + "/g)");
+	eval('cn = sar.match(/' + wrd + '/g)');
 	if(cn != null) {
 		eval(mm + "= cn.length");
 	}else{eval(mm + "= 0")};
@@ -446,9 +446,9 @@ function mpohcnt(){
 	var sar = ohtx;  //--- 음양오행
 	document.getElementById("output2").innerText += "오행...양...음\n";
 	for (i=1; i<6; i++){
-		wrd = "양" + ohang[i][0]; mma = "sp" + i; findText(sar,wrd,mma);
-		wrd = "음" + ohang[i][0]; mmb = "sm" + i; findText(sar,wrd,mmb);
-		document.getElementById("output2").innerText += "...ohang[i][1]......" + String(mma) + "......" + String(mmb) + "\n";
+		wrd = "양" + ohang[i][0]; mm = "sp"; findText(sar,wrd,mm); eval('sp' + i + '= sp;');
+		wrd = "음" + ohang[i][0]; mm = "sm"; findText(sar,wrd,mm); eval('sm' + i + '= sm;');
+		document.getElementById("output2").innerText += "...ohang[i][1]......" + String(sp) + "......" + String(sm) + "\n";
 	};
 };
 	
