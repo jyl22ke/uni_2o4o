@@ -143,7 +143,7 @@ function fread(fn){
 
 	var sstit = ""; var ggsgg = new Array; var jjsjj = new Array; var gjsgj = new Array;
 	var ganf1 = ""; var ganf2 = ""; var ganf3 = ""; var ganf4 = ""; var nfo_tugan = "";
-	var isol_y = ""; var isol_m = ""; var isol_d = ""; var isol_t = "";
+	var isol_y = ""; var isol_m = ""; var isol_d = ""; var isol_t = ""; var ohtx = "";
 	var dgss_titl1 = ""; var dgss_titl2 = ""; var dgss_titl3 = ""; var dgss_titl4 = "";  //--- (일간기준) 십성이름
 	var dgss_titl6 = ""; var dgss_titl7 = ""; var dgss_titl8 = ""; var gs_titl = ""; var js_titl = "";
 	
@@ -192,7 +192,7 @@ $( function() {
 		sj_yj = ""; sj_mj = ""; sj_dj = ""; sj_tj = "";  //--- 사주 (년월일시)지
 		dgss_titl1 = ""; dgss_titl2 = ""; dgss_titl3 = ""; dgss_titl4 = "";  //--- (일간기준) 십성이름
 		dgss_titl6 = ""; dgss_titl7 = ""; dgss_titl8 = ""; gs_titl = ""; js_titl = "";
-		nfo_tugan = "";
+		nfo_tugan = ""; ohtx = "";
 		
 		$('#output').empty();
 		$('#output2').empty();
@@ -227,10 +227,10 @@ function fill_saju(){
 		n = i * 2;
 		document.getElementById("sj" + m).innerText +=  ggsgg[i][1];
 		document.getElementById("sjg" + m).innerText +=   ggsgg[i][4].substr(1,2);
-		chg_bgcolor("#sj" + m,ggsgg[i][5]);
+		chg_bgcolor("#sj" + m,ggsgg[i][5]); ohtx += ggsgg[i][4].substr(1,2);
 		document.getElementById("sj" + n).innerText +=  jjsjj[i][1];
 		document.getElementById("sjg" + n).innerText +=  jjsjj[i][4].substr(1,2);
-		chg_bgcolor("#sj" + n,jjsjj[i][5]);
+		chg_bgcolor("#sj" + n,jjsjj[i][5]); ohtx += jjsjj[i][4].substr(1,2);
 
 		//--- 지장간 기록 ---
 		find_ggss(jjsjj[i][6].substr(0,1),"sj" + n + "b",jjsjj[i][6],4)
@@ -444,7 +444,7 @@ function findText(sar,wrd,mm){
 	
 //========== 오행의 갯수 check 하는 함수 ==========
 function mpohcnt(){
-	var sar = mipl_yg + mipl_yj + mipl_mg + mipl_mj + mipl_dg + mipl_dj + mipl_tg + mipl_tj;  //--- 음양오행
+	var sar = ohtx;  //--- 음양오행
 	document.getElementById("output2").innerText += "오행...양...음\n";
 	for (i=1; i<6; i++){
 		wrd = "양" + ohang[i][0]; mma = "sp" + i; findText(sar,wrd,mma);
