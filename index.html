@@ -443,7 +443,7 @@ function findText(sar,wrd,mm){
 function mpohcnt(){
 	var sar = mipl_yg + mipl_yj + mipl_mg + mipl_mj + mipl_dg + mipl_dj + mipl_tg + mipl_tj;  //--- 음양오행
 	document.getElementById("output2").innerText += "오행...양...음\n";
-	for (i=1, i<6, i++){
+	for (i=1; i<6; i++){
 		wrd = "양" + ohang[i][0]; mma = "sp" + i; findText(sar,wrd,mma);
 		wrd = "음" + ohang[i][0]; mmb = "sm" + i; findText(sar,wrd,mmb);
 		document.getElementById("output2").innerText += "...ohang[i][1]......" + String(mma) + "......" + String(mmb) + "\n";
