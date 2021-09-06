@@ -446,8 +446,8 @@ function mpohcnt(){
 	var sar = ohtx;  //--- 음양오행
 	document.getElementById("output2").innerText += "오행...양...음\n";
 	for (i=1; i<6; i++){
-		wrd = "양" + ohang[i][0]; mm = "sp"; findText(sar,wrd,mm); eval('sp' + i + '= sp;');
-		wrd = "음" + ohang[i][0]; mm = "sm"; findText(sar,wrd,mm); eval('sm' + i + '= sm;');
+		eval('wrd = "양' + ohang[i][0] + '"'); mm = "sp"; findText(sar,wrd,mm); eval('sp' + i + '= sp;');
+		eval('wrd = "음' + ohang[i][0] + '"'); mm = "sm"; findText(sar,wrd,mm); eval('sm' + i + '= sm;');
 		document.getElementById("output2").innerText += "...ohang[i][1]......" + String(sp) + "......" + String(sm) + "\n";
 	};
 };
