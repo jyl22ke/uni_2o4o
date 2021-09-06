@@ -142,7 +142,7 @@ function fread(fn){
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 
 	var sstit = ""; var ggsgg = new Array; var jjsjj = new Array; var gjsgj = new Array;
-	var ganf1 = ""; var ganf2 = ""; var ganf3 = ""; var ganf4 = ""; 
+	var ganf1 = ""; var ganf2 = ""; var ganf3 = ""; var ganf4 = ""; var nfo_tugan = "";
 	var isol_y = ""; var isol_m = ""; var isol_d = ""; var isol_t = "";
 	var dgss_titl1 = ""; var dgss_titl2 = ""; var dgss_titl3 = ""; var dgss_titl4 = "";  //--- (일간기준) 십성이름
 	var dgss_titl6 = ""; var dgss_titl7 = ""; var dgss_titl8 = ""; var gs_titl = ""; var js_titl = "";
@@ -216,6 +216,8 @@ $( function() {
 		ganji_root();
 		tugan();
 		rootgchk();
+		mjtugan();
+		mpohcnt();
 	});
 });
 
@@ -401,7 +403,7 @@ function root_point(a,b,c,d,e,f,g) {
 	
 //========== 지지의 투간을 확인하는 함수 ==========
 function tugan(){
-	sj_gan = 	sj_yg + sj_mg + sj_dg + sj_tg; 
+	sj_gan = sj_yg + sj_mg + sj_dg + sj_tg; 
 	sj_ji = sj_yj + sj_mj + sj_dj + sj_tj; 
 	jjg = ""; eff0 = 0; pos = "";idx = 0; n = 0; ttx = "";
 
@@ -425,6 +427,7 @@ function tugan(){
 						}else{	if (i == 3){ttx = "일지";
 							}else{	if (i == 4){ttx = "시지";}}}};
 					document.getElementById("output2").innerText += String(i) + ".... 지장간 " + jjg + eff + "..........." + ttx +" .... " + pos + " 투간... " + eff0 + "%\n";
+					if (i=2){nfo_tugan += "월지 투간 ...成格\n" + "jjtitl4" + "格 "+ jjg + "..용신 \n\n";};						
 				};	
 			};
 		};
@@ -469,17 +472,18 @@ function rootgchk(){
 				if(pn.length === 1){
 					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n\n";}}};
 	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";};
+	document.getElementById("output2").innerText += nfo_tugan + "\n\n";
 };	
 	
 //========= 일간의 통근 check 하는 함수 ========
 function dgroot(pos,a){
 	pass = ""; fail = "";
 	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
-		if (a === 1){ pointr = pointr + "득지Y"; pass = "득지\n";
+		if (a === 1){ pointr = pointr + "\n득지Y"; pass = "득지\n";
 		}else{if (a === 2){ pointr = pointr + "득령Y"; pass = "득령\n";}else{pass = pos + " 통근\n";}};
 		document.getElementById("output2").innerText += "일간 " + pass;
 	}else{
-		if (a === 1){ pointr = pointr + "실지N"; fail = "실지\n";
+		if (a === 1){ pointr = pointr + "\n실지N"; fail = "실지\n";
 		}else{if (a === 2){ pointr = pointr + "실령N"; fail = "실령\n";}else{ fail = " ";}};
 		document.getElementById("output2").innerText += fail;};
 };
@@ -495,10 +499,10 @@ function pwrcnt(){
 	r0 = r1 + r2 + r3 + r4;
 	if (r0 > 3){
 		pointr = pointr + "득세Y";
-		document.getElementById("output2").innerText += "일간 득세 " + String(r0) + " / " + String(7-r0) + "\n";
+		document.getElementById("output2").innerText += "일간 득세 " + String(r0) + " / " + String(7-r0) + "\n\n";
 	}else{
 		pointr = pointr + "실세N";
-		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n";};
+		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n\n";};
 };
 	
 	
