@@ -99,6 +99,7 @@
 	
 <script type="text/javascript">
 
+fread("ohang");
 fread("gan");
 fread("jiji");
 fread("sibsungX1");
@@ -214,6 +215,7 @@ $( function() {
 		fill_saju();
 		ganji_root();
 		tugan();
+		rootgchk();
 	});
 });
 
@@ -429,6 +431,82 @@ function tugan(){
 	};
 };
 
+//===== 오행갯수를 변수에 저장하는 함수 =====	
+function findText(sar,wrd,mm){
+	eval("cn = sar.match(/" + wrd + "/g)");
+	if(cn != null) {
+		eval(mm + "= cn.length");
+	}else{eval(mm + "= 0")};
+};
+	
+//========== 오행의 갯수 check 하는 함수 ==========
+function mpohcnt(){
+	var sar = mipl_yg + mipl_yj + mipl_mg + mipl_mj + mipl_dg + mipl_dj + mipl_tg + mipl_tj;  //--- 음양오행
+	document.getElementById("output2").innerText += "오행...양...음\n";
+	for (i=1, i<6, i++){
+		wrd = "양" + ohang[i][0]; mma = "sp" + i; findText(sar,wrd,mma);
+		wrd = "음" + ohang[i][0]; mmb = "sm" + i; findText(sar,wrd,mmb);
+		document.getElementById("output2").innerText += "...ohang[i][1]......" + String(mma) + "......" + String(mmb) + "\n";
+	};
+};
+	
+//=========== 일간의 통근 상황 확인===========
+function rootgchk(){
+	pointr = "";
+	dgroot(dgss_titl6,1);  //----- 일지 = 인성/비겁 여부 -----
+	dgroot(dgss_titl4,2);  //----- 월지 = 인성/비겁 여부 -----
+	pwrcnt();  //----- 일간의 세력상태 확인 -----
+	
+	pn = pointr.match(/Y/g);
+	pn1 = pointr.match(/N/g);
+	if(pn != null) {
+		if(pn.length === 3){
+			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr + "\n\n";
+		}else{
+			if(pn.length === 2){
+				document.getElementById("output2").innerText += "신강 사주 ..." + pointr + "\n\n";
+			}else{
+				if(pn.length === 1){
+					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n\n";}}};
+	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";};
+};	
+	
+//========= 일간의 통근 check 하는 함수 ========
+function dgroot(pos,a){
+	pass = ""; fail = "";
+	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
+		if (a === 1){ pointr = pointr + "득지Y"; pass = "득지\n";
+		}else{if (a === 2){ pointr = pointr + "득령Y"; pass = "득령\n";}else{pass = pos + " 통근\n";}};
+		document.getElementById("output2").innerText += "일간 " + pass;
+	}else{
+		if (a === 1){ pointr = pointr + "실지N"; fail = "실지\n";
+		}else{if (a === 2){ pointr = pointr + "실령N"; fail = "실령\n";}else{ fail = " ";}};
+		document.getElementById("output2").innerText += fail;};
+};
+	
+//========= 일간의 세력 check 하는 함수 =========
+function pwrcnt(){
+	sstext = dgss_titl1 + dgss_titl2 + dgss_titl3 + dgss_titl4 + dgss_titl6 + dgss_titl7 + dgss_titl8;  //--- 십성
+	wrd = "비견"; mm = "r1"; findText(sstext,wrd,mm); 
+	wrd = "겁재"; mm = "r2"; findText(sstext,wrd,mm);
+	wrd = "편인"; mm = "r3"; findText(sstext,wrd,mm);
+	wrd = "정인"; mm = "r4"; findText(sstext,wrd,mm);
+	
+	r0 = r1 + r2 + r3 + r4;
+	if (r0 > 3){
+		pointr = pointr + "득세Y";
+		document.getElementById("output2").innerText += "일간 득세 " + String(r0) + " / " + String(7-r0) + "\n";
+	}else{
+		pointr = pointr + "실세N";
+		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n";};
+};
+	
+	
+	
+	
+	
+	
+	
   </script>
 
     </body>
