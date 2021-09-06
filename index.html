@@ -143,6 +143,8 @@ function fread(fn){
 	var sstit = ""; var ggsgg = new Array; var jjsjj = new Array; var gjsgj = new Array;
 	var ganf1 = ""; var ganf2 = ""; var ganf3 = ""; var ganf4 = ""; 
 	var isol_y = ""; var isol_m = ""; var isol_d = ""; var isol_t = "";
+	var dgss_titl1 = ""; var dgss_titl2 = ""; var dgss_titl3 = ""; var dgss_titl4 = "";  //--- (일간기준) 십성이름
+	var dgss_titl6 = ""; var dgss_titl7 = ""; var dgss_titl8 = ""; var gs_titl = ""; var js_titl = "";
 	
 //========= 간지 배경색 =========
 function chg_bgcolor(a,b) {
@@ -187,6 +189,9 @@ $( function() {
 		//------------------ 변수값 clear RESET start -------------------
 		sj_yg = ""; sj_mg = ""; sj_dg = ""; sj_tg = "";  //--- 사주 (년월일시)간
 		sj_yj = ""; sj_mj = ""; sj_dj = ""; sj_tj = "";  //--- 사주 (년월일시)지
+		dgss_titl1 = ""; dgss_titl2 = ""; dgss_titl3 = ""; dgss_titl4 = "";  //--- (일간기준) 십성이름
+		dgss_titl6 = ""; dgss_titl7 = ""; dgss_titl8 = ""; gs_titl = ""; js_titl = "";
+		
 		$('#output').empty();
 		$('#output2').empty();
 		$('.sj').empty();
@@ -232,14 +237,14 @@ function fill_saju(){
 		};
 		find_ggss(jjsjj[i][8].substr(0,1),"sj" + n + "b",jjsjj[i][8],4)
 	}
-	find_ggss(sj_yg,"sj1a","",4)
-	find_ggss(sj_mg,"sj3a","",4)
+	find_ggss(sj_yg,"sj1a","",4); dgss_titl1 = gs_titl; 
+	find_ggss(sj_mg,"sj3a","",4); dgss_titl3 = gs_titl;
 	document.getElementById("sj5a").innerText += "일간(나)";
-	find_ggss(sj_tg,"sj7a","",4)
-	find_gjss(sj_yj,"sj2a",4)
-	find_gjss(sj_mj,"sj4a",4)
-	find_gjss(sj_dj,"sj6a",4)
-	find_gjss(sj_tj,"sj8a",4)
+	find_ggss(sj_tg,"sj7a","",4); dgss_titl7 = gs_titl;
+	find_gjss(sj_yj,"sj2a",4); dgss_titl2 = js_titl;
+	find_gjss(sj_mj,"sj4a",4); dgss_titl4 = js_titl;
+	find_gjss(sj_dj,"sj6a",4); dgss_titl6 = js_titl;
+	find_gjss(sj_tj,"sj8a",4); dgss_titl8 = js_titl;
 };
 
 function mktabl(){
@@ -316,15 +321,19 @@ function mktabl(){
 };
 
 function find_ggss(gan,css,jjg,no){
+	gs_titl = "";
 	idx = gjsgj[0].lastIndexOf(gan);
-	document.getElementById(css).innerText += jjg + " " + gjsgj[no][idx] + "\n";
+	gs_titl = gjsgj[no][idx];  //--- (천간)십성 이름
+	document.getElementById(css).innerText += jjg + " " + gs_titl + "\n";
 };
 
 function find_gjss(ji,css,no){
+	js_titl = "";
 	if (ji == "진" || ji == "술"){idx = gjsgj[1].lastIndexOf("진술");
 	}else{if (ji == "축" || ji == "미"){idx = gjsgj[1].lastIndexOf("축미");
 		}else{idx = gjsgj[1].lastIndexOf(ji);};};
-	document.getElementById(css).innerText += gjsgj[no][idx] + "\n";
+	js_titl = gjsgj[no][idx];  //--- (지지)십성 이름
+	document.getElementById(css).innerText += js_titl + "\n";
 };
 
 //---- 통근체크 ----
