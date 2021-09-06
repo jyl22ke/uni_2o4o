@@ -209,6 +209,7 @@ $( function() {
 		mktabl();
 		fill_saju();
 		ganji_root();
+		tugan();
 	});
 });
 
@@ -367,6 +368,37 @@ function root_point(a,b,c,d,e,f,g) {
 	document.getElementById("output2").innerText += ".............................." + a + " " + b[0] + " 통근 " + ganf + " ..... " + String(efft) + "%\n";
 };	
 	
+//========== 지지의 투간을 확인하는 함수 ==========
+function tugan(){
+	sj_gan = 	sj_yg + sj_mg + sj_dg + sj_tg; 
+	sj_ji = sj_yj + sj_mj + sj_dj + sj_tj; 
+	jjg = ""; eff0 = 0; pos = "";idx = 0; n = 0; ttx = "";
+
+	for (i=1; i<5; i++){
+		for (j=0; j<3; j++){
+			jjg = jjsjj[i][j+6].substr(0,1);  //--- 지장간
+			if (jjg != ""){
+				eff = Number(jjsjj[i][j+6].substr(1,2));  //---지장간 비율
+				eff0 = 0; pos = "";
+				if (sj_gan.includes(jjg)){
+					n = 0;
+					while (true){
+						idx = sj_gan.indexOf(jjg,n)  //--- 투간된 위치
+						if(idx == -1){break;};		
+						pos += String(idx+1);
+						eff0 += parseInt(eff/30 *(100-Math.abs(idx+1-i)*30));
+						n = idx + 1;
+					};
+					if (i == 1){ttx = "년지";
+					}else{	if (i == 2){ttx = "월지";
+						}else{	if (i == 3){ttx = "일지";
+							}else{	if (i == 4){ttx = "시지";}}}};
+					document.getElementById("output2").innerText += String(i) + ".... 지장간 " + jjg +  "............." + ttx +" .... " + pos + " 투간... " + eff0 + "%\n";
+				};	
+			};
+		};
+	};
+};
 
 
 
