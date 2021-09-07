@@ -218,6 +218,7 @@ $( function() {
 		rootgchk();
 		mpohcnt();
 		ganchng("천간충","충");
+		ganchng("천간극","극");
 	});
 });
 
@@ -520,7 +521,7 @@ function txtSearch(str, searchvalue){
 function ganchng(type,exp){
 	subj = type;
 	gchng = ganji_habchung.filter(isFind);  //===천간충/극
-	//-------- 일간,시간,월간,년간 -------- 
+	document.getElementById("output2").innerText += "\n";
 	var outpt = ""; var fndList = "";
 	for (i=1; i<5; i++){texstr = gchng[0][i]; n=0; aa=""; bb="";
 		for (k=0; k<2; k++){
