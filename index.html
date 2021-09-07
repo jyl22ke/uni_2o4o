@@ -423,7 +423,7 @@ function tugan(){
 						n = idx + 1;
 					};
 					if (i == 1){ttx = "년지";
-					}else{	if (i == 2){ttx = "월지"; find_ggss(jjg,"",jjg,4); nfo_tugan += "월지 투간 ...成格..........." + gs_titl + "格 "+ jjg + "..용신 \n\n";
+					}else{	if (i == 2){ttx = "월지"; idx = gjsgj[0].lastIndexOf(jjg); nfo_tugan += "월지 투간 ...成格..........." + gjsgj[4][idx] + "格 "+ jjg + "..용신 \n\n";
 						}else{	if (i == 3){ttx = "일지";
 							}else{	if (i == 4){ttx = "시지";}}}};
 					document.getElementById("output2").innerText += String(i) + ".... 지장간 " + jjg + eff + "..........." + ttx +" .... " + pos + " 투간... " + eff0 + "%\n";
@@ -432,7 +432,7 @@ function tugan(){
 		};
 	};
 };
-
+	
 //===== 오행갯수를 변수에 저장하는 함수 =====	
 function findText(sar,wrd,mm){
 	eval('cn = sar.match(/' + wrd + '/g)');
