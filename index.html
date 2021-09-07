@@ -202,16 +202,16 @@ $( function() {
 		chg_bgcolor('.sj','#fff');
 		
 		saju = document.getElementById('sj').value;
-		sj_yg = saju.substr(0,1);
-		sj_yj = saju.substr(1,1);
-		sj_mg = saju.substr(2,1);
-		sj_mj = saju.substr(3,1);
-		sj_dg = saju.substr(4,1);
-		sj_dj = saju.substr(5,1);
-		sj_tg = saju.substr(6,1);
-		sj_tj = saju.substr(7,1);
-
 		mktabl();
+		sj_yg = ggsgg[1][0];
+		sj_yj = jjsjj[1][0];
+		sj_mg = ggsgg[2][0];
+		sj_mj = jjsjj[2][0];
+		sj_dg = ggsgg[3][0];
+		sj_dj = jjsjj[3][0];
+		sj_tg = ggsgg[4][0];
+		sj_tj = jjsjj[4][0];
+
 		fill_saju();
 		ganji_root();
 		tugan();
@@ -256,10 +256,10 @@ function fill_saju(){
 function mktabl(){
 		//==== 천간(년,월,일,시)배열 만들기 ====
 		sstit = gan.slice(0, 1);  //---천간배열 이름 (첫째줄) 가져오기
-		subj = sj_yg; ygsgg = gan.filter(isFind);  //---천간(년간)
-		subj = sj_mg; mgsgg = gan.filter(isFind);  //---천간(월간)
-		subj = sj_dg; dgsgg = gan.filter(isFind);  //---천간(일간)
-		subj = sj_tg; tgsgg = gan.filter(isFind);  //---천간(시간)
+		subj = saju.substr(0,1); ygsgg = gan.filter(isFindj);  //---천간(년간)
+		subj = saju.substr(2,1); mgsgg = gan.filter(isFindj);  //---천간(월간)
+		subj = saju.substr(4,1); dgsgg = gan.filter(isFindj);  //---천간(일간)
+		subj = saju.substr(6,1); tgsgg = gan.filter(isFindj);  //---천간(시간)
 
 		ggsgg.unshift(tgsgg[0]);  //---천간배열(시간) 추가
 		ggsgg.unshift(dgsgg[0]);  //---천간배열(일간) 추가
@@ -275,10 +275,10 @@ function mktabl(){
 
 		//==== 지지(년,월,일,시)배열 만들기 ====
 		sstit = jiji.slice(0, 1);  //---지지배열 이름 (첫째줄) 가져오기
-		subj = sj_yj; yjsjj = jiji.filter(isFind);  //---지지(년지)
-		subj = sj_mj; mjsjj = jiji.filter(isFind);  //---지지(월지)
-		subj = sj_dj; djsjj = jiji.filter(isFind);  //---지지(일지)
-		subj = sj_tj; 	tjsjj = jiji.filter(isFind);  //---지지(시지)
+		subj = saju.substr(1,1); yjsjj = jiji.filter(isFindj);  //---지지(년지)
+		subj = saju.substr(3,1); mjsjj = jiji.filter(isFindj);  //---지지(월지)
+		subj = saju.substr(5,1); djsjj = jiji.filter(isFindj);  //---지지(일지)
+		subj = saju.substr(7,1); tjsjj = jiji.filter(isFindj);  //---지지(시지)
 
 		jjsjj.unshift(tjsjj[0]);  //---지지배열(시지) 추가
 		jjsjj.unshift(djsjj[0]);  //---지지배열(일지) 추가
