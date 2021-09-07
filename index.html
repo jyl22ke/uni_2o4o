@@ -217,7 +217,7 @@ $( function() {
 		tugan();
 		rootgchk();
 		mpohcnt();
-		ganchng();
+		ganchng("천간충","충");
 	});
 });
 
@@ -516,10 +516,10 @@ function txtSearch(str, searchvalue){
 	if (fndList){aa += searchvalue; bb += fndList;};
 };
 	
-//========== 천간충 ==========
-function ganchng(){
-	subj = "천간충";
-	gchng = ganji_habchung.filter(isFind);  //===천간충
+//========== 천간충/극 ==========
+function ganchng(type,exp){
+	subj = type;
+	gchng = ganji_habchung.filter(isFind);  //===천간충/극
 	//-------- 일간,시간,월간,년간 -------- 
 	var outpt = ""; var fndList = "";
 	for (i=1; i<5; i++){texstr = gchng[0][i]; n=0; aa=""; bb="";
@@ -531,13 +531,13 @@ function ganchng(){
 
 		if (aa.length < 2){gchngtitl = "";
 		} else {
-			if (aa.length === 2){gchngtitl = "" + aa + "_충\n";}};
+			if (aa.length === 2){gchngtitl = "" + aa + "_" + exp + "\n";}};
 			for (j=0; j<bb.length; j++){
 				pon = Number(bb.substr(j,1)) * 2 + 1;
 				loc = "sj" + String(pon) + "a";
 				document.getElementById(loc).innerText += gchngtitl;
 			}
-			document.getElementById("output").innerText += gchngtitl;
+			document.getElementById("output2").innerText += gchngtitl;
 		};
 	};	
 	
