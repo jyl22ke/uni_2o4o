@@ -458,6 +458,7 @@ function rootgchk(){
 	dgroot(dgss_titl6,1);  //----- 일지 = 인성/비겁 여부 -----
 	dgroot(dgss_titl4,2);  //----- 월지 = 인성/비겁 여부 -----
 	pwrcnt();  //----- 일간의 세력상태 확인 -----
+	document.getElementById("output2").innerText += "\n";
 	
 	pn = pointr.match(/Y/g);
 	pn1 = pointr.match(/N/g);
@@ -478,11 +479,11 @@ function rootgchk(){
 function dgroot(pos,a){
 	pass = ""; fail = "";
 	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
-		if (a === 1){ pointr = pointr + "\n득지Y"; pass = "득지\n";
+		if (a === 1){ pointr = pointr + "득지Y"; pass = "득지\n";
 		}else{if (a === 2){ pointr = pointr + "득령Y"; pass = "득령\n";}else{pass = pos + " 통근\n";}};
 		document.getElementById("output2").innerText += "일간 " + pass;
 	}else{
-		if (a === 1){ pointr = pointr + "\n실지N"; fail = "실지\n";
+		if (a === 1){ pointr = pointr + "실지N"; fail = "실지\n";
 		}else{if (a === 2){ pointr = pointr + "실령N"; fail = "실령\n";}else{ fail = " ";}};
 		document.getElementById("output2").innerText += fail;};
 };
