@@ -227,10 +227,10 @@ function fill_saju(){
 	for (i=1;i<5 ; i++){
 		m = i * 2 -1;
 		n = i * 2;
-		document.getElementById("sj" + m).innerText +=  ggsgg[i][1];
+		document.getElementById("sj" + m).innerText +=  ggsgg[i][0];
 		document.getElementById("sjg" + m).innerText +=   ggsgg[i][4].substr(1,2);
 		chg_bgcolor("#sj" + m,ggsgg[i][5]); ohtx += ggsgg[i][4].substr(1,2);
-		document.getElementById("sj" + n).innerText +=  jjsjj[i][1];
+		document.getElementById("sj" + n).innerText +=  jjsjj[i][0];
 		document.getElementById("sjg" + n).innerText +=  jjsjj[i][4].substr(1,2);
 		chg_bgcolor("#sj" + n,jjsjj[i][5]); ohtx += jjsjj[i][4].substr(1,2);
 
@@ -335,8 +335,8 @@ function find_ggss(gan,css,jjg,no){
 
 function find_gjss(ji,css,no){
 	js_titl = "";
-	if (ji == "진" || ji == "술"){idx = gjsgj[1].lastIndexOf("진술");
-	}else{if (ji == "축" || ji == "미"){idx = gjsgj[1].lastIndexOf("축미");
+	if (ji == "辰" || ji == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
+	}else{if (ji == "丑" || ji == "未"){idx = gjsgj[1].lastIndexOf("丑未");
 		}else{idx = gjsgj[1].lastIndexOf(ji);};};
 	js_titl = gjsgj[no][idx];  //--- (지지)십성 이름
 	if (css != ""){document.getElementById(css).innerText += js_titl + "\n";};
