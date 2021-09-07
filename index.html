@@ -535,7 +535,8 @@ function ganchng(type,qty,str,exp){
 		} else {
 			if (aa.length === 2){gchngtitl = "" + aa + "_" + exp + "\n";}};
 			for (j=0; j<bb.length; j++){
-				pon = Number(bb.substr(j,1)) * 2 + 1;
+				if (str == "sj_gan"){pon = Number(bb.substr(j,1)) * 2 + 1;};
+				if (str == "sj_ji"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
 				loc = "sj" + String(pon) + "a";
 				document.getElementById(loc).innerText += gchngtitl;
 			}
