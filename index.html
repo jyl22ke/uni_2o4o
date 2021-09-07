@@ -495,7 +495,6 @@ function pwrcnt(){
 	wrd = "겁재"; mm = "r2"; findText(sstext,wrd,mm);
 	wrd = "편인"; mm = "r3"; findText(sstext,wrd,mm);
 	wrd = "정인"; mm = "r4"; findText(sstext,wrd,mm);
-	
 	r0 = r1 + r2 + r3 + r4;
 	if (r0 > 3){
 		pointr = pointr + "득세Y";
@@ -505,32 +504,34 @@ function pwrcnt(){
 		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n\n";};
 };
 	
+//========== 문자 검색 함수 ==========
+function txtSearch(str, searchvalue){
+	let pos = 0; fndList = ""; outpt = "";
+	while (true) {let foundPos = str.indexOf(searchvalue, pos);
+		if (foundPos == -1) {break;
+		}else{
+			if (foundPos==null){fndList = ""; searchvalue = "";
+			}else{fndList += String(foundPos); pos = foundPos + 1; }};
+	};
+	if (fndList){aa += searchvalue; bb += fndList;};
+};
+	
 //========== 천간충 ==========
 function ganchng(){
 	subj = "천간충";
 	gchng = ganji_habchung.filter(isFind);  //===천간충
 	//-------- 일간,시간,월간,년간 -------- 
 	var outpt = ""; var fndList = "";
-	for (i=1; i<5; i++){
-		texstr = gchng[0][i];
-		n=0; aa=""; bb="";
+	for (i=1; i<5; i++){texstr = gchng[0][i]; n=0; aa=""; bb="";
 		for (k=0; k<2; k++){
 			aa1 = texstr.substr(k,1);
 			txtSearch(sj_gan,aa1);
-			if (fndList === "-1" || fndList === null){
-				aa1 = "";
-			}else{
-				n += 1;	
-			};
+			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1; };
 		};
 
-		if (aa.length < 2){
-			gchngtitl = "";
+		if (aa.length < 2){gchngtitl = "";
 		} else {
-			if (aa.length === 2){
-				gchngtitl = "" + aa + "_충\n";
-			}};
-
+			if (aa.length === 2){gchngtitl = "" + aa + "_충\n";}};
 			for (j=0; j<bb.length; j++){
 				pon = Number(bb.substr(j,1)) * 2 + 1;
 				loc = "sj" + String(pon) + "a";
@@ -540,26 +541,6 @@ function ganchng(){
 		};
 	};	
 	
-//========== 문자 검색 함수 ==========
-function txtSearch(str, searchvalue){
-	let pos = 0; fndList = ""; outpt = "";
-	while (true) {
-		let foundPos = str.indexOf(searchvalue, pos);
-		if (foundPos == -1) {
-			break;
-		}else{
-			if (foundPos==null){
-				fndList = "";
-				searchvalue = "";
-			}else{
-				fndList += String(foundPos) ;
-				pos = foundPos + 1; }};
-	};
-	if (fndList){
-		aa += searchvalue;
-		bb += fndList;
-	}
-};
 	
 	
 	
