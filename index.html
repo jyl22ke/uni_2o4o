@@ -328,7 +328,7 @@ function find_ggss(gan,css,jjg,no){
 	gs_titl = "";
 	idx = gjsgj[0].lastIndexOf(gan);
 	gs_titl = gjsgj[no][idx];  //--- (천간)십성 이름
-	document.getElementById(css).innerText += jjg + " " + gs_titl + "\n";
+	if (css != ""){document.getElementById(css).innerText += jjg + " " + gs_titl + "\n";};
 };
 
 function find_gjss(ji,css,no){
@@ -337,7 +337,7 @@ function find_gjss(ji,css,no){
 	}else{if (ji == "축" || ji == "미"){idx = gjsgj[1].lastIndexOf("축미");
 		}else{idx = gjsgj[1].lastIndexOf(ji);};};
 	js_titl = gjsgj[no][idx];  //--- (지지)십성 이름
-	document.getElementById(css).innerText += js_titl + "\n";
+	if (css != ""){document.getElementById(css).innerText += js_titl + "\n";};
 };
 
 //---- 통근체크 ----
