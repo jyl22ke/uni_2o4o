@@ -35,7 +35,7 @@
 	.sja { font-size: 1.0em;}
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
 	#output { min-height: 790px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em;max-width:1000px;}
-	#output2 { display: none; float: left; min-height: 400px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em;max-width:500px;}
+	#output2 { display: none; float: left; min-height: 400px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:500px;}
 	#submit1 {padding: 0 10px; font-weight: bold;}
 	#clear1 {padding: 0 5px;}
 	@media screen and (min-width: 950px) {.canvas {float: left;} #output {float: right;min-width:800px;} #output2 {display: flex;}}
@@ -423,7 +423,7 @@ function tugan(){
 						n = idx + 1;
 					};
 					if (i == 1){ttx = "년지";
-					}else{	if (i == 2){ttx = "월지"; nfo_tugan += "월지 투간 ...成格\n" + "jjtitl4" + "格 "+ jjg + "..용신 \n\n";
+					}else{	if (i == 2){ttx = "월지"; find_ggss(jjg,"",jjg,4); nfo_tugan += "월지 투간 ...成格..........." + gs_titl + "格 "+ jjg + "..용신 \n\n";
 						}else{	if (i == 3){ttx = "일지";
 							}else{	if (i == 4){ttx = "시지";}}}};
 					document.getElementById("output2").innerText += String(i) + ".... 지장간 " + jjg + eff + "..........." + ttx +" .... " + pos + " 투간... " + eff0 + "%\n";
