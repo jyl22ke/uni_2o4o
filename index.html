@@ -520,11 +520,11 @@ function txtSearch(str, searchvalue){
 };
 	
 //========== 천간충/극 ==========
-function ganchng(type,n,exp){
+function ganchng(type,qty,exp){
 	subj = type;
 	gchng = ganji_habchung.filter(isFind);  //===천간충/극
 	var outpt = ""; var fndList = "";
-	for (i=1; i<Number(n)+1; i++){texstr = gchng[0][i]; n=0; aa=""; bb="";
+	for (i=1; i<qty+1; i++){texstr = gchng[0][i]; n=0; aa=""; bb="";
 		for (k=0; k<2; k++){
 			aa1 = texstr.substr(k,1);
 			txtSearch(sj_gan,aa1);
