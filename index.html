@@ -455,10 +455,10 @@ function mpohcnt(){
 //=========== 일간의 통근 상황 확인===========
 function rootgchk(){
 	pointr = "";
+	document.getElementById("output2").innerText += "\n";
 	dgroot(dgss_titl6,1);  //----- 일지 = 인성/비겁 여부 -----
 	dgroot(dgss_titl4,2);  //----- 월지 = 인성/비겁 여부 -----
 	pwrcnt();  //----- 일간의 세력상태 확인 -----
-	document.getElementById("output2").innerText += "\n";
 	
 	pn = pointr.match(/Y/g);
 	pn1 = pointr.match(/N/g);
@@ -472,7 +472,7 @@ function rootgchk(){
 				if(pn.length === 1){
 					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n\n";}}};
 	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n\n";};
-	document.getElementById("output2").innerText += nfo_tugan + "\n\n";
+	document.getElementById("output2").innerText += nfo_tugan + "\n";
 };	
 	
 //========= 일간의 통근 check 하는 함수 ========
