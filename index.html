@@ -532,10 +532,10 @@ function txtSearch(str, searchvalue){
 	//---   chnghab("천간충",4,sj_gan,"_충");
 function chnghab(name,qt,str,exp){
 	var aa = ""; var bb = ""; var name = ""; var exp = "";
-	subj = name; pon = "";
+	subj = name; pon = ""; qt1 = qt + 1;
 	chab = ganji_habchung.filter(isFind);  //===천간충/극
 	var outpt = ""; var fndList = "";
-	for (i=1; i<qt+1; i++){texstr = chab[0][i]; n=0; aa=""; bb="";
+	for (i=1; i<qt1; i++){texstr = chab[0][i]; n=0; aa=""; bb="";
 		for (k=0; k<texstr.length; k++){
 			aa1 = texstr.substr(k,1);
 			txtSearch(str,aa1);
