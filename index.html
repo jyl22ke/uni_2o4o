@@ -213,13 +213,13 @@ $( function() {
 
 		mktabl();
 		fill_saju();
-//		ganji_root();
-//		tugan();
-//		rootgchk();
-//		mpohcnt();
-//		ganchng("천간충",4,sj_gan,"충");
-//		ganchng("천간극",6,sj_gan,"극");
-//		ganchng("지지충",6,sj_ji,"충");
+ 		ganji_root();
+ 		tugan();
+ 		rootgchk();
+ 		mpohcnt();
+ 		ganchng("천간충",4,sj_gan,"충");
+ 		ganchng("천간극",6,sj_gan,"극");
+ 		ganchng("지지충",6,sj_ji,"충");
 	});
 });
 
@@ -256,10 +256,10 @@ function fill_saju(){
 function mktabl(){
 		//==== 천간(년,월,일,시)배열 만들기 ====
 		sstit = gan.slice(0, 1);  //---천간배열 이름 (첫째줄) 가져오기
-		subj = sj_yg; ygsgg = gan.filter(isFindj);  //---천간(년간)
-		subj = sj_mg; mgsgg = gan.filter(isFindj);  //---천간(월간)
-		subj = sj_dg; dgsgg = gan.filter(isFindj);  //---천간(일간)
-		subj = sj_tg; tgsgg = gan.filter(isFindj);  //---천간(시간)
+		subj = sj_yg; ygsgg = gan.filter(isFind);  //---천간(년간)
+		subj = sj_mg; mgsgg = gan.filter(isFind);  //---천간(월간)
+		subj = sj_dg; dgsgg = gan.filter(isFind);  //---천간(일간)
+		subj = sj_tg; tgsgg = gan.filter(isFind);  //---천간(시간)
 
 		ggsgg.unshift(tgsgg[0]);  //---천간배열(시간) 추가
 		ggsgg.unshift(dgsgg[0]);  //---천간배열(일간) 추가
@@ -275,10 +275,10 @@ function mktabl(){
 
 		//==== 지지(년,월,일,시)배열 만들기 ====
 		sstit = jiji.slice(0, 1);  //---지지배열 이름 (첫째줄) 가져오기
-		subj = sj_yj; yjsjj = jiji.filter(isFindj);  //---지지(년지)
-		subj = sj_mj; mjsjj = jiji.filter(isFindj);  //---지지(월지)
-		subj = sj_dj; djsjj = jiji.filter(isFindj);  //---지지(일지)
-		subj = sj_tj; tjsjj = jiji.filter(isFindj);  //---지지(시지)
+		subj = sj_yj; yjsjj = jiji.filter(isFind);  //---지지(년지)
+		subj = sj_mj; mjsjj = jiji.filter(isFind);  //---지지(월지)
+		subj = sj_dj; djsjj = jiji.filter(isFind);  //---지지(일지)
+		subj = sj_tj; tjsjj = jiji.filter(isFind);  //---지지(시지)
 
 		jjsjj.unshift(tjsjj[0]);  //---지지배열(시지) 추가
 		jjsjj.unshift(djsjj[0]);  //---지지배열(일지) 추가
