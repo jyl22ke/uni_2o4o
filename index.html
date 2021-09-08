@@ -202,24 +202,24 @@ $( function() {
 		chg_bgcolor('.sj','#fff');
 		
 		saju = document.getElementById('sj').value;
-		subj = saju.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0];
-		subj = saju.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0];
-		subj = saju.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0];
-		subj = saju.substr(3,1); temp = jiji.filter(isFindj); sj_mj = temp[0];
-		subj = saju.substr(4,1); temp = gan.filter(isFindj); sj_dg = temp[0];
-		subj = saju.substr(5,1); temp = jiji.filter(isFindj); sj_dj = temp[0];
-		subj = saju.substr(6,1); temp = gan.filter(isFindj); sj_tg = temp[0];
-		subj = saju.substr(7,1); temp = jiji.filter(isFindj); sj_tj = temp[0];
+		subj = saju.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0][0];
+		subj = saju.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0];
+		subj = saju.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0][0];
+		subj = saju.substr(3,1); temp = jiji.filter(isFindj); sj_mj = temp[0][0];
+		subj = saju.substr(4,1); temp = gan.filter(isFindj); sj_dg = temp[0][0];
+		subj = saju.substr(5,1); temp = jiji.filter(isFindj); sj_dj = temp[0][0];
+		subj = saju.substr(6,1); temp = gan.filter(isFindj); sj_tg = temp[0][0];
+		subj = saju.substr(7,1); temp = jiji.filter(isFindj); sj_tj = temp[0][0];
 
 		mktabl();
 		fill_saju();
- 		ganji_root();
- 		tugan();
- 		rootgchk();
- 		mpohcnt();
- 		ganchng("천간충",4,sj_gan,"충");
- 		ganchng("천간극",6,sj_gan,"극");
- 		ganchng("지지충",6,sj_ji,"충");
+// 		ganji_root();
+// 		tugan();
+// 		rootgchk();
+// 		mpohcnt();
+// 		ganchng("천간충",4,sj_gan,"충");
+// 		ganchng("천간극",6,sj_gan,"극");
+// 		ganchng("지지충",6,sj_ji,"충");
 	});
 });
 
