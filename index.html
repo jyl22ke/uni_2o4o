@@ -538,8 +538,10 @@ function ganchng(type,qty,str,exp){
 				if (exp === "충"){
 					nfo_chng += aa;
 				}else{
-					if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
-						adt1 = "("; adt2 = ")"; adt3 = "불";
+					if (exp === "합"){
+						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
+							adt1 = "("; adt2 = ")"; adt3 = "불성립";
+						};
 					};
 				};
 			};
@@ -551,7 +553,7 @@ function ganchng(type,qty,str,exp){
 			loc = "sj" + String(pon) + "a";
 			document.getElementById(loc).innerText += gchngtitl + "\n";
 		}
-		document.getElementById("output2").innerText += gchngtitl + "..." + adt3 + "성립\n";
+		document.getElementById("output2").innerText += gchngtitl + "..." + adt3 + "\n";
 	};
 };	
 	
