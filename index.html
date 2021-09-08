@@ -543,13 +543,14 @@ function chnghab(name,qt,str,exp){
 			       
 		if (aa.length === 2){	       
 			ch_titl0 = adt1 + aa + exp + adt2 + "\n"; gchngtitl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
+		};
 			       
 		for (j=0; j<bb.length; j++){
 			if (type.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
 			if (type.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
 			loc = "sj" + String(pon) + "a";
 			document.getElementById(loc).innerText += ch_titl0;
-		}
+		};
 		document.getElementById("output2").innerText += ch_titl1; 
 			       
        };
