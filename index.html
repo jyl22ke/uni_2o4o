@@ -535,7 +535,7 @@ function ganchng(type,qty,str,exp){
 		for (k=0; k<texstr.length; k++){
 			aa1 = texstr.substr(k,1);
 			txtSearch(str,aa1);
-			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1; };
+			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1; aa += aa1;};
 		};
 //|| type === "간지암합" 				
 		if (type === "천간합" || type === "지지암합"){if (bb != "01" && bb != "12" && bb != "23" && bb != "32" && bb != "21" && bb != "10"){aa=""; bb="";};};
