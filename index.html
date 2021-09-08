@@ -535,8 +535,8 @@ function chnghab(name,qt,str,exp){
 	subj = name; pon = "";
 	chab = ganji_habchung.filter(isFind);  //===천간충/극
 	var outpt = ""; var fndList = "";
-	for (i=1; i<qt+1; i++){texstr = chab[0][i]; n=0; aa=""; bb="";
-		for (k=0; k<texstr.length; k++){
+	for (i = 1; i < qt + 1; i++){texstr = chab[0][i]; n=0; aa=""; bb="";
+		for (k = 0; k < texstr.length; k++){
 			aa1 = texstr.substr(k,1);
 			txtSearch(str,aa1);
 			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
@@ -548,7 +548,7 @@ function chnghab(name,qt,str,exp){
 			ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
 		};
 			       
-		for (j=0; j<bb.length; j++){
+		for (j = 0; j < bb.length; j++){
 			if (name.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
 			if (name.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
 			loc = "sj" + String(pon) + "a";
