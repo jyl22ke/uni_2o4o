@@ -217,10 +217,12 @@ $( function() {
   		tugan();
   		rootgchk();
   		mpohcnt();
-  		ganchng("천간충",4,sj_gan,"충");
-  		ganchng("천간극",6,sj_gan,"극");
-  		ganchng("지지충",6,sj_ji,"충");
-  		ganchng("천간합",5,sj_gan,"합");
+  		ganchng("천간충",4,sj_gan,"_충");
+  		ganchng("천간극",6,sj_gan,"_극");
+  		ganchng("지지충",6,sj_ji,"_충");
+  		ganchng("천간합",5,sj_gan,"_합");
+  		ganchng("지지육합",6,sj_gan,"6합");
+  		ganchng("지지암합",5,sj_gan,"s합");
 	});
 });
 
@@ -535,10 +537,10 @@ function ganchng(type,qty,str,exp){
 		if (aa.length < 2){gchngtitl0 = ""; gchngtitl1 = "";
 		} else { adt1 = ""; adt2 = ""; adt3 = "";
 			if (aa.length === 2){
-				if (exp === "충"){
+				if (exp.substr(1,1) === "충"){
 					nfo_chng += aa;
 				}else{
-					if (exp === "합"){
+					if (exp.substr(1,1) === "합"){
 						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
 							adt1 = "("; adt2 = ")"; adt3 = "...불성립";
 						};
