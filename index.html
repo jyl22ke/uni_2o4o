@@ -534,8 +534,8 @@ function ganchng(type,qty,str,exp){
 		if (type === "간지암합"){
 			aa1 = texstr.substr(0,1); txtSearch(sj_gan,aa1);
 			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1; };
-			aa1 = texstr.substr(1,1); txtSearch(sj_ji,aa1);
-			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1; };
+			setTimeout('aa1 = texstr.substr(1,1); txtSearch(sj_ji,aa1);if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1; };', 100);
+
 		}else{
 			for (k=0; k<texstr.length; k++){
 				aa1 = texstr.substr(k,1);
