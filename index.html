@@ -539,24 +539,24 @@ function ganchng(type,qty,str,exp){
 		};
 //|| type === "간지암합" 				
 		if (type === "천간합" || type === "지지암합"){if (bb != "01" && bb != "12" && bb != "23" && bb != "32" && bb != "21" && bb != "10"){aa=""; bb="";};};
-		if (aa.length < texstr.length){
+		if (n < texstr.length){
 			gchngtitl0 = ""; gchngtitl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
-			if (aa.length === 2){
+			if (n === 2){
 				if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
 					adt1 = "("; adt2 = ")"; adt3 = "...불성립";
 				};
 				gchngtitl0 = adt1 + aa + exp.substr(0,1) + "반" + adt2 + "\n"; gchngtitl1 =  adt1 + aa + exp.substr(0,1) + "반" + adt2 + adt3 + "\n";
 			};
 		} else { adt1 = ""; adt2 = ""; adt3 = "";
-			if (aa.length === texstr.length){
+			if (n === texstr.length){
 				if (exp.substr(1,1) === "충"){
 					nfo_chng += aa;
 				}else{
 					if (exp.substr(1,1) === "합"){
-						if (aa.length === 2){
+						if (n === 2){
 							if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
 						};
-						if (aa.length === 3){
+						if (n === 3){
 							if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
 						};
 					};
