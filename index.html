@@ -220,6 +220,7 @@ $( function() {
   		ganchng("천간충",4,sj_gan,"충");
   		ganchng("천간극",6,sj_gan,"극");
   		ganchng("지지충",6,sj_ji,"충");
+  		ganchng("천간합",5,sj_gan,"합");
 	});
 });
 
@@ -532,7 +533,11 @@ function ganchng(type,qty,str,exp){
 		};
 
 		if (aa.length < 2){gchngtitl = "";
-		} else {if (aa.length === 2){gchngtitl = "" + aa + "_" + exp + "\n"; if (exp === "충"){ nfo_chng += aa;};}};
+		} else {
+			if (aa.length === 2){
+				gchngtitl = "" + aa + "_" + exp + "\n"; 
+				if (exp === "충"){ 
+					nfo_chng += aa;};}};
 		for (j=0; j<bb.length; j++){
 			if (type.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
 			if (type.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
