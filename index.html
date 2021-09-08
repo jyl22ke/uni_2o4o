@@ -541,6 +541,12 @@ function chnghab(name,qt,str,exp){
 			txtSearch(str,aa1);
 			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
 		};
+				     
+		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
+			       
+		if (aa.length === 2){	       
+			ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
+		};
 disply();
 /*			       
 		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
@@ -563,11 +569,6 @@ disply();
 	
 //--- disply------
 function disply(){
-		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
-			       
-		if (aa.length === 2){	       
-			ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
-		};
 			       
 		for (j=0; j<bb.length; j++){
 			if (name.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
