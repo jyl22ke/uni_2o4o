@@ -537,32 +537,10 @@ function ganchng(type,qty,str,exp){
 			txtSearch(str,aa1);
 			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1; };
 		};
-		if (type === "천간합" || type === "간지암합" || type === "지지암합"){if (bb != "01" && bb != "12" && bb != "23" && bb != "32" && bb != "21" && bb != "10"){aa=""; bb="";};};
-		if (aa.length < texstr.length){
-			gchngtitl0 = ""; gchngtitl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
-			if (aa.length === 2){
-				if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
-					adt1 = "("; adt2 = ")"; adt3 = "...불성립";
-				};
-				gchngtitl0 = adt1 + aa + exp.substr(0,1) + "반" + adt2 + "\n"; gchngtitl1 =  adt1 + aa + exp.substr(0,1) + "반" + adt2 + adt3 + "\n";
-			};
-		} else { adt1 = ""; adt2 = ""; adt3 = "";
-			if (aa.length === texstr.length){
-				if (exp.substr(1,1) === "충"){
-					nfo_chng += aa;
-				}else{
-					if (exp.substr(1,1) === "합"){if(type ==="천간합"){te_aa = aa; te_bb = bb;};
-						if (aa.length === 2){
-							if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
-						};
-						if (aa.length === 3){
-							if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
-						};
-					};
-				};
-				gchngtitl0 = adt1 + aa + exp + adt2 + "\n"; gchngtitl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
-			};
-		};
+
+		frmd();				
+				
+				
 		for (j=0; j<bb.length; j++){
 			if (type.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
 			if (type.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
@@ -573,7 +551,35 @@ function ganchng(type,qty,str,exp){
 	};
 };	
 	
-
+//-------
+function frmd(){
+	if (type === "천간합" || type === "간지암합" || type === "지지암합"){if (bb != "01" && bb != "12" && bb != "23" && bb != "32" && bb != "21" && bb != "10"){aa=""; bb="";};};
+	if (aa.length < texstr.length){
+		gchngtitl0 = ""; gchngtitl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
+		if (aa.length === 2){
+			if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
+				adt1 = "("; adt2 = ")"; adt3 = "...불성립";
+			};
+			gchngtitl0 = adt1 + aa + exp.substr(0,1) + "반" + adt2 + "\n"; gchngtitl1 =  adt1 + aa + exp.substr(0,1) + "반" + adt2 + adt3 + "\n";
+		};
+	} else { adt1 = ""; adt2 = ""; adt3 = "";
+		if (aa.length === texstr.length){
+			if (exp.substr(1,1) === "충"){
+				nfo_chng += aa;
+			}else{
+				if (exp.substr(1,1) === "합"){if(type ==="천간합"){te_aa = aa; te_bb = bb;};
+					if (aa.length === 2){
+						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
+					};
+					if (aa.length === 3){
+						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
+					};
+				};
+			};
+			gchngtitl0 = adt1 + aa + exp + adt2 + "\n"; gchngtitl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
+		};
+	};
+};
 	
 	
 	
