@@ -524,7 +524,7 @@ function txtSearch(str, searchvalue){
 function ganchng(type,qty,str,exp){
 	subj = type; pon = "";
 	gchng = ganji_habchung.filter(isFind);  //===천간충/극
-	var outpt = ""; var fndList = "";
+	var outpt = ""; var fndList = ""; adt1 = ""; adt2 = ""; adt3 = "";
 	for (i=1; i<qty+1; i++){texstr = gchng[0][i]; n=0; aa=""; bb="";
 		for (k=0; k<2; k++){
 			aa1 = texstr.substr(k,1);
@@ -535,16 +535,20 @@ function ganchng(type,qty,str,exp){
 		if (aa.length < 2){gchngtitl = "";
 		} else {
 			if (aa.length === 2){
-				gchngtitl = "" + aa + "_" + exp + "\n"; 
-				if (exp === "충"){ 
-					nfo_chng += aa;};}};
+				if (exp === "충"){
+					nfo_chng += aa;
+				}else{
+					if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
+						adt1 = "("; adt2 = ")"; adt3 = "불";				
+				}};
+				gchngtitl = adt1 + aa + "_" + exp + adt2; 
 		for (j=0; j<bb.length; j++){
 			if (type.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
 			if (type.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
 			loc = "sj" + String(pon) + "a";
-			document.getElementById(loc).innerText += gchngtitl;
+			document.getElementById(loc).innerText += gchngtitl + "\n";
 		}
-		document.getElementById("output2").innerText += gchngtitl;
+		document.getElementById("output2").innerText += gchngtitl + "..." + adt3 + "성립\n";
 	};
 };	
 	
