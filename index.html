@@ -533,8 +533,8 @@ function txtSearch(str, searchvalue){
 	//---   chnghab("천간충",4,sj_ganji,"_충");
 function chnghab(name,qt,str,exp){
 	cv_gjxh = ["간지암합","01","03","21","23","25","43","45","47","65","67"]
-	cv_ghab = ["천간합","02","20","24","42","46","64"]	
-	cv_jjsh = ["지지암합","13","31","35","53","57","75"]
+	cv_ghab = ["천간합","02","24","46"]	
+	cv_jjsh = ["지지암합","13","35","57"]
 	subj = name; pon = "";
 	chab = ganji_habchung.filter(isFind);  //===천간충/극
 	var outpt = ""; var fndList = "";
@@ -547,21 +547,24 @@ function chnghab(name,qt,str,exp){
 		//--- 출력내용 작성 ---
 		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
 		if (aa.length === texstr.length){
-			cv_str = bb; cvtt = aa; cv = "";
-			if (name === "간지암합"){ cv = cv_gjxh;};
-			if (name === "천간합"){ cv = cv_ghab;};
-			if (name === "지지암합"){ cv = cv_jjsh;};
-			
-			for (m = 1; m < cv.length; m++){ ckstr = cv[m];
-				ck1 = ckstr.substr(0,1);  ck2 = ckstr.substr(1,1);
-				if (bb.includes(ck1) && bb.includes(ck2)){
-					ch_titl0 = adt1 + cvtt + exp + adt2 + "\n"; ch_titl1 =  adt1 + cvtt + exp + adt2 + adt3 + "\n";
-					loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-					loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-					document.getElementById("output2").innerText += ch_titl1; 
+			if (name === "간지암합" || name === "천간합" || name === "지지암합"){
+				cv_str = bb; cvtt = aa; cv = "";
+				if (name === "간지암합"){ cv = cv_gjxh;};
+				if (name === "천간합"){ cv = cv_ghab;};
+				if (name === "지지암합"){ cv = cv_jjsh;};
+
+				for (m = 1; m < cv.length; m++){ ckstr = cv[m];
+					ck1 = ckstr.substr(0,1);  ck2 = ckstr.substr(1,1);
+					if (bb.includes(ck1) && bb.includes(ck2)){
+						ch_titl0 = adt1 + cvtt + exp + adt2 + "\n"; ch_titl1 =  adt1 + cvtt + exp + adt2 + adt3 + "\n";
+						loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+						loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+						document.getElementById("output2").innerText += ch_titl1; 
+					};
 				};
-			};
-			       
+			}
+				
+				
 		};
        };
 };
