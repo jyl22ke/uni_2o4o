@@ -32,8 +32,8 @@
 	.insrt {height: 40px;}
 	.ifo {margin: 5px; font-size: 1.0em; height: 20px;}
 	.sjt {grid-column: 1/span 3;grid-row: 2/span 5; color: #000; font-weight: bold;border:1px solid black;}
-	.sjo,.sjot,.sja,.sjat,.sjb,.sjbt {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
-	.sja { font-size: 1.0em;}
+	.sjo,.sjot,.sjat,.sjbt {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
+	.sja,.sjb {grid-column: span 3;grid-row: span 1; color: #000; border:1px solid black;min-height:30px;}
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
 	#output { min-height: 790px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em;max-width:1000px;}
 	#output2 { display: none; float: left; min-height: 400px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:400px;}
@@ -574,6 +574,9 @@ function chnghab(name,qt,str,exp){
 				if (name === "간지암합"){ cv = cv_gjxh;};
 				if (name === "천간합"){ cv = cv_ghab;};
 				if (name === "지지암합"){ cv = cv_jjsh;};
+				if (nfo_chng.includes(cvtt.substr(0,1)) || nfo_chng.includes(cvtt.substr(1,1))){
+					adt1 = "("; adt2 = ")"; adt3 = "...불성립";
+				};
 
 				for (m = 1; m < cv.length; m++){ ckstr = cv[m];
 					ck1 = ckstr.substr(0,1);  ck2 = ckstr.substr(1,1);
@@ -584,16 +587,6 @@ function chnghab(name,qt,str,exp){
 						document.getElementById("output2").innerText += ch_titl1; 
 					};
 				};
-				if (nfo_chng.includes(cvtt.substr(0,1)) || nfo_chng.includes(cvtt.substr(1,1))){
-					adt1 = "("; adt2 = ")"; adt3 = "...불성립";
-				};
-				ch_titl0 = adt1 + cvtt + exp + adt2 + "\n"; ch_titl1 =  adt1 + cvtt + exp + adt2 + adt3 + "\n";
-				for (j=0; j<bb.length; j++){
-					pon = Number(bb.substr(j,1)) + 1;
-					loc = "sj" + String(pon) + "a";
-					document.getElementById(loc).innerText += ch_titl0;
-				};
-				document.getElementById("output2").innerText += ch_titl1; 
 			};
 		};
        };
