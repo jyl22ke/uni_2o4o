@@ -530,8 +530,11 @@ function txtSearch(str, searchvalue){
 };
 
 //========== 충/합 ==========
-	//---   chnghab("천간충",4,sj_gan,"_충");
+	//---   chnghab("천간충",4,sj_ganji,"_충");
 function chnghab(name,qt,str,exp){
+	cv_gjxh = ["간지암합","01","03","21","23","25","43","45","47","65","67"]
+	cv_ghab = ["천간합","02","20","24","42","46","64"]	
+	cv_jjsh = ["지지암합","13","31","35","53","57","75"]
 	subj = name; pon = "";
 	chab = ganji_habchung.filter(isFind);  //===천간충/극
 	var outpt = ""; var fndList = "";
@@ -541,12 +544,20 @@ function chnghab(name,qt,str,exp){
 			txtSearch(str,aa1);
 			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
 		};
-				     
-	//--- 출력내용 작성 ---				     
+	//--- 출력내용 작성 ---
 		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
-			       
-		if (aa.length === texstr.length){	       
-			ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
+		if (aa.length === texstr.length){
+			cv_str = bb; cvtt = aa;
+			if (name === "간지암합"){ cv = cv_gjxh;};
+			if (name === "천간합"){ cv = cv_ghab;};
+			if (name === "지지암합"){ cv = cv_jjsh;};
+			n=0; aa=""; bb="";
+			for (m = 1; m < cv.length; m++){ 
+				aa1 = cv.substr(m,1); 
+				txtSearch(cv_str,aa1);
+				if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
+			};
+			if (n === 2){ch_titl0 = adt1 + cvtt + exp + adt2 + "\n"; ch_titl1 =  adt1 + cvtt + exp + adt2 + adt3 + "\n";};
 		};
 			       
 	//--- 출력위치(css) 작성/출력 ---				     
@@ -560,9 +571,6 @@ function chnghab(name,qt,str,exp){
 		document.getElementById("output2").innerText += ch_titl1; 
        };
 };
-	
-	
-	
 	
 	
 	
