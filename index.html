@@ -563,13 +563,14 @@ function chnghab(name,qt,str,exp){
 					};
 				};
 			}else{
+				ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
 				for (j=0; j<bb.length; j++){
 					if (name.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
 					if (name.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
 					loc = "sj" + String(pon) + "a";
-					document.getElementById(loc).innerText += gchngtitl0;
+					document.getElementById(loc).innerText += ch_titl0;
 				};
-				document.getElementById("output2").innerText += gchngtitl1; 
+				document.getElementById("output2").innerText += ch_titl1; 
 			};
 				
 				
