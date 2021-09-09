@@ -228,7 +228,7 @@ $( function() {
 //  		chnghab("지지삼합",4,sj_ji,"3합");
 //  		chnghab("지지방합",4,sj_ji,"b합");
 //   		chnghab("지지암합",5,sj_ji,"s합");
-   		chnghab("간지암합",4,sj_ji,"x합");
+   		chnghab("간지암합",4,sj_ganji,"x합");
 	});
 });
 
@@ -310,7 +310,7 @@ function mktabl(){
 		subj = sj_yj; yjssj = sibsungX1.filter(isFindj);  //---십성(년지)
 		subj = sj_mj; mjssj = sibsungX1.filter(isFindj);  //---십성(월지)
 		subj = sj_dj; djssj = sibsungX1.filter(isFindj);  //---십성(일지)
-		subj = sj_tj; 	tjssj = sibsungX1.filter(isFindj);  //---십성(시지)
+		subj = sj_tj; tjssj = sibsungX1.filter(isFindj);  //---십성(시지)
 
 		gjsgj.unshift(tjssj[0]);  //---십성배열(시지) 추가
 		gjsgj.unshift(djssj[0]);  //---십성배열(일지) 추가
@@ -416,6 +416,7 @@ function root_point(a,b,c,d,e,f,g) {
 function tugan(){
 	sj_gan = sj_yg + sj_mg + sj_dg + sj_tg; 
 	sj_ji = sj_yj + sj_mj + sj_dj + sj_tj; 
+	sj_ganji = sj_yg + sj_yj + sj_mg + sj_mj + sj_dg + sj_dj + sj_tg + sj_tj;
 	jjg = ""; eff0 = 0; pos = "";idx = 0; n = 0; ttx = "";
 
 	for (i=1; i<5; i++){
@@ -535,21 +536,11 @@ function chnghab(name,qt,str,exp){
 	chab = ganji_habchung.filter(isFind);  //===천간충/극
 	var outpt = ""; var fndList = "";
 	for (i = 1; i < qt + 1; i++){texstr = chab[0][i]; n=0; aa=""; bb="";
-		if (name === "간지암합"){
-			aa1 = texstr.substr(0,1);
-			txtSearch(sj_gan,aa1);
+		for (k = 0; k < texstr.length; k++){
+			aa1 = texstr.substr(k,1);
+			txtSearch(str,aa1);
 			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
-			aa1 = texstr.substr(1,1);
-			txtSearch(sj_ji,aa1);
-			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
-		}else{
-			for (k = 0; k < texstr.length; k++){
-				aa1 = texstr.substr(k,1);
-				txtSearch(str,aa1);
-				if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
-			};
 		};
-				     
 				     
 	//--- 출력내용 작성 ---				     
 		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
