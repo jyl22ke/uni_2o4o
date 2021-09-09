@@ -580,7 +580,7 @@ function chnghab(name,qt,str,exp){
 
 				for (m = 1; m < cv.length; m++){ ckstr = cv[m];
 					ck1 = ckstr.substr(0,1);  ck2 = ckstr.substr(1,1);
-					if (bb.includes(ck1) && bb.includes(ck2) && nfo_chng.includes(cvtt.substr(0,1)) === false && nfo_chng.includes(cvtt.substr(1,1)) === false){
+					if (bb.includes(ck1) && bb.includes(ck2)){
 						ch_titl0 = adt1 + cvtt + exp + adt2 + "\n"; ch_titl1 =  adt1 + cvtt + exp + adt2 + adt3 + "\n";
 						loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
 						loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
