@@ -544,31 +544,31 @@ function chnghab(name,qt,str,exp){
 			txtSearch(str,aa1);
 			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
 		};
-	//--- 출력내용 작성 ---
+		//--- 출력내용 작성 ---
 		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
 		if (aa.length === texstr.length){
 			cv_str = bb; cvtt = aa;
 			if (name === "간지암합"){ cv = cv_gjxh;};
 			if (name === "천간합"){ cv = cv_ghab;};
 			if (name === "지지암합"){ cv = cv_jjsh;};
-			n=0; aa=""; bb="";
-			for (m = 1; m < cv.length; m++){ 
-				aa1 = cv.substr(m,1); 
-				txtSearch(cv_str,aa1);
-				if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
+			
+			for (m = 1; m < cv.length; m++){ ckstr = cv[m]; n=0; aa=""; bb="";
+				for (k = 0; k < ckstr.length; k++){
+					aa1 = ckstr.substr(k,1); 
+					txtSearch(cv_str,aa1);
+					if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
+				};
 			};
 			if (n === 2){ch_titl0 = adt1 + cvtt + exp + adt2 + "\n"; ch_titl1 =  adt1 + cvtt + exp + adt2 + adt3 + "\n";};
-		};
 			       
-	//--- 출력위치(css) 작성/출력 ---				     
-		for (j = 0; j < bb.length; j++){
-			pon = Number(bb.substr(j,1)) + 1;
-//			if (name.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
-//			if (name.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
-			loc = "sj" + String(pon) + "a";
-			document.getElementById(loc).innerText += ch_titl0;
+		//--- 출력위치(css) 작성/출력 ---				     
+			for (j = 0; j < bb.length; j++){
+				pon = Number(bb.substr(j,1)) + 1;
+				loc = "sj" + String(pon) + "a";
+				document.getElementById(loc).innerText += ch_titl0;
+			};
+			document.getElementById("output2").innerText += ch_titl1; 
 		};
-		document.getElementById("output2").innerText += ch_titl1; 
        };
 };
 	
