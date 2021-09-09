@@ -537,10 +537,10 @@ function chnghab(name,qt,str,exp){
 	for (i = 1; i < qt + 1; i++){texstr = chab[0][i]; n=0; aa=""; bb="";
 		if (name === "간지암합"){
 			aa1 = texstr.substr(0,1);
-			txtSearch("sj_gan",aa1);
+			txtSearch(sj_gan,aa1);
 			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
 			aa1 = texstr.substr(1,1);
-			txtSearch("sj_ji",aa1);
+			txtSearch(sj_ji,aa1);
 			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
 		}else{
 			for (k = 0; k < texstr.length; k++){
