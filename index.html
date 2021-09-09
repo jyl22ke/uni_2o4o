@@ -220,7 +220,7 @@ $( function() {
   		tugan();
   		rootgchk();
   		mpohcnt();
-//  		chnghab("천간충",4,sj_gan,"_충");
+  		chnghab("천간충",4,sj_ganji,"_충");
 //  		chnghab("천간극",6,sj_gan,"_극");
 //  		chnghab("지지충",6,sj_ji,"_충");
 //  		chnghab("천간합",5,sj_gan,"_합");
@@ -228,7 +228,7 @@ $( function() {
 //  		chnghab("지지삼합",4,sj_ji,"3합");
 //  		chnghab("지지방합",4,sj_ji,"b합");
 //   		chnghab("지지암합",5,sj_ji,"s합");
-   		chnghab("간지암합",4,sj_ganji,"x합");
+//   		chnghab("간지암합",4,sj_ganji,"x합");
 	});
 });
 
@@ -551,8 +551,9 @@ function chnghab(name,qt,str,exp){
 			       
 	//--- 출력위치(css) 작성/출력 ---				     
 		for (j = 0; j < bb.length; j++){
-			if (name.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
-			if (name.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
+			pon = Number(bb.substr(j,1)) + 1;
+//			if (name.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
+//			if (name.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
 			loc = "sj" + String(pon) + "a";
 			document.getElementById(loc).innerText += ch_titl0;
 		};
