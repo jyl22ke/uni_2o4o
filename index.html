@@ -564,8 +564,8 @@ function chnghab(name,qt,str,exp){
 				};
 			}else{
 				for (j=0; j<bb.length; j++){
-					if (type.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
-					if (type.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
+					if (name.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
+					if (name.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
 					loc = "sj" + String(pon) + "a";
 					document.getElementById(loc).innerText += gchngtitl0;
 				};
