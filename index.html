@@ -223,12 +223,12 @@ $( function() {
    		chnghab("천간충",4,sj_ganji,"_충");
    		chnghab("천간극",6,sj_ganji,"_극");
    		chnghab("지지충",6,sj_ganji,"_충");
-//   		chnghab("천간합",5,sj_ganji,"_합");
-//   		chnghab("지지육합",6,sj_ganji,"6합");
-//   		chnghab("지지삼합",4,sj_ganji,"3합");
-//   		chnghab("지지방합",4,sj_ganji,"b합");
-//    		chnghab("지지암합",5,sj_ganji,"s합");
-//   		chnghab("간지암합",4,sj_ganji,"x합");
+    		chnghab("천간합",5,sj_ganji,"_합");
+    		chnghab("지지육합",6,sj_ganji,"6합");
+    		chnghab("지지삼합",4,sj_ganji,"3합");
+    		chnghab("지지방합",4,sj_ganji,"b합");
+     		chnghab("지지암합",5,sj_ganji,"s합");
+   		chnghab("간지암합",4,sj_ganji,"x합");
 	});
 });
 
@@ -547,7 +547,29 @@ function chnghab(name,qt,str,exp){
 		//--- 출력내용 작성 ---
 		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
 		if (aa.length === texstr.length){
-			if (name === "간지암합" || name === "천간합" || name === "지지암합"){
+			if (name !== "간지암합" && name !== "천간합" && name !== "지지암합"){  //--- 간지암합, 천간합, 지지암합 이외의 경우
+				if (name.substr(2,1) === "충"){nfo_chng += aa;};
+				if (name.substr(2,1) === "충" || name.substr(2,1) === "극"){
+					ch_titl0 = aa + exp + "\n"; ch_titl1 =  aa + exp + "\n";
+					for (j=0; j<bb.length; j++){
+						pon = Number(bb.substr(j,1)) + 1;
+						loc = "sj" + String(pon) + "a";
+						document.getElementById(loc).innerText += ch_titl0;
+					};
+					document.getElementById("output2").innerText += ch_titl1; 
+				}else{  //--- 충, 극 이외의 경우(합)
+					if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
+						adt1 = "("; adt2 = ")"; adt3 = "...불성립";
+					};
+					ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
+					for (j=0; j<bb.length; j++){
+						pon = Number(bb.substr(j,1)) + 1;
+						loc = "sj" + String(pon) + "a";
+						document.getElementById(loc).innerText += ch_titl0;
+					};
+					document.getElementById("output2").innerText += ch_titl1; 
+				};
+			}else{  //--- 간지암합, 천간합, 지지암합 인 경우
 				cv_str = bb; cvtt = aa; cv = "";
 				if (name === "간지암합"){ cv = cv_gjxh;};
 				if (name === "천간합"){ cv = cv_ghab;};
@@ -555,96 +577,28 @@ function chnghab(name,qt,str,exp){
 
 				for (m = 1; m < cv.length; m++){ ckstr = cv[m];
 					ck1 = ckstr.substr(0,1);  ck2 = ckstr.substr(1,1);
-					if (bb.includes(ck1) && bb.includes(ck2)){
+					if (bb.includes(ck1) && bb.includes(ck2) && nfo_chng.includes(cvtt.substr(0,1)) === false && nfo_chng.includes(cvtt.substr(1,1)) === false){
 						ch_titl0 = adt1 + cvtt + exp + adt2 + "\n"; ch_titl1 =  adt1 + cvtt + exp + adt2 + adt3 + "\n";
 						loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
 						loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
 						document.getElementById("output2").innerText += ch_titl1; 
 					};
 				};
-			}else{
-				ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
+				if (nfo_chng.includes(cvtt.substr(0,1)) || nfo_chng.includes(cvtt.substr(1,1))){
+					adt1 = "("; adt2 = ")"; adt3 = "...불성립";
+				};
+				ch_titl0 = adt1 + cvtt + exp + adt2 + "\n"; ch_titl1 =  adt1 + cvtt + exp + adt2 + adt3 + "\n";
 				for (j=0; j<bb.length; j++){
-					if (name.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) + 1;};
-					if (name.substr(0,2) == "지지"){pon = Number(bb.substr(j,1)) + 1;};
+					pon = Number(bb.substr(j,1)) + 1;
 					loc = "sj" + String(pon) + "a";
 					document.getElementById(loc).innerText += ch_titl0;
 				};
 				document.getElementById("output2").innerText += ch_titl1; 
 			};
-				
-				
 		};
        };
 };
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-/*	
-//========== 천간충/극 ==========
-function ganchng(type,qty,str,exp){
-	subj = type; pon = "";
-	gchng = ganji_habchung.filter(isFind);  //===천간충/극
-	var outpt = ""; var fndList = "";
-	for (i=1; i<qty+1; i++){texstr = gchng[0][i]; n=0; aa=""; bb="";
-		for (k=0; k<texstr.length; k++){
-			aa1 = texstr.substr(k,1);
-			txtSearch(str,aa1);
-			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1; aa += aa1;};
-		};
-//|| type === "간지암합" 				
-		if (type === "천간합" || type === "지지암합"){if (bb != "01" && bb != "12" && bb != "23" && bb != "32" && bb != "21" && bb != "10"){aa=""; bb="";};};
-		if (n < texstr.length){
-			gchngtitl0 = ""; gchngtitl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
-			if (n === 2){
-				if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
-					adt1 = "("; adt2 = ")"; adt3 = "...불성립";
-				};
-				gchngtitl0 = adt1 + aa + exp.substr(0,1) + "반" + adt2 + "\n"; gchngtitl1 =  adt1 + aa + exp.substr(0,1) + "반" + adt2 + adt3 + "\n";
-			};			
-		} else { adt1 = ""; adt2 = ""; adt3 = "";
-			if (n === texstr.length){
-				if (exp.substr(1,1) === "충"){
-					nfo_chng += aa;
-				}else{
-					if (exp.substr(1,1) === "합"){
-						if (n === 2){
-							if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
-						};
-						if (n === 3){
-							if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
-						};
-					};
-		 		};
-				gchngtitl0 = adt1 + aa + exp + adt2 + "\n"; gchngtitl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
-			};
-		};
-		for (j=0; j<bb.length; j++){
-			if (type.substr(0,2) == "천간"){pon = Number(bb.substr(j,1)) * 2 + 1;};
-			if (type.substr(0,2) == "지지"){pon = (Number(bb.substr(j,1)) + 1) * 2;};
-			loc = "sj" + String(pon) + "a";
-			document.getElementById(loc).innerText += gchngtitl0;
-		}
-		document.getElementById("output2").innerText += gchngtitl1; 
-	};
-};	
-	*/
 	
   </script>
 
