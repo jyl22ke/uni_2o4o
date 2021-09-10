@@ -600,7 +600,9 @@ function chnghab(name,qt,str,exp){
 					if (tet0){
 						ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
 						for (i=0; i<rn; i++){
-							loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+							ck = "ck" + i;
+							loc = "sj" + String(Number(ck) + 1) + "a"; 
+							document.getElementById(loc).innerText += ch_titl0;
 //							document.getElementById("loc").innerText += ch_titl0;
 						};
 						document.getElementById("output2").innerText += ch_titl1; 
