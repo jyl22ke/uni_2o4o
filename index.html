@@ -596,18 +596,17 @@ function chnghab(name,qt,str,exp){
 					text0 = 'bb.includes(ck0)' ;
 					for (i=1; i<ckstr.length; i++){
 						text0 += ' && bb.includes(ck' + i + ')' ;
-					}
+					};
 
 					if (text0){
 						ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
 						for (i=0; i<ckstr.length; i++){
 							eval('loc = "sj" + String(Number(ck' + i + ') + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;');
-						}
+						};
 						document.getElementById("output2").innerText += ch_titl1; 
-					}				
-				
-				
-			};
+					};
+			       };
+		        };
 		};
        };
 };
