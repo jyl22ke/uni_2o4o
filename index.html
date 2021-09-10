@@ -223,12 +223,12 @@ $( function() {
    		chnghab("천간충",4,sj_ganji,"_충");
    		chnghab("천간극",6,sj_ganji,"_극");
    		chnghab("지지충",6,sj_ganji,"_충");
-//    		chnghab("천간합",5,sj_ganji,"_합");
-//    		chnghab("지지육합",6,sj_ganji,"6합");
+    		chnghab("천간합",5,sj_ganji,"_합");
+    		chnghab("지지육합",6,sj_ganji,"6합");
      		chnghab("지지삼합",4,sj_ganji,"3합");
-//    		chnghab("지지방합",4,sj_ganji,"b합");
-//     		chnghab("지지암합",5,sj_ganji,"s합");
-//   		chnghab("간지암합",4,sj_ganji,"x합");
+    		chnghab("지지방합",4,sj_ganji,"b합");
+     		chnghab("지지암합",5,sj_ganji,"s합");
+   		chnghab("간지암합",4,sj_ganji,"x합");
 	});
 });
 
@@ -606,26 +606,6 @@ function chnghab(name,qt,str,exp){
 						document.getElementById("output2").innerText += ch_titl1; 
  					};
  				};
-
-
-//-----------------------------
-/*
-
-				for (m = 1; m < cv.length; m++){ ckstr = cv[m];
-					tet0 = 'bb.includes(ck0)' ; rn = ckstr.length
-					for (i=0; i<rn; i++){
-						eval('ck' + i + '= ckstr.substr(' + i + ',1);');
-						if (i > 0){ tet0 += ' && bb.includes(ck' + String(i) + ')';};
-					};
-
-					if (tet0){
-						ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
-						for (i=0; i<rn; i++){
-							eval('loc = "sj" + String(Number(ck' + i + ') + 1) + "a";'); document.getElementById(loc).innerText += ch_titl0;
-						};
-						document.getElementById("output2").innerText += ch_titl1; 
-					};
-			       };*/
 		        };
 		};
        };
