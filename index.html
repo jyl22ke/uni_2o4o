@@ -593,7 +593,7 @@ function chnghab(name,qt,str,exp){
 				for (m = 1; m < cv.length; m++){ ckstr = cv[m];
 					tet0 = 'bb.includes(ck0)' ; rn = ckstr.length
 					for (i=0; i<rn; i++){
-						"ck" + i = ckstr.substr(i ,1);
+						eval('ck' + i + '= ckstr.substr(' + i +',1);');
 						if (i > 0){ tet0 += ' && bb.includes(ck' + String(i) + ')';};
 					};
 
