@@ -229,6 +229,7 @@ $( function() {
     		chnghab("지지방합",4,sj_ganji,"b합");
      		chnghab("지지암합",5,sj_ganji,"s합");
    		chnghab("간지암합",4,sj_ganji,"x합");
+		dgjmcharac();
 	});
 });
 
@@ -597,6 +598,43 @@ function chnghab(name,qt,str,exp){
        };
 };
 	
+//=============== 성격 display ==============
+function dgjmcharac(){
+
+//--------- 일간에 따른 성격 display ---------
+	subj = sj_dg;
+	dgcharac = dgan_charac.filter(isFind);  //---일간성격
+
+	dgtext = "\n<성격의 성향> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][3] + "\n" + dgcharac[0][4] + "\n" + dgcharac[0][5] + "\n" + dgcharac[0][6] + "\n" + dgcharac[0][7] + "\n" + dgcharac[0][8] + "\n\n";
+	
+//	dgtext1 = "<성격> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][9] + "\n" + dgcharac[0][10] + "--표면심리--" + dgcharac[0][11] + "\n" + dgcharac[0][12] + "--내면심리--" + dgcharac[0][13] + "\n" + "\n";
+
+	document.getElementById("output").innerText += dgtext;
+//	document.getElementById("output2").innerText += dgtext1;
+
+//--------- 일주에 따른 성격 display ---------
+	subj = sj_dg + sj_dj;
+	dgjcharac = dgabja60_charac.filter(isFind);  //---일주성격
+	dgjtext = "<성격> 일주 " + dgjcharac[0][1] + " ==> "  + dgjcharac[0][2] + "\n" + dgjcharac[0][3] + "\n" + dgjcharac[0][4] + "\n" + dgjcharac[0][5] + "\n" + dgjcharac[0][6] + "\n" + dgjcharac[0][7] + "\n\n";
+
+	document.getElementById("output").innerText += dgjtext;
+
+//--------- 월지(십성)에 따른 성격 display ---------
+	subj = titl4;
+	mjcharac = mjdjss_charac.filter(isFind);  //---월지성격
+	mjtext = "<환경적 영향> 월지십성 " + mjcharac[0][0] + " " + mjcharac[0][1] + "\n" + mjcharac[0][2] + "\n" + mjcharac[0][3] + "\n" + mjcharac[0][4] + "\n" + mjcharac[0][5] + "\n\n";
+
+	document.getElementById("output").innerText += mjtext;
+
+//--------- 일지(십성)에 따른 성격 display ---------
+	subj = titl6;
+	djcharac = mjdjss_charac.filter(isFind);  //---일지성격
+	djtext = "<배우자 관련> 일지십성 " + djcharac[0][0] + " " + djcharac[0][1] + "\n" + djcharac[0][6] + "\n" + djcharac[0][7] + "\n\n";
+
+	document.getElementById("output").innerText += djtext;
+};
+	
+
   </script>
 
     </body>
