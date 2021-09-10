@@ -547,7 +547,11 @@ function chnghab(name,qt,str,exp){
 		//--- 출력내용 작성 ---
 		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
 		if (aa.length === texstr.length){
-			if (name !== "간지암합" && name !== "천간합" && name !== "지지암합"){  //--- 간지암합, 천간합, 지지암합 이외의 경우
+			
+			
+			
+			
+//			if (name !== "간지암합" && name !== "천간합" && name !== "지지암합"){  //--- 간지암합, 천간합, 지지암합 이외의 경우
 				if (name.substr(2,1) === "충"){nfo_chng += aa;};
 				if (name.substr(2,1) === "충" || name.substr(2,1) === "극"){
 					ch_titl0 = aa + exp + "\n"; ch_titl1 =  aa + exp + "\n";
@@ -557,6 +561,10 @@ function chnghab(name,qt,str,exp){
 						document.getElementById(loc).innerText += ch_titl0;
 					};
 					document.getElementById("output2").innerText += ch_titl1; 
+					
+					
+					
+/*					
 				}else{  //--- 충, 극 이외의 경우(합)
 					if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
 						adt1 = "("; adt2 = ")"; adt3 = "...불성립";
@@ -567,8 +575,12 @@ function chnghab(name,qt,str,exp){
 						loc = "sj" + String(pon) + "a";
 						document.getElementById(loc).innerText += ch_titl0;
 					};
-					document.getElementById("output2").innerText += ch_titl1; 
-				};
+					document.getElementById("output2").innerText += ch_titl1; */
+//				};
+				
+				
+				
+				
 			}else{  //--- 간지암합, 천간합, 지지암합 인 경우
 				cv_str = bb; cvtt = aa; cv = "";
 				if (name === "간지암합"){ cv = cv_gjxh;};
@@ -588,6 +600,10 @@ function chnghab(name,qt,str,exp){
 					};
 				};
 			};
+			
+			
+			
+			
 		};
        };
 };
