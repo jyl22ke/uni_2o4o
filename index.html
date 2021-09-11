@@ -196,6 +196,7 @@ $( function() {
 		dgss_titl1 = ""; dgss_titl2 = ""; dgss_titl3 = ""; dgss_titl4 = "";  //--- (일간기준) 십성이름
 		dgss_titl6 = ""; dgss_titl7 = ""; dgss_titl8 = ""; gs_titl = ""; js_titl = "";
 		nfo_tugan = ""; ohtx = ""; nfo_chng = "";
+		isol_y = ""; isol_m = ""; isol_d = ""; isol_t = "";
 		
 		$('#output').empty();
 		$('#output2').empty();
@@ -367,7 +368,7 @@ function ganji_root(){
 //========== 천간의 통근을 확인하는 함수 ==========
 function root_point(a,b,c,d,e,f,g) {
 	tit = ""; cfm = ""; eff1 = 0; eff2 = 0; eff3 = 0; eff4 = 0; eff0 = 0;
-	efft = 0; isol_y = ""; isol_m = ""; isol_d = ""; isol_t = ""; isol = "";
+	efft = 0; isol = "";
 		idx = b.lastIndexOf(c); tit += gjsgj[0][idx];
 		idx = b.lastIndexOf(d); tit += gjsgj[0][idx];
 		idx = b.lastIndexOf(e); tit += gjsgj[0][idx];
