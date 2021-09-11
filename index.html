@@ -151,12 +151,8 @@ function fread(fn){
 	var aa = ""; var bb = ""; var name = ""; var exp = "";
 	
 //========= 간지 배경색 =========
-function chg_bgcolor(a) {
-//	$(a).css("background-color",b);
- 	$(a).css("background: linear-gradient(143deg, #fff, 45%, #3c3 55%)");
-	
-	
-	
+function chg_bgcolor(a,b) {
+	$(a).css("background-color",b);
 }
 
 //========= 음양 판별 함수 ========
@@ -245,12 +241,10 @@ function fill_saju(){
 		n = i * 2;
 		document.getElementById("sj" + m).innerText +=  ggsgg[i][0];
 		document.getElementById("sjg" + m).innerText +=   ggsgg[i][4].substr(1,2);
-//		chg_bgcolor("#sj" + m,ggsgg[i][5]); ohtx += ggsgg[i][4].substr(1,2);
-		chg_bgcolor("#sj" + m); ohtx += ggsgg[i][4].substr(1,2);
+		chg_bgcolor("#sj" + m,ggsgg[i][5]); ohtx += ggsgg[i][4].substr(1,2);
 		document.getElementById("sj" + n).innerText +=  jjsjj[i][0];
 		document.getElementById("sjg" + n).innerText +=  jjsjj[i][4].substr(1,2);
-//		chg_bgcolor("#sj" + n,jjsjj[i][5]); ohtx += jjsjj[i][4].substr(1,2);
-		chg_bgcolor("#sj" + n); ohtx += jjsjj[i][4].substr(1,2);
+		chg_bgcolor("#sj" + n,jjsjj[i][5]); ohtx += jjsjj[i][4].substr(1,2);
 
 		//--- 지장간 기록 ---
 		find_ggss(jjsjj[i][6].substr(0,1),"sj" + n + "b",jjsjj[i][6],4)
@@ -602,6 +596,7 @@ function chnghab(name,qt,str,exp){
 									if (sj_dg === "己" || sj_dg === "庚"){adt1 = ""; adt2 = ""; adt3 = "";
 									}else{adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
 								};
+								if (isol_m === "고립" && aa.includes(sj_mg)){chg_bgcolor("#sj3a","#3c3");};
 							};
 							ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
 							loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
