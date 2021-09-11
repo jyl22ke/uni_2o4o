@@ -104,7 +104,7 @@ fread("ohang");
 fread("gan");
 fread("jiji");
 fread("sibsungX1");
-fread("sign_chung");
+fread("sig_chung");
 fread("ganji_habchung");
 fread("dgan_charac");
 fread("dgabja60_charac");
@@ -561,9 +561,8 @@ function chnghab(name,qt,str,exp){
 				document.getElementById("output2").innerText += ch_titl1; 
 				if (name === "지지충"){
 					subj = aa;
-//					c_sign = sign_chung.filter(isFind);  //===천간충/극
-					ch_titl2 = "왜 안되지?...";
-//					ch_titl2 = aa + exp + " ==> " + c_sign[0][1] + "\n" + c_sign[0][2] + "\n" + c_sign[0][3] + "\n" + c_sign[0][4] + "\n" + c_sign[0][5] + "\n" + c_sign[0][6] + "\n" + c_sign[0][7] + "\n\n";
+					c_sign = sig_chung.filter(isFind);  //===천간충/극
+					ch_titl2 = aa + exp + " ==> " + c_sign[0][2] + "\n" + c_sign[0][3] + "\n" + c_sign[0][4] + "\n" + c_sign[0][5] + "\n" + c_sign[0][6] + "\n" + c_sign[0][7] + "\n" + c_sign[0][8] + "\n" + c_sign[0][9] + "\n\n";
 					document.getElementById("output").innerText += ch_titl2; 
 				};
 			}else{  //--- 합 인 경우
