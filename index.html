@@ -245,10 +245,12 @@ function fill_saju(){
 		n = i * 2;
 		document.getElementById("sj" + m).innerText +=  ggsgg[i][0];
 		document.getElementById("sjg" + m).innerText +=   ggsgg[i][4].substr(1,2);
-		chg_bgcolor("#sj" + m,ggsgg[i][5]); ohtx += ggsgg[i][4].substr(1,2);
+//		chg_bgcolor("#sj" + m,ggsgg[i][5]); ohtx += ggsgg[i][4].substr(1,2);
+		chg_bgcolor("#sj" + m); ohtx += ggsgg[i][4].substr(1,2);
 		document.getElementById("sj" + n).innerText +=  jjsjj[i][0];
 		document.getElementById("sjg" + n).innerText +=  jjsjj[i][4].substr(1,2);
-		chg_bgcolor("#sj" + n,jjsjj[i][5]); ohtx += jjsjj[i][4].substr(1,2);
+//		chg_bgcolor("#sj" + n,jjsjj[i][5]); ohtx += jjsjj[i][4].substr(1,2);
+		chg_bgcolor("#sj" + n); ohtx += jjsjj[i][4].substr(1,2);
 
 		//--- 지장간 기록 ---
 		find_ggss(jjsjj[i][6].substr(0,1),"sj" + n + "b",jjsjj[i][6],4)
