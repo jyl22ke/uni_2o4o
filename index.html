@@ -109,6 +109,7 @@ fread("ganji_habchung");
 fread("dgan_charac");
 fread("dgabja60_charac");
 fread("mjdjss_charac");
+fread("habhwa");
 	
 function fread(fn){
     $(function (){
@@ -596,11 +597,9 @@ function chnghab(name,qt,str,exp){
 									if (sj_dg === "己" || sj_dg === "庚"){adt1 = ""; adt2 = ""; adt3 = "";
 									}else{adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
 								};
-								ghb = ["甲己토#fc6","乙庚금#fff","丙辛수#666","丁壬목#3c3","戊癸화#f00"];
-								subj = aa; wha = ghb.filter(isFind); 
-								document.getElementById("output2").innerText += "합화 이름은 " + wha + "\n"; 
-								if (isol_y === "고립" && aa.includes(sj_yg)){chg_bgcolor("#sj1","#3c3");};
-								if (isol_m === "고립" && aa.includes(sj_mg)){chg_bgcolor("#sj3","#3c3");};
+								subj = aa; hwa = habhwa.filter(isFind); 
+								if (isol_y === "고립" && aa.includes(sj_yg)){chg_bgcolor("#sj1",hwa[0][3]);};
+								if (isol_m === "고립" && aa.includes(sj_mg)){chg_bgcolor("#sj3",hwa[0][3]);};
 							};
 							ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
 							loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
