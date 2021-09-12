@@ -600,8 +600,9 @@ function chnghab(name,qt,str,exp){
 									}else{adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
 								};
 								subj = aa; hwa = habhwa.filter(isFind); 
-								if (isol_y === "고립" && aa.includes(sj_yg)){chg_bgcolor("#sj1",hwa[0][3],hwa[0][3]);};
-								if (isol_m === "고립" && aa.includes(sj_mg)){chg_bgcolor("#sj3",hwa[0][3],"#666");};
+								if (isol_y === "고립" && aa.includes(sj_yg)){chg_bgcolor("#sj1",hwa[0][3],ggsgg[1][5]);};
+								if (isol_m === "고립" && aa.includes(sj_mg)){chg_bgcolor("#sj3",hwa[0][3],ggsgg[2][5]);};
+								if (isol_t === "고립" && aa.includes(sj_tg)){chg_bgcolor("#sj7",hwa[0][3],ggsgg[4][5]);};
 							};
 							ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
 							loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
