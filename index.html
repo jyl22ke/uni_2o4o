@@ -149,7 +149,7 @@ function fread(fn){
 	var isol_y = ""; var isol_m = ""; var isol_d = ""; var isol_t = ""; var ohtx = "";
 	var dgss_titl1 = ""; var dgss_titl2 = ""; var dgss_titl3 = ""; var dgss_titl4 = "";  //--- (일간기준) 십성이름
 	var dgss_titl6 = ""; var dgss_titl7 = ""; var dgss_titl8 = ""; var gs_titl = ""; var js_titl = "";
-	var aa = ""; var bb = ""; var cc = ""; var name = ""; //var exp = "";
+	var aa = ""; var bb = ""; var cc = ""; var name = "";
 	
 //========= 간지 배경색 =========
 function chg_bgcolor(a,b,c) {
@@ -554,7 +554,6 @@ function chnghab(name,qt,str,exp){
 		if (aa.length === texstr.length){
 			if (name.substr(2,1) === "충"){nfo_chng += aa;};  //--- 충 인 경우
 			if (name.substr(2,1) === "충" || name.substr(2,1) === "극"){  //--- 충 또는 극 인 경우
-//				ch_titl0 = aa + exp + "\n"; ch_titl1 =  aa + exp + "\n";
 				ch_titl0 = aa + cc + "\n"; ch_titl1 =  aa + cc + "\n";
 				for (j=0; j<bb.length; j++){
 					pon = Number(bb.substr(j,1)) + 1;
@@ -565,7 +564,6 @@ function chnghab(name,qt,str,exp){
 				if (name === "지지충"){
 					subj = aa;
 					c_sign = sig_chung.filter(isFind);  //===천간충/극
-//					ch_titl2 = aa + exp + " ==> " + c_sign[0][2] + "\n" + c_sign[0][3] + "\n" + c_sign[0][4] + "\n\n" + c_sign[0][5] + "\n" + c_sign[0][6] + "\n" + c_sign[0][7] + "\n" + c_sign[0][8] + "\n" + c_sign[0][9] + "\n\n";
 					ch_titl2 = aa + cc + " ==> " + c_sign[0][2] + "\n" + c_sign[0][3] + "\n" + c_sign[0][4] + "\n\n" + c_sign[0][5] + "\n" + c_sign[0][6] + "\n" + c_sign[0][7] + "\n" + c_sign[0][8] + "\n" + c_sign[0][9] + "\n\n";
 					document.getElementById("output").innerText += ch_titl2; 
 				};
@@ -579,11 +577,11 @@ function chnghab(name,qt,str,exp){
 				for (m = 1; m < cv.length; m++){ ckstr = cv[m];
 					ck1 = ckstr.substr(0,1); ck2 = ckstr.substr(1,1); ck3 = ckstr.substr(2,1);
 					if (name === "지지삼합" || name === "지지방합"){  //--- 3글자 합 인 경우
-/*						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){
+						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){
 							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 
 							ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n"; document.getElementById("output2").innerText += ch_titl1; 
-							aa = ""; bb = ""; 
-						};*/
+				//			aa = ""; bb = ""; 
+						};
 						if (bb.includes(ck1) && bb.includes(ck2) && bb.includes(ck3)){
 							ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n";
 							loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
@@ -592,11 +590,11 @@ function chnghab(name,qt,str,exp){
 							document.getElementById("output2").innerText += ch_titl1; 
 						};
 				        }else{		  //--- 2글자 합 인 경우
-/*						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
+						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
 							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 
 							ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n"; document.getElementById("output2").innerText += ch_titl1; 
-							aa = ""; bb = ""; 
-						};*/
+				//			aa = ""; bb = ""; 
+						};
 						if (bb.includes(ck1) && bb.includes(ck2)){
 /*							if (name === "천간합"){
 								if (ck1 === "4" || ck2 === "4"){
