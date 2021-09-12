@@ -580,7 +580,8 @@ function chnghab(name,qt,str,exp){
 					ck1 = ckstr.substr(0,1); ck2 = ckstr.substr(1,1); ck3 = ckstr.substr(2,1);
 					if (name === "지지삼합" || name === "지지방합"){  //--- 3글자 합 인 경우
 						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){
-							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; aa = "";
+//							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 
+							aa = ""; bb = "";
 						};
 						if (bb.includes(ck1) && bb.includes(ck2) && bb.includes(ck3)){
 							ch_titl0 = adt1 + aa + exp + adt2 + "\n"; ch_titl1 =  adt1 + aa + exp + adt2 + adt3 + "\n";
@@ -591,7 +592,8 @@ function chnghab(name,qt,str,exp){
 						};
 				        }else{		  //--- 2글자 합 인 경우
 						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
-							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; aa = "";
+//							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 
+							aa = ""; bb = "";
 						};
 						if (bb.includes(ck1) && bb.includes(ck2)){
 							if (name === "천간합"){
