@@ -599,7 +599,9 @@ function chnghab(name,qt,str,exp){
 							if (name === "천간합"){
 								if (ck1 === "4" || ck2 === "4"){
 									if (sj_dg === "己" || sj_dg === "庚"){adt1 = ""; adt2 = ""; adt3 = "";
-									}else{adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
+									}else{
+//										adt1 = "("; adt2 = ")"; adt3 = "...불성립";};
+										aa = ""; bb = "";										
 								};
 								subj = aa; hwa = habhwa.filter(isFind); 
 								if (isol_y === "고립" && aa.includes(sj_yg)){chg_bgcolor("#sj1",hwa[0][3],ggsgg[1][5]);};
