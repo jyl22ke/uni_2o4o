@@ -580,7 +580,7 @@ function chnghab(name,qt,str,exp){
 						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){
 							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 
 							ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n"; document.getElementById("output2").innerText += ch_titl1; 
-							aa = ""; bb = ""; 
+	 						aa = ""; bb = ""; cc = ""; adt1 = ""; adt2 = ""; adt3 = "";
 						}else{
 							if (bb.includes(ck1) && bb.includes(ck2) && bb.includes(ck3)){
 								ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n";
@@ -594,7 +594,7 @@ function chnghab(name,qt,str,exp){
 						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
 							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 
 							ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n"; document.getElementById("output2").innerText += ch_titl1; 
-							aa = ""; bb = ""; 
+							aa = ""; bb = ""; cc = ""; adt1 = ""; adt2 = ""; adt3 = "";
 						}else{
 							if (bb.includes(ck1) && bb.includes(ck2)){
 	/*							if (name === "천간합"){
@@ -603,7 +603,7 @@ function chnghab(name,qt,str,exp){
 										}else{
 											adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 
 											ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n"; document.getElementById("output2").innerText += ch_titl1; 
-											aa = ""; bb = ""; 
+	//										aa = ""; bb = ""; 
 										};
 									};
 									subj = aa; hwa = habhwa.filter(isFind); 
