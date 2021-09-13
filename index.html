@@ -579,22 +579,19 @@ function chnghab(name,qt,str,exp){
 					if (name === "지지삼합" || name === "지지방합"){  //--- 3글자 합 인 경우
 						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){
 							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 
-			//				ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n"; 
-			//				document.getElementById("output2").innerText += ch_titl1; 
-	 		//				aa = ""; bb = ""; cc = ""; adt1 = ""; adt2 = ""; adt3 = "";
 						};
 						if (bb.includes(ck1) && bb.includes(ck2) && bb.includes(ck3)){
 							ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n";
-							loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-							loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-							loc = "sj" + String(Number(ck3) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+							if (adt3 != "...불성립"){
+								loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+								loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+								loc = "sj" + String(Number(ck3) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+							};
 							document.getElementById("output2").innerText += ch_titl1; 
 						};
 				        }else{		  //--- 2글자 합 인 경우
 						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
 							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 
-			//				ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n"; //document.getElementById("output2").innerText += ch_titl1; 
-//							aa = ""; bb = ""; cc = ""; adt1 = ""; adt2 = ""; adt3 = "";
 						};
 						if (bb.includes(ck1) && bb.includes(ck2)){
 							if (name === "천간합"){
@@ -602,9 +599,6 @@ function chnghab(name,qt,str,exp){
 									if (sj_dg === "己" || sj_dg === "庚"){adt1 = ""; adt2 = ""; adt3 = "";
 									}else{
 										adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 
-//										ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n"; 
-//										document.getElementById("output2").innerText += ch_titl1; 
-//										aa = ""; bb = ""; 
 									};
 								};
 								subj = aa; hwa = habhwa.filter(isFind); 
@@ -613,8 +607,10 @@ function chnghab(name,qt,str,exp){
 								if (isol_t === "고립" && aa.includes(sj_tg)){chg_bgcolor("#sj7",hwa[0][3],ggsgg[4][5]);};
 							};
 							ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n";
-							loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-							loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+							if (adt3 != "...불성립"){
+								loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+								loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+							};
 							document.getElementById("output2").innerText += ch_titl1; 
 						};
 				        };
