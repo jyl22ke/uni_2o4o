@@ -591,26 +591,29 @@ function chnghab(name,qt,str,exp){
 							document.getElementById("output2").innerText += ch_titl1; 
 						};
 				        }else{		  //--- 2글자 합 인 경우
-						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립"; }; //--- 충
+						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){
+							adt1 = "("; adt2 = ")"; adt3 = "...불성립";  //--- 충
+						}else{
 //						if ((sj_ganji.match(/aa.substr(0,1)/g) || []).length > 1 || (sj_ganji.match(/aa.substr(1,1)/g) || []).length > 1){
 //							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };  //--- 쟁합 인 경우
-						if (bb.includes(ck1) && bb.includes(ck2)){
-							if (name === "천간합"){
-								if (ck1 === "4" || ck2 === "4"){
-									if (sj_dg === "己" || sj_dg === "庚"){adt1 = ""; adt2 = ""; adt3 = "";
-									}else{adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 	};
+							if (bb.includes(ck1) && bb.includes(ck2)){
+								if (name === "천간합"){
+									if (ck1 === "4" || ck2 === "4"){
+										if (sj_dg === "己" || sj_dg === "庚"){adt1 = ""; adt2 = ""; adt3 = "";
+										}else{adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 	};
+									};
+									subj = aa; hwa = habhwa.filter(isFind); 
+									if (isol_y === "고립" && aa.includes(sj_yg)){chg_bgcolor("#sj1",hwa[0][3],ggsgg[1][5]);};
+									if (isol_m === "고립" && aa.includes(sj_mg)){chg_bgcolor("#sj3",hwa[0][3],ggsgg[2][5]);};
+									if (isol_t === "고립" && aa.includes(sj_tg)){chg_bgcolor("#sj7",hwa[0][3],ggsgg[4][5]);};
 								};
-								subj = aa; hwa = habhwa.filter(isFind); 
-								if (isol_y === "고립" && aa.includes(sj_yg)){chg_bgcolor("#sj1",hwa[0][3],ggsgg[1][5]);};
-								if (isol_m === "고립" && aa.includes(sj_mg)){chg_bgcolor("#sj3",hwa[0][3],ggsgg[2][5]);};
-								if (isol_t === "고립" && aa.includes(sj_tg)){chg_bgcolor("#sj7",hwa[0][3],ggsgg[4][5]);};
+								ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n";
+								if (adt3 != "...불성립"){
+									loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+									loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+								};
+								document.getElementById("output2").innerText += ch_titl1; 
 							};
-							ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n";
-							if (adt3 != "...불성립"){
-								loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-								loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-							};
-							document.getElementById("output2").innerText += ch_titl1; 
 						};
 				        };
 				};
