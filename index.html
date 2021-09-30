@@ -149,7 +149,7 @@ function fread(fn){
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 
-	var sstit = ""; var ggsgg = new Array; var jjsjj = new Array; var gjsgj = new Array;
+	var sstit = ""; var ggsgg = new Array; var jjsjj = new Array; var gjsgj = new Array; var unsung12 = new Array;
 	var ganf1 = ""; var ganf2 = ""; var ganf3 = ""; var ganf4 = ""; var nfo_tugan = ""; var nfo_chng = "";
 	var isol_y = ""; var isol_m = ""; var isol_d = ""; var isol_t = ""; var ohtx = "";
 	var dgss_titl1 = ""; var dgss_titl2 = ""; var dgss_titl3 = ""; var dgss_titl4 = "";  //--- (일간기준) 십성이름
@@ -273,17 +273,17 @@ function fill_saju(){
 
 function mktabl(){
 		//==== 천간(년,월,일,시)배열 만들기 ====
-		sstit = gan.slice(0, 1);  //---천간배열 이름 (첫째줄) 가져오기
-		subj = sj_yg; ygsgg = gan.filter(isFind);  //---천간(년간)
-		subj = sj_mg; mgsgg = gan.filter(isFind);  //---천간(월간)
-		subj = sj_dg; dgsgg = gan.filter(isFind);  //---천간(일간)
-		subj = sj_tg; tgsgg = gan.filter(isFind);  //---천간(시간)
+		sstit = gan.slice(0, 1); uns12_tt = unsung.slice(0, 1);  //---천간배열 이름 (첫째줄) 가져오기  ---십이운성 이름(첫줄)
+		subj = sj_yg; ygsgg = gan.filter(isFind); uns12_yg = unsung.filter(isFind);  //---천간(년간)  ---십이운성(년)
+		subj = sj_mg; mgsgg = gan.filter(isFind); uns12_mg = unsung.filter(isFind);  //---천간(월간)  ---십이운성(월)
+		subj = sj_dg; dgsgg = gan.filter(isFind); uns12_dg = unsung.filter(isFind);  //---천간(일간)  ---십이운성(일)
+		subj = sj_tg; tgsgg = gan.filter(isFind); uns12_tg = unsung.filter(isFind);  //---천간(시간)  ---십이운성(시)
 
-		ggsgg.unshift(tgsgg[0]);  //---천간배열(시간) 추가
-		ggsgg.unshift(dgsgg[0]);  //---천간배열(일간) 추가
-		ggsgg.unshift(mgsgg[0]);  //---천간배열(월간) 추가
-		ggsgg.unshift(ygsgg[0]);  //---천간배열(년간) 추가
-		ggsgg.unshift(sstit[0]);  //---천간배열 + 이름 추가
+		ggsgg.unshift(tgsgg[0]); unsung12.unshift(uns12_tg[0]);  //---천간배열(시간) 추가  ---십이운성(시) 추가
+		ggsgg.unshift(dgsgg[0]); unsung12.unshift(uns12_dg[0]);  //---천간배열(일간) 추가  ---십이운성(일) 추가
+		ggsgg.unshift(mgsgg[0]); unsung12.unshift(uns12_mg[0]);  //---천간배열(월간) 추가  ---십이운성(월) 추가
+		ggsgg.unshift(ygsgg[0]); unsung12.unshift(uns12_yg[0]);  //---천간배열(년간) 추가  ---십이운성(년) 추가
+		ggsgg.unshift(sstit[0]); unsung12.unshift(uns12_tt[0]);  //---천간배열 + 이름 추가  ---십이운성 이름 (첫줄) 추가
 		//------ 만들어진 천간배열 ------
 		/*	0: (6) ["천간", "천간h", "오행", "음양", "이름", "색"]
 			1: (6) ["갑", "甲", "목", "양", "갑양목", "#3c3"]
