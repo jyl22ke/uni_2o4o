@@ -598,7 +598,8 @@ function chnghab(name,qt,str,exp){
 						q += "bb.includes(ckstr.substr(l,1))";
 						if (l < ckstr.length-1){ q += " && ";}
 					}
-					eval('if (' + q + '){ passed(); };');
+//					eval('if (' + q + '){ passed(); };');
+					if ( q ){ passed(); };
 						
 
 								
