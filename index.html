@@ -580,7 +580,8 @@ function chnghab(name,qt,str,exp){
 						r += "nfo_chng.includes(aa.substr(l,1))";
 						if (l < ckstr.length-1){ r += " || ";}
 					}
-					eval('if (' + r + '){adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };');
+//					eval('if (' + r + '){adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };');
+					if ( r ){adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };
 
 								
 //					for (l = 0; l < ckstr.length; l++){
