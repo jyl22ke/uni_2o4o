@@ -270,16 +270,19 @@ function fill_saju(){
 	find_gjss(sj_mj,"sj4a",4); dgss_titl4 = js_titl;
 	find_gjss(sj_dj,"sj6a",4); dgss_titl6 = js_titl;
 	find_gjss(sj_tj,"sj8a",4); dgss_titl8 = js_titl;
-	unsng(1);
-	unsng(2);
-	unsng(3);
-	unsng(4);
+	unsng();  //----- 십이운성 기록
 };
 
 //======= 십이운성 기록하는 함수 =====
-function unsng(a){
+function unsng(){
 	for (i=1; i<5 ; i++){
-		document.getElementById("sj" + i * 2 + "c").innerText += "(" + a + ")" + unsung12[0][unsung12[a].indexOf(jjsjj[i][0])] + " \n";
+		if ( i == 1 ){ ti = "(년간) ";};
+		if ( i == 2 ){ ti = "(월간) ";};
+		if ( i == 3 ){ ti = "(일간) ";};
+		if ( i == 4 ){ ti = "(시간) ";};
+		for (j=1; j<5 ; j++){
+			document.getElementById("sj" + j * 2 + "c").innerText += ti + " " + unsung12[0][unsung12[i].indexOf(jjsjj[j][0])] + " \n";
+		};
 	};
 };
 
