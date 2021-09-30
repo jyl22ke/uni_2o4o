@@ -270,8 +270,20 @@ function fill_saju(){
 	find_gjss(sj_mj,"sj4a",4); dgss_titl4 = js_titl;
 	find_gjss(sj_dj,"sj6a",4); dgss_titl6 = js_titl;
 	find_gjss(sj_tj,"sj8a",4); dgss_titl8 = js_titl;
+	unsng(1);
+	unsng(2);
+	unsng(3);
+	unsng(4);
 };
 
+//======= 십이운성 기록하는 함수 =====
+function unsng(a){
+	for (i=1; i<5 ; i++){
+		document.getElementById("sj" + i * 2 + "c").innerText += "(" + a + ")" + unsung12[0][unsung12[a].indexOf(jjsjj[i][0])] + " \n";
+	};
+};
+
+//======= 기본 테이블 작성하는 함수 =======	
 function mktabl(){
 		//==== 천간(년,월,일,시)배열 만들기 ====
 		sstit = gan.slice(0, 1); uns12_tt = unsung.slice(0, 1);  //---천간배열 이름 (첫째줄) 가져오기  ---십이운성 이름(첫줄)
