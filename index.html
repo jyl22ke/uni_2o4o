@@ -575,7 +575,8 @@ function chnghab(name,qt,str,exp){
 				if (name === "지지삼합" || name === "지지방합"){ cv = cv_j3bh;};
 				for (m = 1; m < cv.length; m++){ ckstr = cv[m];
 					for (l = 0; l < ckstr.length; l++){
-						eval('ck' + l+1 + ' = ckstr.substr(l,1);');
+						q = l + 1;
+						eval('ck' + q + ' = ckstr.substr(l,1);');
 					}
 								
 								
