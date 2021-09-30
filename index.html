@@ -574,20 +574,39 @@ function chnghab(name,qt,str,exp){
 				if (name === "지지육합" || name === "지지암합"){ cv = cv_j6sh;};
 				if (name === "지지삼합" || name === "지지방합"){ cv = cv_j3bh;};
 				for (m = 1; m < cv.length; m++){ ckstr = cv[m];
-					for (l = 0; l < ckstr.length; l++){
-						q = l + 1;
-						eval('ck' + q + ' = ckstr.substr(l,1);');
-					}
-								
-								
-								
-								
 //					ck1 = ckstr.substr(0,1); ck2 = ckstr.substr(1,1); ck3 = ckstr.substr(2,1);
-					if (name === "지지삼합" || name === "지지방합"){  //--- 3글자 합 인 경우
-						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };  //--- 충
+//					if (name === "지지삼합" || name === "지지방합"){  //--- 3글자 합 인 경우
+					for (l = 0; l < ckstr.length; l++){
+						r += 'nfo_chng.includes(aa.substr(l,1))';
+						if (l < ckstr.length-1){ r += ' || ';}
+					}
+					eval( 'if (' + r + '){adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };');
+
+								
+//					for (l = 0; l < ckstr.length; l++){
+//						q = l + 1;
+//						eval('ck' + q + ' = ckstr.substr(l,1);');
+//					}
+								
+								
+//					for (l = 0; l < ckstr.length; l++){
+//						q = l + 1;
+//						eval('ck' + q + ' = ckstr.substr(l,1);');
+//					}
+					for (l = 0; l < ckstr.length; l++){
+						q += 'bb.includes(ckstr.substr(l,1))';
+						if (l < ckstr.length-1){ q += ' && ';}
+					}
+					eval( 'if (' + q + '){ passed; };');
+						
+
+								
+								
+						
+//						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };  //--- 충
 //						if ((sj_ganji.match(/aa.substr(0,1)/g) || []).length > 1 || (sj_ganji.match(/aa.substr(1,1)/g) || []).length > 1 || (sj_ganji.match(/aa.substr(2,1)/g) || []).length > 1){
 //							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };  //--- 쟁합 인 경우
-						if (bb.includes(ck1) && bb.includes(ck2) && bb.includes(ck3)){
+/*						if (bb.includes(ck1) && bb.includes(ck2) && bb.includes(ck3)){
 							ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n";
 							if (adt3 != "...불성립"){
 								loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
@@ -627,11 +646,21 @@ function chnghab(name,qt,str,exp){
 								document.getElementById("output2").innerText += ch_titl1; 
 							};
 						};
-				        };
+				        };*/
 				};
 		        };
 		};
        };
+};
+
+function passed(){
+	ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n";
+	if (adt3 != "...불성립"){
+		for (l = 0; l < ckstr.length; l++){
+			loc = "sj" + String(Number(ckstr.substr(l,1)) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+		};
+	};
+	document.getElementById("output2").innerText += ch_titl1; 
 };
 	
 //=============== 성격 display ==============
