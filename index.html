@@ -577,10 +577,10 @@ function chnghab(name,qt,str,exp){
 //					ck1 = ckstr.substr(0,1); ck2 = ckstr.substr(1,1); ck3 = ckstr.substr(2,1);
 //					if (name === "지지삼합" || name === "지지방합"){  //--- 3글자 합 인 경우
 					for (l = 0; l < ckstr.length; l++){
-						r += 'nfo_chng.includes(aa.substr(l,1))';
-						if (l < ckstr.length-1){ r += ' || ';}
+						r += "nfo_chng.includes(aa.substr(l,1))";
+						if (l < ckstr.length-1){ r += " || ";}
 					}
-					eval( 'if (' + r + '){adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };');
+					eval('if (' + r + '){adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };');
 
 								
 //					for (l = 0; l < ckstr.length; l++){
@@ -594,10 +594,10 @@ function chnghab(name,qt,str,exp){
 //						eval('ck' + q + ' = ckstr.substr(l,1);');
 //					}
 					for (l = 0; l < ckstr.length; l++){
-						q += 'bb.includes(ckstr.substr(l,1))';
-						if (l < ckstr.length-1){ q += ' && ';}
+						q += "bb.includes(ckstr.substr(l,1))";
+						if (l < ckstr.length-1){ q += " && ";}
 					}
-					eval( 'if (' + q + '){ passed; };');
+					eval('if (' + q + '){ passed(); };');
 						
 
 								
