@@ -460,7 +460,7 @@ function tugan(){
 						n = idx + 1;
 					};
 					if (i == 1){ttx = "년지";
-					}else{	if (i == 2){ttx = "월지"; idx = gjsgj[0].lastIndexOf(jjg); nfo_tugan += "월지투간==> " + gjsgj[4][idx] + "格 "+ jjg + "..용신\n\n";
+					}else{	if (i == 2){ttx = "월지"; idx = gjsgj[0].lastIndexOf(jjg); nfo_tugan += "월지투간==> " + gjsgj[4][idx] + "格 "+ jjg + "..용신";
 						}else{	if (i == 3){ttx = "일지";
 							}else{	if (i == 4){ttx = "시지";}}}};
 					document.getElementById("output2").innerText += String(i) + ".... 지장간 " + jjg + eff + "..........." + ttx +" .... " + pos + " 투간... " + eff0 + "%\n";
@@ -510,7 +510,7 @@ function rootgchk(){
 				if(pn.length === 1){
 					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n";}}};
 	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n";};
-	 find_gjss(sj_mj,"",4); document.getElementById("output2").innerText += "사주격국 (기본) " + js_titl + "格 " + nfo_tugan;
+	 find_gjss(sj_mj,"",4); document.getElementById("output2").innerText += "사주격국 (기본) " + js_titl + "格 " + nfo_tugan + "\n\n";
 };	
 	
 //========= 일간의 통근 check 하는 함수 ========
