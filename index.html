@@ -257,7 +257,7 @@ function convrtsj(){
 //--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
 	birth = new Date(symdt.substr(0,16));
 	for (i=0; i<ca04_kstadj.length; i++){
-		if (symdt => ca04_kstadj[i][0] && symdt <= ca04_kstadj[i][1]){
+		if (symdt >= ca04_kstadj[i][0] && symdt <= ca04_kstadj[i][1]){
 			crh = ca04_kstadj[i][2];
 		};
 	};
@@ -297,7 +297,7 @@ function convrtsj(){
 	birth_t = String(birth.getHours()).padStart(2, '0') + ':' + birth.getMinutes();
 
 	for ( i=1 ; i < ca05_sijitime.length ; i++ ){
-		if (ca05_sijitime[i][0] <= birth_t && ca05_sijitime[i][1] => birth_t){
+		if (ca05_sijitime[i][0] <= birth_t && ca05_sijitime[i][1] >= birth_t){
 			sj_tj = ca05_sijitime[i][2];  //--- 시지 (sj_tj)
 			cor_t = ca05_sijitime[i][3];  //--- 시지 수 (시간 결정에 사용)
 		};
