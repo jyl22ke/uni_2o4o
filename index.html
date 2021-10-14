@@ -51,7 +51,7 @@
 <!-- 메인메뉴 mmenu part -->
 <div class="container">
 	<div class="insrt">
-		<p class="ifo"> 생년월일시: <input type="datetime-local" id="sjtm" value="2002-07-22 09:00"> &nbsp; &nbsp; 사주: <input type="text" id="sj" class="ifo" maxlength="8"> &nbsp; &nbsp; 성별: <input type="radio" name="gender" value="남">남 <input type="radio" name="gender" value="여">여 &nbsp; &nbsp;<button id="clear1">지우기</button> &nbsp; &nbsp;<button id="submit1">제 출</button></p><br/> 
+		<p class="ifo"> 생년월일시: <input type="datetime-local" id="sjtm"> &nbsp; &nbsp; 사주: <input type="text" id="sj" class="ifo" maxlength="8"> &nbsp; &nbsp; 성별: <input type="radio" name="gender" value="남">남 <input type="radio" name="gender" value="여">여 &nbsp; &nbsp;<button id="clear1">지우기</button> &nbsp; &nbsp;<button id="submit1">제 출</button></p><br/> 
 	</div>
 <hr/>
 	<div class="canvas">
@@ -266,10 +266,10 @@ function convrtsj(){
 	if (symdt.substr(11,5) < crh){ crnod = 1}else{crnod = 0};  //--- 일 보정수 (야자시 전환시 전일 일주 사용)
 
 //--- 월지(sj_mj) 확인 ----------------------
-	for ( i=1 ; i < ca08_monthstart.length ; i++ ){
-		if (ca08_monthstart[i][0] > symdt && ca08_monthstart[i-1][0] < symdt){
-			premon = new Date(ca08_monthstart[i-1][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
-			postmon = new Date(ca08_monthstart[i][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
+	for ( i=0 ; i < ca08_monthstart.length ; i++ ){
+		if (ca08_monthstart[i][0] <= symdt && ca08_monthstart[i+1][0] > symdt){
+			premon = new Date(ca08_monthstart[i][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
+			postmon = new Date(ca08_monthstart[i+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
 			sj_mj = ca08_monthstart[i-1][2];  //--- 월지 (sj_mj)
 			nbr = Number(ca08_monthstart[i-1][1]);  //--- 월 수
 			term = Number(ca08_monthstart[i-1][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
