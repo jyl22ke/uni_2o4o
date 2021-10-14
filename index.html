@@ -116,6 +116,12 @@ fread("dgan_charac");
 fread("dgabja60_charac");
 fread("mjdjss_charac");
 fread("habhwa");
+fread("ca04_kstadj");	
+fread("ca05_sijitime");	
+fread("ca06_mjsjfind");	
+fread("ca07_tjsjfind");
+fread("ca08_monthstart");	
+fread("ca09_yjsjfind");	
 	
 function fread(fn){
     $(function (){
@@ -146,7 +152,8 @@ function fread(fn){
 </script>
 
 <script type="text/javascript">
-	var saju = "";
+	var premon = new Date(); var postmon = new Date(); var nbr = 0; var term = 0; 
+	var saju = ""; var symdt = ""; var birth = new Date();
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 
@@ -212,8 +219,11 @@ $( function() {
 		$('.sjb').empty();
 		$('.sjo').empty();
 		chg_bgcolor('.sj','#fff');
+		symdt = document.getElementById('sjtm').value;
+		convrtsj();
+		saju = sj_yg + sj_yj + sj_mg + sj_mj + sj_dg + sj_dj + sj_tg + sj_tj;
 		
-		saju = document.getElementById('sj').value;
+//		saju = document.getElementById('sj').value;
 		subj = saju.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0][0];
 		subj = saju.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0];
 		subj = saju.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0][0];
@@ -242,6 +252,82 @@ $( function() {
 	});
 });
 
+function convrtsj(){
+	nr = 0; nar = 0; nbr = 0; temp = []; temp1 = [];
+//--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
+	birth = new Date(symdt.substr(0,16));
+	for (i=0; i<ca04_kstadj.length; i++){
+		if (symdt > ca04_kstadj[i][0] && symdt < ca04_kstadj[i][1]){
+			crh = ca04_kstadj[i][2];
+		};
+	};
+	birth.setHours(birth.getHours() - Number(crh.substr(0,2)));  //--- 시간 보정
+	birth.setMinutes(birth.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
+	if (symdt.substr(11,5) < crh){ crnod = 1}else{crnod = 0};  //--- 일 보정수 (야자시 전환시 전일 일주 사용)
+
+//--- 월지(sj_mj) 확인 ----------------------
+	for ( i=1 ; i < ca08_monthstart.length ; i++ ){
+		if (ca08_monthstart[i][0] > symdt && ca08_monthstart[i-1][0] < symdt){
+			premon = new Date(ca08_monthstart[i-1][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
+			postmon = new Date(ca08_monthstart[i][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
+			sj_mj = ca08_monthstart[i-1][2];  //--- 월지 (sj_mj)
+			nbr = Number(ca08_monthstart[i-1][1]);  //--- 월 수
+			term = Number(ca08_monthstart[i-1][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
+		};
+	};
+
+	if ((sj_mj ==='자' || sj_mj ==='축') && symdt.substr(5,2) < '03'){ crnoy = 1}else{crnoy = 0};  //--- 년도 보정수 (입춘이전 전년 년주 사용)
+
+//--- 년간(sj_yg) 확인 ----------------------
+	ix = (birth.getFullYear() - crnoy) % 10 + 1;
+	sj_yg = ca09_yjsjfind[ix][1];  //--- 년간 (sj_yg)
+
+//--- 년지(sj_yj) 확인 ----------------------
+	ix = (birth.getFullYear() - crnoy ) % 12 + 1;
+	sj_yj = ca09_yjsjfind[ix][2];  //--- 년지 (sj_yj)
+
+//--- 월주 배열 만들기 ----------------------
+	ytit = ca06_mjsjfind.slice(1, 2);  //---월주배열 이름 (둘째줄) 가져오기
+	subj = sj_yg; ygtmp = ca06_mjsjfind.filter(isFind);  //---월주(년간 기준)
+	ygtmp.unshift(ytit[0]);  //---월주배열 + 이름 추가
+
+	idx = ygtmp[0].lastIndexOf(sj_mj);
+	sj_mg = ygtmp[1][idx].substr(0,1);  //--- 월간 (sj_mg)
+
+//--- 일간(sj_dg) 확인 ----------------------
+	ix = (Math.ceil(birth.getTime() / 86400000) - crnod + 600081) % 10 + 1;
+	sj_dg = ca09_yjsjfind[ix][1];  //--- 일간 (sj_dg)
+
+//--- 일지(sj_dj) 확인 ----------------------
+	ix = (Math.ceil(birth.getTime() / 86400000) - crnod + 600081) % 12 + 1;
+	sj_dj = ca09_yjsjfind[ix][2];  //--- 일지 (sj_dj)
+
+//--- 시지(sj_tj) 확인 ----------------------	
+	birth_t = String(birth.getHours()).padStart(2, '0') + ':' + birth.getMinutes();
+
+	for ( i=1 ; i < ca05_sijitime.length ; i++ ){
+		if (ca05_sijitime[i][0] < birth_t && ca05_sijitime[i][1] > birth_t){
+			sj_tj = ca05_sijitime[i][2];  //--- 시지 (sj_tj)
+			cor_t = ca05_sijitime[i][3];  //--- 시지 수 (시간 결정에 사용)
+		};
+	};
+	
+//--- 시주 배열 만들기 ---------------------
+	ttit = ca07_tjsjfind.slice(1, 2);  //---시주배열 이름 (둘째줄) 가져오기
+	subj = sj_dg; tgtmp = ca07_tjsjfind.filter(isFind);  //---시주(일간 기준)
+	tgtmp.unshift(ttit[0]);  //---시주배열 + 이름 추가
+	
+	idx = tgtmp[0].lastIndexOf(sj_tj);
+	sj_tg = tgtmp[1][idx].substr(0,1);  //--- 시간 (sj_tg)
+
+	
+
+};
+
+	
+	
+	
+	
 function fill_saju(){
 	for (i=1;i<5 ; i++){
 		m = i * 2 -1;
