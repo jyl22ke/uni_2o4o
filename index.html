@@ -269,9 +269,9 @@ function convrtsj(){
 		if (ca08_monthstart[i][0] <= symdt && ca08_monthstart[i+1][0] > symdt){
 			premon = new Date(ca08_monthstart[i][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
 			postmon = new Date(ca08_monthstart[i+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
-			sj_mj = ca08_monthstart[i-1][2];  //--- 월지 (sj_mj)
-			nbr = Number(ca08_monthstart[i-1][1]);  //--- 월 수
-			term = Number(ca08_monthstart[i-1][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
+			sj_mj = ca08_monthstart[i][2];  //--- 월지 (sj_mj)
+			nbr = Number(ca08_monthstart[i][1]);  //--- 월 수
+			term = Number(ca08_monthstart[i][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
 		};
 	};
 	if ((sj_mj ==='자' || sj_mj ==='축') && symdt.substr(5,2) < '03'){ crnoy = 1}else{crnoy = 0};  //--- 년도 보정수 (입춘이전 전년 년주 사용)
