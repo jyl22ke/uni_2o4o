@@ -257,14 +257,13 @@ function convrtsj(){
 //--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
 	birth = new Date(symdt.substr(0,16));
 	for (i=0; i<ca04_kstadj.length; i++){
-		if (symdt > ca04_kstadj[i][0] && symdt < ca04_kstadj[i][1]){
+		if (symdt => ca04_kstadj[i][0] && symdt <= ca04_kstadj[i][1]){
 			crh = ca04_kstadj[i][2];
 		};
 	};
 	birth.setHours(birth.getHours() - Number(crh.substr(0,2)));  //--- 시간 보정
 	birth.setMinutes(birth.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
 	if (symdt.substr(11,5) < crh){ crnod = 1}else{crnod = 0};  //--- 일 보정수 (야자시 전환시 전일 일주 사용)
-
 //--- 월지(sj_mj) 확인 ----------------------
 	for ( i=0 ; i < ca08_monthstart.length ; i++ ){
 		if (ca08_monthstart[i][0] <= symdt && ca08_monthstart[i+1][0] > symdt){
@@ -275,43 +274,34 @@ function convrtsj(){
 			term = Number(ca08_monthstart[i-1][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
 		};
 	};
-
 	if ((sj_mj ==='자' || sj_mj ==='축') && symdt.substr(5,2) < '03'){ crnoy = 1}else{crnoy = 0};  //--- 년도 보정수 (입춘이전 전년 년주 사용)
-
 //--- 년간(sj_yg) 확인 ----------------------
 	ix = (birth.getFullYear() - crnoy) % 10 + 1;
 	sj_yg = ca09_yjsjfind[ix][1];  //--- 년간 (sj_yg)
-
 //--- 년지(sj_yj) 확인 ----------------------
 	ix = (birth.getFullYear() - crnoy ) % 12 + 1;
 	sj_yj = ca09_yjsjfind[ix][2];  //--- 년지 (sj_yj)
-
 //--- 월주 배열 만들기 ----------------------
 	ytit = ca06_mjsjfind.slice(1, 2);  //---월주배열 이름 (둘째줄) 가져오기
 	subj = sj_yg; ygtmp = ca06_mjsjfind.filter(isFind);  //---월주(년간 기준)
 	ygtmp.unshift(ytit[0]);  //---월주배열 + 이름 추가
-
 	idx = ygtmp[0].lastIndexOf(sj_mj);
 	sj_mg = ygtmp[1][idx].substr(0,1);  //--- 월간 (sj_mg)
-
 //--- 일간(sj_dg) 확인 ----------------------
 	ix = (Math.ceil(birth.getTime() / 86400000) - crnod + 600081) % 10 + 1;
 	sj_dg = ca09_yjsjfind[ix][1];  //--- 일간 (sj_dg)
-
 //--- 일지(sj_dj) 확인 ----------------------
 	ix = (Math.ceil(birth.getTime() / 86400000) - crnod + 600081) % 12 + 1;
 	sj_dj = ca09_yjsjfind[ix][2];  //--- 일지 (sj_dj)
-
 //--- 시지(sj_tj) 확인 ----------------------	
 	birth_t = String(birth.getHours()).padStart(2, '0') + ':' + birth.getMinutes();
 
 	for ( i=1 ; i < ca05_sijitime.length ; i++ ){
-		if (ca05_sijitime[i][0] < birth_t && ca05_sijitime[i][1] > birth_t){
+		if (ca05_sijitime[i][0] <= birth_t && ca05_sijitime[i][1] => birth_t){
 			sj_tj = ca05_sijitime[i][2];  //--- 시지 (sj_tj)
 			cor_t = ca05_sijitime[i][3];  //--- 시지 수 (시간 결정에 사용)
 		};
 	};
-	
 //--- 시주 배열 만들기 ---------------------
 	ttit = ca07_tjsjfind.slice(1, 2);  //---시주배열 이름 (둘째줄) 가져오기
 	subj = sj_dg; tgtmp = ca07_tjsjfind.filter(isFind);  //---시주(일간 기준)
@@ -319,15 +309,8 @@ function convrtsj(){
 	
 	idx = tgtmp[0].lastIndexOf(sj_tj);
 	sj_tg = tgtmp[1][idx].substr(0,1);  //--- 시간 (sj_tg)
-
-	
-
 };
 
-	
-	
-	
-	
 function fill_saju(){
 	for (i=1;i<5 ; i++){
 		m = i * 2 -1;
