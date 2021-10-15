@@ -307,10 +307,10 @@ function convrtsj(){
 	birth1.setHours(birth1.getHours() - Number(crh.substr(0,2)));  //--- 시간 보정
 	birth1.setMinutes(birth1.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
 	//--- 일간(sj_dg) 확인 ----------------------
-	ix = (Math.ceil(birth1.getTime() / 86400000) + 600081) % 10 + 1;
+	ix = (Math.floor(birth1.getTime() / 86400000) + 600082) % 10 + 1;
 	sj_dg = ca09_yjsjfind[ix][1];  //--- 일간 (sj_dg)
 	//--- 일지(sj_dj) 확인 ----------------------
-	ix = (Math.ceil(birth1.getTime() / 86400000) + 600081) % 12 + 1;
+	ix = (Math.floor(birth1.getTime() / 86400000) + 600082) % 12 + 1;
 	sj_dj = ca09_yjsjfind[ix][2];  //--- 일지 (sj_dj)
 	//--- 시지(sj_tj) 확인 ----------------------	
 	birth_t = birth1.format('HH:mm');
