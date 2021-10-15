@@ -294,16 +294,16 @@ $( function() {
 });
 
 function convrtsj(){
-	nr = 0; nar = 0; nbr = 0; temp = []; temp1 = [];
+	crh = ""; temp = []; temp1 = [];
 	//--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
 	birth0 = new Date(symdt.substr(0,16));  //--- 입력시간(date)
 	birth = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
+	birth1 = birth0;  //--- 보정시간(date): 서울표준시
 	for (i=1; i<ca04_kstadj.length; i++){
 		if (birth >= ca04_kstadj[i][0] && birth <= ca04_kstadj[i][1]){
 			crh = ca04_kstadj[i][2];
 		};
 	};
-	birth1 = birth0;  //--- 보정시간(date): 서울표준시
 	birth1.setHours(birth1.getHours() - Number(crh.substr(0,2)));  //--- 시간 보정
 	birth1.setMinutes(birth1.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
 	//--- 일간(sj_dg) 확인 ----------------------
