@@ -298,7 +298,7 @@ function convrtsj(){
 	//--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
 	birth0 = new Date(symdt.substr(0,16));  //--- 입력시간(date)
 	birth = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
-	birth1 = birth0;  //--- 보정시간(date): 서울표준시
+	birth1 = new Date(symdt.substr(0,16));  //--- 보정할 시간(date): 서울표준시
 	for (i=1; i<ca04_kstadj.length; i++){
 		if (birth >= ca04_kstadj[i][0] && birth <= ca04_kstadj[i][1]){
 			crh = ca04_kstadj[i][2];
