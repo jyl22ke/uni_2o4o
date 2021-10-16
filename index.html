@@ -358,12 +358,12 @@ function convrtsj(){
 //======= 대운수 & 초기대운일 ======
 function longun(){
 	if (ggsgg[1][3] === gendr){
-		perio = (postmon - birth0) / 86400000 / term * 10 * 365;
+		perio = (postmon - birth0) / term * 10 * 365;
 	}else{
-		perio = (birth0 - premon) / 86400000 / term * 10 * 365;
+		perio = (birth0 - premon) / term * 10 * 365;
 	};
 	firstD = birth0;  //--- 초기대운일 
-	firstD.setTime(birth0.getTime() + perio);  //--- 초기대운일 계산
+	firstD.setTime(firstD.getTime() + perio);  //--- 초기대운일 계산
 	age = firstD.getFullYear() - birth0.getFullYear() + 1;  //--- 대운수(나이)
 	document.getElementById("output2").innerText += "초기대운일 (" + age + "세) " + firstD + " \n\n";
 };
