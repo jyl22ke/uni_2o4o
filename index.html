@@ -362,10 +362,10 @@ function longun(){
 	}else{
 		perio = (birth0 - premon) / term * 10 * 365;
 	};
-	firstD = birth0;  //--- 초기대운일 
+	firstD = new Date(symdt.substr(0,16));  //--- 초기대운일 
 	firstD.setTime(firstD.getTime() + perio);  //--- 초기대운일 계산
 	age = firstD.getFullYear() - birth0.getFullYear() + 1;  //--- 대운수(나이)
-	document.getElementById("output2").innerText += "초기대운일 (" + age + "세) " + firstD + " \n\n";
+	document.getElementById("output2").innerText += "초기대운일 (" + age + "세) " + firstD.format('yyyy-MM-dd HH:mm') + " \n\n";
 };
 	
 function fill_saju(){
