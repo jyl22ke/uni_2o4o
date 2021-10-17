@@ -382,9 +382,9 @@ function longun(){
 		longungj += gan[ca][0] + jiji[cb][0];
 		find_ggss(gan[ca][0],"","",4);
 		document.getElementById("output2").innerText += i +"대운 (" + (age + (i - 1) * 10) + "세) " + " \n";
-		document.getElementById("output2").innerText += gan[ca][0] + gs_titl + gan[ca][2] + gan[ca][3] + " \n";
+		document.getElementById("output2").innerText += " . . " + gan[ca][0] + " " +  gs_titl + " " + gan[ca][3] + gan[ca][2] + " \n";
 		find_gjss(jiji[cb][0],"",4);
-		document.getElementById("output2").innerText += jiji[cb][0] + js_titl + jiji[cb][2] + jiji[cb][3] + " \n\n";
+		document.getElementById("output2").innerText += " . . " + jiji[cb][0] + " " + js_titl + " " + jiji[cb][3] + jiji[cb][2] + " " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n\n";
 	};
 		document.getElementById("output2").innerText += longungj + " \n\n";
 };
@@ -435,76 +435,77 @@ function unsng(){
 
 //======= 기본 테이블 작성하는 함수 =======	
 function mktabl(){
-		//==== 천간(년,월,일,시)배열 만들기 ====
-		sstit = gan.slice(0, 1); uns12_tt = unsung.slice(0, 1);  //---천간배열 이름 (첫째줄) 가져오기  ---십이운성 이름(첫줄)
-		subj = sj_yg; ygsgg = gan.filter(isFind); uns12_yg = unsung.filter(isFind);  //---천간(년간)  ---십이운성(년)
-		subj = sj_mg; mgsgg = gan.filter(isFind); uns12_mg = unsung.filter(isFind);  //---천간(월간)  ---십이운성(월)
-		subj = sj_dg; dgsgg = gan.filter(isFind); uns12_dg = unsung.filter(isFind);  //---천간(일간)  ---십이운성(일)
-		subj = sj_tg; tgsgg = gan.filter(isFind); uns12_tg = unsung.filter(isFind);  //---천간(시간)  ---십이운성(시)
+	ggsgg = []; unsung12 = []; jjsjj = []; gjsgj = [];
+	//==== 천간(년,월,일,시)배열 만들기 ====
+	sstit = gan.slice(0, 1); uns12_tt = unsung.slice(0, 1);  //---천간배열 이름 (첫째줄) 가져오기  ---십이운성 이름(첫줄)
+	subj = sj_yg; ygsgg = gan.filter(isFind); uns12_yg = unsung.filter(isFind);  //---천간(년간)  ---십이운성(년)
+	subj = sj_mg; mgsgg = gan.filter(isFind); uns12_mg = unsung.filter(isFind);  //---천간(월간)  ---십이운성(월)
+	subj = sj_dg; dgsgg = gan.filter(isFind); uns12_dg = unsung.filter(isFind);  //---천간(일간)  ---십이운성(일)
+	subj = sj_tg; tgsgg = gan.filter(isFind); uns12_tg = unsung.filter(isFind);  //---천간(시간)  ---십이운성(시)
 
-		ggsgg.unshift(tgsgg[0]); unsung12.unshift(uns12_tg[0]);  //---천간배열(시간) 추가  ---십이운성(시) 추가
-		ggsgg.unshift(dgsgg[0]); unsung12.unshift(uns12_dg[0]);  //---천간배열(일간) 추가  ---십이운성(일) 추가
-		ggsgg.unshift(mgsgg[0]); unsung12.unshift(uns12_mg[0]);  //---천간배열(월간) 추가  ---십이운성(월) 추가
-		ggsgg.unshift(ygsgg[0]); unsung12.unshift(uns12_yg[0]);  //---천간배열(년간) 추가  ---십이운성(년) 추가
-		ggsgg.unshift(sstit[0]); unsung12.unshift(uns12_tt[0]);  //---천간배열 + 이름 추가  ---십이운성 이름 (첫줄) 추가
-		//------ 만들어진 천간배열 ------
-		/*	0: (6) ["천간", "천간h", "오행", "음양", "이름", "색"]
-			1: (6) ["갑", "甲", "목", "양", "갑양목", "#3c3"]
-			2: (6) ["을", "乙", "목", "음", "을음목", "#3c3"]
-			3: (6) ["경", "庚", "금", "양", "경양금", "#fff"]
-			4: (6) ["병", "丙", "화", "양", "병양화", "#f00"]	*/
+	ggsgg.unshift(tgsgg[0]); unsung12.unshift(uns12_tg[0]);  //---천간배열(시간) 추가  ---십이운성(시) 추가
+	ggsgg.unshift(dgsgg[0]); unsung12.unshift(uns12_dg[0]);  //---천간배열(일간) 추가  ---십이운성(일) 추가
+	ggsgg.unshift(mgsgg[0]); unsung12.unshift(uns12_mg[0]);  //---천간배열(월간) 추가  ---십이운성(월) 추가
+	ggsgg.unshift(ygsgg[0]); unsung12.unshift(uns12_yg[0]);  //---천간배열(년간) 추가  ---십이운성(년) 추가
+	ggsgg.unshift(sstit[0]); unsung12.unshift(uns12_tt[0]);  //---천간배열 + 이름 추가  ---십이운성 이름 (첫줄) 추가
+	//------ 만들어진 천간배열 ------
+	/*	0: (6) ["천간", "천간h", "오행", "음양", "이름", "색"]
+		1: (6) ["갑", "甲", "목", "양", "갑양목", "#3c3"]
+		2: (6) ["을", "乙", "목", "음", "을음목", "#3c3"]
+		3: (6) ["경", "庚", "금", "양", "경양금", "#fff"]
+		4: (6) ["병", "丙", "화", "양", "병양화", "#f00"]	*/
 
-		//==== 지지(년,월,일,시)배열 만들기 ====
-		sstit = jiji.slice(0, 1);  //---지지배열 이름 (첫째줄) 가져오기
-		subj = sj_yj; yjsjj = jiji.filter(isFind);  //---지지(년지)
-		subj = sj_mj; mjsjj = jiji.filter(isFind);  //---지지(월지)
-		subj = sj_dj; djsjj = jiji.filter(isFind);  //---지지(일지)
-		subj = sj_tj; tjsjj = jiji.filter(isFind);  //---지지(시지)
+	//==== 지지(년,월,일,시)배열 만들기 ====
+	sstit = jiji.slice(0, 1);  //---지지배열 이름 (첫째줄) 가져오기
+	subj = sj_yj; yjsjj = jiji.filter(isFind);  //---지지(년지)
+	subj = sj_mj; mjsjj = jiji.filter(isFind);  //---지지(월지)
+	subj = sj_dj; djsjj = jiji.filter(isFind);  //---지지(일지)
+	subj = sj_tj; tjsjj = jiji.filter(isFind);  //---지지(시지)
 
-		jjsjj.unshift(tjsjj[0]);  //---지지배열(시지) 추가
-		jjsjj.unshift(djsjj[0]);  //---지지배열(일지) 추가
-		jjsjj.unshift(mjsjj[0]);  //---지지배열(월지) 추가
-		jjsjj.unshift(yjsjj[0]);  //---지지배열(년지) 추가
-		jjsjj.unshift(sstit[0]);  //---지지배열 + 이름 추가
-		//------ 만들어진 지지배열 ------
-		/*	0: (16) ["지지", "지지h", "오행", "음양", "이름", "색", "여기", "중기", "정기", "충", "육합", "육화", "삼합", "삼화", "방합", "방화"]
-			1: (16) ["오", "午", "화", "음", "오음화", "#f00", "병10", "기9", "정11", "자", "미", "화", "인술", "화", "사미", "화"]
-			2: (16) ["해", "亥", "수", "양", "해양수", "#999", "무7", "갑7", "임16", "사", "인", "목", "묘미", "목", "자축", "수"]
-			3: (16) ["오", "午", "화", "음", "오음화", "#f00", "병10", "기9", "정11", "자", "미", "화", "인술", "화", "사미", "화"]
-			4: (16) ["자", "子", "수", "음", "자음수", "#999", "임10", "", "계20", "오", "축", "토", "신진", "수", "해축", "수"]	*/
+	jjsjj.unshift(tjsjj[0]);  //---지지배열(시지) 추가
+	jjsjj.unshift(djsjj[0]);  //---지지배열(일지) 추가
+	jjsjj.unshift(mjsjj[0]);  //---지지배열(월지) 추가
+	jjsjj.unshift(yjsjj[0]);  //---지지배열(년지) 추가
+	jjsjj.unshift(sstit[0]);  //---지지배열 + 이름 추가
+	//------ 만들어진 지지배열 ------
+	/*	0: (16) ["지지", "지지h", "오행", "음양", "이름", "색", "여기", "중기", "정기", "충", "육합", "육화", "삼합", "삼화", "방합", "방화"]
+		1: (16) ["오", "午", "화", "음", "오음화", "#f00", "병10", "기9", "정11", "자", "미", "화", "인술", "화", "사미", "화"]
+		2: (16) ["해", "亥", "수", "양", "해양수", "#999", "무7", "갑7", "임16", "사", "인", "목", "묘미", "목", "자축", "수"]
+		3: (16) ["오", "午", "화", "음", "오음화", "#f00", "병10", "기9", "정11", "자", "미", "화", "인술", "화", "사미", "화"]
+		4: (16) ["자", "子", "수", "음", "자음수", "#999", "임10", "", "계20", "오", "축", "토", "신진", "수", "해축", "수"]	*/
 
-		//==== 십성 간(년,월,일,시) 지(년,월,일,시) 배열 만들기 ====
-		sstit = sibsungX1.slice(0, 2);  //---십성배열 이름 (천간:첫째줄, 지지:둘째줄) 가져오기
-		subj = sj_yg; ygssg = sibsungX1.filter(isFind);  //---십성(년간)
-		subj = sj_mg; mgssg = sibsungX1.filter(isFind);  //---십성(월간)
-		subj = sj_dg; dgssg = sibsungX1.filter(isFind);  //---십성(일간)
-		subj = sj_tg; tgssg = sibsungX1.filter(isFind);  //---십성(시간)
-		subj = sj_yj; yjssj = sibsungX1.filter(isFindj);  //---십성(년지)
-		subj = sj_mj; mjssj = sibsungX1.filter(isFindj);  //---십성(월지)
-		subj = sj_dj; djssj = sibsungX1.filter(isFindj);  //---십성(일지)
-		subj = sj_tj; tjssj = sibsungX1.filter(isFindj);  //---십성(시지)
+	//==== 십성 간(년,월,일,시) 지(년,월,일,시) 배열 만들기 ====
+	sstit = sibsungX1.slice(0, 2);  //---십성배열 이름 (천간:첫째줄, 지지:둘째줄) 가져오기
+	subj = sj_yg; ygssg = sibsungX1.filter(isFind);  //---십성(년간)
+	subj = sj_mg; mgssg = sibsungX1.filter(isFind);  //---십성(월간)
+	subj = sj_dg; dgssg = sibsungX1.filter(isFind);  //---십성(일간)
+	subj = sj_tg; tgssg = sibsungX1.filter(isFind);  //---십성(시간)
+	subj = sj_yj; yjssj = sibsungX1.filter(isFindj);  //---십성(년지)
+	subj = sj_mj; mjssj = sibsungX1.filter(isFindj);  //---십성(월지)
+	subj = sj_dj; djssj = sibsungX1.filter(isFindj);  //---십성(일지)
+	subj = sj_tj; tjssj = sibsungX1.filter(isFindj);  //---십성(시지)
 
-		gjsgj.unshift(tjssj[0]);  //---십성배열(시지) 추가
-		gjsgj.unshift(djssj[0]);  //---십성배열(일지) 추가
-		gjsgj.unshift(mjssj[0]);  //---십성배열(월지) 추가
-		gjsgj.unshift(yjssj[0]);  //---십성배열(년지) 추가
-		gjsgj.unshift(tgssg[0]);  //---십성배열(시간) 추가
-		gjsgj.unshift(dgssg[0]);  //---십성배열(일간) 추가
-		gjsgj.unshift(mgssg[0]);  //---십성배열(월간) 추가
-		gjsgj.unshift(ygssg[0]);  //---십성배열(년간) 추가
-		gjsgj.unshift(sstit[1]);  //---십성배열 + 지지이름 추가
-		gjsgj.unshift(sstit[0]);  //---십성배열 + 천간이름 추가
-		//------ 만들어진 십성배열 ------
-		/*	0: (13) ["xx", "xx", "gn", "갑", "을", "병", "정", "무", "기", "경", "신", "임", "계"]
-			1: (13) ["gn", "jj", "oh", "인", "묘", "사", "오", "진술", "축미", "신", "유", "해", "자"]
-			2: (13) ["갑", "인", "양목", "비견", "겁재", "식신", "상관", "편재", "정재", "편관", "정관", "편인", "정인"]
-			3: (13) ["을", "묘", "음목", "겁재", "비견", "상관", "식신", "정재", "편재", "정관", "편관", "정인", "편인"]
-			4: (13) ["경", "신", "양금", "편재", "정재", "편관", "정관", "편인", "정인", "비견", "겁재", "식신", "상관"]
-			5: (13) ["병", "사", "양화", "편인", "정인", "비견", "겁재", "식신", "상관", "편재", "정재", "편관", "정관"]
-			6: (13) ["정", "오", "음화", "정인", "편인", "겁재", "비견", "상관", "식신", "정재", "편재", "정관", "편관"]
-			7: (13) ["임", "해", "양수", "식신", "상관", "편재", "정재", "편관", "정관", "편인", "정인", "비견", "겁재"]
-			8: (13) ["정", "오", "음화", "정인", "편인", "겁재", "비견", "상관", "식신", "정재", "편재", "정관", "편관"]
-			9: (13) ["계", "자", "음수", "상관", "식신", "정재", "편재", "정관", "편관", "정인", "편인", "겁재", "비견"]	*/
+	gjsgj.unshift(tjssj[0]);  //---십성배열(시지) 추가
+	gjsgj.unshift(djssj[0]);  //---십성배열(일지) 추가
+	gjsgj.unshift(mjssj[0]);  //---십성배열(월지) 추가
+	gjsgj.unshift(yjssj[0]);  //---십성배열(년지) 추가
+	gjsgj.unshift(tgssg[0]);  //---십성배열(시간) 추가
+	gjsgj.unshift(dgssg[0]);  //---십성배열(일간) 추가
+	gjsgj.unshift(mgssg[0]);  //---십성배열(월간) 추가
+	gjsgj.unshift(ygssg[0]);  //---십성배열(년간) 추가
+	gjsgj.unshift(sstit[1]);  //---십성배열 + 지지이름 추가
+	gjsgj.unshift(sstit[0]);  //---십성배열 + 천간이름 추가
+	//------ 만들어진 십성배열 ------
+	/*	0: (13) ["xx", "xx", "gn", "갑", "을", "병", "정", "무", "기", "경", "신", "임", "계"]
+		1: (13) ["gn", "jj", "oh", "인", "묘", "사", "오", "진술", "축미", "신", "유", "해", "자"]
+		2: (13) ["갑", "인", "양목", "비견", "겁재", "식신", "상관", "편재", "정재", "편관", "정관", "편인", "정인"]
+		3: (13) ["을", "묘", "음목", "겁재", "비견", "상관", "식신", "정재", "편재", "정관", "편관", "정인", "편인"]
+		4: (13) ["경", "신", "양금", "편재", "정재", "편관", "정관", "편인", "정인", "비견", "겁재", "식신", "상관"]
+		5: (13) ["병", "사", "양화", "편인", "정인", "비견", "겁재", "식신", "상관", "편재", "정재", "편관", "정관"]
+		6: (13) ["정", "오", "음화", "정인", "편인", "겁재", "비견", "상관", "식신", "정재", "편재", "정관", "편관"]
+		7: (13) ["임", "해", "양수", "식신", "상관", "편재", "정재", "편관", "정관", "편인", "정인", "비견", "겁재"]
+		8: (13) ["정", "오", "음화", "정인", "편인", "겁재", "비견", "상관", "식신", "정재", "편재", "정관", "편관"]
+		9: (13) ["계", "자", "음수", "상관", "식신", "정재", "편재", "정관", "편관", "정인", "편인", "겁재", "비견"]	*/
 };
 
 function find_ggss(gan,css,jjg,no){
