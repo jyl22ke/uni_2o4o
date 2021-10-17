@@ -367,6 +367,23 @@ function longun(){
 	age = firstD.getFullYear() - birth0.getFullYear() + 1;  //--- 대운수(나이)
 	document.getElementById("output2").innerText += "생년월일 : " + birth0.format('yyyy-MM-dd HH:mm') + " (" + (new Date().getFullYear() - birth0.getFullYear() + 1) + "세 " + gendr.substr(0,1) + "성) \n";
 	document.getElementById("output2").innerText += "초기대운일 (" + age + "세) " + firstD.format('yyyy-MM-dd HH:mm') + " \n\n";
+	for (i=0; i<gan.length; i++){
+		if (gan[i][0] === sj_mg){a = i};
+	};
+	for (i=0; i<jiji.length; i++){
+		if (jiji[i][0] === sj_mj){b = i};
+	};
+	for (i=1; i<10; i++){
+		ca = (a + i) % 10 + 1;
+		cb = (b + i) % 12 + 1;
+		longungj += gan[ca][0] + jiji[cb][0];
+		document.getElementById("output2").innerText += i +"대운 (" + (age + (i - 1) * 10) + "세) " + " \n" + gan[ca][0];
+		find_ggss(gan[ca][0],"#output2","",4);
+		document.getElementById("output2").innerText += gan[ca][2] + gan[ca][3] + " \n";
+		document.getElementById("output2").innerText += jiji[cb][0];
+		find_ggss(jiji[cb][0],"#output2","",4);
+		document.getElementById("output2").innerText += jiji[cb][2] + jiji[cb][3] + " \n\n";
+	};
 };
 	
 function fill_saju(){
