@@ -377,12 +377,11 @@ function longun(){
 		ca = (a + i) % 10 + 1;
 		cb = (b + i) % 12 + 1;
 		longungj += gan[ca][0] + jiji[cb][0];
-		document.getElementById("output2").innerText += i +"대운 (" + (age + (i - 1) * 10) + "세) " + " \n" + gan[ca][0];
-		find_ggss(gan[ca][0],"#output2","",4);
-		document.getElementById("output2").innerText += gan[ca][2] + gan[ca][3] + " \n";
-		document.getElementById("output2").innerText += jiji[cb][0];
-		find_ggss(jiji[cb][0],"#output2","",4);
-		document.getElementById("output2").innerText += jiji[cb][2] + jiji[cb][3] + " \n\n";
+		find_ggss(gan[ca][0],"","",4);
+		document.getElementById("output2").innerText += i +"대운 (" + (age + (i - 1) * 10) + "세) " + " \n";
+		document.getElementById("output2").innerText += gan[ca][0] + gs_titl + gan[ca][2] + gan[ca][3] + " \n";
+		find_gjss(jiji[cb][0],"",4);
+		document.getElementById("output2").innerText += jiji[cb][0] + js_titl + jiji[cb][2] + jiji[cb][3] + " \n\n";
 	};
 };
 	
