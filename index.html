@@ -51,7 +51,7 @@
 <!-- 메인메뉴 mmenu part -->
 <div class="container">
 	<div class="insrt">
-		<p class="ifo"> 생년월일시: <input type="datetime-local" id="sjtm" value=new Date()> &nbsp; &nbsp; 사주: <input type="text" id="sj" class="ifo" maxlength="8"> &nbsp; &nbsp; 성별: <input type="radio" name="gender" value="남양">남(양) <input type="radio" name="gender" value="여음">여(음) &nbsp; &nbsp;<button id="clear1">지우기</button> &nbsp; &nbsp;<button id="submit1">제 출</button></p><br/> 
+		<p class="ifo"> 생년월일시: <input type="datetime-local" id="sjtm"> &nbsp; &nbsp; 사주: <input type="text" id="sj" class="ifo" maxlength="8"> &nbsp; &nbsp; 성별: <input type="radio" name="gender" value="남양">남(양) <input type="radio" name="gender" value="여음">여(음) &nbsp; &nbsp;<button id="clear1">지우기</button> &nbsp; &nbsp;<button id="submit1">제 출</button></p><br/> 
 	</div>
 <hr/>
 	<div class="canvas">
@@ -204,9 +204,6 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	var dgss_titl1 = ""; var dgss_titl2 = ""; var dgss_titl3 = ""; var dgss_titl4 = "";  //--- (일간기준) 십성이름
 	var dgss_titl6 = ""; var dgss_titl7 = ""; var dgss_titl8 = ""; var gs_titl = ""; var js_titl = "";
 	var aa = ""; var bb = ""; var cc = ""; var name = "";
-	
-document.getElementById('sjtm').value = new Date().toISOString().slice(0,16);	
-	
 	
 //========= 간지 배경색 =========
 function chg_bgcolor(a,b,c) {
