@@ -205,6 +205,9 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	var dgss_titl6 = ""; var dgss_titl7 = ""; var dgss_titl8 = ""; var gs_titl = ""; var js_titl = "";
 	var aa = ""; var bb = ""; var cc = ""; var name = "";
 	
+document.getElementById('sjtm').value = new Date().toISOString().slice(0, 16);	
+	
+	
 //========= 간지 배경색 =========
 function chg_bgcolor(a,b,c) {
 	$(a).css("background","linear-gradient(145deg," + b + ", 45%," + c + " 55%)");
