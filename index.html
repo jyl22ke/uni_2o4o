@@ -194,7 +194,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	 
 <script type="text/javascript">
 	var premon = new Date(); var postmon = new Date(); var nbr = 0; var term = 0; var gendr = "";
-	var saju = ""; var symdt = ""; var birth0 = new Date(); var birth1 = new Date(); var longungj = "";
+	var saju = ""; var saju_h = ""; var symdt = ""; var birth0 = new Date(); var birth1 = new Date(); var longungj = "";
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 
@@ -260,12 +260,13 @@ $( function() {
 		$('.sjb').empty();
 		$('.sjo').empty();
 		chg_bgcolor('.sj','#fff');
+		
+		saju_h = document.getElementById('sj').value;
 		symdt = document.getElementById('sjtm').value;
 		gendr = $('input[name="gender"]:checked').val();
 		convrtsj();
 		saju = sj_yg + sj_yj + sj_mg + sj_mj + sj_dg + sj_dj + sj_tg + sj_tj;
 		
-//		saju = document.getElementById('sj').value;
 		subj = saju.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0][0];
 		subj = saju.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0];
 		subj = saju.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0][0];
