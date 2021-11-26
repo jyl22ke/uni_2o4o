@@ -216,6 +216,7 @@ function chkOdd(num) { return (num % 2)? "양":"음"; }
 //========= 화면 지우기 ========
 $( function() {
 	$( 'button#clear1' ).click( function() {
+		$( 'input#sjtm' ).val('');
 		$( 'input#sj' ).val('');
 		$('#output').empty();
 		$('#output2').empty();
@@ -267,14 +268,14 @@ $( function() {
 		convrtsj();
 		saju = sj_yg + sj_yj + sj_mg + sj_mj + sj_dg + sj_dj + sj_tg + sj_tj;
 		
-		subj = saju.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0][0];
-		subj = saju.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0];
-		subj = saju.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0][0];
-		subj = saju.substr(3,1); temp = jiji.filter(isFindj); sj_mj = temp[0][0];
-		subj = saju.substr(4,1); temp = gan.filter(isFindj); sj_dg = temp[0][0];
-		subj = saju.substr(5,1); temp = jiji.filter(isFindj); sj_dj = temp[0][0];
-		subj = saju.substr(6,1); temp = gan.filter(isFindj); sj_tg = temp[0][0];
-		subj = saju.substr(7,1); temp = jiji.filter(isFindj); sj_tj = temp[0][0];
+		subj = saju_h.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0][0];
+		subj = saju_h.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0];
+		subj = saju_h.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0][0];
+		subj = saju_h.substr(3,1); temp = jiji.filter(isFindj); sj_mj = temp[0][0];
+		subj = saju_h.substr(4,1); temp = gan.filter(isFindj); sj_dg = temp[0][0];
+		subj = saju_h.substr(5,1); temp = jiji.filter(isFindj); sj_dj = temp[0][0];
+		subj = saju_h.substr(6,1); temp = gan.filter(isFindj); sj_tg = temp[0][0];
+		subj = saju_h.substr(7,1); temp = jiji.filter(isFindj); sj_tj = temp[0][0];
 
 		mktabl();
 		fill_saju();
