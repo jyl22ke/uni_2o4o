@@ -265,9 +265,11 @@ $( function() {
 		saju_h = document.getElementById('sj').value;
 		symdt = document.getElementById('sjtm').value;
 		gendr = $('input[name="gender"]:checked').val();
-		convrtsj();
-		saju = sj_yg + sj_yj + sj_mg + sj_mj + sj_dg + sj_dj + sj_tg + sj_tj;
 		
+		if(symdt != ""){
+			convrtsj();
+			saju = sj_yg + sj_yj + sj_mg + sj_mj + sj_dg + sj_dj + sj_tg + sj_tj;
+		};
 		subj = saju_h.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0][0];
 		subj = saju_h.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0];
 		subj = saju_h.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0][0];
