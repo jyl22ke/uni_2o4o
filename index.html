@@ -316,10 +316,10 @@ function convrtsj(){
 	birth1.setMinutes(birth1.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
 	//--- 일간(sj_dg) 확인 ----------------------
 	ix = (Math.floor((birth1.getTime() + 32400000) / 86400000) + 600081) % 10 + 1;
-	sj_dg = ca09_yjsjfind[ix][1];  //--- 일간 (sj_dg)
+	sj_dg = ca09r_yjsjfind[1][ix];  //--- 일간 (sj_dg)
 	//--- 일지(sj_dj) 확인 ----------------------
 	ix = (Math.floor((birth1.getTime() + 32400000) / 86400000) + 600081) % 12 + 1;
-	sj_dj = ca09_yjsjfind[ix][2];  //--- 일지 (sj_dj)
+	sj_dj = ca09r_yjsjfind[2][ix];  //--- 일지 (sj_dj)
 	//--- 시지(sj_tj) 확인 ----------------------	
 	birth_t = birth1.format('HH:mm');
 	for ( i=1 ; i < ca05_sijitime.length ; i++ ){
@@ -349,10 +349,10 @@ function convrtsj(){
 	//--- 년간(sj_yg) 확인 ----------------------
 	if (birth < yrstart){ crnoy = 1 }else{ crnoy = 0 };  //--- 년도 보정수 (입춘이전 전년 년주 사용)
 	ix = (birth0.getFullYear() - crnoy) % 10 + 1;
-	sj_yg = ca09_yjsjfind[ix][1];  //--- 년간 (sj_yg)
+	sj_yg = ca09r_yjsjfind[1][ix];  //--- 년간 (sj_yg)
 	//--- 년지(sj_yj) 확인 ----------------------
 	ix = (birth0.getFullYear() - crnoy ) % 12 + 1;
-	sj_yj = ca09_yjsjfind[ix][2];  //--- 년지 (sj_yj)
+	sj_yj = ca09r_yjsjfind[2][ix];  //--- 년지 (sj_yj)
 	//--- 월주 배열 만들기 ----------------------
 	ytit = ca06_mjsjfind.slice(1, 2);  //---월주배열 이름 (둘째줄) 가져오기
 	subj = sj_yg; ygtmp = ca06_mjsjfind.filter(isFind);  //---월주(년간 기준)
