@@ -392,9 +392,9 @@ function saju_chk(){
 	
 	yr = e + 1859; //---- 년도
 	mo = (f - 2) % 12 + 1; //---- 월
-//	if (yr < 1908){
-//		yr = yr + 60; //---- 년도 확인
-//	};
+	if (yr < 1908){
+		yr = yr + 60; //---- 년도 확인
+	};
 	subj = yr;
 	temp = ca08_monthstart.filter(isFindm);
 	stym = new Date(temp[0][0]); //---- mb월(양력) 시작일 확인
