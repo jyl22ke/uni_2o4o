@@ -389,7 +389,25 @@ function saju_chk(){
 	};
 	subj = yr;
 	temp = ca08_monthstart.filter(isFindm);
-	temp[0] //---- mb월(양력) 시작일 확인
+	stym = temp[0][0]; //---- mb월(양력) 시작일 확인
+	
+	a = ca09r_yjsjfind[1].indexOf(da);
+	b = ca09r_yjsjfind[2].indexOf(db);
+	if (a >= b){
+		c = (a - b) * 6 + b;
+	}else{
+		c = (10 + a - b) * 6 + b;
+	};
+	
+	sttm = new Date('1908-03-05T00:01')
+	tm1 = sttm.getTime() + c * 86400000
+	sttm = new Date(tm1)
+	while (sttm < stym){
+		tm1 = tm1 + 5184000000;
+		sttm = new Date(tm1);
+	}
+	sj_birth = sttm;
+	
 	//---- 일주 확인 작성중=============================================
 
 
