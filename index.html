@@ -396,8 +396,9 @@ function saju_chk(){
 		yr = yr + 60; //---- 년도 확인
 	};
 	subj = yr;
-	temp = ca08_monthstart.filter(isFindm);
-	stym = new Date(temp[0][0]); //---- mb월(양력) 시작일 확인
+	tem = ca08_monthstart.filter(isFindm);
+	stem = ca08_monthstart.findIndex(isFindm);
+	stym = new Date(tem[0][0]); //---- mb월(양력) 시작일 확인
 	
 	a = ca09r_yjsjfind[1].indexOf(da);
 	b = ca09r_yjsjfind[2].indexOf(db);
