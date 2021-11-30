@@ -405,9 +405,9 @@ function saju_chk(){
 //	while (yr <= year){
 		subj = yr;
 		ns = ca08_monthstart.findIndex(isFindm); //---- mb월(양력) 시작일 확인 (index)
-		startdate = new Date(ca08_monthstart[ns][0]); //---- mb월(양력) 시작일
-		enddate = new Date(ca08_monthstart[ns+1][0]); //---- mb월(양력) 종료일
-
+		startdate = new Date(ca08_monthstart[ns][0].substr(0,10)); //---- mb월(양력) 시작일
+		enddate = new Date(ca08_monthstart[ns+1][0].substr(0,10)); //---- mb월(양력) 종료일
+	
 		sd = startdate.getTime() + 2073600000000; //--- 월 시작일(sd)
 		co_s = ((sd - bsd)/86400000) % 60; 
 		ed = enddate.getTime() + 2073600000000; //--- 월 종료일(ed)
