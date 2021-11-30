@@ -402,7 +402,7 @@ function saju_chk(){
 	f = ca09r_yjsjfind[2].indexOf(db);
 	if (e >= f){nd = (e - f) * 6 + f;}else{nd = (10 + e - f) * 6 + f;};
 	
-	while (yr <= year){
+//	while (yr <= year){
 		subj = yr;
 		ns = ca08_monthstart.findIndex(isFindm); //---- mb월(양력) 시작일 확인 (index)
 		startdate = new Date(ca08_monthstart[ns][0]); //---- mb월(양력) 시작일
@@ -416,8 +416,8 @@ function saju_chk(){
 		if (nd >= co_s && nd <= co_e){
 			birth0 = new Date(sd + nd * 86400000 - 2073600000000);
 		};
-		yr = yr + 60; //---- 년도 확인
-	};
+//		yr = yr + 60; //---- 년도 확인
+//	};
 };
 	
 //======= 대운수 & 초기대운일 ======
