@@ -205,6 +205,10 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	var dgss_titl1 = ""; var dgss_titl2 = ""; var dgss_titl3 = ""; var dgss_titl4 = "";  //--- (일간기준) 십성이름
 	var dgss_titl6 = ""; var dgss_titl7 = ""; var dgss_titl8 = ""; var gs_titl = ""; var js_titl = "";
 	var aa = ""; var bb = ""; var cc = ""; var name = "";
+
+	var ya = ""; var yb = ""; var ma = ""; var mb = ""; var da = ""; var db = ""; var ta = ""; var tb = "";
+	var a = 0; var b = 0; var c = 0; var d = 0; var e = 0; var f = 0; var bs = 0; var co_s = 0; var co_e = 0; 
+	var ny = 0; var nm = 0; var nd = 0; var yr = 0; var mo = 0; var bsd = 0; var ns = 0; var sd = 0; var ed = 0; 
 	
 //========= 간지 배경색 =========
 function chg_bgcolor(a,b,c) {
@@ -254,6 +258,9 @@ function isFindm(element)  {
 //=========== 사주 입력시 실행되는 main 함수 ===========
 $( function() {
 	$( 'button#submit1' ).click( function() {
+		ya = ""; yb = ""; ma = ""; mb = ""; da = ""; db = ""; ta = ""; tb = "";
+		a = 0; b = 0; c = 0; d = 0; e = 0; f = 0; bs = 0; co_s = 0; co_e = 0; 
+		ny = 0; nm = 0; nd = 0; yr = 0; mo = 0; bsd = 0; ns = 0; sd = 0; ed = 0; 
 		//------------------ 변수값 clear RESET start -------------------
 		sj_yg = ""; sj_mg = ""; sj_dg = ""; sj_tg = "";  //--- 사주 (년월일시)간
 		sj_yj = ""; sj_mj = ""; sj_dj = ""; sj_tj = "";  //--- 사주 (년월일시)지
@@ -372,10 +379,6 @@ function convrtsj(){
 
 //======= 사주 월간/시간 오류 check =======	
 function saju_chk(){
-	var ya = ""; var yb = ""; var ma = ""; var mb = ""; var da = ""; var db = ""; var ta = ""; var tb = "";
-	var a = 0; var b = 0; var c = 0; var d = 0; var e = 0; var f = 0; var bs = 0; var co_s = 0; var co_e = 0; 
-	var ny = 0; var nm = 0; var nd = 0; var yr = 0; var mo = 0; var bsd = 0; var ns = 0; var sd = 0; var ed = 0; 
-	
 	ya = saju_h.substr(0,1);
 	yb = saju_h.substr(1,1);
 	ma = saju_h.substr(2,1);
