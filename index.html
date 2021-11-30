@@ -397,7 +397,7 @@ function saju_chk(){
 	var now = new Date();	// 현재 날짜 및 시간
 	var year = now.getFullYear();	// 연도
 
-	bsd = 117732728000; //--- 기준 갑자일(1908-01-10 00:00) = -1955867272000 + 2073600000000 = 117732728000 
+	bsd = 117763200000; //--- 기준 갑자일(1908-01-10) = -1955836800000 + 2073600000000 = 117763200000 
 	e = ca09r_yjsjfind[1].indexOf(da);
 	f = ca09r_yjsjfind[2].indexOf(db);
 	if (e >= f){nd = (e - f) * 6 + f;}else{nd = (10 + e - f) * 6 + f;};
