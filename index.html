@@ -414,7 +414,7 @@ function saju_chk(){
 		co_e = ((ed - bsd)/86400000) % 60; 
 
 		if (nd >= co_s && nd <= co_e){
-			birth0 = new Date(sd + nd * 86400000);
+			birth0 = new Date(sd + nd * 86400000 - 2073600000000);
 		};
 		yr = yr + 60; //---- 년도 확인
 	};
