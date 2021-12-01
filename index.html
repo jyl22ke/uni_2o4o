@@ -400,7 +400,8 @@ function saju_chk(){
 	if (c >= d){nm = (c - d) * 6 + d;}else{nm = (10 + c - d) * 6 + d;}; //--- 월간/월지(c/d) 순서(nm)
 	if (e >= f){nd = (e - f) * 6 + f;}else{nd = (10 + e - f) * 6 + f;}; //--- 일간/일지(e/f) 순서(nd)
 	if (g >= h){nt = (g - h) * 6 + h;}else{nt = (10 + g - h) * 6 + h;}; //--- 시간/시지(g/h) 순서(nt)
-	nma = (a - 1) * 12 + d; nta = (e - 1) * 12 + h;
+	if (d < 3){nma = a * 12 + d; }else{nma = (a - 1) * 12 + d; };
+	nta = (e - 1) * 12 + h;
 	if (nm != nma){
 		document.getElementById("output2").innerText += "생년월일 check : 사주가 맞지 않습니다.. " + saju_h + " \n";
 	}else{
