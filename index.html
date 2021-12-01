@@ -423,9 +423,6 @@ function saju_chk(){
 		while (yr <= year){
 			subj = yr; subj1 = mb;
 			ns = ca08_monthstart.findIndex(isFindm); //---- mb월(양력) 시작일 확인 (index)
-			premon = new Date(ca08_monthstart[ns][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
-			postmon = new Date(ca08_monthstart[ns+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
-			term = Number(ca08_monthstart[ns][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
 			startdate = new Date(ca08_monthstart[ns][0].substr(0,10)); //---- mb월(양력) 시작일
 			enddate = new Date(ca08_monthstart[ns+1][0].substr(0,10)); //---- mb월(양력) 종료일
 
@@ -441,6 +438,9 @@ function saju_chk(){
 				hrs = ca09r_yjsjfind[3][h];
 				birth0 = new Date(birth0.setHours(hrs)); birth1 = birth0;
 				symdt = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
+				premon = new Date(ca08_monthstart[ns][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
+				postmon = new Date(ca08_monthstart[ns+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
+				term = Number(ca08_monthstart[ns][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
 //				document.getElementById("output2").innerText += "생년월일 check : " + chk + birth0.format('yyyy-MM-dd HH:mm') + " \n";
 //				chk = "OK.. ";
 //			}else{
