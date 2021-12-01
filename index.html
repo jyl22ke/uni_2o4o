@@ -401,7 +401,7 @@ function saju_chk(){
 	if (e >= f){nd = (e - f) * 6 + f;}else{nd = (10 + e - f) * 6 + f;}; //--- 일간/일지(e/f) 순서(nd)
 	if (g >= h){nt = (g - h) * 6 + h;}else{nt = (10 + g - h) * 6 + h;}; //--- 시간/시지(g/h) 순서(nt)
 	nma = (a - 1) * 12 + d; nta = (e - 1) * 12 + h;
-	if (nm != nma || nt != nta){
+	if (nm != nma){
 		document.getElementById("output2").innerText += "생년월일 check : 사주가 맞지 않습니다.. " + saju_h + " \n";
 	}else{
 		mo = (nm + 10) % 12 + 1; //---- 월
