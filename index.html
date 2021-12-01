@@ -442,7 +442,7 @@ function saju_chk(){
 			if (nd >= co_s && nd <= co_e){
 				birth0 = new Date(bsd + (nd - 1) * 86400000 - 2073600000000);
 				hrs = ca09r_yjsjfind[3][h];
-				birth0 = birth0.setHours(hrs)
+				birth0 = new Date(birth0.setHours(hrs));
 				document.getElementById("output2").innerText += "생년월일 check : " + chk + birth0.format('yyyy-MM-dd HH:mm') + " \n";
 				chk = "OK.. ";
 			}else{
