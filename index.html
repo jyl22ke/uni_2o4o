@@ -207,7 +207,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	var aa = ""; var bb = ""; var cc = ""; var name = ""; var birth = ""; var birth0 = null; var birth1 = null;
 
 	var ya = ""; var yb = ""; var ma = ""; var mb = ""; var da = ""; var db = ""; var ta = ""; var tb = "";
-	var a = 0; var b = 0; var c = 0; var d = 0; var e = 0; var f = 0; var bs = 0; var co_s = 0; var co_e = 0; 
+	var a = 0; var b = 0; var c = 0; var d = 0; var e = 0; var f = 0; var bs = 0; var co_s = 0; var co_e = 0; var cor_d = 0;
 	var ny = 0; var nm = 0; var nd = 0; var nt = 0; var nma = 0; var nta = 0; var yr = 0; var mo = 0; var bsd = 0; var ns = 0; var sd = 0; var ed = 0; 
 	
 //========= 간지 배경색 =========
@@ -259,7 +259,7 @@ function isFindm(element)  {
 $( function() {
 	$( 'button#submit1' ).click( function() {
 		ya = ""; yb = ""; ma = ""; mb = ""; da = ""; db = ""; ta = ""; tb = "";
-		a = 0; b = 0; c = 0; d = 0; e = 0; f = 0; bs = 0; co_s = 0; co_e = 0; 
+		a = 0; b = 0; c = 0; d = 0; e = 0; f = 0; bs = 0; co_s = 0; co_e = 0; cor_d = 0;
 		ny = 0; nm = 0; nd = 0; nt = 0; nma = 0; nta = 0; yr = 0; mo = 0; bsd = 0; ns = 0; sd = 0; ed = 0; 
 		//------------------ 변수값 clear RESET start -------------------
 		sj_yg = ""; sj_mg = ""; sj_dg = ""; sj_tg = "";  //--- 사주 (년월일시)간
@@ -332,7 +332,7 @@ function convrtsj(){
 	birth1.setMinutes(birth1.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
 	//--- 시지(sj_tj) 확인 ----------------------	
 	birth_t = birth1.format('HH:mm');
-	if (birth_t >= 23:00){cor_d = 1;};
+	if (birth_t >= '23:00'){cor_d = 1;};
 	for ( i=1 ; i < ca05_sijitime.length ; i++ ){
 		if (ca05_sijitime[i][0] <= birth_t && ca05_sijitime[i][1] >= birth_t){
 			sj_tj = ca05_sijitime[i][2];  //--- 시지 (sj_tj)
