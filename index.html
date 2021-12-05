@@ -346,7 +346,11 @@ function convrtsj(){
 	subj = cor_dg; tgtmp = ca07_tjsjfind.filter(isFind);  //---시주(일간 기준)
 	tgtmp.unshift(ttit[0]);  //---시주배열 + 이름 추가
 	idx = tgtmp[0].lastIndexOf(cor_t);
-	sj_tg = tgtmp[1][idx].substr(0,1);  //--- 시간 (sj_tg)
+	if (cor_t == 12){
+		sj_tg = tgtmp[1][idx-12].substr(0,1);  //--- 시간 (sj_tg)
+	}else{
+		sj_tg = tgtmp[1][idx].substr(0,1);  //--- 시간 (sj_tg)
+	};
 //	cor_d = parseInt(cor_t/12);
 	
 	//===========================
