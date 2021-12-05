@@ -259,7 +259,7 @@ function isFindm(element)  {
 $( function() {
 	$( 'button#submit1' ).click( function() {
 		ya = ""; yb = ""; ma = ""; mb = ""; da = ""; db = ""; ta = ""; tb = "";
-		a = 0; b = 0; c = 0; d = 0; e = 0; f = 0; bs = 0; co_s = 0; co_e = 0; cor_d = 0;
+		a = 0; b = 0; c = 0; d = 0; e = 0; f = 0; bs = 0; co_s = 0; co_e = 0;
 		ny = 0; nm = 0; nd = 0; nt = 0; nma = 0; nta = 0; yr = 0; mo = 0; bsd = 0; ns = 0; sd = 0; ed = 0; 
 		//------------------ 변수값 clear RESET start -------------------
 		sj_yg = ""; sj_mg = ""; sj_dg = ""; sj_tg = "";  //--- 사주 (년월일시)간
@@ -318,7 +318,7 @@ $( function() {
 });
 
 function convrtsj(){
-	birth = ""; yrstart = ""; cor_t = ""; crh = ""; temp = []; temp1 = [];
+	birth = ""; yrstart = ""; cor_t = ""; cor_d = 0; crh = ""; temp = []; temp1 = [];
 	//--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
 	birth0 = new Date(symdt.substr(0,16));  //--- 입력시간(date)
 	birth = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
@@ -332,25 +332,25 @@ function convrtsj(){
 	birth1.setMinutes(birth1.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
 	//--- 시지(sj_tj) 확인 ----------------------	
 	birth_t = birth1.format('HH:mm');
-	if (birth_t >= '23:00'){cor_d = 1;};
 	for ( i=1 ; i < ca05_sijitime.length ; i++ ){
 		if (ca05_sijitime[i][0] <= birth_t && ca05_sijitime[i][1] >= birth_t){
 			sj_tj = ca05_sijitime[i][2];  //--- 시지 (sj_tj)
 			cor_t = ca05_sijitime[i][3];  //--- 시지 수 (시간 결정에 사용)
 		};
 	};
-	//--- 일간(sj_dg) 확인 ----------------------
-	ix = (Math.floor((birth1.getTime() + 32400000) / 86400000) + 600077 + cor_d) % 10 + 1;
-	sj_dg = ca09r_yjsjfind[1][ix];  //--- 일간 (sj_dg)
-	//--- 일지(sj_dj) 확인 ----------------------
-	ix = (Math.floor((birth1.getTime() + 32400000) / 86400000) + 600077 + cor_d) % 12 + 1;
-	sj_dj = ca09r_yjsjfind[2][ix];  //--- 일지 (sj_dj)
 	//--- 시주 배열 만들기 / 시간(sj_tg) 확인 ---
 	ttit = ca07_tjsjfind.slice(0, 1);  //---시주배열 이름 (첫줄) 가져오기
 	subj = sj_dg; tgtmp = ca07_tjsjfind.filter(isFind);  //---시주(일간 기준)
 	tgtmp.unshift(ttit[0]);  //---시주배열 + 이름 추가
 	idx = tgtmp[0].lastIndexOf(cor_t);
 	sj_tg = tgtmp[1][idx].substr(0,1);  //--- 시간 (sj_tg)
+	cor_d = parseInt(cor_t/12);
+	//--- 일간(sj_dg) 확인 ----------------------
+	ix = (Math.floor((birth1.getTime() + 32400000) / 86400000) + 600077 + cor_d) % 10 + 1;
+	sj_dg = ca09r_yjsjfind[1][ix];  //--- 일간 (sj_dg)
+	//--- 일지(sj_dj) 확인 ----------------------
+	ix = (Math.floor((birth1.getTime() + 32400000) / 86400000) + 600077 + cor_d) % 12 + 1;
+	sj_dj = ca09r_yjsjfind[2][ix];  //--- 일지 (sj_dj)
 	//--- 월지(sj_mj) 확인 ----------------------
 	for ( i=1 ; i < ca08_monthstart.length ; i++ ){
 		if (ca08_monthstart[i][0] <= birth && ca08_monthstart[i+1][0] > birth){
