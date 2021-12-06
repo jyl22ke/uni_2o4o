@@ -345,7 +345,12 @@ function convrtsj(){
 	ttit = ca07_tjsjfind.slice(0, 1);  //---시주배열 이름 (첫줄) 가져오기
 	subj = cor_dg; tgtmp = ca07_tjsjfind.filter(isFind);  //---시주(일간 기준)
 	tgtmp.unshift(ttit[0]);  //---시주배열 + 이름 추가
-	idx = tgtmp[0].lastIndexOf(cor_t);
+	for (i=1; i<tgtmp[0].length; i++){
+		if (tgtmp[0][i] === cor_t){
+			idx = i;
+		};
+	};
+//	idx = tgtmp[0].lastIndexOf(cor_t);
 	if (cor_t == 12){
 		sj_tg = tgtmp[1][idx-12].substr(0,1);  //--- 시간 (sj_tg)
 	}else{
