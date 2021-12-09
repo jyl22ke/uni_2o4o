@@ -222,6 +222,7 @@ $( function() {
 	$( 'button#clear1' ).click( function() {
 		$( 'input#sjtm' ).val('');
 		$( 'input#sj' ).val('');
+		$('input[name='gender']').val('');
 		$('#output').empty();
 		$('#output2').empty();
 		$('.sj').empty();
@@ -438,7 +439,7 @@ function saju_chk(){
 
 			if (nd >= co_s && nd <= co_e){
 				birth0 = new Date(bsd + (nd - 1) * 86400000 - 2073600000000);
-				hrs = ca09r_yjsjfind[3][h];
+				hrs = Number(ca09r_yjsjfind[3][h]);
 				birth0 = new Date(birth0.setHours(hrs)); birth1 = birth0;
 				symdt = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
 				premon = new Date(ca08_monthstart[ns][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
