@@ -436,8 +436,11 @@ function saju_chk(){
 			bsd = bsd + bs * 5184000000;
 			ed = enddate.getTime() + 2073600000000; //--- 월 종료일(ed)
 			co_e = ((ed - bsd)/86400000) % 60; 
-	 		document.getElementById("output2").innerText += "mb월(양력) 시작/종료일 " + startdate.format('yyyy-MM-dd HH:mm') + enddate.format('yyyy-MM-dd HH:mm') + " \n" + String(nd) + "  " + String(co_s) + "  " + String(co_e) + "  " + " \n";
-
+			if (co_s > co_e){
+				if (nd < co_s){co_s = 0;};
+				if (nd > co_e){	co_e = 60;};
+			};
+			
 			if (nd >= co_s && nd <= co_e){
 				birth0 = new Date(bsd + (nd - 1) * 86400000 - 2073600000000);
 				hrs = Number(ca09r_yjsjfind[3][h]);
@@ -446,6 +449,7 @@ function saju_chk(){
 				premon = new Date(ca08_monthstart[ns][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
 				postmon = new Date(ca08_monthstart[ns+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
 				term = Number(ca08_monthstart[ns][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
+		 		document.getElementById("output2").innerText += "mb월(양력) 시작/종료일 " + startdate.format('yyyy-MM-dd HH:mm') + "  " + enddate.format('yyyy-MM-dd HH:mm') + " \n" + birth0.format('yyyy-MM-dd HH:mm') + " \n";
 //				document.getElementById("output2").innerText += "생년월일 check : " + chk + birth0.format('yyyy-MM-dd HH:mm') + " \n";
 //				chk = "OK.. ";
 //			}else{
