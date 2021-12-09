@@ -439,9 +439,16 @@ function saju_chk(){
 				if (nd > co_e){	co_e = 60;};
 			};
 			if (nd >= co_s && nd <= co_e){
-				birth0 = new Date(bsd + (nd - 1) * 86400000 - 2073600000000);
+				birth1 = new Date(bsd + (nd - 1) * 86400000 - 2073600000000);
 				hrs = Number(ca09r_yjsjfind[3][h]);
-				birth0 = new Date(birth0.setHours(hrs)); birth1 = birth0;
+				birth1 = new Date(birth0.setHours(hrs)); birth0 = birth1;
+				for (i=1; i<ca04_kstadj.length; i++){
+					if (birth0 >= ca04_kstadj[i][0] && birth0 <= ca04_kstadj[i][1]){
+						crh = ca04_kstadj[i][2];
+					};
+				};
+				birth0.setHours(birth0.getHours() + Number(crh.substr(0,2)));  //--- 시간 보정
+				birth0.setMinutes(birth0.getMinutes() + Number(crh.substr(3,2)));  //--- 분 보정
 				symdt = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
 				premon = new Date(ca08_monthstart[ns][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
 				postmon = new Date(ca08_monthstart[ns+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
