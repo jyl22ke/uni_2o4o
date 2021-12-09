@@ -222,7 +222,7 @@ $( function() {
 	$( 'button#clear1' ).click( function() {
 		$( 'input#sjtm' ).val('');
 		$( 'input#sj' ).val('');
-//		$('input[name='gender']').val('');
+		$('input[name="gender"]').prop("checked",false);
 		$('#output').empty();
 		$('#output2').empty();
 		$('.sj').empty();
@@ -419,7 +419,6 @@ function saju_chk(){
 		if (yr < 1908){
 			yr = yr + 60; //---- 년도 확인
 		};
-
 		var now = new Date();	// 현재 날짜 및 시간
 		var year = now.getFullYear();	// 연도
 		bsd = 117763200000; //--- 기준 갑자일(1908-01-10) = -1955836800000 + 2073600000000 = 117763200000 
@@ -429,7 +428,6 @@ function saju_chk(){
 			ns = ca08_monthstart.findIndex(isFindm); //---- mb월(양력) 시작일 확인 (index)
 			startdate = new Date(ca08_monthstart[ns][0].substr(0,10)); //---- mb월(양력) 시작일
 			enddate = new Date(ca08_monthstart[ns+1][0].substr(0,10)); //---- mb월(양력) 종료일
-
 			sd = startdate.getTime() + 2073600000000; //--- 월 시작일(sd)
 			co_s = ((sd - bsd)/86400000) % 60; 
 			bs = parseInt(((sd - bsd)/86400000) / 60);
@@ -440,7 +438,6 @@ function saju_chk(){
 				if (nd < co_s){co_s = 0;};
 				if (nd > co_e){	co_e = 60;};
 			};
-			
 			if (nd >= co_s && nd <= co_e){
 				birth0 = new Date(bsd + (nd - 1) * 86400000 - 2073600000000);
 				hrs = Number(ca09r_yjsjfind[3][h]);
@@ -449,15 +446,9 @@ function saju_chk(){
 				premon = new Date(ca08_monthstart[ns][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
 				postmon = new Date(ca08_monthstart[ns+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
 				term = Number(ca08_monthstart[ns][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
-		 		document.getElementById("output2").innerText += "mb월(양력) 시작/종료일 " + startdate.format('yyyy-MM-dd HH:mm') + "  " + enddate.format('yyyy-MM-dd HH:mm') + " \n" + birth0.format('yyyy-MM-dd HH:mm') + " \n";
-//				document.getElementById("output2").innerText += "생년월일 check : " + chk + birth0.format('yyyy-MM-dd HH:mm') + " \n";
-//				chk = "OK.. ";
-//			}else{
-//				chk = "No OK.. ";
 			};
 			yr = yr + 60; //---- 년도 확인
 		};
-//		document.getElementById("output2").innerText += "생년월일 check 완료 " + chk + birth0.format('yyyy-MM-dd HH:mm') + " \n";
 	};
 };
 	
@@ -919,7 +910,6 @@ function dgjmcharac(){
 	djtext = "<배우자 관련> 일지십성 " + djcharac[0][0] + " " + djcharac[0][1] + "\n" + djcharac[0][6] + "\n" + djcharac[0][7] + "\n\n";
 	document.getElementById("output").innerText += djtext;
 };
-	
 
   </script>
 
