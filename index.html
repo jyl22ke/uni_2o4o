@@ -121,7 +121,6 @@ fread("ca05_sijitime");
 fread("ca06_mjsjfind");	
 fread("ca07_tjsjfind");
 fread("ca08_monthstart");	
-fread("ca09_yjsjfind");	
 fread("ca09r_yjsjfind");	
 	
 function fread(fn){
@@ -445,10 +444,10 @@ function saju_chk(){
 				premon = new Date(ca08_monthstart[ns][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
 				postmon = new Date(ca08_monthstart[ns+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
 				term = Number(ca08_monthstart[ns][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
-//				document.getElementById("output2").innerText += "생년월일 check : " + chk + birth0.format('yyyy-MM-dd HH:mm') + " \n";
-//				chk = "OK.. ";
-//			}else{
-//				chk = "No OK.. ";
+				document.getElementById("output2").innerText += "생년월일 check : " + chk + birth0.format('yyyy-MM-dd HH:mm') + " \n";
+				chk = "OK.. ";
+			}else{
+				chk = "No OK.. ";
 			};
 			yr = yr + 60; //---- 년도 확인
 		};
