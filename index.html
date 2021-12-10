@@ -122,6 +122,7 @@ fread("ca06_mjsjfind");
 fread("ca07_tjsjfind");
 fread("ca08_monthstart");	
 fread("ca09r_yjsjfind");	
+fread("ca10_ghabch");	
 	
 function fread(fn){
     $(function (){
@@ -837,6 +838,7 @@ function ganhab(name,qt,str,exp){
 				ck1 = ckstr.substr(0,1); ck2 = ckstr.substr(1,1);
 				if (bb.includes(ck1) && bb.includes(ck2)){
 					if (name === "연간합" || name === "일간합"){
+						subj = name; hab = ca10_ghabch.filter(isFind);
 						subj = aa; hwa = habhwa.filter(isFind); 
 						adt1 = "("; adt2 = ")"; 
 					};
