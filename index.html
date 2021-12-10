@@ -304,15 +304,16 @@ $( function() {
   		tugan();
   		rootgchk();
   		mpohcnt();
-     		chnghab("천간합",5,sj_ganji,"_합");
-    		chnghab("천간충",4,sj_ganji,"_충");
-    		chnghab("천간극",6,sj_ganji,"_극");
-    		chnghab("지지충",6,sj_ganji,"_충");
-     		chnghab("지지육합",6,sj_ganji,"6합");
-      		chnghab("지지삼합",4,sj_ganji,"3합");
-     		chnghab("지지방합",4,sj_ganji,"b합");
-      		chnghab("지지암합",5,sj_ganji,"s합");
-    		chnghab("간지암합",4,sj_ganji,"x합");
+		ganhab("연간합",5,sj_ganji,"_합");
+//     		chnghab("천간합",5,sj_ganji,"_합");
+//    		chnghab("천간충",4,sj_ganji,"_충");
+//    		chnghab("천간극",6,sj_ganji,"_극");
+//    		chnghab("지지충",6,sj_ganji,"_충");
+//     		chnghab("지지육합",6,sj_ganji,"6합");
+//		chnghab("지지삼합",4,sj_ganji,"3합");
+//     		chnghab("지지방합",4,sj_ganji,"b합");
+//    		chnghab("지지암합",5,sj_ganji,"s합");
+//  		chnghab("간지암합",4,sj_ganji,"x합");
  		dgjmcharac();
 	});
 });
@@ -807,6 +808,52 @@ function txtSearch(str, searchvalue){
 	if (fndList){aa += searchvalue; bb += fndList;};
 };
 
+//========== 천간합 ==========
+	//---   ganhab("연간합",5,sj_ganji,"_합");
+function ganhab(name,qt,str,exp){
+	cv_yghab = ["연간합","02"];	
+	cv_ghab = ["일간합","24","46"];
+	if (name === "연간합" || name === "일간합"){
+		nam = "천간합";
+	}else{
+		nam = name;
+	};
+	subj = nam; pon = "";
+	chab = ganji_habchung.filter(isFind);  //===천간충/극
+	var outpt = ""; var fndList = "";
+	for (i = 1; i < qt + 1; i++){texstr = chab[0][i]; n=0; aa=""; bb=""; cc = exp;
+		for (k = 0; k < texstr.length; k++){
+			aa1 = texstr.substr(k,1);
+			txtSearch(str,aa1);
+			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
+		};
+		//--- 출력내용 작성 ---
+		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
+		if (aa.length === texstr.length){
+			if (name === "연간합"){ cv = cv_yghab; };				
+			for (m = 1; m < cv.length; m++){ ckstr = cv[m];
+				ck1 = ckstr.substr(0,1); ck2 = ckstr.substr(1,1);
+				if (bb.includes(ck1) && bb.includes(ck2)){
+					if (name === "연간합"){
+						subj = aa; hwa = habhwa.filter(isFind); 
+						adt1 = "("; adt2 = ")"; 
+					};
+					ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n";
+					if (adt3 != "...불성립"){
+						loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+						loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
+					};
+					document.getElementById("output2").innerText += ch_titl1; 
+				};
+			};
+		};
+	};
+};
+	
+	
+	
+	
+	
 //========== 충/합 ==========
 	//---   chnghab("천간충",4,sj_ganji,"_충");
 function chnghab(name,qt,str,exp){
