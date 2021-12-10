@@ -842,13 +842,12 @@ function ganhab(name,qt,str,exp){
 						subj = aa; hwa = habhwa.filter(isFind); 
 						adt1 = "("; adt2 = ")"; 
 					};
-					ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + " " + name + " " + ck1 + " " + ck2 + "\n";
+					ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + " " + name + " " + ck1 + " " + ck2 + " " + hab[2][4] + "\n";
 					if (adt3 != "...불성립"){
 						loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
 						loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
 					};
 					document.getElementById("output2").innerText += ch_titl1; 
-					document.getElementById("output2").innerText += hab[2][4] + "\n"; 
 				};
 			};
 		};
