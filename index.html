@@ -52,6 +52,10 @@
 <div class="container">
 	<div class="insrt">
 		<p class="ifo"> 생년월일시: <input type="datetime-local" id="sjtm"> &nbsp; &nbsp; 사주: <input type="text" id="sj" class="ifo" maxlength="9"> &nbsp; &nbsp; 성별: <input type="radio" name="gender" value="남양">남(양) <input type="radio" name="gender" value="여음">여(음) &nbsp; &nbsp;<button id="clear1">지우기</button> &nbsp; &nbsp;<button id="submit1">제 출</button></p><br/> 
+		<p><label for="year02" class="sr-only">음력 </label><input id="bday" class="bday" type="date" name="bday" min="1881-01-01" max="2043-12-30"> &nbsp; &nbsp;<button id="submit">조회</button>
+		<label class="btn white active" for="isLeap01">	<input type="radio" name="isLeap" id="isLeap01" value="1" checked=""> 평달</label>
+		<label class="btn white" for="isLeap02"><input type="radio" name="isLeap" id="isLeap02" value="0"> 윤달</label>
+		<span class="txt">입력범위 : 1881년 1월 1일 ∼ 2043년 12월 30일</span></p>
 	</div>
 <hr/>
 	<div class="canvas">
@@ -234,6 +238,32 @@ $( function() {
 	} );
 } );
 
+//=========== 음력 조회 함수 ===========
+var ad2 = ""; var devd = null;
+$( function() {
+	$( 'button#submit' ).click( function() {
+		Lbday = document.getElementById('bday').value;
+		ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
+
+		subj = Lbday.substr(0,4); temp = ca11_lunar_cal.filter(isFind);
+		v = Number(Lbday.substr(5,2));  //---- 월(음력)
+			cnt = Number(temp[0][1]);   //---- 누적일수
+		n = 0; m = 1;
+		while (m < v){
+			if (temp[0][n+2]>"2")	{
+				cnt += 26 + Number(temp[0][n+2]);
+			}else{
+				if (temp[0][n+2]>"0")	{
+					cnt += 28 + Number(temp[0][n+2]);
+					m += 1;
+				}else{	};
+			};
+			n += 1;
+		};
+		cnt += Number(Lbday.substr(8,2));
+		birt = new Date(devd.setDate(devd.getDate() + cnt));
+	});
+});
 
 //====== 배열에서 subj 를 가져오는 함수 ====== 부분배열 가져오기
 function isFind(element)  {
