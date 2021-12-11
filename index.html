@@ -37,10 +37,12 @@
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
 	#output { min-height: 790px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em;max-width:960px;}
 	#output2 { float: left; min-height: 400px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:400px;}
+	#submit {padding: 0 10px; font-weight: bold;}
 	#submit1 {padding: 0 10px; font-weight: bold;}
+	#sola {display:none;}
 	#clear1 {padding: 0 5px;}
 	@media screen and (min-width: 950px) {.canvas {float: left;} #output {float: right;min-width:800px;} #output2 {display: flex;}}
-
+	
   </style>
 
  </head>
@@ -51,11 +53,11 @@
 <!-- 메인메뉴 mmenu part -->
 <div class="container">
 	<div class="insrt">
-		<p class="ifo"> 생년월일시: <input type="datetime-local" id="sjtm" value=Sbday> &nbsp; &nbsp; 사주: <input type="text" id="sj" class="ifo" maxlength="9"> &nbsp; &nbsp; 성별: <input type="radio" name="gender" value="남양">남(양) <input type="radio" name="gender" value="여음">여(음) &nbsp; &nbsp;<button id="clear1">지우기</button> &nbsp; &nbsp;<button id="submit1">제 출</button></p><br/> 
-		<p><label for="year02" class="sr-only"> &nbsp; 음력</label> &nbsp; &nbsp;<button id="submit">조회 </button> &nbsp; <input id="bday" class="bday" type="date" name="bday" min="1881-01-01" max="2043-12-30">
+		<p class="ifo"> 생년월일시: <input type="datetime-local" id="sjtm"> &nbsp; &nbsp; 사주: <input type="text" id="sj" class="ifo" maxlength="9"> &nbsp; &nbsp; 성별: <input type="radio" name="gender" value="남양">남(양) <input type="radio" name="gender" value="여음">여(음) &nbsp; &nbsp;<button id="clear1">지우기</button> &nbsp; &nbsp;<button id="submit1">제 출</button></p><br/> 
+		<p><label for="year02" class="sr-only"> &nbsp; 음력</label> &nbsp; &nbsp;<button id="submit">조회 </button> &nbsp; <input id="bday" class="bday" type="date" name="bday" min="1881-01-01" max="2050-11-18"><span id="sola"></span>
 		<label class="btn white active" for="isLeap01">	<input type="radio" name="isLeap" id="isLeap01" value="1" checked=""> 평달</label>
 		<label class="btn white" for="isLeap02"><input type="radio" name="isLeap" id="isLeap02" value="0"> 윤달</label>
-		<span class="txt">입력범위 : 1881년 1월 1일 ∼ 2043년 12월 30일</span></p>
+		<span class="txt">입력범위 : 1881년 1월 1일 ∼ 2050년 11월 18일</span></p>
 	</div>
 <hr/>
 	<div class="canvas">
@@ -264,6 +266,8 @@ $( function() {
 		cnt += Number(Lbday.substr(8,2));
 		birt = new Date(devd.setDate(devd.getDate() + cnt));
 		Sbday = birt.format('yyyy-MM-dd HH:mm');
+		$("#sola").show();
+		document.getElementById("sola").innerText = "양력 날짜는 " + Sbday; 
 	});
 });
 
