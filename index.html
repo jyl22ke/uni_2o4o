@@ -267,10 +267,10 @@ $( function() {
 			};
 			n += 1;
 		};
-		if (mtyp === "0" && temp[0][v+2]>"2"){
-			cnt += 28 + Number(temp[0][v+1]);
-		}else{
-			document.getElementById("sola").innerText += "평달입니다. ";
+		if (mtyp === "0"){
+			if (temp[0][v+2]>"2"){
+				cnt += 28 + Number(temp[0][v+1]);
+			}else{	document.getElementById("sola").innerText += "평달입니다. ";};
 		};
 		cnt += Number(Lbday.substr(8,2));
 		birt = new Date(devd.setDate(devd.getDate() + cnt));
