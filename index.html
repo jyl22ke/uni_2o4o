@@ -230,7 +230,10 @@ $( function() {
 	$( 'button#clear1' ).click( function() {
 		$( 'input#sjtm' ).val('');
 		$( 'input#sj' ).val('');
+		$( 'input#bday' ).val('');
 		$('input[name="gender"]').prop("checked",false);
+		$('#sola').empty();
+		$("#sola").hide();
 		$('#output').empty();
 		$('#output2').empty();
 		$('.sj').empty();
@@ -245,9 +248,10 @@ $( function() {
 var ad2 = ""; var devd = null;
 $( function() {
 	$( 'button#submit' ).click( function() {
+		$('#sola').empty();
 		Lbday = document.getElementById('bday').value;
+		mtyp = $('input[name="isLeap"]:checked').val();
 		ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
-
 		subj = Lbday.substr(0,4); temp = ca11_lunar_cal.filter(isFind);
 		v = Number(Lbday.substr(5,2));  //---- 월(음력)
 			cnt = Number(temp[0][1]);   //---- 누적일수
@@ -262,6 +266,11 @@ $( function() {
 				}else{	};
 			};
 			n += 1;
+		};
+		if (mtyp === "0" && temp[0][v+2]>"2"){
+			cnt += 28 + Number(temp[0][v+1]);
+		}else{
+			document.getElementById("sola").innerText = "평달입니다. ";
 		};
 		cnt += Number(Lbday.substr(8,2));
 		birt = new Date(devd.setDate(devd.getDate() + cnt));
