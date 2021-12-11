@@ -270,13 +270,13 @@ $( function() {
 		if (mtyp === "0" && temp[0][v+2]>"2"){
 			cnt += 28 + Number(temp[0][v+1]);
 		}else{
-			document.getElementById("sola").innerText = "평달입니다. ";
+			document.getElementById("sola").innerText += "평달입니다. ";
 		};
 		cnt += Number(Lbday.substr(8,2));
 		birt = new Date(devd.setDate(devd.getDate() + cnt));
 		Sbday = birt.format('yyyy-MM-dd HH:mm');
 		$("#sola").show();
-		document.getElementById("sola").innerText = "양력 날짜는 " + Sbday; 
+		document.getElementById("sola").innerText += "양력 날짜는 " + Sbday; 
 	});
 });
 
