@@ -274,7 +274,7 @@ $( function() {
 		};
 		cnt += Number(Lbday.substr(8,2));
 		birt = new Date(devd.setDate(devd.getDate() + cnt));
-		Sbday = birt.format('yyyy-MM-dd HH:mm');
+		Sbday = birt.format('yyyy-MM-dd');
 		$("#sola").show();
 		document.getElementById("sola").innerText += "양력 날짜는 " + Sbday; 
 	});
