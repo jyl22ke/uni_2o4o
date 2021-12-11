@@ -51,7 +51,7 @@
 <!-- 메인메뉴 mmenu part -->
 <div class="container">
 	<div class="insrt">
-		<p class="ifo"> 생년월일시: <input type="datetime-local" id="sjtm"> &nbsp; &nbsp; 사주: <input type="text" id="sj" class="ifo" maxlength="9"> &nbsp; &nbsp; 성별: <input type="radio" name="gender" value="남양">남(양) <input type="radio" name="gender" value="여음">여(음) &nbsp; &nbsp;<button id="clear1">지우기</button> &nbsp; &nbsp;<button id="submit1">제 출</button></p><br/> 
+		<p class="ifo"> 생년월일시: <input type="datetime-local" id="sjtm" value=Sbday> &nbsp; &nbsp; 사주: <input type="text" id="sj" class="ifo" maxlength="9"> &nbsp; &nbsp; 성별: <input type="radio" name="gender" value="남양">남(양) <input type="radio" name="gender" value="여음">여(음) &nbsp; &nbsp;<button id="clear1">지우기</button> &nbsp; &nbsp;<button id="submit1">제 출</button></p><br/> 
 		<p><label for="year02" class="sr-only"> &nbsp; 음력</label> &nbsp; &nbsp;<button id="submit">조회 </button> &nbsp; <input id="bday" class="bday" type="date" name="bday" min="1881-01-01" max="2043-12-30">
 		<label class="btn white active" for="isLeap01">	<input type="radio" name="isLeap" id="isLeap01" value="1" checked=""> 평달</label>
 		<label class="btn white" for="isLeap02"><input type="radio" name="isLeap" id="isLeap02" value="0"> 윤달</label>
@@ -263,6 +263,7 @@ $( function() {
 		};
 		cnt += Number(Lbday.substr(8,2));
 		birt = new Date(devd.setDate(devd.getDate() + cnt));
+		Sbday = birt.format('yyyy-MM-dd HH:mm');
 	});
 });
 
