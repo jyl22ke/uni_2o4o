@@ -245,10 +245,10 @@ $( function() {
 } );
 
 //=========== 음력 조회 함수 ===========
-var ad2 = ""; var devd = null;
-ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
 $( function() {
 	$( 'button#submit' ).click( function() {
+		var ad2 = ""; var devd = null;
+		ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
 		$('#sola').empty();
 		Lbday = document.getElementById('bday').value;
 		mtyp = $('input[name="isLeap"]:checked').val();
@@ -282,6 +282,8 @@ $( function() {
 
 //=========== 양력을 음력으로 변환 함수 ===========
 function slr2lnr(){
+	var ad2 = ""; var devd = null;
+	ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
 	cnt = parseInt((birth0.getTime()-devd.getTime())/86400000) + 1;
 	for (i=0; i<ca11_lunar_cal.length; i++){
 		if (ca11_lunar_cal[i][1] > cnt){
