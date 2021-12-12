@@ -307,23 +307,23 @@ function slr2lnr(){
 	if (temp1[0][n] > "2"){
 		if (cnt > 26 + Number(temp1[0][n])){
 			cnt = cnt - (26 + Number(temp1[0][n]));
-			m += 1;
-			mn = String(m);
-			dn = String(cnt);
+			mn = String(m).padStart(2,"0");
+			dn = String(cnt).padStart(2,"0");
 		}else{
-			mn = String(m) + "윤";
-			dn = String(cnt);
+			m -= 1;
+			mn = String(m).padStart(2,"0") + "윤";
+			dn = String(cnt).padStart(2,"0");
 		};
 	}else{
 		if (temp1[0][n] > "0"){
 			if (cnt > 28 + Number(temp1[0][n])){
 				cnt = cnt - (26 + Number(temp1[0][n]));
 				m += 1;
-				mn = String(m);
-				dn = String(cnt);
+				mn = String(m).padStart(2,"0");
+				dn = String(cnt).padStart(2,"0");
 			}else{
-				mn = String(m);
-				dn = String(cnt);
+				mn = String(m).padStart(2,"0");
+				dn = String(cnt).padStart(2,"0");
 			};
 		};
 	};	
