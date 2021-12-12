@@ -246,12 +246,12 @@ $( function() {
 
 //=========== 음력 조회 함수 ===========
 var ad2 = ""; var devd = null;
+ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
 $( function() {
 	$( 'button#submit' ).click( function() {
 		$('#sola').empty();
 		Lbday = document.getElementById('bday').value;
 		mtyp = $('input[name="isLeap"]:checked').val();
-		ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
 		subj = Lbday.substr(0,4); temp = ca11_lunar_cal.filter(isFind);
 		v = Number(Lbday.substr(5,2));  //---- 월(음력)
 			cnt = Number(temp[0][1]);   //---- 누적일수
@@ -263,7 +263,7 @@ $( function() {
 				if (temp[0][n+2]>"0")	{
 					cnt += 28 + Number(temp[0][n+2]);
 					m += 1;
-				}else{	};
+				};
 			};
 			n += 1;
 		};
@@ -280,6 +280,56 @@ $( function() {
 	});
 });
 
+//=========== 양력을 음력으로 변환 함수 ===========
+function slr2lnr(){
+	cnt = parseInt((birth0.getTime()-devd.getTime())/86400000);
+	for (i=0; i<ca11_lunar_cal.length; i++){
+		if (ca11_lunar_cal[i][1] > cnt){
+			yn = ca11_lunar_cal[i-1][0];
+			subj = yn;
+			temp1 = ca11_lunar_cal.filter(isFind);
+			break;
+		};
+	};
+	cnt = cnt - temp1[0][1]; n = 2; m = 1;
+	while (cnt > 30){
+		if (temp1[0][n] > "2"){
+			cnt = cnt - (26 + Number(temp1[0][n]));
+			n += 1;
+		}else{
+			if (temp1[0][n] > "0"){
+				cnt = cnt - (28 + Number(temp1[0][n]));
+				n += 1;
+				m += 1;
+			};
+		};
+	};
+	if (temp1[0][n] > "2"){
+		if (cnt > 26 + Number(temp1[0][n])){
+			cnt = cnt - (26 + Number(temp1[0][n]));
+			m += 1;
+			mn = String(m);
+			dn = String(cnt);
+		}else{
+			mn = String(m) + "윤";
+			dn = String(cnt);
+		};
+	}else{
+		if (temp1[0][n] > "0"){
+			if (cnt > 28 + Number(temp1[0][n])){
+				cnt = cnt - (26 + Number(temp1[0][n]));
+				m += 1;
+				mn = String(m);
+				dn = String(cnt);
+			}else{
+				mn = String(m);
+				dn = String(cnt);
+			};
+		};
+	};	
+	lnrd = yn + "-" + mn + "-" + dn;
+};
+	
 //====== 배열에서 subj 를 가져오는 함수 ====== 부분배열 가져오기
 function isFind(element)  {
 	if(element[0] === subj)  {
@@ -519,9 +569,11 @@ function longun(){
 		r = -1;
 	};
 	firstD = new Date(symdt.substr(0,16));  //--- 초기대운일 
-	firstD.setTime(firstD.getTime() + perio);  //--- 초기대운일 계산
+	firstD.setTime(firstD.getTime() + perio);  //--- 초기대운일 계산	
 	age = firstD.getFullYear() - birth0.getFullYear() + 1;  //--- 대운수(나이)
+	slr2lnr();
 	document.getElementById("output2").innerText += "생년월일 : " + birth0.format('yyyy-MM-dd HH:mm') + " (" + (new Date().getFullYear() - birth0.getFullYear() + 1) + "세 " + gendr.substr(0,1) + "성) \n";
+	document.getElementById("output2").innerText += " (음 력) : " + lnrd + " \n";
 	document.getElementById("output2").innerText += "초기대운일 (" + age + "세) " + firstD.format('yyyy-MM-dd HH:mm') + " \n\n";
 	for (i=0; i<gan.length; i++){
 		if (gan[i][0] === sj_mg){a = i};
