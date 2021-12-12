@@ -249,6 +249,7 @@ var ad2 = ""; var devd = null;
 ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
 $( function() {
 	$( 'button#submit' ).click( function() {
+		
 		$('#sola').empty();
 		Lbday = document.getElementById('bday').value;
 		mtyp = $('input[name="isLeap"]:checked').val();
