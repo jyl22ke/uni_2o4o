@@ -597,11 +597,15 @@ function longun(){
 	for (i=1; i<10; i++){
 		ca = (a + i * r + 59) % 10 + 1;
 		cb = (b + i * r + 59) % 12 + 1;
+		pos = "sju" + i;
 		longungj += gan[ca][0] + jiji[cb][0];
 		find_ggss(gan[ca][0],"","",4);
+		document.getElementById(pos).innerText += i +"대운 (" + (age + (i - 1) * 10) + "세) " + " \n";
 		document.getElementById("output2").innerText += i +"대운 (" + (age + (i - 1) * 10) + "세) " + " \n";
+		document.getElementById(pos).innerText += " . . " + gan[ca][0] + " " +  gs_titl + " " + gan[ca][3] + gan[ca][2] + " \n";
 		document.getElementById("output2").innerText += " . . " + gan[ca][0] + " " +  gs_titl + " " + gan[ca][3] + gan[ca][2] + " \n";
 		find_gjss(jiji[cb][0],"",4);
+		document.getElementById(pos).innerText += " . . " + jiji[cb][0] + " " + js_titl + " " + jiji[cb][3] + jiji[cb][2] + " " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n\n";
 		document.getElementById("output2").innerText += " . . " + jiji[cb][0] + " " + js_titl + " " + jiji[cb][3] + jiji[cb][2] + " " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n\n";
 	};
 		document.getElementById("output2").innerText += longungj + " \n\n";
