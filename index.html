@@ -202,7 +202,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	 
 <script type="text/javascript">
 	var premon = null; var postmon = null; var term = 0; var gendr = "";
-	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = "";
+	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hrt1 = ""; var hrt2 = ""; var hrt3 = ""; var hrt4 = "";
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 
@@ -911,7 +911,7 @@ function txtSearch(str, searchvalue){
 
 //====== 천간합 통근체크 함수 ======
 function hrootchk(){  
-	b = "symdt";
+	b = "symdt"; hrt1 = ""; hrt2 = ""; hrt3 = ""; hrt4 = "";
 	for (i=1; i<5; i++){
 		a = "sj_" + b.substr(i,1) + "j";
 		idx = gjsgj[1].lastIndexOf(a);
