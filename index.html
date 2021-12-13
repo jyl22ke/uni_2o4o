@@ -915,12 +915,11 @@ function hrootchk(){
 	for (i=1; i<5; i++){
 		a = eval("sj_" + b.substr(i,1) + "j");
 		idx = gjsgj[1].lastIndexOf(a);
-		hrt = eval("hrt" + String(i));
 		hroot = gjsgj[ i + 1 ][idx];  //--- (연주) 십성
 		if (hroot === "비견" || hroot === "겁재" || hroot === "편인" || hroot === "정인"){
-			hrt = "1" + hroot;
+			eval("hrt" + String(i)) = "1" + hroot;
 		}else{
-			hrt = "0" + hroot;
+			eval("hrt" + String(i)) = "0" + hroot;
 		};
 	};
 };
