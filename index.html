@@ -914,11 +914,11 @@ function hrootchk(a,b,c){
 	idx = gjsgj[1].lastIndexOf(a);
 	hroot = gjsgj[b][idx];  //--- 십성
 	if (hroot === "비견" || hroot === "겁재" || hroot === "편인" || hroot === "정인"){
-		rt = "1";  //--- 통근
+		c = "1";  //--- 통근
 	}else{
-		rt = "0";  //--- 불통근
+		c = "0";  //--- 불통근
 	};
-	c = rt + hroot;  //--- "1" or "0" + 십성
+//	c = rt;  //--- "1" or "0" + 십성
 };
 	
 //========== 천간합 ==========
