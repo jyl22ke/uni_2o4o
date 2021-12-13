@@ -909,9 +909,26 @@ function txtSearch(str, searchvalue){
 	if (fndList){aa += searchvalue; bb += fndList;};
 };
 
+//====== 천간합 통근체크 함수 ======
+function hrootchk(){  
+	b = "symdt";
+	for (i=1; i<5; i++){
+		a = "sj_" + b.substr(i,1) + "j";
+		idx = gjsgj[1].lastIndexOf(a);
+		hrt = "hrt" + String(i);
+		hroot = gjsgj[ i + 1 ][idx];  //--- (연주) 십성
+		if (hroot === "비견" || hroot === "겁재" || hroot === "편인" || hroot === "정인"){
+			hrt = "1" + hroot;
+		}else{
+			hrt = "0" + hroot;
+		};
+	};
+};
+	
 //========== 천간합 ==========
 	//---   ganhab("연간합",5,sj_ganji,"_합");
 function ganhab(name,qt,str,exp){
+	hrootchk();
 	cv_yghab = ["연간합","02"];	
 	cv_ghab = ["일간합","24","46"];
 	if (name === "연간합" || name === "일간합"){
