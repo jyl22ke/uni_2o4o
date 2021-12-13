@@ -34,7 +34,8 @@
 	.sjt {grid-column: 1/span 4;grid-row: 2/span 5; color: #000; font-weight: bold;border:1px solid black;}
 	.sjo,.sjot,.sjat,.sjbt {grid-column: span 4;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
 	.sjut {grid-column: span 2;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
-	.sju {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
+	.sju1 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 1.1em; font-weight: bold;}
+	.sju2 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
 	.sja,.sjb {grid-column: span 4;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
 	.sj {grid-column: span 4;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
 	#output { min-height: 790px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em;max-width:960px;}
@@ -106,15 +107,24 @@
 		<div class="sjb" id="sj4c"></div>
 		<div class="sjb" id="sj2c"></div>
 		<div class="sjut">대운</div>
-		<div class="sju" id="sju9"></div>
-		<div class="sju" id="sju8"></div>
-		<div class="sju" id="sju7"></div>
-		<div class="sju" id="sju6"></div>
-		<div class="sju" id="sju5"></div>
-		<div class="sju" id="sju4"></div>
-		<div class="sju" id="sju3"></div>
-		<div class="sju" id="sju2"></div>
-		<div class="sju" id="sju1"></div>
+		<div class="sju1" id="sjua9"></div>
+		<div class="sju2" id="sjub9"></div>
+		<div class="sju1" id="sjua8"></div>
+		<div class="sju2" id="sjub8"></div>
+		<div class="sju1" id="sjua7"></div>
+		<div class="sju2" id="sjub7"></div>
+		<div class="sju1" id="sjua6"></div>
+		<div class="sju2" id="sjub6"></div>
+		<div class="sju1" id="sjua5"></div>
+		<div class="sju2" id="sjub5"></div>
+		<div class="sju1" id="sjua4"></div>
+		<div class="sju2" id="sjub4"></div>
+		<div class="sju1" id="sjua3"></div>
+		<div class="sju2" id="sjub3"></div>
+		<div class="sju1" id="sjua2"></div>
+		<div class="sju2" id="sjub2"></div>
+		<div class="sju1" id="sjua1"></div>
+		<div class="sju2" id="sjub1"></div>
 	</div>
 	<div id="output"></div>
 	<div id="output2"></div>
@@ -597,15 +607,18 @@ function longun(){
 	for (i=1; i<10; i++){
 		ca = (a + i * r + 59) % 10 + 1;
 		cb = (b + i * r + 59) % 12 + 1;
-		pos = "sju" + i;
+		posa = "sjua" + i; posb = "sjub" + i;
 		longungj += gan[ca][0] + jiji[cb][0];
 		find_ggss(gan[ca][0],"","",4);
-		document.getElementById(pos).innerText += i +"대운 \n (" + (age + (i - 1) * 10) + "세) " + " \n";
+		document.getElementById(posa).innerText += i +"대운 \n";
+		document.getElementById(posb).innerText += " \n (" + (age + (i - 1) * 10) + "세) " + " \n";
 		document.getElementById("output2").innerText += i +"대운 (" + (age + (i - 1) * 10) + "세) " + " \n";
-		document.getElementById(pos).innerText += " . . " + gan[ca][0] + " \n " +  gs_titl + " \n " + gan[ca][3] + gan[ca][2] + " \n";
-		document.getElementById("output2").innerText += " . . " + gan[ca][0] + " " +  gs_titl + " " + gan[ca][3] + gan[ca][2] + " \n";
+		document.getElementById(posa).innerText += gan[ca][0] + " \n \n";
+		document.getElementById(posb).innerText += gs_titl + " \n " + gan[ca][3] + gan[ca][2] + " \n";
+		document.getElementById("output2").innerText += " . . " + gan[ca][0] + " " + gs_titl + " " + gan[ca][3] + gan[ca][2] + " \n";
 		find_gjss(jiji[cb][0],"",4);
-		document.getElementById(pos).innerText += " . . " + jiji[cb][0] + " \n " + js_titl + " \n " + jiji[cb][3] + jiji[cb][2] + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n\n";
+		document.getElementById(posa).innerText += jiji[cb][0] + " \n\n";
+		document.getElementById(posb).innerText += js_titl + " \n " + jiji[cb][3] + jiji[cb][2] + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n\n";
 		document.getElementById("output2").innerText += " . . " + jiji[cb][0] + " " + js_titl + " " + jiji[cb][3] + jiji[cb][2] + " " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n\n";
 	};
 		document.getElementById("output2").innerText += longungj + " \n\n";
