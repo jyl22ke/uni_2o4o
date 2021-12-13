@@ -23,7 +23,7 @@
 	.canvas {
 		background: url(./bga.jpg) fixed;
 		display:grid; 
-		grid-template-columns: repeat(20,30px);
+		grid-template-columns: repeat(20,35px);
 		padding: 20px;
 		background-size:cover; 
 		grid-gap: 0px;
@@ -33,7 +33,7 @@
 	.ifo {margin: 5px; font-size: 1.0em; height: 20px;}
 	.sjt {grid-column: 1/span 4;grid-row: 2/span 5; color: #000; font-weight: bold;border:1px solid black;}
 	.sjo,.sjot,.sjat,.sjbt {grid-column: span 4;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
-	.sjut {grid-column: span 2;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
+	.sjut,.seu {grid-column: span 2;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
 	.sju1 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 1.4em; font-weight: bold; border-right: none; font-family:"한양해서";}
 	.sju2 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em; border-left: none;}
 	.sja,.sjb {grid-column: span 4;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
@@ -44,7 +44,7 @@
 	#submit1 {padding: 0 10px; font-weight: bold;}
 	#sola {display:none; font-weight: bold; width: 200px;}
 	#clear1 {padding: 0 5px;}
-	@media screen and (min-width: 950px) {.canvas {float: left;} #output {float: right;min-width:800px;} #output2 {display: flex;}}
+	@media screen and (min-width: 950px) {.canvas {float: left;} #output {float: right;min-width:600px;} #output2 {display: flex;}}
 	
   </style>
 
@@ -125,6 +125,16 @@
 		<div class="sju2" id="sjub2"></div>
 		<div class="sju1" id="sjua1"></div>
 		<div class="sju2" id="sjub1"></div>
+		<div class="sjut">세운</div>
+		<div class="seu" id="seu9"></div>
+		<div class="seu" id="seu8"></div>
+		<div class="seu" id="seu7"></div>
+		<div class="seu" id="seu6"></div>
+		<div class="seu" id="seu5"></div>
+		<div class="seu" id="seu4"></div>
+		<div class="seu" id="seu3"></div>
+		<div class="seu" id="seu2"></div>
+		<div class="seu" id="seu1"></div>		
 	</div>
 	<div id="output"></div>
 	<div id="output2"></div>
