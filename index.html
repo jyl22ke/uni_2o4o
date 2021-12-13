@@ -34,7 +34,7 @@
 	.sjt {grid-column: 1/span 4;grid-row: 2/span 5; color: #000; font-weight: bold;border:1px solid black;}
 	.sjo,.sjot,.sjat,.sjbt {grid-column: span 4;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
 	.sjut {grid-column: span 2;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
-	.sju1 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 1.2em; font-weight: bold; border-right: none; font-family:"한양해서";}
+	.sju1 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 1.4em; font-weight: bold; border-right: none; font-family:"한양해서";}
 	.sju2 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em; border-left: none;}
 	.sja,.sjb {grid-column: span 4;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
 	.sj {grid-column: span 4;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
@@ -611,7 +611,7 @@ function longun(){
 		longungj += gan[ca][0] + jiji[cb][0];
 		find_ggss(gan[ca][0],"","",4);
 		document.getElementById(posa).innerText += i +"\n\n";
-		document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + "세)" + " \n\n";
+		document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n\n";
 		document.getElementById("output2").innerText += i +"대운 (" + (age + (i - 1) * 10) + "세) " + " \n";
 		document.getElementById(posa).innerText += gan[ca][0] + " \n\n";
 		document.getElementById(posb).innerText += gs_titl + " \n " + gan[ca][3] + gan[ca][2] + " \n\n";
