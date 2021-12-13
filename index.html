@@ -202,7 +202,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	 
 <script type="text/javascript">
 	var premon = null; var postmon = null; var term = 0; var gendr = "";
-	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hrta = ""; var hrtb = ""; var hrtc = ""; var hrtd = "";
+	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hrta = ""; var hrtb = ""; var hrtc = ""; var hrtd = ""; var rt = "";
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 
@@ -910,24 +910,24 @@ function txtSearch(str, searchvalue){
 };
 
 //====== 천간합 통근체크 함수 ======
-function hrootchk(a,b,c){  
+function hrootchk(a,b){  
+	hroot = ""; rt = "";
 	idx = gjsgj[1].lastIndexOf(a);
 	hroot = gjsgj[b][idx];  //--- 십성
 	if (hroot === "비견" || hroot === "겁재" || hroot === "편인" || hroot === "정인"){
-		c = "1";  //--- 통근
+		rt = "1" + hroot;  //--- 통근 + 십성
 	}else{
-		c = "0";  //--- 불통근
+		rt = "0" + hroot;  //--- 불통근 + 십성
 	};
-//	c = rt;  //--- "1" or "0" + 십성
 };
 	
 //========== 천간합 ==========
 	//---   ganhab("연간합",5,sj_ganji,"_합");
 function ganhab(name,qt,str,exp){
-	hrootchk(sj_yj,2,hrta);
-	hrootchk(sj_mj,3,hrtb);
-	hrootchk(sj_dj,4,hrtc);
-	hrootchk(sj_tj,5,hrtd);	
+	hrootchk(sj_yj,2); hrt1 = rt;
+	hrootchk(sj_mj,3); hrt2 = rt;
+	hrootchk(sj_dj,4); hrt3 = rt;
+	hrootchk(sj_tj,5); hrt4 = rt;
 	cv_yghab = ["연간합","02"];	
 	cv_ghab = ["일간합","24","46"];
 	if (name === "연간합" || name === "일간합"){
