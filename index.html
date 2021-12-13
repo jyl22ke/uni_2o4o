@@ -910,24 +910,24 @@ function txtSearch(str, searchvalue){
 };
 
 //====== 천간합 통근체크 함수 ======
-function hrootchk(){  
-	b = "symdt"; hrt1 = ""; hrt2 = ""; hrt3 = ""; hrt4 = "";
-	for (i=1; i<5; i++){
-		a = eval("sj_" + b.substr(i,1) + "j");
-		idx = gjsgj[1].lastIndexOf(a);
-		hroot = gjsgj[ i + 1 ][idx];  //--- (연주) 십성
-		if (hroot === "비견" || hroot === "겁재" || hroot === "편인" || hroot === "정인"){
-			eval("hrt" + String(i)) = "1" + hroot;
-		}else{
-			eval("hrt" + String(i)) = "0" + hroot;
-		};
+function hrootchk(a,b,c){  
+	idx = gjsgj[1].lastIndexOf(a);
+	hroot = gjsgj[b][idx];  //--- 십성
+	if (hroot === "비견" || hroot === "겁재" || hroot === "편인" || hroot === "정인"){
+		c = "1" + hroot;  //--- 통근 + 십성
+	}else{
+		c = "0" + hroot;  //--- 불통근 + 십성
 	};
 };
 	
 //========== 천간합 ==========
 	//---   ganhab("연간합",5,sj_ganji,"_합");
 function ganhab(name,qt,str,exp){
-	hrootchk();
+	hrt1 = ""; hrt2 = ""; hrt3 = ""; hrt4 = "";
+	hrootchk(sj_yj,2,hrt1);
+	hrootchk(sj_mj,3,hrt2);
+	hrootchk(sj_dj,4,hrt3);
+	hrootchk(sj_tj,5,hrt4);
 	cv_yghab = ["연간합","02"];	
 	cv_ghab = ["일간합","24","46"];
 	if (name === "연간합" || name === "일간합"){
