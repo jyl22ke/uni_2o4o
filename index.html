@@ -913,9 +913,9 @@ function txtSearch(str, searchvalue){
 function hrootchk(){  
 	b = "symdt"; hrt1 = ""; hrt2 = ""; hrt3 = ""; hrt4 = "";
 	for (i=1; i<5; i++){
-		a = "sj_" + b.substr(i,1) + "j";
+		eval(a = "sj_" + b.substr(i,1) + "j");
 		idx = gjsgj[1].lastIndexOf(a);
-		hrt = "hrt" + String(i);
+		eval(hrt = "hrt" + String(i));
 		hroot = gjsgj[ i + 1 ][idx];  //--- (연주) 십성
 		if (hroot === "비견" || hroot === "겁재" || hroot === "편인" || hroot === "정인"){
 			hrt = "1" + hroot;
