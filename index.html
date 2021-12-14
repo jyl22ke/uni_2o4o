@@ -250,7 +250,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 </script>
 	 
 <script type="text/javascript">
-	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null;
+	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null; var due = null;
 	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hrta = ""; var hrtb = ""; var hrtc = ""; var hrtd = ""; var rt = "";
 	var vwyr = null; var rvwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
@@ -409,7 +409,7 @@ function isFindm(element)  {
 //=========== 사주 입력시 실행되는 main 함수 ===========
 $( function() {
 	$( 'button#submit1' ).click( function() {
-		ya = ""; yb = ""; ma = ""; mb = ""; da = ""; db = ""; ta = ""; tb = ""; now = null;
+		ya = ""; yb = ""; ma = ""; mb = ""; da = ""; db = ""; ta = ""; tb = ""; now = null; due = null;
 		a = 0; b = 0; c = 0; d = 0; e = 0; f = 0; bs = 0; co_s = 0; co_e = 0;
 		ny = 0; nm = 0; nd = 0; nt = 0; nma = 0; nta = 0; yr = 0; mo = 0; bsd = 0; ns = 0; sd = 0; ed = 0; 
 		//------------------ 변수값 clear RESET start -------------------
