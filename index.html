@@ -638,6 +638,36 @@ function longun(){
 		document.getElementById("output2").innerText += longungj + " \n\n";
 };
 	
+//====== 세운 ======
+function seun(){
+	for (i=0; i<gan.length; i++){
+		if (gan[i][0] == sj_yg){
+			sen = (i + age - 1) % 10 + 1;
+		};
+	};
+	for (i=0; i<jiji.length; i++){
+		if (jiji[i][0] == sj_yj){
+			sem = (i + age - 1) % 12 + 1;
+		};
+	};
+	for (j=0; j<9; j++){
+		for (i=0; i<10; i++){	
+			seg = gan[sen][0];
+			segoh = gan[sen][4].substr(1,2);
+			segs = find_ggss(seg,"","",4);
+			pos = "seu" + (j + 1);
+			document.getElementById(pos).innerText += String(birth0.getFullYear() + age - 1 + j * 10) + " (" + (age + i + j * 10) + ")\n";
+			document.getElementById(pos).innerText += seg + segs + segoh + "\n";
+			sej = jiji[sem][0];
+			sejoh = jiji[sem][4].substr(1,2);
+			sejs = find_gjss(sej,"",4);
+			uns = unsung12[3].lastIndexOf(sej);
+			document.getElementById(pos).innerText += sej + sejs + sejoh + uns + "\n";
+		};
+	};
+};
+	
+	
 function fill_saju(){
 	for (i=1;i<5 ; i++){
 		m = i * 2 -1;
@@ -954,7 +984,9 @@ function txtSearch(str, searchvalue){
 //====== 천간합 통근체크 함수 ======
 function hrootchk(a,b){  
 	hroot = ""; rt = "";
-	idx = gjsgj[1].lastIndexOf(a);
+	if (a == "辰" || a == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
+	}else{if (a == "丑" || a == "未"){idx = gjsgj[1].lastIndexOf("丑未");
+		}else{idx = gjsgj[1].lastIndexOf(a);};};
 	hroot = gjsgj[b][idx];  //--- 십성
 	if (hroot === "비견" || hroot === "겁재" || hroot === "편인" || hroot === "정인"){
 		rt = "1" + hroot;  //--- 통근 + 십성
@@ -962,6 +994,7 @@ function hrootchk(a,b){
 		rt = "0" + hroot;  //--- 불통근 + 십성
 	};
 };
+	
 	
 //========== 천간합 ==========
 	//---   ganhab("연간합",5,sj_ganji,"_합");
