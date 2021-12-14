@@ -664,9 +664,9 @@ function seun(){
 		document.getElementById(pos).innerText += seug + seugs + seugoh + "\n";
 		seuj = jiji[no][0];
 		seujoh = jiji[no][4].substr(1,2);
-		if (sej == "辰" || sej == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
-		}else{if (sej == "丑" || sej == "未"){idx = gjsgj[1].lastIndexOf("丑未");
-			}else{idx = gjsgj[1].lastIndexOf(sej);};};
+		if (seuj == "辰" || seuj == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
+		}else{if (seuj == "丑" || seuj == "未"){idx = gjsgj[1].lastIndexOf("丑未");
+			}else{idx = gjsgj[1].lastIndexOf(seuj);};};
 		seujs = gjsgj[4][idx];  //--- (지지)십성 이름
 		seuns = unsung12[3].lastIndexOf(seuj);
 		document.getElementById(pos).innerText += seuj + seujs + seujoh + unsung12[0][seuns] + "\n";
