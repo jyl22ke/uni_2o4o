@@ -236,7 +236,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 <script type="text/javascript">
 	var premon = null; var postmon = null; var term = 0; var gendr = "";
 	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hrta = ""; var hrtb = ""; var hrtc = ""; var hrtd = ""; var rt = "";
-	var vwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
+	var vwyr = null; var rvwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 
@@ -646,6 +646,7 @@ function longun(){
 	
 //====== 세운 ======
 function seun(){
+	vwyr = null; rvwyr = null; seug = ""; seugs = ""; seugoh = ""; seuj = ""; seujs = ""; seujoh = "";
 	rvwyr = birth0.getFullYear() + age - 1;
 	k = 1; j = 0;
 	for (i=0; i<100; i++){
