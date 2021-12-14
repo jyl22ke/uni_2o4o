@@ -23,7 +23,7 @@
 	.canvas {
 		background: url(./bga.jpg) fixed;
 		display:grid; 
-		grid-template-columns: repeat(20,35px);
+		grid-template-columns: repeat(20,40px);
 		padding: 20px;
 		background-size:cover; 
 		grid-gap: 0px;
@@ -655,21 +655,21 @@ function seun(){
 			j = 0
 		};
 		pos = "seu" + k;
-		seg = gan[mo][0];
-		segoh = gan[mo][4].substr(1,2);
-		idx = gjsgj[0].lastIndexOf(seg);
-		segs = gjsgj[4][idx];  //--- (천간)십성 이름
+		seug = gan[mo][0];
+		seugoh = gan[mo][4].substr(1,2);
+		idx = gjsgj[0].lastIndexOf(seug);
+		seugs = gjsgj[4][idx];  //--- (천간)십성 이름
 
 		document.getElementById(pos).innerText += String(vwyr) + " (" + String(vwyr - birth0.getFullYear() + 1) + ")\n";
-		document.getElementById(pos).innerText += seg + segs + segoh + "\n";
-		sej = jiji[no][0];
-		sejoh = jiji[no][4].substr(1,2);
+		document.getElementById(pos).innerText += seug + seugs + seugoh + "\n";
+		seuj = jiji[no][0];
+		seujoh = jiji[no][4].substr(1,2);
 		if (sej == "辰" || sej == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
 		}else{if (sej == "丑" || sej == "未"){idx = gjsgj[1].lastIndexOf("丑未");
 			}else{idx = gjsgj[1].lastIndexOf(sej);};};
-		sejs = gjsgj[4][idx];  //--- (지지)십성 이름
-		uns = unsung12[3].lastIndexOf(sej);
-		document.getElementById(pos).innerText += sej + sejs + sejoh + unsung12[0][uns] + "\n";
+		seujs = gjsgj[4][idx];  //--- (지지)십성 이름
+		seuns = unsung12[3].lastIndexOf(seuj);
+		document.getElementById(pos).innerText += seuj + seujs + seujoh + unsung12[0][seuns] + "\n";
 		j += 1;
 	};
 };
