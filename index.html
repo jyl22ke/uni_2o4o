@@ -642,6 +642,42 @@ function longun(){
 	
 //====== 세운 ======
 function seun(){
+	rvw = birth0.getFullYear() + age - 1;
+	k = 1; j = 0;
+	for (i=0; i<100; i++){
+		vyr = rvw + i;
+		m = (vyr - 1863) % 10; 
+		n = (vyr - 1863) % 12;
+		if (m === 0){ m = 10; };
+		if (n === 0){ n = 12; };
+		if (j == 10){
+			k += 1;
+			j = 0
+		};
+			pos = "seu" + k;
+			seg = gan[m][0];
+			segoh = gan[m][4].substr(1,2);
+			idx = gjsgj[0].lastIndexOf(seg);
+			segs = gjsgj[4][idx];  //--- (천간)십성 이름
+
+			document.getElementById(pos).innerText += String(birth0.getFullYear() + age - 1 + j * 10) + " (" + (age + i + j * 10) + ")\n";
+			document.getElementById(pos).innerText += seg + segs + segoh + "\n";
+			sej = jiji[n][0];
+			sejoh = jiji[n][4].substr(1,2);
+			if (sej == "辰" || sej == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
+			}else{if (sej == "丑" || sej == "未"){idx = gjsgj[1].lastIndexOf("丑未");
+				}else{idx = gjsgj[1].lastIndexOf(sej);};};
+			sejs = gjsgj[4][idx];  //--- (지지)십성 이름
+			uns = unsung12[3].lastIndexOf(sej);
+			document.getElementById(pos).innerText += sej + sejs + sejoh + unsung12[0][uns] + "\n";
+		j += 1;
+	};
+};
+	
+	
+	
+/*	
+function seun(){
 	for (i=0; i<gan.length; i++){
 		if (gan[i][0] == sj_yg){
 			ygn = (i + age - 2) % 10 + 1;
@@ -658,8 +694,8 @@ function seun(){
 		sem = yjm + j * 10;
 		for (i=0; i<10; i++){	
 			n = (sen + i) % 10; m = (sem + i) % 12;
-			if (n = 0){n = n + 10;};
-			if (m = 0){m = m + 12;};
+			if (n === 0){n = n + 10;};
+			if (m === 0){m = m + 12;};
 			seg = gan[n][0];
 			segoh = gan[n][4].substr(1,2);
 			idx = gjsgj[0].lastIndexOf(seg);
@@ -677,7 +713,7 @@ function seun(){
 		};
 	};
 };
-	
+	*/
 	
 function fill_saju(){
 	for (i=1;i<5 ; i++){
