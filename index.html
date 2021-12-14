@@ -236,6 +236,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 <script type="text/javascript">
 	var premon = null; var postmon = null; var term = 0; var gendr = "";
 	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hrta = ""; var hrtb = ""; var hrtc = ""; var hrtd = ""; var rt = "";
+	var vwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 
@@ -249,7 +250,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	var ya = ""; var yb = ""; var ma = ""; var mb = ""; var da = ""; var db = ""; var ta = ""; var tb = "";
 	var a = 0; var b = 0; var c = 0; var d = 0; var e = 0; var f = 0; var bs = 0; var co_s = 0; var co_e = 0; var cor_d = 0;
 	var ny = 0; var nm = 0; var nd = 0; var nt = 0; var nma = 0; var nta = 0; var yr = 0; var mo = 0; var bsd = 0; var ns = 0; var sd = 0; var ed = 0; 
-	
+
 //========= 간지 배경색 =========
 function chg_bgcolor(a,b,c) {
 	$(a).css("background","linear-gradient(145deg," + b + ", 45%," + c + " 55%)");
@@ -663,8 +664,8 @@ function seun(){
 		idx = gjsgj[0].lastIndexOf(seug);
 		seugs = gjsgj[4][idx];  //--- (천간)십성 이름
 
-//		document.getElementById(posi).innerText += vwyr + " (" + (vwyr - birth0.getFullYear() + 1) + ")\n";
-//		document.getElementById(posi).innerText += seug + seugs + seugoh + "\n";
+ 		document.getElementById(posi).innerText += vwyr + " (" + (vwyr - birth0.getFullYear() + 1) + ")\n";
+ 		document.getElementById(posi).innerText += seug + seugs + seugoh + "\n";
 		seuj = jiji[no][0];
 		seujoh = jiji[no][4].substr(1,2);
 		if (seuj == "辰" || seuj == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
@@ -672,12 +673,12 @@ function seun(){
 			}else{idx = gjsgj[1].lastIndexOf(seuj);};};
 		seujs = gjsgj[4][idx];  //--- (지지)십성 이름
 		seuns = unsung12[3].lastIndexOf(seuj);
-//		document.getElementById(posi).innerText += seuj + seujs + seujoh + unsung12[0][seuns] + "\n";
+ 		document.getElementById(posi).innerText += seuj + seujs + seujoh + unsung12[0][seuns] + "\n";
 		j += 1;
 	};
 };
 	
-
+	
 function fill_saju(){
 	for (i=1;i<5 ; i++){
 		m = i * 2 -1;
