@@ -23,7 +23,7 @@
 	.canvas {
 		background: url(./bga.jpg) fixed;
 		display:grid; 
-		grid-template-columns: repeat(20,45px);
+		grid-template-columns: repeat(20,40px);
 		padding: 20px;
 		background-size:cover; 
 		grid-gap: 0px;
@@ -674,47 +674,7 @@ function seun(){
 	};
 };
 	
-	
-	
-/*	
-function seun(){
-	for (i=0; i<gan.length; i++){
-		if (gan[i][0] == sj_yg){
-			ygn = (i + age - 2) % 10 + 1;
-		};
-	};
-	for (i=0; i<jiji.length; i++){
-		if (jiji[i][0] == sj_yj){
-			yjm = (i + age - 2) % 12 + 1;
-		};
-	};
-	for (j=0; j<9; j++){
-		pos = "seu" + (j + 1);
-		sen = ygn + j * 10;
-		sem = yjm + j * 10;
-		for (i=0; i<10; i++){	
-			n = (sen + i) % 10; m = (sem + i) % 12;
-			if (n === 0){n = n + 10;};
-			if (m === 0){m = m + 12;};
-			seg = gan[n][0];
-			segoh = gan[n][4].substr(1,2);
-			idx = gjsgj[0].lastIndexOf(seg);
-			segs = gjsgj[4][idx];  //--- (천간)십성 이름
-			document.getElementById(pos).innerText += String(birth0.getFullYear() + age - 1 + j * 10) + " (" + (age + i + j * 10) + ")\n";
-			document.getElementById(pos).innerText += seg + segs + segoh + "\n";
-			sej = jiji[m][0];
-			sejoh = jiji[m][4].substr(1,2);
-			if (sej == "辰" || sej == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
-			}else{if (sej == "丑" || sej == "未"){idx = gjsgj[1].lastIndexOf("丑未");
-				}else{idx = gjsgj[1].lastIndexOf(sej);};};
-			sejs = gjsgj[4][idx];  //--- (지지)십성 이름
-			uns = unsung12[3].lastIndexOf(sej);
-			document.getElementById(pos).innerText += sej + sejs + sejoh + unsung12[0][uns] + "\n";
-		};
-	};
-};
-	*/
-	
+
 function fill_saju(){
 	for (i=1;i<5 ; i++){
 		m = i * 2 -1;
