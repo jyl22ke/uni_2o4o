@@ -32,6 +32,9 @@
 	.insrt {height: 80px;}
 	.ifo {margin: 5px; font-size: 1.0em; height: 20px;}
 	.hangun {grid-column: 15/span 5;grid-row: 1/span 9; color: #000; font-weight: bold;border:1px solid black;}
+	.hunt {grid-column: 15/span 1;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
+	.hun1 {grid-column: 16/span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 1.4em; font-weight: bold; border-right: none; font-family:"한양해서";}
+	.hun2 {grid-column: 17/span 3;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em; border-left: none;}
 	.sjt {grid-column: 1/span 2;grid-row: 2/span 5; color: #000; font-weight: bold;border:1px solid black;}
 	.sjat,.sjbt {grid-column: span 2;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
 	.sjo,.sjot {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
@@ -68,7 +71,20 @@
 <hr/>
 	<div class="canvas">
 
-		<div class="hangun">행운</div>
+		<div class="hangun">
+		<div class="hunt">대운</div>
+		<div class="hun1" id="hunL1"></div>
+		<div class="hun2" id="hunL2"></div>
+		<div class="hunt">세운</div>
+		<div class="hun1" id="hunY1"></div>
+		<div class="hun2" id="hunY2"></div>
+		<div class="hunt">월운</div>
+		<div class="hun1" id="hunM1"></div>
+		<div class="hun2" id="hunM2"></div>
+		<div class="hunt">일운</div>
+		<div class="hun1" id="hunD1"></div>
+		<div class="hun2" id="hunD2"></div>
+		</div>
 		<div class="sjat">십성(간)</div>
 		<div class="sja" id="sj7a"></div>
 		<div class="sja" id="sj5a"></div>
