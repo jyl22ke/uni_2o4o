@@ -659,7 +659,11 @@ function seun(){
 			k += 1;
 			j = 0
 		};
-		posi = "seu" + k;
+		if (k < 10){
+			posi = "seu" + k;
+		}else{
+			return false;
+		};
 		seug = gan[mo][0];
 		seugoh = gan[mo][4].substr(1,2);
 		idx = gjsgj[0].lastIndexOf(seug);
