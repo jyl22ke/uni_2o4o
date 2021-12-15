@@ -575,7 +575,7 @@ function saju_chk(){
 	if (nm != nma || nt != nta){
 		document.getElementById("output2").innerText += "생년월일 check : 사주가 맞지 않습니다.. " + saju_h + " \n";
 	}else{
-		mo = (nm + 10) % 12 + 1; //---- 월
+		mo = (nm + 11) % 12; if (mo == 0){mo = 12;}; //---- 월
 		yr = ny + 1863; //---- 년도
 		if (yr < 1908){
 			yr = yr + 60; //---- 년도 확인
