@@ -647,16 +647,16 @@ function longun(){
 		posa = "sjua" + i; posb = "sjub" + i;
 		longungj += gan[ca][0] + jiji[cb][0];
 		find_ggss(gan[ca][0],"","",4);
-		document.getElementById(posa).innerText += "\n";
 		document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n\n";
-		document.getElementById(posa).innerText += gan[ca][0] + " \n\n";
+		document.getElementById(posa).innerText += "\n" + gan[ca][0] + " \n\n";
 		document.getElementById(posb).innerText += gs_titl + " \n " + gan[ca][3] + gan[ca][2] + " \n\n";
 		find_gjss(jiji[cb][0],"",4);
 		document.getElementById(posa).innerText += jiji[cb][0] + " \n";
 		document.getElementById(posb).innerText += js_titl + " \n " + jiji[cb][3] + jiji[cb][2] + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
 		if (now.getFullYear()-birth0.getFullYear()+1 >= age+(i-1)*10 && now.getFullYear()-birth0.getFullYear()+1 < age+i*10){
+			document.getElementById("hunL2").innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
 			document.getElementById("hunL1").innerText += gan[ca][0] + "\n";
-			document.getElementById("hunL2").innerText += "\n" + gs_titl + " " + gan[ca][3] + gan[ca][2] + "\n";
+			document.getElementById("hunL2").innerText += gs_titl + " " + gan[ca][3] + gan[ca][2] + "\n";
 			document.getElementById("hunL1").innerText += jiji[cb][0] + "\n";
 			document.getElementById("hunL2").innerText += "\n" + js_titl + " " + jiji[cb][3] + jiji[cb][2] + " " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
 		};
@@ -702,9 +702,9 @@ function seun(){
 		if (now.getFullYear() == vwyr ){
 			document.getElementById("hunY2").innerText += vwyr + " (" + (vwyr - birth0.getFullYear() + 1) + ")\n";
 			document.getElementById("hunY1").innerText += seug + "\n";
-			document.getElementById("hunY2").innerText += seugs + seugoh + "\n";
+			document.getElementById("hunY2").innerText += seugs + " " + seugoh + "\n";
 			document.getElementById("hunY1").innerText += seuj + "\n";
-			document.getElementById("hunY2").innerText += "\n" + seujs + seujoh + unsung12[0][seuns] + "\n";
+			document.getElementById("hunY2").innerText += "\n" + seujs + " " + seujoh + " " + unsung12[0][seuns] + "\n";
 		};
 	};
 };
