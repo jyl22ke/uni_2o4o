@@ -250,7 +250,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 </script>
 	 
 <script type="text/javascript">
-	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null; var due = null;
+	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null;
 	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hrta = ""; var hrtb = ""; var hrtc = ""; var hrtd = ""; var rt = "";
 	var vwyr = null; var rvwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
@@ -409,7 +409,7 @@ function isFindm(element)  {
 //=========== 사주 입력시 실행되는 main 함수 ===========
 $( function() {
 	$( 'button#submit1' ).click( function() {
-		ya = ""; yb = ""; ma = ""; mb = ""; da = ""; db = ""; ta = ""; tb = ""; now = null; due = null;
+		ya = ""; yb = ""; ma = ""; mb = ""; da = ""; db = ""; ta = ""; tb = ""; now = null;
 		a = 0; b = 0; c = 0; d = 0; e = 0; f = 0; bs = 0; co_s = 0; co_e = 0;
 		ny = 0; nm = 0; nd = 0; nt = 0; nma = 0; nta = 0; yr = 0; mo = 0; bsd = 0; ns = 0; sd = 0; ed = 0; 
 		//------------------ 변수값 clear RESET start -------------------
@@ -643,8 +643,8 @@ function longun(){
 		if (jiji[i][0] === sj_mj){b = i};
 	};
 	for (i=1; i<10; i++){
-		due = new Date(firstD.setFullYear(firstD.getFullYear() + 10 * (i - 1)));
-		ndue = new Date(firstD.setFullYear(firstD.getFullYear() + 10 * i));
+		due = firstD.getFullYear() + 10 * (i - 1);
+		ndue = firstD.getFullYear() + 10 * i;
 		ca = (a + i * r + 59) % 10 + 1;
 		cb = (b + i * r + 59) % 12 + 1;
 		posa = "sjua" + i; posb = "sjub" + i;
@@ -657,7 +657,7 @@ function longun(){
 		find_gjss(jiji[cb][0],"",4);
 		document.getElementById(posa).innerText += jiji[cb][0] + " \n";
 		document.getElementById(posb).innerText += js_titl + " \n " + jiji[cb][3] + jiji[cb][2] + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
-		if (now > due && now < ndue){
+		if (now.getFullYear() > due && now.getFullYear() < ndue){
 			document.getElementById(hunL1).innerText += gan[ca][0] + " \n";
 			document.getElementById(hunL2).innerText += gs_titl + " \n " + gan[ca][3] + gan[ca][2] + " \n";
 			document.getElementById(hunL1).innerText += jiji[cb][0] + " \n";
