@@ -561,10 +561,10 @@ function saju_chk(){
 	f = ca09r_yjsjfind[2].indexOf(db);
 	g = ca09r_yjsjfind[1].indexOf(ta);
 	h = ca09r_yjsjfind[2].indexOf(tb);
-	if (a >= b){ny = (a - b) * 6 + b;}else{ny = (10 + a - b) * 6 + b;}; //--- 년간/년지(a/b) 순서(ny)
-	if (c >= d){nm = (c - d) * 6 + d;}else{nm = (10 + c - d) * 6 + d;}; //--- 월간/월지(c/d) 순서(nm)
-	if (e >= f){nd = (e - f) * 6 + f;}else{nd = (10 + e - f) * 6 + f;}; //--- 일간/일지(e/f) 순서(nd)
-	if (g >= h){nt = (g - h) * 6 + h;}else{nt = (10 + g - h) * 6 + h;}; //--- 시간/시지(g/h) 순서(nt)
+	if (a >= b){ny = (a - b) * 6 + b;}else{ny = (10 + a - b) * 6 + b;}; //--- 년간/년지(a/b) 순번(ny)
+	if (c >= d){nm = (c - d) * 6 + d;}else{nm = (10 + c - d) * 6 + d;}; //--- 월간/월지(c/d) 순번(nm)
+	if (e >= f){nd = (e - f) * 6 + f;}else{nd = (10 + e - f) * 6 + f;}; //--- 일간/일지(e/f) 순번(nd)
+	if (g >= h){nt = (g - h) * 6 + h;}else{nt = (10 + g - h) * 6 + h;}; //--- 시간/시지(g/h) 순번(nt)
 	if (a > 5) {a = a - 5};
 	if (d < 3){nma = a * 12 + d; }else{nma = (a - 1) * 12 + d; };
 	if (nma > 60) {nma = nma - 60};
@@ -585,21 +585,21 @@ function saju_chk(){
 		bsd = 117763200000; //--- 기준 갑자일(1908-01-10) = -1955836800000 + 2073600000000 = 117763200000 
 
 		while (yr <= year){
-			subj = yr; subj1 = mb;
+			subj = yr; subj1 = mb;  //--- 년도, 월지를 이용하여 검색
 			ns = ca08_monthstart.findIndex(isFindm); //---- mb월(양력) 시작일 확인 (index)
 			startdate = new Date(ca08_monthstart[ns][0].substr(0,10)); //---- mb월(양력) 시작일
 			enddate = new Date(ca08_monthstart[ns+1][0].substr(0,10)); //---- mb월(양력) 종료일
 			sd = startdate.getTime() + 2073600000000; //--- 월 시작일(sd)
-			co_s = ((sd - bsd)/86400000) % 60; 
+			co_s = ((sd - bsd)/86400000) % 60;  //--- 월 시작일의 60갑자 순번
 			bs = parseInt(((sd - bsd)/86400000) / 60);
 			bsd = bsd + bs * 5184000000;
 			ed = enddate.getTime() + 2073600000000; //--- 월 종료일(ed)
-			co_e = ((ed - bsd)/86400000) % 60; 
+			co_e = ((ed - bsd)/86400000) % 60;  //--- 월 종료일의 60갑자 순번
 			if (co_s > co_e){
-				if (nd < co_s){co_s = 0;};
-				if (nd > co_e){	co_e = 60;};
+				if (nd < co_s){co_s1 = 0;}else{co_s1 = co_s;};
+				if (nd > co_e){co_e1 = 60;}else{co_e1 = co_e;};
 			};
-			if (nd >= co_s && nd <= co_e){
+			if (nd >= co_s1 && nd <= co_e1){
 				birth1 = new Date(bsd + (nd - 1) * 86400000 - 2073600000000 - 30600000);
 				hrs = Number(ca09r_yjsjfind[3][h]);
 				birth1.setHours(birth1.getHours() + hrs);  birth0 = birth1;
@@ -615,6 +615,7 @@ function saju_chk(){
 				premon = new Date(ca08_monthstart[ns][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
 				postmon = new Date(ca08_monthstart[ns+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
 				term = Number(ca08_monthstart[ns][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
+				document.getElementById("output2").innerText += "생년월일 : " + symdt + " \n";
 			};
 			yr = yr + 60; //---- 년도 확인
 		};
