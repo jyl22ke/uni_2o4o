@@ -643,8 +643,6 @@ function longun(){
 		if (jiji[i][0] === sj_mj){b = i};
 	};
 	for (i=1; i<10; i++){
-		due = firstD.getFullYear() + 10 * (i - 1);
-		ndue = firstD.getFullYear() + 10 * i;
 		ca = (a + i * r + 59) % 10 + 1;
 		cb = (b + i * r + 59) % 12 + 1;
 		posa = "sjua" + i; posb = "sjub" + i;
@@ -654,17 +652,9 @@ function longun(){
 		document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n\n";
 		document.getElementById(posa).innerText += gan[ca][0] + " \n\n";
 		document.getElementById(posb).innerText += gs_titl + " \n " + gan[ca][3] + gan[ca][2] + " \n\n";
-		if (2021 >= due && 2021 <= ndue){
-			document.getElementById(hunL1).innerText += gan[ca][0] + " \n";
-			document.getElementById(hunL2).innerText += gs_titl + " \n " + gan[ca][3] + gan[ca][2] + " \n";
-		};
 		find_gjss(jiji[cb][0],"",4);
 		document.getElementById(posa).innerText += jiji[cb][0] + " \n";
 		document.getElementById(posb).innerText += js_titl + " \n " + jiji[cb][3] + jiji[cb][2] + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
-		if (2021 >= due && 2021 <= ndue){
-			document.getElementById(hunL1).innerText += jiji[cb][0] + " \n";
-			document.getElementById(hunL2).innerText += js_titl + " \n " + jiji[cb][3] + jiji[cb][2] + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
-		};
 	};
 };
 	
