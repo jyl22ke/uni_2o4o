@@ -569,9 +569,8 @@ function saju_chk(){
 	if (d < 3){nma = a * 12 + d; }else{nma = (a - 1) * 12 + d; };
 	if (nma > 60) {nma = nma - 60};
 	if (e > 5) {e = e - 5};
-	if (nta > 60){	nta = (e - 1) * 12 + h - 60;
-	}else{  nta = (e - 1) * 12 + h;	};
-	
+	nta = (e - 1) * 12 + h;
+	if (nta > 60){	nta = nta - 60;};	
 	if (nm != nma || nt != nta){
 		document.getElementById("output2").innerText += "생년월일 check : 사주가 맞지 않습니다.. " + saju_h + " \n";
 	}else{
