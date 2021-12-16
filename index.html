@@ -604,7 +604,7 @@ function saju_chk(){
  				birth1.setMinutes(birth1.getMinutes() - 30);  //--- 분 보정 (00:00)
 				hrs = Number(ca09r_yjsjfind[3][h]);
 				birth1.setHours(birth1.getHours() + hrs);  //--- 시간 입력(시지)
-				birth0 = birth1;
+				birth0 = new Date(birth1);
 				birth = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
  				for (i=1; i<ca04_kstadj.length; i++){
  					if (birth >= ca04_kstadj[i][0] && birth <= ca04_kstadj[i][1]){
