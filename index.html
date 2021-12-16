@@ -596,9 +596,9 @@ function saju_chk(){
 			co_e = Math.ceil(((ed - bsd)/86400000) % 60);  //--- 월 종료일의 60갑자 순번
 			if ((co_s < co_e && co_s <= nd && nd < co_e) || (co_s > co_e && (co_s <= nd || nd < co_e))){
 			    	if (nd > co_s){	
-					birth0 = new Date(startdate.setDate(startdate.getDate() + nd - co_s));
+					birth0 = new Date(startdate.setDate(startdate.getDate() + nd - co_s - 1));
 			      	}else{
-					birth0 = new Date(startdate.setDate(startdate.getDate() + nd + 60 - co_s));
+					birth0 = new Date(startdate.setDate(startdate.getDate() + nd + 60 - co_s - 1));
 				};
 				
 //			if (co_s > co_e && (co_s <= nd || nd < co_e)){
@@ -608,7 +608,7 @@ function saju_chk(){
 //			if (nd >= co_s1 && nd <= co_e1){
 //				birth1 = new Date(bsd + (nd - 1) * 86400000 - 2073600000000 - 30600000);
 				hrs = Number(ca09r_yjsjfind[3][h]);
-				birth0.setHours(birth0.getHours() + hrs);  
+				birth0.setHours(birth0.getHours() + hrs - 9);  
 				birth1 = birth0;
 				birth = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
 //				for (i=1; i<ca04_kstadj.length; i++){
