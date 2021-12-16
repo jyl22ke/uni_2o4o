@@ -273,6 +273,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null;
 	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hrta = ""; var hrtb = ""; var hrtc = ""; var hrtd = ""; var rt = "";
 	var vwyr = null; var rvwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
+	var mothg = 0; var moung = ""; var moungoh = ""; var moungs = ""; var mothj = 0; var mounj = ""; var mounjoh = ""; var mounjs = ""; var mouns = ""; var mountit = 0;
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 
@@ -759,7 +760,7 @@ function hangunj(a,b,c,d,e){
 	
 //====== 월운 ======
 function moun(){
-	var mothg = 0; var moung = ""; var moungoh = ""; var moungs = ""; var mothj = 0; var mounj = ""; var mounjoh = ""; var mounjs = ""; var mouns = ""; var mountit = 0;
+	mothg = 0; moung = ""; moungoh = ""; moungs = ""; mothj = 0; mounj = ""; mounjoh = ""; mounjs = ""; mouns = ""; mountit = 0;
 	moth0 = ((now.getFullYear() - 1908) * 12);  //--- 총 개월수 (1908.12 무신갑자 이후)
 	for (i=0; i<12; i++){
 		now = new Date();
