@@ -764,8 +764,8 @@ function moun(){
 		n = i - 2; pos = "mou" + (i + 1);
 		mothg = (moth0 + n) % 10 + 1;
 		mothj = (moth0 + n) % 12 + 1;
-		hangung(mothg,moung,moungoh,moungs);
-		hangunj(mothj,mounj,mounjoh,mounjs,mouns);
+		hangung(mothg,"moung","moungoh","moungs");
+		hangunj(mothj,"mounj","mounjoh","mounjs","mouns");
 		document.getElementById(pos).innerText += new Date(now.setMonth(now.getMonth() + n)).format('yyyy-MM') + " (" + mounj + ")\n";
 		document.getElementById(pos).innerText += moung + moungs + moungoh + "\n";
 		document.getElementById(pos).innerText += mounj + mounjs + mounjoh + mouns + "\n";
