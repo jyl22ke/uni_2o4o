@@ -759,7 +759,7 @@ function hangunj(a,b,c,d,e){
 	
 //====== 월운 ======
 function moun(){
-	var mothg = 0; var moung = ""; var moungoh = ""; var moungs = ""; var mothj = 0; var mounj = ""; var mounjoh = ""; var mounjs = ""; var mouns = "";
+	var mothg = 0; var moung = ""; var moungoh = ""; var moungs = ""; var mothj = 0; var mounj = ""; var mounjoh = ""; var mounjs = ""; var mouns = ""; var mountit = null;
 	moth0 = ((now.getFullYear() - 1908) * 12);  //--- 총 개월수 (1908.12 무신갑자 이후)
 	for (i=0; i<12; i++){
 		n = i - 2; pos = "mou" + (i + 1);
@@ -767,7 +767,8 @@ function moun(){
 		mothj = (moth0 + n) % 12 + 1;
 		hangung(mothg,moung,moungoh,moungs);
 		hangunj(mothj,mounj,mounjoh,mounjs,mouns);
-		document.getElementById(pos).innerText += new Date(now.setMonth(now.getMonth() + n)).format('yyyy-MM') + " (" + mounj + ")\n";
+		mountit = new Date(now.setMonth(now.getMonth() + n));
+		document.getElementById(pos).innerText += mountit.format('yyyy-MM') + " (" + mounj + ")\n";
 		document.getElementById(pos).innerText += moung + moungs + moungoh + "\n";
 		document.getElementById(pos).innerText += mounj + mounjs + mounjoh + mouns + "\n";
 		if (n == 0){
