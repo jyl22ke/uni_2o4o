@@ -713,21 +713,23 @@ function seun(){
 		}else{
 			return false;
 		};
-		seug = gan[mo][0];
+/*		seug = gan[mo][0];
 		seugoh = gan[mo][4].substr(1,2);
 		idx = gjsgj[0].lastIndexOf(seug);
 		seugs = gjsgj[4][idx];  //--- (천간)십성 이름
-
+*/
+		hangung(mo,seug,seugoh,seugs);
+		hangunj(no,seuj,seujoh,seujs,seuns);
  		document.getElementById(posi).innerText += vwyr + " (" + (vwyr - birth0.getFullYear() + 1) + ")\n";
  		document.getElementById(posi).innerText += seug + seugs + seugoh + "\n";
-		seuj = jiji[no][0];
+/*		seuj = jiji[no][0];
 		seujoh = jiji[no][4].substr(1,2);
 		if (seuj == "辰" || seuj == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
 		}else{if (seuj == "丑" || seuj == "未"){idx = gjsgj[1].lastIndexOf("丑未");
 			}else{idx = gjsgj[1].lastIndexOf(seuj);};};
 		seujs = gjsgj[4][idx];  //--- (지지)십성 이름
 		seuns = unsung12[3].lastIndexOf(seuj);
- 		document.getElementById(posi).innerText += seuj + seujs + seujoh + unsung12[0][seuns] + "\n";
+ */		document.getElementById(posi).innerText += seuj + seujs + seujoh + unsung12[0][seuns] + "\n";
 		j += 1;
 		if (now.getFullYear() == vwyr ){
 			document.getElementById("hunY2").innerText += vwyr + " (" + (vwyr - birth0.getFullYear() + 1) + ")\n";
