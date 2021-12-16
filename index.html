@@ -594,7 +594,8 @@ function saju_chk(){
 			bsd = bsd + bs * 5184000000;
 			ed = enddate.getTime() + 2073600000000; //--- 월 종료일(ed)
 			co_e = Math.ceil(((ed - bsd)/86400000) % 60);  //--- 월 종료일의 60갑자 순번
-			if ((co_s < co_e && co_s <= nd && nd < co_e) || (co_s > co_e && (co_s <= nd || nd < co_e)){
+			if (
+			if ((co_s < co_e && co_s <= nd && nd < co_e) || (co_s > co_e && (co_s <= nd || nd < co_e))){
 			    	if (nd > co_s){	
 					birth0 = new Date(startdate.setDate(startdate.getDate() + nd - co_s));
 			      	}else{
