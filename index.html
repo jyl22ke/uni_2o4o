@@ -702,8 +702,8 @@ function seun(){
 		vwyr = rvwyr + i;
 		sethg = (vwyr - 1863) % 10; 
 		sethj = (vwyr - 1863) % 12;
-		if (mo === 0){ mo = 10; };
-		if (no === 0){ no = 12; };
+		if (sethg === 0){ sethg = 10; };
+		if (sethj === 0){ sethj = 12; };
 		if (j == 10){
 			k += 1;
 			j = 0
@@ -767,15 +767,15 @@ function moun(){
 	moth0 = ((now.getFullYear() - 1908) * 12);  //--- 총 개월수 (1908.12 무신갑자 이후)
 	for (i=0; i<12; i++){
 		now = new Date();
-		n = i - 2; pos = "mou" + (i + 1);
+		n = i - 2; posi = "mou" + (i + 1);
 		mothg = (moth0 + n) % 10 + 1;
 		mothj = (moth0 + n) % 12 + 1;
 		hangung(mothg,moung,moungoh,moungs);
 		hangunj(mothj,mounj,mounjoh,mounjs,mouns);
 		mountit = new Date(now.setMonth(now.getMonth() + n));
-		document.getElementById(pos).innerText += mountit.format('yyyy-MM') + " (" + mounj + ")\n";
-		document.getElementById(pos).innerText += moung + moungs + moungoh + "\n";
-		document.getElementById(pos).innerText += mounj + mounjs + mounjoh + mouns + "\n";
+		document.getElementById(posi).innerText += mountit.format('yyyy-MM') + " (" + mounj + ")\n";
+		document.getElementById(posi).innerText += moung + moungs + moungoh + "\n";
+		document.getElementById(posi).innerText += mounj + mounjs + mounjoh + mouns + "\n";
 		if (n == 0){
 			document.getElementById("hunM2").innerText += new Date(now.setMonth(now.getMonth() + n)).format('yyyy-MM') + " (" + mounj + ")\n";
 			document.getElementById("hunM1").innerText += moung + "\n";
