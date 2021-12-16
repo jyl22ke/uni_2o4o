@@ -600,10 +600,10 @@ function saju_chk(){
 			      	}else{
 					birth1 = new Date(startdate.setDate(startdate.getDate() + nd + 60 - co_s - 1));
 				};
-				birth0.setHours(birth0.getHours() - 8);  //--- 시간 보정 (00:00)
- 				birth0.setMinutes(birth0.getMinutes() - 30);  //--- 분 보정 (00:00)
+				birth1.setHours(birth0.getHours() - 8);  //--- 시간 보정 (00:00)
+ 				birth1.setMinutes(birth0.getMinutes() - 30);  //--- 분 보정 (00:00)
 				hrs = Number(ca09r_yjsjfind[3][h]);
-				birth0.setHours(birth0.getHours() + hrs);  //--- 시간 입력(시지)
+				birth1.setHours(birth0.getHours() + hrs);  //--- 시간 입력(시지)
 				birth0 = birth1;
  				for (i=1; i<ca04_kstadj.length; i++){
  					if (birth >= ca04_kstadj[i][0] && birth <= ca04_kstadj[i][1]){
