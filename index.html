@@ -460,6 +460,7 @@ $( function() {
 		longun();
 		seun();
 		moun();
+		dayun();
    		ganji_root();
    		tugan();
    		rootgchk();
@@ -721,17 +722,14 @@ function seun(){
 //====== 월운 ======
 function moun(){
 //	for (i=0; i<12; i++){
-//		1908.12 //--- 무신 갑자
 		now = new Date();
 //		mountit = new Date(now.setMonth(now.getMonth() + n));
-		mothg = ((now.getFullYear() - 1908) * 12) % 10 + 1;
-		mothj = ((now.getFullYear() - 1908) * 12) % 12 + 1;
+		mothg = ((now.getFullYear() - 1908) * 12) % 10 + 1;  //--- 1908.12 (무신 갑자) 이후 월간
+		mothj = ((now.getFullYear() - 1908) * 12) % 12 + 1;  //--- 1908.12 (무신 갑자) 이후 월지
  		moung = gan[mothg][0];
  		moungoh = gan[mothg][4].substr(1,2);  //--- (천간)음양오행
  		idx = gjsgj[0].lastIndexOf(moung);
  		moungs = gjsgj[4][idx];  //--- (천간)십성 이름
-		mounj = jiji[mothj][0];
-		
 		
 		mounj = jiji[mothj][0];
 		mounjoh = jiji[mothj][4].substr(1,2);
@@ -741,17 +739,39 @@ function moun(){
 		mounjs = gjsgj[4][idx];  //--- (지지)십성 이름
 		iuns = unsung12[3].lastIndexOf(mounj);
 		mouns = unsung12[0][iuns];
-		
-		
-//	};	
 		document.getElementById("hunM2").innerText += now.format('yyyy-MM') + " (" + mounj + ")\n";
 		document.getElementById("hunM1").innerText += moung + "\n";
  		document.getElementById("hunM2").innerText += moungs + " " + moungoh + "\n";
 		document.getElementById("hunM1").innerText += mounj + "\n";
 		document.getElementById("hunM2").innerText += "\n" + mounjs + " " + mounjoh + " " + mouns + "\n";
-
 };
 
+//====== 일운 ======
+function dayun(){
+	now = new Date();
+	daysg = Math.ceil((now.getTime() - new Date('1908-01-10').getTime()) / 86400000) % 10;
+	if (daysg == 0){daysg = 10};
+	daysj = Math.ceil((now.getTime() - new Date('1908-01-10').getTime()) / 86400000) % 12;
+	if (daysj == 0){daysj = 12};
+	daung = gan[daysg][0];
+	daungoh = gan[daysg][4].substr(1,2);  //--- (천간)음양오행
+	idx = gjsgj[0].lastIndexOf(daung);
+	daungs = gjsgj[4][idx];  //--- (천간)십성 이름
+
+	daunj = jiji[daysj][0];
+	daunjoh = jiji[daysj][4].substr(1,2);
+	if (daunj == "辰" || daunj == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
+	}else{if (daunj == "丑" || daunj == "未"){idx = gjsgj[1].lastIndexOf("丑未");
+		}else{idx = gjsgj[1].lastIndexOf(daunj);};};
+	daunjs = gjsgj[4][idx];  //--- (지지)십성 이름
+	iuns = unsung12[3].lastIndexOf(daunj);
+	dauns = unsung12[0][iuns];
+	document.getElementById("hunD2").innerText += now.format('yyyy-MM-dd') + "\n";
+	document.getElementById("hunD1").innerText += daung + "\n";
+	document.getElementById("hunD2").innerText += daungs + " " + daungoh + "\n";
+	document.getElementById("hunD1").innerText += daunj + "\n";
+	document.getElementById("hunD2").innerText += "\n" + daunjs + " " + daunjoh + " " + dauns + "\n";
+};
 	
 function fill_saju(){
 	for (i=1;i<5 ; i++){
