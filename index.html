@@ -41,7 +41,8 @@
 	.sjut {grid-column: span 1;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
 	.sju1 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 1.6em; font-weight: bold; padding-top:30px; border-right: none; font-family:"한양해서";}
 	.sju2 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em; border-left: none;}
-	.seu {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.7em; text-align:left;}
+	.seu,.dau {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.7em; text-align:left;}
+	.mou {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid red;min-height:30px; font-size: 0.7em; text-align:left;}
 	.sja,.sjb {grid-column: span 3;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
 	#output { min-height: 300px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:300px;}
@@ -153,6 +154,16 @@
 		<div class="seu" id="seu3"></div>
 		<div class="seu" id="seu2"></div>
 		<div class="seu" id="seu1"></div>		
+		<div class="sjut">월운 일운</div>
+		<div class="mou" id="mou3"></div>
+		<div class="mou" id="mou2"></div>
+		<div class="mou" id="mou1"></div>
+		<div class="dau" id="dau6"></div>
+		<div class="dau" id="dau5"></div>
+		<div class="dau" id="dau4"></div>
+		<div class="dau" id="dau3"></div>
+		<div class="dau" id="dau2"></div>
+		<div class="dau" id="dau1"></div>		
 	</div>
 	<div id="output"></div>
 	<div id="output2"></div>
@@ -206,6 +217,14 @@ function fread(fn){
 	});
     });
 };
+	
+var hab = [
+["기준","통근","월지오행","원국1(월간)","원국2(시간)","대운","세운","월운"],
+["연간","","","","","","",""],
+["월간","","","","","","",""],
+["일간","","","","","","",""],
+["시간","","","","","","",""]];
+	
 </script>
 
 <script type="text/javascript">
