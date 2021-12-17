@@ -725,14 +725,26 @@ function moun(){
 		mothg = ((now.getFullYear() - 1908) * 12) % 10 + 1;
 		mothj = ((now.getFullYear() - 1908) * 12) % 12 + 1;
 		moung = gan[mothg][0];
+		moungoh = gan[mothg][4].substr(1,2);  //--- (천간)음양오행
+		idx = gjsgj[0].lastIndexOf(moung);
+		moungs = gjsgj[4][idx];  //--- (천간)십성 이름
+		
 		mounj = jiji[mothj][0];
 	};	
 //		document.getElementById("hunM2").innerText += vwyr + " (" + (vwyr - birth0.getFullYear() + 1) + ")\n";
 		document.getElementById("hunM1").innerText += moung + "\n";
-//		document.getElementById("hunM2").innerText += seugs + " " + seugoh + "\n";
+ 		document.getElementById("hunM2").innerText += moungs + " " + moungoh + "\n";
 		document.getElementById("hunM1").innerText += mounj + "\n";
 //		document.getElementById("hunM2").innerText += "\n" + seujs + " " + seujoh + " " + unsung12[0][seuns] + "\n";
 
+};
+
+//====== 행운 data (천간) ======
+function hangung(a,b,c,d){
+	b = gan[a][0];  //--- 천간
+	c = gan[a][4].substr(1,2);  //--- (천간)음양오행
+	idx = gjsgj[0].lastIndexOf(b);
+	d = gjsgj[4][idx];  //--- (천간)십성 이름
 };
 
 	
