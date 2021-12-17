@@ -722,16 +722,24 @@ function seun(){
 function moun(){
 	for (i=0; i<12; i++){
 //		1908.12 //--- 무신 갑자
+		now = new Date();
+//		mountit = new Date(now.setMonth(now.getMonth() + n));
 		mothg = ((now.getFullYear() - 1908) * 12) % 10 + 1;
 		mothj = ((now.getFullYear() - 1908) * 12) % 12 + 1;
-		moung = gan[mothg][0];
-		moungoh = gan[mothg][4].substr(1,2);  //--- (천간)음양오행
-		idx = gjsgj[0].lastIndexOf(moung);
-		moungs = gjsgj[4][idx];  //--- (천간)십성 이름
+//		moung = gan[mothg][0];
+//		moungoh = gan[mothg][4].substr(1,2);  //--- (천간)음양오행
+//		idx = gjsgj[0].lastIndexOf(moung);
+//		moungs = gjsgj[4][idx];  //--- (천간)십성 이름
+		a = "mothg"; b = "moung"; c = "moungoh"; d = "moungs";
+		hangung(a,b,c,d);
+		
+		
+		
+		
 		
 		mounj = jiji[mothj][0];
 	};	
-//		document.getElementById("hunM2").innerText += vwyr + " (" + (vwyr - birth0.getFullYear() + 1) + ")\n";
+		document.getElementById("hunM2").innerText += now.format('yyyy-MM') + " (" + mounj + ")\n";
 		document.getElementById("hunM1").innerText += moung + "\n";
  		document.getElementById("hunM2").innerText += moungs + " " + moungoh + "\n";
 		document.getElementById("hunM1").innerText += mounj + "\n";
