@@ -718,52 +718,23 @@ function seun(){
 	};
 };
 	
-/*	
-//====== 행운 data (천간) ======
-function hangung(a,b,c,d){
-	b = gan[a][0];  //--- 천간
-	c = gan[a][4].substr(1,2);  //--- (천간)음양오행
-	idx = gjsgj[0].lastIndexOf(b);
-	d = gjsgj[4][idx];  //--- (천간)십성 이름
-};
-	
-//====== 행운 data (지지) ======
-function hangunj(a,b,c,d,e){
-	b = jiji[a][0];
-	c = jiji[a][4].substr(1,2);
-	if (b == "辰" || b == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
-	}else{if (b == "丑" || b == "未"){idx = gjsgj[1].lastIndexOf("丑未");
-		}else{idx = gjsgj[1].lastIndexOf(b);};};
-	d = gjsgj[4][idx];  //--- (지지)십성 이름
-	iuns = unsung12[3].lastIndexOf(b);
-	e = unsung12[0][iuns];
-};
-	
 //====== 월운 ======
 function moun(){
-	mothg = 0; moung = ""; moungoh = ""; moungs = ""; mothj = 0; mounj = ""; mounjoh = ""; mounjs = ""; mouns = "";
-	moth0 = ((now.getFullYear() - 1908) * 12);  //--- 총 개월수 (1908.12 무신갑자 이후)
 	for (i=0; i<12; i++){
-		now = new Date();
-		n = i - 2; posi = "mou" + (i + 1);
-		mothg = (moth0 + n) % 10 + 1;
-		mothj = (moth0 + n) % 12 + 1;
-		hangung(mothg,moung,moungoh,moungs);
-		hangunj(mothj,mounj,mounjoh,mounjs,mouns);
-		mountit = new Date(now.setMonth(now.getMonth() + n));
-		document.getElementById(posi).innerText += mountit.format('yyyy-MM') + " (" + mounj + ")\n";
-		document.getElementById(posi).innerText += moung + moungs + moungoh + "\n";
-		document.getElementById(posi).innerText += mounj + mounjs + mounjoh + mouns + "\n";
-		if (n == 0){
-			document.getElementById("hunM2").innerText += new Date(now.setMonth(now.getMonth() + n)).format('yyyy-MM') + " (" + mounj + ")\n";
-			document.getElementById("hunM1").innerText += moung + "\n";
-			document.getElementById("hunM2").innerText += moungs + moungoh + "\n";
-			document.getElementById("hunM1").innerText += mounj + "\n";
-			document.getElementById("hunM2").innerText += "\n" + mounjs + mounjoh + mouns + "\n";
-		};
+//		1908.12 //--- 무신 갑자
+		mothg = ((now.getFullYear() - 1908) * 12) % 10 + 1;
+		mothj = ((now.getFullYear() - 1908) * 12) % 12 + 1;
+		moung = gan[mothg][0];
+		mounj = jiji[mothj][0];
 	};	
+//		document.getElementById("hunM2").innerText += vwyr + " (" + (vwyr - birth0.getFullYear() + 1) + ")\n";
+		document.getElementById("hunM1").innerText += moung + "\n";
+//		document.getElementById("hunM2").innerText += seugs + " " + seugoh + "\n";
+		document.getElementById("hunM1").innerText += mounj + "\n";
+//		document.getElementById("hunM2").innerText += "\n" + seujs + " " + seujoh + " " + unsung12[0][seuns] + "\n";
+
 };
-*/
+
 	
 function fill_saju(){
 	for (i=1;i<5 ; i++){
