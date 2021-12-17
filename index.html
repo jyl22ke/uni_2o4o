@@ -730,10 +730,11 @@ function moun(){
 //		moungoh = gan[mothg][4].substr(1,2);  //--- (천간)음양오행
 //		idx = gjsgj[0].lastIndexOf(moung);
 //		moungs = gjsgj[4][idx];  //--- (천간)십성 이름
-		a = "mothg"; b = "moung"; c = "moungoh"; d = "moungs";
-		hangung(a,b,c,d);
-		
-		
+//		a = "mothg"; 
+//		b = "moung"; c = "moungoh"; d = "moungs";
+		hangung(mothg,moung);
+		moungoh = c;
+		moungs = d;
 		
 		
 		
@@ -748,7 +749,7 @@ function moun(){
 };
 
 //====== 행운 data (천간) ======
-function hangung(a,b,c,d){
+function hangung(a,b){
 	b = gan[a][0];  //--- 천간
 	c = gan[a][4].substr(1,2);  //--- (천간)음양오행
 	idx = gjsgj[0].lastIndexOf(b);
