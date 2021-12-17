@@ -751,8 +751,6 @@ function moun(){
  		moungoh = gan[mothg][4].substr(1,2);  //--- (천간)음양오행
  		idx = gjsgj[0].lastIndexOf(moung);
  		moungs = gjsgj[4][idx];  //--- (천간)십성 이름
-		document.getElementById(posi).innerText += mountit.format('yyyy-MM') + " (" + mounj + ")\n";
- 		document.getElementById(posi).innerText += moung + moungs + moungoh + "\n";
 		
 		mounj = jiji[mothj][0];
 		mounjoh = jiji[mothj][4].substr(1,2);
@@ -762,6 +760,8 @@ function moun(){
 		mounjs = gjsgj[4][idx];  //--- (지지)십성 이름
 		iuns = unsung12[3].lastIndexOf(mounj);
 		mouns = unsung12[0][iuns];
+		document.getElementById(posi).innerText += mountit.format('yyyy-MM') + " (" + mounj + ")\n";
+ 		document.getElementById(posi).innerText += moung + moungs + moungoh + "\n";
  		document.getElementById(posi).innerText += mounj + mounjs + mounjoh + mouns + "\n";
 		
 		if (n == 0){
@@ -787,8 +787,6 @@ function dayun(){
 		daungoh = gan[daysg][4].substr(1,2);  //--- (천간)음양오행
 		idx = gjsgj[0].lastIndexOf(daung);
 		daungs = gjsgj[4][idx];  //--- (천간)십성 이름
-		document.getElementById(posi).innerText += now.format('yyyy-MM-dd') + "\n";
- 		document.getElementById(posi).innerText += daung + daungs + daungoh + "\n";
 
 		daunj = jiji[daysj][0];
 		daunjoh = jiji[daysj][4].substr(1,2);
@@ -798,6 +796,8 @@ function dayun(){
 		daunjs = gjsgj[4][idx];  //--- (지지)십성 이름
 		iuns = unsung12[3].lastIndexOf(daunj);
 		dauns = unsung12[0][iuns];
+		document.getElementById(posi).innerText += now.format('yyyy-MM-dd') + "\n";
+ 		document.getElementById(posi).innerText += daung + daungs + daungoh + "\n";
  		document.getElementById(posi).innerText += daunj + daunjs + daunjoh + dauns + "\n";
 		if (i == 0){
 			document.getElementById("hunD2").innerText += now.format('yyyy-MM-dd') + "\n";
