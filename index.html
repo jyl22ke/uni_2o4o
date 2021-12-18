@@ -270,7 +270,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 
-	var sstit = ""; var ggsgg = new Array; var jjsjj = new Array; var gjsgj = new Array; var unsung12 = new Array; var ghab_nfo = new Array;
+	var sstit = ""; var ggsgg = new Array; var jjsjj = new Array; var gjsgj = new Array; var unsung12 = new Array; var gan_nfo = new Array; var jiji_nfo = new Array;
 	var ganf1 = ""; var ganf2 = ""; var ganf3 = ""; var ganf4 = ""; var nfo_tugan = ""; var nfo_chng = "";
 	var isol_y = ""; var isol_m = ""; var isol_d = ""; var isol_t = ""; var ohtx = "";
 	var dgss_titl1 = ""; var dgss_titl2 = ""; var dgss_titl3 = ""; var dgss_titl4 = "";  //--- (일간기준) 십성이름
@@ -449,12 +449,20 @@ $( function() {
 		$('.hun2').empty();
 		chg_bgcolor('.sj','#fff');
 		
-		ghab_nfo = [
-		["기준","통근","월지오행","원국1(월간)","원국2(시간)","대운","세운","월운"],
-		["연간","","","","","","",""],
-		["월간","","","","","","",""],
-		["일간","","","","","","",""],
-		["시간","","","","","","",""]];
+		gan_nfo = [
+		["위치","천간","음양오행","십성(일간기준)","통근","월지오행","원국1(월간)","원국2(시간)","원국결과","대운","세운","월운","결과"],
+		["연간","","","","","","","","","","","",""],
+		["월간","","","","","","","","","","","",""],
+		["일간","","","","","","","","","","","",""],
+		["시간","","","","","","","","","","","",""]];
+		
+		jiji_nfo = [
+		["위치","지지","음양오행","십성(일간기준)","지장간(초)","지장간(초)_십성","지장간(중)","지장간(중)_십성","지장간(정)","지장간(정)_십성","십이운성(일간기준)"],
+		["연지","","","","","","","","","",""],
+		["월지","","","","","","","","","",""],
+		["일지","","","","","","","","","",""],
+		["시지","","","","","","","","","",""]];
+		
 		
 		saju_h = document.getElementById('sj').value;
 		symdt = document.getElementById('sjtm').value;
@@ -467,14 +475,14 @@ $( function() {
 			saju_chk();
 			saju = saju_h;
 		};
-		subj = saju.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0][0];
-		subj = saju.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0];
-		subj = saju.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0][0];
-		subj = saju.substr(3,1); temp = jiji.filter(isFindj); sj_mj = temp[0][0];
-		subj = saju.substr(4,1); temp = gan.filter(isFindj); sj_dg = temp[0][0];
-		subj = saju.substr(5,1); temp = jiji.filter(isFindj); sj_dj = temp[0][0];
-		subj = saju.substr(6,1); temp = gan.filter(isFindj); sj_tg = temp[0][0];
-		subj = saju.substr(7,1); temp = jiji.filter(isFindj); sj_tj = temp[0][0];
+		subj = saju.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0][0]; gan_nfo[1][1] = sj_yg;
+		subj = saju.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0]; jiji_nfo[1][1] = sj_yj;
+		subj = saju.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0][0]; gan_nfo[2][1] = sj_mg;
+		subj = saju.substr(3,1); temp = jiji.filter(isFindj); sj_mj = temp[0][0]; jiji_nfo[2][1] = sj_mj;
+		subj = saju.substr(4,1); temp = gan.filter(isFindj); sj_dg = temp[0][0]; gan_nfo[3][1] = sj_dg;
+		subj = saju.substr(5,1); temp = jiji.filter(isFindj); sj_dj = temp[0][0]; jiji_nfo[3][1] = sj_dj;
+		subj = saju.substr(6,1); temp = gan.filter(isFindj); sj_tg = temp[0][0]; gan_nfo[4][1] = sj_tg;
+		subj = saju.substr(7,1); temp = jiji.filter(isFindj); sj_tj = temp[0][0]; jiji_nfo[4][1] = sj_tj;
 
 		mktabl();
 		fill_saju();
@@ -829,22 +837,22 @@ function fill_saju(){
 		chg_bgcolor("#sj" + n,jjsjj[i][5],jjsjj[i][5]); ohtx += jjsjj[i][4].substr(1,2);
 		
 		//--- 지장간 기록 ---
-		find_ggss(jjsjj[i][6].substr(0,1),"sj" + n + "b",jjsjj[i][6],4)
+		find_ggss(jjsjj[i][6].substr(0,1),"sj" + n + "b",jjsjj[i][6],4); jiji_nfo[i][5] = gs_titl;
 		if (jjsjj[i][7] == ""){
 			document.getElementById("sj" + n + "b").innerText += " \n";
 		}else{
-			find_ggss(jjsjj[i][7].substr(0,1),"sj" + n + "b",jjsjj[i][7],4)
+			find_ggss(jjsjj[i][7].substr(0,1),"sj" + n + "b",jjsjj[i][7],4); jiji_nfo[i][7] = gs_titl;
 		};
- 		find_ggss(jjsjj[i][8].substr(0,1),"sj" + n + "b",jjsjj[i][8],4)
+ 		find_ggss(jjsjj[i][8].substr(0,1),"sj" + n + "b",jjsjj[i][8],4); jiji_nfo[i][9] = gs_titl;
 	}
-	find_ggss(sj_yg,"sj1a","",4); dgss_titl1 = gs_titl; 
-	find_ggss(sj_mg,"sj3a","",4); dgss_titl3 = gs_titl;
-	document.getElementById("sj5a").innerText += "일간(나)\n";
-	find_ggss(sj_tg,"sj7a","",4); dgss_titl7 = gs_titl;
-	find_gjss(sj_yj,"sj2a",4); dgss_titl2 = js_titl;
-	find_gjss(sj_mj,"sj4a",4); dgss_titl4 = js_titl;
-	find_gjss(sj_dj,"sj6a",4); dgss_titl6 = js_titl;
-	find_gjss(sj_tj,"sj8a",4); dgss_titl8 = js_titl;
+	find_ggss(sj_yg,"sj1a","",4); dgss_titl1 = gs_titl; gan_nfo[1][3] = gs_titl;
+	find_ggss(sj_mg,"sj3a","",4); dgss_titl3 = gs_titl; gan_nfo[2][3] = gs_titl;
+	document.getElementById("sj5a").innerText += "일간(나)\n"; gan_nfo[3][3] = "일간(나)";
+	find_ggss(sj_tg,"sj7a","",4); dgss_titl7 = gs_titl; gan_nfo[4][3] = gs_titl;
+	find_gjss(sj_yj,"sj2a",4); dgss_titl2 = js_titl; jiji[1][3] = js_titl;
+	find_gjss(sj_mj,"sj4a",4); dgss_titl4 = js_titl; jiji[2][3] = js_titl;
+	find_gjss(sj_dj,"sj6a",4); dgss_titl6 = js_titl; jiji[3][3] = js_titl;
+	find_gjss(sj_tj,"sj8a",4); dgss_titl8 = js_titl; jiji[4][3] = js_titl;
 	unsng();  //----- 십이운성 기록
 };
 
@@ -857,7 +865,7 @@ function unsng(){
  		if ( i == 4 ){ ti = "(시간) ";};
 		for (j=1; j<5 ; j++){
 			if (i == 3){
-				document.getElementById("sj" + j * 2 + "c").innerText += ti + " " + unsung12[0][unsung12[i].indexOf(jjsjj[j][0])] + " \n";
+				document.getElementById("sj" + j * 2 + "c").innerText += ti + " " + unsung12[0][unsung12[i].indexOf(jjsjj[j][0])] + " \n"; jiji_nfo[j][10] = unsung12[0][unsung12[i].indexOf(jjsjj[j][0])];
 			};
 		};
 	};
@@ -878,6 +886,8 @@ function mktabl(){
 	ggsgg.unshift(mgsgg[0]); unsung12.unshift(uns12_mg[0]);  //---천간배열(월간) 추가  ---십이운성(월) 추가
 	ggsgg.unshift(ygsgg[0]); unsung12.unshift(uns12_yg[0]);  //---천간배열(년간) 추가  ---십이운성(년) 추가
 	ggsgg.unshift(sstit[0]); unsung12.unshift(uns12_tt[0]);  //---천간배열 + 이름 추가  ---십이운성 이름 (첫줄) 추가
+	gan_nfo[1][2] = ggsgg[1][4].substr(1,2); gan_nfo[2][2] = ggsgg[2][4].substr(1,2);
+	gan_nfo[3][2] = ggsgg[3][4].substr(1,2); gan_nfo[4][2] = ggsgg[4][4].substr(1,2);
 	//------ 만들어진 천간배열 ------
 	/*	0: (6) ["천간", "천간h", "오행", "음양", "이름", "색"]
 		1: (6) ["갑", "甲", "목", "양", "갑양목", "#3c3"]
@@ -897,6 +907,13 @@ function mktabl(){
 	jjsjj.unshift(mjsjj[0]);  //---지지배열(월지) 추가
 	jjsjj.unshift(yjsjj[0]);  //---지지배열(년지) 추가
 	jjsjj.unshift(sstit[0]);  //---지지배열 + 이름 추가
+	jiji_nfo[1][2] = jjsjj[1][4].substr(1,2); jiji_nfo[2][2] = jjsjj[2][4].substr(1,2); //---음양오행
+	jiji_nfo[3][2] = jjsjj[3][4].substr(1,2); jiji_nfo[4][2] = jjsjj[4][4].substr(1,2); //---음양오행
+	jiji_nfo[1][4] = jjsjj[1][6]; jiji_nfo[1][6] = jjsjj[1][7]; jiji_nfo[1][8] = jjsjj[1][8]; //---지장간
+	jiji_nfo[2][4] = jjsjj[2][6]; jiji_nfo[2][6] = jjsjj[2][7]; jiji_nfo[2][8] = jjsjj[2][8]; //---지장간
+	jiji_nfo[3][4] = jjsjj[3][6]; jiji_nfo[3][6] = jjsjj[3][7]; jiji_nfo[3][8] = jjsjj[3][8]; //---지장간
+	jiji_nfo[4][4] = jjsjj[4][6]; jiji_nfo[4][6] = jjsjj[4][7]; jiji_nfo[4][8] = jjsjj[4][8]; //---지장간
+	
 	//------ 만들어진 지지배열 ------
 	/*	0: (16) ["지지", "지지h", "오행", "음양", "이름", "색", "여기", "중기", "정기", "충", "육합", "육화", "삼합", "삼화", "방합", "방화"]
 		1: (16) ["오", "午", "화", "음", "오음화", "#f00", "병10", "기9", "정11", "자", "미", "화", "인술", "화", "사미", "화"]
