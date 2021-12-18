@@ -792,7 +792,7 @@ function moun(){
 function dayun(){
 	for (i=0; i<24; i++){
 		now = new Date();
- 		dauntit = new Date(now.setDate(now.getDate() + i));
+ 		dauntit = new Date(now.setDate(now.getDate() + i - 3));
 		posi = "dau" + (i % 6 + 1);
 		daysg = Math.ceil((dauntit.getTime() - new Date('1908-01-10').getTime()) / 86400000) % 10;
 		if (daysg == 0){daysg = 10};
