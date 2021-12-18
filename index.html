@@ -41,8 +41,9 @@
 	.sjut {grid-column: span 1;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
 	.sju1 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 1.6em; font-weight: bold; padding-top:30px; border-right: none; font-family:"한양해서";}
 	.sju2 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em; border-left: none;}
-	.seu,.dau {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.7em; text-align:left;}
+	.seu {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.7em; text-align:left;}
 	.mou {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid red;min-height:30px; font-size: 0.7em; text-align:left;}
+	.dau {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid blue;min-height:30px; font-size: 0.7em; text-align:left;}
 	.sja,.sjb {grid-column: span 3;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
 	#output { min-height: 300px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:300px;}
@@ -727,7 +728,7 @@ function seun(){
 		seujs = gjsgj[4][idx];  //--- (지지)십성 이름
 		seuns = unsung12[3].lastIndexOf(seuj);
  		document.getElementById(posi).innerText += seuj + seujs + seujoh + unsung12[0][seuns] + "\n";
-		if ((i%10) != 9){document.getElementById(posi).innerText += "----------------\n";};
+		if ((i%10) != 9){document.getElementById(posi).innerText += "-----------------\n";};
 		j += 1;
 		if (now.getFullYear() == vwyr ){
 			document.getElementById("hunY2").innerText += vwyr + " (" + (vwyr - birth0.getFullYear() + 1) + ")\n";
@@ -739,14 +740,16 @@ function seun(){
 	};
 };
 	
-//====== 월운 ======
+//====== 월운 ======((now.getFullYear() - 1908) * 12 )%10+1
 function moun(){
 	for (i=0; i<12; i++){
 		now = new Date(); n = i - 3;
 		posi = "mou" + ((n + 3) % 3 + 1);
  		mountit = new Date(now.setMonth(now.getMonth() + n));
-		mothg = ((mountit.getFullYear() - 1908) * 12) % 10 + 1;  //--- 1908.12 (무신 갑자) 이후 월간
-		mothj = ((mountit.getFullYear() - 1908) * 12) % 12 + 1;  //--- 1908.12 (무신 갑자) 이후 월지
+		mothg = ((mountit.getFullYear() - 1908) * 12 + n) % 10 + 1;  //--- 1908.12 (무신 갑자) 이후 월간
+		if (mothg == 0){mothg = 10;};
+		mothj = ((mountit.getFullYear() - 1908) * 12 + n) % 12 + 1;  //--- 1908.12 (무신 갑자) 이후 월지
+		if (mothj == 0){mothj = 12;};
  		moung = gan[mothg][0];
  		moungoh = gan[mothg][4].substr(1,2);  //--- (천간)음양오행
  		idx = gjsgj[0].lastIndexOf(moung);
@@ -763,7 +766,7 @@ function moun(){
 		document.getElementById(posi).innerText += mountit.format('yyyy-MM') + " (" + mounj + ")\n";
  		document.getElementById(posi).innerText += moung + moungs + moungoh + "\n";
  		document.getElementById(posi).innerText += mounj + mounjs + mounjoh + mouns + "\n";
-		if (i < 9){document.getElementById(posi).innerText += "----------------\n";};
+		if (i < 9){document.getElementById(posi).innerText += "-----------------\n";};
 	
 		if (n == 0){
 			document.getElementById("hunM2").innerText += mountit.format('yyyy-MM') + " (" + mounj + ")\n";
@@ -801,7 +804,7 @@ function dayun(){
 		document.getElementById(posi).innerText += dauntit.format('yyyy-MM-dd') + "\n";
  		document.getElementById(posi).innerText += daung + daungs + daungoh + "\n";
  		document.getElementById(posi).innerText += daunj + daunjs + daunjoh + dauns + "\n";
-		if (i < 18){document.getElementById(posi).innerText += "----------------\n";};
+		if (i < 18){document.getElementById(posi).innerText += "-----------------\n";};
 		if (i == 0){
 			document.getElementById("hunD2").innerText += dauntit.format('yyyy-MM-dd') + "\n";
 			document.getElementById("hunD1").innerText += daung + "\n";
