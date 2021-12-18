@@ -747,9 +747,9 @@ function moun(){
 		posi = "mou" + ((n + 3) % 3 + 1);
  		mountit = new Date(now.setMonth(now.getMonth() + n));
 		
-		mothg = ((mountit.getFullYear() - 1908) * 12 + mountit.getMonth()) % 10 + 1;  //--- 1908.12 (무신 갑자) 이후 월간
+		mothg = ((mountit.getFullYear() - 1907) * 12 + mountit.getMonth() + 1) % 10 + 1;  //--- 1908.12 (무신 갑자) 이후 월간
 		if (mothg == 0){mothg = 10;};
-		mothj = ((mountit.getFullYear() - 1908) * 12 + mountit.getMonth()) % 12 + 1;  //--- 1908.12 (무신 갑자) 이후 월지
+		mothj = ((mountit.getFullYear() - 1907) * 12 + mountit.getMonth() + 1) % 12 + 1;  //--- 1908.12 (무신 갑자) 이후 월지
 		if (mothj == 0){mothj = 12;};
  		moung = gan[mothg][0];
  		moungoh = gan[mothg][4].substr(1,2);  //--- (천간)음양오행
