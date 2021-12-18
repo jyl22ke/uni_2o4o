@@ -851,12 +851,14 @@ function fill_saju(){
 //======= 십이운성 기록하는 함수 =====
 function unsng(){
 	for (i=1; i<5 ; i++){
-//		if ( i == 1 ){ ti = "(년간) ";};
-//		if ( i == 2 ){ ti = "(월간) ";};
+ 		if ( i == 1 ){ ti = "(년간) ";};
+ 		if ( i == 2 ){ ti = "(월간) ";};
 		if ( i == 3 ){ ti = "(일간) ";};
-//		if ( i == 4 ){ ti = "(시간) ";};
+ 		if ( i == 4 ){ ti = "(시간) ";};
 		for (j=1; j<5 ; j++){
-			document.getElementById("sj" + j * 2 + "c").innerText += ti + " " + unsung12[0][unsung12[i].indexOf(jjsjj[j][0])] + " \n";
+			if (i == 3){
+				document.getElementById("sj" + j * 2 + "c").innerText += ti + " " + unsung12[0][unsung12[i].indexOf(jjsjj[j][0])] + " \n";
+			};
 		};
 	};
 };
