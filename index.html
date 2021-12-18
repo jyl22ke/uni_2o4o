@@ -219,13 +219,7 @@ function fread(fn){
     });
 };
 	
-var ghab = [
-["기준","통근","월지오행","원국1(월간)","원국2(시간)","대운","세운","월운"],
-["연간","","","","","","",""],
-["월간","","","","","","",""],
-["일간","","","","","","",""],
-["시간","","","","","","",""]];
-	
+
 </script>
 
 <script type="text/javascript">
@@ -270,13 +264,13 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 </script>
 	 
 <script type="text/javascript">
-	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null;
+	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null; 
 	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hrta = ""; var hrtb = ""; var hrtc = ""; var hrtd = ""; var rt = "";
 	var vwyr = null; var rvwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 
-	var sstit = ""; var ggsgg = new Array; var jjsjj = new Array; var gjsgj = new Array; var unsung12 = new Array;
+	var sstit = ""; var ggsgg = new Array; var jjsjj = new Array; var gjsgj = new Array; var unsung12 = new Array; var ghab_nfo = new Array;
 	var ganf1 = ""; var ganf2 = ""; var ganf3 = ""; var ganf4 = ""; var nfo_tugan = ""; var nfo_chng = "";
 	var isol_y = ""; var isol_m = ""; var isol_d = ""; var isol_t = ""; var ohtx = "";
 	var dgss_titl1 = ""; var dgss_titl2 = ""; var dgss_titl3 = ""; var dgss_titl4 = "";  //--- (일간기준) 십성이름
@@ -454,6 +448,13 @@ $( function() {
 		$('.hun1').empty();
 		$('.hun2').empty();
 		chg_bgcolor('.sj','#fff');
+		
+		ghab_nfo = [
+		["기준","통근","월지오행","원국1(월간)","원국2(시간)","대운","세운","월운"],
+		["연간","","","","","","",""],
+		["월간","","","","","","",""],
+		["일간","","","","","","",""],
+		["시간","","","","","","",""]];
 		
 		saju_h = document.getElementById('sj').value;
 		symdt = document.getElementById('sjtm').value;
