@@ -42,8 +42,8 @@
 	.sju1 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 1.6em; font-weight: bold; padding-top:30px; border-right: none; font-family:"한양해서";}
 	.sju2 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em; border-left: none;}
 	.seu {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.7em; text-align:left;}
-	.mou {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid red;min-height:30px; font-size: 0.7em; text-align:left;}
-	.dau {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid blue;min-height:30px; font-size: 0.7em; text-align:left;}
+	.mou {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid red;min-height:30px; font-size: 0.7em; text-align:left; border-top:2px;}
+	.dau {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid blue;min-height:30px; font-size: 0.7em; text-align:left; border-top:2px;}
 	.sja,.sjb {grid-column: span 3;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
 	#output { min-height: 300px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:300px;}
@@ -747,9 +747,9 @@ function moun(){
 		posi = "mou" + ((n + 3) % 3 + 1);
  		mountit = new Date(now.setMonth(now.getMonth() + n));
 		
-		mothg = ((mountit.getFullYear() - 1907) * 12 + mountit.getMonth() + 1) % 10 + 1;  //--- 1908.12 (무신 갑자) 이후 월간
+		mothg = ((mountit.getFullYear() - 1909) * 12 + mountit.getMonth() + 1) % 10 + 1;  //--- 1908.12 (무신 갑자) 이후 월간
 		if (mothg == 0){mothg = 10;};
-		mothj = ((mountit.getFullYear() - 1907) * 12 + mountit.getMonth() + 1) % 12 + 1;  //--- 1908.12 (무신 갑자) 이후 월지
+		mothj = ((mountit.getFullYear() - 1909) * 12 + mountit.getMonth() + 1) % 12 + 1;  //--- 1908.12 (무신 갑자) 이후 월지
 		if (mothj == 0){mothj = 12;};
  		moung = gan[mothg][0];
  		moungoh = gan[mothg][4].substr(1,2);  //--- (천간)음양오행
