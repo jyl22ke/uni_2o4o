@@ -1193,17 +1193,17 @@ function ganhabch(){
 	
 	gan_nfo[2][5] = gjsgj[7][2].substr(1,1);    //---월지오행
 	hcompchk("천간합",5,sj_yg,sj_mg); gan_nfo[1][6] += rslt;  //---연간합
-	document.getElementById("sj1a").innerText += rslt; document.getElementById("sj3a").innerText += rslt;
+	document.getElementById("sj1a").innerText += rslt + "\n"; document.getElementById("sj3a").innerText += rslt + "\n";
 	hcompchk("천간합",5,sj_dg,sj_mg); gan_nfo[3][6] += rslt;  //---일간합 (일간-월간)
-	document.getElementById("sj3a").innerText += rslt; document.getElementById("sj5a").innerText += rslt;
+	document.getElementById("sj3a").innerText += rslt + "\n"; document.getElementById("sj5a").innerText += rslt + "\n";
 	hcompchk("천간합",5,sj_dg,sj_tg); gan_nfo[3][7] += rslt;  //---일간합 (일간-시간)
-	document.getElementById("sj5a").innerText += rslt; document.getElementById("sj7a").innerText += rslt;
+	document.getElementById("sj5a").innerText += rslt + "\n"; document.getElementById("sj7a").innerText += rslt + "\n";
 	hcompchk("천간충",4,sj_yg,sj_mg); gan_nfo[1][6] += rslt;  //---연간충
-	document.getElementById("sj1a").innerText += rslt; document.getElementById("sj3a").innerText += rslt;
+	document.getElementById("sj1a").innerText += rslt + "\n"; document.getElementById("sj3a").innerText += rslt + "\n";
 	hcompchk("천간충",4,sj_dg,sj_mg); gan_nfo[3][6] += rslt;  //---일간충 (일간-월간)
-	document.getElementById("sj3a").innerText += rslt; document.getElementById("sj5a").innerText += rslt;
+	document.getElementById("sj3a").innerText += rslt + "\n"; document.getElementById("sj5a").innerText += rslt + "\n";
 	hcompchk("천간충",4,sj_dg,sj_tg); gan_nfo[3][7] += rslt;  //---일간충 (일간-시간)
-	document.getElementById("sj5a").innerText += rslt; document.getElementById("sj7a").innerText += rslt;
+	document.getElementById("sj5a").innerText += rslt + "\n"; document.getElementById("sj7a").innerText += rslt + "\n";
 	
 	document.getElementById("output2").innerText += gan_nfo[1][6] + " " + gan_nfo[3][6] + " " + gan_nfo[3][7] + "\n"; 
 	
