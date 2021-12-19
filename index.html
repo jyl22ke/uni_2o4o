@@ -307,6 +307,8 @@ $( function() {
 		$('.sju1').empty();
 		$('.sju2').empty();
 		$('.seu').empty();
+		$('.mou').empty();
+		$('.dau').empty();
 		$('.hun1').empty();
 		$('.hun2').empty();
 		chg_bgcolor('.sj','#fff','#fff');
@@ -445,6 +447,8 @@ $( function() {
 		$('.sju1').empty();
 		$('.sju2').empty();
 		$('.seu').empty();
+		$('.mou').empty();
+		$('.dau').empty();
 		$('.hun1').empty();
 		$('.hun2').empty();
 		chg_bgcolor('.sj','#fff');
@@ -1183,8 +1187,6 @@ function hcompchk(a,b,c,d){
 };
 
 //========== 천간합 ==========
-	//---   ganhab("연간합",5,sj_ganji,"_합");
-//function ganhab(name,qt,str,exp){
 function ganhabch(){
 	rslt1 = ""; rslt3 = ""; rslt5 = ""; rslt7 = ""; sj_org1 = ""; sj_org2 = "";
 	hrootchk(sj_yj,2); hrt1 = rt; gan_nfo[1][4] = rt;  //---자기자리 통근체크
@@ -1206,54 +1208,7 @@ function ganhabch(){
 	if (gan_nfo[3][6] != ""){ sj_org2 = gan_nfo[2][4].substr(0,1) + gan_nfo[3][4].substr(0,1) + gan_nfo[3][6];};
 	if (gan_nfo[3][7] != ""){ sj_org2 += " " + gan_nfo[3][4].substr(0,1) + gan_nfo[4][4].substr(0,1) + gan_nfo[3][7];};
 	gan_nfo[3][8] = sj_org2; document.getElementById("output2").innerText += sj_org2 + "\n";
-		
-
-
-/*	
-	cv_yghab = ["연간합","02"];	
-	cv_ghab = ["일간합","24","46"];
-	if (name === "연간합" || name === "일간합"){
-		nam = "천간합";
-	}else{
-		nam = name;
-	};
-	subj = nam; pon = "";
-	chab = ganji_habchung.filter(isFind);  //===천간충/극
-	var outpt = ""; var fndList = "";
-	for (i = 1; i < qt + 1; i++){texstr = chab[0][i]; n=0; aa=""; bb=""; cc = exp;
-		for (k = 0; k < texstr.length; k++){
-			aa1 = texstr.substr(k,1);
-			txtSearch(str,aa1);
-			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
-		};
-		//--- 출력내용 작성 ---
-		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
-		if (aa.length === texstr.length){
-			if (name === "연간합"){ cv = cv_yghab; };				
-			if (name === "일간합"){ cv = cv_ghab; };				
-			for (m = 1; m < cv.length; m++){ ckstr = cv[m];
-				ck1 = ckstr.substr(0,1); ck2 = ckstr.substr(1,1);
-				if (bb.includes(ck1) && bb.includes(ck2)){
-					if (name === "연간합" || name === "일간합"){
-						subj = name; hab = ca10_ghabch.filter(isFind);
-						subj = aa; hwa = habhwa.filter(isFind); 
-						adt1 = "("; adt2 = ")"; 
-					};
-					ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + " " + name + " " + ck1 + " " + ck2 + " " + hab[2][4] + "\n 년" + hrt1 + " 월" + hrt2 + " 일" + hrt3 + " 시" + hrt4 + "\n";
-					if (adt3 != "...불성립"){
-						loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-						loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-					};
-					document.getElementById("output2").innerText += ch_titl1; 
-				};
-			};
-		};
-	};*/
 };
-	
-	
-	
-	
 	
 //========== 충/합 ==========
 	//---   chnghab("천간충",4,sj_ganji,"_충");
