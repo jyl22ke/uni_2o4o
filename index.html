@@ -494,8 +494,9 @@ $( function() {
    		tugan();
    		rootgchk();
    		mpohcnt();
-		ganhab("연간합",5,sj_ganji,"_합");
-		ganhab("일간합",5,sj_ganji,"_합");
+		ganhab();
+//		ganhab("연간합",5,sj_ganji,"_합");
+//		ganhab("일간합",5,sj_ganji,"_합");
 //     		chnghab("천간합",5,sj_ganji,"_합");
 //    		chnghab("천간충",4,sj_ganji,"_충");
 //    		chnghab("천간극",6,sj_ganji,"_극");
@@ -1149,7 +1150,7 @@ function txtSearch(str, searchvalue){
 	if (fndList){aa += searchvalue; bb += fndList;};
 };
 
-//====== 천간합 통근체크 함수 ======
+//====== 천간합 자기자리 통근체크 함수 ======
 function hrootchk(a,b){  
 	hroot = ""; rt = "";
 	if (a == "辰" || a == "戌"){idx = gjsgj[1].lastIndexOf("辰戌");
@@ -1161,23 +1162,40 @@ function hrootchk(a,b){
 	}else{
 		rt = "0" + hroot;  //--- 불통근 + 십성
 	};
-	if (b==5){
+	if (b==5){  //--- 예외 적용 (甲일간 己巳시,乙일간 庚辰시,戊일간 癸亥시,癸일간 戊午시는 불통근으로 간주함.)
 		if ((sj_dg == "甲" && sj_tg == "己" && sj_tj == "巳") || (sj_dg == "乙" && sj_tg == "庚" && sj_tj == "辰") || (sj_dg == "戊" && sj_tg == "癸" && sj_tj == "亥") || (sj_dg == "癸" && sj_tg == "戊" && sj_tj == "午")){
 			rt = "0" + hroot;  //--- 불통근 + 십성
 		};
 	};
 };
 	
-	
+//====== 천간합 구성체크 함수 ======
+	//---   hcompchk("천간합",5,sj_yg,sj_mg);
+function hcompchk(a,b,c,d){  
+	subj = a; rslt = "";
+	chab = ganji_habchung.filter(isFind);  //===천간충/극
+	for (i = 1; i < b + 1; i++){
+		texstr = chab[0][i]; 
+		if (texstr == (c + d) || texstr == (d + c)){
+			rslt = texstr + "합";
+		};
+	};
+};
+
 //========== 천간합 ==========
 	//---   ganhab("연간합",5,sj_ganji,"_합");
-function ganhab(name,qt,str,exp){
+//function ganhab(name,qt,str,exp){
+function ganhab(){
 	hrootchk(sj_yj,2); hrt1 = rt; gan_nfo[1][4] = rt;
 	hrootchk(sj_mj,3); hrt2 = rt; gan_nfo[2][4] = rt;
 	hrootchk(sj_dj,4); hrt3 = rt; gan_nfo[3][4] = rt;
 	hrootchk(sj_tj,5); hrt4 = rt; gan_nfo[4][4] = rt; 
 	
 	gan_nfo[2][5] = gjsgj[7][2].substr(1,1);
+	hcompchk("천간합",5,sj_yg,sj_mg); gan_nfo[1][6] = rslt;
+	hcompchk("천간합",5,sj_dg,sj_mg); gan_nfo[3][6] = rslt;
+	hcompchk("천간합",5,sj_dg,sj_tg); gan_nfo[3][7] = rslt;
+/*	
 	
 	cv_yghab = ["연간합","02"];	
 	cv_ghab = ["일간합","24","46"];
@@ -1217,7 +1235,7 @@ function ganhab(name,qt,str,exp){
 				};
 			};
 		};
-	};
+	};*/
 };
 	
 	
