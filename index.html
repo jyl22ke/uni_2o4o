@@ -494,7 +494,7 @@ $( function() {
    		tugan();
    		rootgchk();
    		mpohcnt();
-		ganhab();
+		ganhabch();
 //		ganhab("연간합",5,sj_ganji,"_합");
 //		ganhab("일간합",5,sj_ganji,"_합");
 //     		chnghab("천간합",5,sj_ganji,"_합");
@@ -1177,7 +1177,7 @@ function hcompchk(a,b,c,d){
 	for (i = 1; i < b + 1; i++){
 		texstr = chab[0][i]; 
 		if (texstr == (c + d) || texstr == (d + c)){
-			rslt = texstr + "합";
+			rslt = texstr + a.substr(2,1);
 		};
 	};
 };
@@ -1185,16 +1185,19 @@ function hcompchk(a,b,c,d){
 //========== 천간합 ==========
 	//---   ganhab("연간합",5,sj_ganji,"_합");
 //function ganhab(name,qt,str,exp){
-function ganhab(){
-	hrootchk(sj_yj,2); hrt1 = rt; gan_nfo[1][4] = rt;
-	hrootchk(sj_mj,3); hrt2 = rt; gan_nfo[2][4] = rt;
-	hrootchk(sj_dj,4); hrt3 = rt; gan_nfo[3][4] = rt;
-	hrootchk(sj_tj,5); hrt4 = rt; gan_nfo[4][4] = rt; 
+function ganhabch(){
+	hrootchk(sj_yj,2); hrt1 = rt; gan_nfo[1][4] = rt;  //---자기자리 통근체크
+	hrootchk(sj_mj,3); hrt2 = rt; gan_nfo[2][4] = rt;  //---자기자리 통근체크
+	hrootchk(sj_dj,4); hrt3 = rt; gan_nfo[3][4] = rt;  //---자기자리 통근체크
+	hrootchk(sj_tj,5); hrt4 = rt; gan_nfo[4][4] = rt;  //---자기자리 통근체크
 	
-	gan_nfo[2][5] = gjsgj[7][2].substr(1,1);
-	hcompchk("천간합",5,sj_yg,sj_mg); gan_nfo[1][6] = rslt;
-	hcompchk("천간합",5,sj_dg,sj_mg); gan_nfo[3][6] = rslt;
-	hcompchk("천간합",5,sj_dg,sj_tg); gan_nfo[3][7] = rslt;
+	gan_nfo[2][5] = gjsgj[7][2].substr(1,1);    //---월지오행
+	hcompchk("천간합",5,sj_yg,sj_mg); gan_nfo[1][6] = rslt;  //---연간합
+	hcompchk("천간합",5,sj_dg,sj_mg); gan_nfo[3][6] = rslt;  //---일간합 (일간-월간)
+	hcompchk("천간합",5,sj_dg,sj_tg); gan_nfo[3][7] = rslt;  //---일간합 (일간-시간)
+	hcompchk("천간충",4,sj_yg,sj_mg); gan_nfo[1][6] = rslt;  //---연간충
+	hcompchk("천간충",4,sj_dg,sj_mg); gan_nfo[3][6] = rslt;  //---일간충 (일간-월간)
+	hcompchk("천간충",4,sj_dg,sj_tg); gan_nfo[3][7] = rslt;  //---일간충 (일간-시간)
 /*	
 	
 	cv_yghab = ["연간합","02"];	
