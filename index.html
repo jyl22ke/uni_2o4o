@@ -1186,7 +1186,7 @@ function hcompchk(a,b,c,d){
 	//---   ganhab("연간합",5,sj_ganji,"_합");
 //function ganhab(name,qt,str,exp){
 function ganhabch(){
-	rslt1 = ""; rslt3 = ""; rslt5 = ""; rslt7 = ""; 
+	rslt1 = ""; rslt3 = ""; rslt5 = ""; rslt7 = ""; sj_org1 = ""; sj_org2 = "";
 	hrootchk(sj_yj,2); hrt1 = rt; gan_nfo[1][4] = rt;  //---자기자리 통근체크
 	hrootchk(sj_mj,3); hrt2 = rt; gan_nfo[2][4] = rt;  //---자기자리 통근체크
 	hrootchk(sj_dj,4); hrt3 = rt; gan_nfo[3][4] = rt;  //---자기자리 통근체크
@@ -1201,11 +1201,14 @@ function ganhabch(){
 	hcompchk("천간충",4,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간충 (일간-시간)
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
 	document.getElementById("sj5a").innerText += rslt5; document.getElementById("sj7a").innerText += rslt7;
-
-	if (gan_nfo[1][6] != ""){document.getElementById("output2").innerText += gan_nfo[1][4].substr(0,1) + gan_nfo[2][4].substr(0,1) + gan_nfo[1][6] + " ";};
-	if (gan_nfo[3][6] != ""){document.getElementById("output2").innerText += gan_nfo[2][4].substr(0,1) + gan_nfo[3][4].substr(0,1) + gan_nfo[3][6] + " ";};
-	if (gan_nfo[3][7] != ""){document.getElementById("output2").innerText += gan_nfo[3][4].substr(0,1) + gan_nfo[4][4].substr(0,1) + gan_nfo[3][7] + "\n";};
 	
+	if (gan_nfo[1][6] != ""){ sj_org1 = gan_nfo[1][4].substr(0,1) + gan_nfo[2][4].substr(0,1) + gan_nfo[1][6]; gan_nfo[1][6] = sj_org1; document.getElementById("output2").innerText = sj_org1 + "\n";};
+	if (gan_nfo[3][6] != ""){ sj_org2 = gan_nfo[2][4].substr(0,1) + gan_nfo[3][4].substr(0,1) + gan_nfo[3][6];};
+	if (gan_nfo[3][7] != ""){ sj_org2 += " " + gan_nfo[3][4].substr(0,1) + gan_nfo[4][4].substr(0,1) + gan_nfo[3][7];};
+	sj_org2 += "\n";
+		
+
+
 /*	
 	cv_yghab = ["연간합","02"];	
 	cv_ghab = ["일간합","24","46"];
