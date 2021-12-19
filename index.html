@@ -1193,12 +1193,12 @@ function ganhabch(){
 	hrootchk(sj_tj,5); hrt4 = rt; gan_nfo[4][4] = rt;  //---자기자리 통근체크
 	
 	gan_nfo[2][5] = gjsgj[7][2].substr(1,1);    //---월지오행
-	hcompchk("천간합",5,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt + "<br>"; rslt3 += rslt + "<br>";  //---연간합
-	hcompchk("천간합",5,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt + "<br>"; rslt5 += rslt + "<br>";  //---일간합 (일간-월간)
-	hcompchk("천간합",5,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt + "<br>"; rslt7 += rslt + "<br>";  //---일간합 (일간-시간)
-	hcompchk("천간충",4,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt + "<br>"; rslt3 += rslt + "<br>";  //---연간충
-	hcompchk("천간충",4,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt + "<br>"; rslt5 += rslt + "<br>";  //---일간충 (일간-월간)
-	hcompchk("천간충",4,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt + "<br>"; rslt7 += rslt + "<br>";  //---일간충 (일간-시간)
+	hcompchk("천간합",5,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt; rslt3 += rslt;  //---연간합
+	hcompchk("천간합",5,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간합 (일간-월간)
+	hcompchk("천간합",5,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간합 (일간-시간)
+	hcompchk("천간충",4,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt; rslt3 += rslt;  //---연간충
+	hcompchk("천간충",4,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간충 (일간-월간)
+	hcompchk("천간충",4,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간충 (일간-시간)
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
 	document.getElementById("sj5a").innerText += rslt5; document.getElementById("sj7a").innerText += rslt7;
 	
