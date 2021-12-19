@@ -1202,10 +1202,10 @@ function ganhabch(){
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
 	document.getElementById("sj5a").innerText += rslt5; document.getElementById("sj7a").innerText += rslt7;
 	
-	if (gan_nfo[1][6] != ""){ sj_org1 = gan_nfo[1][4].substr(0,1) + gan_nfo[2][4].substr(0,1) + gan_nfo[1][6]; gan_nfo[1][6] = sj_org1; document.getElementById("output2").innerText += sj_org1 + "\n";};
+	if (gan_nfo[1][6] != ""){ sj_org1 = gan_nfo[1][4].substr(0,1) + gan_nfo[2][4].substr(0,1) + gan_nfo[1][6]; gan_nfo[1][8] = sj_org1; document.getElementById("output2").innerText += sj_org1 + "\n";};
 	if (gan_nfo[3][6] != ""){ sj_org2 = gan_nfo[2][4].substr(0,1) + gan_nfo[3][4].substr(0,1) + gan_nfo[3][6];};
 	if (gan_nfo[3][7] != ""){ sj_org2 += " " + gan_nfo[3][4].substr(0,1) + gan_nfo[4][4].substr(0,1) + gan_nfo[3][7];};
-	sj_org2 += "\n"; document.getElementById("output2").innerText += sj_org2 + "\n";
+	gan_nfo[3][8] = sj_org2; document.getElementById("output2").innerText += sj_org2 + "\n";
 		
 
 
