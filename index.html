@@ -471,7 +471,7 @@ $( function() {
 		["일지","","","","","","","","","",""],
 		["시지","","","","","","","","","",""]];
 		
-		document.getElementById("hunDate").value = new Date().toISOString().substring(0, 16);
+		document.getElementById("hunDate").value = new Date().substring(0, 16);
 		saju_h = document.getElementById('sj').value;
 		symdt = document.getElementById('sjtm').value;
 		gendr = $('input[name="gender"]:checked').val();
@@ -521,7 +521,7 @@ $( function() {
 		
 		//======= 행운 년/월/일 변경시 ======
 		$("#hunDate").change(function(){
-			hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = "";
+			hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = "";
 			hunD = document.getElementById('hunDate').value;
 			convrtsj(hunD)
 			hn_lg = ""; hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5;  //--- 행운 (대세월일)운 간
