@@ -264,11 +264,14 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 </script>
 	 
 <script type="text/javascript">
-	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null; 
+	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null; var hunDate = null;
 	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hrta = ""; var hrtb = ""; var hrtc = ""; var hrtd = ""; var rt = "";
 	var vwyr = null; var rvwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
+	var tsj1 = ""; var tsj2 = ""; var tsj3 = ""; var tsj4 = ""; var tsj5 = ""; var tsj6 = ""; var tsj7 = ""; var tsj8 = "";
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
+	var hn_lg = ""; var hn_yg = ""; var hn_mg = ""; var hn_dg = "";  //--- 행운 (대세월일)운 간
+	var hn_lj = ""; var hn_yj = ""; var hn_mj = ""; var hn_dj = "";  //--- 행운 (대세월일)운 지
 
 	var sstit = ""; var ggsgg = new Array; var jjsjj = new Array; var gjsgj = new Array; var unsung12 = new Array; var gan_nfo = new Array; var jiji_nfo = new Array;
 	var ganf1 = ""; var ganf2 = ""; var ganf3 = ""; var ganf4 = ""; var nfo_tugan = ""; var nfo_chng = "";
@@ -295,6 +298,7 @@ $( function() {
 		$( 'input#sjtm' ).val('');
 		$( 'input#sj' ).val('');
 		$( 'input#bday' ).val('');
+		$( 'input#hunDate' ).val('');
 		$('input[name="gender"]').prop("checked",false);
 		$('#sola').empty();
 		$("#sola").hide();
@@ -471,10 +475,12 @@ $( function() {
 		saju_h = document.getElementById('sj').value;
 		symdt = document.getElementById('sjtm').value;
 		gendr = $('input[name="gender"]:checked').val();
+		hunD = document.getElementById('hunDate').value;
 		now = new Date();  //---- 현재시간
 		if(symdt != ""){
-			convrtsj();
-			saju = sj_yg + sj_yj + sj_mg + sj_mj + sj_dg + sj_dj + sj_tg + sj_tj;
+			convrtsj(symdt);
+			saju = tsj1 + tsj2 + tsj3 + tsj4 + tsj5 + tsj6 + tsj7 + tsj8;
+//			saju = sj_yg + sj_yj + sj_mg + sj_mj + sj_dg + sj_dj + sj_tg + sj_tj;
 		}else{
 			saju_chk();
 			saju = saju_h;
@@ -514,6 +520,8 @@ $( function() {
 	});
 });
 
+/*
+//====== 시간(년월일시)을 사주로 변환하는 함수 ==========
 function convrtsj(){
 	birth = ""; yrstart = ""; cor_t = ""; cor_d = 0; crh = ""; temp = []; temp1 = [];
 	//--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
@@ -577,7 +585,85 @@ function convrtsj(){
 	idx = ygtmp[0].lastIndexOf(sj_mj);
 	sj_mg = ygtmp[1][idx].substr(0,1);  //--- 월간 (sj_mg)
 };
-
+*/
+	
+//====== 시간(년월일시)을 사주로 변환하는 함수 ==========
+function convrtsj(reqD){
+	tsj1 = ""; tsj2 = ""; tsj3 = ""; tsj4 = ""; tsj5 = ""; tsj6 = ""; tsj7 = ""; tsj8 = "";
+	
+	rqD = ""; yrstart = ""; cor_t = ""; cor_d = 0; crh = ""; temp = []; temp1 = [];
+	//--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
+	rqD0 = new Date(reqD.substr(0,16));  //--- 입력시간(date)
+	rqD = rqD0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
+	rqD1 = new Date(reqD.substr(0,16));  //--- 보정할 시간(date): 서울표준시
+	for (i=1; i<ca04_kstadj.length; i++){
+		if (rqD >= ca04_kstadj[i][0] && rqD <= ca04_kstadj[i][1]){
+			crh = ca04_kstadj[i][2];
+		};
+	};
+	rqD1.setHours(rqD1.getHours() - Number(crh.substr(0,2)));  //--- 시간 보정
+	rqD1.setMinutes(rqD1.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
+	//--- 시지(sj_tj) 확인 ----------------------	
+	rqD_t = rqD1.format('HH:mm');
+	for ( i=1 ; i < ca05_sijitime.length ; i++ ){
+		if (ca05_sijitime[i][0] <= rqD_t && ca05_sijitime[i][1] >= rqD_t){
+			tsj8 = ca05_sijitime[i][2];  //--- 시지 (sj_tj)
+			cor_t = String(Number(ca05_sijitime[i][3]) % 12);  //--- 시지 수 (시간 결정에 사용)
+			cor_d = parseInt(Number(ca05_sijitime[i][3]) / 12);  //--- 일주 수 (일주 보정에 사용)
+		};
+	};
+	//--- 일간(sj_dg) 확인 ----------------------
+	ix = (Math.floor((rqD1.getTime() + 30600000) / 86400000) + 600077 + cor_d) % 10 + 1;
+	tsj5 = ca09r_yjsjfind[1][ix];  //--- 일간 (sj_dg)
+	//--- 시주 배열 만들기 / 시간(sj_tg) 확인 ---
+	ttit = ca07_tjsjfind.slice(0, 1);  //---시주배열 이름 (첫줄) 가져오기
+	subj = tsj5; tgtmp = ca07_tjsjfind.filter(isFind);  //---시주(일간 기준)
+	tgtmp.unshift(ttit[0]);  //---시주배열 + 이름 추가
+	for (i=1; i<tgtmp[0].length; i++){
+		if (tgtmp[0][i] === cor_t){
+			tsj7 = tgtmp[1][i].substr(0,1);   //--- 시간 (sj_tg)
+		};
+	};
+	//--- 일지(sj_dj) 확인 ----------------------
+	ix = (Math.floor((rqD1.getTime() + 30600000) / 86400000) + 600077 + cor_d) % 12 + 1;
+	tsj6 = ca09r_yjsjfind[2][ix];  //--- 일지 (sj_dj)
+	//--- 월지(sj_mj) 확인 ----------------------
+	for ( i=1 ; i < ca08_monthstart.length ; i++ ){
+		if (ca08_monthstart[i][0] <= rqD && ca08_monthstart[i+1][0] > rqD){
+			premon = new Date(ca08_monthstart[i][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
+			postmon = new Date(ca08_monthstart[i+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
+			tsj4 = ca08_monthstart[i][2];  //--- 월지 (sj_mj)
+			term = Number(ca08_monthstart[i][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
+		};
+		if (ca08_monthstart[i][3] === '입춘' && ca08_monthstart[i][0].substr(0,4) === rqD0.format('yyyy')){
+			yrstart = ca08_monthstart[i][0];  //--- 년 시작점(입춘) 년주 계산시 사용---입력시간(text)
+		};
+	};
+	//--- 년간(sj_yg) 확인 ----------------------
+	if (rqD < yrstart){ crnoy = 5 }else{ crnoy = 4 };  //--- 년도 보정수 (입춘이전 전년 년주 사용)
+	ix = (rqD0.getFullYear() - crnoy) % 10 + 1;
+	tsj1 = ca09r_yjsjfind[1][ix];  //--- 년간 (sj_yg)
+	//--- 년지(sj_yj) 확인 ----------------------
+	ix = (rqD0.getFullYear() - crnoy ) % 12 + 1;
+	tsj2 = ca09r_yjsjfind[2][ix];  //--- 년지 (sj_yj)
+	//--- 월주 배열 만들기 ----------------------
+	ytit = ca06_mjsjfind.slice(1, 2);  //---월주배열 이름 (둘째줄) 가져오기
+	subj = tsj1; ygtmp = ca06_mjsjfind.filter(isFind);  //---월주(년간 기준)
+	ygtmp.unshift(ytit[0]);  //---월주배열 + 이름 추가
+	idx = ygtmp[0].lastIndexOf(tsj4);
+	tsj3 = ygtmp[1][idx].substr(0,1);  //--- 월간 (sj_mg)
+};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //======= 사주 월간/시간 오류 check =======	
 function saju_chk(){
 	ya = saju_h.substr(0,1);
@@ -660,6 +746,21 @@ function saju_chk(){
 		document.getElementById("output2").innerText += "--------------------------------------------- 생년월일 선택 ---- \n";
 	};
 };
+	
+	
+//======= 행운 년/월/일 변경시 ======
+	
+$("#hunDate").change(function(){
+	
+alert("input 어딘가에서 값이 변경되었습니다.");
+});
+
+
+	
+	
+	
+	
+	
 	
 //======= 대운수 & 초기대운일 ======
 function longun(){
