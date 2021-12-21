@@ -471,7 +471,7 @@ $( function() {
 		["일지","","","","","","","","","",""],
 		["시지","","","","","","","","","",""]];
 		
-		document.getElementById("hunDate").value = new Date().substring(0, 16);
+		document.getElementById("hunDate").value = new Date().format('yyyy-MM-dd');
 		saju_h = document.getElementById('sj').value;
 		symdt = document.getElementById('sjtm').value;
 		gendr = $('input[name="gender"]:checked').val();
