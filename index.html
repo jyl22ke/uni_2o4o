@@ -1261,6 +1261,7 @@ function ganhabch(){
 	if (gan_nfo[3][6].substr(2,1) == "합" && gan_nfo[3][7].substr(2,1) == "합"){sj_org2 += "투합";
 	}else{	if ((gan_nfo[3][6].substr(2,1) == "합" && sj_tg == sj_dg) || (gan_nfo[3][7].substr(2,1) == "합" && sj_mg == sj_dg)){sj_org2 += "쟁합";};};
 	gan_nfo[3][8] = sj_org2; document.getElementById("output2").innerText += sj_org2 + "\n";
+	document.getElementById("output2").innerText += "천간합충 정리 이어서 할 예정 \n"; 
 };
 	
 //========== 충/합 ==========
