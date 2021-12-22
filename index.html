@@ -1066,6 +1066,20 @@ function find_gjss(ji,css,no){
 	if (css != ""){document.getElementById(css).innerText += js_titl + "\n";};
 };
 
+//====== 천간지지 십성 chk ======	
+function sibsng(a,b,c){
+	gs_titl = ""; js_titl = "";
+	idb = sibsungX1[0].lastIndexOf(a) - 1;
+	if (b != ""){
+		idx = sibsungX1[0].lastIndexOf(b);
+		gs_titl = sibsungX1[idb][idx];  //--- (천간)십성 이름
+	};
+	if (c == "辰" || c == "戌"){idx = sibsungX1[1].lastIndexOf("辰戌");
+	}else{if (c == "丑" || c == "未"){idx = sibsungX1[1].lastIndexOf("丑未");
+		}else{idx = sibsungX1[1].lastIndexOf(c);};};
+	js_titl = sibsungX1[idb][idx];  //--- (지지)십성 이름
+};
+	
 //---- 통근체크 ----
 function ganji_root(){
 	//------ 모든 천간의 통근 확인 -----------
