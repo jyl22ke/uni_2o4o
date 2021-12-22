@@ -481,7 +481,6 @@ $( function() {
 			convrtsj(symdt);
 			saju = tsj1 + tsj2 + tsj3 + tsj4 + tsj5 + tsj6 + tsj7 + tsj8;
 			birth = rqD; birth0 = rqD0; birth1 = rqD1;
-//			saju = sj_yg + sj_yj + sj_mg + sj_mj + sj_dg + sj_dj + sj_tg + sj_tj;
 		}else{
 			saju_chk();
 			saju = saju_h;
@@ -527,80 +526,13 @@ $( function() {
 			hn_lg = ""; hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5;  //--- 행운 (대세월일)운 간
 			hn_lj = ""; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6;  //--- 행운 (대세월일)운 지
 			document.getElementById("output2").innerText += "행운(대세월일) check : 대운" + hn_lg + hn_lj + " \n";
-			document.getElementById("output2").innerText += "행운(대세월일) check : 대운" + hn_yg + hn_yj + " \n";
-			document.getElementById("output2").innerText += "행운(대세월일) check : 대운" + hn_mg + hn_mj + " \n";
-			document.getElementById("output2").innerText += "행운(대세월일) check : 대운" + hn_dg + hn_dj + " \n";
+			document.getElementById("output2").innerText += "행운(대세월일) check : 세운" + hn_yg + hn_yj + " \n";
+			document.getElementById("output2").innerText += "행운(대세월일) check : 월운" + hn_mg + hn_mj + " \n";
+			document.getElementById("output2").innerText += "행운(대세월일) check : 일운" + hn_dg + hn_dj + " \n";
 		});
 	});
 });
 
-/*
-//====== 시간(년월일시)을 사주로 변환하는 함수 ==========
-function convrtsj(){
-	birth = ""; yrstart = ""; cor_t = ""; cor_d = 0; crh = ""; temp = []; temp1 = [];
-	//--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
-	birth0 = new Date(symdt.substr(0,16));  //--- 입력시간(date)
-	birth = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
-	birth1 = new Date(symdt.substr(0,16));  //--- 보정할 시간(date): 서울표준시
-	for (i=1; i<ca04_kstadj.length; i++){
-		if (birth >= ca04_kstadj[i][0] && birth <= ca04_kstadj[i][1]){
-			crh = ca04_kstadj[i][2];
-		};
-	};
-	birth1.setHours(birth1.getHours() - Number(crh.substr(0,2)));  //--- 시간 보정
-	birth1.setMinutes(birth1.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
-	//--- 시지(sj_tj) 확인 ----------------------	
-	birth_t = birth1.format('HH:mm');
-	for ( i=1 ; i < ca05_sijitime.length ; i++ ){
-		if (ca05_sijitime[i][0] <= birth_t && ca05_sijitime[i][1] >= birth_t){
-			sj_tj = ca05_sijitime[i][2];  //--- 시지 (sj_tj)
-			cor_t = String(Number(ca05_sijitime[i][3]) % 12);  //--- 시지 수 (시간 결정에 사용)
-			cor_d = parseInt(Number(ca05_sijitime[i][3]) / 12);  //--- 일주 수 (일주 보정에 사용)
-		};
-	};
-	//--- 일간(sj_dg) 확인 ----------------------
-	ix = (Math.floor((birth1.getTime() + 30600000) / 86400000) + 600077 + cor_d) % 10 + 1;
-	sj_dg = ca09r_yjsjfind[1][ix];  //--- 일간 (sj_dg)
-	//--- 시주 배열 만들기 / 시간(sj_tg) 확인 ---
-	ttit = ca07_tjsjfind.slice(0, 1);  //---시주배열 이름 (첫줄) 가져오기
-	subj = sj_dg; tgtmp = ca07_tjsjfind.filter(isFind);  //---시주(일간 기준)
-	tgtmp.unshift(ttit[0]);  //---시주배열 + 이름 추가
-	for (i=1; i<tgtmp[0].length; i++){
-		if (tgtmp[0][i] === cor_t){
-			sj_tg = tgtmp[1][i].substr(0,1);   //--- 시간 (sj_tg)
-		};
-	};
-	//--- 일지(sj_dj) 확인 ----------------------
-	ix = (Math.floor((birth1.getTime() + 30600000) / 86400000) + 600077 + cor_d) % 12 + 1;
-	sj_dj = ca09r_yjsjfind[2][ix];  //--- 일지 (sj_dj)
-	//--- 월지(sj_mj) 확인 ----------------------
-	for ( i=1 ; i < ca08_monthstart.length ; i++ ){
-		if (ca08_monthstart[i][0] <= birth && ca08_monthstart[i+1][0] > birth){
-			premon = new Date(ca08_monthstart[i][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
-			postmon = new Date(ca08_monthstart[i+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
-			sj_mj = ca08_monthstart[i][2];  //--- 월지 (sj_mj)
-			term = Number(ca08_monthstart[i][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
-		};
-		if (ca08_monthstart[i][3] === '입춘' && ca08_monthstart[i][0].substr(0,4) === birth0.format('yyyy')){
-			yrstart = ca08_monthstart[i][0];  //--- 년 시작점(입춘) 년주 계산시 사용---입력시간(text)
-		};
-	};
-	//--- 년간(sj_yg) 확인 ----------------------
-	if (birth < yrstart){ crnoy = 5 }else{ crnoy = 4 };  //--- 년도 보정수 (입춘이전 전년 년주 사용)
-	ix = (birth0.getFullYear() - crnoy) % 10 + 1;
-	sj_yg = ca09r_yjsjfind[1][ix];  //--- 년간 (sj_yg)
-	//--- 년지(sj_yj) 확인 ----------------------
-	ix = (birth0.getFullYear() - crnoy ) % 12 + 1;
-	sj_yj = ca09r_yjsjfind[2][ix];  //--- 년지 (sj_yj)
-	//--- 월주 배열 만들기 ----------------------
-	ytit = ca06_mjsjfind.slice(1, 2);  //---월주배열 이름 (둘째줄) 가져오기
-	subj = sj_yg; ygtmp = ca06_mjsjfind.filter(isFind);  //---월주(년간 기준)
-	ygtmp.unshift(ytit[0]);  //---월주배열 + 이름 추가
-	idx = ygtmp[0].lastIndexOf(sj_mj);
-	sj_mg = ygtmp[1][idx].substr(0,1);  //--- 월간 (sj_mg)
-};
-*/
-	
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
 function convrtsj(reqD){
 	tsj1 = ""; tsj2 = ""; tsj3 = ""; tsj4 = ""; tsj5 = ""; tsj6 = ""; tsj7 = ""; tsj8 = "";
@@ -1048,7 +980,7 @@ function mktabl(){
 		8: (13) ["정", "오", "음화", "정인", "편인", "겁재", "비견", "상관", "식신", "정재", "편재", "정관", "편관"]
 		9: (13) ["계", "자", "음수", "상관", "식신", "정재", "편재", "정관", "편관", "정인", "편인", "겁재", "비견"]	*/
 };
-/*
+
 function find_ggss(gan,css,jjg,no){
 	gs_titl = "";
 	idx = gjsgj[0].lastIndexOf(gan);
@@ -1064,7 +996,7 @@ function find_gjss(ji,css,no){
 	js_titl = gjsgj[no][idx];  //--- (지지)십성 이름
 	if (css != ""){document.getElementById(css).innerText += js_titl + "\n";};
 };
-*/
+
 //====== 천간지지 십성 chk ======	
 function sibsng(a,b,c){
 	gs_titl = ""; js_titl = "";
