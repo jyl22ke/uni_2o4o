@@ -881,10 +881,14 @@ function fill_saju(){
 	document.getElementById("sj5a").innerText += "일간(나)\n"; document.getElementById("sj6a").innerText += js_titl + "\n";
 	sibsng(sj_dg,sj_tg,sj_tj); dgss_titl7 = gs_titl; gan_nfo[4][3] = gs_titl; dgss_titl8 = js_titl; jiji_nfo[4][3] = js_titl;  //--- 시주 십성 기록
 	document.getElementById("sj7a").innerText += gs_titl + "\n"; document.getElementById("sj8a").innerText += js_titl + "\n";
-	unsng();  //----- 십이운성 기록
+	unsng(sj_dg,sj_yj); document.getElementById("sj2c").innerText += "(일간) " + js_titl + " \n"; jiji_nfo[1][10] = js_titl;  //----- 년지 십이운성 기록
+	unsng(sj_dg,sj_mj); document.getElementById("sj4c").innerText += "(일간) " + js_titl + " \n"; jiji_nfo[2][10] = js_titl;  //----- 월지 십이운성 기록
+	unsng(sj_dg,sj_dj); document.getElementById("sj6c").innerText += "(일간) " + js_titl + " \n"; jiji_nfo[3][10] = js_titl;  //----- 일지 십이운성 기록
+	unsng(sj_dg,sj_tj); document.getElementById("sj8c").innerText += "(일간) " + js_titl + " \n"; jiji_nfo[4][10] = js_titl;  //----- 시지 십이운성 기록
 };
 
 //======= 십이운성 기록하는 함수 =====
+/*
 function unsng(){
 	for (i=1; i<5 ; i++){
  		if ( i == 1 ){ ti = "(년간) ";};
@@ -898,7 +902,15 @@ function unsng(){
 		};
 	};
 };
-
+*/
+	
+	
+function unsng(a,b){
+	idb = sibsungX1[0].lastIndexOf(a) - 1;	
+	idx = unsung[idb].lastIndexOf(b);
+	js_titl = unsung[0][idx];
+};
+	
 //======= 기본 테이블 작성하는 함수 =======	
 function mktabl(){
 	ggsgg = []; unsung12 = []; jjsjj = []; gjsgj = [];
