@@ -948,7 +948,10 @@ function fill_saju(){
 	find_gjss(sj_mj,"sj4a",4); dgss_titl4 = js_titl; jiji_nfo[2][3] = js_titl;  //--- 월지 십성 기록
 	find_gjss(sj_dj,"sj6a",4); dgss_titl6 = js_titl; jiji_nfo[3][3] = js_titl;  //--- 일지 십성 기록
 	find_gjss(sj_tj,"sj8a",4); dgss_titl8 = js_titl; jiji_nfo[4][3] = js_titl;  //--- 시지 십성 기록
-	sibsng(sj_dg,sj_mg,sj_mj); kkg = gs_titl; kkj = js_titl;
+	sibsng(sj_dg,sj_yg,sj_yj); kkg1 = gs_titl; kkg2 = js_titl;
+	sibsng(sj_dg,sj_mg,sj_mj); kkg3 = gs_titl; kkg4 = js_titl;
+	sibsng(sj_dg,"",sj_dj); kkg5 = gs_titl; kkg6 = js_titl;
+	sibsng(sj_dg,sj_tg,sj_tj); kkg7 = gs_titl; kkg8 = js_titl;
 	unsng();  //----- 십이운성 기록
 };
 
