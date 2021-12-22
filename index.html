@@ -712,11 +712,13 @@ function longun(){
 		cb = (b + i * r + 59) % 12 + 1;
 		posa = "sjua" + i; posb = "sjub" + i;
 		longungj += gan[ca][0] + jiji[cb][0];
-		find_ggss(gan[ca][0],"","",4);
+		sibsng(sj_dg,gan[ca][0],jiji[cb][0]);
+		
+//		find_ggss(gan[ca][0],"","",4);
 		document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
 		document.getElementById(posa).innerText += gan[ca][0] + "\n";
 		document.getElementById(posb).innerText += gs_titl + "\n" + gan[ca][3] + gan[ca][2] + " \n\n";
-		find_gjss(jiji[cb][0],"",4);
+//		find_gjss(jiji[cb][0],"",4);
 		document.getElementById(posa).innerText += jiji[cb][0] + "\n";
 		document.getElementById(posb).innerText += js_titl + "\n" + jiji[cb][3] + jiji[cb][2] + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
 		if (now.getFullYear()-birth0.getFullYear()+1 >= age+(i-1)*10 && now.getFullYear()-birth0.getFullYear()+1 < age+i*10){
@@ -980,7 +982,7 @@ function mktabl(){
 		8: (13) ["정", "오", "음화", "정인", "편인", "겁재", "비견", "상관", "식신", "정재", "편재", "정관", "편관"]
 		9: (13) ["계", "자", "음수", "상관", "식신", "정재", "편재", "정관", "편관", "정인", "편인", "겁재", "비견"]	*/
 };
-
+/*
 function find_ggss(gan,css,jjg,no){
 	gs_titl = "";
 	idx = gjsgj[0].lastIndexOf(gan);
@@ -996,7 +998,7 @@ function find_gjss(ji,css,no){
 	js_titl = gjsgj[no][idx];  //--- (지지)십성 이름
 	if (css != ""){document.getElementById(css).innerText += js_titl + "\n";};
 };
-
+*/
 //====== 천간지지 십성 chk ======	
 function sibsng(a,b,c){
 	gs_titl = ""; js_titl = "";
