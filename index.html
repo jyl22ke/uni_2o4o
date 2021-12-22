@@ -930,28 +930,23 @@ function fill_saju(){
 		document.getElementById("sj" + n).innerText +=  jjsjj[i][0];  //--- 지지 기록
 		document.getElementById("sjg" + n).innerText +=  jjsjj[i][4].substr(1,2);  //--- 지지 음양오행 기록
 		chg_bgcolor("#sj" + n,jjsjj[i][5],jjsjj[i][5]); ohtx += jjsjj[i][4].substr(1,2);  //--- 지지 배경색
-		
 		//--- 지장간 기록 ---
-		find_ggss(jjsjj[i][6].substr(0,1),"sj" + n + "b",jjsjj[i][6],4); jiji_nfo[i][5] = gs_titl;
+		sibsng(sj_dg,jjsjj[i][6].substr(0,1),""); document.getElementById("sj" + n + "b").innerText += jjsjj[i][6] + " " + gs_titl + "\n"; jiji_nfo[i][5] = gs_titl;
 		if (jjsjj[i][7] == ""){
 			document.getElementById("sj" + n + "b").innerText += " \n";
 		}else{
-			find_ggss(jjsjj[i][7].substr(0,1),"sj" + n + "b",jjsjj[i][7],4); jiji_nfo[i][7] = gs_titl;
+			sibsng(sj_dg,jjsjj[i][7].substr(0,1),""); document.getElementById("sj" + n + "b").innerText += jjsjj[i][7] + " " + gs_titl + "\n"; jiji_nfo[i][7] = gs_titl;
 		};
- 		find_ggss(jjsjj[i][8].substr(0,1),"sj" + n + "b",jjsjj[i][8],4); jiji_nfo[i][9] = gs_titl;
+		sibsng(sj_dg,jjsjj[i][8].substr(0,1),""); document.getElementById("sj" + n + "b").innerText += jjsjj[i][8] + " " + gs_titl + "\n"; jiji_nfo[i][9] = gs_titl;
 	}
-	find_ggss(sj_yg,"sj1a","",4); dgss_titl1 = gs_titl; gan_nfo[1][3] = gs_titl;  //--- 년간 십성 기록
-	find_ggss(sj_mg,"sj3a","",4); dgss_titl3 = gs_titl; gan_nfo[2][3] = gs_titl;  //--- 월간 십성 기록
-	document.getElementById("sj5a").innerText += "일간(나)\n"; gan_nfo[3][3] = "일간(나)";
-	find_ggss(sj_tg,"sj7a","",4); dgss_titl7 = gs_titl; gan_nfo[4][3] = gs_titl;  //--- 시간 십성 기록
-	find_gjss(sj_yj,"sj2a",4); dgss_titl2 = js_titl; jiji_nfo[1][3] = js_titl;  //--- 년지 십성 기록
-	find_gjss(sj_mj,"sj4a",4); dgss_titl4 = js_titl; jiji_nfo[2][3] = js_titl;  //--- 월지 십성 기록
-	find_gjss(sj_dj,"sj6a",4); dgss_titl6 = js_titl; jiji_nfo[3][3] = js_titl;  //--- 일지 십성 기록
-	find_gjss(sj_tj,"sj8a",4); dgss_titl8 = js_titl; jiji_nfo[4][3] = js_titl;  //--- 시지 십성 기록
-	sibsng(sj_dg,sj_yg,sj_yj); kkg1 = gs_titl; kkg2 = js_titl;
-	sibsng(sj_dg,sj_mg,sj_mj); kkg3 = gs_titl; kkg4 = js_titl;
-	sibsng(sj_dg,"",sj_dj); kkg5 = gs_titl; kkg6 = js_titl;
-	sibsng(sj_dg,sj_tg,sj_tj); kkg7 = gs_titl; kkg8 = js_titl;
+	sibsng(sj_dg,sj_yg,sj_yj); dgss_titl1 = gs_titl; gan_nfo[1][3] = gs_titl; dgss_titl2 = js_titl; jiji_nfo[1][3] = js_titl;  //--- 년주 십성 기록
+	document.getElementById("sj1a").innerText += gs_titl + "\n"; document.getElementById("sj2a").innerText += js_titl + "\n";
+	sibsng(sj_dg,sj_mg,sj_mj); dgss_titl3 = gs_titl; gan_nfo[2][3] = gs_titl; dgss_titl4 = js_titl; jiji_nfo[2][3] = js_titl;  //--- 월주 십성 기록
+	document.getElementById("sj3a").innerText += gs_titl + "\n"; document.getElementById("sj4a").innerText += js_titl + "\n";
+	sibsng(sj_dg,"",sj_dj);gan_nfo[3][3] = "일간(나)"; dgss_titl6 = js_titl; jiji_nfo[3][3] = js_titl;  //--- 일주 십성 기록
+	document.getElementById("sj5a").innerText += "일간(나)\n"; document.getElementById("sj6a").innerText += js_titl + "\n";
+	sibsng(sj_dg,sj_tg,sj_tj); dgss_titl7 = gs_titl; gan_nfo[4][3] = gs_titl; dgss_titl8 = js_titl; jiji_nfo[4][3] = js_titl;  //--- 시주 십성 기록
+	document.getElementById("sj7a").innerText += gs_titl + "\n"; document.getElementById("sj8a").innerText += js_titl + "\n";
 	unsng();  //----- 십이운성 기록
 };
 
@@ -1053,7 +1048,7 @@ function mktabl(){
 		8: (13) ["정", "오", "음화", "정인", "편인", "겁재", "비견", "상관", "식신", "정재", "편재", "정관", "편관"]
 		9: (13) ["계", "자", "음수", "상관", "식신", "정재", "편재", "정관", "편관", "정인", "편인", "겁재", "비견"]	*/
 };
-
+/*
 function find_ggss(gan,css,jjg,no){
 	gs_titl = "";
 	idx = gjsgj[0].lastIndexOf(gan);
@@ -1069,7 +1064,7 @@ function find_gjss(ji,css,no){
 	js_titl = gjsgj[no][idx];  //--- (지지)십성 이름
 	if (css != ""){document.getElementById(css).innerText += js_titl + "\n";};
 };
-
+*/
 //====== 천간지지 십성 chk ======	
 function sibsng(a,b,c){
 	gs_titl = ""; js_titl = "";
@@ -1078,10 +1073,12 @@ function sibsng(a,b,c){
 		idx = sibsungX1[0].lastIndexOf(b);
 		gs_titl = sibsungX1[idb][idx];  //--- (천간)십성 이름
 	};
-	if (c == "辰" || c == "戌"){idx = sibsungX1[1].lastIndexOf("辰戌");
-	}else{if (c == "丑" || c == "未"){idx = sibsungX1[1].lastIndexOf("丑未");
-		}else{idx = sibsungX1[1].lastIndexOf(c);};};
-	js_titl = sibsungX1[idb][idx];  //--- (지지)십성 이름
+	if (c != ""){
+		if (c == "辰" || c == "戌"){idx = sibsungX1[1].lastIndexOf("辰戌");
+		}else{if (c == "丑" || c == "未"){idx = sibsungX1[1].lastIndexOf("丑未");
+			}else{idx = sibsungX1[1].lastIndexOf(c);};};
+		js_titl = sibsungX1[idb][idx];  //--- (지지)십성 이름
+	};
 };
 	
 //---- 통근체크 ----
