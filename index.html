@@ -517,20 +517,20 @@ $( function() {
 //    		chnghab("지지암합",5,sj_ganji,"s합");
 //  		chnghab("간지암합",4,sj_ganji,"x합");
  		dgjmcharac();
-		
-		//======= 행운 년/월/일 변경시 ======
-		$("#hunDate").change(function(){
-			hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = "";
-			hunD = document.getElementById('hunDate').value;
-			convrtsj(hunD)
-			hn_lg = ""; hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5;  //--- 행운 (대세월일)운 간
-			hn_lj = ""; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6;  //--- 행운 (대세월일)운 지
-			document.getElementById("output2").innerText += "행운(대세월일) check : 대운" + hn_lg + hn_lj + " \n";
-			document.getElementById("output2").innerText += "행운(대세월일) check : 세운" + hn_yg + hn_yj + " \n";
-			document.getElementById("output2").innerText += "행운(대세월일) check : 월운" + hn_mg + hn_mj + " \n";
-			document.getElementById("output2").innerText += "행운(대세월일) check : 일운" + hn_dg + hn_dj + " \n";
-		});
 	});
+});
+
+//======= 행운 년/월/일 변경시 ======
+$("#hunDate").change(function(){
+	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = "";
+	hunD = document.getElementById('hunDate').value;
+	convrtsj(hunD)
+	hn_lg = ""; hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5;  //--- 행운 (대세월일)운 간
+	hn_lj = ""; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6;  //--- 행운 (대세월일)운 지
+	document.getElementById("output2").innerText += "행운(대세월일) check : 대운" + hn_lg + hn_lj + " \n";
+	document.getElementById("output2").innerText += "행운(대세월일) check : 세운" + hn_yg + hn_yj + " \n";
+	document.getElementById("output2").innerText += "행운(대세월일) check : 월운" + hn_mg + hn_mj + " \n";
+	document.getElementById("output2").innerText += "행운(대세월일) check : 일운" + hn_dg + hn_dj + " \n";
 });
 
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
