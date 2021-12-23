@@ -523,14 +523,33 @@ $( function() {
 //======= 행운 년/월/일 변경시 ======
 $("#hunDate").change(function(){
 	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = "";
-	hunD = document.getElementById('hunDate').value;
-	convrtsj(hunD)
-	hn_lg = ""; hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5;  //--- 행운 (대세월일)운 간
-	hn_lj = ""; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6;  //--- 행운 (대세월일)운 지
-	document.getElementById("output2").innerText += "행운(대세월일) check : 대운" + hn_lg + hn_lj + " \n";
-	document.getElementById("output2").innerText += "행운(대세월일) check : 세운" + hn_yg + hn_yj + " \n";
-	document.getElementById("output2").innerText += "행운(대세월일) check : 월운" + hn_mg + hn_mj + " \n";
-	document.getElementById("output2").innerText += "행운(대세월일) check : 일운" + hn_dg + hn_dj + " \n";
+	hunD = document.getElementById('hunDate').value; vwyr = Number(hunD.substr(0,4));
+//	convrtsj(hunD)
+	//----- 세운
+	hyr = (vwyr - 1864) % 60; idx = hyr % 10 + 1; hn_yg = gan[idx][0]; hygoh = gan[idx][4].substr(1,2); idx = hyr % 12 + 1; hn_yj = jiji[idx][0]; hyjoh = jiji[idx][4].substr(1,2);
+	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; unsng(sj_dg,hn_yj); hyuns = js_titl;
+	document.getElementById("hunY2").innerText += vwyr + " (" + (vwyr - birth0.getFullYear() + 1) + ")\n";
+	document.getElementById("hunY1").innerText += hn_yg + "\n";
+	document.getElementById("hunY2").innerText += hygs + " " + hygoh + "\n";
+	document.getElementById("hunY1").innerText += hn_yj + "\n";
+	document.getElementById("hunY2").innerText += "\n" + hyjs + " " + hyjoh + " " + hyuns + "\n";
+	//----- 월운
+	hmo = (hyr % 5) * 12 + Number(hunD.substr(5,2)); idx = hmo % 10 + 1; hn_mg = gan[idx][0]; hmgoh = gan[idx][4].substr(1,2); idx = hmo % 12 + 1; hn_mj = jiji[idx][0]; hmjoh = jiji[idx][4].substr(1,2);
+	sibsng(sj_dg,hn_mg,hn_mj); hmgs = gs_titl; hmjs = js_titl; unsng(sj_dg,hn_mj); hmuns = js_titl;
+	document.getElementById("hunM2").innerText += hunD.substr(0,7) + " (" + hn_mj + ")\n";
+	document.getElementById("hunM1").innerText += hn_mg + "\n";
+	document.getElementById("hunM2").innerText += hmgs + " " + hmgoh + "\n";
+	document.getElementById("hunM1").innerText += hn_mj + "\n";
+	document.getElementById("hunM2").innerText += "\n" + hmjs + " " + hmjoh + " " + hmuns + "\n";
+	//----- 일운
+	hda = ((new Date(hunD).getTime() - new Date('1908-01-10').getTime()) / 86400000) % 60; idx = hda % 10 + 1; hn_dg = gan[idx][0]; hdgoh = gan[idx][4].substr(1,2); idx = hda % 12 + 1; hn_dj = jiji[idx][0]; hdjoh = jiji[idx][4].substr(1,2);
+	sibsng(sj_dg,hn_dg,hn_dj); hdgs = gs_titl; hdjs = js_titl; unsng(sj_dg,hn_dj); hduns = js_titl;
+			document.getElementById("hunD2").innerText += hunD + "\n";
+			document.getElementById("hunD1").innerText += hn_dg + "\n";
+			document.getElementById("hunD2").innerText += hdgs + " " + hdgoh + "\n";
+			document.getElementById("hunD1").innerText += hn_dj + "\n";
+			document.getElementById("hunD2").innerText += "\n" + hdjs + " " + hdjoh + " " + hduns + "\n";
+	document.getElementById("output2").innerText += "행운(대세월일) check : 대운 작업예정임 \n";
 });
 
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
