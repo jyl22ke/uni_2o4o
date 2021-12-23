@@ -264,7 +264,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 </script>
 	 
 <script type="text/javascript">
-	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null; var hunDate = null;
+	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null; var hunD = null; var hunL = new Array;
 	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hrta = ""; var hrtb = ""; var hrtc = ""; var hrtd = ""; var rt = "";
 	var vwyr = null; var rvwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
 	var tsj1 = ""; var tsj2 = ""; var tsj3 = ""; var tsj4 = ""; var tsj5 = ""; var tsj6 = ""; var tsj7 = ""; var tsj8 = "";
@@ -471,6 +471,8 @@ $( function() {
 		["일지","","","","","","","","","",""],
 		["시지","","","","","","","","","",""]];
 		
+		hunL = [["대운일","간지","간십성오행","지십성오행"],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]];
+		
 		document.getElementById("hunDate").value = new Date().format('yyyy-MM-dd');
 		saju_h = document.getElementById('sj').value;
 		symdt = document.getElementById('sjtm').value;
@@ -523,10 +525,17 @@ $( function() {
 //======= 행운 년/월/일 변경시 ======
 $("#hunDate").change(function(){
 	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = "";
-	$('.hun1').empty();
-	$('.hun2').empty();
+	$('.hun1').empty(); $('.hun2').empty();
 	hunD = document.getElementById('hunDate').value; vwyr = Number(hunD.substr(0,4));
-//	convrtsj(hunD)
+	for (i=1; i<10; i++){
+		if (vwyr-birth0.getFullYear()+1 >= age+(i-1)*10 && vwyr-birth0.getFullYear()+1 < age+i*10){
+			document.getElementById("hunL2").innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
+			document.getElementById("hunL1").innerText += hunL[i][1].substr(0,1) + "\n";
+			document.getElementById("hunL2").innerText += hunL[i][2] + "\n";
+			document.getElementById("hunL1").innerText += hunL[i][1].substr(1,1) + "\n";
+			document.getElementById("hunL2").innerText += "\n" + hunL[i][3] + " \n";
+		};
+	};
 	//----- 세운
 	hyr = (vwyr - 1864) % 60; idx = hyr % 10 + 1; hn_yg = gan[idx][0]; hygoh = gan[idx][4].substr(1,2); idx = hyr % 12 + 1; hn_yj = jiji[idx][0]; hyjoh = jiji[idx][4].substr(1,2);
 	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; unsng(sj_dg,hn_yj); hyuns = js_titl;
@@ -733,13 +742,14 @@ function longun(){
 		cb = (b + i * r + 59) % 12 + 1;
 		posa = "sjua" + i; posb = "sjub" + i;
 		longungj += gan[ca][0] + jiji[cb][0];
-		sibsng(sj_dg,gan[ca][0],jiji[cb][0]);
-		
+		hunL[i][0] = new Date(firstD.setFullYear(firstD.getFullYear() + (i-1) * 10)).format('yyyy-MM-dd HH:mm'); hunL[i][1] = gan[ca][0] + jiji[cb][0];
+		sibsng(sj_dg,gan[ca][0],jiji[cb][0]); hunL[i][2] = gs_titl + " " + gan[ca][4].substr(1,2); hunL[i][3] = js_titl + " " + jiji[cb][4].substr(1,2);
+		unsng(sj_dg,jiji[cb][0]);  hunL[i][3] += " " + js_titl; 
 		document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
 		document.getElementById(posa).innerText += gan[ca][0] + "\n";
-		document.getElementById(posb).innerText += gs_titl + "\n" + gan[ca][3] + gan[ca][2] + " \n\n";
+		document.getElementById(posb).innerText += gs_titl + "\n" + gan[ca][4].substr(1,2) + " \n\n";
 		document.getElementById(posa).innerText += jiji[cb][0] + "\n";
-		document.getElementById(posb).innerText += js_titl + "\n" + jiji[cb][3] + jiji[cb][2] + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
+		document.getElementById(posb).innerText += js_titl + "\n" + jiji[cb][4].substr(1,2) + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
 		if (now.getFullYear()-birth0.getFullYear()+1 >= age+(i-1)*10 && now.getFullYear()-birth0.getFullYear()+1 < age+i*10){
 			document.getElementById("hunL2").innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
 			document.getElementById("hunL1").innerText += gan[ca][0] + "\n";
