@@ -1269,11 +1269,11 @@ function ganhabch(){
 	}else{	if ((gan_nfo[3][6].substr(2,1) == "합" && sj_tg == sj_dg) || (gan_nfo[3][7].substr(2,1) == "합" && sj_mg == sj_dg)){sj_org2 += "쟁합";};};
 	gan_nfo[3][8] = sj_org2; document.getElementById("output2").innerText += sj_org2 + "\n";
 	
-	for (i = 0; i = ca10_ghabch.length; i++){
-//		if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1){ document.getElementById("output2").innerText += "연간 " + hcg1 + " " + ca10_ghabch[i][2] + "\n";};
-//		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2){ document.getElementById("output2").innerText += "월간 " + hcg2 + " " + ca10_ghabch[i][2] + "\n";};
+	for (i = 0; i < ca10_ghabch.length; i++){
+ 		if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1){ document.getElementById("output2").innerText += "연간 " + hcg1 + " " + ca10_ghabch[i][2] + "\n";};
+ 		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2){ document.getElementById("output2").innerText += "월간 " + hcg2 + " " + ca10_ghabch[i][2] + "\n";};
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3){ document.getElementById("output2").innerText += "일간 " + hcg3 + " " + ca10_ghabch[i][2] + "\n";};
-//		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4){ document.getElementById("output2").innerText += "시간 " + hcg4 + " " + ca10_ghabch[i][2] + "\n";};
+ 		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4){ document.getElementById("output2").innerText += "시간 " + hcg4 + " " + ca10_ghabch[i][2] + "\n";};
 	};
 };
 
