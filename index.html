@@ -1258,9 +1258,9 @@ function ganhabch(){
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
 	document.getElementById("sj5a").innerText += rslt5; document.getElementById("sj7a").innerText += rslt7;
 	
-	if (gan_nfo[1][6] != ""){ sj_org1 = hrt1.substr(0,1) + hrt2.substr(0,1) + gan_nfo[1][6]; gan_nfo[1][8] = sj_org1; document.getElementById("output2").innerText += sj_org1 + "\n";};
-	if (gan_nfo[3][6] != ""){ sj_org2 = hrt2.substr(0,1) + hrt3.substr(0,1) + gan_nfo[3][6];};
-	if (gan_nfo[3][7] != ""){ sj_org2 += " " + hrt3.substr(0,1) + hrt4.substr(0,1) + gan_nfo[3][7];};
+//	if (gan_nfo[1][6] != ""){ sj_org1 = hrt1.substr(0,1) + hrt2.substr(0,1) + gan_nfo[1][6]; gan_nfo[1][8] = sj_org1; document.getElementById("output2").innerText += sj_org1 + "\n";};
+//	if (gan_nfo[3][6] != ""){ sj_org2 = hrt2.substr(0,1) + hrt3.substr(0,1) + gan_nfo[3][6];};
+//	if (gan_nfo[3][7] != ""){ sj_org2 += " " + hrt3.substr(0,1) + hrt4.substr(0,1) + gan_nfo[3][7];};
 	if (gan_nfo[3][6].substr(2,1) == "합" && gan_nfo[3][7].substr(2,1) == "합"){sj_org2 += "투합";
 	}else{	if ((gan_nfo[3][6].substr(2,1) == "합" && sj_tg == sj_dg) || (gan_nfo[3][7].substr(2,1) == "합" && sj_mg == sj_dg)){sj_org2 += "쟁합";};};
 	gan_nfo[3][8] = sj_org2; document.getElementById("output2").innerText += sj_org2 + "\n";
