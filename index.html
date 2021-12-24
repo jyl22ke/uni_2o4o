@@ -1226,14 +1226,15 @@ function hcompchk(a,b,c,d){
 	subj = a; rslt = "";
 	chab = ganji_habchung.filter(isFind);  //===천간충/극
 	for (i = 1; i < b + 1; i++){
-		texstr = chab[0][i]; 
+		texstr = chab[0][i].substr(0,2); 
 		if (texstr == (c + d) || texstr == (d + c)){
-			rslt = texstr + a.substr(2,1);
+			if (a.substr(2,1)== "합"){rslt = texstr + a.substr(2,1) + chab[0][i].substr(2,1);
+			}else{rslt = texstr + a.substr(2,1);};
 		};
 	};
 };
 
-//========== 천간합 ==========
+//========== 천간합충 ==========
 function ganhabch(){
 	rslt1 = ""; rslt3 = ""; rslt5 = ""; rslt7 = ""; sj_org1 = ""; sj_org2 = ""; hcg1 = ""; hcg2 = ""; hcg3 = ""; hcg4 = "";
 	hrootchk(sj_yj,2); hcg1 += rt.substr(0,1); gan_nfo[1][4] = rt;  //---자기자리 통근체크
@@ -1248,13 +1249,16 @@ function ganhabch(){
 	hcompchk("천간충",4,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt; rslt3 += rslt;  //---연간충
 	hcompchk("천간충",4,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간충 (일간-월간)
 	hcompchk("천간충",4,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간충 (일간-시간)
-	if (gan_nfo[1][6].substr(2,1)=="합"){ if (gan_nfo[3][6].substr(2,1)=="충"){hcg1 += "합충";	}else{hcg1 += gan_nfo[1][6].substr(2,1) + " ";};}else{hcg1 += " " + " ";};
-	hcg2 += " " + " "; 
-	if (gan_nfo[3][6]!=""){ if (gan_nfo[3][7]!=""){hcg3 += gan_nfo[3][6].substr(2,1) + gan_nfo[3][7].substr(2,1);}else{hcg3 += gan_nfo[3][6].substr(2,1) + " ";};}else{hcg3 += " " + " ";};
-	hcg4 += " " + " ";
-
-//-------- 월지합화오행 체크 추가 예정.....
-	
+	if (gan_nfo[1][6].substr(2,1)=="합"){ if (gan_nfo[3][6].substr(2,1)=="충"){hcg1 += "합충 ";	}else{hcg1 += gan_nfo[1][6].substr(2,1) + "  ";};}else{hcg1 += "  " + " ";};
+	hcg2 += "  " + " "; 
+	if (gan_nfo[3][6]!="" && gan_nfo[3][7]!=""){hcg3 += gan_nfo[3][6].substr(2,1) + gan_nfo[3][7].substr(2,1);  //--- 합충 체크
+	}else{if (gan_nfo[3][6]!="" && gan_nfo[3][7]==""){ hcg3 += gan_nfo[3][6].substr(2,1) + " ";
+		}else{if (gan_nfo[3][6]=="" && gan_nfo[3][7]!=""){ hcg3 += " " + gan_nfo[3][7].substr(2,1);}else{hcg3 += " " + " ";};};
+	};
+	if (gan_nfo[3][6].substr(2,1) == "합"){	if (gan_nfo[3][6].substr(3,1) == gan_nfo[2][5]){hcg3 += "1";};  //--- 월지 합오행 체크
+	}else{if (gan_nfo[3][7].substr(2,1) == "합"){if (gan_nfo[3][7].substr(3,1) == gan_nfo[2][5]){hcg3 += "1";};}else{hcg3 += "0";};
+	};
+	hcg4 += "  " + " ";
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
 	document.getElementById("sj5a").innerText += rslt5; document.getElementById("sj7a").innerText += rslt7;
 	
