@@ -1255,8 +1255,8 @@ function ganhabch(){
 	}else{if (gan_nfo[3][6]!="" && gan_nfo[3][7]==""){ hcg3 += gan_nfo[3][6].substr(2,1) + " ";
 		}else{if (gan_nfo[3][6]=="" && gan_nfo[3][7]!=""){ hcg3 += " " + gan_nfo[3][7].substr(2,1);}else{hcg3 += " " + " ";};};
 	};
-	if (gan_nfo[3][6].substr(2,1) == "합"){	if (gan_nfo[3][6].substr(3,1) == gan_nfo[2][5]){hcg3 += "1";};  //--- 월지 합오행 체크
-	}else{if (gan_nfo[3][7].substr(2,1) == "합"){if (gan_nfo[3][7].substr(3,1) == gan_nfo[2][5]){hcg3 += "1";};}else{hcg3 += "0";};
+	if (gan_nfo[3][6].substr(2,1) == "합"){	if (gan_nfo[3][6].substr(3,1) == gan_nfo[2][5]){hcg3 += "1";}else{hcg3 += "0";};  //--- 월지 합오행 체크
+	}else{if (gan_nfo[3][7].substr(2,1) == "합"){if (gan_nfo[3][7].substr(3,1) == gan_nfo[2][5]){hcg3 += "1";}else{hcg3 += "0";};}else{hcg3 += "0";};
 	};
 	hcg4 += "  " + " ";
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
