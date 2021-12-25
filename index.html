@@ -715,7 +715,7 @@ function saju_chk(){
 	
 //======= 대운수 & 초기대운일 ======
 function longun(){
-	longungj = ""; var LhunD = 0;
+	longungj = ""; 
 	if (ggsgg[1][3] === gendr.substr(1,1)){
 		perio = (postmon - birth0) / term * 10 * 365;
 		r = 1;
@@ -726,6 +726,7 @@ function longun(){
 	firstD = new Date(symdt.substr(0,16));  //--- 초기대운일 
 	firstD.setTime(firstD.getTime() + perio);  //--- 초기대운일 계산	
 	age = firstD.getFullYear() - birth0.getFullYear() + 1;  //--- 대운수(나이)
+	firstD1 = firstD;
 	slr2lnr();
 	document.getElementById("output2").innerText += "생년월일 : " + birth0.format('yyyy-MM-dd HH:mm') + " (" + (now.getFullYear() - birth0.getFullYear() + 1) + "세 " + gendr.substr(0,1) + "성) \n";
 	document.getElementById("output2").innerText += " (음 력) : " + lnrd + " \n";
@@ -742,7 +743,7 @@ function longun(){
 		cb = (b + i * r + 59) % 12 + 1;
 		posa = "sjua" + i; posb = "sjub" + i;
 		longungj += gan[ca][0] + jiji[cb][0];
-		hunL[i][0] = new Date(LhunD.setFullYear(firstD.getFullYear() + (i-1) * 10)).format('yyyy-MM-dd HH:mm'); hunL[i][1] = gan[ca][0] + jiji[cb][0];
+		hunL[i][0] = new Date(firstD1.setFullYear(firstD1.getFullYear() + 10)).format('yyyy-MM-dd HH:mm'); hunL[i][1] = gan[ca][0] + jiji[cb][0];
 		sibsng(sj_dg,gan[ca][0],jiji[cb][0]); hunL[i][2] = gs_titl + " " + gan[ca][4].substr(1,2); hunL[i][3] = js_titl + " " + jiji[cb][4].substr(1,2);
 		document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
 		document.getElementById(posa).innerText += gan[ca][0] + "\n";
