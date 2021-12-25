@@ -1250,22 +1250,17 @@ function ganhabch(){
 	hcompchk("천간충",4,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt; rslt3 += rslt;  //---연간충
 	hcompchk("천간충",4,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간충 (일간-월간)
 	hcompchk("천간충",4,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간충 (일간-시간)
-	if (gan_nfo[1][6].substr(2,1)=="합"){ if (gan_nfo[3][6].substr(2,1)=="충"){hcg1 += "합" + rt1 + "충0 ";	}else{hcg1 += gan_nfo[1][6].substr(2,1) + rt1 + "   ";};}else{hcg1 += "     ";};
-	hcg2 += "     "; 
+	if (gan_nfo[1][6].substr(2,1)=="합"){ if (gan_nfo[3][6].substr(2,1)=="충"){hcg1 += "합" + rt1 + "충0-";	}else{hcg1 += gan_nfo[1][6].substr(2,1) + rt1 + "---";};}else{hcg1 += "-----";};
+	hcg2 += "-----"; 
 	if (gan_nfo[3][6]!="" && gan_nfo[3][7]!=""){hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + gan_nfo[3][7].substr(2,1) + rt3;  //--- 합충 체크
-	}else{if (gan_nfo[3][6]!="" && gan_nfo[3][7]==""){ if (sj_tg == sj_dg){hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + "쟁" + rt3;}else{hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + "  ";};
-		}else{if (gan_nfo[3][6]=="" && gan_nfo[3][7]!=""){ if (sj_mg == sj_dg){hcg3 += "쟁" + rt2 + gan_nfo[3][7].substr(2,1) + rt3;}else{hcg3 += "  " + gan_nfo[3][7].substr(2,1) + rt3;};}else{hcg3 += "    ";};};
+	}else{if (gan_nfo[3][6]!="" && gan_nfo[3][7]==""){ if (sj_tg == sj_dg){hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + "쟁" + rt3;}else{hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + "--";};
+		}else{if (gan_nfo[3][6]=="" && gan_nfo[3][7]!=""){ if (sj_mg == sj_dg){hcg3 += "쟁" + rt2 + gan_nfo[3][7].substr(2,1) + rt3;}else{hcg3 += "--" + gan_nfo[3][7].substr(2,1) + rt3;};}else{hcg3 += "----";};};
 	};
 	if (gan_nfo[3][6].substr(2,1) == "합" || gan_nfo[3][7].substr(2,1) == "합"){
-		if (gan_nfo[3][5].includes(gan_nfo[2][5])){
-			hcg3 += "1";
-		}else{
-			hcg3 += "0";
-		};  //--- 월지 합오행 체크
-	}else{
-		hcg3 += "0";
+		if (gan_nfo[3][5].includes(gan_nfo[2][5])){hcg3 += "1";	}else{hcg3 += "0";};  //--- 월지 합오행 체크
+	}else{hcg3 += "0";
 	};
-	hcg4 += "     ";
+	hcg4 += "-----";
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
 	document.getElementById("sj5a").innerText += rslt5; document.getElementById("sj7a").innerText += rslt7;
 	
