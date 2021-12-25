@@ -1228,37 +1228,44 @@ function hcompchk(a,b,c,d){
 	for (i = 1; i < b + 1; i++){
 		texstr = chab[0][i].substr(0,2); 
 		if (texstr == (c + d) || texstr == (d + c)){
-			if (a.substr(2,1)== "합"){rslt = texstr + a.substr(2,1) + chab[0][i].substr(2,1);
-			}else{rslt = texstr + a.substr(2,1);};
+			rslt = texstr + a.substr(2,1);
+			if (a.substr(2,1)== "합"){rslt1 = chab[0][i].substr(2,1);}; //--- 합오행
 		};
 	};
 };
 
 //========== 천간합충 ==========
 function ganhabch(){
-	rslt1 = ""; rslt3 = ""; rslt5 = ""; rslt7 = ""; sj_org1 = ""; sj_org2 = ""; hcg1 = ""; hcg2 = ""; hcg3 = ""; hcg4 = "";
-	hrootchk(sj_yj,2); hcg1 += rt.substr(0,1); gan_nfo[1][4] = rt;  //---자기자리 통근체크
-	hrootchk(sj_mj,3); hcg2 += rt.substr(0,1); gan_nfo[2][4] = rt;  //---자기자리 통근체크
-	hrootchk(sj_dj,4); hcg3 += rt.substr(0,1); gan_nfo[3][4] = rt;  //---자기자리 통근체크
-	hrootchk(sj_tj,5); hcg4 += rt.substr(0,1); gan_nfo[4][4] = rt;  //---자기자리 통근체크
+	rslt1 = ""; rslt3 = ""; rslt5 = ""; rslt7 = ""; sj_org1 = ""; sj_org2 = ""; hcg1 = ""; hcg2 = ""; hcg3 = ""; hcg4 = ""; rt1 = ""; rt2 = ""; rt3 = "";
+	hrootchk(sj_yj,2); gan_nfo[1][4] = rt; rt1 += rt.substr(0,1);  //---자기자리 통근체크
+	hrootchk(sj_mj,3); gan_nfo[2][4] = rt; rt1 += rt.substr(0,1); rt2 += rt.substr(0,1);  //---자기자리 통근체크
+	hrootchk(sj_dj,4); gan_nfo[3][4] = rt; rt2 += rt.substr(0,1); rt3 += rt.substr(0,1);  //---자기자리 통근체크
+	hrootchk(sj_tj,5); gan_nfo[4][4] = rt; rt3 += rt.substr(0,1);  //---자기자리 통근체크
+	if (rt1 == "00"){rt1 = "0"}else{rt1 = "1"}; if (rt2 == "00"){rt2 = "0"}else{rt2 = "1"}; if (rt3 == "00"){rt3 = "0"}else{rt3 = "1"}; //---위치별 통근값
 	
 	gan_nfo[2][5] = jjsjj[2][2];  //---월지오행
 	hcompchk("천간합",5,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt; rslt3 += rslt;  //---연간합
-	hcompchk("천간합",5,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간합 (일간-월간)
-	hcompchk("천간합",5,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간합 (일간-시간)
+	hcompchk("천간합",5,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt; gan_nfo[3][5] += rslt1;  //---일간합 (일간-월간)
+	hcompchk("천간합",5,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt; gan_nfo[3][5] += rslt1;  //---일간합 (일간-시간)
 	hcompchk("천간충",4,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt; rslt3 += rslt;  //---연간충
 	hcompchk("천간충",4,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간충 (일간-월간)
 	hcompchk("천간충",4,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간충 (일간-시간)
-	if (gan_nfo[1][6].substr(2,1)=="합"){ if (gan_nfo[3][6].substr(2,1)=="충"){hcg1 += "합충 ";	}else{hcg1 += gan_nfo[1][6].substr(2,1) + "  ";};}else{hcg1 += "  " + " ";};
-	hcg2 += "  " + " "; 
-	if (gan_nfo[3][6]!="" && gan_nfo[3][7]!=""){hcg3 += gan_nfo[3][6].substr(2,1) + gan_nfo[3][7].substr(2,1);  //--- 합충 체크
-	}else{if (gan_nfo[3][6]!="" && gan_nfo[3][7]==""){ if (sj_tg == sj_dg){hcg3 += gan_nfo[3][6].substr(2,1) + "쟁";}else{hcg3 += gan_nfo[3][6].substr(2,1) + " ";};
-		}else{if (gan_nfo[3][6]=="" && gan_nfo[3][7]!=""){ if (sj_mg == sj_dg){hcg3 += "쟁" + gan_nfo[3][7].substr(2,1);}else{hcg3 += " " + gan_nfo[3][7].substr(2,1);};}else{hcg3 += " " + " ";};};
+	if (gan_nfo[1][6].substr(2,1)=="합"){ if (gan_nfo[3][6].substr(2,1)=="충"){hcg1 += "합" + rt1 + "충0 ";	}else{hcg1 += gan_nfo[1][6].substr(2,1) + rt1 + "   ";};}else{hcg1 += "     ";};
+	hcg2 += "     "; 
+	if (gan_nfo[3][6]!="" && gan_nfo[3][7]!=""){hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + gan_nfo[3][7].substr(2,1) + rt3;  //--- 합충 체크
+	}else{if (gan_nfo[3][6]!="" && gan_nfo[3][7]==""){ if (sj_tg == sj_dg){hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + "쟁" + rt3;}else{hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + "  ";};
+		}else{if (gan_nfo[3][6]=="" && gan_nfo[3][7]!=""){ if (sj_mg == sj_dg){hcg3 += "쟁" + rt2 + gan_nfo[3][7].substr(2,1) + rt3;}else{hcg3 += "  " + gan_nfo[3][7].substr(2,1) + rt3;};}else{hcg3 += "    ";};};
 	};
-	if (gan_nfo[3][6].substr(2,1) == "합"){	if (gan_nfo[3][6].substr(3,1) == gan_nfo[2][5]){hcg3 += "1";}else{hcg3 += "0";};  //--- 월지 합오행 체크
-	}else{if (gan_nfo[3][7].substr(2,1) == "합"){if (gan_nfo[3][7].substr(3,1) == gan_nfo[2][5]){hcg3 += "1";}else{hcg3 += "0";};}else{hcg3 += "0";};
+	if (gan_nfo[3][6].substr(2,1) == "합" || gan_nfo[3][7].substr(2,1) == "합"){
+		if (gan_nfo[3][5].includes(gan_nfo[2][5])){
+			hcg3 += "1";
+		}else{
+			hcg3 += "0";
+		};  //--- 월지 합오행 체크
+	}else{
+		hcg3 += "0";
 	};
-	hcg4 += "  " + " ";
+	hcg4 += "     ";
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
 	document.getElementById("sj5a").innerText += rslt5; document.getElementById("sj7a").innerText += rslt7;
 	
@@ -1270,10 +1277,10 @@ function ganhabch(){
 	gan_nfo[3][8] = sj_org2; document.getElementById("output2").innerText += sj_org2 + "\n";
 	
 	for (i = 0; i < ca10_ghabch.length; i++){
- 		if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1){ if (hcg1.length < 5){sts = "원국";}else{sts = "행운";}; document.getElementById("output2").innerText += "연간 " + hcg1 + " " + sts + " " + ca10_ghabch[i][2] + "\n";};
- 		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2){ if (hcg2.length < 5){sts = "원국";}else{sts = "행운";}; document.getElementById("output2").innerText += "월간 " + hcg2 + " " + sts + " " + ca10_ghabch[i][2] + "\n";};
-		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3){ if (hcg3.length < 5){sts = "원국";}else{sts = "행운";}; document.getElementById("output2").innerText += "일간 " + hcg3 + " " + sts + " " + ca10_ghabch[i][2] + "\n";};
- 		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4){ if (hcg4.length < 5){sts = "원국";}else{sts = "행운";}; document.getElementById("output2").innerText += "시간 " + hcg4 + " " + sts + " " + ca10_ghabch[i][2] + "\n";};
+ 		if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1){ if (hcg1.length < 6){sts = "원국";}else{sts = "행운";}; document.getElementById("output2").innerText += "연간 " + hcg1 + " " + sts + " " + ca10_ghabch[i][2] + "\n";};
+ 		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2){ if (hcg2.length < 6){sts = "원국";}else{sts = "행운";}; document.getElementById("output2").innerText += "월간 " + hcg2 + " " + sts + " " + ca10_ghabch[i][2] + "\n";};
+		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3){ if (hcg3.length < 6){sts = "원국";}else{sts = "행운";}; document.getElementById("output2").innerText += "일간 " + hcg3 + " " + sts + " " + ca10_ghabch[i][2] + "\n";};
+ 		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4){ if (hcg4.length < 6){sts = "원국";}else{sts = "행운";}; document.getElementById("output2").innerText += "시간 " + hcg4 + " " + sts + " " + ca10_ghabch[i][2] + "\n";};
 	};
 	document.getElementById("output2").innerText += "행운에 따른 시기분석, 실행분석 진행할 예정임..... \n";
 };
