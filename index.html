@@ -715,7 +715,7 @@ function saju_chk(){
 	
 //======= 대운수 & 초기대운일 ======
 function longun(){
-	longungj = "";
+	longungj = ""; LhunD = null;
 	if (ggsgg[1][3] === gendr.substr(1,1)){
 		perio = (postmon - birth0) / term * 10 * 365;
 		r = 1;
@@ -742,7 +742,7 @@ function longun(){
 		cb = (b + i * r + 59) % 12 + 1;
 		posa = "sjua" + i; posb = "sjub" + i;
 		longungj += gan[ca][0] + jiji[cb][0];
-		hunL[i][0] = new Date(firstD.setFullYear(firstD.getFullYear() + (i-1) * 10)).format('yyyy-MM-dd HH:mm'); hunL[i][1] = gan[ca][0] + jiji[cb][0];
+		hunL[i][0] = new Date(LhunD.setFullYear(firstD.getFullYear() + (i-1) * 10)).format('yyyy-MM-dd HH:mm'); hunL[i][1] = gan[ca][0] + jiji[cb][0];
 		sibsng(sj_dg,gan[ca][0],jiji[cb][0]); hunL[i][2] = gs_titl + " " + gan[ca][4].substr(1,2); hunL[i][3] = js_titl + " " + jiji[cb][4].substr(1,2);
 		document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
 		document.getElementById(posa).innerText += gan[ca][0] + "\n";
@@ -751,9 +751,9 @@ function longun(){
 		document.getElementById(posb).innerText += js_titl + "\n" + jiji[cb][4].substr(1,2) + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
 		if (now.getFullYear()-birth0.getFullYear()+1 >= age+(i-1)*10 && now.getFullYear()-birth0.getFullYear()+1 < age+i*10){
 			document.getElementById("hunL2").innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
-			document.getElementById("hunL1").innerText += gan[ca][0] + "\n";
+			document.getElementById("hunL1").innerText += gan[ca][0] + "\n"; hn_lg = gan[ca][0];
 			document.getElementById("hunL2").innerText += gs_titl + " " + gan[ca][3] + gan[ca][2] + "\n";
-			document.getElementById("hunL1").innerText += jiji[cb][0] + "\n";
+			document.getElementById("hunL1").innerText += jiji[cb][0] + "\n"; hn_lj = jiji[cb][0];
 			document.getElementById("hunL2").innerText += "\n" + js_titl + " " + jiji[cb][3] + jiji[cb][2] + " " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
 		};
 		unsng(sj_dg,jiji[cb][0]);  hunL[i][3] += " " + js_titl; 
@@ -780,7 +780,7 @@ function seun(){
 		}else{
 			return false;
 		};
-		seug = gan[mo][0];
+		seug = gan[mo][0]; 
 		seugoh = gan[mo][4].substr(1,2);
 		idx = gjsgj[0].lastIndexOf(seug);
 		seugs = gjsgj[4][idx];  //--- (천간)십성 이름
@@ -799,9 +799,9 @@ function seun(){
 		j += 1;
 		if (now.getFullYear() == vwyr ){
 			document.getElementById("hunY2").innerText += vwyr + " (" + (vwyr - birth0.getFullYear() + 1) + ")\n";
-			document.getElementById("hunY1").innerText += seug + "\n";
+			document.getElementById("hunY1").innerText += seug + "\n";  hn_yg = seug;
 			document.getElementById("hunY2").innerText += seugs + " " + seugoh + "\n";
-			document.getElementById("hunY1").innerText += seuj + "\n";
+			document.getElementById("hunY1").innerText += seuj + "\n";  hn_yj = seuj;
 			document.getElementById("hunY2").innerText += "\n" + seujs + " " + seujoh + " " + unsung12[0][seuns] + "\n";
 		};
 	};
@@ -838,9 +838,9 @@ function moun(){
 	
 		if (n == 0){
 			document.getElementById("hunM2").innerText += mountit.format('yyyy-MM') + " (" + mounj + ")\n";
-			document.getElementById("hunM1").innerText += moung + "\n";
+			document.getElementById("hunM1").innerText += moung + "\n"; hn_mg = moung;
 			document.getElementById("hunM2").innerText += moungs + " " + moungoh + "\n";
-			document.getElementById("hunM1").innerText += mounj + "\n";
+			document.getElementById("hunM1").innerText += mounj + "\n"; hn_mj = mounj;
 			document.getElementById("hunM2").innerText += "\n" + mounjs + " " + mounjoh + " " + mouns + "\n";
 		};
 	};
@@ -875,9 +875,9 @@ function dayun(){
 		if (i < 18){document.getElementById(posi).innerText += "-----------------\n";};
 		if (i == 3){
 			document.getElementById("hunD2").innerText += dauntit.format('yyyy-MM-dd') + "\n";
-			document.getElementById("hunD1").innerText += daung + "\n";
+			document.getElementById("hunD1").innerText += daung + "\n"; hn_dg = daung;
 			document.getElementById("hunD2").innerText += daungs + " " + daungoh + "\n";
-			document.getElementById("hunD1").innerText += daunj + "\n";
+			document.getElementById("hunD1").innerText += daunj + "\n"; hn_dj = daunj;
 			document.getElementById("hunD2").innerText += "\n" + daunjs + " " + daunjoh + " " + dauns + "\n";
 		};
 	};
