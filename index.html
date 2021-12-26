@@ -358,8 +358,8 @@ $( function() {
 //=========== 양력을 음력으로 변환 함수 ===========
 function slr2lnr(){
 	var ad2 = ""; var devd = null;
-	ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
-	cnt = parseInt((birth0.getTime()-devd.getTime())/86400000) + 1;
+	ad2 = "1881-01-29 23:59"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
+	cnt = Math.ceil((birth0.getTime()-devd.getTime())/86400000);
 	for (i=0; i<ca11_lunar_cal.length; i++){
 		if (ca11_lunar_cal[i][1] > cnt){
 			yn = ca11_lunar_cal[i-1][0];
