@@ -744,7 +744,7 @@ function longun(){
 		cb = (b + i * r + 59) % 12 + 1;
 		posa = "sjua" + i; posb = "sjub" + i;
 		longungj += gan[ca][0] + jiji[cb][0];
-		if (i==1){hunL[i][0] = firstD;}else{hunL[i][0] = new Date(firstD1.setFullYear(firstD1.getFullYear() + 10)).format('yyyy-MM-dd HH:mm'); };
+		if (i==1){hunL[i][0] = firstD1.format('yyyy-MM-dd HH:mm');}else{hunL[i][0] = new Date(firstD1.setFullYear(firstD1.getFullYear() + 10)).format('yyyy-MM-dd HH:mm'); };
 		hunL[i][1] = gan[ca][0] + jiji[cb][0];
 		sibsng(sj_dg,gan[ca][0],jiji[cb][0]); hunL[i][2] = gs_titl + " " + gan[ca][4].substr(1,2); hunL[i][3] = js_titl + " " + jiji[cb][4].substr(1,2);
 		document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
