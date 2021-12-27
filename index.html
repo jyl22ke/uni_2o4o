@@ -286,7 +286,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	var ya = ""; var yb = ""; var ma = ""; var mb = ""; var da = ""; var db = ""; var ta = ""; var tb = "";
 	var a = 0; var b = 0; var c = 0; var d = 0; var e = 0; var f = 0; var bs = 0; var co_s = 0; var co_e = 0; var cor_d = 0;
 	var ny = 0; var nm = 0; var nd = 0; var nt = 0; var nma = 0; var nta = 0; var yr = 0; var mo = 0; var bsd = 0; var ns = 0; var sd = 0; var ed = 0; 
-	var hv0 = ""; var hv1 = ""; var hv2 = ""; var hv3 = ""; var hv4 = ""; var hv5 = ""; var hv6 = ""; var hv7 = ""; var hv8 = ""; var hv9 = "";
+	var hv0 = ""; var hv1 = ""; var hv2 = ""; var hv3 = ""; var hv4 = ""; var hv5 = ""; var hv6 = ""; var hv7 = ""; var hv8 = ""; var hv9 = ""; var ageL = 0; var ageY = 0;
 
 //========= 간지 배경색 =========
 function chg_bgcolor(a,b,c) {
@@ -553,7 +553,6 @@ function sibs2ugsin(a){
 //======= 행운 년/월/일 변경시 ======
 $("#hunDate").change(function(){
 	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = ""; ageL = 0; ageY = 0;
-//	var hv0 = ""; var hv1 = ""; var hv2 = ""; var hv3 = ""; var hv4 = ""; var hv5 = ""; var hv6 = ""; var hv7 = ""; var hv8 = ""; var hv9 = "";
 	$('.hun1').empty(); $('.hun2').empty();
 	hunD = document.getElementById('hunDate').value; vwyr = Number(hunD.substr(0,4));
 	for (i=1; i<10; i++){
