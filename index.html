@@ -356,7 +356,7 @@ $( function() {
 });
 
 //=========== 양력을 음력으로 변환 함수 ===========
-function slr2lnr(){
+function slr2lnr(birth0){
 	var ad2 = ""; var devd = null;
 	ad2 = "1881-01-29 23:59"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
 	cnt = Math.ceil((birth0.getTime()-devd.getTime())/86400000);
@@ -689,7 +689,7 @@ function saju_chk(){
 					birth1 = new Date(startdate.setDate(startdate.getDate() + nd + 60 - co_s - 1));
 				};
 				birth1.setHours(birth1.getHours() - 8);  //--- 시간 보정 (00:00)
- 				birth1.setMinutes(birth1.getMinutes() - 30);  //--- 분 보정 (00:00)
+ 				birth1.setMinutes(birth1.getMinutes() - 27);  //--- 분 보정 (00:00)
 				hrs = Number(ca09r_yjsjfind[3][h]);
 				birth1.setHours(birth1.getHours() + hrs);  //--- 시간 입력(시지)
 				birth0 = new Date(birth1);
@@ -727,7 +727,7 @@ function longun(){
 	firstD.setTime(firstD.getTime() + perio);  //--- 초기대운일 계산	
 	age = firstD.getFullYear() - birth0.getFullYear() + 1;  //--- 대운수(나이)
 	firstD1 = firstD;
-	slr2lnr();
+	slr2lnr(birth0);
 	document.getElementById("output2").innerText += "생년월일 : " + birth0.format('yyyy-MM-dd HH:mm') + " (" + (now.getFullYear() - birth0.getFullYear() + 1) + "세 " + gendr.substr(0,1) + "성) \n";
 	document.getElementById("output2").innerText += " (음 력) : " + lnrd + " \n";
 	document.getElementById("output2").innerText += "초기대운일 (" + age + "세) " + firstD.format('yyyy-MM-dd HH:mm') + " \n\n";
