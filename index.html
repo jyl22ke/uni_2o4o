@@ -696,7 +696,7 @@ function saju_chk(){
 				birth1.setHours(birth1.getHours() + hrs);  //--- 시간 입력(시지)
 				birth0 = new Date(birth1);
  				for (i=1; i<ca04_kstadj.length; i++){
- 					if (birth >= ca04_kstadj[i][0] && birth <= ca04_kstadj[i][1]){
+ 					if (birth1.format('yyyy-MM-dd HH:mm') >= ca04_kstadj[i][0] && birth1.format('yyyy-MM-dd HH:mm') <= ca04_kstadj[i][1]){
  						crh = ca04_kstadj[i][2];
  					};
  				};
