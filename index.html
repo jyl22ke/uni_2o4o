@@ -47,7 +47,7 @@
 	.sja,.sjb {grid-column: span 3;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
 	#output { min-height: 300px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:300px;}
-	#output2 { float: left; min-height: 400px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:300px;}
+	#output2,#output3 { float: left; min-height: 400px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:300px;}
 	#submit {padding: 0 10px; font-weight: bold;}
 	#submit1 {padding: 0 10px; font-weight: bold;}
 	#sola {display:none; font-weight: bold; width: 200px;}
@@ -168,6 +168,7 @@
 	</div>
 	<div id="output"></div>
 	<div id="output2"></div>
+	<div id="output3"></div>
 </div>
 	
 <script type="text/javascript">
@@ -539,7 +540,7 @@ function hunanal(a,b,c,d){
 	subj = hv6; hv7 = ca02_actgdbad.filter(isFind);  //--- 실행분석 길흉배열
 	idx = ca02_actgdbad[0].lastIndexOf(hv3);
 	hv8 = hv7[0][idx] + ca02_actgdbad[1][idx];  //--- 실행 길흉 
-	sibsTugsin(hv3); hv3 = gs_titl; sibsTugsin(hv6); hv6 = gs_titl;
+	sibsTugsin(hv3); hv3 = hs_titl; sibsTugsin(hv6); hv6 = hs_titl;
  	for (i=0; i<ca03_hunresult.length; i++){
  		if (ca03_hunresult[i][0]==hv3 && ca03_hunresult[i][1]==hv6){ hv9 = ca03_hunresult[i][2];};
  	};
@@ -548,19 +549,19 @@ function hunanal(a,b,c,d){
 //======= 십성 to 육신 변환 =======
 function sibsTugsin(a){
 	if (a == "비견" || a == "겁재"){
-		gs_titl = "비겁";
+		hs_titl = "비겁";
 	}else{
 		if (a == "식신" || a == "상관"){
-			gs_titl = "식상";
+			hs_titl = "식상";
 		}else{
 			if (a == "편재" || a == "정재"){
-				gs_titl = "재성";
+				hs_titl = "재성";
 			}else{
 				if (a == "편관" || a == "정관"){
-					gs_titl = "관성";
+					hs_titl = "관성";
 				}else{
 					if (a == "편인" || a == "정인"){
-						gs_titl = "인성";
+						hs_titl = "인성";
 					};
 				};
 			};
@@ -607,10 +608,10 @@ $("#hunDate").change(function(){
 	document.getElementById("hunD2").innerText += hdgs + " " + hdgoh + "\n";
 	document.getElementById("hunD1").innerText += hn_dj + "\n";
 	document.getElementById("hunD2").innerText += "\n" + hdjs + " " + hdjoh + " " + hduns + "\n";
-	hunanal(hn_lg, hn_lj, hn_yg, hn_yj); document.getElementById("output2").innerText += "연운분석 : " + hv8 + " " + hv9 + "\n";
-	hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output2").innerText += "월운분석 : " + hv8 + " " + hv9 + "\n";
-	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output2").innerText += "일운분석 : " + hv8 + " " + hv9 + "\n";
-	document.getElementById("output2").innerText += "------------------------------------------------\n";
+	hunanal(hn_lg, hn_lj, hn_yg, hn_yj); document.getElementById("output3").innerText += "(" + ageL + ")" + vwyr + " 연운: (" + ageY + ") " + hv8 + " " + hv9 + "\n";
+	hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output3").innerText += hunD.substr(0,7) + " 월운: " + hv8 + " " + hv9 + "\n";
+	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output3").innerText += hunD + " 일운: " + hv8 + " " + hv9 + "\n";
+	document.getElementById("output3").innerText += "------------------------------------------------------------------------\n";
 });
 
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
@@ -855,7 +856,6 @@ function seun(){
 			document.getElementById("hunY2").innerText += seugs + " " + seugoh + "\n";
 			document.getElementById("hunY1").innerText += seuj + "\n";  hn_yj = seuj;
 			document.getElementById("hunY2").innerText += "\n" + seujs + " " + seujoh + " " + unsung12[0][seuns] + "\n";
-//			hunanal(hn_lg, hn_lj, hn_yg, hn_yj); document.getElementById("output2").innerText += "연운분석 : " + hv8 + " " + hv9 + "\n";
 		};
 	};
 };
@@ -895,7 +895,6 @@ function moun(){
 			document.getElementById("hunM2").innerText += moungs + " " + moungoh + "\n";
 			document.getElementById("hunM1").innerText += mounj + "\n"; hn_mj = mounj;
 			document.getElementById("hunM2").innerText += "\n" + mounjs + " " + mounjoh + " " + mouns + "\n";
-//			hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output2").innerText += "월운분석 : " + hv8 + " " + hv9 + "\n";
 		};
 	};
 };
@@ -933,7 +932,6 @@ function dayun(){
 			document.getElementById("hunD2").innerText += daungs + " " + daungoh + "\n";
 			document.getElementById("hunD1").innerText += daunj + "\n"; hn_dj = daunj;
 			document.getElementById("hunD2").innerText += "\n" + daunjs + " " + daunjoh + " " + dauns + "\n";
-//			hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output2").innerText += "일운분석 : " + hv8 + " " + hv9 + "\n";
 		};
 	};
 };
