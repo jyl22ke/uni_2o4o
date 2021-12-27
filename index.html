@@ -94,7 +94,7 @@
 		<div class="sjo" id="sjg5"></div>
 		<div class="sjo" id="sjg3"></div>
 		<div class="sjo" id="sjg1"></div>
-		<div class="hunt">세운</div>
+		<div class="hunt">연운</div>
 		<div class="hun1" id="hunY1"></div>
 		<div class="hun2" id="hunY2"></div>
 		<div class="sj" id="sj8"></div>
@@ -145,7 +145,7 @@
 		<div class="sju2" id="sjub2"></div>
 		<div class="sju1" id="sjua1"></div>
 		<div class="sju2" id="sjub1"></div>
-		<div class="sjut">세운</div>
+		<div class="sjut">연운</div>
 		<div class="seu" id="seu9"></div>
 		<div class="seu" id="seu8"></div>
 		<div class="seu" id="seu7"></div>
@@ -575,7 +575,9 @@ function sibsTugsin(a){
 $("#hunDate").change(function(){
 	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = ""; ageL = 0; ageY = 0;
 	$('.hun1').empty(); $('.hun2').empty();
-	hunD = document.getElementById('hunDate').value; vwyr = Number(hunD.substr(0,4));
+	hunD = document.getElementById('hunDate').value; hunD = hunD + " 04:30"; vwyr = Number(hunD.substr(0,4));
+	convertsj(hunD); hn_lg = ""; hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5; hn_tg = tsj7; hn_lj = ""; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6; hn_tj = tsj8;
+	//----- 대운
 	for (i=1; i<10; i++){
 		if (vwyr-birth0.getFullYear()+1 >= age+(i-1)*10 && vwyr-birth0.getFullYear()+1 < age+i*10){
 			hn_lg = hunL[i][1].substr(0,1); hn_lj = hunL[i][1].substr(1,1); ageL = age + (i - 1) * 10;
@@ -586,7 +588,36 @@ $("#hunDate").change(function(){
 			document.getElementById("hunL2").innerText += "\n" + hunL[i][3] + " \n";
 		};
 	};
-	//----- 세운
+	//----- 연운
+	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; 
+	gjoh(hn_yg,hn_yj); hygoh = ohg; hyjoh = ohj; 
+	unsng(sj_dg,hn_yj); hyuns = js_titl; 
+	ageY = vwyr - birth0.getFullYear() + 1;
+	document.getElementById("hunY2").innerText += vwyr + " (" + ageY + ")\n";
+	document.getElementById("hunY1").innerText += hn_yg + "\n";
+	document.getElementById("hunY2").innerText += hygs + " " + hygoh + "\n";
+	document.getElementById("hunY1").innerText += hn_yj + "\n";
+	document.getElementById("hunY2").innerText += "\n" + hyjs + " " + hyjoh + " " + hyuns + "\n";
+	//----- 월운
+	sibsng(sj_dg,hn_mg,hn_mj); hmgs = gs_titl; hmjs = js_titl; 
+	gjoh(hn_mg,hn_mj); hmgoh = ohg; hmjoh = ohj; 
+	unsng(sj_dg,hn_mj); hmuns = js_titl; 
+	document.getElementById("hunM2").innerText += hunD.substr(0,7) + " (" + hn_mj + ")\n";
+	document.getElementById("hunM1").innerText += hn_mg + "\n";
+	document.getElementById("hunM2").innerText += hmgs + " " + hmgoh + "\n";
+	document.getElementById("hunM1").innerText += hn_mj + "\n";
+	document.getElementById("hunM2").innerText += "\n" + hmjs + " " + hmjoh + " " + hmuns + "\n";
+	//----- 일운
+	sibsng(sj_dg,hn_dg,hn_dj); hdgs = gs_titl; hdjs = js_titl; 
+	gjoh(hn_dg,hn_dj); hdgoh = ohg; hdjoh = ohj; 
+	unsng(sj_dg,hn_dj); hduns = js_titl; 
+	document.getElementById("hunD2").innerText += hunD + "\n";
+	document.getElementById("hunD1").innerText += hn_dg + "\n";
+	document.getElementById("hunD2").innerText += hdgs + " " + hdgoh + "\n";
+	document.getElementById("hunD1").innerText += hn_dj + "\n";
+	document.getElementById("hunD2").innerText += "\n" + hdjs + " " + hdjoh + " " + hduns + "\n";
+	
+/*	//----- 연운
 	hyr = (vwyr - 1864) % 60; idx = hyr % 10 + 1; hn_yg = gan[idx][0]; hygoh = gan[idx][4].substr(1,2); idx = hyr % 12 + 1; hn_yj = jiji[idx][0]; hyjoh = jiji[idx][4].substr(1,2);
 	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; unsng(sj_dg,hn_yj); hyuns = js_titl; ageY = vwyr - birth0.getFullYear() + 1;
 	document.getElementById("hunY2").innerText += vwyr + " (" + ageY + ")\n";
@@ -610,6 +641,7 @@ $("#hunDate").change(function(){
 	document.getElementById("hunD2").innerText += hdgs + " " + hdgoh + "\n";
 	document.getElementById("hunD1").innerText += hn_dj + "\n";
 	document.getElementById("hunD2").innerText += "\n" + hdjs + " " + hdjoh + " " + hduns + "\n";
+*/
 	hunanal(hn_lg, hn_lj, hn_yg, hn_yj); document.getElementById("output3").innerText += vwyr + "(" + ageY + ")" + " 연운: (" + hn_yg + hn_yj + ") " + hv8 + " " + hv9 + "\n";
 	hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output3").innerText += hunD.substr(0,7) + "- 월운: (" + hn_mg + hn_mj + ") " + hv8 + " " + hv9 + "\n";
 	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + " " + hv9 + "\n";
@@ -815,7 +847,7 @@ function longun(){
 	};
 };
 	
-//====== 세운 ======
+//====== 연운 ======
 function seun(){
 	vwyr = null; rvwyr = null; seug = ""; seugs = ""; seugoh = ""; seuj = ""; seujs = ""; seujoh = "";
 	rvwyr = birth0.getFullYear() + age - 1;
@@ -1076,6 +1108,12 @@ function sibsng(a,b,c){
 			}else{idx = sibsungX1[1].lastIndexOf(c);};};
 		js_titl = sibsungX1[idb][idx];  //--- (지지)십성 이름
 	};
+};
+
+//====== 천간지지 음양오행 chk ======	
+function gjoh(a,b){	
+	idx = ca09r_yjsjfind[1].lastIndexOf(a); ohg = gan[idx][4].substr(1,2);
+	idx = ca09r_yjsjfind[2].lastIndexOf(b); ohj = jiji[idx][4].substr(1,2);
 };
 	
 //---- 통근체크 ----
