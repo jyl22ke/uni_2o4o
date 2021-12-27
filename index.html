@@ -268,7 +268,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 </script>
 	 
 <script type="text/javascript">
-	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null; var hunD = null; var hunL = new Array;
+	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null; var hunD = null; var hunL = new Array; var hs_titl = "";
 	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hcg1 = ""; var hcg2 = ""; var hcg3 = ""; var hcg4 = ""; var rt = "";
 	var vwyr = null; var rvwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
 	var tsj1 = ""; var tsj2 = ""; var tsj3 = ""; var tsj4 = ""; var tsj5 = ""; var tsj6 = ""; var tsj7 = ""; var tsj8 = "";
@@ -529,7 +529,7 @@ $( function() {
 
 //======= 행운 운세분석 ======
 function hunanal(a,b,c,d){
-	hv0 = ""; hv1 = ""; hv2 = ""; hv3 = ""; hv4 = ""; hv5 = ""; hv6 = ""; hv7 = ""; hv8 = ""; hv9 = "";
+	hv0 = ""; hv1 = ""; hv2 = ""; hv3 = ""; hv4 = ""; hv5 = ""; hv6 = ""; hv7 = ""; hv8 = ""; hv9 = ""; hs_titl = "";
 	sibsng(sj_dg,a,b); hv1 = gs_titl; hv2 = js_titl;  //--- 일간기준 행운간지의 십성
 	sibsng(c,"",d); hv4 = js_titl;  //--- 행운간지의 자체십성
 	sibsng(sj_dg,"",sj_dj); hv5 = js_titl;  //--- 일주의 십성
