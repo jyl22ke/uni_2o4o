@@ -359,7 +359,7 @@ $( function() {
 function slr2lnr(birth0){
 	var ad2 = ""; var devd = null;
 	ad2 = "1881-01-29 23:59"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
-	cnt = Math.ceil((birth0.getTime()-devd.getTime()-240000)/86400000);
+	cnt = Math.ceil((birth0.getTime()-devd.getTime()+180000)/86400000);
 	for (i=0; i<ca11_lunar_cal.length; i++){
 		if (ca11_lunar_cal[i][1] > cnt){
 			yn = ca11_lunar_cal[i-1][0];
