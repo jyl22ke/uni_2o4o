@@ -539,10 +539,10 @@ function hunanal(a,b,c,d){
 	idx = ca02_actgdbad[0].lastIndexOf(hv3);
 	hv8 = hv7[0][idx] + ca02_actgdbad[1][idx];  //--- 실행 길흉 
 	sibs2ugsin(hv3); sibs2ugsin(hv6);
-//	for (i=0; i<ca03_hunresult.length; i++){
-//		if (ca03_hunresult[i][0]==hv3 && ca03_hunresult[i][1]==hv6){ hv9 = ca03_hunresult[i][2];};
-//	};
-	ca03_hunresult.forEach((ca03_hunresult[i][0]==hv3 && ca03_hunresult[i][1]==hv6) => { hv9 = ca03_hunresult[i][2];};);
+ 	for (i=0; i<ca03_hunresult.length; i++){
+ 		if (ca03_hunresult[i][0]==hv3 && ca03_hunresult[i][1]==hv6){ hv9 = ca03_hunresult[i][2];};
+ 	};
+//	ca03_hunresult.forEach((ca03_hunresult[i][0]==hv3 && ca03_hunresult[i][1]==hv6) => { hv9 = ca03_hunresult[i][2];};);
 };
 	
 //======= 십성 to 육신 변환 =======
