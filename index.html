@@ -684,11 +684,9 @@ function saju_chk(){
 			co_e = Math.ceil(((ed - bsd)/86400000) % 60);  //--- 월 종료일의 60갑자 순번
 			if ((co_s < co_e && co_s <= nd && nd < co_e) || (co_s > co_e && (co_s <= nd || nd < co_e))){
 			    	if (nd > co_s){	
-//					birth1 = new Date(startdate.setDate(startdate.getDate() + nd - co_s - 1));
-					birth1 = new Date(startdate.setDate(startdate.getDate() + nd - co_s));
+					birth1 = new Date(startdate.setDate(startdate.getDate() + nd - co_s - 1));
 			      	}else{
-//					birth1 = new Date(startdate.setDate(startdate.getDate() + nd + 60 - co_s - 1));
-					birth1 = new Date(startdate.setDate(startdate.getDate() + nd + 60 - co_s));
+					birth1 = new Date(startdate.setDate(startdate.getDate() + nd + 60 - co_s - 1));
 				};
 				birth1.setHours(birth1.getHours() - 8);  //--- 시간 보정 (00:00)
  				birth1.setMinutes(birth1.getMinutes() - 30);  //--- 분 보정 (00:00)
