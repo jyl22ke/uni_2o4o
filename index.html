@@ -539,15 +539,33 @@ function hunanal(a,b,c,d){
 	subj = hv6; hv7 = ca02_actgdbad.filter(isFind);  //--- 실행분석 길흉배열
 	idx = ca02_actgdbad[0].lastIndexOf(hv3);
 	hv8 = hv7[0][idx] + ca02_actgdbad[1][idx];  //--- 실행 길흉 
-	sibs2ugsin(hv3); sibs2ugsin(hv6);
+	sibsTugsin(hv3); sibsTugsin(hv6);
  	for (i=0; i<ca03_hunresult.length; i++){
  		if (ca03_hunresult[i][0]==hv3 && ca03_hunresult[i][1]==hv6){ hv9 = ca03_hunresult[i][2];};
  	};
 };
 	
 //======= 십성 to 육신 변환 =======
-function sibs2ugsin(a){
-	if (a == "비견" || a == "겁재"){a = "비겁";}else{if (a == "식신" || a == "상관"){a = "식상";}else{if (a == "편재" || a == "정재"){a = "재성";}else{if (a == "편관" || a == "정관"){a = "관성";}else{if (a == "편인" || a == "정인"){a = "인성";};};};};};
+function sibsTugsin(a){
+	if (a == "비견" || a == "겁재"){
+		a = "비겁";
+	}else{
+		if (a == "식신" || a == "상관"){
+			a = "식상";
+		}else{
+			if (a == "편재" || a == "정재"){
+				a = "재성";
+			}else{
+				if (a == "편관" || a == "정관"){
+					a = "관성";
+				}else{
+					if (a == "편인" || a == "정인"){
+						a = "인성";
+					};
+				};
+			};
+		};
+	};
 };
 	
 //======= 행운 년/월/일 변경시 ======
