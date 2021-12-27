@@ -576,7 +576,7 @@ $("#hunDate").change(function(){
 	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = ""; ageL = 0; ageY = 0;
 	$('.hun1').empty(); $('.hun2').empty();
 	hunD = document.getElementById('hunDate').value; hunD = hunD + " 04:30"; vwyr = Number(hunD.substr(0,4));
-	convertsj(hunD); hn_lg = ""; hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5; hn_tg = tsj7; hn_lj = ""; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6; hn_tj = tsj8;
+	convrtsj(hunD); hn_lg = ""; hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5; hn_tg = tsj7; hn_lj = ""; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6; hn_tj = tsj8;
 	//----- 대운
 	for (i=1; i<10; i++){
 		if (vwyr-birth0.getFullYear()+1 >= age+(i-1)*10 && vwyr-birth0.getFullYear()+1 < age+i*10){
