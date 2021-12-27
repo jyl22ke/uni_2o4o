@@ -271,7 +271,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null; var hunD = null; var hunL = new Array; var hs_titl = "";
 	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hcg1 = ""; var hcg2 = ""; var hcg3 = ""; var hcg4 = ""; var rt = "";
 	var vwyr = null; var rvwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
-	var tsj1 = ""; var tsj2 = ""; var tsj3 = ""; var tsj4 = ""; var tsj5 = ""; var tsj6 = ""; var tsj7 = ""; var tsj8 = "";
+	var tsj1 = ""; var tsj2 = ""; var tsj3 = ""; var tsj4 = ""; var tsj5 = ""; var tsj6 = ""; var tsj7 = ""; var tsj8 = ""; var ohg = ""; var ohj = "";
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
 	var hn_lg = ""; var hn_yg = ""; var hn_mg = ""; var hn_dg = "";  //--- 행운 (대세월일)운 간
@@ -1112,6 +1112,7 @@ function sibsng(a,b,c){
 
 //====== 천간지지 음양오행 chk ======	
 function gjoh(a,b){	
+	ohg = ""; ohj = "";
 	idx = ca09r_yjsjfind[1].lastIndexOf(a); ohg = gan[idx][4].substr(1,2);
 	idx = ca09r_yjsjfind[2].lastIndexOf(b); ohj = jiji[idx][4].substr(1,2);
 };
