@@ -539,7 +539,7 @@ function hunanal(a,b,c,d){
 	subj = hv6; hv7 = ca02_actgdbad.filter(isFind);  //--- 실행분석 길흉배열
 	idx = ca02_actgdbad[0].lastIndexOf(hv3);
 	hv8 = hv7[0][idx] + ca02_actgdbad[1][idx];  //--- 실행 길흉 
-	sibsTugsin(hv3); hv3 = rslt; sibsTugsin(hv6); hv6 = rslt;
+	sibsTugsin(hv3); hv3 = gs_titl; sibsTugsin(hv6); hv6 = gs_titl;
  	for (i=0; i<ca03_hunresult.length; i++){
  		if (ca03_hunresult[i][0]==hv3 && ca03_hunresult[i][1]==hv6){ hv9 = ca03_hunresult[i][2];};
  	};
@@ -548,19 +548,19 @@ function hunanal(a,b,c,d){
 //======= 십성 to 육신 변환 =======
 function sibsTugsin(a){
 	if (a == "비견" || a == "겁재"){
-		rslt = "비겁";
+		gs_titl = "비겁";
 	}else{
 		if (a == "식신" || a == "상관"){
-			rslt = "식상";
+			gs_titl = "식상";
 		}else{
 			if (a == "편재" || a == "정재"){
-				rslt = "재성";
+				gs_titl = "재성";
 			}else{
 				if (a == "편관" || a == "정관"){
-					rslt = "관성";
+					gs_titl = "관성";
 				}else{
 					if (a == "편인" || a == "정인"){
-						rslt = "인성";
+						gs_titl = "인성";
 					};
 				};
 			};
@@ -854,6 +854,7 @@ function seun(){
 			document.getElementById("hunY2").innerText += seugs + " " + seugoh + "\n";
 			document.getElementById("hunY1").innerText += seuj + "\n";  hn_yj = seuj;
 			document.getElementById("hunY2").innerText += "\n" + seujs + " " + seujoh + " " + unsung12[0][seuns] + "\n";
+			hunanal(hn_lg, hn_lj, hn_yg, hn_yj); document.getElementById("output2").innerText += "연운분석 : " + hv8 + " " + hv9 + "\n";
 		};
 	};
 };
@@ -893,6 +894,7 @@ function moun(){
 			document.getElementById("hunM2").innerText += moungs + " " + moungoh + "\n";
 			document.getElementById("hunM1").innerText += mounj + "\n"; hn_mj = mounj;
 			document.getElementById("hunM2").innerText += "\n" + mounjs + " " + mounjoh + " " + mouns + "\n";
+			hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output2").innerText += "월운분석 : " + hv8 + " " + hv9 + "\n";
 		};
 	};
 };
@@ -930,6 +932,7 @@ function dayun(){
 			document.getElementById("hunD2").innerText += daungs + " " + daungoh + "\n";
 			document.getElementById("hunD1").innerText += daunj + "\n"; hn_dj = daunj;
 			document.getElementById("hunD2").innerText += "\n" + daunjs + " " + daunjoh + " " + dauns + "\n";
+			hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output2").innerText += "일운분석 : " + hv8 + " " + hv9 + "\n";
 		};
 	};
 };
