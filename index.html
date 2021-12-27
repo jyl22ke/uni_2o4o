@@ -522,6 +522,17 @@ $( function() {
 	});
 });
 
+//======= 행운 운세분석 ======
+function hunanal(a,b,c,d){
+	hv1 = ""; hv2 = ""; hv3 = ""; hv4 = ""; hv5 = ""; hv6 = ""; hv7 = ""; hv8 = ""; hv9 = "";
+	sibsng(sj_dg,a,b); hv1 = gs_titl; hv2 = js_titl;  //--- 일간기준 행운간지의 십성
+	sibsng(c,"",d); hv4 = js_titl;  //--- 행운간지의 자체십성
+	sibsng(sj_dg,"",sj_dj); hv5 = js_titl;  //--- 일주의 십성
+	
+	
+	
+};
+	
 //======= 행운 년/월/일 변경시 ======
 $("#hunDate").change(function(){
 	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = "";
