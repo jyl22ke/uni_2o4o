@@ -684,16 +684,17 @@ function saju_chk(){
 			co_e = Math.ceil(((ed - bsd)/86400000) % 60);  //--- 월 종료일의 60갑자 순번
 			if ((co_s < co_e && co_s <= nd && nd < co_e) || (co_s > co_e && (co_s <= nd || nd < co_e))){
 			    	if (nd > co_s){	
-					birth1 = new Date(startdate.setDate(startdate.getDate() + nd - co_s - 1));
+//					birth1 = new Date(startdate.setDate(startdate.getDate() + nd - co_s - 1));
+					birth1 = new Date(startdate.setDate(startdate.getDate() + nd - co_s));
 			      	}else{
-					birth1 = new Date(startdate.setDate(startdate.getDate() + nd + 60 - co_s - 1));
+//					birth1 = new Date(startdate.setDate(startdate.getDate() + nd + 60 - co_s - 1));
+					birth1 = new Date(startdate.setDate(startdate.getDate() + nd + 60 - co_s));
 				};
 				birth1.setHours(birth1.getHours() - 8);  //--- 시간 보정 (00:00)
  				birth1.setMinutes(birth1.getMinutes() - 30);  //--- 분 보정 (00:00)
 				hrs = Number(ca09r_yjsjfind[3][h]);
 				birth1.setHours(birth1.getHours() + hrs);  //--- 시간 입력(시지)
 				birth0 = new Date(birth1);
-				birth = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
  				for (i=1; i<ca04_kstadj.length; i++){
  					if (birth >= ca04_kstadj[i][0] && birth <= ca04_kstadj[i][1]){
  						crh = ca04_kstadj[i][2];
@@ -701,6 +702,7 @@ function saju_chk(){
  				};
 				birth0.setHours(birth0.getHours() + Number(crh.substr(0,2)));  //--- 시간 보정
 				birth0.setMinutes(birth0.getMinutes() + Number(crh.substr(3,2)));  //--- 분 보정
+				birth = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
 				symdt = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
 				premon = new Date(ca08_monthstart[ns][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
 				postmon = new Date(ca08_monthstart[ns+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
