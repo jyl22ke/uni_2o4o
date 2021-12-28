@@ -598,7 +598,7 @@ $("#hunDate").change(function(){
 	subj = tsj7; temp = gan.filter(isFindj); hn_tg = temp[0][0]; htgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
 	subj = tsj8; temp = jiji.filter(isFindj); hn_tj = temp[0][0]; htjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
 	//----- 연운
-/*	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; 
+	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; 
 //	gjoh(hn_yg,hn_yj); hygoh = ohg; hyjoh = ohj; 
 	unsng(sj_dg,hn_yj); hyuns = js_titl; 
 	ageY = vwyr - birth0.getFullYear() + 1;
@@ -625,7 +625,7 @@ $("#hunDate").change(function(){
 	document.getElementById("hunD2").innerText += hdgs + " " + hdgoh + "\n";
 	document.getElementById("hunD1").innerText += hn_dj + "\n";
 	document.getElementById("hunD2").innerText += "\n" + hdjs + " " + hdjoh + " " + hduns + "\n";
-*/	
+/**/	
 /*	//----- 연운
 	hyr = (vwyr - 1864) % 60; idx = hyr % 10 + 1; hn_yg = gan[idx][0]; hygoh = gan[idx][4].substr(1,2); idx = hyr % 12 + 1; hn_yj = jiji[idx][0]; hyjoh = jiji[idx][4].substr(1,2);
 	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; unsng(sj_dg,hn_yj); hyuns = js_titl; ageY = vwyr - birth0.getFullYear() + 1;
@@ -650,11 +650,11 @@ $("#hunDate").change(function(){
 	document.getElementById("hunD2").innerText += hdgs + " " + hdgoh + "\n";
 	document.getElementById("hunD1").innerText += hn_dj + "\n";
 	document.getElementById("hunD2").innerText += "\n" + hdjs + " " + hdjoh + " " + hduns + "\n";
-
+*/
 	hunanal(hn_lg, hn_lj, hn_yg, hn_yj); document.getElementById("output3").innerText += vwyr + "(" + ageY + ")" + " 연운: (" + hn_yg + hn_yj + ") " + hv8 + " " + hv9 + "\n";
 	hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output3").innerText += hunD.substr(0,7) + "- 월운: (" + hn_mg + hn_mj + ") " + hv8 + " " + hv9 + "\n";
 	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + " " + hv9 + "\n";
-*/	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
+	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
 });
 
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
