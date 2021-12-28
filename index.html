@@ -589,17 +589,17 @@ $("#hunDate").change(function(){
 	};
 	convrtsj(hunD); 
 	hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5; hn_tg = tsj7; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6; hn_tj = tsj8;
-/*	subj = tsj1; temp = gan.filter(isFindj); hn_yg = temp[0][0];  //--- 한글 간지를 한자로 바꿈
-	subj = tsj2; temp = gan.filter(isFindj); hn_yj = temp[0][0];  //--- 한글 간지를 한자로 바꿈
-	subj = tsj3; temp = gan.filter(isFindj); hn_mg = temp[0][0];  //--- 한글 간지를 한자로 바꿈
-	subj = tsj4; temp = gan.filter(isFindj); hn_mj = temp[0][0];  //--- 한글 간지를 한자로 바꿈
-	subj = tsj5; temp = gan.filter(isFindj); hn_dg = temp[0][0];  //--- 한글 간지를 한자로 바꿈
-	subj = tsj6; temp = gan.filter(isFindj); hn_dj = temp[0][0];  //--- 한글 간지를 한자로 바꿈
-	subj = tsj7; temp = gan.filter(isFindj); hn_tg = temp[0][0];  //--- 한글 간지를 한자로 바꿈
-	subj = tsj8; temp = gan.filter(isFindj); hn_tj = temp[0][0];  //--- 한글 간지를 한자로 바꿈
-*/	//----- 연운
+	subj = tsj1; temp = gan.filter(isFindj); hn_yg = temp[0][0]; hygoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+	subj = tsj2; temp = gan.filter(isFindj); hn_yj = temp[0][0]; hyjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+	subj = tsj3; temp = gan.filter(isFindj); hn_mg = temp[0][0]; hmgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+	subj = tsj4; temp = gan.filter(isFindj); hn_mj = temp[0][0]; hmjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+	subj = tsj5; temp = gan.filter(isFindj); hn_dg = temp[0][0]; hdgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+	subj = tsj6; temp = gan.filter(isFindj); hn_dj = temp[0][0]; hdjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+	subj = tsj7; temp = gan.filter(isFindj); hn_tg = temp[0][0]; htgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+	subj = tsj8; temp = gan.filter(isFindj); hn_tj = temp[0][0]; htjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+	//----- 연운
 	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; 
-	gjoh(hn_yg,hn_yj); hygoh = ohg; hyjoh = ohj; 
+//	gjoh(hn_yg,hn_yj); hygoh = ohg; hyjoh = ohj; 
 	unsng(sj_dg,hn_yj); hyuns = js_titl; 
 	ageY = vwyr - birth0.getFullYear() + 1;
 	document.getElementById("hunY2").innerText += vwyr + " (" + ageY + ")\n";
@@ -609,7 +609,7 @@ $("#hunDate").change(function(){
 	document.getElementById("hunY2").innerText += "\n" + hyjs + " " + hyjoh + " " + hyuns + "\n";
 	//----- 월운
 	sibsng(sj_dg,hn_mg,hn_mj); hmgs = gs_titl; hmjs = js_titl; 
-	gjoh(hn_mg,hn_mj); hmgoh = ohg; hmjoh = ohj; 
+//	gjoh(hn_mg,hn_mj); hmgoh = ohg; hmjoh = ohj; 
 	unsng(sj_dg,hn_mj); hmuns = js_titl; 
 	document.getElementById("hunM2").innerText += hunD.substr(0,7) + " (" + hn_mj + ")\n";
 	document.getElementById("hunM1").innerText += hn_mg + "\n";
@@ -618,7 +618,7 @@ $("#hunDate").change(function(){
 	document.getElementById("hunM2").innerText += "\n" + hmjs + " " + hmjoh + " " + hmuns + "\n";
 	//----- 일운
 	sibsng(sj_dg,hn_dg,hn_dj); hdgs = gs_titl; hdjs = js_titl; 
-	gjoh(hn_dg,hn_dj); hdgoh = ohg; hdjoh = ohj; 
+//	gjoh(hn_dg,hn_dj); hdgoh = ohg; hdjoh = ohj; 
 	unsng(sj_dg,hn_dj); hduns = js_titl; 
 	document.getElementById("hunD2").innerText += hunD + "\n";
 	document.getElementById("hunD1").innerText += hn_dg + "\n";
