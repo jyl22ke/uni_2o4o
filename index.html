@@ -583,7 +583,7 @@ $("#hunDate").change(function(){
 	$('.hun1').empty(); $('.hun2').empty();
 	hunD = document.getElementById('hunDate').value; hunD = hunD + " 04:30"; vwyr = Number(hunD.substr(0,4));
 	//----- 대운
-	for (i=1; i<10; i++){
+	for (i=1; i<15; i++){
 		if (vwyr-birth0.getFullYear()+1 >= age+(i-1)*10 && vwyr-birth0.getFullYear()+1 < age+i*10){
 			hn_lg = hunL[i][1].substr(0,1); hn_lj = hunL[i][1].substr(1,1); ageL = age + (i - 1) * 10;
 			document.getElementById("hunL2").innerText += "(" + ageL + ")\n";
