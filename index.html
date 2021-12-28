@@ -576,7 +576,6 @@ $("#hunDate").change(function(){
 	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = ""; ageL = 0; ageY = 0;
 	$('.hun1').empty(); $('.hun2').empty();
 	hunD = document.getElementById('hunDate').value; hunD = hunD + " 04:30"; vwyr = Number(hunD.substr(0,4));
-	convrtsj(hunD); hn_lg = ""; hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5; hn_tg = tsj7; hn_lj = ""; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6; hn_tj = tsj8;
 	//----- 대운
 	for (i=1; i<10; i++){
 		if (vwyr-birth0.getFullYear()+1 >= age+(i-1)*10 && vwyr-birth0.getFullYear()+1 < age+i*10){
@@ -588,6 +587,15 @@ $("#hunDate").change(function(){
 			document.getElementById("hunL2").innerText += "\n" + hunL[i][3] + " \n";
 		};
 	};
+	convrtsj(hunD); hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5; hn_tg = tsj7; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6; hn_tj = tsj8;
+	subj = tsj1; temp = gan.filter(isFindj); hn_yg = temp[0][0];  //--- 한글 간지를 한자로 바꿈
+	subj = tsj2; temp = gan.filter(isFindj); hn_yj = temp[0][0];  //--- 한글 간지를 한자로 바꿈
+	subj = tsj3; temp = gan.filter(isFindj); hn_mg = temp[0][0];  //--- 한글 간지를 한자로 바꿈
+	subj = tsj4; temp = gan.filter(isFindj); hn_mj = temp[0][0];  //--- 한글 간지를 한자로 바꿈
+	subj = tsj5; temp = gan.filter(isFindj); hn_dg = temp[0][0];  //--- 한글 간지를 한자로 바꿈
+	subj = tsj6; temp = gan.filter(isFindj); hn_dj = temp[0][0];  //--- 한글 간지를 한자로 바꿈
+	subj = tsj7; temp = gan.filter(isFindj); hn_tg = temp[0][0];  //--- 한글 간지를 한자로 바꿈
+	subj = tsj8; temp = gan.filter(isFindj); hn_tj = temp[0][0];  //--- 한글 간지를 한자로 바꿈
 	//----- 연운
 	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; 
 	gjoh(hn_yg,hn_yj); hygoh = ohg; hyjoh = ohj; 
