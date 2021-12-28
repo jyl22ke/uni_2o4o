@@ -41,7 +41,7 @@
 	.sjut {grid-column: span 1;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
 	.sju1 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 1.6em; font-weight: bold; padding-top:30px; border-right: none; font-family:"한양해서";}
 	.sju2 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em; border-left: none;}
-	.seu {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.7em; text-align:left;display:none;}
+	.seu {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.7em; text-align:left;}
 	.mou {grid-column: span 2;grid-row: span 1; color: #000; border:2px solid red;min-height:30px; font-size: 0.7em; text-align:left;}
 	.dau {grid-column: span 2;grid-row: span 1; color: #000; border:2px solid blue;min-height:30px; font-size: 0.7em; text-align:left;}
 	.sja,.sjb {grid-column: span 3;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
@@ -145,7 +145,7 @@
 		<div class="sju2" id="sjub2"></div>
 		<div class="sju1" id="sjua1"></div>
 		<div class="sju2" id="sjub1"></div>
-		<div class="sjut"><input type ="button" onclick="$('.seu').toggle();" value="연운"></button></div>
+		<div class="sjut"><input type ="button" onclick="disp('.seu','');" value="연운"></button></div>
 		<div class="seu" id="seu9"></div>
 		<div class="seu" id="seu8"></div>
 		<div class="seu" id="seu7"></div>
@@ -155,7 +155,7 @@
 		<div class="seu" id="seu3"></div>
 		<div class="seu" id="seu2"></div>
 		<div class="seu" id="seu1"></div>		
-		<div class="sjut"><input type ="button" onclick="$('.mou').toggle(); $('.dau').toggle();" value="월운 일운"></button></div>
+		<div class="sjut"><input type ="button" onclick="disp('.mou','.dau');" value="월일"></button></div>
 		<div class="mou" id="mou3"></div>
 		<div class="mou" id="mou2"></div>
 		<div class="mou" id="mou1"></div>
@@ -325,6 +325,12 @@ $( function() {
 	} );
 } );
 
+//=========== 데이터 보이기 / 숨기기 =======	
+function disp(a,b){
+	if ($(a).css('display') == 'none'){$(a).show();}else{$(a).hide();};
+	if (b != ""){if($(b).css('display') == 'none'){$(b).show();}else{$(b).hide();};};
+};
+	
 //=========== 음력 조회 함수 ===========
 $( function() {
 	$( 'button#submit' ).click( function() {
