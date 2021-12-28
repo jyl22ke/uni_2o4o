@@ -593,7 +593,7 @@ $("#hunDate").change(function(){
 			document.getElementById("hunL2").innerText += "\n" + hunL[i][3] + " \n";
 		};
 	};
-	if (hunD < ca08_monthstart[ca08_monthstart.length-1][0]){	
+	if (hunD >= ca08_monthstart[1][0] && hunD < ca08_monthstart[ca08_monthstart.length-1][0]){	
 		convrtsj(hunD); 
 		subj = tsj1; temp = gan.filter(isFindj); hn_yg = temp[0][0]; hygoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
 		subj = tsj2; temp = jiji.filter(isFindj); hn_yj = temp[0][0]; hyjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
