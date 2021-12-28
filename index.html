@@ -541,7 +541,7 @@ function hunanal(a,b,c,d){
 	if (ageY < ageL + 5){hv3 = hv1;}else{hv3 = hv2;};  //--- 시기 십성 (hv3)
 	subj = hv6; hv7 = ca02_actgdbad.filter(isFind);  //--- 실행분석 길흉배열
 	idx = ca02_actgdbad[0].lastIndexOf(hv3);
-	hv8 = hv7[0][idx] + ca02_actgdbad[1][idx];  //--- 실행 길흉 
+	hv8 = ca02_actgdbad[1][idx] + hv7[0][idx];  //--- 실행 길흉 
 	sibsTugsin(hv3); hv3 = hs_titl; sibsTugsin(hv6); hv6 = hs_titl;
  	for (i=0; i<ca03_hunresult.length; i++){
  		if (ca03_hunresult[i][0]==hv3 && ca03_hunresult[i][1]==hv6){ hv9 = ca03_hunresult[i][2];};
