@@ -587,16 +587,23 @@ $("#hunDate").change(function(){
 			document.getElementById("hunL2").innerText += "\n" + hunL[i][3] + " \n";
 		};
 	};
-	convrtsj(hunD); 
-	hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5; hn_tg = tsj7; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6; hn_tj = tsj8;
-	subj = tsj1; temp = gan.filter(isFindj); hn_yg = temp[0][0]; hygoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
-	subj = tsj2; temp = jiji.filter(isFindj); hn_yj = temp[0][0]; hyjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
-	subj = tsj3; temp = gan.filter(isFindj); hn_mg = temp[0][0]; hmgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
-	subj = tsj4; temp = jiji.filter(isFindj); hn_mj = temp[0][0]; hmjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
-	subj = tsj5; temp = gan.filter(isFindj); hn_dg = temp[0][0]; hdgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
-	subj = tsj6; temp = jiji.filter(isFindj); hn_dj = temp[0][0]; hdjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
-	subj = tsj7; temp = gan.filter(isFindj); hn_tg = temp[0][0]; htgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
-	subj = tsj8; temp = jiji.filter(isFindj); hn_tj = temp[0][0]; htjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+	if (hunD < ca08_monthstart[ca08_monthstart.length-1][0]){	
+		convrtsj(hunD); 
+//		hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5; hn_tg = tsj7; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6; hn_tj = tsj8;
+		subj = tsj1; temp = gan.filter(isFindj); hn_yg = temp[0][0]; hygoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+		subj = tsj2; temp = jiji.filter(isFindj); hn_yj = temp[0][0]; hyjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+		subj = tsj3; temp = gan.filter(isFindj); hn_mg = temp[0][0]; hmgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+		subj = tsj4; temp = jiji.filter(isFindj); hn_mj = temp[0][0]; hmjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+		subj = tsj5; temp = gan.filter(isFindj); hn_dg = temp[0][0]; hdgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+		subj = tsj6; temp = jiji.filter(isFindj); hn_dj = temp[0][0]; hdjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+		subj = tsj7; temp = gan.filter(isFindj); hn_tg = temp[0][0]; htgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+		subj = tsj8; temp = jiji.filter(isFindj); hn_tj = temp[0][0]; htjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
+	}else{
+		hyr = (vwyr - 1864) % 60; idx = hyr % 10 + 1; hn_yg = gan[idx][0]; hygoh = gan[idx][4].substr(1,2); idx = hyr % 12 + 1; hn_yj = jiji[idx][0]; hyjoh = jiji[idx][4].substr(1,2);
+		hmo = (hyr % 5) * 12 + Number(hunD.substr(5,2)); idx = hmo % 10 + 1; hn_mg = gan[idx][0]; hmgoh = gan[idx][4].substr(1,2); idx = hmo % 12 + 1; hn_mj = jiji[idx][0]; hmjoh = jiji[idx][4].substr(1,2);
+		hda = ((new Date(hunD).getTime() - new Date('1908-01-10').getTime()) / 86400000) % 60; idx = hda % 10 + 1; hn_dg = gan[idx][0]; hdgoh = gan[idx][4].substr(1,2); idx = hda % 12 + 1; hn_dj = jiji[idx][0]; hdjoh = jiji[idx][4].substr(1,2);
+	};
+		
 	//----- 연운
 	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; 
 //	gjoh(hn_yg,hn_yj); hygoh = ohg; hyjoh = ohj; 
