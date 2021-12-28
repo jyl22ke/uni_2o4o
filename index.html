@@ -41,7 +41,7 @@
 	.sjut {grid-column: span 1;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
 	.sju1 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 1.6em; font-weight: bold; padding-top:30px; border-right: none; font-family:"한양해서";}
 	.sju2 {grid-column: span 1;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em; border-left: none;}
-	.seu {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.7em; text-align:left;}
+	.seu {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.7em; text-align:left;display:none;}
 	.mou {grid-column: span 2;grid-row: span 1; color: #000; border:2px solid red;min-height:30px; font-size: 0.7em; text-align:left;}
 	.dau {grid-column: span 2;grid-row: span 1; color: #000; border:2px solid blue;min-height:30px; font-size: 0.7em; text-align:left;}
 	.sja,.sjb {grid-column: span 3;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
@@ -94,7 +94,7 @@
 		<div class="sjo" id="sjg5"></div>
 		<div class="sjo" id="sjg3"></div>
 		<div class="sjo" id="sjg1"></div>
-		<div class="hunt">연운</div>
+		<div class="hunt"><button id="btn_toggle" onclick="$('.seu').toggle();">연운</button></div>
 		<div class="hun1" id="hunY1"></div>
 		<div class="hun2" id="hunY2"></div>
 		<div class="sj" id="sj8"></div>
