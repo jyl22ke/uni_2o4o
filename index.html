@@ -589,7 +589,6 @@ $("#hunDate").change(function(){
 	};
 	if (hunD < ca08_monthstart[ca08_monthstart.length-1][0]){	
 		convrtsj(hunD); 
-//		hn_yg = tsj1; hn_mg = tsj3; hn_dg = tsj5; hn_tg = tsj7; hn_yj = tsj2; hn_mj = tsj4; hn_dj = tsj6; hn_tj = tsj8;
 		subj = tsj1; temp = gan.filter(isFindj); hn_yg = temp[0][0]; hygoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
 		subj = tsj2; temp = jiji.filter(isFindj); hn_yj = temp[0][0]; hyjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
 		subj = tsj3; temp = gan.filter(isFindj); hn_mg = temp[0][0]; hmgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
@@ -606,7 +605,6 @@ $("#hunDate").change(function(){
 		
 	//----- 연운
 	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; 
-//	gjoh(hn_yg,hn_yj); hygoh = ohg; hyjoh = ohj; 
 	unsng(sj_dg,hn_yj); hyuns = js_titl; 
 	ageY = vwyr - birth0.getFullYear() + 1;
 	document.getElementById("hunY2").innerText += vwyr + " (" + ageY + ")\n";
@@ -616,7 +614,6 @@ $("#hunDate").change(function(){
 	document.getElementById("hunY2").innerText += "\n" + hyjs + " " + hyjoh + " " + hyuns + "\n";
 	//----- 월운
 	sibsng(sj_dg,hn_mg,hn_mj); hmgs = gs_titl; hmjs = js_titl; 
-//	gjoh(hn_mg,hn_mj); hmgoh = ohg; hmjoh = ohj; 
 	unsng(sj_dg,hn_mj); hmuns = js_titl; 
 	document.getElementById("hunM2").innerText += hunD.substr(0,7) + " (" + hn_mj + ")\n";
 	document.getElementById("hunM1").innerText += hn_mg + "\n";
@@ -625,39 +622,13 @@ $("#hunDate").change(function(){
 	document.getElementById("hunM2").innerText += "\n" + hmjs + " " + hmjoh + " " + hmuns + "\n";
 	//----- 일운
 	sibsng(sj_dg,hn_dg,hn_dj); hdgs = gs_titl; hdjs = js_titl; 
-//	gjoh(hn_dg,hn_dj); hdgoh = ohg; hdjoh = ohj; 
 	unsng(sj_dg,hn_dj); hduns = js_titl; 
 	document.getElementById("hunD2").innerText += hunD + "\n";
 	document.getElementById("hunD1").innerText += hn_dg + "\n";
 	document.getElementById("hunD2").innerText += hdgs + " " + hdgoh + "\n";
 	document.getElementById("hunD1").innerText += hn_dj + "\n";
 	document.getElementById("hunD2").innerText += "\n" + hdjs + " " + hdjoh + " " + hduns + "\n";
-/**/	
-/*	//----- 연운
-	hyr = (vwyr - 1864) % 60; idx = hyr % 10 + 1; hn_yg = gan[idx][0]; hygoh = gan[idx][4].substr(1,2); idx = hyr % 12 + 1; hn_yj = jiji[idx][0]; hyjoh = jiji[idx][4].substr(1,2);
-	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; unsng(sj_dg,hn_yj); hyuns = js_titl; ageY = vwyr - birth0.getFullYear() + 1;
-	document.getElementById("hunY2").innerText += vwyr + " (" + ageY + ")\n";
-	document.getElementById("hunY1").innerText += hn_yg + "\n";
-	document.getElementById("hunY2").innerText += hygs + " " + hygoh + "\n";
-	document.getElementById("hunY1").innerText += hn_yj + "\n";
-	document.getElementById("hunY2").innerText += "\n" + hyjs + " " + hyjoh + " " + hyuns + "\n";
-	//----- 월운
-	hmo = (hyr % 5) * 12 + Number(hunD.substr(5,2)); idx = hmo % 10 + 1; hn_mg = gan[idx][0]; hmgoh = gan[idx][4].substr(1,2); idx = hmo % 12 + 1; hn_mj = jiji[idx][0]; hmjoh = jiji[idx][4].substr(1,2);
-	sibsng(sj_dg,hn_mg,hn_mj); hmgs = gs_titl; hmjs = js_titl; unsng(sj_dg,hn_mj); hmuns = js_titl;
-	document.getElementById("hunM2").innerText += hunD.substr(0,7) + " (" + hn_mj + ")\n";
-	document.getElementById("hunM1").innerText += hn_mg + "\n";
-	document.getElementById("hunM2").innerText += hmgs + " " + hmgoh + "\n";
-	document.getElementById("hunM1").innerText += hn_mj + "\n";
-	document.getElementById("hunM2").innerText += "\n" + hmjs + " " + hmjoh + " " + hmuns + "\n";
-	//----- 일운
-	hda = ((new Date(hunD).getTime() - new Date('1908-01-10').getTime()) / 86400000) % 60; idx = hda % 10 + 1; hn_dg = gan[idx][0]; hdgoh = gan[idx][4].substr(1,2); idx = hda % 12 + 1; hn_dj = jiji[idx][0]; hdjoh = jiji[idx][4].substr(1,2);
-	sibsng(sj_dg,hn_dg,hn_dj); hdgs = gs_titl; hdjs = js_titl; unsng(sj_dg,hn_dj); hduns = js_titl;
-	document.getElementById("hunD2").innerText += hunD + "\n";
-	document.getElementById("hunD1").innerText += hn_dg + "\n";
-	document.getElementById("hunD2").innerText += hdgs + " " + hdgoh + "\n";
-	document.getElementById("hunD1").innerText += hn_dj + "\n";
-	document.getElementById("hunD2").innerText += "\n" + hdjs + " " + hdjoh + " " + hduns + "\n";
-*/
+
 	hunanal(hn_lg, hn_lj, hn_yg, hn_yj); document.getElementById("output3").innerText += vwyr + "(" + ageY + ")" + " 연운: (" + hn_yg + hn_yj + ") " + hv8 + " " + hv9 + "\n";
 	hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output3").innerText += hunD.substr(0,7) + "- 월운: (" + hn_mg + hn_mj + ") " + hv8 + " " + hv9 + "\n";
 	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + " " + hv9 + "\n";
@@ -733,23 +704,15 @@ function convrtsj(reqD){
 	
 //======= 사주 월간/시간 오류 check =======	
 function saju_chk(){
-	ya = saju_h.substr(0,1);
-	yb = saju_h.substr(1,1);
-	ma = saju_h.substr(2,1);
-	mb = saju_h.substr(3,1);
-	da = saju_h.substr(4,1);
-	db = saju_h.substr(5,1);
-	ta = saju_h.substr(6,1);
-	tb = saju_h.substr(7,1);
+	ya = saju_h.substr(0,1);yb = saju_h.substr(1,1);
+	ma = saju_h.substr(2,1);mb = saju_h.substr(3,1);
+	da = saju_h.substr(4,1);db = saju_h.substr(5,1);
+	ta = saju_h.substr(6,1);tb = saju_h.substr(7,1);
 
-	a = ca09r_yjsjfind[1].indexOf(ya);
-	b = ca09r_yjsjfind[2].indexOf(yb);
-	c = ca09r_yjsjfind[1].indexOf(ma);
-	d = ca09r_yjsjfind[2].indexOf(mb);
-	e = ca09r_yjsjfind[1].indexOf(da);
-	f = ca09r_yjsjfind[2].indexOf(db);
-	g = ca09r_yjsjfind[1].indexOf(ta);
-	h = ca09r_yjsjfind[2].indexOf(tb);
+	a = ca09r_yjsjfind[1].indexOf(ya);b = ca09r_yjsjfind[2].indexOf(yb);
+	c = ca09r_yjsjfind[1].indexOf(ma);d = ca09r_yjsjfind[2].indexOf(mb);
+	e = ca09r_yjsjfind[1].indexOf(da);f = ca09r_yjsjfind[2].indexOf(db);
+	g = ca09r_yjsjfind[1].indexOf(ta);h = ca09r_yjsjfind[2].indexOf(tb);
 	if (a >= b){ny = (a - b) * 6 + b;}else{ny = (10 + a - b) * 6 + b;}; //--- 년간/년지(a/b) 순번(ny)
 	if (c >= d){nm = (c - d) * 6 + d;}else{nm = (10 + c - d) * 6 + d;}; //--- 월간/월지(c/d) 순번(nm)
 	if (e >= f){nd = (e - f) * 6 + f;}else{nd = (10 + e - f) * 6 + f;}; //--- 일간/일지(e/f) 순번(nd)
