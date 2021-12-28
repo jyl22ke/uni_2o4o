@@ -816,11 +816,13 @@ function longun(){
 		if (i==1){hunL[i][0] = firstD1.format('yyyy-MM-dd HH:mm');}else{hunL[i][0] = new Date(firstD1.setFullYear(firstD1.getFullYear() + 10)).format('yyyy-MM-dd HH:mm'); };
 		hunL[i][1] = gan[ca][0] + jiji[cb][0];
 		sibsng(sj_dg,gan[ca][0],jiji[cb][0]); hunL[i][2] = gs_titl + " " + gan[ca][4].substr(1,2); hunL[i][3] = js_titl + " " + jiji[cb][4].substr(1,2);
-		document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
-		document.getElementById(posa).innerText += gan[ca][0] + "\n";
-		document.getElementById(posb).innerText += gs_titl + "\n" + gan[ca][4].substr(1,2) + " \n\n";
-		document.getElementById(posa).innerText += jiji[cb][0] + "\n";
-		document.getElementById(posb).innerText += js_titl + "\n" + jiji[cb][4].substr(1,2) + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
+		if (i < 10){	
+			document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
+			document.getElementById(posa).innerText += gan[ca][0] + "\n";
+			document.getElementById(posb).innerText += gs_titl + "\n" + gan[ca][4].substr(1,2) + " \n\n";
+			document.getElementById(posa).innerText += jiji[cb][0] + "\n";
+			document.getElementById(posb).innerText += js_titl + "\n" + jiji[cb][4].substr(1,2) + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
+		};
 		if (now.getFullYear()-birth0.getFullYear()+1 >= age+(i-1)*10 && now.getFullYear()-birth0.getFullYear()+1 < age+i*10){
 			document.getElementById("hunL2").innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
 			document.getElementById("hunL1").innerText += gan[ca][0] + "\n"; hn_lg = gan[ca][0];
