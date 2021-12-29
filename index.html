@@ -645,18 +645,18 @@ $("#hunDate").change(function(){
 function convrtsj(reqD){
 	tsj1 = ""; tsj2 = ""; tsj3 = ""; tsj4 = ""; tsj5 = ""; tsj6 = ""; tsj7 = ""; tsj8 = "";
 	
-	rqD = ""; yrstart = ""; cor_t = ""; cor_d = 0; crh = ""; temp = []; temp1 = [];
+	rqD = ""; yrstart = ""; cor_t = ""; cor_d = 0; crh = 0; temp = []; temp1 = [];
 	//--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
 	rqD0 = new Date(reqD.substr(0,16));  //--- 입력시간(date)
-	rqD1 = new Date(reqD.substr(0,16));  //--- 보정할 시간(date): 서울표준시
+//	rqD1 = new Date(reqD.substr(0,16));  //--- 보정할 시간(date): 서울표준시
 	for (i=1; i<ca04_kstadj.length; i++){
 		if (reqD >= ca04_kstadj[i][0] && reqD <= ca04_kstadj[i][1]){
-			crh = ca04_kstadj[i][2];
+			crh = Number(ca04_kstadj[i][4]) * 1800000;  //--- 시간보정 수
 		};
 	};
-	rqD1.setHours(rqD1.getHours() - Number(crh.substr(0,2)));  //--- 시간 보정
-	rqD1.setMinutes(rqD1.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
-	rqD1 = new Date(rqD1);
+//	rqD1.setHours(rqD1.getHours() - Number(crh.substr(0,2)));  //--- 시간 보정
+//	rqD1.setMinutes(rqD1.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
+	rqD1 = new Date(rqD0.getTime() - crh);  //--- 보정된 시간(date): 서울표준시
 	rqD = rqD1.format('yyyy-MM-dd HH:mm');  //--- 보정시간(text)
 	//--- 시지(sj_tj) 확인 ----------------------	
 	rqD_t = rqD1.format('HH:mm');
@@ -764,17 +764,16 @@ function saju_chk(){
 				birth1.setTime(birth1.getTime() - 30600000);  //--- 시간 보정 (08:30)
 				hrs = Number(ca09r_yjsjfind[3][h]);
 				birth1.setHours(birth1.getHours() + hrs);  //--- 시간 입력(시지)
-				birth1 = new Date(birth1); birth0 = new Date(birth1.format('yyyy-MM-dd HH:mm'));
+				birth1 = new Date(birth1); 
  				for (i=1; i<ca04_kstadj.length; i++){
 // 					if (birth1.format('yyyy-MM-dd HH:mm') >= ca04_kstadj[i][0] && birth1.format('yyyy-MM-dd HH:mm') <= ca04_kstadj[i][1]){
-					crh = ca04_kstadj[i][2]; dev = (Number(crh.substr(0,2))*60 + Number(crh.substr(3,2))) * 60000;
-					if ((new Date(ca04_kstadj[i][0]) - birth1) <= dev && (new Date(ca04_kstadj[i][1]) - birth1) >= dev){
-						birth0.setHours(birth0.getHours() + Number(crh.substr(0,2)));  //--- 시간 보정
-						birth0.setMinutes(birth0.getMinutes() + Number(crh.substr(3,2)));  //--- 분 보정
-						birth0 = new Date(birth0);
+					crh = Number(ca04_kstadj[i][4]) * 1800000; 
+//					dev = (Number(crh.substr(0,2))*60 + Number(crh.substr(3,2))) * 60000;
+					if ((new Date(ca04_kstadj[i][0]) - birth1) <= crh && (new Date(ca04_kstadj[i][1]) - birth1) >= crh){
+						birth0 = new Date(birth1.getTime() + crh);
 					};
  				};
-				birth = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
+				birth = birth1.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
 				symdt = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
 				premon = new Date(ca08_monthstart[ns][5].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
 				postmon = new Date(ca08_monthstart[ns+1][5].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
