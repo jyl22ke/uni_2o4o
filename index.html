@@ -486,11 +486,11 @@ $( function() {
 		
 		hunL = [["대운일","간지","간십성오행","지십성오행"],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]];
 		
-		document.getElementById("hunDate").value = new Date().format('yyyy-MM-dd');
-		saju_h = document.getElementById('sj').value;
-		symdt = document.getElementById('sjtm').value;
-		gendr = $('input[name="gender"]:checked').val();
-		hunD = document.getElementById('hunDate').value;
+		document.getElementById("hunDate").value = new Date().format('yyyy-MM-dd');  //--- 행운일자를 현재시간으로 설정(initial)
+		saju_h = document.getElementById('sj').value;  //--- 직접 입력한 한글사주
+		symdt = document.getElementById('sjtm').value;  //--- 직접 입력한 생년월일시(text)
+		gendr = $('input[name="gender"]:checked').val();  //--- 성별
+		hunD = document.getElementById('hunDate').value;  //--- 보려는 행운일자(text)
 		now = new Date();  //---- 현재시간
 		if(symdt != ""){
 			convrtsj(symdt);
