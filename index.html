@@ -495,7 +495,7 @@ $( function() {
 		if(symdt != ""){
 			convrtsj(symdt);
 			saju = tsj1 + tsj2 + tsj3 + tsj4 + tsj5 + tsj6 + tsj7 + tsj8;
-			birth = rqD; birth0 = rqD0; birth1 = rqD1;
+			birth = symdt; birth0 = rqD0; birth1 = rqD1;
 		}else{
 			saju_chk();
 			saju = saju_h;
@@ -648,15 +648,16 @@ function convrtsj(reqD){
 	rqD = ""; yrstart = ""; cor_t = ""; cor_d = 0; crh = ""; temp = []; temp1 = [];
 	//--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
 	rqD0 = new Date(reqD.substr(0,16));  //--- 입력시간(date)
-	rqD = rqD0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
 	rqD1 = new Date(reqD.substr(0,16));  //--- 보정할 시간(date): 서울표준시
 	for (i=1; i<ca04_kstadj.length; i++){
-		if (rqD >= ca04_kstadj[i][0] && rqD <= ca04_kstadj[i][1]){
+		if (reqD >= ca04_kstadj[i][0] && reqD <= ca04_kstadj[i][1]){
 			crh = ca04_kstadj[i][2];
 		};
 	};
 	rqD1.setHours(rqD1.getHours() - Number(crh.substr(0,2)));  //--- 시간 보정
 	rqD1.setMinutes(rqD1.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
+	rqD1 = new Date(rqD1);
+	rqD = rqD1.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
 	//--- 시지(sj_tj) 확인 ----------------------	
 	rqD_t = rqD1.format('HH:mm');
 	for ( i=1 ; i < ca05_sijitime.length ; i++ ){
@@ -683,22 +684,22 @@ function convrtsj(reqD){
 	tsj6 = ca09r_yjsjfind[2][ix];  //--- 일지 (sj_dj)
 	//--- 월지(sj_mj) 확인 ----------------------
 	for ( i=1 ; i < ca08_monthstart.length ; i++ ){
-		if (ca08_monthstart[i][0] <= rqD && ca08_monthstart[i+1][0] > rqD){
-			premon = new Date(ca08_monthstart[i][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
-			postmon = new Date(ca08_monthstart[i+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
+		if (ca08_monthstart[i][5] <= rqD && ca08_monthstart[i+1][5] > rqD){
+			premon = new Date(ca08_monthstart[i][5].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
+			postmon = new Date(ca08_monthstart[i+1][5].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
 			tsj4 = ca08_monthstart[i][2];  //--- 월지 (sj_mj)
-			term = Number(ca08_monthstart[i][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
+			term = Number(ca08_monthstart[i][6]);  //--- 월 일수 (기간) 대운수 계산시 사용
 		};
-		if (ca08_monthstart[i][3] === '입춘' && ca08_monthstart[i][0].substr(0,4) === rqD0.format('yyyy')){
-			yrstart = ca08_monthstart[i][0];  //--- 년 시작점(입춘) 년주 계산시 사용---입력시간(text)
+		if (ca08_monthstart[i][3] === '입춘' && ca08_monthstart[i][5].substr(0,4) === rqD1.format('yyyy')){
+			yrstart = ca08_monthstart[i][5];  //--- 년 시작점(입춘) 년주 계산시 사용---입력시간(text)
 		};
 	};
 	//--- 년간(sj_yg) 확인 ----------------------
 	if (rqD < yrstart){ crnoy = 5 }else{ crnoy = 4 };  //--- 년도 보정수 (입춘이전 전년 년주 사용)
-	ix = (rqD0.getFullYear() - crnoy) % 10 + 1;
+	ix = (rqD1.getFullYear() - crnoy) % 10 + 1;
 	tsj1 = ca09r_yjsjfind[1][ix];  //--- 년간 (sj_yg)
 	//--- 년지(sj_yj) 확인 ----------------------
-	ix = (rqD0.getFullYear() - crnoy ) % 12 + 1;
+	ix = (rqD1.getFullYear() - crnoy ) % 12 + 1;
 	tsj2 = ca09r_yjsjfind[2][ix];  //--- 년지 (sj_yj)
 	//--- 월주 배열 만들기 ----------------------
 	ytit = ca06_mjsjfind.slice(1, 2);  //---월주배열 이름 (둘째줄) 가져오기
@@ -744,8 +745,8 @@ function saju_chk(){
 		while (yr <= year){
 			subj = yr; subj1 = mb;  //--- 년도, 월지를 이용하여 검색
 			ns = ca08_monthstart.findIndex(isFindm); //---- mb월(양력) 시작일 확인 (index)
-			startdate = new Date(ca08_monthstart[ns][0].substr(0,10)); //---- mb월(양력) 시작일
-			enddate = new Date(ca08_monthstart[ns+1][0].substr(0,10)); //---- mb월(양력) 종료일
+			startdate = new Date(ca08_monthstart[ns][5].substr(0,10)); //---- mb월(양력) 시작일
+			enddate = new Date(ca08_monthstart[ns+1][5].substr(0,10)); //---- mb월(양력) 종료일
 			sd = startdate.getTime() + 2073600000000; //--- 월 시작일(sd)
 			co_s = Math.ceil(((sd - bsd)/86400000) % 60);  //--- 월 시작일의 60갑자 순번
 			bs = parseInt(((sd - bsd)/86400000) / 60);
@@ -761,19 +762,21 @@ function saju_chk(){
 				birth1.setTime(birth1.getTime() - 30600000);  //--- 시간 보정 (08:30)
 				hrs = Number(ca09r_yjsjfind[3][h]);
 				birth1.setHours(birth1.getHours() + hrs);  //--- 시간 입력(시지)
-				birth0 = new Date(birth1);
+				birth1 = new Date(birth1); birth0 = birth1;
  				for (i=1; i<ca04_kstadj.length; i++){
- 					if (birth0.format('yyyy-MM-dd HH:mm') >= ca04_kstadj[i][0] && birth0.format('yyyy-MM-dd HH:mm') <= ca04_kstadj[i][1]){
- 						crh = ca04_kstadj[i][2];
- 					};
+// 					if (birth1.format('yyyy-MM-dd HH:mm') >= ca04_kstadj[i][0] && birth1.format('yyyy-MM-dd HH:mm') <= ca04_kstadj[i][1]){
+					crh = ca04_kstadj[i][2]; dev = (Number(crh.substr(0,2))*60 + Number(crh.substr(3,2))) * 60000;
+					if ((new Date(ca04_kstadj[i][0]) - birth1) <= dev && (new Date(ca04_kstadj[i][1]) - birth1) >= dev){
+						birth0.setHours(birth0.getHours() + Number(crh.substr(0,2)));  //--- 시간 보정
+						birth0.setMinutes(birth0.getMinutes() + Number(crh.substr(3,2)));  //--- 분 보정
+						birth0 = new Date(birth0);
+					};
  				};
-				birth0.setHours(birth0.getHours() + Number(crh.substr(0,2)));  //--- 시간 보정
-				birth0.setMinutes(birth0.getMinutes() + Number(crh.substr(3,2)));  //--- 분 보정
 				birth = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
 				symdt = birth0.format('yyyy-MM-dd HH:mm');  //--- 입력시간(text)
-				premon = new Date(ca08_monthstart[ns][0].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
-				postmon = new Date(ca08_monthstart[ns+1][0].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
-				term = Number(ca08_monthstart[ns][4]);  //--- 월 일수 (기간) 대운수 계산시 사용
+				premon = new Date(ca08_monthstart[ns][5].substr(0,16));  //--- 이전절기 (대운수 계산시 사용)
+				postmon = new Date(ca08_monthstart[ns+1][5].substr(0,16));  //--- 다음절기 (대운수 계산시 사용)
+				term = Number(ca08_monthstart[ns][6]);  //--- 월 일수 (기간) 대운수 계산시 사용
 				document.getElementById("output2").innerText += "생년월일 : " + symdt + " (" + (year-yr+1) + "세) \n";
 			};
 			yr = yr + 60; //---- 년도 확인
