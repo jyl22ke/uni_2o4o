@@ -668,8 +668,8 @@ function convrtsj(reqD){
 		};
 	};
 	//--- 일간(sj_dg) 확인 ----------------------
-	ix = (Math.floor((rqD1.getTime() + 30600000) / 86400000) + 600077 + cor_d) % 10 + 1;
-//	ix = (Math.floor((rqD1.getTime() - 18000000) / 86400000) + 600078 ) % 10 + 1;
+//	ix = (Math.floor((rqD1.getTime() + 30600000) / 86400000) + 600077 + cor_d) % 10 + 1;
+	ix = (Math.floor((rqD1.getTime() + 32400000) / 86400000) + 600077 + cor_d) % 10 + 1;
 	tsj5 = ca09r_yjsjfind[1][ix];  //--- 일간 (sj_dg)
 	//--- 시주 배열 만들기 / 시간(sj_tg) 확인 ---
 	ttit = ca07_tjsjfind.slice(0, 1);  //---시주배열 이름 (첫줄) 가져오기
@@ -681,8 +681,8 @@ function convrtsj(reqD){
 		};
 	};
 	//--- 일지(sj_dj) 확인 ----------------------
-	ix = (Math.floor((rqD1.getTime() + 30600000) / 86400000) + 600077 + cor_d) % 12 + 1;
-//	ix = (Math.floor((rqD1.getTime() - 36000000) / 86400000) + 600078 ) % 12 + 1;
+//	ix = (Math.floor((rqD1.getTime() + 30600000) / 86400000) + 600077 + cor_d) % 12 + 1;
+	ix = (Math.floor((rqD1.getTime() + 32400000) / 86400000) + 600077 + cor_d) % 12 + 1;
 	tsj6 = ca09r_yjsjfind[2][ix];  //--- 일지 (sj_dj)
 	//--- 월지(sj_mj) 확인 ----------------------
 	for ( i=1 ; i < ca08_monthstart.length ; i++ ){
