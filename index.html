@@ -761,7 +761,7 @@ function saju_chk(){
 			      	}else{
 					birth1 = new Date(startdate.setDate(startdate.getDate() + nd + 60 - co_s - 1));
 				};
-				birth1.setTime(birth1.getTime() - 32400000);  //--- 시간 보정 (09:00)
+				birth1.setTime(birth1.getTime() - 30600000);  //--- 시간 보정 (08:30)
 				hrs = Number(ca09r_yjsjfind[3][h]);
 				birth1.setHours(birth1.getHours() + hrs);  //--- 시간 입력(시지)
 				birth1 = new Date(birth1); birth0 = new Date(birth1.format('yyyy-MM-dd HH:mm'));
