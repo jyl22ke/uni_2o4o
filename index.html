@@ -511,16 +511,16 @@ $( function() {
 
 		mktabl();
 		fill_saju();
-//		longun();
-//		seun();
-//		moun();
-//		dayun();
-//   		ganji_root();
-//   		tugan();
-//   		rootgchk();
-//   		mpohcnt();
-//		ganhabch();
-//		ganhab("연간합",5,sj_ganji,"_합");
+		longun();
+		seun();
+		moun();
+		dayun();
+   		ganji_root();
+   		tugan();
+   		rootgchk();
+   		mpohcnt();
+		ganhabch();
+//		ganhab("연간합",5,sj_ganji,"_합");  //--- ganhab(a,b,c,d) <== 없는 함수임
 //		ganhab("일간합",5,sj_ganji,"_합");
 //     		chnghab("천간합",5,sj_ganji,"_합");
 //    		chnghab("천간충",4,sj_ganji,"_충");
@@ -531,7 +531,7 @@ $( function() {
 //     		chnghab("지지방합",4,sj_ganji,"b합");
 //    		chnghab("지지암합",5,sj_ganji,"s합");
 //  		chnghab("간지암합",4,sj_ganji,"x합");
-// 		dgjmcharac();
+// 		dgjmcharac();  //--- 일주 성격 보여주는 함수
 	});
 });
 
@@ -648,14 +648,11 @@ function convrtsj(reqD){
 	rqD = ""; yrstart = ""; cor_t = ""; cor_d = 0; crh = 0; temp = []; temp1 = [];
 	//--- 표준시/써머타임 (ca04_kstadj.csv) 시간 보정 ----------------------
 	rqD0 = new Date(reqD.substr(0,16));  //--- 입력시간(date)
-//	rqD1 = new Date(reqD.substr(0,16));  //--- 보정할 시간(date): 서울표준시
 	for (i=1; i<ca04_kstadj.length; i++){
 		if (reqD >= ca04_kstadj[i][0] && reqD <= ca04_kstadj[i][1]){
 			crh = Number(ca04_kstadj[i][4]) * 1800000;  //--- 시간보정 수
 		};
 	};
-//	rqD1.setHours(rqD1.getHours() - Number(crh.substr(0,2)));  //--- 시간 보정
-//	rqD1.setMinutes(rqD1.getMinutes() - Number(crh.substr(3,2)));  //--- 분 보정
 	rqD1 = new Date(rqD0.getTime() - crh);  //--- 보정된 시간(date): 서울표준시
 	rqD = rqD1.format('yyyy-MM-dd HH:mm');  //--- 보정시간(text)
 	//--- 시지(sj_tj) 확인 ----------------------	
@@ -669,7 +666,6 @@ function convrtsj(reqD){
 	};
 	//--- 일간(sj_dg) 확인 ----------------------
 	ix = (Math.floor((rqD1.getTime() + 30600000) / 86400000) + 600077 + cor_d) % 10 + 1;
-//	ix = (Math.floor((rqD1.getTime() + 32400000) / 86400000) + 600077 + cor_d) % 10 + 1;
 	tsj5 = ca09r_yjsjfind[1][ix];  //--- 일간 (sj_dg)
 	//--- 시주 배열 만들기 / 시간(sj_tg) 확인 ---
 	ttit = ca07_tjsjfind.slice(0, 1);  //---시주배열 이름 (첫줄) 가져오기
@@ -682,7 +678,6 @@ function convrtsj(reqD){
 	};
 	//--- 일지(sj_dj) 확인 ----------------------
 	ix = (Math.floor((rqD1.getTime() + 30600000) / 86400000) + 600077 + cor_d) % 12 + 1;
-//	ix = (Math.floor((rqD1.getTime() + 32400000) / 86400000) + 600077 + cor_d) % 12 + 1;
 	tsj6 = ca09r_yjsjfind[2][ix];  //--- 일지 (sj_dj)
 	//--- 월지(sj_mj) 확인 ----------------------
 	for ( i=1 ; i < ca08_monthstart.length ; i++ ){
@@ -766,9 +761,7 @@ function saju_chk(){
 				birth1.setHours(birth1.getHours() + hrs);  //--- 시간 입력(시지)
 				birth1 = new Date(birth1); 
  				for (i=1; i<ca04_kstadj.length; i++){
-// 					if (birth1.format('yyyy-MM-dd HH:mm') >= ca04_kstadj[i][0] && birth1.format('yyyy-MM-dd HH:mm') <= ca04_kstadj[i][1]){
 					crh = Number(ca04_kstadj[i][4]) * 1800000; 
-//					dev = (Number(crh.substr(0,2))*60 + Number(crh.substr(3,2))) * 60000;
 					if ((new Date(ca04_kstadj[i][0]) - birth1) <= crh && (new Date(ca04_kstadj[i][1]) - birth1) >= crh){
 						birth0 = new Date(birth1.getTime() + crh);
 					};
