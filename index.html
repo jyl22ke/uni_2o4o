@@ -639,6 +639,10 @@ $("#hunDate").change(function(){
 	hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output3").innerText += hunD.substr(0,7) + "- 월운: (" + hn_mg + hn_mj + ") " + hv8 + "- " + hv9 + "\n";
 	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + "- " + hv9 + "\n";
 	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
+	
+	hcompchk("천간합",5,sj_dg,hn_yg);   //--- 행운에 의한 천간합 체크
+	document.getElementById("output2").innerText += "행운 합 체크..... " + hn_yg + " " + rslt + "\n";
+	
 });
 
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
@@ -1359,8 +1363,6 @@ function ganhabch(){
  		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4){ if (hcg4.length < 6){sts = "원국";}else{sts = "행운";}; document.getElementById("output2").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 	};
 	document.getElementById("output2").innerText += "행운에 따른 시기분석, 실행분석 진행할 예정임..... \n";
-	hcompchk("천간합",5,sj_dg,hn_yg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt; gan_nfo[3][5] += rslt1;  //---일간합 (일간-월간)
-	document.getElementById("output2").innerText += "행운 합 체크..... " + hn_yg + " " + rslt + "\n";
 };
 
 	//========== 충/합 ==========
