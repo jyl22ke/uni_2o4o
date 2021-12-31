@@ -641,9 +641,17 @@ $("#hunDate").change(function(){
 	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
 	
 	hcompchk("천간합",5,sj_dg,hn_lg); 	if (rslt != ""){rslt0 += " 대운 " + rslt};   //--- 행운에 의한 천간합 체크
+	if (gan_nfo[3][6].substr(2,1) == "합"){hcompchk("천간합",5,sj_mg,hn_lg); 	if (rslt != ""){rslt0 += rslt};
+	}else{if (gan_nfo[3][7].substr(2,1) == "합"){ hcompchk("천간합",5,sj_tg,hn_lg); 	if (rslt != ""){rslt0 += rslt};};};
 	hcompchk("천간합",5,sj_dg,hn_yg); 	if (rslt != ""){rslt0 += " 연운 " + rslt};   //--- 행운에 의한 천간합 체크
+	if (gan_nfo[3][6].substr(2,1) == "합"){hcompchk("천간합",5,sj_mg,hn_yg); 	if (rslt != ""){rslt0 += rslt};
+	}else{if (gan_nfo[3][7].substr(2,1) == "합"){ hcompchk("천간합",5,sj_tg,hn_yg); 	if (rslt != ""){rslt0 += rslt};};};
 	hcompchk("천간합",5,sj_dg,hn_mg); 	if (rslt != ""){rslt0 += " 월운 " + rslt};   //--- 행운에 의한 천간합 체크
+	if (gan_nfo[3][6].substr(2,1) == "합"){hcompchk("천간합",5,sj_mg,hn_mg); 	if (rslt != ""){rslt0 += rslt};
+	}else{if (gan_nfo[3][7].substr(2,1) == "합"){ hcompchk("천간합",5,sj_tg,hn_mg); 	if (rslt != ""){rslt0 += rslt};};};
 	hcompchk("천간합",5,sj_dg,hn_dg); 	if (rslt != ""){rslt0 += " 일운 " + rslt};   //--- 행운에 의한 천간합 체크
+	if (gan_nfo[3][6].substr(2,1) == "합"){hcompchk("천간합",5,sj_mg,hn_dg); 	if (rslt != ""){rslt0 += rslt};
+	}else{if (gan_nfo[3][7].substr(2,1) == "합"){ hcompchk("천간합",5,sj_tg,hn_dg); 	if (rslt != ""){rslt0 += rslt};};};
 	hcompchk("천간충",4,sj_dg,hn_lg); 	if (rslt != ""){rslt0 += " 대운 " + rslt};   //--- 행운에 의한 천간합 체크
 	hcompchk("천간충",4,sj_dg,hn_yg); 	if (rslt != ""){rslt0 += " 연운 " + rslt};   //--- 행운에 의한 천간합 체크
 	hcompchk("천간충",4,sj_dg,hn_mg); 	if (rslt != ""){rslt0 += " 월운 " + rslt};   //--- 행운에 의한 천간합 체크
