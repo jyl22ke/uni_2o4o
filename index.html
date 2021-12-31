@@ -648,7 +648,7 @@ $("#hunDate").change(function(){
 	hcompchk("천간충",4,sj_dg,hn_yg); 	if (rslt != ""){rslt0 += " 연운 " + rslt};   //--- 행운에 의한 천간합 체크
 	hcompchk("천간충",4,sj_dg,hn_mg); 	if (rslt != ""){rslt0 += " 월운 " + rslt};   //--- 행운에 의한 천간합 체크
 	hcompchk("천간충",4,sj_dg,hn_dg); 	if (rslt != ""){rslt0 += " 일운 " + rslt};   //--- 행운에 의한 천간합 체크
-	document.getElementById("output2").innerText += rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+	if (rslt0 != ""){document.getElementById("output2").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"};   //--- 행운에 의한 천간합 체크
 });
 
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
