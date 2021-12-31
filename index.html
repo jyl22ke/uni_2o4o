@@ -640,8 +640,10 @@ $("#hunDate").change(function(){
 	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + "- " + hv9 + "\n";
 	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
 	
-	hcompchk("천간합",5,sj_dg,hn_yg);   //--- 행운에 의한 천간합 체크
-	document.getElementById("output2").innerText += "행운 합 체크..... " + hn_yg + " " + rslt + "\n";
+	hcompchk("천간합",5,sj_dg,hn_lg); 	document.getElementById("output2").innerText += "대운 합 체크..... " + hn_lg + " " + rslt + "\n";   //--- 행운에 의한 천간합 체크
+	hcompchk("천간합",5,sj_dg,hn_yg); 	document.getElementById("output2").innerText += "연운 합 체크..... " + hn_yg + " " + rslt + "\n";   //--- 행운에 의한 천간합 체크
+	hcompchk("천간합",5,sj_dg,hn_mg); 	document.getElementById("output2").innerText += "월운 합 체크..... " + hn_mg + " " + rslt + "\n";   //--- 행운에 의한 천간합 체크
+	hcompchk("천간합",5,sj_dg,hn_dg); 	document.getElementById("output2").innerText += "일운 합 체크..... " + hn_dg + " " + rslt + "\n";   //--- 행운에 의한 천간합 체크
 	
 });
 
