@@ -195,6 +195,10 @@ fread("ca08_monthstart");
 fread("ca09r_yjsjfind");	
 fread("ca10_ghabch");	
 fread("ca11_lunar_cal");	
+fread("cgh01_sibsng6chin");	
+fread("cghd02_dhapcharac");	
+fread("cghd03_health");	
+fread("cghy04_yhabsimri");	
 	
 function fread(fn){
     $(function (){
@@ -1371,7 +1375,12 @@ function ganhabch(){
 	gan_nfo[3][8] = sj_org2; document.getElementById("output2").innerText += sj_org2 + "\n";
 	
 	for (i = 0; i < ca10_ghabch.length; i++){
- 		if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1){sts = "원국"; document.getElementById("output2").innerText += "연간 " + hcg1 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
+ 		if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1){
+			sts = "원국"; document.getElementById("output2").innerText += "연간 " + hcg1 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";
+			if (ca10_ghabch[i][4].substr(1,1) == "a"){n = 1;}else{n = 2};
+			for (i=1; i< .length; i++){if (cghy04_yhabsimri[i][0] == dgss_titl1){rslt = cghy04_yhabsimri[i][n]; document.getElementById("output2").innerText += dgss_titl1 + "심리--- " + rslt + "\n";};};
+			for (i=1; i< .length; i++){if (cghy04_yhabsimri[i][0] == dgss_titl3){rslt = cghy04_yhabsimri[i][n]; document.getElementById("output2").innerText += dgss_titl1 + "심리--- " + rslt + "\n";};};
+		};
  		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2){sts = "원국"; document.getElementById("output2").innerText += "월간 " + hcg2 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3){sts = "원국"; document.getElementById("output2").innerText += "일간 " + hcg3 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
  		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4){sts = "원국"; document.getElementById("output2").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
