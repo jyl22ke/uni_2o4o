@@ -1347,7 +1347,7 @@ function ganhabch(){
 	if (rt1 == "00"){rt1 = "0"}else{rt1 = "1"}; if (rt2 == "00"){rt2 = "0"}else{rt2 = "1"}; if (rt3 == "00"){rt3 = "0"}else{rt3 = "1"}; //---위치별 통근값
 	
 	gan_nfo[2][5] = jjsjj[2][2];  //---월지오행
-	hcompchk("천간합",5,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt; rslt3 += rslt;  //---연간합
+	hcompchk("천간합",5,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 = rslt; rslt3 += rslt;  //---연간합
 	hcompchk("천간합",5,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt; gan_nfo[3][5] += rslt1;  //---일간합 (일간-월간)
 	hcompchk("천간합",5,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt; gan_nfo[3][5] += rslt1;  //---일간합 (일간-시간)
 	hcompchk("천간충",4,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt; rslt3 += rslt;  //---연간충
