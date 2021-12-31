@@ -270,7 +270,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 <script type="text/javascript">
 	var premon = null; var postmon = null; var term = 0; var gendr = ""; var now = null; var hunD = null; var hunL = new Array; var hs_titl = "";
 	var saju = ""; var saju_h = ""; var symdt = ""; var longungj = ""; var hcg1 = ""; var hcg2 = ""; var hcg3 = ""; var hcg4 = ""; var rt = "";
-	var vwyr = null; var rvwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = "";
+	var vwyr = null; var rvwyr = null; var seug = ""; var seugs = ""; var seugoh = ""; var seuj = ""; var seujs = ""; var seujoh = ""; var rslt0 = "";
 	var tsj1 = ""; var tsj2 = ""; var tsj3 = ""; var tsj4 = ""; var tsj5 = ""; var tsj6 = ""; var tsj7 = ""; var tsj8 = ""; var ohg = ""; var ohj = "";
 	var sj_yg = ""; var sj_mg = ""; var sj_dg = ""; var sj_tg = "";  //--- 사주 (년월일시)간
 	var sj_yj = ""; var sj_mj = ""; var sj_dj = ""; var sj_tj = "";  //--- 사주 (년월일시)지
@@ -579,7 +579,7 @@ function sibsTugsin(a){
 	
 //======= 행운 년/월/일 변경시 ======
 $("#hunDate").change(function(){
-	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = ""; ageL = 0; ageY = 0;
+	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = ""; ageL = 0; ageY = 0; rslt0 = "";
 	$('.hun1').empty(); $('.hun2').empty();
 	hunD = document.getElementById('hunDate').value; hunD = hunD + " 04:30"; vwyr = Number(hunD.substr(0,4));
 	//----- 대운
