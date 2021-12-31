@@ -1378,8 +1378,8 @@ function ganhabch(){
  		if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1){
 			sts = "원국"; document.getElementById("output2").innerText += "연간 " + hcg1 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";
 			if (ca10_ghabch[i][4].substr(1,1) == "a"){n = 1;}else{n = 2};
-			for (i=1; i< cghy04_yhabsimri.length; i++){if (cghy04_yhabsimri[i][0] == dgss_titl1){rslt = cghy04_yhabsimri[i][n]; document.getElementById("output2").innerText += dgss_titl1 + "심리--- " + rslt + "\n";};};
-			for (i=1; i< cghy04_yhabsimri.length; i++){if (cghy04_yhabsimri[i][0] == dgss_titl3){rslt = cghy04_yhabsimri[i][n]; document.getElementById("output2").innerText += dgss_titl1 + "심리--- " + rslt + "\n";};};
+			for (i=1; i< cghy04_yhabsimri.length; i++){if (cghy04_yhabsimri[i][0] == dgss_titl1){rslt = cghy04_yhabsimri[i][n]; document.getElementById("output2").innerText += dgss_titl1 + " " + cghy04_yhabsimri[0][n] + "--- " + rslt + "\n";};};
+			for (i=1; i< cghy04_yhabsimri.length; i++){if (cghy04_yhabsimri[i][0] == dgss_titl3){rslt = cghy04_yhabsimri[i][n]; document.getElementById("output2").innerText += dgss_titl3 + " " + cghy04_yhabsimri[0][n] + "--- " + rslt + "\n";};};
 		};
  		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2){sts = "원국"; document.getElementById("output2").innerText += "월간 " + hcg2 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3){sts = "원국"; document.getElementById("output2").innerText += "일간 " + hcg3 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
