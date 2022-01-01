@@ -1346,8 +1346,8 @@ function ganhabch(){
 	
 	gan_nfo[2][5] = jjsjj[2][2];  //---월지오행
 	hcompchk("천간합",5,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 = rslt; rslt3 += rslt;  //---연간합
-	hcompchk("천간합",5,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt; gan_nfo[3][5] += rslt1;  //---일간합 (일간-월간)
-	hcompchk("천간합",5,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt; gan_nfo[3][5] += rslt1;  //---일간합 (일간-시간)
+	hcompchk("천간합",5,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간합 (일간-월간)
+	hcompchk("천간합",5,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간합 (일간-시간)
 	hcompchk("천간충",4,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt; rslt3 += rslt;  //---연간충
 	hcompchk("천간충",4,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간충 (일간-월간)
 	hcompchk("천간충",4,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간충 (일간-시간)
@@ -1385,10 +1385,17 @@ function ganhabch(){
  		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 != '-----'){sts = "원국"; document.getElementById("output2").innerText += "월간 " + hcg2 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----'){
 			sts = "원국"; document.getElementById("output2").innerText += "일간 " + hcg3 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";
-			if (ca10_ghabch[i][4].substr(0,1) == "1"){summing1();}; if (ca10_ghabch[i][4].substr(0,1) == "2"){summing2();}; if (ca10_ghabch[i][4].substr(0,1) == "3"){summing3();};
-			if (ca10_ghabch[i][4].substr(0,1) == "4"){summing4();}; if (ca10_ghabch[i][4].substr(0,1) == "5"){summing5();}; if (ca10_ghabch[i][4].substr(0,1) == "6"){summing6();};
-			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing7();}; if (ca10_ghabch[i][4].substr(0,1) == "8"){summing8();}; if (ca10_ghabch[i][4].substr(0,1) == "9"){summing9();};
- 			if (ca10_ghabch[i][4].substr(0,1) == "0"){summing0();};
+			if (ca10_ghabch[i][4].substr(0,1) == "1"){summing1();};  //--- 합(1)
+			if (ca10_ghabch[i][4].substr(0,1) == "2"){summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
+			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing2();};  //--- 불합(3)
+			if (ca10_ghabch[i][4].substr(0,1) == "4"){summing4();};  //--- 합봉(4)
+			if (ca10_ghabch[i][4].substr(0,1) == "5"){summing5();};  //--- 용봉(5)
+			if (ca10_ghabch[i][4].substr(0,1) == "6"){summing6();};  //--- 합파(6)
+			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing7();};  //--- 불합+충(7)
+			if (ca10_ghabch[i][4].substr(0,1) == "8"){summing8();};  //--- 연간합 긍정(8)
+			if (ca10_ghabch[i][4].substr(0,1) == "9"){summing9();};  //--- 연간합 부정(9)
+ 			if (ca10_ghabch[i][4].substr(0,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0)
+			document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 		};
  		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output2").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 	};
@@ -1402,17 +1409,18 @@ function summing1(){
 	if (temp[0][8].includes(sj_dg)){ sts = "총명하여 학술과 기예에 관심이 많고, 또 양순하면서도 다정다감하여 대인관계가 원만한 편이다. 하지만 이성으로부터 많은 관심을 받거나 부화뇌동(附和雷同)하려는 심리가 강해 자칫하면 구설에 휘말릴 수 있다.";};
 	if (temp[0][9].includes(sj_dg)){ sts = "신강하면 흉화가 없지만 신약하면 소심박약(小心薄弱)하고 편향성(偏向性)을 띠게 된다";};
 	document.getElementById("output2").innerText += sts + "\n 건강에 흉화---" + temp[0][11] + "\n";
-	//--- 정재/정관의 긍정심리 추가
+	//--- 정재/정관의 긍정심리
+	subj = temp[0][3].substr(3,2);
+	for (j=1; j< cgh01_sibsng_simri6chin.length; j++){
+		if (cgh01_sibsng_simri6chin[j][0] == subj){
+			rslt = cgh01_sibsng_simri6chin[j][1]; 
+			document.getElementById("output2").innerText += subj + "--- " + rslt + "\n";
+		};
+	};
 };
 	
-//======== 합화 용신(2) 내용 summary ========
-function summing2(){
-	//--- 작성중
-
-};
-/**/	
 //======== 불합(3) 내용 summary ========
-function summing3(){
+function summing2(){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); subj = temp[0][3].substr(3,2);
 	for (j=1; j< cgh01_sibsng_simri6chin.length; j++){
 		if (cgh01_sibsng_simri6chin[j][0] == subj){
@@ -1420,7 +1428,6 @@ function summing3(){
 			document.getElementById("output2").innerText += subj + "--- " + rslt + "\n";
 		};
 	};
-	document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 };
 /*	
 //======== 합봉(4) 내용 summary ========
