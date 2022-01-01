@@ -1385,7 +1385,8 @@ function ganhabch(){
  		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 != '-----'){sts = "원국"; document.getElementById("output2").innerText += "월간 " + hcg2 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----'){
 			sts = "원국"; document.getElementById("output2").innerText += "일간 " + hcg3 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";
-			summing1();
+
+			//--- 함수 선택하는 공식 -------  summing1();
 		
 		};
  		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output2").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
@@ -1396,17 +1397,57 @@ function ganhabch(){
 //======== 합(1) 내용 summary ========
 function summing1(){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
-	document.getElementById("output2").innerText += "일간의 심리--- 1.다정다감 2.부화뇌동 3.부정망상" + temp[0][4] + " " + temp[0][6] + "\n 배우자 이상형---" + temp[0][5] + "\n";
+	document.getElementById("output2").innerText += "일간의 심리--- 1.다정다감 2.부화뇌동 3.부정망상\n" + temp[0][4] + " " + temp[0][6] + "\n 배우자 이상형---" + temp[0][5] + "\n";
 	if (temp[0][8].includes(sj_dg)){ sts = "총명하여 학술과 기예에 관심이 많고, 또 양순하면서도 다정다감하여 대인관계가 원만한 편이다. 하지만 이성으로부터 많은 관심을 받거나 부화뇌동(附和雷同)하려는 심리가 강해 자칫하면 구설에 휘말릴 수 있다.";};
 	if (temp[0][9].includes(sj_dg)){ sts = "신강하면 흉화가 없지만 신약하면 소심박약(小心薄弱)하고 편향성(偏向性)을 띠게 된다";};
 	document.getElementById("output2").innerText += sts + "\n 건강에 흉화---" + temp[0][11] + "\n";
+	//--- 정재/정관의 긍정심리 추가
 };
 	
+//======== 합화 용신(2) 내용 summary ========
+function summing2(){
 	
+};
 	
+//======== 불합(3) 내용 summary ========
+function summing3(){
 	
+};
 	
+//======== 합봉(4) 내용 summary ========
+function summing4(){
 	
+};
+	
+//======== 용봉(5) 내용 summary ========
+function summing5(){
+	
+};
+	
+//======== 합파(6) 내용 summary ========
+function summing6(){
+	
+};
+
+//======== 불합+충(7) 내용 summary ========
+function summing7(){
+	
+};
+	
+//======== 연간합 긍정(8) 내용 summary ========
+function summing8(){
+	
+};
+	
+//======== 연간합 부정(9) 내용 summary ========
+function summing9(){
+	
+};
+	
+//======== 합화오행 육친십성 흉화(0) 내용 summary ========
+function summing0(){
+	
+};
 	
 	
 	//========== 충/합 ==========
