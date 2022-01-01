@@ -1415,9 +1415,9 @@ function summing2(){
 function summing1(){
 	document.getElementById("output2").innerText += "---------test-----------------------------------------------------\n";
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); subj = temp[0][3].substr(3,2);
-	for (i=1; i< cgh01_sibsng_simri6chin.length; i++){
-		if (cgh01_sibsng_simri6chin[i][0] == subj){
-			rslt = cgh01_sibsng_simri6chin[i][2]; 
+	for (j=1; j< cgh01_sibsng_simri6chin.length; j++){
+		if (cgh01_sibsng_simri6chin[j][0] == subj){
+			rslt = cgh01_sibsng_simri6chin[j][2]; 
 			document.getElementById("output2").innerText += subj + "--- " + rslt + "\n";
 		};
 	};
