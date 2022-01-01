@@ -1388,7 +1388,7 @@ function ganhabch(){
 //			if (ca10_ghabch[i][4].substr(0,1) == "1"){summing1();}; if (ca10_ghabch[i][4].substr(0,1) == "2"){summing2();}; if (ca10_ghabch[i][4].substr(0,1) == "3"){summing3();};
 //			if (ca10_ghabch[i][4].substr(0,1) == "4"){summing4();}; if (ca10_ghabch[i][4].substr(0,1) == "5"){summing5();}; if (ca10_ghabch[i][4].substr(0,1) == "6"){summing6();};
 //			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing7();}; if (ca10_ghabch[i][4].substr(0,1) == "8"){summing8();}; if (ca10_ghabch[i][4].substr(0,1) == "9"){summing9();};
- 			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing1();};
+ 			if (ca10_ghabch[i][4].substr(0,1) == "3"){summng3();};
 		};
  		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output2").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 	};
@@ -1412,10 +1412,13 @@ function summing2(){
 };
 */	
 //======== 불합(3) 내용 summary ========
-function summing3(){
-	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); sts = temp[0][3].substr(3,2);
+function summng3(){
+	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); subj = temp[0][3].substr(3,2);
 	for (i=1; i< cgh01_sibsng_simri6chin.length; i++){
-		if (cgh01_sibsng_simri6chin[i][0] == sts){rslt = cgh01_sibsng_simri6chin[i][2]; document.getElementById("output2").innerText += sts + "--- " + rslt + "\n";};
+		if (cgh01_sibsng_simri6chin[i][0] == subj){
+			rslt = cgh01_sibsng_simri6chin[i][2]; 
+			document.getElementById("output2").innerText += subj + "--- " + rslt + "\n";
+		};
 	};
 	document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 };
