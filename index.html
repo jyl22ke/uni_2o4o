@@ -1358,7 +1358,8 @@ function ganhabch(){
 		}else{if (gan_nfo[3][6]=="" && gan_nfo[3][7]!=""){ if (sj_mg == sj_dg){hcg3 += "쟁" + rt2 + gan_nfo[3][7].substr(2,1) + rt3;}else{hcg3 += "--" + gan_nfo[3][7].substr(2,1) + rt3;};}else{hcg3 += "----";};};
 	};
 	if (gan_nfo[3][6].substr(2,1) == "합" || gan_nfo[3][7].substr(2,1) == "합"){
-		if (gan_nfo[3][5].includes(gan_nfo[2][5])){hcg3 += "1";	}else{hcg3 += "0";};  //--- 월지 합오행 체크
+		subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
+		if (temp[0][2] == gan_nfo[2][5]){hcg3 += "1";	}else{hcg3 += "0";};  //--- 월지 합오행 체크
 	}else{hcg3 += "0";
 	};
 	hcg4 += "-----";
