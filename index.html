@@ -657,7 +657,7 @@ $("#hunDate").change(function(){
 	
 	for (i = 0; i < ca10_ghabch.length; i++){
 		if (rslt0 != ""){
-			document.getElementById("output2").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"};   //--- 행운에 의한 천간합 체크
+			document.getElementById("output2").innerText += hunD.substr(0,10) + " " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 			if (ca10_ghabch[i][4].substr(1,1) == "1"){summing1();};  //--- 합(1)
 			if (ca10_ghabch[i][4].substr(1,1) == "2"){summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
 			if (ca10_ghabch[i][4].substr(1,1) == "3"){summing2();};  //--- 불합(3)
