@@ -1407,7 +1407,7 @@ function ganhabch(){
 			if (ca10_ghabch[i][4].substr(0,1) == "2"){summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
 			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing2();};  //--- 불합(3)
 			if (ca10_ghabch[i][4].substr(0,1) == "6"){summing2(); summing3();};  //--- 합파불합(6)
-			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing2(); summing4();};  //--- 불합+충(7)
+			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing2(); summing6();};  //--- 불합+충(7)
 //			if (ca10_ghabch[i][4].substr(0,1) == "4"){summing4();};  //--- 합봉(4) --------- 행운합에 반영
 //			if (ca10_ghabch[i][4].substr(0,1) == "5"){summing5();};  //--- 용봉(5) --------- 행운합에 반영
 // 			if (ca10_ghabch[i][4].substr(0,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0) --------- 행운합에 반영
@@ -1454,26 +1454,29 @@ function summing3(){
 	document.getElementById("output2").innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
 };
 	
-//======== 불합+충(7) 내용 summary ========
-function summing4(){
-	document.getElementById("output2").innerText += "상신과 육친과의 불화--- \n";
-	//--- 작성중
 	
-};
-	
-/*	
 //======== 합봉(4) 내용 summary ========
 function summing4(){
+	document.getElementById("output2").innerText += "십성육친 흉화 손재수 노다공소 건강흉화--- 작성중 \n";
 	//--- 작성중
 	
 };
 	
 //======== 용봉(5) 내용 summary ========
 function summing5(){
+	document.getElementById("output2").innerText += "재물 명예 건강에 흉화--- 작성중 \n";
 	//--- 작성중
 	
 };
-*/	
+	
+//======== 불합+충(7) 내용 summary ========
+function summing6(){
+	document.getElementById("output2").innerText += "상신과 육친과의 불화--- 작성중 \n";
+	//--- 작성중
+	
+};
+	
+/**/	
 /*
 //======== 합화오행 육친십성 흉화(0) 내용 summary ========
 function summing0(){
