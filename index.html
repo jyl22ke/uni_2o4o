@@ -1429,6 +1429,15 @@ function summing2(){
 		};
 	};
 };
+	
+//======== 합파불합(6) 내용 summary ========
+function summing3(){
+	if (gendr == "남양"){n = 1;}else{n = 2;}; subj = "";
+	if (gan_nfo[3][6].includes("충")){subj = dgss_titl3;}else{if (gan_nfo[3][7].includes("충")){subj = dgss_titl7;};};
+	temp = cgh01_sibsng_simri6chin.filter(isFind);
+	document.getElementById("output2").innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
+};
+	
 /*	
 //======== 합봉(4) 내용 summary ========
 function summing4(){
@@ -1442,13 +1451,6 @@ function summing5(){
 	
 };
 */	
-//======== 합파불합(6) 내용 summary ========
-function summing3(){
-	if (gendr == "남양"){n = 1;}else{n = 2;}; subj = "";
-	if (gan_nfo[3][6].includes("충")){subj = dgss_titl3;}else{if (gan_nfo[3][7].includes("충")){subj = dgss_titl7;};};
-	temp = cgh01_sibsng_simri6chin.filter(isFind);
-	document.getElementById("output2").innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
-};
 /*
 //======== 불합+충(7) 내용 summary ========
 function summing7(){
