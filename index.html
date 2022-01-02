@@ -656,17 +656,19 @@ $("#hunDate").change(function(){
 //	}else{if (gan_nfo[3][7].substr(2,1) == "합"){ hcompchk("천간합",5,sj_tg,hn_dg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};};};
 	
 	for (i = 0; i < ca10_ghabch.length; i++){
-		if (rslt0 != ""){
-			document.getElementById("output2").innerText += hunD.substr(0,10) + " " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
-			if (ca10_ghabch[i][4].substr(1,1) == "1"){summing1();};  //--- 합(1)
-			if (ca10_ghabch[i][4].substr(1,1) == "2"){summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
-			if (ca10_ghabch[i][4].substr(1,1) == "3"){summing2();};  //--- 불합(3)
-			if (ca10_ghabch[i][4].substr(1,1) == "6"){summing2(); summing3();};  //--- 합파불합(6)
-			if (ca10_ghabch[i][4].substr(1,1) == "7"){summing2(); summing4();};  //--- 불합+충(7)
-		//	if (ca10_ghabch[i][4].substr(1,1) == "4"){summing4();};  //--- 합봉(4) --------- 행운합에 반영
-		//	if (ca10_ghabch[i][4].substr(1,1) == "5"){summing5();};  //--- 용봉(5) --------- 행운합에 반영
-		// 	if (ca10_ghabch[i][4].substr(1,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0) --------- 행운합에 반영
-			document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
+		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----'){
+			if (rslt0 != ""){
+				document.getElementById("output2").innerText += hunD.substr(0,10) + " " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+				if (ca10_ghabch[i][4].substr(1,1) == "1"){summing1();};  //--- 합(1)
+				if (ca10_ghabch[i][4].substr(1,1) == "2"){summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
+				if (ca10_ghabch[i][4].substr(1,1) == "3"){summing2();};  //--- 불합(3)
+				if (ca10_ghabch[i][4].substr(1,1) == "6"){summing2(); summing3();};  //--- 합파불합(6)
+				if (ca10_ghabch[i][4].substr(1,1) == "7"){summing2(); summing4();};  //--- 불합+충(7)
+			//	if (ca10_ghabch[i][4].substr(1,1) == "4"){summing4();};  //--- 합봉(4) --------- 행운합에 반영
+			//	if (ca10_ghabch[i][4].substr(1,1) == "5"){summing5();};  //--- 용봉(5) --------- 행운합에 반영
+			// 	if (ca10_ghabch[i][4].substr(1,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0) --------- 행운합에 반영
+				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
+			};
 		};
 	};
 //	hcompchk("천간충",4,sj_dg,hn_lg); 	if (rslt != ""){rslt0 += " 대운 " + rslt};   //--- 행운에 의한 천간합 체크
