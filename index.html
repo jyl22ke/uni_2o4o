@@ -662,16 +662,20 @@ $("#hunDate").change(function(){
 				document.getElementById("output2").innerText += hunD.substr(0,10) + " " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 				if (ca10_ghabch[i][4].substr(1,1) == "1"){summing1();};  //--- 합(1)
 				if (ca10_ghabch[i][4].substr(1,1) == "2"){summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
-				if (ca10_ghabch[i][4].substr(1,1) == "3"){summing2();};  //--- 불합(3)
-				if (ca10_ghabch[i][4].substr(1,1) == "6"){summing2(); summing3();};  //--- 합파불합(6)
-				if (ca10_ghabch[i][4].substr(1,1) == "7"){summing2(); summing4();};  //--- 불합+충(7)
+				if (ca10_ghabch[i][4].substr(1,1) == "3"){summing3();};  //--- 불합(3)
+				if (ca10_ghabch[i][4].substr(1,1) == "6"){summing3(); summing6();};  //--- 합파불합(6)
+				if (ca10_ghabch[i][4].substr(1,1) == "7"){summing3(); summing7();};  //--- 불합+충(7)
 				if (ca10_ghabch[i][4].substr(1,1) == "4"){summing4();};  //--- 합봉(4) 
 				if (ca10_ghabch[i][4].substr(1,1) == "5"){summing5();};  //--- 용봉(5) 
 				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 			};
 			if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 == '-----'){
 				document.getElementById("output2").innerText += hunD.substr(0,10) + "일간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
-				if (ca10_ghabch[i][4].substr(1,1) == "1"){summing1();};  //--- 일간 행운합(1)
+				if (gan_nfo[3][4].substr(0,1) == "1"){summing3();}else{
+					subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
+					if (temp[0][2] != gan_nfo[2][5]){summing1();
+					}else{summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";	};
+				};
 				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 			};
 		};
@@ -1416,7 +1420,7 @@ function ganhabch(){
 	hcompchk("천간충",4,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt; rslt3 += rslt;  //---연간충
 	hcompchk("천간충",4,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간충 (일간-월간)
 	hcompchk("천간충",4,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간충 (일간-시간)
-	if (gan_nfo[1][6].substr(2,1)=="합"){ if (gan_nfo[3][6].substr(2,1)=="충"){hcg1 += "합" + rt1 + "충0-";	}else{hcg1 += gan_nfo[1][6].substr(2,1) + rt1 + "---";};}else{hcg1 += "-----";};
+	if (gan_nfo[1][6].substr(2,1)=="합"){ if (gan_nfo[3][6].substr(2,1)=="충"){hcg1 += "합" + rt1 + "충0-";}else{hcg1 += gan_nfo[1][6].substr(2,1) + rt1 + "---";};}else{hcg1 += "-----";};
 	hcg2 += "-----"; 
 	if (gan_nfo[3][6]!="" && gan_nfo[3][7]!=""){hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + gan_nfo[3][7].substr(2,1) + rt3;  //--- 합충 체크
 	}else{if (gan_nfo[3][6]!="" && gan_nfo[3][7]==""){ if (sj_tg == sj_dg){hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + "쟁" + rt3;}else{hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + "--";};
@@ -1425,7 +1429,7 @@ function ganhabch(){
 	if (gan_nfo[3][6].substr(2,1) == "합" || gan_nfo[3][7].substr(2,1) == "합"){
 		subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
 		if (temp[0][2] == gan_nfo[2][5]){hcg3 += "1";}else{hcg3 += "0";};  //--- 월지 합오행 체크
-	}else{hcg3 += "0";
+	}else{hcg3 += "-";
 	};
 	hcg4 += "-----";
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
@@ -1453,10 +1457,11 @@ function ganhabch(){
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----'){
 			sts = "원국"; document.getElementById("output2").innerText += "일간합 " + hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][2] + "\n";
 			if (ca10_ghabch[i][4].substr(0,1) == "1"){summing1();};  //--- 합(1)
-			if (ca10_ghabch[i][4].substr(0,1) == "2"){summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
-			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing2();};  //--- 불합(3)
-			if (ca10_ghabch[i][4].substr(0,1) == "6"){summing2(); summing3();};  //--- 합파불합(6)
-			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing2(); summing6();};  //--- 불합+충(7)
+			if (ca10_ghabch[i][4].substr(0,1) == "2"){summing1(); 
+				document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
+			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing3();};  //--- 불합(3)
+			if (ca10_ghabch[i][4].substr(0,1) == "6"){summing3(); summing6();};  //--- 합파불합(6)
+			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing3(); summing7();};  //--- 불합+충(7)
 			document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 		};
  		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output2").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
@@ -1480,9 +1485,20 @@ function summing1(){
 		};
 	};
 };
+
+//======== 합화(2) 내용 summary ========
+function summing2(){
+	//--- 월지에 합화오행 투출
+	//--- 합화오행을 극하는 관성이 원국에 없어야 함
+	//--- 충극이 없어야 함
+	//--- 각각 지지에 통근하지 않아야 함
+	//--- 합화 기운이 원국에 강하게 투출(득세?)
+	//--- 월지에 합화오행 투출
+	
+};
 	
 //======== 불합(3) 내용 summary ========
-function summing2(){
+function summing3(){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); subj = temp[0][3].substr(3,2);
 	for (j=1; j< cgh01_sibsng_simri6chin.length; j++){
 		if (cgh01_sibsng_simri6chin[j][0] == subj){
@@ -1491,15 +1507,6 @@ function summing2(){
 		};
 	};
 };
-	
-//======== 합파불합(6) 내용 summary ========
-function summing3(){
-	if (gendr == "남양"){n = 1;}else{n = 2;}; subj = "";
-	if (gan_nfo[3][6].includes("충")){subj = dgss_titl3;}else{if (gan_nfo[3][7].includes("충")){subj = dgss_titl7;};};
-	temp = cgh01_sibsng_simri6chin.filter(isFind);
-	document.getElementById("output2").innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
-};
-	
 	
 //======== 합봉(4) 내용 summary ========
 function summing4(){
@@ -1519,8 +1526,16 @@ function summing5(){
 	document.getElementById("output2").innerText += "건강 흉화 " + temp[0][11] + "\n";
 };
 	
-//======== 불합+충(7) 내용 summary ========
+//======== 합파불합(6) 내용 summary ========
 function summing6(){
+	if (gendr == "남양"){n = 1;}else{n = 2;}; subj = "";
+	if (gan_nfo[3][6].includes("충")){subj = dgss_titl3;}else{if (gan_nfo[3][7].includes("충")){subj = dgss_titl7;};};
+	temp = cgh01_sibsng_simri6chin.filter(isFind);
+	document.getElementById("output2").innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
+};
+	
+//======== 불합+충(7) 내용 summary ========
+function summing7(){
 	document.getElementById("output2").innerText += "상신과 육친과의 불화--- 작성중 \n";
 	//--- 작성중
 	
