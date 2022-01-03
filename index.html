@@ -674,28 +674,33 @@ $("#hunDate").change(function(){
 				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 			};
 		};
-/*			
-		habchk("천간합",5,sj_yg,hn_lg,hn_yg,hn_mg,hn_dg);
+	};
+	habchk("천간합",5,sj_yg,hn_lg,hn_yg,hn_mg,hn_dg);
+	for (i = 0; i < ca10_ghabch.length; i++){
 		if (rslt0 != ""){
 			if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg3 && hcg3 == '-----'){
 				if (ca10_ghabch[i][4].substr(1,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0) 
+				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 			};
-			document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 		};
-		habchk("천간합",5,sj_mg,hn_lg,hn_yg,hn_mg,hn_dg);
+	};
+	habchk("천간합",5,sj_mg,hn_lg,hn_yg,hn_mg,hn_dg);
+	for (i = 0; i < ca10_ghabch.length; i++){
 		if (rslt0 != ""){
 			if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg3 && hcg3 == '-----'){
 				if (ca10_ghabch[i][4].substr(1,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0) 
+				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 			};
-			document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 		};
-		habchk("천간합",5,sj_tg,hn_lg,hn_yg,hn_mg,hn_dg);
+	};
+	habchk("천간합",5,sj_tg,hn_lg,hn_yg,hn_mg,hn_dg);
+	for (i = 0; i < ca10_ghabch.length; i++){
 		if (rslt0 != ""){
-			if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg3 && hcg3 == '-----'){
+			if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg3 && hcg3 == '-----'){
 				if (ca10_ghabch[i][4].substr(1,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0) 
+				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 			};
-			document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
-		};*/
+		};
 	};
 //	hcompchk("천간충",4,sj_dg,hn_lg); 	if (rslt != ""){rslt0 += " 대운 " + rslt};   //--- 행운에 의한 천간합 체크
 //	hcompchk("천간충",4,sj_dg,hn_yg); 	if (rslt != ""){rslt0 += " 연운 " + rslt};   //--- 행운에 의한 천간합 체크
