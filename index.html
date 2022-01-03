@@ -166,8 +166,8 @@
 		<div class="dau" id="dau2"></div>
 		<div class="dau" id="dau1"></div>		
 	</div>
-	<div id="output1"></div>
-	<div id="output"></div>
+	
+	<div id="output"><div id="output1"></div></div>
 	<div id="output2"></div>
 	<div id="output3"></div>
 </div>
@@ -1450,53 +1450,56 @@ function ganhabch(){
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
 	document.getElementById("sj5a").innerText += rslt5; document.getElementById("sj7a").innerText += rslt7;
 	
-	if (gan_nfo[1][6] != ""){ sj_org1 = gan_nfo[1][6]; gan_nfo[1][8] = sj_org1; document.getElementById("output2").innerText += sj_org1 + "\n";};
+	if (gan_nfo[1][6] != ""){ sj_org1 = gan_nfo[1][6]; gan_nfo[1][8] = sj_org1; document.getElementById("output2").innerText += sj_org1 + "\n"; document.getElementById("output").innerText += sj_org1 + "\n";};
 	if (gan_nfo[3][6] != ""){ sj_org2 = gan_nfo[3][6];};
 	if (gan_nfo[3][7] != ""){ sj_org2 += " " + gan_nfo[3][7];};
 	if (gan_nfo[3][6].substr(2,1) == "합" && gan_nfo[3][7].substr(2,1) == "합"){sj_org2 = sj_org2.substr(0,3) + " 투합";
 	}else{	if ((gan_nfo[3][6].substr(2,1) == "합" && sj_tg == sj_dg) || (gan_nfo[3][7].substr(2,1) == "합" && sj_mg == sj_dg)){sj_org2 = sj_org2.substr(0,3) + " 쟁합";};};
-	gan_nfo[3][8] = sj_org2; if (sj_org2 != ""){ document.getElementById("output2").innerText += sj_org2 + "\n";};
+	gan_nfo[3][8] = sj_org2; if (sj_org2 != ""){ document.getElementById("output2").innerText += sj_org2 + "\n"; document.getElementById("output").innerText += sj_org2 + "\n";};
 	
 	for (i = 0; i < ca10_ghabch.length; i++){
  		if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1 && hcg1 != '-----'){
 			sts = "원국"; document.getElementById("output2").innerText += "연간합 " + hcg1 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";
+			document.getElementById("output").innerText += "연간합 " + hcg1 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";
 			if (ca10_ghabch[i][4].substr(0,1) == "8"){n = 1;};  //--- 연간합 긍정(8)
 			if (ca10_ghabch[i][4].substr(0,1) == "9"){n = 2;};  //--- 연간합 부정(9)
 			for (i=1; i< cgh01_sibsng_simri6chin.length; i++){
-				if (cgh01_sibsng_simri6chin[i][0] == dgss_titl1){rslt = cgh01_sibsng_simri6chin[i][n]; document.getElementById("output2").innerText += dgss_titl1 + "--- " + rslt + "\n";};
-				if (cgh01_sibsng_simri6chin[i][0] == dgss_titl3){rslt = cgh01_sibsng_simri6chin[i][n]; document.getElementById("output2").innerText += dgss_titl3 + "--- " + rslt + "\n";};
+				if (cgh01_sibsng_simri6chin[i][0] == dgss_titl1){rslt = cgh01_sibsng_simri6chin[i][n]; document.getElementById("output2").innerText += dgss_titl1 + "--- " + rslt + "\n"; document.getElementById("output").innerText += dgss_titl1 + "--- " + rslt + "\n";};
+				if (cgh01_sibsng_simri6chin[i][0] == dgss_titl3){rslt = cgh01_sibsng_simri6chin[i][n]; document.getElementById("output2").innerText += dgss_titl3 + "--- " + rslt + "\n"; document.getElementById("output").innerText += dgss_titl3 + "--- " + rslt + "\n";};
 			};
 			document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
+			document.getElementById("output").innerText += "--------------------------------------------------------------\n";
 		};
- 		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 != '-----'){sts = "원국"; document.getElementById("output2").innerText += "월간 " + hcg2 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
+ 		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 != '-----'){sts = "원국"; document.getElementById("output2").innerText += "월간 " + hcg2 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n"; document.getElementById("output").innerText += "월간 " + hcg2 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----'){
-			sts = "원국"; document.getElementById("output2").innerText += "일간합 " + hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][2] + "\n";
-			if (ca10_ghabch[i][4].substr(0,1) == "1"){summing1();};  //--- 합(1)
-			if (ca10_ghabch[i][4].substr(0,1) == "2"){summing1(); 
+			sts = "원국"; document.getElementById("output2").innerText += "일간합 " + hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][2] + "\n"; document.getElementById("output").innerText += "일간합 " + hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][2] + "\n";
+			if (ca10_ghabch[i][4].substr(0,1) == "1"){summing1("output2"); summing1("output");};  //--- 합(1)
+			if (ca10_ghabch[i][4].substr(0,1) == "2"){summing1("output2"); summing1("output");
 				document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
-			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing3();};  //--- 불합(3)
-			if (ca10_ghabch[i][4].substr(0,1) == "6"){summing3(); summing6();};  //--- 합파불합(6)
-			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing3(); summing7();};  //--- 불합+충(7)
+				document.getElementById("output").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
+			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing3("output2"); summing3("output");};  //--- 불합(3)
+			if (ca10_ghabch[i][4].substr(0,1) == "6"){summing3("output2"); summing6("output2"); summing3("output"); summing6("output");};  //--- 합파불합(6)
+			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing3("output2"); summing7("output2"); summing3("output"); summing7("output");};  //--- 불합+충(7)
 			document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
+			document.getElementById("output").innerText += "--------------------------------------------------------------\n";
 		};
- 		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output2").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
+ 		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output2").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n"; document.getElementById("output").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 	};
-	document.getElementById("output2").innerText += "행운에 따른 시기분석, 실행분석 진행할 예정임..... \n";
 };
 
 //======== 합(1) 내용 summary ========
-function summing1(){
+function summing1(destin){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
-	document.getElementById("output2").innerText += "일간의 심리--- 1.다정다감 2.부화뇌동 3.부정망상\n" + temp[0][4] + " " + temp[0][6] + "\n 배우자 이상형---" + temp[0][5] + "\n";
+	document.getElementById(destin).innerText += "일간의 심리--- 1.다정다감 2.부화뇌동 3.부정망상\n" + temp[0][4] + " " + temp[0][6] + "\n 배우자 이상형---" + temp[0][5] + "\n";
 	if (temp[0][8].includes(sj_dg)){ sts = "총명하여 학술과 기예에 관심이 많고, 또 양순하면서도 다정다감하여 대인관계가 원만한 편이다. 하지만 이성으로부터 많은 관심을 받거나 부화뇌동(附和雷同)하려는 심리가 강해 자칫하면 구설에 휘말릴 수 있다.";};  //--- 합화생
 	if (temp[0][9].includes(sj_dg)){ sts = "신강하면 흉화가 없지만 신약하면 소심박약(小心薄弱)하고 편향성(偏向性)을 띠게 된다";};  //--- 합화극
-	document.getElementById("output2").innerText += sts + "\n 건강에 주의---" + temp[0][11] + "\n";
+	document.getElementById(destin).innerText += sts + "\n 건강에 주의---" + temp[0][11] + "\n";
 	//--- 정재/정관의 긍정심리
 	subj = temp[0][3].substr(3,2);
 	for (j=1; j< cgh01_sibsng_simri6chin.length; j++){
 		if (cgh01_sibsng_simri6chin[j][0] == subj){
 			rslt = cgh01_sibsng_simri6chin[j][1]; 
-			document.getElementById("output2").innerText += subj + "--- " + rslt + "\n";
+			document.getElementById(destin).innerText += subj + "--- " + rslt + "\n";
 		};
 	};
 };
@@ -1513,56 +1516,56 @@ function summing2(){
 };
 	
 //======== 불합(3) 내용 summary ========
-function summing3(){
+function summing3(destin){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); subj = temp[0][3].substr(3,2);
 	for (j=1; j< cgh01_sibsng_simri6chin.length; j++){
 		if (cgh01_sibsng_simri6chin[j][0] == subj){
 			rslt = cgh01_sibsng_simri6chin[j][2]; 
-			document.getElementById("output2").innerText += subj + "--- " + rslt + "\n";
+			document.getElementById(destin).innerText += subj + "--- " + rslt + "\n";
 		};
 	};
 };
 	
 //======== 합봉(4) 내용 summary ========
-function summing4(){
+function summing4(destin){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); 
-	document.getElementById("output2").innerText += "건강 흉화 " + temp[0][11] + "\n";
+	document.getElementById(destin).innerText += "건강 흉화 " + temp[0][11] + "\n";
 	subj = temp[0][3].substr(3,2);
 	temp = cgh01_sibsng_simri6chin.filter(isFind);
 	if (gendr == "남양"){n = 1;}else{n = 2;};
-	document.getElementById("output2").innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
-	document.getElementById("output2").innerText += temp[0][2] + "손재수 노다공소\n";
+	document.getElementById(destin).innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
+	document.getElementById(destin).innerText += temp[0][2] + "손재수 노다공소\n";
 };
 	
 //======== 용봉(5) 내용 summary ========
-function summing5(){
+function summing5(destin){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
-	document.getElementById("output2").innerText += temp[0][3].substr(3,2) + "운 " + temp[0][4].substr(0,2) + "운 흉화 \n";
-	document.getElementById("output2").innerText += "건강 흉화 " + temp[0][11] + "\n";
+	document.getElementById(destin).innerText += temp[0][3].substr(3,2) + "운 " + temp[0][4].substr(0,2) + "운 흉화 \n";
+	document.getElementById(destin).innerText += "건강 흉화 " + temp[0][11] + "\n";
 };
 	
 //======== 합파불합(6) 내용 summary ========
-function summing6(){
+function summing6(destin){
 	if (gendr == "남양"){n = 1;}else{n = 2;}; subj = "";
 	if (gan_nfo[3][6].includes("충")){subj = dgss_titl3;}else{if (gan_nfo[3][7].includes("충")){subj = dgss_titl7;};};
 	temp = cgh01_sibsng_simri6chin.filter(isFind);
-	document.getElementById("output2").innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
+	document.getElementById(destin).innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
 };
 	
 //======== 불합+충(7) 내용 summary ========
-function summing7(){
-	document.getElementById("output2").innerText += "상신과 육친과의 불화--- 작성중 \n";
+function summing7(destin){
+	document.getElementById(destin).innerText += "상신과 육친과의 불화--- 작성중 \n";
 	//--- 작성중
 	
 };
 	
 //======== 합화오행 육친십성 흉화(0) 내용 summary ========
-function summing0(){
+function summing0(destin){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); 
 	subj = temp[0][3].substr(3,2);
 	if (gendr == "남양"){n = 1;}else{n = 2;};
 	temp = cgh01_sibsng_simri6chin.filter(isFind);
-	document.getElementById("output2").innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
+	document.getElementById(destin).innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
 };
 
 /*	
