@@ -1475,7 +1475,7 @@ function ganhabch(){
 			sts = "원국"; document.getElementById("output2").innerText += "일간합 " + hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][2] + "\n"; document.getElementById("output").innerText += "일간합 " + hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][2] + "\n";
 			if (ca10_ghabch[i][4].substr(0,1) == "1"){summing1("output2"); summing1("output");};  //--- 합(1)
 			if (ca10_ghabch[i][4].substr(0,1) == "2"){summing1("output2"); summing1("output");
-				document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
+				document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";  //--- 합화 용신(2)
 				document.getElementById("output").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
 			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing3("output2"); summing3("output");};  //--- 불합(3)
 			if (ca10_ghabch[i][4].substr(0,1) == "6"){summing3("output2"); summing6("output2"); summing3("output"); summing6("output");};  //--- 합파불합(6)
