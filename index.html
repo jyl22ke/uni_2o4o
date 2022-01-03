@@ -1408,8 +1408,8 @@ function ganhabch(){
 			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing2();};  //--- 불합(3)
 			if (ca10_ghabch[i][4].substr(0,1) == "6"){summing2(); summing3();};  //--- 합파불합(6)
 			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing2(); summing6();};  //--- 불합+충(7)
-//			if (ca10_ghabch[i][4].substr(0,1) == "4"){summing4();};  //--- 합봉(4) --------- 행운합에 반영
-//			if (ca10_ghabch[i][4].substr(0,1) == "5"){summing5();};  //--- 용봉(5) --------- 행운합에 반영
+			if (ca10_ghabch[i][4].substr(0,1) == "4"){summing4();};  //--- 합봉(4) --------- 행운합에 반영
+			if (ca10_ghabch[i][4].substr(0,1) == "5"){summing5();};  //--- 용봉(5) --------- 행운합에 반영
 // 			if (ca10_ghabch[i][4].substr(0,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0) --------- 행운합에 반영
 			document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 		};
@@ -1457,16 +1457,20 @@ function summing3(){
 	
 //======== 합봉(4) 내용 summary ========
 function summing4(){
-	document.getElementById("output2").innerText += "십성육친 흉화 손재수 노다공소 건강흉화--- 작성중 \n";
-	//--- 작성중
-	
+	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); 
+	document.getElementById("output2").innerText += "건강 흉화 " + temp[0][11] + "\n";
+	document.getElementById("output2").innerText += "손재수 노다공소 \n";
+	subj = temp[0][3].substr(3,2);
+	temp = cgh01_sibsng_simri6chin.filter(isFind);
+	if (gendr == "남양"){n = 1;}else{n = 2;};
+	document.getElementById("output2").innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
 };
 	
 //======== 용봉(5) 내용 summary ========
 function summing5(){
-	document.getElementById("output2").innerText += "재물 명예 건강에 흉화--- 작성중 \n";
-	//--- 작성중
-	
+	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
+	document.getElementById("output2").innerText += temp[0][3].substr(3,2) + "운 " + temp[0][4].substr(0,2) + "운 흉화 \n";
+	document.getElementById("output2").innerText += "건강 흉화 " + temp[0][11] + "\n";
 };
 	
 //======== 불합+충(7) 내용 summary ========
