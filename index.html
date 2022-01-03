@@ -46,13 +46,13 @@
 	.dau {grid-column: span 2;grid-row: span 1; color: #000; border:2px solid blue;min-height:30px; font-size: 0.7em; text-align:left;}
 	.sja,.sjb {grid-column: span 3;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
-	#output,#output3 { min-height: 300px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:300px;}
+	#output,#output1,#output3 { min-height: 300px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:300px;}
 	#output2 { float: left; min-height: 400px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:300px;}
 	#submit {padding: 0 10px; font-weight: bold;}
 	#submit1 {padding: 0 10px; font-weight: bold;}
 	#sola {display:none; font-weight: bold; width: 200px;}
 	#clear1 {padding: 0 5px;}
-	@media screen and (min-width: 800px) {.canvas {float: left;} #output,#output3 {float: right; width:485px;} #output2 {display: flex; width: 400px;}}
+	@media screen and (min-width: 800px) {.canvas {float: left;} #output,#output1,#output3 {float: right; width:485px;} #output2 {display: flex; width: 400px;}}
 	
   </style>
 
@@ -166,6 +166,7 @@
 		<div class="dau" id="dau2"></div>
 		<div class="dau" id="dau1"></div>		
 	</div>
+	<div id="output1"></div>
 	<div id="output"></div>
 	<div id="output2"></div>
 	<div id="output3"></div>
@@ -582,7 +583,7 @@ function sibsTugsin(a){
 //======= 행운 년/월/일 변경시 ======
 $("#hunDate").change(function(){
 	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = ""; ageL = 0; ageY = 0; rslt0 = "";
-	$('.hun1').empty(); $('.hun2').empty();
+	$('.hun1').empty(); $('.hun2').empty(); $('#output1').empty();
 	hunD = document.getElementById('hunDate').value; hunD = hunD + " 04:30"; vwyr = Number(hunD.substr(0,4));
 	//----- 대운
 	for (i=1; i<15; i++){
@@ -641,6 +642,10 @@ $("#hunDate").change(function(){
 	hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output3").innerText += hunD.substr(0,7) + "- 월운: (" + hn_mg + hn_mj + ") " + hv8 + "- " + hv9 + "\n";
 	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + "- " + hv9 + "\n";
 	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
+	hunanal(hn_lg, hn_lj, hn_yg, hn_yj); document.getElementById("output1").innerText += vwyr + "(" + ageY + ")" + " 연운: (" + hn_yg + hn_yj + ") " + hv8 + "- " + hv9 + "\n";
+	hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output1").innerText += hunD.substr(0,7) + "- 월운: (" + hn_mg + hn_mj + ") " + hv8 + "- " + hv9 + "\n";
+	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output1").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + "- " + hv9 + "\n";
+	document.getElementById("output1").innerText += "-----------------------------------------------------------------------------------\n";
 	
 /*	hcompchk("천간합",5,sj_dg,hn_lg); 	if (rslt != ""){rslt0 += " 대운 " + rslt};   //--- 행운에 의한 천간합 체크
 //	if (gan_nfo[3][6].substr(2,1) == "합"){hcompchk("천간합",5,sj_mg,hn_lg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};
@@ -660,23 +665,27 @@ $("#hunDate").change(function(){
 		if (rslt0 != ""){
 			if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----'){
 				document.getElementById("output2").innerText += hunD.substr(0,10) + " " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+				document.getElementById("output1").innerText += hunD.substr(0,10) + " " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 				if (ca10_ghabch[i][4].substr(1,1) == "1"){summing1();};  //--- 합(1)
-				if (ca10_ghabch[i][4].substr(1,1) == "2"){summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
+				if (ca10_ghabch[i][4].substr(1,1) == "2"){summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n"; document.getElementById("output1").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
 				if (ca10_ghabch[i][4].substr(1,1) == "3"){summing3();};  //--- 불합(3)
 				if (ca10_ghabch[i][4].substr(1,1) == "6"){summing3(); summing6();};  //--- 합파불합(6)
 				if (ca10_ghabch[i][4].substr(1,1) == "7"){summing3(); summing7();};  //--- 불합+충(7)
 				if (ca10_ghabch[i][4].substr(1,1) == "4"){summing4();};  //--- 합봉(4) 
 				if (ca10_ghabch[i][4].substr(1,1) == "5"){summing5();};  //--- 용봉(5) 
 				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
+				document.getElementById("output1").innerText += "--------------------------------------------------------------\n";
 			};
 			if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 == '-----'){
 				document.getElementById("output2").innerText += hunD.substr(0,10) + "일간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+				document.getElementById("output1").innerText += hunD.substr(0,10) + "일간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 				if (gan_nfo[3][4].substr(0,1) == "1"){summing3();}else{
 					subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
 					if (temp[0][2] != gan_nfo[2][5]){summing1();
-					}else{summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";	};
+					}else{summing1(); document.getElementById("output2").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n"; document.getElementById("output1").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";	};
 				};
 				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
+				document.getElementById("output1").innerText += "--------------------------------------------------------------\n";
 			};
 		};
 	};
@@ -685,8 +694,10 @@ $("#hunDate").change(function(){
 		if (rslt0 != ""){
 			if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1 && hcg1 == '-----'){
 				document.getElementById("output2").innerText += hunD.substr(0,10) + "연간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+				document.getElementById("output1").innerText += hunD.substr(0,10) + "연간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 				if (ca10_ghabch[i][4].substr(1,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0) 
 				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
+				document.getElementById("output1").innerText += "--------------------------------------------------------------\n";
 			};
 		};
 	};
@@ -695,8 +706,10 @@ $("#hunDate").change(function(){
 		if (rslt0 != ""){
 			if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 == '-----'){
 				document.getElementById("output2").innerText += hunD.substr(0,10) + "월간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+				document.getElementById("output1").innerText += hunD.substr(0,10) + "월간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 				if (ca10_ghabch[i][4].substr(1,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0) 
 				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
+				document.getElementById("output1").innerText += "--------------------------------------------------------------\n";
 			};
 		};
 	};
@@ -705,8 +718,10 @@ $("#hunDate").change(function(){
 		if (rslt0 != ""){
 			if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 == '-----'){
 				document.getElementById("output2").innerText += hunD.substr(0,10) + "시간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+				document.getElementById("output1").innerText += hunD.substr(0,10) + "시간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 				if (ca10_ghabch[i][4].substr(1,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0) 
 				document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
+				document.getElementById("output1").innerText += "--------------------------------------------------------------\n";
 			};
 		};
 	};
