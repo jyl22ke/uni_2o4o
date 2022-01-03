@@ -1417,9 +1417,6 @@ function ganhabch(){
 			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing2();};  //--- 불합(3)
 			if (ca10_ghabch[i][4].substr(0,1) == "6"){summing2(); summing3();};  //--- 합파불합(6)
 			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing2(); summing6();};  //--- 불합+충(7)
-			if (ca10_ghabch[i][4].substr(0,1) == "4"){summing4();};  //--- 합봉(4) --------- 행운합에 반영
-			if (ca10_ghabch[i][4].substr(0,1) == "5"){summing5();};  //--- 용봉(5) --------- 행운합에 반영
-// 			if (ca10_ghabch[i][4].substr(0,1) == "0"){summing0();};  //--- 합화오행 육친십성 흉화(0) --------- 행운합에 반영
 			document.getElementById("output2").innerText += "--------------------------------------------------------------\n";
 		};
  		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output2").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
@@ -1493,8 +1490,8 @@ function summing6(){
 function summing0(){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); 
 	subj = temp[0][3].substr(3,2);
-	temp = cgh01_sibsng_simri6chin.filter(isFind);
 	if (gendr == "남양"){n = 1;}else{n = 2;};
+	temp = cgh01_sibsng_simri6chin.filter(isFind);
 	document.getElementById("output2").innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
 };
 
