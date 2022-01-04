@@ -1500,11 +1500,11 @@ function summing1(dstin){
 //======== 합화(2) 내용 summary ========
 function summing2(dstin){
 	n = 0; subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
-	for (i = 2; i < sibsungX1.length; i++){
-		if (sibsungX1[i][2].substr(1,1) == temp[0][2]){
-			idx = sibsungX1[i].indexOf('편관');
+	for (k = 2; k < sibsungX1.length; k++){
+		if (sibsungX1[k][2].substr(1,1) == temp[0][2]){
+			idx = sibsungX1[k].indexOf('편관');
 			rslt += sibsungX1[0][idx] + sibsungX1[1][idx];
-			idx = sibsungX1[i].indexOf('정관');
+			idx = sibsungX1[k].indexOf('정관');
 			rslt += sibsungX1[0][idx] + sibsungX1[1][idx];
 		};
 	};
