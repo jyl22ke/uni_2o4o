@@ -1660,6 +1660,7 @@ function chnghab(name,qt,str,exp){
 //=============== 성격 display ==============
 function dgjmcharac(){
 	//--------- 일간에 따른 성격 display ---------
+	document.getElementById("output").innerText += "<<성격>> \n";
 	subj = sj_dg;
 	dgcharac = dgan_charac.filter(isFind);  //---일간성격
 	dgtext = "\n<내면성격의 성향> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][3] + "\n" + dgcharac[0][4] + "\n" + dgcharac[0][5] + "\n" + dgcharac[0][6] + "\n" + dgcharac[0][7] + "\n" + dgcharac[0][8] + "\n\n";
