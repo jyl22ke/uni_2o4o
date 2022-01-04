@@ -645,7 +645,7 @@ $("#hunDate").change(function(){
 	document.getElementById("hunD1").innerText += hn_dj + "\n";
 	document.getElementById("hunD2").innerText += "\n" + hdjs + " " + hdjoh + " " + hduns + "\n";
 
-	document.getElementById("output2").innerText += "<<행운 운세분석>>..... \n";
+	document.getElementById("output3").innerText += "<<행운 운세분석>>..... \n";
 	hunanal(hn_lg, hn_lj, hn_yg, hn_yj); document.getElementById("output3").innerText += vwyr + "(" + ageY + ")" + " 연운: (" + hn_yg + hn_yj + ") " + hv8 + "- " + hv9 + "\n";
 	hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output3").innerText += hunD.substr(0,7) + "- 월운: (" + hn_mg + hn_mj + ") " + hv8 + "- " + hv9 + "\n";
 	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + "- " + hv9 + "\n";
@@ -664,7 +664,7 @@ $("#hunDate").change(function(){
 //	if (gan_nfo[3][6].substr(2,1) == "합"){hcompchk("천간합",5,sj_mg,hn_dg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};
 //	}else{if (gan_nfo[3][7].substr(2,1) == "합"){ hcompchk("천간합",5,sj_tg,hn_dg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};};};
 */	
-	document.getElementById("output2").innerText += "<<행운합>>..... \n";
+	document.getElementById("output3").innerText += "<<행운합>>..... \n";
 	habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);
 	for (i = 0; i < ca10_ghabch.length; i++){
 		if (rslt0 != ""){
@@ -1445,7 +1445,7 @@ function ganhabch(){
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
 	document.getElementById("sj5a").innerText += rslt5; document.getElementById("sj7a").innerText += rslt7;
 	
-	document.getElementById("output2").innerText += "<<원국>>..... \n";
+	document.getElementById("output1").innerText += "<<원국>>..... \n";
 	if (gan_nfo[1][6] != ""){ sj_org1 = gan_nfo[1][6]; gan_nfo[1][8] = sj_org1; document.getElementById("output1").innerText += sj_org1 + "\n";};
 	if (gan_nfo[3][6] != ""){ sj_org2 = gan_nfo[3][6];};
 	if (gan_nfo[3][7] != ""){ sj_org2 += " " + gan_nfo[3][7];};
