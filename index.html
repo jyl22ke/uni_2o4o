@@ -655,19 +655,6 @@ $("#hunDate").change(function(){
 	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + "- " + hv9 + "\n";
 	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
 	
-/*	hcompchk("천간합",5,sj_dg,hn_lg); 	if (rslt != ""){rslt0 += " 대운 " + rslt};   //--- 행운에 의한 천간합 체크
-//	if (gan_nfo[3][6].substr(2,1) == "합"){hcompchk("천간합",5,sj_mg,hn_lg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};
-//	}else{if (gan_nfo[3][7].substr(2,1) == "합"){ hcompchk("천간합",5,sj_tg,hn_lg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};};};
-	hcompchk("천간합",5,sj_dg,hn_yg); 	if (rslt != ""){rslt0 += " 연운 " + rslt};   //--- 행운에 의한 천간합 체크
-//	if (gan_nfo[3][6].substr(2,1) == "합"){hcompchk("천간합",5,sj_mg,hn_yg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};
-//	}else{if (gan_nfo[3][7].substr(2,1) == "합"){ hcompchk("천간합",5,sj_tg,hn_yg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};};};
-	hcompchk("천간합",5,sj_dg,hn_mg); 	if (rslt != ""){rslt0 += " 월운 " + rslt};   //--- 행운에 의한 천간합 체크
-//	if (gan_nfo[3][6].substr(2,1) == "합"){hcompchk("천간합",5,sj_mg,hn_mg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};
-//	}else{if (gan_nfo[3][7].substr(2,1) == "합"){ hcompchk("천간합",5,sj_tg,hn_mg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};};};
-	hcompchk("천간합",5,sj_dg,hn_dg); 	if (rslt != ""){rslt0 += " 일운 " + rslt};   //--- 행운에 의한 천간합 체크
-//	if (gan_nfo[3][6].substr(2,1) == "합"){hcompchk("천간합",5,sj_mg,hn_dg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};
-//	}else{if (gan_nfo[3][7].substr(2,1) == "합"){ hcompchk("천간합",5,sj_tg,hn_dg); 	if (rslt != ""){rslt0 += rslt + "쟁합"};};};
-*/	
 	document.getElementById("output3").innerText += "<<행운합>>..... \n";
 	habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);
 	for (i = 0; i < ca10_ghabch.length; i++){
@@ -1660,7 +1647,7 @@ function chnghab(name,qt,str,exp){
 //=============== 성격 display ==============
 function dgjmcharac(){
 	//--------- 일간에 따른 성격 display ---------
-	document.getElementById("output").innerText += "<<성격>> \n";
+	document.getElementById("out").innerText += "<<성격>> \n";
 /*	subj = sj_dg;
 	dgcharac = dgan_charac.filter(isFind);  //---일간성격
 	dgtext = "\n<내면성격의 성향> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][3] + "\n" + dgcharac[0][4] + "\n" + dgcharac[0][5] + "\n" + dgcharac[0][6] + "\n" + dgcharac[0][7] + "\n" + dgcharac[0][8] + "\n\n";
@@ -1681,7 +1668,8 @@ function dgjmcharac(){
 	subj = dgss_titl6;
 	djcharac = mjdjss_charac.filter(isFind);  //---일지성격
 	djtext = "<배우자 관련> 일지십성 " + djcharac[0][0] + " " + djcharac[0][1] + "\n" + djcharac[0][6] + "\n" + djcharac[0][7] + "\n\n";
-	document.getElementById("output").innerText += djtext;*/
+	document.getElementById("output").innerText += djtext;
+*/
 };
 
   </script>
