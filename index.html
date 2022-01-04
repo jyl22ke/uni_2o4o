@@ -1407,9 +1407,6 @@ function hcompchk(a,b,c,d){
 
 //========== 천간합충 ==========
 function ganhabch(){
-	document.getElementById("out").innerText = "..성격1... \n";
-	document.getElementById("output").innerText = "..성격2... \n";
-
 	rslt1 = ""; rslt3 = ""; rslt5 = ""; rslt7 = ""; sj_org1 = ""; sj_org2 = ""; hcg1 = ""; hcg2 = ""; hcg3 = ""; hcg4 = ""; rt1 = ""; rt2 = ""; rt3 = "";
 	hrootchk(sj_yj,2); gan_nfo[1][4] = rt; rt1 += rt.substr(0,1);  //---자기자리 통근체크
 	hrootchk(sj_mj,3); gan_nfo[2][4] = rt; rt1 += rt.substr(0,1); rt2 += rt.substr(0,1);  //---자기자리 통근체크
@@ -1439,6 +1436,9 @@ function ganhabch(){
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
 	document.getElementById("sj5a").innerText += rslt5; document.getElementById("sj7a").innerText += rslt7;
 	
+	document.getElementById("out").innerText = "..성격1... \n";
+	document.getElementById("output").innerText = "..성격2... \n";
+
 	document.getElementById("output1").innerText += "<<원국>>..... \n";
 	if (gan_nfo[1][6] != ""){ sj_org1 = gan_nfo[1][6]; gan_nfo[1][8] = sj_org1; document.getElementById("output1").innerText += sj_org1 + "\n";};
 	if (gan_nfo[3][6] != ""){ sj_org2 = gan_nfo[3][6];};
