@@ -1509,9 +1509,9 @@ function summing2(dstin){
 		};
 	};
 	if (rslt.includes(sj_yg)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_yj)){ n += 1;}else{ n += 0;};	
-	if (rslt.includes(sj_mg)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_mj)){ n += 1;}else{ n += 0;};	
-	if (rslt.includes(sj_dg)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_dj)){ n += 1;}else{ n += 0;};	
-	if (rslt.includes(sj_tg)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_tj)){ n += 1;}else{ n += 0;};	
+	if (rslt.includes(sj_dj)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_tj)){ n += 1;}else{ n += 0;};
+	if (hcg3.substr(0,1) == "합"){ if (rslt.includes(sj_tg)){ n += 1;}else{ n += 0;};};
+	if (hcg3.substr(2,1) == "합"){ if (rslt.includes(sj_mg)){ n += 1;}else{ n += 0;};};	
 	if (n == 0){document.getElementById(dstin).innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";}else{document.getElementById(dstin).innerText += sj_org2.substr(0,3) + "불화 " + "\n";};
 };
 	
