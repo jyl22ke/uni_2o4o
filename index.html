@@ -1407,6 +1407,9 @@ function hcompchk(a,b,c,d){
 
 //========== 천간합충 ==========
 function ganhabch(){
+	document.getElementById("out").innerText += "..성격1... \n";
+	document.getElementById("output").innerText += "..성격2... \n";
+
 	rslt1 = ""; rslt3 = ""; rslt5 = ""; rslt7 = ""; sj_org1 = ""; sj_org2 = ""; hcg1 = ""; hcg2 = ""; hcg3 = ""; hcg4 = ""; rt1 = ""; rt2 = ""; rt3 = "";
 	hrootchk(sj_yj,2); gan_nfo[1][4] = rt; rt1 += rt.substr(0,1);  //---자기자리 통근체크
 	hrootchk(sj_mj,3); gan_nfo[2][4] = rt; rt1 += rt.substr(0,1); rt2 += rt.substr(0,1);  //---자기자리 통근체크
@@ -1647,8 +1650,8 @@ function chnghab(name,qt,str,exp){
 //=============== 성격 display ==============
 function dgjmcharac(){
 	//--------- 일간에 따른 성격 display ---------
-	document.getElementById("out").innerText += "<<성격>> \n";
-/*	subj = sj_dg;
+/*	document.getElementById("out").innerText += "<<성격>> \n";
+	subj = sj_dg;
 	dgcharac = dgan_charac.filter(isFind);  //---일간성격
 	dgtext = "\n<내면성격의 성향> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][3] + "\n" + dgcharac[0][4] + "\n" + dgcharac[0][5] + "\n" + dgcharac[0][6] + "\n" + dgcharac[0][7] + "\n" + dgcharac[0][8] + "\n\n";
 //	dgtext1 = "<성격> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][9] + "\n" + dgcharac[0][10] + "--표면심리--" + dgcharac[0][11] + "\n" + dgcharac[0][12] + "--내면심리--" + dgcharac[0][13] + "\n" + "\n";
