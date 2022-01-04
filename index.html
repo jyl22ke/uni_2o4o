@@ -673,7 +673,7 @@ $("#hunDate").change(function(){
 			if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----'){
 				document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 				if (ca10_ghabch[i][4].substr(1,1) == "1"){summing1("output3");};  //--- 합(1)
-				if (ca10_ghabch[i][4].substr(1,1) == "2"){summing1("output3"); document.getElementById("output3").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
+				if (ca10_ghabch[i][4].substr(1,1) == "2"){summing1("output3"); summing2("output3"); };  //--- 합화 용신(2)
 				if (ca10_ghabch[i][4].substr(1,1) == "3"){summing3("output3");};  //--- 불합(3)
 				if (ca10_ghabch[i][4].substr(1,1) == "6"){summing3("output3"); summing6("output3");};  //--- 합파불합(6)
 				if (ca10_ghabch[i][4].substr(1,1) == "7"){summing3("output3"); summing7("output3");};  //--- 불합+충(7)
@@ -686,7 +686,7 @@ $("#hunDate").change(function(){
 				if (gan_nfo[3][4].substr(0,1) == "1"){summing3("output3");}else{
 					subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
 					if (temp[0][2] != gan_nfo[2][5]){summing1("output3");
-					}else{summing1("output3"); document.getElementById("output3").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";	};
+					}else{summing1("output3"); summing2("output3"); };
 				};
 				document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
 			};
@@ -1470,8 +1470,7 @@ function ganhabch(){
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----'){
 			sts = "원국"; document.getElementById("output1").innerText += "일간합 " + hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][2] + "\n";
 			if (ca10_ghabch[i][4].substr(0,1) == "1"){summing1("output1");};  //--- 합(1)
-			if (ca10_ghabch[i][4].substr(0,1) == "2"){summing1("output1"); 
-				document.getElementById("output1").innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";};  //--- 합화 용신(2)
+			if (ca10_ghabch[i][4].substr(0,1) == "2"){summing1("output1"); summing2("output1");};  //--- 합화 용신(2)
 			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing3("output1");};  //--- 불합(3)
 			if (ca10_ghabch[i][4].substr(0,1) == "6"){summing3("output1"); summing6("output1");};  //--- 합파불합(6)
 			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing3("output1"); summing7("output1");};  //--- 불합+충(7)
@@ -1499,14 +1498,23 @@ function summing1(dstin){
 };
 
 //======== 합화(2) 내용 summary ========
-function summing2(){
-	//--- 월지에 합화오행 투출
-	//--- 합화오행을 극하는 관성이 원국에 없어야 함
-	//--- 충극이 없어야 함
-	//--- 각각 지지에 통근하지 않아야 함
-	//--- 합화 기운이 원국에 강하게 투출(득세?)
-	//--- 월지에 합화오행 투출
-	
+function summing2(dstin){
+	n = 0; subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
+	if (temp[0][2] != gan_nfo[2][5]){
+		
+	for (i = 2; i < sibsungX1.length; i++){
+		if (sibsungX1[i][2].substr(1,1) == temp[0][2]){
+			idx = sibsungX1[i].indexOf('편관');
+			rslt += sibsungX1[0][idx] + sibsungX1[1][idx];
+			idx = sibsungX1[i].indexOf('정관');
+			rslt += sibsungX1[0][idx] + sibsungX1[1][idx];
+		};
+	};
+	if (rslt.includes(sj_yg)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_yj)){ n += 1;}else{ n += 0;};	
+	if (rslt.includes(sj_mg)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_mj)){ n += 1;}else{ n += 0;};	
+	if (rslt.includes(sj_dg)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_dj)){ n += 1;}else{ n += 0;};	
+	if (rslt.includes(sj_tg)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_tj)){ n += 1;}else{ n += 0;};	
+	if (n == 0){document.getElementById(dstin).innerText += sj_org2.substr(0,3) + "화격 " + temp[0][2] + "오행 용신\n";}else{document.getElementById(dstin).innerText += sj_org2.substr(0,3) + "불화 " + "\n";};
 };
 	
 //======== 불합(3) 내용 summary ========
