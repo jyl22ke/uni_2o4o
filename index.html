@@ -661,13 +661,13 @@ $("#hunDate").change(function(){
 		if (rslt0 != ""){
 			if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----'){
 				document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
-				if (ca10_ghabch[i][4].substr(1,1) == "1"){summing1("output3");};  //--- 합(1)
-				if (ca10_ghabch[i][4].substr(1,1) == "2"){summing1("output3"); summing2("output3"); };  //--- 합화 용신(2)
-				if (ca10_ghabch[i][4].substr(1,1) == "3"){summing3("output3");};  //--- 불합(3)
-				if (ca10_ghabch[i][4].substr(1,1) == "6"){summing3("output3"); summing6("output3");};  //--- 합파불합(6)
-				if (ca10_ghabch[i][4].substr(1,1) == "7"){summing3("output3"); summing7("output3");};  //--- 불합+충(7)
-				if (ca10_ghabch[i][4].substr(1,1) == "4"){summing4("output3");};  //--- 합봉(4) 
-				if (ca10_ghabch[i][4].substr(1,1) == "5"){summing5("output3");};  //--- 용봉(5) 
+				if (ca10_ghabch[i][4].substr(2,1) == "1"){summing1("output3");};  //--- 합(1)
+				if (ca10_ghabch[i][4].substr(2,1) == "2"){summing1("output3"); summing2("output3"); };  //--- 합화 용신(2)
+				if (ca10_ghabch[i][4].substr(2,1) == "3"){summing3("output3");};  //--- 불합(3)
+				if (ca10_ghabch[i][4].substr(2,1) == "6"){summing3("output3"); summing6("output3");};  //--- 합파불합(6)
+				if (ca10_ghabch[i][4].substr(2,1) == "7"){summing3("output3"); summing7("output3");};  //--- 불합+충(7)
+				if (ca10_ghabch[i][4].substr(2,1) == "4"){summing4("output3");};  //--- 합봉(4) 
+				if (ca10_ghabch[i][4].substr(2,1) == "5"){summing5("output3");};  //--- 용봉(5) 
 				document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
 			};
 			if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 == '-----'){
@@ -686,7 +686,7 @@ $("#hunDate").change(function(){
 		if (rslt0 != ""){
 			if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1 && hcg1 == '-----'){
 				document.getElementById("output3").innerText += hunD.substr(0,10) + "연간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
-				if (ca10_ghabch[i][4].substr(1,1) == "0"){summing0("output3");};  //--- 합화오행 육친십성 흉화(0) 
+				if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0("output3");};  //--- 합화오행 육친십성 흉화(0) 
 				document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
 			};
 		};
@@ -696,7 +696,7 @@ $("#hunDate").change(function(){
 		if (rslt0 != ""){
 			if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 == '-----'){
 				document.getElementById("output3").innerText += hunD.substr(0,10) + "월간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
-				if (ca10_ghabch[i][4].substr(1,1) == "0"){summing0("output3");};  //--- 합화오행 육친십성 흉화(0) 
+				if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0("output3");};  //--- 합화오행 육친십성 흉화(0) 
 				document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
 			};
 		};
@@ -706,7 +706,7 @@ $("#hunDate").change(function(){
 		if (rslt0 != ""){
 			if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 == '-----'){
 				document.getElementById("output3").innerText += hunD.substr(0,10) + "시간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
-				if (ca10_ghabch[i][4].substr(1,1) == "0"){summing0("output3");};  //--- 합화오행 육친십성 흉화(0) 
+				if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0("output3");};  //--- 합화오행 육친십성 흉화(0) 
 				document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
 			};
 		};
@@ -1458,13 +1458,20 @@ function ganhabch(){
 		};
  		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 != '-----'){sts = "원국"; document.getElementById("output1").innerText += "월간 " + hcg2 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----'){
-			sts = "원국"; document.getElementById("output1").innerText += "일간합 " + hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][2] + "\n";
-			if (ca10_ghabch[i][4].substr(0,1) == "1"){summing1("output1");};  //--- 합(1)
-			if (ca10_ghabch[i][4].substr(0,1) == "2"){summing1("output1"); summing2("output1");};  //--- 합화 용신(2)
-			if (ca10_ghabch[i][4].substr(0,1) == "3"){summing3("output1");};  //--- 불합(3)
-			if (ca10_ghabch[i][4].substr(0,1) == "6"){summing3("output1"); summing6("output1");};  //--- 합파불합(6)
-			if (ca10_ghabch[i][4].substr(0,1) == "7"){summing3("output1"); summing7("output1");};  //--- 불합+충(7)
-			document.getElementById("output1").innerText += "--------------------------------------------------------------\n";
+			if (ca10_ghabch[i][4].substr(0,1) == "합"){
+				sts = "원국"; document.getElementById("output1").innerText += "일간합 " + hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][2] + "\n";
+				if (ca10_ghabch[i][4].substr(1,1) == "1"){summing1("output1");};  //--- 합(1)
+				if (ca10_ghabch[i][4].substr(1,1) == "2"){summing1("output1"); summing2("output1");};  //--- 합화 용신(2)
+				if (ca10_ghabch[i][4].substr(1,1) == "3"){summing3("output1");};  //--- 불합(3)
+				if (ca10_ghabch[i][4].substr(1,1) == "6"){summing3("output1"); summing6("output1");};  //--- 합파불합(6)
+				if (ca10_ghabch[i][4].substr(1,1) == "7"){summing3("output1"); summing7("output1");};  //--- 불합+충(7)
+				document.getElementById("output1").innerText += "--------------------------------------------------------------\n";
+			};
+			if (ca10_ghabch[i][4].substr(0,1) == "충"){
+				sts = "원국"; document.getElementById("output1").innerText += "일간충 " + hcg3 + " " + sts + "\n";
+				if (ca10_ghabch[i][4].substr(1,1) == "a"){summinga("output1");};  //--- 충발(a)
+				if (ca10_ghabch[i][4].substr(1,1) == "b"){summingb("output1");};  //--- 충거(b)
+			};
 		};
  		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output1").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 	};
@@ -1558,6 +1565,17 @@ function summing0(dstin){
 	document.getElementById(dstin).innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
 };
 
+//======== 충발(a) 내용 summary ========
+function summinga(dstin){
+	document.getElementById(dstin).innerText += "충발: 대체로 소극적이고 무능한 일면의 부정적경향을 보이거나 정신적 혼란으로 건강을 해치는 등 성격적 결함을 보임 \n";
+	document.getElementById(dstin).innerText += "건강 악화, 상신, 육친의 흉화---\n";
+};
+
+//======== 충거(b) 내용 summary ========
+function summingb(dstin){
+	document.getElementById(dstin).innerText += "충거: 충력 소멸 \n";
+};
+	
 /*	
 	//========== 충/합 ==========
 	//---   chnghab("천간충",4,sj_ganji,"_충");
