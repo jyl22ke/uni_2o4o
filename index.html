@@ -681,6 +681,9 @@ $("#hunDate").change(function(){
 			};
 		};
 	};
+	
+	
+	
 	habchk("천간합",5,sj_yg,hn_lg,hn_yg,hn_mg,hn_dg);
 	for (i = 0; i < ca10_ghabch.length; i++){
 		if (rslt0 != ""){
@@ -1466,12 +1469,10 @@ function ganhabch(){
 				if (ca10_ghabch[i][4].substr(1,1) == "6"){summing3("output1"); summing6("output1");};  //--- 합파불합(6)
 				if (ca10_ghabch[i][4].substr(1,1) == "7"){summing3("output1"); summing7("output1");};  //--- 불합+충(7)
 				document.getElementById("output1").innerText += "--------------------------------------------------------------\n";
-			};
-			if (ca10_ghabch[i][4].substr(0,1) == "충"){
+			}else{
 				sts = "원국"; document.getElementById("output1").innerText += "일간충 " + hcg3 + " " + sts + "\n";
 				if (ca10_ghabch[i][4].substr(1,1) == "a"){summinga("output1");};  //--- 충발(a)
-				if (ca10_ghabch[i][4].substr(1,1) == "b"){summingb("output1");};  //--- 충거(b)
-			};
+			};				
 		};
  		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output1").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 	};
