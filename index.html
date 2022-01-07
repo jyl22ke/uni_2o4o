@@ -669,15 +669,15 @@ $("#hunDate").change(function(){
 			document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
 		};
 	};
-	result_out("합", "행운합", 3, "output3");  //--- 행운 일간합 출력
+	result_out("합", rslt0, 3, "output3");  //--- 행운 일간합 출력
 		
 	habchk("천간충",4,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); 
 	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; };   //--- 행운에 의한 천간충 체크
-	result_out("충", "행운충", 3, "output3");  //--- 행운 일간충 출력
+	result_out("충", rslt0, 3, "output3");  //--- 행운 일간충 출력
 	
 	habchk("천간극",6,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); 
 	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; };   //--- 행운에 의한 천간극 체크
-	result_out("극", "행운극", 3, "output3");  //--- 행운 일간극 출력
+	result_out("극", rslt0, 3, "output3");  //--- 행운 일간극 출력
 
 	habchk("천간합",5,sj_yg,hn_lg,hn_yg,hn_mg,hn_dg);
 	for (i = 0; i < ca10_ghabch.length; i++){
