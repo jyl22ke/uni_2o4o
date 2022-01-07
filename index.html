@@ -657,7 +657,7 @@ $("#hunDate").change(function(){
 	
 	document.getElementById("output3").innerText += "<<행운결과>>..... \n";
 	habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
-	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("합", rslt0, 3, "output3");};   //--- 행운에 의한 천간충 체크
+	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("합", 3, "output3");};   //--- 행운에 의한 천간충 체크
 	for (i = 0; i < ca10_ghabch.length; i++){
 		if (rslt0 != ""){ 
 			document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; 
@@ -674,10 +674,10 @@ $("#hunDate").change(function(){
 	};
 		
 	habchk("천간충",4,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); 
-	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("충", rslt0, 3, "output3");};   //--- 행운에 의한 천간충 체크
+	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("충", 3, "output3");};   //--- 행운에 의한 천간충 체크
 	
 	habchk("천간극",6,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); 
-	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("극", rslt0, 3, "output3");};   //--- 행운에 의한 천간극 체크
+	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("극", 3, "output3");};   //--- 행운에 의한 천간극 체크
 
 	habchk("천간합",5,sj_yg,hn_lg,hn_yg,hn_mg,hn_dg);
 	for (i = 0; i < ca10_ghabch.length; i++){
@@ -1459,14 +1459,14 @@ function ganhabch(){
  		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 != '-----'){sts = "원국"; document.getElementById("output1").innerText += "월간 " + hcg2 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
  		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output1").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 	};
-	result_out("-", "원국", 2, "output1");  //--- 원국 일간합충 출력
+	result_out("-", 2, "output1");  //--- 원국 일간합충 출력
 };
 
 //====== 원국/행운 결과 출력 함수 ======
-function result_out(tx,orghun,no,dstin){
+function result_out(tx,no,dstin){
 	for (i = 0; i < ca10_ghabch.length; i++){	
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----' && ca10_ghabch[i][4].substr(0,1) == tx){
-			sts = orghun; document.getElementById(dstin).innerText += hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][no] + "\n";
+			sts = orghun; document.getElementById(dstin).innerText += hcg3 + " " + ca10_ghabch[i][no] + "\n";
 			if (ca10_ghabch[i][4].substr(2,1) == "1"){summing1(dstin);};  //--- 합(1)
 			if (ca10_ghabch[i][4].substr(2,1) == "2"){summing1(dstin); summing2(dstin); };  //--- 합화 용신(2)
 			if (ca10_ghabch[i][4].substr(2,1) == "3"){summing3(dstin);};  //--- 불합(3)
