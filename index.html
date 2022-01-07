@@ -1430,8 +1430,8 @@ function ganhabch(){
 	hcompchk("천간충",4,sj_yg,sj_mg); gan_nfo[1][6] += rslt;	rslt1 += rslt; rslt3 += rslt;  //---연간충
 	hcompchk("천간충",4,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간충 (일간-월간)
 	hcompchk("천간충",4,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간충 (일간-시간)
-	hcompchk("천간극",6,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간극 (일간-월간)
-	hcompchk("천간극",6,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간극 (일간-시간)
+//	hcompchk("천간극",6,sj_dg,sj_mg); gan_nfo[3][6] += rslt;	rslt3 += rslt; rslt5 += rslt;  //---일간극 (일간-월간)
+//	hcompchk("천간극",6,sj_dg,sj_tg); gan_nfo[3][7] += rslt;	rslt5 += rslt; rslt7 += rslt;  //---일간극 (일간-시간)
 	if (gan_nfo[1][6].substr(2,1)=="합"){ if (gan_nfo[3][6].substr(2,1)=="충"){hcg1 += "합" + rt1 + "충0-";}else{hcg1 += gan_nfo[1][6].substr(2,1) + rt1 + "---";};
 	}else{if (gan_nfo[1][6].substr(2,1)=="충"){hcg1 += gan_nfo[1][6].substr(2,1) + rt1 + "---";}else{hcg1 += "-----";};
 	};
