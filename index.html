@@ -659,7 +659,6 @@ $("#hunDate").change(function(){
 	habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
 	if (rslt0 != ""){ 
 		document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; 
-		result_out("합","output3");
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 == '-----'){
 			document.getElementById("output3").innerText += hunD.substr(0,10) + "일간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 			if (gan_nfo[3][4].substr(0,1) == "1"){summing3("output3");}else{
@@ -669,6 +668,7 @@ $("#hunDate").change(function(){
 			};
 			document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
 		};
+		result_out("합","output3");
 	};
 	habchk("천간충",4,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("충","output3");};   //--- 행운에 의한 천간충 체크
 	habchk("천간극",6,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("극","output3");};   //--- 행운에 의한 천간극 체크
@@ -1461,11 +1461,10 @@ function ganhabch(){
 			document.getElementById("output1").innerText += "--------------------------------------------------------------\n";
 		};
  		if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 != '-----'){sts = "원국"; document.getElementById("output1").innerText += "월간 " + hcg2 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
+ 		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output1").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 
 		sts = "원국"; document.getElementById("output1").innerText += "일간 " + hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][2] + "\n";
 		result_out("-","output1");  //--- 일간 원국 출력
-
- 		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output1").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
 	};
 };
 
