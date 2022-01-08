@@ -658,11 +658,16 @@ $("#hunDate").change(function(){
 	document.getElementById("output3").innerText += "<<행운결과>>..... \n";
 	habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
 	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("합", rslt0, 3, "output3");};   //--- 행운에 의한 천간충 체크
-/*	for (i = 0; i < ca10_ghabch.length; i++){
-		if (rslt0 != ""){ 
-			document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; 
+	habchk("천간충",4,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); 
+	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("충", rslt0, 3, "output3");};   //--- 행운에 의한 천간충 체크
+	habchk("천간극",6,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); 
+	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("극", rslt0, 3, "output3");};   //--- 행운에 의한 천간극 체크
+
+	habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
+	if (rslt0 != ""){ 
+		for (i = 0; i < ca10_ghabch.length; i++){
 			if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 == '-----' && ca10_ghabch[i][4].substr(0,1) == "합"){
-//				document.getElementById("output3").innerText += hunD.substr(0,10) + "일간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+				document.getElementById("output3").innerText += hunD.substr(0,10) + "일간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 				if (gan_nfo[3][4].substr(0,1) == "1"){summing3("output3");}else{
 					subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
 					if (temp[0][2] != gan_nfo[2][5]){summing1("output3");
@@ -672,12 +677,6 @@ $("#hunDate").change(function(){
 			};
 		};
 	};
-*/		
-	habchk("천간충",4,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); 
-	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("충", rslt0, 3, "output3");};   //--- 행운에 의한 천간충 체크
-	
-	habchk("천간극",6,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); 
-	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("극", rslt0, 3, "output3");};   //--- 행운에 의한 천간극 체크
 
 	habchk("천간합",5,sj_yg,hn_lg,hn_yg,hn_mg,hn_dg);
 	for (i = 0; i < ca10_ghabch.length; i++){
