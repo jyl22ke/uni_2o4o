@@ -666,11 +666,12 @@ $("#hunDate").change(function(){
 	habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
 	if (rslt0 != ""){ 
 		for (i = 0; i < ca10_ghabch.length; i++){
-			if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 == '-----' && ca10_ghabch[i][4].substr(0,1) == "합"){
+			if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3.substr(0,4) == '----' && ca10_ghabch[i][4].substr(0,1) == "합"){
 				document.getElementById("output3").innerText += hunD.substr(0,10) + "일간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 				if (gan_nfo[3][4].substr(0,1) == "1"){summing3("output3");}else{
-					subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
-					if (temp[0][2] != gan_nfo[2][5]){summing1("output3");
+//					subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
+//					if (temp[0][2] != gan_nfo[2][5]){summing1("output3");
+					if (hcg3.substr(4,1) == "0"){summing1("output3");
 					}else{summing1("output3"); summing2("output3"); };
 				};
 				document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
@@ -678,33 +679,40 @@ $("#hunDate").change(function(){
 		};
 	};
 
-	habchk("천간합",5,sj_yg,hn_lg,hn_yg,hn_mg,hn_dg);
-	for (i = 0; i < ca10_ghabch.length; i++){
-		if (rslt0 != ""){
-			if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1 && hcg1 == '-----'){
-				document.getElementById("output3").innerText += hunD.substr(0,10) + "연간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
-				if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0("output3");};  //--- 합화오행 육친십성 흉화(0) 
-				document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
+	if (gan_nfo[1][6].substr(2,1) != "합"){
+		habchk("천간합",5,sj_yg,hn_lg,hn_yg,hn_mg,hn_dg);
+		for (i = 0; i < ca10_ghabch.length; i++){
+			if (rslt0 != ""){
+				if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1 && hcg1 == '-----'){
+					document.getElementById("output3").innerText += hunD.substr(0,10) + "연간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+					if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0(sj_yg,"output3");};  //--- 합화오행 육친십성 흉화(0) 
+					document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
+				};
 			};
 		};
 	};
-	habchk("천간합",5,sj_mg,hn_lg,hn_yg,hn_mg,hn_dg);
-	for (i = 0; i < ca10_ghabch.length; i++){
-		if (rslt0 != ""){
-			if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 == '-----'){
-				document.getElementById("output3").innerText += hunD.substr(0,10) + "월간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
-				if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0("output3");};  //--- 합화오행 육친십성 흉화(0) 
-				document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
+	
+	if (gan_nfo[1][6].substr(2,1) != "합" && gan_nfo[3][6].substr(2,1) != "합"){
+		habchk("천간합",5,sj_mg,hn_lg,hn_yg,hn_mg,hn_dg);
+		for (i = 0; i < ca10_ghabch.length; i++){
+			if (rslt0 != ""){
+				if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 == '-----'){
+					document.getElementById("output3").innerText += hunD.substr(0,10) + "월간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+					if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0(sj_mg,"output3");};  //--- 합화오행 육친십성 흉화(0) 
+					document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
+				};
 			};
 		};
 	};
-	habchk("천간합",5,sj_tg,hn_lg,hn_yg,hn_mg,hn_dg);
-	for (i = 0; i < ca10_ghabch.length; i++){
-		if (rslt0 != ""){
-			if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 == '-----'){
-				document.getElementById("output3").innerText += hunD.substr(0,10) + "시간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
-				if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0("output3");};  //--- 합화오행 육친십성 흉화(0) 
-				document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
+	if (gan_nfo[3][7].substr(2,1) != "합"){
+		habchk("천간합",5,sj_tg,hn_lg,hn_yg,hn_mg,hn_dg);
+		for (i = 0; i < ca10_ghabch.length; i++){
+			if (rslt0 != ""){
+				if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 == '-----'){
+					document.getElementById("output3").innerText += hunD.substr(0,10) + "시간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+					if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0(sj_tg,"output3");};  //--- 합화오행 육친십성 흉화(0) 
+					document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
+				};
 			};
 		};
 	};
@@ -1418,17 +1426,12 @@ function ganhabch(){
 	}else{if (gan_nfo[3][6]!="" && gan_nfo[3][7]==""){ if (sj_tg == sj_dg){	hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + "쟁" + rt3;}else{hcg3 += gan_nfo[3][6].substr(2,1) + rt2 + "--";};
 		}else{if (gan_nfo[3][6]=="" && gan_nfo[3][7]!=""){ if (sj_mg == sj_dg){	hcg3 += "쟁" + rt2 + gan_nfo[3][7].substr(2,1) + rt3;}else{hcg3 += "--" + gan_nfo[3][7].substr(2,1) + rt3;};}else{hcg3 += "----";};};
 	};
-	if (gan_nfo[3][6].substr(2,1) != "" || gan_nfo[3][7].substr(2,1) != ""){
-		subj = sj_dg; 
-		temp = cgh02_dhap_simrihealth.filter(isFind);
-		if (temp[0][2] == gan_nfo[2][5]){
-			hcg3 += "1";
-		}else{
-			hcg3 += "0";
-		};
+//	if (gan_nfo[3][6].substr(2,1) != "" || gan_nfo[3][7].substr(2,1) != ""){
+		subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
+		if (temp[0][2] == gan_nfo[2][5]){hcg3 += "1";}else{hcg3 += "0";};  //--- 월지 합오행 체크
 //	}else{
-//		hcg3 += "-";
-	};  //--- 월지 합오행 체크
+//		hcg3 += "-";};
+
 	hcg4 += "-----";
 	document.getElementById("sj1a").innerText += rslt1; document.getElementById("sj3a").innerText += rslt3;
 	document.getElementById("sj5a").innerText += rslt5; document.getElementById("sj7a").innerText += rslt7;
@@ -1559,13 +1562,27 @@ function summing7(dstin){
 	
 };
 	
-//======== 합화오행 육친십성 흉화(0) 내용 summary ========
-function summing0(dstin){
-	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); 
-	subj = temp[0][3].substr(3,2);
-	if (gendr == "남양"){n = 1;}else{n = 2;};
-	temp = cgh01_sibsng_simri6chin.filter(isFind);
-	document.getElementById(dstin).innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
+//======== 행운천간합 합화오행 육친십성 흉화(0) 내용 summary ========
+function summing0(a,dstin){
+	subj = a;
+	temp = sibsungX1.filter(isFind);
+	reln = Math.ceil((temp[0].indexOf(dgss_titl1)-2) / 2);
+	temp = cgh02_dhap_simrihealth.filter(isFind);
+	if (temp[0][4].substr(0,2)=="비견"){reln += 0};
+	if (temp[0][4].substr(0,2)=="식상"){reln += 1};
+	if (temp[0][4].substr(0,2)=="재성"){reln += 2};
+	if (temp[0][4].substr(0,2)=="관성"){reln += 3};
+	if (temp[0][4].substr(0,2)=="인성"){reln += 4};
+	if (reln>5){ reln = reln - 5;}	
+
+	if (gendr == "남양"){ 
+		rslt = cgh01_sibsng_simri6chin[reln * 2 - 1][3];  
+		rslt += cgh01_sibsng_simri6chin[reln * 2][3];
+	}else{ 
+		rslt = cgh01_sibsng_simri6chin[reln * 2 - 1][4]; 
+		rslt += cgh01_sibsng_simri6chin[reln * 2][4];
+	};	
+	document.getElementById(dstin).innerText += "(" + rslt + ") 흉화--- \n";
 };
 
 //======== 충발(a) 내용 summary ========
