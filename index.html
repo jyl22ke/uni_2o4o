@@ -664,6 +664,7 @@ $("#hunDate").change(function(){
 		if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("충", rslt0, 3, "output3");};   //--- 행운에 의한 천간충 체크
 		habchk("천간극",6,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); 
 		if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("극", rslt0, 3, "output3");};   //--- 행운에 의한 천간극 체크
+					document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
 	};
 	if (gan_nfo[3][6].substr(2,1) != "합" && gan_nfo[3][7].substr(2,1) != "합"){
 		habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
