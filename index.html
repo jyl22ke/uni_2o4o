@@ -1480,7 +1480,7 @@ function result_out(tx,orghun,no,dstin){
 			if (ca10_ghabch[i][4].substr(2,1) == "7"){summing3(dstin); summing7(dstin);};  //--- 불합+충(7)
 			if (ca10_ghabch[i][4].substr(2,1) == "a"){summinga(dstin);};  //--- 충발(a) 
 			if (ca10_ghabch[i][4].substr(2,1) == "b"){summingb(dstin);};  //--- 충거(b) 
-			
+			if (orghun.substr(6,1) == "극"){summingc(dstin);};  //--- 극(c) 			
 			document.getElementById(dstin).innerText += "--------------------------------------------------------------\n";
 		};
 	};
