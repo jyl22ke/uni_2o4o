@@ -663,26 +663,26 @@ $("#hunDate").change(function(){
 	habchk("천간극",6,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg); 
 	if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("극", rslt0, 3, "output3");};   //--- 행운에 의한 천간극 체크
 
-	habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
-	if (rslt0 != ""){ 
-		for (i = 0; i < ca10_ghabch.length; i++){
-			if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3.substr(0,4) == '----' && ca10_ghabch[i][4].substr(0,1) == "합"){
-				document.getElementById("output3").innerText += hunD.substr(0,10) + "일간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
-				if (gan_nfo[3][4].substr(0,1) == "1"){summing3("output3");}else{
-//					subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
-//					if (temp[0][2] != gan_nfo[2][5]){summing1("output3");
-					if (hcg3.substr(4,1) == "0"){summing1("output3");
-					}else{summing1("output3"); summing2("output3"); };
+	if (gan_nfo[3][6].substr(2,1) != "합" && gan_nfo[3][7].substr(2,1) != "합"){
+		habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
+		if (rslt0 != ""){ 
+			for (i = 0; i < ca10_ghabch.length; i++){
+				if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3.substr(0,4) == '----' && ca10_ghabch[i][4].substr(0,1) == "합"){
+					document.getElementById("output3").innerText += hunD.substr(0,10) + "일간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
+					if (gan_nfo[3][4].substr(0,1) == "1"){summing3("output3");}else{
+						if (hcg3.substr(4,1) == "0"){summing1("output3");
+						}else{summing1("output3"); summing2("output3"); };
+					};
+					document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
 				};
-				document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
 			};
 		};
 	};
 
 	if (gan_nfo[1][6].substr(2,1) != "합"){
 		habchk("천간합",5,sj_yg,hn_lg,hn_yg,hn_mg,hn_dg);
-		for (i = 0; i < ca10_ghabch.length; i++){
-			if (rslt0 != ""){
+		if (rslt0 != ""){
+			for (i = 0; i < ca10_ghabch.length; i++){
 				if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1 && hcg1 == '-----'){
 					document.getElementById("output3").innerText += hunD.substr(0,10) + "연간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 					if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0(sj_yg,"output3");};  //--- 합화오행 육친십성 흉화(0) 
@@ -694,8 +694,8 @@ $("#hunDate").change(function(){
 	
 	if (gan_nfo[1][6].substr(2,1) != "합" && gan_nfo[3][6].substr(2,1) != "합"){
 		habchk("천간합",5,sj_mg,hn_lg,hn_yg,hn_mg,hn_dg);
-		for (i = 0; i < ca10_ghabch.length; i++){
-			if (rslt0 != ""){
+		if (rslt0 != ""){
+			for (i = 0; i < ca10_ghabch.length; i++){
 				if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 == '-----'){
 					document.getElementById("output3").innerText += hunD.substr(0,10) + "월간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 					if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0(sj_mg,"output3");};  //--- 합화오행 육친십성 흉화(0) 
@@ -706,8 +706,8 @@ $("#hunDate").change(function(){
 	};
 	if (gan_nfo[3][7].substr(2,1) != "합"){
 		habchk("천간합",5,sj_tg,hn_lg,hn_yg,hn_mg,hn_dg);
-		for (i = 0; i < ca10_ghabch.length; i++){
-			if (rslt0 != ""){
+		if (rslt0 != ""){
+			for (i = 0; i < ca10_ghabch.length; i++){
 				if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 == '-----'){
 					document.getElementById("output3").innerText += hunD.substr(0,10) + "시간행운 " + rslt0 + "\n";   //--- 행운에 의한 천간합 체크
 					if (ca10_ghabch[i][4].substr(2,1) == "0"){summing0(sj_tg,"output3");};  //--- 합화오행 육친십성 흉화(0) 
