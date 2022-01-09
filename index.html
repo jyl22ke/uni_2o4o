@@ -1480,6 +1480,7 @@ function result_out(tx,orghun,no,dstin){
 			if (ca10_ghabch[i][4].substr(2,1) == "7"){summing3(dstin); summing7(dstin);};  //--- 불합+충(7)
 			if (ca10_ghabch[i][4].substr(2,1) == "a"){summinga(dstin);};  //--- 충발(a) 
 			if (ca10_ghabch[i][4].substr(2,1) == "b"){summingb(dstin);};  //--- 충거(b) 
+			
 			document.getElementById(dstin).innerText += "--------------------------------------------------------------\n";
 		};
 	};
@@ -1597,6 +1598,12 @@ function summinga(dstin){
 function summingb(dstin){
 	document.getElementById(dstin).innerText += temp[0][n+2] + "\n";
 };
+
+//======== 극(c) 내용 summary ========
+function summingc(dstin){
+	document.getElementById(dstin).innerText += rslt0 + "\n";
+};
+	
 	
 /*	
 	//========== 충/합 ==========
