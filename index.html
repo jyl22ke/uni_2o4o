@@ -1409,10 +1409,10 @@ function hcompchk(a,b,c,d){
 			rslt = texstr + a.substr(2,1);
 		};
 	};
-	if (hcg3 != "" && hcg3.substr(0,4) != '----'){
-		if (a.substr(2,1) == "합" && c == d){rslt += "쟁합";}; //--- 쟁합/쟁충
-		if (a.substr(2,1) == "충" && c == d){rslt += "쟁충";}; //--- 쟁합/쟁충
-	};
+//	if (hcg3 != "" && hcg3.substr(0,4) != '----'){
+//		if (a.substr(2,1) == "합" && c == d){rslt += "쟁합";}; //--- 쟁합/쟁충
+//		if (a.substr(2,1) == "충" && c == d){rslt += "쟁충";}; //--- 쟁합/쟁충
+//	};
 };
 
 //========== 천간합충 ==========
@@ -1485,7 +1485,7 @@ function result_out(tx,orghun,no,dstin){
 			if (ca10_ghabch[i][4].substr(2,1) == "5"){summing5(dstin);};  //--- 용봉(5) 
 			if (ca10_ghabch[i][4].substr(2,1) == "6"){summing3(dstin); summing6(dstin);};  //--- 합파불합(6)
 			if (ca10_ghabch[i][4].substr(2,1) == "7"){summing3(dstin); summing7(dstin);};  //--- 불합+충(7)
-			if (ca10_ghabch[i][4].substr(2,1) == "a"){summinga(dstin);};  //--- 충발(a) 
+			if (ca10_ghabch[i][4].substr(2,1) == "a"){summing7(dstin);};  //--- 충발(a) 
 			if (ca10_ghabch[i][4].substr(2,1) == "b"){summingb(dstin);};  //--- 충거(b) 
 			if (orghun.includes("극")){summingc(dstin);};  //--- 극(c) 			
 			document.getElementById(dstin).innerText += "--------------------------------------------------------------\n";
@@ -1565,11 +1565,20 @@ function summing6(dstin){
 	document.getElementById(dstin).innerText += "(" + temp[0][n+2] + ") 흉화--- \n";
 };
 	
-//======== 불합+충(7) 내용 summary ========
+//======== 충 충발(7,) 내용 summary ========
 function summing7(dstin){
-	document.getElementById(dstin).innerText += "상신과 육친과의 불화--- 작성중 \n";
-	//--- 작성중
-	
+	n = "甲乙丙丁戊己庚辛壬癸".indexOf(sj_dg) + 1; 
+	document.getElementById(dstin).innerText += "충발: 대체로 소극적이고 무능한 일면의 부정적경향을 보이거나 정신적 혼란으로 건강을 해치는 등 성격적 결함을 보임 \n";
+	rslt0 = "상신... 몸에 상처가 생김.. ";
+	if (n == 1 || n == 7){rslt0 += "(근육통 골다공증 견통 대머리)\n";}; if (n == 2 || n == 8){rslt0 += "(두통 치통 요통 빙의)\n";}; 
+	if (n == 3 || n == 9){rslt0 += "(심장 또는 신장질환)\n";}; if (n == 4 || n == 10){rslt0 += "(복부 방광 내분비계통)\n";};
+	document.getElementById(dstin).innerText += rslt0 + "\n";	
+	if (n < 5){subj = "편관";};
+	if (n > 6){subj = "편재";};
+	temp = cgh01_sibsng_simri6chin.filter(isFind);
+	if (gendr == "남양"){ rslt = temp[0][3]; }else{ rslt = temp[0][4]; };	
+	document.getElementById(dstin).innerText += "(" + rslt + ") 불화(반목)--- \n";	
+	document.getElementById(dstin).innerText += "--------------------------------------------------------------\n";
 };
 	
 //======== 행운천간합 합화오행 육친십성 흉화(0) 내용 summary ========
@@ -1593,12 +1602,6 @@ function summing0(a,dstin){
 		rslt += cgh01_sibsng_simri6chin[reln * 2][4];
 	};	
 	document.getElementById(dstin).innerText += "(" + rslt + ") 흉화--- \n";
-};
-
-//======== 충발(a) 내용 summary ========
-function summinga(dstin){
-	document.getElementById(dstin).innerText += "충발: 대체로 소극적이고 무능한 일면의 부정적경향을 보이거나 정신적 혼란으로 건강을 해치는 등 성격적 결함을 보임 \n";
-	document.getElementById(dstin).innerText += temp[0][n+2] + "\n";
 };
 
 //======== 충거(b) 내용 summary ========
