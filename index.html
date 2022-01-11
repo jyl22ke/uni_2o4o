@@ -1572,13 +1572,12 @@ function summing7(dstin){
 	rslt0 = "상신... 몸에 상처가 생김.. ";
 	if (n == 1 || n == 7){rslt0 += "(근육통 골다공증 견통 대머리)\n";}; if (n == 2 || n == 8){rslt0 += "(두통 치통 요통 빙의)\n";}; 
 	if (n == 3 || n == 9){rslt0 += "(심장 또는 신장질환)\n";}; if (n == 4 || n == 10){rslt0 += "(복부 방광 내분비계통)\n";};
-	document.getElementById(dstin).innerText += rslt0 + "\n";	
+	document.getElementById(dstin).innerText += rslt0;	
 	if (n < 5){subj = "편관";};
 	if (n > 6){subj = "편재";};
 	temp = cgh01_sibsng_simri6chin.filter(isFind);
 	if (gendr == "남양"){ rslt = temp[0][3]; }else{ rslt = temp[0][4]; };	
 	document.getElementById(dstin).innerText += "(" + rslt + ") 불화(반목)--- \n";	
-	document.getElementById(dstin).innerText += "--------------------------------------------------------------\n";
 };
 	
 //======== 행운천간합 합화오행 육친십성 흉화(0) 내용 summary ========
