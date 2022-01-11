@@ -1487,7 +1487,7 @@ function ganhabch(){
 // 		if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 != '-----'){sts = "원국"; document.getElementById("output1").innerText += "시간 " + hcg4 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";};
  		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3.substr(0,4) != '----'){
 			sts = "원국"; 
-			document.getElementById("output1").innerText += "일간 " + hcg3 + " " + sts + "--- " + ca10_ghabch[i][2] + "\n";
+			document.getElementById("output1").innerText += "일간 ";
 			result_out("-", "원국", 2, "output1");  //--- 원국 일간합충 출력
 		};
 	};
@@ -1497,7 +1497,7 @@ function ganhabch(){
 function result_out(tx,orghun,no,dstin){
 	for (i = 0; i < ca10_ghabch.length; i++){	
 		if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && hcg3 != '-----' && ca10_ghabch[i][4].substr(0,1) == tx){
-			sts = orghun; document.getElementById(dstin).innerText += hcg3 + " " + sts + "--- \n" + ca10_ghabch[i][no] + "\n";
+			sts = orghun; document.getElementById(dstin).innerText += hcg3 + " " + sts + "\n" + ca10_ghabch[i][no] + "\n";
 			if (tx == "-"){n = 1;}else{n = 2;};
 			if (ca10_ghabch[i][4].substr(n,1) == "1"){summing1(dstin);};  //--- 합(1)
 			if (ca10_ghabch[i][4].substr(n,1) == "2"){summing1(dstin); summing2(dstin); };  //--- 합화 용신(2)
