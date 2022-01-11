@@ -737,7 +737,7 @@ function habchk(a,b,c,d,e,f,g){
 	hcompchk(a,b,c,f); 	if (rslt != ""){rslt0 += " 월운 " + rslt};	
 	hcompchk(a,b,c,g); 	if (rslt != ""){rslt0 += " 일운 " + rslt};	
 };
-	
+
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
 function convrtsj(reqD){
 	tsj1 = ""; tsj2 = ""; tsj3 = ""; tsj4 = ""; tsj5 = ""; tsj6 = ""; tsj7 = ""; tsj8 = "";
@@ -1409,7 +1409,10 @@ function hcompchk(a,b,c,d){
 			rslt = texstr + a.substr(2,1);
 		};
 	};
-	if (a.substr(2,1) != "극" && c == d && hcg3.substr(0,4) != '----'){rslt += "쟁" + a.substr(2,1);}; //--- 쟁합/쟁충
+	if (hcg3 != "" && hcg3.substr(0,4) != '----'){
+		if (a.substr(2,1) == "합" && c == d){rslt += "쟁합";}; //--- 쟁합/쟁충
+		if (a.substr(2,1) == "충" && c == d){rslt += "쟁충";}; //--- 쟁합/쟁충
+	};
 };
 
 //========== 천간합충 ==========
