@@ -55,13 +55,6 @@
 	@media screen and (min-width: 800px) {.canvas {float: left;} #output,#output1,#output3 {width:485px;} #output2 {width: 400px;} .out {width: 970px;}}
 	
   </style>
-  <script>
-//	.out:after{ content:’‘; clear:both; display:block; }
-//	#output2 {display: flex; min-height: 200px; color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:300px;}
-//	@media screen and (min-width: 800px) {.canvas {float: left;} #output,#output3 {float: right; width:485px;} #output2 {display: flex; width: 400px;}}
-//	#output1:after,#output3:after{ content:’‘; clear:both; display:block; }  
-//	.container{ display: flex; align-items: flex-start;align-content: flex-start;}
-  </script>
 
  </head>
  <body>
@@ -657,13 +650,13 @@ $("#hunDate").change(function(){
 	
 	document.getElementById("output3").innerText += "<<행운결과>>..... \n";
 	if (hcg3.substr(0,4) != '----'){
-/*		habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
+		habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
 		if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("합", rslt0, 3, "output3"); rslt1 = rslt0;};
 		document.getElementById("output1").innerText += "합 rslt1 " + rslt1 + "\n"; 
 		habchk("천간충",4,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간충 체크
 		if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("충", rslt0, 3, "output3"); rslt3 = rslt0;};
 		document.getElementById("output1").innerText += "충 rslt3 " + rslt3 + "\n"; 
-		habchk("천간극",6,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간극 체크
+/*		habchk("천간극",6,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간극 체크
 		if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("극", rslt0, 3, "output3"); rslt5 = rslt0;};
 		document.getElementById("output1").innerText += "극 rslt5 " + rslt5 + "\n"; 
 		if (hcg3.includes("충")){
