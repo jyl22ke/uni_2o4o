@@ -650,12 +650,10 @@ $("#hunDate").change(function(){
 	
 	document.getElementById("output3").innerText += "<<행운결과>>..... \n";
 	if (hcg3.substr(0,4) != '----'){
-//		habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
-//		if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("합", rslt0, 3, "output3"); rslt3 = rslt0;};
-		rslt = ""; habchk1("대운",sj_dg,hn_lg);    //--- 대운에 의한 천간합충극 체크
-		rslt = ""; habchk1("연운",sj_dg,hn_yg);    //--- 연운에 의한 천간합충극 체크
-		rslt = ""; habchk1("월운",sj_dg,hn_mg);    //--- 월운에 의한 천간합충극 체크
-		rslt = ""; habchk1("일운",sj_dg,hn_dg);    //--- 일운에 의한 천간합충극 체크
+		rslt = ""; habchk("대운",sj_dg,hn_lg);    //--- 대운에 의한 천간합충극 체크
+		rslt = ""; habchk("연운",sj_dg,hn_yg);    //--- 연운에 의한 천간합충극 체크
+		rslt = ""; habchk("월운",sj_dg,hn_mg);    //--- 월운에 의한 천간합충극 체크
+		rslt = ""; habchk("일운",sj_dg,hn_dg);    //--- 일운에 의한 천간합충극 체크
 //		if (rslt0 != ""){ 
 //			document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; 
 //			result_out("합", rslt0, 3, "output3"); 
@@ -689,7 +687,7 @@ $("#hunDate").change(function(){
 					};
 				};
 			};
-		};
+		};*/
 	}else{
 		habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
 		if (rslt0 != ""){ 
@@ -742,58 +740,16 @@ $("#hunDate").change(function(){
 				};
 			};
 		};
-*/
+
 	};
 });
-
-//====== 행운에 의한 천간합 체크 함수 ======
-//----   habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);
-function habchk(a,b,c,d,e,f,g){
-	rslt0 = "";
-	hcompchk(a,b,c,d); 	if (rslt != ""){rslt0 += " 대운 " + rslt};
-	hcompchk(a,b,c,e); 	if (rslt != ""){rslt0 += " 연운 " + rslt};	
-	hcompchk(a,b,c,f); 	if (rslt != ""){rslt0 += " 월운 " + rslt};	
-	hcompchk(a,b,c,g); 	if (rslt != ""){rslt0 += " 일운 " + rslt};	
-};
 	
 //====== 행운에 의한 천간합충극 체크 함수 ======
-//----   habchk1("대운",sj_dg,hn_lg);
+//----   habchk("대운",sj_dg,hn_lg);
 function habchk1(a,b,c){
 	hcompchk("천간합",5,b,c); 	if (rslt != ""){document.getElementById("output3").innerText += a + hunD.substr(0,10) + " " + rslt + "\n"; result_out("합", rslt, 3, "output3");};
 	hcompchk("천간충",4,b,c); 	if (rslt != ""){document.getElementById("output3").innerText += a + hunD.substr(0,10) + " " + rslt + "\n"; result_out("충", rslt, 3, "output3");};
 	hcompchk("천간극",6,b,c); 	if (rslt != ""){document.getElementById("output3").innerText += a + hunD.substr(0,10) + " " + rslt + "\n"; result_out("극", rslt, 3, "output3");};
-
-
-/*	for (i = 0; i < ca10_ghabch.length; i++){
-		if (ca10_ghabch[i][1] == hcg3 && hcg3.includes("충")){
-			idx = hcg3.indexOf("충") / 2 + 6; 
-			if (gan_nfo[3][idx].substr(0,1) != sj_dg){
-				subj = gan_nfo[3][idx].substr(0,1);
-			}else{
-				subj = gan_nfo[3][idx].substr(1,1);
-			};
-			hcompchk("천간합",5,subj,c);    //--- 충에 대한 천간합 체크
-			if (rslt != ""){ 
-				document.getElementById("output3").innerText += hunD.substr(0,10) + " 충합 ==> 충거" + rslt + "\n"; 
-//						result_out("합", rslt, 3, "output3");
-			};
-			hcompchk("천간극",6,subj,c);    //--- 충에 대한 천간극 체크
-			if (rslt0 != ""){ 
-				document.getElementById("output3").innerText += hunD.substr(0,10) + " 충극 ==> 충거" + rslt + "\n"; 
-//						result_out("극", rslt, 3, "output3");
-			};
-		};
-	};
-
-*/
-
-
-
-
-
-
-
-
 };
 
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
