@@ -746,7 +746,7 @@ $("#hunDate").change(function(){
 	
 //====== 행운에 의한 천간합충극 체크 함수 ======
 //----   habchk("대운",sj_dg,hn_lg);
-function habchk1(a,b,c){
+function habchk(a,b,c){
 	hcompchk("천간합",5,b,c); 	if (rslt != ""){document.getElementById("output3").innerText += a + hunD.substr(0,10) + " " + rslt + "\n"; result_out("합", rslt, 3, "output3");};
 	hcompchk("천간충",4,b,c); 	if (rslt != ""){document.getElementById("output3").innerText += a + hunD.substr(0,10) + " " + rslt + "\n"; result_out("충", rslt, 3, "output3");};
 	hcompchk("천간극",6,b,c); 	if (rslt != ""){document.getElementById("output3").innerText += a + hunD.substr(0,10) + " " + rslt + "\n"; result_out("극", rslt, 3, "output3");};
