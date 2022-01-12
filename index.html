@@ -654,42 +654,8 @@ $("#hunDate").change(function(){
 		rslt = ""; habchk("연운",sj_dg,hn_yg);    //--- 연운에 의한 천간합충극 체크
 		rslt = ""; habchk("월운",sj_dg,hn_mg);    //--- 월운에 의한 천간합충극 체크
 		rslt = ""; habchk("일운",sj_dg,hn_dg);    //--- 일운에 의한 천간합충극 체크
-//		if (rslt0 != ""){ 
-//			document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; 
-//			result_out("합", rslt0, 3, "output3"); 
-//			rslt1 = rslt0;
-//		};
-//		document.getElementById("output1").innerText += "합 rslt1 " + rslt1 + "\n"; 
-/*		habchk("천간충",4,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간충 체크
-		if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("충", rslt0, 3, "output3"); rslt3 = rslt0;};
-		document.getElementById("output1").innerText += "충 rslt3 " + rslt3 + "\n"; 
-		habchk("천간극",6,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간극 체크
-		if (rslt0 != ""){ document.getElementById("output3").innerText += hunD.substr(0,10) + " " + rslt0 + "\n"; result_out("극", rslt0, 3, "output3"); rslt5 = rslt0;};
-		document.getElementById("output1").innerText += "극 rslt5 " + rslt5 + "\n"; 
-		if (hcg3.includes("충")){
-			for (i = 0; i < ca10_ghabch.length; i++){
-				if (ca10_ghabch[i][1] == hcg3){
-					idx = hcg3.indexOf("충") / 2 + 6; 
-					if (gan_nfo[3][idx].substr(0,1) != sj_dg){
-						subj = gan_nfo[3][idx].substr(0,1);
-					}else{
-						subj = gan_nfo[3][idx].substr(1,1);
-					};
-					habchk("천간합",5,subj,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 충에 대한 천간합 체크
-					if (rslt0 != ""){ 
-						document.getElementById("output3").innerText += hunD.substr(0,10) + " 충" + rslt0 + "\n"; 
-						result_out("합", rslt0, 3, "output3");
-					};
-					habchk("천간극",6,subj,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 충에 대한 천간극 체크
-					if (rslt0 != ""){ 
-						document.getElementById("output3").innerText += hunD.substr(0,10) + " 충" + rslt0 + "\n"; 
-						result_out("극", rslt0, 3, "output3");
-					};
-				};
-			};
-		};*/
 	}else{
-		habchk("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
+		habchk1("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);    //--- 행운에 의한 천간합 체크
 		if (rslt0 != ""){ 
 			for (i = 0; i < ca10_ghabch.length; i++){
 				if (ca10_ghabch[i][0] == "일간" && ca10_ghabch[i][1] == hcg3 && ca10_ghabch[i][4].substr(0,1) == "합"){
@@ -705,7 +671,7 @@ $("#hunDate").change(function(){
 	};
 
 	if (gan_nfo[1][6].substr(2,1) != "합"){
-		habchk("천간합",5,sj_yg,hn_lg,hn_yg,hn_mg,hn_dg);
+		habchk1("천간합",5,sj_yg,hn_lg,hn_yg,hn_mg,hn_dg);
 		if (rslt0 != ""){
 			for (i = 0; i < ca10_ghabch.length; i++){
 				if (ca10_ghabch[i][0] == "연간" && ca10_ghabch[i][1] == hcg1 && hcg1 == '-----'){
@@ -718,7 +684,7 @@ $("#hunDate").change(function(){
 	};
 	
 	if (gan_nfo[1][6].substr(2,1) != "합" && gan_nfo[3][6].substr(2,1) != "합"){
-		habchk("천간합",5,sj_mg,hn_lg,hn_yg,hn_mg,hn_dg);
+		habchk1("천간합",5,sj_mg,hn_lg,hn_yg,hn_mg,hn_dg);
 		if (rslt0 != ""){
 			for (i = 0; i < ca10_ghabch.length; i++){
 				if (ca10_ghabch[i][0] == "월간" && ca10_ghabch[i][1] == hcg2 && hcg2 == '-----'){
@@ -730,7 +696,7 @@ $("#hunDate").change(function(){
 		};
 	};
 	if (gan_nfo[3][7].substr(2,1) != "합"){
-		habchk("천간합",5,sj_tg,hn_lg,hn_yg,hn_mg,hn_dg);
+		habchk1("천간합",5,sj_tg,hn_lg,hn_yg,hn_mg,hn_dg);
 		if (rslt0 != ""){
 			for (i = 0; i < ca10_ghabch.length; i++){
 				if (ca10_ghabch[i][0] == "시간" && ca10_ghabch[i][1] == hcg4 && hcg4 == '-----'){
@@ -752,6 +718,16 @@ function habchk(a,b,c){
 	hcompchk("천간극",6,b,c); 	if (rslt != ""){document.getElementById("output3").innerText += a + hunD.substr(0,10) + " " + rslt + "\n"; result_out("극", rslt, 3, "output3");};
 };
 
+//====== 행운에 의한 천간합 체크 함수 ======
+//----   habchk1("천간합",5,sj_dg,hn_lg,hn_yg,hn_mg,hn_dg);
+function habchk(a,b,c,d,e,f,g){
+	rslt0 = "";
+	hcompchk(a,b,c,d); 	if (rslt != ""){rslt0 += " 대운 " + rslt};
+	hcompchk(a,b,c,e); 	if (rslt != ""){rslt0 += " 연운 " + rslt};	
+	hcompchk(a,b,c,f); 	if (rslt != ""){rslt0 += " 월운 " + rslt};	
+	hcompchk(a,b,c,g); 	if (rslt != ""){rslt0 += " 일운 " + rslt};	
+};
+	
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
 function convrtsj(reqD){
 	tsj1 = ""; tsj2 = ""; tsj3 = ""; tsj4 = ""; tsj5 = ""; tsj6 = ""; tsj7 = ""; tsj8 = "";
