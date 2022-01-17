@@ -924,8 +924,8 @@ function longun(){
 		if (i==1){
 			hunL[i][0] = firstD1.format('yyyy-MM-dd HH:mm'); hun_list[i][15] = firstD1.format('yyyy-MM-dd HH:mm');
 		 }else{
-			hunL[i][0] = new Date(firstD1.setFullYear(firstD1.getFullYear() + 10)).format('yyyy-MM-dd HH:mm'); 
-			hun_list[i][15] = new Date(firstD1.setFullYear(firstD1.getFullYear() + 10)).format('yyyy-MM-dd HH:mm'); 
+			firstD1 = new Date(firstD1.setFullYear(firstD1.getFullYear() + 10)); 
+			hunL[i][0] = firstD1.format('yyyy-MM-dd HH:mm'); hun_list[i][15] = firstD1.format('yyyy-MM-dd HH:mm'); 
 		 };
 		hunL[i][1] = gan[ca][0] + jiji[cb][0]; hun_list[i][1] = gan[ca][0]; hun_list[i][5] = jiji[cb][0]; hun_list[i][2] = gan[ca][4].substr(1,2); hun_list[i][6] = jiji[cb][4].substr(1,2);
 		sibsng(sj_dg,gan[ca][0],jiji[cb][0]); hunL[i][2] = gs_titl + " " + gan[ca][4].substr(1,2); hunL[i][3] = js_titl + " " + jiji[cb][4].substr(1,2);
