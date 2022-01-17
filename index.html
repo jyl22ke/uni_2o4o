@@ -1215,6 +1215,25 @@ function mktable(a,b,c,fnm){
 	unsng(sj_dg,c); fnm[a][8] = js_titl;
 	hroo(b,c,a); fnm[a][4] = rt;
 };
+
+//====== 천간합 자기자리 통근체크 함수 ======
+//---- hroo(천간,지지,c); --- c: 시주이면 4(예외적용)..
+function hroo(a,b,c){  
+
+	hro = ""; rt = "";
+	sibsng(a,"",b);
+	hro = js_titl;  //--- 십성
+	if (hro === "비견" || hro === "겁재" || hro === "편인" || hro === "정인"){
+		rt = "1" + hro;  //--- 통근 + 십성
+	}else{
+		rt = "0" + hro;  //--- 불통근 + 십성
+	};
+	if (c==4){  //--- 예외 적용 (甲일간 己巳시,乙일간 庚辰시,戊일간 癸亥시,癸일간 戊午시는 불통근으로 간주함.)
+		if ((sj_dg == "甲" && sj_tg == "己" && sj_tj == "巳") || (sj_dg == "乙" && sj_tg == "庚" && sj_tj == "辰") || (sj_dg == "戊" && sj_tg == "癸" && sj_tj == "亥") || (sj_dg == "癸" && sj_tg == "戊" && sj_tj == "午")){
+			rt = "0" + hro;  //--- 불통근 + 십성
+		};
+	};
+};
 	
 //====== 천간지지 십성 chk ======	
 function sibsng(a,b,c){
