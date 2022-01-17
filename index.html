@@ -632,11 +632,11 @@ $("#hunDate").change(function(){
 		hda = Math.ceil((new Date(hunD).getTime() - new Date('1908-01-10').getTime()) / 86400000) % 60; idx = hda % 10 + 1; hn_dg = gan[idx][0]; hdgoh = gan[idx][4].substr(1,2); idx = hda % 12 + 1; hn_dj = jiji[idx][0]; hdjoh = jiji[idx][4].substr(1,2);
 	};
 	hgj_nfo[1][1] = hn_lg; hgj_nfo[1][5] = hn_lj; hgj_nfo[2][1] = hn_yg; hgj_nfo[2][5] = hn_yj; hgj_nfo[3][1] = hn_mg; hgj_nfo[3][5] = hn_mj; hgj_nfo[4][1] = hn_dg; hgj_nfo[4][5] = hn_dj; 
-	mktable(0,hn_lg,hn_lj,hgj_nfo);
-	mktable(1,hn_yg,hn_yj,hgj_nfo);
-	mktable(2,hn_mg,hn_mj,hgj_nfo);
-	mktable(3,hn_dg,hn_dj,hgj_nfo);
-//	mktable(4,hn_tg,hn_tj,hgj_nfo);
+	mktable(1,hn_lg,hn_lj,hgj_nfo);
+	mktable(2,hn_yg,hn_yj,hgj_nfo);
+	mktable(3,hn_mg,hn_mj,hgj_nfo);
+	mktable(4,hn_dg,hn_dj,hgj_nfo);
+//	mktable(5,hn_tg,hn_tj,hgj_nfo);
 	
 	
 	
