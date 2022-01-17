@@ -636,7 +636,7 @@ $("#hunDate").change(function(){
 		hmo = (hyr % 5) * 12 + Number(hunD.substr(5,2)); idx = hmo % 10 + 1; hn_mg = gan[idx][0]; hmgoh = gan[idx][4].substr(1,2); idx = hmo % 12 + 1; hn_mj = jiji[idx][0]; hmjoh = jiji[idx][4].substr(1,2);
 		hda = Math.ceil((new Date(hunD).getTime() - new Date('1908-01-10').getTime()) / 86400000) % 60; idx = hda % 10 + 1; hn_dg = gan[idx][0]; hdgoh = gan[idx][4].substr(1,2); idx = hda % 12 + 1; hn_dj = jiji[idx][0]; hdjoh = jiji[idx][4].substr(1,2);
 	};
-	hgj[1][1] = hn_lg; hgj[1][5] = hn_lj; hgj[2][1] = hn_yg; hgj[2][5] = hn_yj; hgj[3][1] = hn_mg; hgj[3][5] = hn_mj; hgj[4][1] = hn_dg; hgj[4][5] = hn_dj; 
+	hgj_nfo[1][1] = hn_lg; hgj_nfo[1][5] = hn_lj; hgj_nfo[2][1] = hn_yg; hgj_nfo[2][5] = hn_yj; hgj_nfo[3][1] = hn_mg; hgj_nfo[3][5] = hn_mj; hgj_nfo[4][1] = hn_dg; hgj_nfo[4][5] = hn_dj; 
 	
 	
 	
