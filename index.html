@@ -493,6 +493,22 @@ $( function() {
 		
 		hunL = [["대운일","간지","간십성오행","지십성오행"],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]];
 		
+		let gj_nfo = [
+		["위치","gan","g오행","g십성","통근","jiji","j오행","j십성","십이운성","지장간1","지장간2","지장간3","지1_십성","지2_십성","지3_십성","비고"],
+		["연주","","","","","","","","","","","","","","",""],["월주","","","","","","","","","","","","","","",""],["일주","","","","","","","","","","","","","","",""],["시주","","","","","","","","","","","","","","",""]];
+
+		let hgj_nfo = [
+		["위치","gan","g오행","g십성","통근","jiji","j오행","j십성","십이운성","지장간1","지장간2","지장간3","지1_십성","지2_십성","지3_십성","비고"],
+		["대운","","","","","","","","","","","","","","",""],["연운","","","","","","","","","","","","","","",""],["월운","","","","","","","","","","","","","","",""],["일운","","","","","","","","","","","","","","",""],
+		["시운","","","","","","","","","","","","","","",""]];
+
+		let hun_list = [
+		["위치","gan","g오행","g십성","통근","jiji","j오행","j십성","십이운성","지장간1","지장간2","지장간3","지1_십성","지2_십성","지3_십성","대운일"],
+		["초기대운","","","","","","","","","","","","","","",""],["2대운","","","","","","","","","","","","","","",""],["3대운","","","","","","","","","","","","","","",""],["4대운","","","","","","","","","","","","","","",""],
+		["5대운","","","","","","","","","","","","","","",""],["6대운","","","","","","","","","","","","","","",""],["7대운","","","","","","","","","","","","","","",""],["8대운","","","","","","","","","","","","","","",""],
+		["9대운","","","","","","","","","","","","","","",""],["10대운","","","","","","","","","","","","","","",""],["11대운","","","","","","","","","","","","","","",""],["12대운","","","","","","","","","","","","","","",""],
+		["13대운","","","","","","","","","","","","","","",""],["14대운","","","","","","","","","","","","","","",""]];
+
 		document.getElementById("hunDate").value = new Date().format('yyyy-MM-dd');  //--- 행운일자를 현재시간으로 설정(initial)
 		saju_h = document.getElementById('sj').value;  //--- 직접 입력한 한글사주
 		symdt = document.getElementById('sjtm').value;  //--- 직접 입력한 생년월일시(text)
@@ -507,14 +523,14 @@ $( function() {
 			saju_chk();
 			saju = saju_h;
 		};
-		subj = saju.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0][0]; gan_nfo[1][1] = sj_yg;
-		subj = saju.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0]; jiji_nfo[1][1] = sj_yj;
-		subj = saju.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0][0]; gan_nfo[2][1] = sj_mg;
-		subj = saju.substr(3,1); temp = jiji.filter(isFindj); sj_mj = temp[0][0]; jiji_nfo[2][1] = sj_mj;
-		subj = saju.substr(4,1); temp = gan.filter(isFindj); sj_dg = temp[0][0]; gan_nfo[3][1] = sj_dg;
-		subj = saju.substr(5,1); temp = jiji.filter(isFindj); sj_dj = temp[0][0]; jiji_nfo[3][1] = sj_dj;
-		subj = saju.substr(6,1); temp = gan.filter(isFindj); sj_tg = temp[0][0]; gan_nfo[4][1] = sj_tg;
-		subj = saju.substr(7,1); temp = jiji.filter(isFindj); sj_tj = temp[0][0]; jiji_nfo[4][1] = sj_tj;
+		subj = saju.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0][0]; gan_nfo[1][1] = sj_yg; gj_nfo[1][1] = sj_yg;
+		subj = saju.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0]; jiji_nfo[1][1] = sj_yj; gj_nfo[1][5] = sj_yj;
+		subj = saju.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0][0]; gan_nfo[2][1] = sj_mg; gj_nfo[2][1] = sj_mg;
+		subj = saju.substr(3,1); temp = jiji.filter(isFindj); sj_mj = temp[0][0]; jiji_nfo[2][1] = sj_mj; gj_nfo[2][5] = sj_mj;
+		subj = saju.substr(4,1); temp = gan.filter(isFindj); sj_dg = temp[0][0]; gan_nfo[3][1] = sj_dg; gj_nfo[3][1] = sj_dg;
+		subj = saju.substr(5,1); temp = jiji.filter(isFindj); sj_dj = temp[0][0]; jiji_nfo[3][1] = sj_dj; gj_nfo[3][5] = sj_dj;
+		subj = saju.substr(6,1); temp = gan.filter(isFindj); sj_tg = temp[0][0]; gan_nfo[4][1] = sj_tg; gj_nfo[4][1] = sj_tg;
+		subj = saju.substr(7,1); temp = jiji.filter(isFindj); sj_tj = temp[0][0]; jiji_nfo[4][1] = sj_tj; gj_nfo[4][5] = sj_tj;
 
 		mktabl();
 		fill_saju();
@@ -522,6 +538,11 @@ $( function() {
 		seun();
 		moun();
 		dayun();
+		mktable(0,hn_lg,hn_lj,hgj_nfo);
+		mktable(1,hn_yg,hn_yj,hgj_nfo);
+		mktable(2,hn_mg,hn_mj,hgj_nfo);
+		mktable(3,hn_dg,hn_dj,hgj_nfo);
+		mktable(4,hn_tg,hn_tj,hgj_nfo);
    		ganji_root();
    		tugan();
    		rootgchk();
@@ -1166,8 +1187,35 @@ function mktabl(){
 		7: (13) ["임", "해", "양수", "식신", "상관", "편재", "정재", "편관", "정관", "편인", "정인", "비견", "겁재"]
 		8: (13) ["정", "오", "음화", "정인", "편인", "겁재", "비견", "상관", "식신", "정재", "편재", "정관", "편관"]
 		9: (13) ["계", "자", "음수", "상관", "식신", "정재", "편재", "정관", "편관", "정인", "편인", "겁재", "비견"]	*/
+	mktable(1,sj_yg,sj_yj,gj_nfo);
+	mktable(2,sj_mg,sj_mj,gj_nfo);
+	mktable(3,sj_dg,sj_dj,gj_nfo);
+	mktable(4,sj_tg,sj_tj,gj_nfo);
 };
 
+//====== gj_nfo, hgj_nfo, hun_list 테이블 작성 ======
+function mktable(a,b,c,fnm){
+/*	subj = b; temp = gan.filter(isFind); gj_nfo[a][2] = temp[0][4].substr(1,2); 
+	subj = c; temp = jiji.filter(isFind); gj_nfo[a][6] = temp[0][4].substr(1,2); 
+	gj_nfo[a][9] = temp[0][6]; gj_nfo[a][10] = temp[0][7]; gj_nfo[a][11] = temp[0][8];
+	sibsng(sj_dg,temp[0][6].substr(0,1),""); gj_nfo[a][12] = gs_titl;
+	sibsng(sj_dg,temp[0][7].substr(0,1),""); gj_nfo[a][13] = gs_titl;
+	sibsng(sj_dg,temp[0][8].substr(0,1),""); gj_nfo[a][14] = gs_titl;
+	sibsng(sj_dg,b,c); gj_nfo[a][3] = gs_titl; gj_nfo[a][7] = js_titl;
+	unsng(sj_dg,c); gj_nfo[a][8] = js_titl;
+	hroo(b,c,a); gj_nfo[a][4] = rt;*/
+
+	subj = b; temp = gan.filter(isFind); fnm[a][2] = temp[0][4].substr(1,2); 
+	subj = c; temp = jiji.filter(isFind); fnm[a][6] = temp[0][4].substr(1,2); 
+	fnm[a][9] = temp[0][6]; fnm[a][10] = temp[0][7]; fnm[a][11] = temp[0][8];
+	sibsng(sj_dg,temp[0][6].substr(0,1),""); fnm[a][12] = gs_titl;
+	sibsng(sj_dg,temp[0][7].substr(0,1),""); fnm[a][13] = gs_titl;
+	sibsng(sj_dg,temp[0][8].substr(0,1),""); fnm[a][14] = gs_titl;
+	sibsng(sj_dg,b,c); fnm[a][3] = gs_titl; fnm[a][7] = js_titl;
+	unsng(sj_dg,c); fnm[a][8] = js_titl;
+	hroo(b,c,a); fnm[a][4] = rt;
+};
+	
 //====== 천간지지 십성 chk ======	
 function sibsng(a,b,c){
 	gs_titl = ""; js_titl = "";
