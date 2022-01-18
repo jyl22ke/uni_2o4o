@@ -614,12 +614,19 @@ function hangun(){
 	//----- 대운
 	for (i=1; i<15; i++){
 		if (vwyr-birth1.getFullYear()+1 >= age+(i-1)*10 && vwyr-birth1.getFullYear()+1 < age+i*10){
-			hn_lg = hunL[i][1].substr(0,1); hn_lj = hunL[i][1].substr(1,1); ageL = age + (i - 1) * 10;
+/*			hn_lg = hunL[i][1].substr(0,1); hn_lj = hunL[i][1].substr(1,1); ageL = age + (i - 1) * 10;
 			document.getElementById("hunL2").innerText += "(" + ageL + ")\n";
 			document.getElementById("hunL1").innerText += hn_lg + "\n";
 			document.getElementById("hunL2").innerText += hunL[i][2] + "\n";
 			document.getElementById("hunL1").innerText += hn_lj + "\n";
 			document.getElementById("hunL2").innerText += "\n" + hunL[i][3] + " \n";
+*/
+			hn_lg = hun_list[i][1]; hn_lj = hun_list[i][5]; ageL = age + (i - 1) * 10;
+			document.getElementById("hunL2").innerText += "(" + ageL + ")\n";
+			document.getElementById("hunL1").innerText += hn_lg + "\n";
+			document.getElementById("hunL2").innerText += hun_list[i][3] + " " + hun_list[i][2] + "\n";
+			document.getElementById("hunL1").innerText += hn_lj + "\n";
+			document.getElementById("hunL2").innerText += "\n" + hun_list[i][7] + " " + hun_list[i][6] + " " + hun_list[i][8] + " \n";
 		};
 	};
 	if (hunD >= ca08_monthstart[1][5] && hunD < ca08_monthstart[ca08_monthstart.length-1][5]){	
@@ -643,34 +650,31 @@ function hangun(){
 	mktable(3,hn_mg,hn_mj,hgj_nfo);
 	mktable(4,hn_dg,hn_dj,hgj_nfo);
 //	mktable(5,hn_tg,hn_tj,hgj_nfo);
-	
-	
-	
 	//----- 연운
 	sibsng(sj_dg,hn_yg,hn_yj); hygs = gs_titl; hyjs = js_titl; 
 	unsng(sj_dg,hn_yj); hyuns = js_titl; 
 	ageY = vwyr - birth1.getFullYear() + 1;
 	document.getElementById("hunY2").innerText += vwyr + " (" + ageY + ")\n";
 	document.getElementById("hunY1").innerText += hn_yg + "\n";
-	document.getElementById("hunY2").innerText += hygs + " " + hygoh + "\n";
+	document.getElementById("hunY2").innerText += hgj_nfo[2][3] + " " + hgj_nfo[2][2] + "\n";
 	document.getElementById("hunY1").innerText += hn_yj + "\n";
-	document.getElementById("hunY2").innerText += "\n" + hyjs + " " + hyjoh + " " + hyuns + "\n";
+	document.getElementById("hunY2").innerText += "\n" + hgj_nfo[2][7] + " " + hgj_nfo[2][6] + " " + hgj_nfo[2][8] + "\n";
 	//----- 월운
 	sibsng(sj_dg,hn_mg,hn_mj); hmgs = gs_titl; hmjs = js_titl; 
 	unsng(sj_dg,hn_mj); hmuns = js_titl; 
 	document.getElementById("hunM2").innerText += hunD.substr(0,7) + " (" + hn_mj + ")\n";
 	document.getElementById("hunM1").innerText += hn_mg + "\n";
-	document.getElementById("hunM2").innerText += hmgs + " " + hmgoh + "\n";
+	document.getElementById("hunM2").innerText += hgj_nfo[3][3] + " " + hgj_nfo[3][2] + "\n";
 	document.getElementById("hunM1").innerText += hn_mj + "\n";
-	document.getElementById("hunM2").innerText += "\n" + hmjs + " " + hmjoh + " " + hmuns + "\n";
+	document.getElementById("hunM2").innerText += "\n" + hgj_nfo[3][7] + " " + hgj_nfo[3][6] + " " + hgj_nfo[3][8] + "\n";
 	//----- 일운
 	sibsng(sj_dg,hn_dg,hn_dj); hdgs = gs_titl; hdjs = js_titl; 
 	unsng(sj_dg,hn_dj); hduns = js_titl; 
 	document.getElementById("hunD2").innerText += hunD + "\n";
 	document.getElementById("hunD1").innerText += hn_dg + "\n";
-	document.getElementById("hunD2").innerText += hdgs + " " + hdgoh + "\n";
+	document.getElementById("hunD2").innerText += hgj_nfo[4][3] + " " + hgj_nfo[4][2] + "\n";
 	document.getElementById("hunD1").innerText += hn_dj + "\n";
-	document.getElementById("hunD2").innerText += "\n" + hdjs + " " + hdjoh + " " + hduns + "\n";
+	document.getElementById("hunD2").innerText += "\n" + hgj_nfo[4][7] + " " + hgj_nfo[4][6] + " " + hgj_nfo[4][8] + "\n";
 
 	document.getElementById("output3").innerText += "<<행운 운세분석>>..... \n";
 	hunanal(hn_lg, hn_lj, hn_yg, hn_yj); document.getElementById("output3").innerText += vwyr + "(" + ageY + ")" + " 연운: (" + hn_yg + hn_yj + ") " + hv8 + "- " + hv9 + "\n";
@@ -942,24 +946,30 @@ function longun(){
 		sibsng(sj_dg,jiji[cb][8].substr(0,1),""); hun_list[i][14] = gs_titl;
 		if (jiji[cb][7] == ""){	hun_list[i][13] = ""}else{sibsng(sj_dg,jiji[cb][7].substr(0,1),""); hun_list[i][13] = gs_titl;}; 
 		hroo(gan[ca][0],jiji[cb][0],0); hun_list[i][4] = rt;
+		unsng(sj_dg,jiji[cb][0]);  hunL[i][3] += " " + js_titl; 
+		hun_list[i][8] = js_titl;
 		sibsng(sj_dg,gan[ca][0],jiji[cb][0]); hunL[i][2] = gs_titl + " " + gan[ca][4].substr(1,2); hunL[i][3] = js_titl + " " + jiji[cb][4].substr(1,2);
 		hun_list[i][3] = gs_titl; hun_list[i][7] = js_titl; 
 		if (i < 10){
-			document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
+/*			document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
 			document.getElementById(posa).innerText += gan[ca][0] + "\n";
 			document.getElementById(posb).innerText += gs_titl + "\n" + gan[ca][4].substr(1,2) + " \n\n";
 			document.getElementById(posa).innerText += jiji[cb][0] + "\n";
 			document.getElementById(posb).innerText += js_titl + "\n" + jiji[cb][4].substr(1,2) + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
+*/
+			document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
+			document.getElementById(posa).innerText += gan[ca][0] + "\n";
+			document.getElementById(posb).innerText += hun_list[i][3] + "\n" + hun_list[i][2] + " \n\n";
+			document.getElementById(posa).innerText += jiji[cb][0] + "\n";
+			document.getElementById(posb).innerText += hun_list[i][7] + "\n" + hun_list[i][6] + " \n " + hun_list[i][8] + " \n";
 		};
-		if (now.getFullYear()-birth0.getFullYear()+1 >= age+(i-1)*10 && now.getFullYear()-birth0.getFullYear()+1 < age+i*10){
+/*		if (now.getFullYear()-birth0.getFullYear()+1 >= age+(i-1)*10 && now.getFullYear()-birth0.getFullYear()+1 < age+i*10){
 			document.getElementById("hunL2").innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
 			document.getElementById("hunL1").innerText += gan[ca][0] + "\n"; hn_lg = gan[ca][0];
 			document.getElementById("hunL2").innerText += gs_titl + " " + gan[ca][3] + gan[ca][2] + "\n";
 			document.getElementById("hunL1").innerText += jiji[cb][0] + "\n"; hn_lj = jiji[cb][0];
 			document.getElementById("hunL2").innerText += "\n" + js_titl + " " + jiji[cb][3] + jiji[cb][2] + " " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
-		};
-		unsng(sj_dg,jiji[cb][0]);  hunL[i][3] += " " + js_titl; 
-		hun_list[i][8] = js_titl;
+		};*/
 	};
 };
 	
