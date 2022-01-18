@@ -614,13 +614,6 @@ function hangun(){
 	//----- 대운
 	for (i=1; i<15; i++){
 		if (vwyr-birth1.getFullYear()+1 >= age+(i-1)*10 && vwyr-birth1.getFullYear()+1 < age+i*10){
-/*			hn_lg = hunL[i][1].substr(0,1); hn_lj = hunL[i][1].substr(1,1); ageL = age + (i - 1) * 10;
-			document.getElementById("hunL2").innerText += "(" + ageL + ")\n";
-			document.getElementById("hunL1").innerText += hn_lg + "\n";
-			document.getElementById("hunL2").innerText += hunL[i][2] + "\n";
-			document.getElementById("hunL1").innerText += hn_lj + "\n";
-			document.getElementById("hunL2").innerText += "\n" + hunL[i][3] + " \n";
-*/
 			hn_lg = hun_list[i][1]; hn_lj = hun_list[i][5]; ageL = age + (i - 1) * 10;
 			document.getElementById("hunL2").innerText += "(" + ageL + ")\n";
 			document.getElementById("hunL1").innerText += hn_lg + "\n";
@@ -951,25 +944,12 @@ function longun(){
 		sibsng(sj_dg,gan[ca][0],jiji[cb][0]); hunL[i][2] = gs_titl + " " + gan[ca][4].substr(1,2); hunL[i][3] = js_titl + " " + jiji[cb][4].substr(1,2);
 		hun_list[i][3] = gs_titl; hun_list[i][7] = js_titl; 
 		if (i < 10){
-/*			document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
-			document.getElementById(posa).innerText += gan[ca][0] + "\n";
-			document.getElementById(posb).innerText += gs_titl + "\n" + gan[ca][4].substr(1,2) + " \n\n";
-			document.getElementById(posa).innerText += jiji[cb][0] + "\n";
-			document.getElementById(posb).innerText += js_titl + "\n" + jiji[cb][4].substr(1,2) + " \n " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
-*/
 			document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
 			document.getElementById(posa).innerText += gan[ca][0] + "\n";
 			document.getElementById(posb).innerText += hun_list[i][3] + "\n" + hun_list[i][2] + " \n\n";
 			document.getElementById(posa).innerText += jiji[cb][0] + "\n";
 			document.getElementById(posb).innerText += hun_list[i][7] + "\n" + hun_list[i][6] + " \n " + hun_list[i][8] + " \n";
 		};
-/*		if (now.getFullYear()-birth0.getFullYear()+1 >= age+(i-1)*10 && now.getFullYear()-birth0.getFullYear()+1 < age+i*10){
-			document.getElementById("hunL2").innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
-			document.getElementById("hunL1").innerText += gan[ca][0] + "\n"; hn_lg = gan[ca][0];
-			document.getElementById("hunL2").innerText += gs_titl + " " + gan[ca][3] + gan[ca][2] + "\n";
-			document.getElementById("hunL1").innerText += jiji[cb][0] + "\n"; hn_lj = jiji[cb][0];
-			document.getElementById("hunL2").innerText += "\n" + js_titl + " " + jiji[cb][3] + jiji[cb][2] + " " + unsung12[0][unsung12[3].indexOf(jiji[cb][0])] + " \n";
-		};*/
 	};
 };
 	
@@ -1013,13 +993,6 @@ function seun(){
 			if ((i%10) != 9){document.getElementById(posi).innerText += "-----------------\n";};
 		};
 		j += 1;
-/*		if (now.getFullYear() == vwyr ){
-			document.getElementById("hunY2").innerText += vwyr + " (" + (vwyr - birth1.getFullYear() + 1) + ")\n";
-			document.getElementById("hunY1").innerText += seug + "\n";  hn_yg = seug;
-			document.getElementById("hunY2").innerText += seugs + " " + seugoh + "\n";
-			document.getElementById("hunY1").innerText += seuj + "\n";  hn_yj = seuj;
-			document.getElementById("hunY2").innerText += "\n" + seujs + " " + seujoh + " " + unsung12[0][seuns] + "\n";
-		};*/
 	};
 };
 	
@@ -1051,14 +1024,6 @@ function moun(){
  		document.getElementById(posi).innerText += moung + moungs + moungoh + "\n";
  		document.getElementById(posi).innerText += mounj + mounjs + mounjoh + mouns + "\n";
 		if (i < 9){document.getElementById(posi).innerText += "-----------------\n";};
-	
-/*		if (n == 0){
-			document.getElementById("hunM2").innerText += mountit.format('yyyy-MM') + " (" + mounj + ")\n";
-			document.getElementById("hunM1").innerText += moung + "\n"; hn_mg = moung;
-			document.getElementById("hunM2").innerText += moungs + " " + moungoh + "\n";
-			document.getElementById("hunM1").innerText += mounj + "\n"; hn_mj = mounj;
-			document.getElementById("hunM2").innerText += "\n" + mounjs + " " + mounjoh + " " + mouns + "\n";
-		};*/
 	};
 };
 
@@ -1089,13 +1054,6 @@ function dayun(){
  		document.getElementById(posi).innerText += daung + daungs + daungoh + "\n";
  		document.getElementById(posi).innerText += daunj + daunjs + daunjoh + dauns + "\n";
 		if (i < 18){document.getElementById(posi).innerText += "-----------------\n";};
-/*		if (i == 3){
-			document.getElementById("hunD2").innerText += dauntit.format('yyyy-MM-dd') + "\n";
-			document.getElementById("hunD1").innerText += daung + "\n"; hn_dg = daung;
-			document.getElementById("hunD2").innerText += daungs + " " + daungoh + "\n";
-			document.getElementById("hunD1").innerText += daunj + "\n"; hn_dj = daunj;
-			document.getElementById("hunD2").innerText += "\n" + daunjs + " " + daunjoh + " " + dauns + "\n";
-		};*/
 	};
 };
 	
@@ -1103,21 +1061,6 @@ function fill_saju(){
 	for (i=1;i<5 ; i++){
 		m = i * 2 -1;
 		n = i * 2;
-/*		document.getElementById("sj" + m).innerText +=  ggsgg[i][0];  //--- 천간 기록
-		document.getElementById("sjg" + m).innerText +=   ggsgg[i][4].substr(1,2);  //--- 천간 음양오행 기록
-		chg_bgcolor("#sj" + m,ggsgg[i][5],ggsgg[i][5]); ohtx += ggsgg[i][4].substr(1,2);  //--- 천간 배경색
-		document.getElementById("sj" + n).innerText +=  jjsjj[i][0];  //--- 지지 기록
-		document.getElementById("sjg" + n).innerText +=  jjsjj[i][4].substr(1,2);  //--- 지지 음양오행 기록
-		chg_bgcolor("#sj" + n,jjsjj[i][5],jjsjj[i][5]); ohtx += jjsjj[i][4].substr(1,2);  //--- 지지 배경색
-		//--- 지장간 기록 ---
-		sibsng(sj_dg,jjsjj[i][6].substr(0,1),""); document.getElementById("sj" + n + "b").innerText += jjsjj[i][6] + " " + gs_titl + "\n"; jiji_nfo[i][5] = gs_titl;
-		if (jjsjj[i][7] == ""){
-			document.getElementById("sj" + n + "b").innerText += " \n";
-		}else{
-			sibsng(sj_dg,jjsjj[i][7].substr(0,1),""); document.getElementById("sj" + n + "b").innerText += jjsjj[i][7] + " " + gs_titl + "\n"; jiji_nfo[i][7] = gs_titl;
-		};
-		sibsng(sj_dg,jjsjj[i][8].substr(0,1),""); document.getElementById("sj" + n + "b").innerText += jjsjj[i][8] + " " + gs_titl + "\n"; jiji_nfo[i][9] = gs_titl;
-*/
 		document.getElementById("sj" + m).innerText += gj_nfo[i][1];  //--- 천간 기록
 		document.getElementById("sjg" + m).innerText += gj_nfo[i][2];  //--- 천간 음양오행 기록
 		chg_bgcolor("#sj" + m,ggsgg[i][5],ggsgg[i][5]); ohtx += ggsgg[i][4].substr(1,2);  //--- 천간 배경색
@@ -1134,19 +1077,6 @@ function fill_saju(){
 		};
 		document.getElementById("sj" + n + "b").innerText += gj_nfo[i][11] + " " + gj_nfo[i][14] + "\n"; jiji_nfo[i][9] = gs_titl;
 	}
-/*	sibsng(sj_dg,sj_yg,sj_yj); dgss_titl1 = gs_titl; gan_nfo[1][3] = gs_titl; dgss_titl2 = js_titl; jiji_nfo[1][3] = js_titl;  //--- 년주 십성 기록
-	document.getElementById("sj1a").innerText += gs_titl + "\n"; document.getElementById("sj2a").innerText += js_titl + "\n";
-	sibsng(sj_dg,sj_mg,sj_mj); dgss_titl3 = gs_titl; gan_nfo[2][3] = gs_titl; dgss_titl4 = js_titl; jiji_nfo[2][3] = js_titl;  //--- 월주 십성 기록
-	document.getElementById("sj3a").innerText += gs_titl + "\n"; document.getElementById("sj4a").innerText += js_titl + "\n";
-	sibsng(sj_dg,"",sj_dj);gan_nfo[3][3] = "일간(나)"; dgss_titl6 = js_titl; jiji_nfo[3][3] = js_titl;  //--- 일주 십성 기록
-	document.getElementById("sj5a").innerText += "일간(나)\n"; document.getElementById("sj6a").innerText += js_titl + "\n";
-	sibsng(sj_dg,sj_tg,sj_tj); dgss_titl7 = gs_titl; gan_nfo[4][3] = gs_titl; dgss_titl8 = js_titl; jiji_nfo[4][3] = js_titl;  //--- 시주 십성 기록
-	document.getElementById("sj7a").innerText += gs_titl + "\n"; document.getElementById("sj8a").innerText += js_titl + "\n";
-	unsng(sj_dg,sj_yj); document.getElementById("sj2c").innerText += "(일간) " + js_titl + " \n"; jiji_nfo[1][10] = js_titl;  //----- 년지 십이운성 기록
-	unsng(sj_dg,sj_mj); document.getElementById("sj4c").innerText += "(일간) " + js_titl + " \n"; jiji_nfo[2][10] = js_titl;  //----- 월지 십이운성 기록
-	unsng(sj_dg,sj_dj); document.getElementById("sj6c").innerText += "(일간) " + js_titl + " \n"; jiji_nfo[3][10] = js_titl;  //----- 일지 십이운성 기록
-	unsng(sj_dg,sj_tj); document.getElementById("sj8c").innerText += "(일간) " + js_titl + " \n"; jiji_nfo[4][10] = js_titl;  //----- 시지 십이운성 기록
-*/
 	sibsng(sj_dg,sj_yg,sj_yj); dgss_titl1 = gs_titl; gan_nfo[1][3] = gs_titl; dgss_titl2 = js_titl; jiji_nfo[1][3] = js_titl;  //--- 년주 십성 기록
 	document.getElementById("sj1a").innerText += gj_nfo[1][3] + "\n"; document.getElementById("sj2a").innerText += gj_nfo[1][7] + "\n";
 	sibsng(sj_dg,sj_mg,sj_mj); dgss_titl3 = gs_titl; gan_nfo[2][3] = gs_titl; dgss_titl4 = js_titl; jiji_nfo[2][3] = js_titl;  //--- 월주 십성 기록
@@ -1259,16 +1189,6 @@ function mktabl(){
 
 //====== gj_nfo, hgj_nfo, hun_list 테이블 작성 ======
 function mktable(a,b,c,fnm){
-/*	subj = b; temp = gan.filter(isFind); gj_nfo[a][2] = temp[0][4].substr(1,2); 
-	subj = c; temp = jiji.filter(isFind); gj_nfo[a][6] = temp[0][4].substr(1,2); 
-	gj_nfo[a][9] = temp[0][6]; gj_nfo[a][10] = temp[0][7]; gj_nfo[a][11] = temp[0][8];
-	sibsng(sj_dg,temp[0][6].substr(0,1),""); gj_nfo[a][12] = gs_titl;
-	sibsng(sj_dg,temp[0][7].substr(0,1),""); gj_nfo[a][13] = gs_titl;
-	sibsng(sj_dg,temp[0][8].substr(0,1),""); gj_nfo[a][14] = gs_titl;
-	sibsng(sj_dg,b,c); gj_nfo[a][3] = gs_titl; gj_nfo[a][7] = js_titl;
-	unsng(sj_dg,c); gj_nfo[a][8] = js_titl;
-	hroo(b,c,a); gj_nfo[a][4] = rt;*/
-
 	subj = b; temp = gan.filter(isFind); fnm[a][2] = temp[0][4].substr(1,2); 
 	subj = c; temp = jiji.filter(isFind); fnm[a][6] = temp[0][4].substr(1,2); 
 	fnm[a][9] = temp[0][6]; fnm[a][10] = temp[0][7]; fnm[a][11] = temp[0][8];
