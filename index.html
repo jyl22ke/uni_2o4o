@@ -522,13 +522,13 @@ $( function() {
 			saju = saju_h;
 		};
 		subj = saju.substr(0,1); temp = gan.filter(isFindj); sj_yg = temp[0][0]; gan_nfo[1][1] = sj_yg; gj_nfo[1][1] = sj_yg;
-		subj = saju.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0]; gj_nfo[1][5] = sj_yj;// jiji_nfo[1][1] = sj_yj;
+		subj = saju.substr(1,1); temp = jiji.filter(isFindj); sj_yj = temp[0][0]; gj_nfo[1][5] = sj_yj;
 		subj = saju.substr(2,1); temp = gan.filter(isFindj); sj_mg = temp[0][0]; gan_nfo[2][1] = sj_mg; gj_nfo[2][1] = sj_mg;
-		subj = saju.substr(3,1); temp = jiji.filter(isFindj); sj_mj = temp[0][0]; gj_nfo[2][5] = sj_mj;// jiji_nfo[2][1] = sj_mj;
+		subj = saju.substr(3,1); temp = jiji.filter(isFindj); sj_mj = temp[0][0]; gj_nfo[2][5] = sj_mj;
 		subj = saju.substr(4,1); temp = gan.filter(isFindj); sj_dg = temp[0][0]; gan_nfo[3][1] = sj_dg; gj_nfo[3][1] = sj_dg;
-		subj = saju.substr(5,1); temp = jiji.filter(isFindj); sj_dj = temp[0][0]; gj_nfo[3][5] = sj_dj;// jiji_nfo[3][1] = sj_dj;
+		subj = saju.substr(5,1); temp = jiji.filter(isFindj); sj_dj = temp[0][0]; gj_nfo[3][5] = sj_dj;
 		subj = saju.substr(6,1); temp = gan.filter(isFindj); sj_tg = temp[0][0]; gan_nfo[4][1] = sj_tg; gj_nfo[4][1] = sj_tg;
-		subj = saju.substr(7,1); temp = jiji.filter(isFindj); sj_tj = temp[0][0]; gj_nfo[4][5] = sj_tj;// jiji_nfo[4][1] = sj_tj;
+		subj = saju.substr(7,1); temp = jiji.filter(isFindj); sj_tj = temp[0][0]; gj_nfo[4][5] = sj_tj;
 
 		mktabl();
 		longun();
@@ -733,6 +733,24 @@ function hangun(){
 		};
 
 	};
+	ganhc_nfo[1][1] = sj_yg; ganhc_nfo[2][1] = sj_mg; ganhc_nfo[3][1] = sj_dg; ganhc_nfo[4][1] = sj_tg; 
+	ganhc_nfo[1][2] = ""; ganhc_nfo[2][2] = gj_nfo[2][6].substr(1,1); subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); ganhc_nfo[3][2] = temp[0][2]; ganhc_nfo[4][2] = ""; 
+	habchk2(1,sj_yg); habchk2(2,sj_mg); habchk2(3,sj_dg); habchk2(4,sj_tg);
+};
+
+//====== 천간합충극 체크 함수 ======
+//----   habchk2(1,sj_yg);
+function habchk2(a,b){
+	if (a == 1){c = sj_mg;}; if (a == 2){c = sj_dg;}; if (a == 3){c = sj_tg;}; 
+	if (a <= 3){
+		rslt0 = ""; hcompchk("천간합",5,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간극",6,b,c); if (rslt != ""){rslt0 += rslt;}; 
+		ganhc_nfo[a][a+2] = rslt0; ganhc_nfo[a+1][a+2] = rslt0;
+	};
+	rslt0 = ""; c = hn_lg; hcompchk("천간합",5,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간극",6,b,c); if (rslt != ""){rslt0 += rslt;}; ganhc_nfo[a][6] = result0;
+	rslt0 = ""; c = hn_yg; hcompchk("천간합",5,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간극",6,b,c); if (rslt != ""){rslt0 += rslt;}; ganhc_nfo[a][7] = result0;
+	rslt0 = ""; c = hn_mg; hcompchk("천간합",5,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간극",6,b,c); if (rslt != ""){rslt0 += rslt;}; ganhc_nfo[a][8] = result0;
+	rslt0 = ""; c = hn_dg; hcompchk("천간합",5,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간극",6,b,c); if (rslt != ""){rslt0 += rslt;}; ganhc_nfo[a][9] = result0;
+	rslt0 = ""; c = hn_tg; hcompchk("천간합",5,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,b,c); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간극",6,b,c); if (rslt != ""){rslt0 += rslt;}; ganhc_nfo[a][10] = result0;
 };
 	
 //====== 행운에 의한 천간합충극 체크 함수 ======
