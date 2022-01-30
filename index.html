@@ -971,16 +971,11 @@ function ganhabch(){
 			};
 			document.getElementById("output1").innerText += "--------------------------------------------------------------\n";
 		};
-		if (ca10a_ghabch[i][0] == "일간" && ca10a_ghabch[i][1] == hcg3){
-			if (ca10a_ghabch[i][5] != "b" && ca10a_ghabch[i][5] != "-"){
-				code2 = ca10a_ghabch[i][5]; code1 = code2;
-				code1 += "-"; 
-				code1 += hcg3.substr(4,1); 
-			}else{
-				code2 = ca10a_ghabch[i][5]; code1 = "-"; 
-				code1 += gj_nfo[3][4].substr(0,1); 
-				code1 += hcg3.substr(4,1); 
-			};
+		if (ca10a_ghabch[i][0] == "일간" && ca10a_ghabch[i][1] == hcg3){  //--- 원국코드 (code1) 및 결과코드 (code2) 생성
+			if (ca10a_ghabch[i][5] ==  "-" || ca10a_ghabch[i][5] ==  "b"){code2 = ca10a_ghabch[i][5]; code1 = "-"; code1 += gj_nfo[3][4].substr(0,1); code1 += hcg3.substr(4,1); };
+			if (ca10a_ghabch[i][5] > "0" && ca10a_ghabch[i][5] < "7"){code2 = ca10a_ghabch[i][5]; code1 = code2; code1 += "-"; code1 += hcg3.substr(4,1); };
+			if (ca10a_ghabch[i][5] ==  "7" || ca10a_ghabch[i][5] ==  "8"){code2 = ca10a_ghabch[i][5]; code1 = code2;	code1 += "--"; };
+
 			if (hcg3.substr(0,4) != '----'){	result_out(code2, ganhc_nfo[3][4] +ganhc_nfo[3][5] + " " + ca10a_ghabch[i][4], "원국", "output1");};  //--- 원국 일간합충 출력
 		};
 	};	
@@ -1120,13 +1115,14 @@ function summing6(dstin, sts){
 //======== 충 충발(8,) 내용 summary ========
 function summing8(dstin){
 	n = "甲乙丙丁戊己庚辛壬癸".indexOf(sj_dg) + 1; 
-	document.getElementById(dstin).innerText += "충발: 대체로 소극적이고 무능한 일면의 부정적경향을 보이거나 정신적 혼란으로 건강을 해치는 등 성격적 결함을 보임 \n";
+	document.getElementById(dstin).innerText += "충발: 편고함이 지나쳐 객기와 만용을 부리기 쉬우며 대체로 소극적이고 무능한 일면의 부정적경향을 보이거나 정신적 혼란으로 건강을 해치는 등 성격적 결함을 보임 \n";
+	if (n < 5){subj = "편관";};
+	if (n > 6){subj = "편재";};
+	document.getElementById(dstin).innerText += subj.substr(1,1) + "성(" + subj + ") 부조화--- \n";	
 	rslt0 = "상신... 몸에 상처가 생김.. ";
 	if (n == 1 || n == 7){rslt0 += "(근육통 골다공증 견통 대머리)\n";}; if (n == 2 || n == 8){rslt0 += "(두통 치통 요통 빙의)\n";}; 
 	if (n == 3 || n == 9){rslt0 += "(심장 또는 신장질환)\n";}; if (n == 4 || n == 10){rslt0 += "(복부 방광 내분비계통)\n";};
 	document.getElementById(dstin).innerText += rslt0;	
-	if (n < 5){subj = "편관";};
-	if (n > 6){subj = "편재";};
 	temp = cgh01_sibsng_simri6chin.filter(isFind);
 	if (gendr == "남양"){ rslt = temp[0][3]; }else{ rslt = temp[0][4]; };	
 	document.getElementById(dstin).innerText += "육친(" + rslt + ") 불화(반목)--- \n";	
@@ -1157,7 +1153,17 @@ function summing0(a,dstin){
 
 //======== 충거(b) 내용 summary ========
 function summingb(dstin){
-//	document.getElementById(dstin).innerText += temp[0][n+2] + "\n";
+	n = "甲乙丙丁戊己庚辛壬癸".indexOf(sj_dg) + 1; 
+	if (n < 5){subj = "편관";};
+	if (n > 6){subj = "편재";};
+	document.getElementById(dstin).innerText += subj.substr(1,1) + "성(" + subj + ") 발흥--- \n";	
+	rslt0 = "건강회복... 질병 완화.. ";
+	if (n == 1 || n == 7){rslt0 += "(근육통 골다공증 견통 대머리)\n";}; if (n == 2 || n == 8){rslt0 += "(두통 치통 요통 빙의)\n";}; 
+	if (n == 3 || n == 9){rslt0 += "(심장 또는 신장질환)\n";}; if (n == 4 || n == 10){rslt0 += "(복부 방광 내분비계통)\n";};
+	document.getElementById(dstin).innerText += rslt0;	
+	temp = cgh01_sibsng_simri6chin.filter(isFind);
+	if (gendr == "남양"){ rslt = temp[0][3]; }else{ rslt = temp[0][4]; };	
+	document.getElementById(dstin).innerText += "육친(" + rslt + ") 불화(반목)의 개선 화해--- \n";	
 };
 
 //======== 극(c) 내용 summary ========
