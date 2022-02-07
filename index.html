@@ -287,9 +287,10 @@ function fread(fn){
 
 </script>	 
 
+
 <script type="text/javascript">
-	let gj_nfo = new Array; let hgj_nfo = new Array; let hun_list = new Array; let ganhc_nfo = new Array; let saju = ""; let saju_h = ""; let symdt = ""; let gendr = ""; let now = null; let hunD = null;
-	let longungj = ""; let ohtx = ""; let nfo_tugan = ""; let code1 = "";// let code2 = "";
+	let gj_nfo = new Array; let hgj_nfo = new Array; let hun_list = new Array; let ganhc_nfo = new Array; let jjhc_nfo = new Array; let saju = ""; let saju_h = ""; let symdt = ""; let gendr = ""; 
+	let now = null; let hunD = null; let longungj = ""; let ohtx = ""; let nfo_tugan = ""; let code1 = "";// let code2 = "";
 	let sj_yg = ""; let sj_mg = ""; let sj_dg = ""; let sj_tg = ""; let sj_yj = ""; let sj_mj = ""; let sj_dj = ""; let sj_tj = "";  //--- 사주 (년월일시)간지
 	let hn_lg = ""; let hn_yg = ""; let hn_mg = ""; let hn_dg = ""; 	let hn_lj = ""; let hn_yj = ""; let hn_mj = ""; let hn_dj = "";  //--- 행운 (대세월일)운 간지
 
@@ -445,7 +446,14 @@ $( function() {
 		["월간","","","","","","","","","",""],
 		["일간","","","","","","","","","",""],
 		["시간","","","","","","","","","",""]];
-		
+
+		jjhc_nfo = [
+		["위치","jiji","월지오행","원국1","원국2","원국3","대운","연운","월운","일운","시운"],
+		["연지","","","","","","","","","",""],
+		["월지","","","","","","","","","",""],
+		["일지","","","","","","","","","",""],
+		["시지","","","","","","","","","",""]];
+
 		gj_nfo = [
 		["위치","gan","g오행","g십성","통근","jiji","j오행","j십성","십이운성","지장간1","지장간2","지장간3","지1_십성","지2_십성","지3_십성","비고"],
 		["연주","","","","","","","","","","","","","","",""],["월주","","","","","","","","","","","","","","",""],["일주","","","","","","","","","","","","","","",""],["시주","","","","","","","","","","","","","","",""]];
@@ -490,6 +498,8 @@ $( function() {
 		mktable(4,sj_tg,sj_tj,gj_nfo);
 		ganhc_nfo[1][1] = sj_yg; ganhc_nfo[2][1] = sj_mg; ganhc_nfo[3][1] = sj_dg; ganhc_nfo[4][1] = sj_tg; 
 		ganhc_nfo[1][2] = ""; ganhc_nfo[2][2] = gj_nfo[2][6].substr(1,1); subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); ganhc_nfo[3][2] = temp[0][2]; ganhc_nfo[4][2] = ""; 
+		jjhc_nfo[1][1] = sj_yj; jjhc_nfo[2][1] = sj_mj; jjhc_nfo[3][1] = sj_dj; jjhc_nfo[4][1] = sj_tj; 
+		jjhc_nfo[1][2] = ""; jjhc_nfo[2][2] = ""; jjhc_nfo[3][2] = ""; jjhc_nfo[4][2] = ""; 
 
 		longun();
 		seun();
@@ -502,12 +512,6 @@ $( function() {
 		mpohcnt();
    		ganhabch();
   		hangun();
-//    		chnghab("지지충",6,sj_ganji,"_충");
-//     		chnghab("지지육합",6,sj_ganji,"6합");
-//		chnghab("지지삼합",4,sj_ganji,"3합");
-//     		chnghab("지지방합",4,sj_ganji,"b합");
-//    		chnghab("지지암합",5,sj_ganji,"s합");
-//  		chnghab("간지암합",4,sj_ganji,"x합");
 // 		dgjmcharac();  //--- 일주 성격 보여주는 함수
 	});
 });
@@ -683,6 +687,13 @@ function isFindm(element)  {
 	};
 };
 
+//====== 배열에서 subj 를 가져오는 함수 ====== 부분배열 가져오기
+function isFindx(element)  {
+	if (element[0].includes(subj)) {
+		return true;
+	};
+};
+
 //====== gj_nfo, hgj_nfo, hun_list 테이블 작성 ======
 function mktable(a,b,c,fnm){
 	subj = b; temp = gan.filter(isFind); fnm[a][2] = temp[0][4].substr(1,2); fnm[a][15] = temp[0][5]; 
@@ -729,6 +740,195 @@ function hroo(a,b,c){
 	if (c==4){  //--- 예외 적용 (甲일간 己巳시,乙일간 庚辰시,戊일간 癸亥시,癸일간 戊午시는 불통근으로 간주함.)
 		if ((sj_dg == "甲" && sj_tg == "己" && sj_tj == "巳") || (sj_dg == "乙" && sj_tg == "庚" && sj_tj == "辰") || (sj_dg == "戊" && sj_tg == "癸" && sj_tj == "亥") || (sj_dg == "癸" && sj_tg == "戊" && sj_tj == "午")){	rt = "0" + hro;};  //--- 불통근 + 십성
 	};
+};
+
+//---- 통근체크 ----
+function ganji_root(){
+	//------ 모든 천간의 통근 확인 -----------
+	document.getElementById("output2").innerText += "(위치 가중치: 10 7 4 1 월지13 일지12 기본10) \n";
+	subj = sj_yg; temp = sibsungX1.filter(isFind); root_point("년간",temp[0],"비견","겁재","편인","정인","output2");
+	subj = sj_mg; temp = sibsungX1.filter(isFind); root_point("월간",temp[0],"비견","겁재","편인","정인","output2");
+	subj = sj_dg; temp = sibsungX1.filter(isFind); root_point("일간",temp[0],"비견","겁재","편인","정인","output2");
+	subj = sj_tg; temp = sibsungX1.filter(isFind); root_point("시간",temp[0],"비견","겁재","편인","정인","output2");
+	document.getElementById("output2").innerText += "\n";
+};
+
+//========== 천간의 통근을 확인하는 함수 ==========
+function root_point(a,b,c,d,e,f,g) {
+	tit = ""; cfm = ""; eff1 = 0; eff2 = 0; eff3 = 0; eff4 = 0; eff0 = 0;
+	efft = 0; isol = "";
+		idx = b.lastIndexOf(c); tit += sibsungX1[0][idx];
+		idx = b.lastIndexOf(d); tit += sibsungX1[0][idx];
+		idx = b.lastIndexOf(e); tit += sibsungX1[0][idx];
+		idx = b.lastIndexOf(f); tit += sibsungX1[0][idx];		
+	for (i=1;i<5 ; i++){
+		if (tit.includes(gj_nfo[i][11].substr(0,1))==true){document.getElementById(g).innerText += i + ".... 지장간 " + gj_nfo[i][11] + "\n"; cfm += "kj"; eval('eff' + i + ' += Number(gj_nfo[i][11].substr(1,2))');};
+		if (gj_nfo[i][10] != "" && tit.includes(gj_nfo[i][10].substr(0,1))==true){document.getElementById(g).innerText += i + ".... 지장간b " + gj_nfo[i][10] + "\n"; cfm += "kj"; eval('eff' + i + ' += Number(gj_nfo[i][10].substr(1,2))');};
+		if (tit.includes(gj_nfo[i][9].substr(0,1))==true){document.getElementById(g).innerText += i + ".... 지장간a " + gj_nfo[i][9] + "\n"; cfm += "kj"; eval('eff' + i + ' += Number(gj_nfo[i][9].substr(1,2))');};
+	};
+	if (a == "년간"){eff0 = (eff1 * 100) + (eff2 *13 * 7) + (eff3 * 12 * 4) + (eff4 * 10);};
+	if (a == "월간"){eff0 = (eff2 * 130) + (eff3 *12 * 7) + (eff4 * 40) + (eff1 * 70);};
+	if (a == "일간"){eff0 = (eff3 * 120) + (eff2 *13 * 7) + (eff4 * 70) + (eff1 * 40);};
+	if (a == "시간"){eff0 = (eff4 * 100) + (eff3 *12 * 7) + (eff2 * 13 * 4) + (eff1 * 10);};
+	efft = parseInt(eff0 / 30);
+	if (efft > 119){ ganf = "극강";
+	}else{if (efft > 89){ ganf = "강";
+		}else{if (efft > 59){ ganf = "중";
+			}else{if (efft > 29){ ganf = "약";
+				}else{ganf = "극약";}}};};
+	if (a == "년간"){ 
+		ganf1 = ganf; 
+		if (ganf1 != "극약" || tit.includes(sj_mg)){
+			isol_y = "";
+		}else{isol_y = "고립"; isol = "고립";};
+	};		
+	if (a == "월간"){ 
+		ganf2 = ganf;
+		if (ganf2 != "극약" || tit.includes(sj_dg) || tit.includes(sj_yg)){
+			isol_m = "";
+		}else{isol_m = "고립"; isol = "고립";};
+	};		
+	if (a == "일간"){ 
+		ganf3 = ganf 
+		if (ganf3 != "극약" || tit.includes(sj_mg) || tit.includes(sj_tg)){
+			isol_d = "";
+		}else{isol_d = "고립"; isol = "고립";};
+	};		
+	if (a == "시간"){ 
+		ganf4 = ganf 
+		if (ganf4 != "극약" || tit.includes(sj_dg)){
+			isol_t = "";
+		}else{isol_t = "고립"; isol = "고립";};
+	};		
+	document.getElementById("output2").innerText += ".............................." + a + " " + b[0] + " 통근 " + ganf + isol + " ..... " + String(efft) + "%\n";
+};	
+	
+//========== 지지의 투간을 확인하는 함수 ==========
+function tugan(){
+	sj_gan = sj_yg + sj_mg + sj_dg + sj_tg; 
+	sj_ji = sj_yj + sj_mj + sj_dj + sj_tj; 
+	sj_ganji = sj_yg + sj_yj + sj_mg + sj_mj + sj_dg + sj_dj + sj_tg + sj_tj;
+	jjg = ""; eff0 = 0; pos = "";idx = 0; n = 0; ttx = ""; nfo_tugan = "";
+	subj = sj_dg; temp = sibsungX1.filter(isFind);
+	for (i=1; i<5; i++){
+		for (j=0; j<3; j++){
+			jjg = gj_nfo[i][j+9].substr(0,1);  //--- 지장간
+			if (jjg != ""){
+				eff = Number(gj_nfo[i][j+9].substr(1,2));  //---지장간 비율
+				eff0 = 0; pos = "";
+				if (sj_gan.includes(jjg)){
+					n = 0;
+					while (true){
+						idx = sj_gan.indexOf(jjg,n)  //--- 투간된 위치
+						if(idx == -1){break;};		
+						pos += String(idx+1);
+						eff0 += parseInt(eff/30 *(100-Math.abs(idx+1-i)*30));
+						n = idx + 1;
+					};
+					if (i == 1){ttx = "년지";
+					}else{	if (i == 2){ttx = "월지"; idx = sibsungX1[0].lastIndexOf(jjg); nfo_tugan += "\n월지투간==> " + temp[0][idx] + "格 "+ jjg + "..용신";
+						}else{	if (i == 3){ttx = "일지";
+							}else{	if (i == 4){ttx = "시지";}}}};
+					document.getElementById("output2").innerText += String(i) + ".... 지장간 " + jjg + eff + "..........." + ttx +" .... " + pos + " 투간... " + eff0 + "%\n";
+				};	
+			};
+		};
+	};
+};
+	
+//========== 오행의 갯수 check 하는 함수 ==========
+function mpohcnt(){
+	let sp1 = (ohtx.match(/양목/g) || []).length; 
+	let sp2 = (ohtx.match(/양화/g) || []).length;
+	let sp3 = (ohtx.match(/양토/g) || []).length;
+	let sp4 = (ohtx.match(/양금/g) || []).length;
+	let sp5 = (ohtx.match(/양수/g) || []).length;
+	let sm1 = (ohtx.match(/음목/g) || []).length;
+	let sm2 = (ohtx.match(/음화/g) || []).length;
+	let sm3 = (ohtx.match(/음토/g) || []).length;
+	let sm4 = (ohtx.match(/음금/g) || []).length;
+	let sm5 = (ohtx.match(/음수/g) || []).length;
+	document.getElementById("output2").innerText += "오행...양...음\n";
+	document.getElementById("output2").innerText += "...목......" + String(sp1) + "......" + String(sm1) + "\n";
+	document.getElementById("output2").innerText += "...화......" + String(sp2) + "......" + String(sm2) + "\n";
+	document.getElementById("output2").innerText += "...토......" + String(sp3) + "......" + String(sm3) + "\n";
+	document.getElementById("output2").innerText += "...금......" + String(sp4) + "......" + String(sm4) + "\n";
+	document.getElementById("output2").innerText += "...수......" + String(sp5) + "......" + String(sm5) + "\n";
+	document.getElementById("output2").innerText += "\n";
+
+	let sstx = gj_nfo[1][3] + gj_nfo[1][7] + gj_nfo[2][3] + gj_nfo[2][7] + gj_nfo[3][3] + gj_nfo[3][7] + gj_nfo[4][3] + gj_nfo[4][7];
+	document.getElementById("output2").innerText += "...편인......" + (sstx.match(/편인/g) || []).length + "......" + (sstx.match(/정인/g) || []).length + "......정인 \n";
+	document.getElementById("output2").innerText += "...비견......" + (sstx.match(/비견/g) || []).length + "......" + (sstx.match(/겁재/g) || []).length + "......겁재 \n";
+	document.getElementById("output2").innerText += "...식신......" + (sstx.match(/식신/g) || []).length + "......" + (sstx.match(/상관/g) || []).length + "......상관 \n";
+	document.getElementById("output2").innerText += "...편재......" + (sstx.match(/편재/g) || []).length + "......" + (sstx.match(/정재/g) || []).length + "......정재 \n";
+	document.getElementById("output2").innerText += "...편관......" + (sstx.match(/편관/g) || []).length + "......" + (sstx.match(/정관/g) || []).length + "......정관 \n";
+	document.getElementById("output2").innerText += "\n";
+};
+	
+//=========== 일간의 통근 상황 확인===========
+function rootgchk(){
+	pointr = ""; 
+	document.getElementById("output2").innerText += "\n";
+	dgroot(gj_nfo[3][7],1);  //----- 일지 = 인성/비겁 여부 -----
+	dgroot(gj_nfo[2][7],2);  //----- 월지 = 인성/비겁 여부 -----
+	pwrcnt();  //----- 일간의 세력상태 확인 -----
+	
+	pn = pointr.match(/Y/g);
+	pn1 = pointr.match(/N/g);
+	if(pn != null) {
+		if(pn.length === 3){
+			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr + "\n";
+		}else{
+			if(pn.length === 2){
+				document.getElementById("output2").innerText += "신강 사주 ..." + pointr + "\n";
+			}else{
+				if(pn.length === 1){
+					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n";}}};
+	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n";};
+	sibsng(sj_dg,"",sj_mj); document.getElementById("output2").innerText += "사주격국 (기본) " + js_titl + "格 " + nfo_tugan + "\n\n";
+
+	//--- output1에 추가 display
+	if(pn != null) {
+		if(pn.length === 3){
+			document.getElementById("output1").innerText += "극신강 사주 ..." + pointr + "\n";
+		}else{
+			if(pn.length === 2){
+				document.getElementById("output1").innerText += "신강 사주 ..." + pointr + "\n";
+			}else{
+				if(pn.length === 1){
+					document.getElementById("output1").innerText += "신약 사주 ..." + pointr + "\n";}}};
+	}else{document.getElementById("output1").innerText += "극신약 사주 ..." + pointr + "\n";};
+	document.getElementById("output1").innerText += "사주격국 (기본) " + js_titl + "格 " + nfo_tugan + "\n\n";
+};	
+	
+//========= 일간의 통근 check 하는 함수 ========
+function dgroot(pos,a){
+	pass = ""; fail = "";
+	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
+		if (a === 1){ pointr = pointr + "득지Y"; pass = "득지\n";
+		}else{if (a === 2){ pointr = pointr + "득령Y"; pass = "득령\n";}else{pass = pos + " 통근\n";}};
+		document.getElementById("output2").innerText += "일간 " + pass;
+	}else{
+		if (a === 1){ pointr = pointr + "실지N"; fail = "실지\n";
+		}else{if (a === 2){ pointr = pointr + "실령N"; fail = "실령\n";}else{ fail = " ";}};
+		document.getElementById("output2").innerText += fail;};
+};
+	
+//========= 일간의 세력 check 하는 함수 =========
+function pwrcnt(){
+	sstext = gj_nfo[1][3] + gj_nfo[1][7] + gj_nfo[2][3] + gj_nfo[2][7] + gj_nfo[3][7] + gj_nfo[4][3] + gj_nfo[4][7];  //--- 십성
+	let r1 = (sstext.match(/비견/g) || []).length;
+	let r2 = (sstext.match(/겁재/g) || []).length;
+	let r3 = (sstext.match(/편인/g) || []).length;
+	let r4 = (sstext.match(/정인/g) || []).length;
+
+	r0 = r1 + r2 + r3 + r4;
+	if (r0 > 3){
+		pointr = pointr + "득세Y";
+		document.getElementById("output2").innerText += "일간 득세 " + String(r0) + " / " + String(7-r0) + "\n\n";
+	}else{
+		pointr = pointr + "실세N";
+		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n\n";};
 };
 	
 //======= 대운수 & 초기대운일 ======
@@ -935,7 +1135,16 @@ function ganhabch(){
 	if (gj_nfo[1][4].substr(0,1) == "0" && gj_nfo[2][4].substr(0,1) == "0"){rt1 = "0"}else{rt1 = "1"};  //--- 연간합 통근
 	if (gj_nfo[2][4].substr(0,1) == "0" && gj_nfo[3][4].substr(0,1) == "0"){rt2 = "0"}else{rt2 = "1"};  //--- 일(월)간합 통근
 	if (gj_nfo[3][4].substr(0,1) == "0" && gj_nfo[4][4].substr(0,1) == "0"){rt3 = "0"}else{rt3 = "1"};  //--- 일(시)간합 통근
-	habchk1(1,sj_yg); habchk1(2,sj_mg); habchk1(3,sj_dg);
+
+//------ 원국 천간/지지 합충극 check
+	rslt0 = ""; hcompchk("천간합",5,sj_yg,sj_mg,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,sj_yg,sj_mg,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간극",6,sj_yg,sj_mg,2); if (rslt != ""){rslt0 += rslt;};
+	ganhc_nfo[1][3] = rslt0; ganhc_nfo[2][3] = rslt0;
+	rslt0 = ""; hcompchk("천간합",5,sj_dg,sj_mg,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,sj_dg,sj_mg,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간극",6,sj_dg,sj_mg,2); if (rslt != ""){rslt0 += rslt;};
+	ganhc_nfo[2][4] = rslt0; ganhc_nfo[3][4] = rslt0;
+	rslt0 = ""; hcompchk("천간합",5,sj_dg,sj_tg,2); if (rslt != ""){rslt0 += rslt;}; 	hcompchk("천간충",4,sj_dg,sj_tg,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간극",6,sj_dg,sj_tg,2); if (rslt != ""){rslt0 += rslt;};
+	ganhc_nfo[3][5] = rslt0; ganhc_nfo[4][5] = rslt0;
+	johc_chk("지지육합",6); johc_chk("지지암합",5); johc_chk("지지충",6); johc_chk("지지파",6); johc_chk("지지해",6); johc_chk("지지원진",6); johc_chk("지지귀문",6); 
+
 //------ hcg 코드 생성
 	if (ganhc_nfo[1][3].substr(2,1)=="합"){if (ganhc_nfo[2][4].substr(2,1)=="충"){hcg1 += "합" + rt1 + "충0-";}else{hcg1 += ganhc_nfo[1][3].substr(2,1) + rt1 + "---";	};  //--- hcg1 생성
 	}else{	if (ganhc_nfo[1][3].substr(2,1)=="충"){hcg1 += ganhc_nfo[1][3].substr(2,1) + rt1 + "---";	}else{	hcg1 += "-----";};
@@ -981,41 +1190,81 @@ function ganhabch(){
 	};	
 };
 
-//====== 원국 천간합충극 체크결과 집계 함수 ======
-//----   habchk1(1,sj_yg);  habchk1(3,sj_dg);
-function habchk1(a,bas){
-	if (a == 1){tgt = sj_mg;}; if (a == 2){tgt = sj_dg;}; if (a == 3){tgt = sj_tg;}; 
-	if (a <= 3){habchkg(bas,tgt,"output1"); ganhc_nfo[a][a+2] = rslt0; ganhc_nfo[a+1][a+2] = rslt0;};
-};
-	
 //====== 행운 천간합충극 체크결과 집계 함수 ======
-//----   habchk2(1,sj_yg);  habchk2(3,sj_dg);
-function habchk2(a,bas){
-	habchkg(bas,hn_lg); ganhc_nfo[a][6] = rslt0; 
-	habchkg(bas,hn_yg); ganhc_nfo[a][7] = rslt0;
-	habchkg(bas,hn_mg); ganhc_nfo[a][8] = rslt0;
-	habchkg(bas,hn_dg); ganhc_nfo[a][9] = rslt0;
-//	habchkg(bas,hn_tg); ganhc_nfo[a][10] = rslt0;
+//----   habchk2(3);
+function habchk2(a){
+	if (a == 1){bas = sj_yg;}; if (a == 2){bas = sj_mg;}; if (a == 3){bas = sj_dg;}; if (a == 4){bas = sj_tg;}; 
+	rslt0 = ""; hcompchk("천간합",5,bas,hn_lg,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,bas,hn_lg,2); if (rslt != ""){rslt0 += rslt;};	hcompchk("천간극",6,bas,hn_lg,2); if (rslt != ""){rslt0 += rslt;};
+	ganhc_nfo[a][6] = rslt0; 
+	rslt0 = ""; hcompchk("천간합",5,bas,hn_yg,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,bas,hn_yg,2); if (rslt != ""){rslt0 += rslt;};	hcompchk("천간극",6,bas,hn_yg,2); if (rslt != ""){rslt0 += rslt;};
+	ganhc_nfo[a][7] = rslt0;
+	rslt0 = ""; hcompchk("천간합",5,bas,hn_mg,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,bas,hn_mg,2); if (rslt != ""){rslt0 += rslt;};	hcompchk("천간극",6,bas,hn_mg,2); if (rslt != ""){rslt0 += rslt;};
+	ganhc_nfo[a][8] = rslt0;
+	rslt0 = ""; hcompchk("천간합",5,bas,hn_dg,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,bas,hn_dg,2); if (rslt != ""){rslt0 += rslt;};	hcompchk("천간극",6,bas,hn_dg,2); if (rslt != ""){rslt0 += rslt;};
+	ganhc_nfo[a][9] = rslt0;
+//	rslt0 = ""; hcompchk("천간합",5,bas,hn_tg,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("천간충",4,bas,hn_tg,2); if (rslt != ""){rslt0 += rslt;};	hcompchk("천간극",6,bas,hn_tg,2); if (rslt != ""){rslt0 += rslt;};
+//	ganhc_nfo[a][10] = rslt0;
 };
-	
-//====== 천간합충극 체크 함수 ======
-function habchkg(bas,tgt){
-	rslt0 = ""; hcompchk("천간합",5,bas,tgt); if (rslt != ""){rslt0 += rslt;};
-	hcompchk("천간충",4,bas,tgt); if (rslt != ""){rslt0 += rslt;};	
-	hcompchk("천간극",6,bas,tgt); if (rslt != ""){rslt0 += rslt;};
-};
-	
-//====== 천간합 구성체크 함수 ======
-	//---   hcompchk("천간합",5,sj_yg,sj_mg);
-function hcompchk(a,b,c,d){  
+
+//====== 천간지지 합충형해파 원진귀문 구성체크 함수 ======
+	//---   hcompchk("천간합",5,sj_yg,sj_mg,2);
+function hcompchk(a,b,c,d,e){  
 	subj = a; rslt = "";
 	chab = ganji_habchung.filter(isFind);  //===천간충/극
 	for (i = 1; i < b + 1; i++){
-		texstr = chab[0][i].substr(0,2); 
+		texstr = chab[0][i].substr(0,e); 
 		if (texstr == (c + d) || texstr == (d + c)){
-			rslt = texstr + a.substr(2,1);
+			rslt = texstr + a.substr(2,2);
 		};
 	};
+};
+
+
+//====== 원국 지지 합충형해파 원진귀문 체크 함수 ======
+//------  check 함수
+function johc_chk(a,b){
+	let str = a.substr(a.length-1,1);
+	if (str == "합"){x = 3;}else{if (str == "충" || str == "극"){x = 4;}else{x = 5;}; };
+
+	rslt = ""; hcompchk(a,b,sj_yj,sj_mj,2); if (rslt != ""){jjhc_nfo[1][x] += rslt; jjhc_nfo[2][x] += rslt; 
+	document.getElementById("sj2a").innerText += jjhc_nfo[1][x]; document.getElementById("sj4a").innerText += jjhc_nfo[1][x];
+	document.getElementById("output1").innerText += rslt + "--- \n";
+	document.getElementById("output1").innerText += "--------------------------------------------------------------\n"; };
+	rslt = ""; hcompchk(a,b,sj_dj,sj_mj,2); if (rslt != ""){jjhc_nfo[2][x] += rslt; jjhc_nfo[3][x] += rslt;
+	document.getElementById("sj4a").innerText += jjhc_nfo[3][x]; document.getElementById("sj6a").innerText += jjhc_nfo[3][x];
+	document.getElementById("output1").innerText += rslt + "--- \n"; 
+	document.getElementById("output1").innerText += "--------------------------------------------------------------\n";};
+	rslt = ""; hcompchk(a,b,sj_dj,sj_tj,2); if (rslt != ""){jjhc_nfo[3][x] += rslt; jjhc_nfo[4][x] += rslt;
+	document.getElementById("sj6a").innerText += jjhc_nfo[4][x]; document.getElementById("sj8a").innerText += jjhc_nfo[4][x];
+	document.getElementById("output1").innerText += rslt + "--- \n"; 
+	document.getElementById("output1").innerText += "--------------------------------------------------------------\n";};
+};
+
+
+//====== 행운 지지합충형해파 체크결과 집계 함수 ======
+//----   johc_chk2(3);
+function johc_chk2(a){
+	if (a == 1){bas = sj_yj;}; if (a == 2){bas = sj_mj;}; if (a == 3){bas = sj_dj;}; if (a == 4){bas = sj_tj;}; 
+	rslt0 = ""; hcompchk("지지육합",6,bas,hn_lj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지암합",5,bas,hn_lj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지충",6,bas,hn_lj,2); if (rslt != ""){rslt0 += rslt;};
+	hcompchk("지지파",6,bas,hn_lj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지해",6,bas,hn_lj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지원진",6,bas,hn_lj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지귀문",6,bas,hn_lj,2); if (rslt != ""){rslt0 += rslt;};
+	jjhc_nfo[a][6] = rslt0; if (rslt0 != ""){document.getElementById("output3").innerText += "대운 지지 " + rslt0 + "--- \n"; 
+	document.getElementById("output3").innerText += "--------------------------------------------------------------\n";};
+	rslt0 = ""; hcompchk("지지육합",6,bas,hn_yj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지암합",5,bas,hn_yj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지충",6,bas,hn_yj,2); if (rslt != ""){rslt0 += rslt;};
+	hcompchk("지지파",6,bas,hn_yj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지해",6,bas,hn_yj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지원진",6,bas,hn_yj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지귀문",6,bas,hn_yj,2); if (rslt != ""){rslt0 += rslt;};
+	jjhc_nfo[a][7] = rslt0; if (rslt0 != ""){document.getElementById("output3").innerText += "연운 지지 " + rslt0 + "--- \n";
+	document.getElementById("output3").innerText += "--------------------------------------------------------------\n"; };
+	rslt0 = ""; hcompchk("지지육합",6,bas,hn_mj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지암합",5,bas,hn_mj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지충",6,bas,hn_mj,2); if (rslt != ""){rslt0 += rslt;};
+	hcompchk("지지파",6,bas,hn_mj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지해",6,bas,hn_mj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지원진",6,bas,hn_mj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지귀문",6,bas,hn_mj,2); if (rslt != ""){rslt0 += rslt;};
+	jjhc_nfo[a][8] = rslt0; if (rslt0 != ""){document.getElementById("output3").innerText += "월운 지지 " + rslt0 + "--- \n"; 
+	document.getElementById("output3").innerText += "--------------------------------------------------------------\n";};
+	rslt0 = ""; hcompchk("지지육합",6,bas,hn_dj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지암합",5,bas,hn_dj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지충",6,bas,hn_dj,2); if (rslt != ""){rslt0 += rslt;};
+	hcompchk("지지파",6,bas,hn_dj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지해",6,bas,hn_dj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지원진",6,bas,hn_dj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지귀문",6,bas,hn_dj,2); if (rslt != ""){rslt0 += rslt;};
+	jjhc_nfo[a][9] = rslt0; if (rslt0 != ""){document.getElementById("output3").innerText += "일운 지지 " + rslt0 + "--- \n"; 
+	document.getElementById("output3").innerText += "--------------------------------------------------------------\n";};
+/*	rslt0 = ""; hcompchk("지지육합",6,bas,hn_tj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지암합",5,bas,hn_tj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지충",6,bas,hn_tj,2); if (rslt != ""){rslt0 += rslt;};
+	hcompchk("지지파",6,bas,hn_tj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지해",6,bas,hn_tj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지원진",6,bas,hn_tj,2); if (rslt != ""){rslt0 += rslt;}; hcompchk("지지귀문",6,bas,hn_tj,2); if (rslt != ""){rslt0 += rslt;};
+	jjhc_nfo[a][6] = rslt0; if (rslt0 != ""){document.getElementById("output3").innerText += "시운 지지 " + rslt0 + "--- \n"; 
+	document.getElementById("output3").innerText += "--------------------------------------------------------------\n";};     */
 };
 
 //====== 원국/행운 결과 출력 함수 ======
@@ -1196,7 +1445,7 @@ function hangun(){
 		};
 	};
 	if (hunD >= ca08_monthstart[1][5] && hunD < ca08_monthstart[ca08_monthstart.length-1][5]){	
-		convrtsj(hunD); 
+		convrtsj(hunD); hunD1 = rqD1;
 		subj = tsj1; temp = gan.filter(isFindj); hn_yg = temp[0][0]; hygoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
 		subj = tsj2; temp = jiji.filter(isFindj); hn_yj = temp[0][0]; hyjoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
 		subj = tsj3; temp = gan.filter(isFindj); hn_mg = temp[0][0]; hmgoh = temp[0][4].substr(1,2);  //--- 한글 간지를 한자로 바꿈
@@ -1216,13 +1465,17 @@ function hangun(){
 	mktable(3,hn_mg,hn_mj,hgj_nfo);
 	mktable(4,hn_dg,hn_dj,hgj_nfo);
 //	mktable(5,hn_tg,hn_tj,hgj_nfo);
-	if (ganhc_nfo[1][3].substr(2,1) != "합" && ganhc_nfo[1][3].substr(2,1) != "충"){habchk2(1,sj_yg);};  //--- 원국에 연간합충이 없으면 행운 check
-	if (	(ganhc_nfo[2][3].substr(2,1) != "합" && ganhc_nfo[2][3].substr(2,1) != "충") ||	(ganhc_nfo[2][4].substr(2,1) == "합" || ganhc_nfo[2][4].substr(2,1) == "충")){habchk2(2,sj_mg);}; 
-	habchk2(3,sj_dg); habchk2(4,sj_tg);
+
+	if (ganhc_nfo[1][3].substr(2,1) != "합" && ganhc_nfo[1][3].substr(2,1) != "충"){habchk2(1);};  //--- 원국에 연간합충이 없으면 행운 check
+	if (	(ganhc_nfo[2][3].substr(2,1) != "합" && ganhc_nfo[2][3].substr(2,1) != "충") ||	(ganhc_nfo[2][4].substr(2,1) == "합" || ganhc_nfo[2][4].substr(2,1) == "충")){habchk2(2);}; 
+	habchk2(3); habchk2(4);  //--- 일간-시간 행운 check
+	johc_chk2(1); johc_chk2(2); johc_chk2(3); johc_chk2(4); 
+
 	document.getElementById("output4").innerText += "gj_nfo : \n" + gj_nfo[0] + "\n" + gj_nfo[1] + "\n" + gj_nfo[2] + "\n" + gj_nfo[3] + "\n" + gj_nfo[4] + "\n";
 	document.getElementById("output4").innerText += "hun_list : \n" + hun_list[0] + "\n" + hun_list[1] + "\n" + hun_list[2] + "\n" + hun_list[3] + "\n" + hun_list[4] + "\n" + hun_list[5] + "\n" + hun_list[6] + "\n" + hun_list[7] + "\n" + hun_list[8] + "\n" + hun_list[9] + "\n" + hun_list[10] + "\n" + hun_list[11] + "\n" + hun_list[12] + "\n" + hun_list[13] + "\n" + hun_list[14] + "\n";
 	document.getElementById("output5").innerText += "hgj_nfo : \n" + hgj_nfo[0] + "\n" + hgj_nfo[1] + "\n" + hgj_nfo[2] + "\n" + hgj_nfo[3] + "\n" + hgj_nfo[4] + "\n" + hgj_nfo[5] + "\n";
 	document.getElementById("output5").innerText += "ganhc_nfo : \n" + ganhc_nfo[0] + "\n" + ganhc_nfo[1] + "\n" + ganhc_nfo[2] + "\n" + ganhc_nfo[3] + "\n" + ganhc_nfo[4] + "\n";
+	document.getElementById("output5").innerText += "jjhc_nfo : \n" + jjhc_nfo[0] + "\n" + jjhc_nfo[1] + "\n" + jjhc_nfo[2] + "\n" + jjhc_nfo[3] + "\n" + jjhc_nfo[4] + "\n";
 	
 	//----- 연운
 	ageY = vwyr - birth1.getFullYear() + 1;
@@ -1245,15 +1498,16 @@ function hangun(){
 	document.getElementById("hunD2").innerText += "\n" + hgj_nfo[4][7] + " " + hgj_nfo[4][6] + " " + hgj_nfo[4][8] + "\n";
 
 	document.getElementById("output3").innerText += "<<행운 운세분석>>..... \n";
-	hunanal(hn_lg, hn_lj, hn_yg, hn_yj); document.getElementById("output3").innerText += vwyr + "(" + ageY + ")" + " 연운: (" + hn_yg + hn_yj + ") " + hv8 + "- " + hv9 + "\n";
-	hunanal(hn_yg, hn_yj, hn_mg, hn_mj); document.getElementById("output3").innerText += hunD.substr(0,7) + "- 월운: (" + hn_mg + hn_mj + ") " + hv8 + "- " + hv9 + "\n";
-	hunanal(hn_mg, hn_mj, hn_dg, hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + "- " + hv9 + "\n";
+	hunanal(1); document.getElementById("output3").innerText += vwyr + "(" + ageY + ")" + " 연운: (" + hn_yg + hn_yj + ") " + hv8 + "- " + hv9 + "\n";
+	hunanal(2); document.getElementById("output3").innerText += hunD.substr(0,7) + "- 월운: (" + hn_mg + hn_mj + ") " + hv8 + "- " + hv9 + "\n";
+	hunanal(3); document.getElementById("output3").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + "- " + hv9 + "\n";
 	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
 
 	document.getElementById("output3").innerText += "<<행운결과>>..... \n";
 	ganhn();
 };
 
+let tmpdb = new Array;
 //======= 천간 행운합충극 =======
 async function ganhn(){
 	await ganhn1();
@@ -1520,15 +1774,35 @@ function dganhn4(){
 };
 
 //======= 행운 운세분석 ======
-function hunanal(a,b,c,d){
+function hunanal(e){
 	hv0 = ""; hv1 = ""; hv2 = ""; hv3 = ""; hv4 = ""; hv5 = ""; hv6 = ""; hv7 = ""; hv8 = ""; hv9 = ""; hs_titl = "";
-	sibsng(sj_dg,a,b); hv1 = gs_titl; hv2 = js_titl;  //--- 일간기준 행운간지의 십성
-	sibsng(c,"",d); hv4 = js_titl;  //--- 행운간지의 자체십성
+	if (e == 1){a = hn_lg; b = hn_lj; c = hn_yg; d = hn_yj;};
+	if (e == 2){a = hn_yg; b = hn_yj; c = hn_mg; d = hn_mj;};
+	if (e == 3){a = hn_mg; b = hn_mj; c = hn_dg; d = hn_dj;};
+	sibsng(sj_dg,a,b); hv1 = gs_titl; hv2 = js_titl;  //--- 일간기준 행운간지(시기 체)의 십성
+	sibsng(c,"",d); hv4 = js_titl;  //--- 행운간지(실행 용)의 자체십성
 	sibsng(sj_dg,"",sj_dj); hv5 = js_titl;  //--- 일주의 십성
 	subj = hv5; hv0 = ca01_actss.filter(isFind);  //--- 일주의 실행분석 십성배열
 	idx = ca01_actss[0].lastIndexOf(hv4);
 	hv6 = hv0[0][idx];  //--- 실행 십성 (hv6)
-	if (ageY < ageL + 5){hv3 = hv1;}else{hv3 = hv2;};  //--- 시기 십성 (hv3)
+	if (e == 1){
+		if (ageY < ageL + 5){hv3 = hv1;}else{hv3 = hv2;};  //--- 시기 십성 (hv3)
+	};
+	if (e == 2){
+		if ("寅卯辰巳午未".includes(d)){hv3 = hv1;}else{hv3 = hv2;};  //--- 시기 십성 (hv3)
+	};
+	if (e == 3){
+		if (hunD < ca08_monthstart[ca08_monthstart.length-1][5]){
+			refD = new Date(premon.format('yyyy-MM-dd HH:mm'));
+			refD = new Date(refD.setDate(refD.getDate() + 15));
+			if (hunD1 < refD){hv3 = hv1;}else{hv3 = hv2;};  //--- 시기 십성 (hv3)
+		}else{
+			subj = ca08_monthstart[ca08_monthstart.length-1][5].substr(0,4) + hunD.substr(4,3);
+			temp = ca08_monthstart.filter(isFindx); refD = new Date(temp[0][5]);
+			refD = new Date(refD.setDate(refD.getDate() + 15));
+			if (hunD.substr(5,11) < refD.format('MM-dd HH:mm')){hv3 = hv1;}else{hv3 = hv2;};  //--- 시기 십성 (hv3)
+		};
+	};
 	subj = hv6; hv7 = ca02_actgdbad.filter(isFind);  //--- 실행분석 길흉배열
 	idx = ca02_actgdbad[0].lastIndexOf(hv3);
 	hv8 = ca02_actgdbad[1][idx] + hv7[0][idx];  //--- 실행 길흉 
@@ -1546,304 +1820,12 @@ function sibsTugsin(a){
 			}else{ if (a == "편관" || a == "정관"){	hs_titl = "관성";
 				}else{ if (a == "편인" || a == "정인"){	hs_titl = "인성";	};};};};};
 };
-	
-//---- 통근체크 ----
-function ganji_root(){
-	//------ 모든 천간의 통근 확인 -----------
-	document.getElementById("output2").innerText += "(위치 가중치: 10 7 4 1 월지13 일지12 기본10) \n";
-	subj = sj_yg; temp = sibsungX1.filter(isFind); root_point("년간",temp[0],"비견","겁재","편인","정인","output2");
-	subj = sj_mg; temp = sibsungX1.filter(isFind); root_point("월간",temp[0],"비견","겁재","편인","정인","output2");
-	subj = sj_dg; temp = sibsungX1.filter(isFind); root_point("일간",temp[0],"비견","겁재","편인","정인","output2");
-	subj = sj_tg; temp = sibsungX1.filter(isFind); root_point("시간",temp[0],"비견","겁재","편인","정인","output2");
-	document.getElementById("output2").innerText += "\n";
-};
 
-//========== 천간의 통근을 확인하는 함수 ==========
-function root_point(a,b,c,d,e,f,g) {
-	tit = ""; cfm = ""; eff1 = 0; eff2 = 0; eff3 = 0; eff4 = 0; eff0 = 0;
-	efft = 0; isol = "";
-		idx = b.lastIndexOf(c); tit += sibsungX1[0][idx];
-		idx = b.lastIndexOf(d); tit += sibsungX1[0][idx];
-		idx = b.lastIndexOf(e); tit += sibsungX1[0][idx];
-		idx = b.lastIndexOf(f); tit += sibsungX1[0][idx];		
-	for (i=1;i<5 ; i++){
-		if (tit.includes(gj_nfo[i][11].substr(0,1))==true){document.getElementById(g).innerText += i + ".... 지장간 " + gj_nfo[i][11] + "\n"; cfm += "kj"; eval('eff' + i + ' += Number(gj_nfo[i][11].substr(1,2))');};
-		if (gj_nfo[i][10] != "" && tit.includes(gj_nfo[i][10].substr(0,1))==true){document.getElementById(g).innerText += i + ".... 지장간b " + gj_nfo[i][10] + "\n"; cfm += "kj"; eval('eff' + i + ' += Number(gj_nfo[i][10].substr(1,2))');};
-		if (tit.includes(gj_nfo[i][9].substr(0,1))==true){document.getElementById(g).innerText += i + ".... 지장간a " + gj_nfo[i][9] + "\n"; cfm += "kj"; eval('eff' + i + ' += Number(gj_nfo[i][9].substr(1,2))');};
-	};
-	if (a == "년간"){eff0 = (eff1 * 100) + (eff2 *13 * 7) + (eff3 * 12 * 4) + (eff4 * 10);};
-	if (a == "월간"){eff0 = (eff2 * 130) + (eff3 *12 * 7) + (eff4 * 40) + (eff1 * 70);};
-	if (a == "일간"){eff0 = (eff3 * 120) + (eff2 *13 * 7) + (eff4 * 70) + (eff1 * 40);};
-	if (a == "시간"){eff0 = (eff4 * 100) + (eff3 *12 * 7) + (eff2 * 13 * 4) + (eff1 * 10);};
-	efft = parseInt(eff0 / 30);
-	if (efft > 119){ ganf = "극강";
-	}else{if (efft > 89){ ganf = "강";
-		}else{if (efft > 59){ ganf = "중";
-			}else{if (efft > 29){ ganf = "약";
-				}else{ganf = "극약";}}};};
-	if (a == "년간"){ 
-		ganf1 = ganf; 
-		if (ganf1 != "극약" || tit.includes(sj_mg)){
-			isol_y = "";
-		}else{isol_y = "고립"; isol = "고립";};
-	};		
-	if (a == "월간"){ 
-		ganf2 = ganf;
-		if (ganf2 != "극약" || tit.includes(sj_dg) || tit.includes(sj_yg)){
-			isol_m = "";
-		}else{isol_m = "고립"; isol = "고립";};
-	};		
-	if (a == "일간"){ 
-		ganf3 = ganf 
-		if (ganf3 != "극약" || tit.includes(sj_mg) || tit.includes(sj_tg)){
-			isol_d = "";
-		}else{isol_d = "고립"; isol = "고립";};
-	};		
-	if (a == "시간"){ 
-		ganf4 = ganf 
-		if (ganf4 != "극약" || tit.includes(sj_dg)){
-			isol_t = "";
-		}else{isol_t = "고립"; isol = "고립";};
-	};		
-	document.getElementById("output2").innerText += ".............................." + a + " " + b[0] + " 통근 " + ganf + isol + " ..... " + String(efft) + "%\n";
-};	
-	
-//========== 지지의 투간을 확인하는 함수 ==========
-function tugan(){
-	sj_gan = sj_yg + sj_mg + sj_dg + sj_tg; 
-	sj_ji = sj_yj + sj_mj + sj_dj + sj_tj; 
-	sj_ganji = sj_yg + sj_yj + sj_mg + sj_mj + sj_dg + sj_dj + sj_tg + sj_tj;
-	jjg = ""; eff0 = 0; pos = "";idx = 0; n = 0; ttx = ""; nfo_tugan = "";
-	subj = sj_dg; temp = sibsungX1.filter(isFind);
-	for (i=1; i<5; i++){
-		for (j=0; j<3; j++){
-			jjg = gj_nfo[i][j+9].substr(0,1);  //--- 지장간
-			if (jjg != ""){
-				eff = Number(gj_nfo[i][j+9].substr(1,2));  //---지장간 비율
-				eff0 = 0; pos = "";
-				if (sj_gan.includes(jjg)){
-					n = 0;
-					while (true){
-						idx = sj_gan.indexOf(jjg,n)  //--- 투간된 위치
-						if(idx == -1){break;};		
-						pos += String(idx+1);
-						eff0 += parseInt(eff/30 *(100-Math.abs(idx+1-i)*30));
-						n = idx + 1;
-					};
-					if (i == 1){ttx = "년지";
-					}else{	if (i == 2){ttx = "월지"; idx = sibsungX1[0].lastIndexOf(jjg); nfo_tugan += "월지투간==> " + temp[0][idx] + "格 "+ jjg + "..용신";
-						}else{	if (i == 3){ttx = "일지";
-							}else{	if (i == 4){ttx = "시지";}}}};
-					document.getElementById("output2").innerText += String(i) + ".... 지장간 " + jjg + eff + "..........." + ttx +" .... " + pos + " 투간... " + eff0 + "%\n";
-				};	
-			};
-		};
-	};
-};
-	
-//========== 오행의 갯수 check 하는 함수 ==========
-function mpohcnt(){
-	let sp1 = (ohtx.match(/양목/g) || []).length;
-	let sp2 = (ohtx.match(/양화/g) || []).length;
-	let sp3 = (ohtx.match(/양토/g) || []).length;
-	let sp4 = (ohtx.match(/양금/g) || []).length;
-	let sp5 = (ohtx.match(/양수/g) || []).length;
-	let sm1 = (ohtx.match(/음목/g) || []).length;
-	let sm2 = (ohtx.match(/음화/g) || []).length;
-	let sm3 = (ohtx.match(/음토/g) || []).length;
-	let sm4 = (ohtx.match(/음금/g) || []).length;
-	let sm5 = (ohtx.match(/음수/g) || []).length;
-	document.getElementById("output2").innerText += "오행...양...음\n";
-	document.getElementById("output2").innerText += "...목......" + String(sp1) + "......" + String(sm1) + "\n";
-	document.getElementById("output2").innerText += "...화......" + String(sp2) + "......" + String(sm2) + "\n";
-	document.getElementById("output2").innerText += "...토......" + String(sp3) + "......" + String(sm3) + "\n";
-	document.getElementById("output2").innerText += "...금......" + String(sp4) + "......" + String(sm4) + "\n";
-	document.getElementById("output2").innerText += "...수......" + String(sp5) + "......" + String(sm5) + "\n";
-	document.getElementById("output2").innerText += "\n";
-};
-	
-//=========== 일간의 통근 상황 확인===========
-function rootgchk(){
-	pointr = ""; 
-	document.getElementById("output2").innerText += "\n";
-	dgroot(gj_nfo[3][7],1);  //----- 일지 = 인성/비겁 여부 -----
-	dgroot(gj_nfo[2][7],2);  //----- 월지 = 인성/비겁 여부 -----
-	pwrcnt();  //----- 일간의 세력상태 확인 -----
-	
-	pn = pointr.match(/Y/g);
-	pn1 = pointr.match(/N/g);
-	if(pn != null) {
-		if(pn.length === 3){
-			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr + "\n";
-		}else{
-			if(pn.length === 2){
-				document.getElementById("output2").innerText += "신강 사주 ..." + pointr + "\n";
-			}else{
-				if(pn.length === 1){
-					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n";}}};
-	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n";};
-	sibsng(sj_dg,"",sj_mj); document.getElementById("output2").innerText += "사주격국 (기본) " + js_titl + "格 " + nfo_tugan + "\n\n";
+//=== ■■■■■■■■■■■■■■■■  ↓  지지 async await 작성중  ■■■■■■■■■■■■■■■■
 
-	//--- output1에 추가 display
-	if(pn != null) {
-		if(pn.length === 3){
-			document.getElementById("output1").innerText += "극신강 사주 ..." + pointr + "\n";
-		}else{
-			if(pn.length === 2){
-				document.getElementById("output1").innerText += "신강 사주 ..." + pointr + "\n";
-			}else{
-				if(pn.length === 1){
-					document.getElementById("output1").innerText += "신약 사주 ..." + pointr + "\n";}}};
-	}else{document.getElementById("output1").innerText += "극신약 사주 ..." + pointr + "\n";};
-	document.getElementById("output1").innerText += "사주격국 (기본) " + js_titl + "格 " + nfo_tugan + "\n\n";
-};	
-	
-//========= 일간의 통근 check 하는 함수 ========
-function dgroot(pos,a){
-	pass = ""; fail = "";
-	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
-		if (a === 1){ pointr = pointr + "득지Y"; pass = "득지\n";
-		}else{if (a === 2){ pointr = pointr + "득령Y"; pass = "득령\n";}else{pass = pos + " 통근\n";}};
-		document.getElementById("output2").innerText += "일간 " + pass;
-	}else{
-		if (a === 1){ pointr = pointr + "실지N"; fail = "실지\n";
-		}else{if (a === 2){ pointr = pointr + "실령N"; fail = "실령\n";}else{ fail = " ";}};
-		document.getElementById("output2").innerText += fail;};
-};
-	
-//========= 일간의 세력 check 하는 함수 =========
-function pwrcnt(){
-	sstext = gj_nfo[1][3] + gj_nfo[1][7] + gj_nfo[2][3] + gj_nfo[2][7] + gj_nfo[3][7] + gj_nfo[4][3] + gj_nfo[4][7];  //--- 십성
-	let r1 = (sstext.match(/비견/g) || []).length;
-	let r2 = (sstext.match(/겁재/g) || []).length;
-	let r3 = (sstext.match(/편인/g) || []).length;
-	let r4 = (sstext.match(/정인/g) || []).length;
 
-	r0 = r1 + r2 + r3 + r4;
-	if (r0 > 3){
-		pointr = pointr + "득세Y";
-		document.getElementById("output2").innerText += "일간 득세 " + String(r0) + " / " + String(7-r0) + "\n\n";
-	}else{
-		pointr = pointr + "실세N";
-		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n\n";};
-};
-		
-	
-/*	
-	//========== 충/합 ==========
-	//---   chnghab("천간충",4,sj_ganji,"_충");
-function chnghab(name,qt,str,exp){
-	cv_ghab = ["천간합","02","24","46"]	
-	cv_gjxh = ["간지암합","01","03","21","23","25","43","45","47","65","67"]
-	cv_j6sh = ["육합암합","13","35","57"]
-	cv_j3bh = ["삼합방합","135","357"]
-	subj = name; pon = "";
-	chab = ganji_habchung.filter(isFind);  //===천간충/극
-	var outpt = ""; var fndList = "";
-	for (i = 1; i < qt + 1; i++){texstr = chab[0][i]; n=0; aa=""; bb=""; cc = exp;
-		for (k = 0; k < texstr.length; k++){
-			aa1 = texstr.substr(k,1);
-			txtSearch(str,aa1);
-			if (fndList === "-1" || fndList === null){aa1 = "";}else{n += 1;};
-		};
-		//--- 출력내용 작성 ---
-		ch_titl0 = ""; ch_titl1 = ""; adt1 = ""; adt2 = ""; adt3 = "";
-		if (aa.length === texstr.length){
-			if (name.substr(2,1) === "충" || name.substr(2,1) === "극"){  //--- 충 또는 극 인 경우
-				if (name.substr(2,1) === "충"){nfo_chng += aa;};  //--- 충 인 경우
-				ch_titl0 = aa + cc + "\n"; ch_titl1 =  aa + cc + "\n";
-				for (j=0; j<bb.length; j++){
-					pon = Number(bb.substr(j,1)) + 1;
-					loc = "sj" + String(pon) + "a";
-					document.getElementById(loc).innerText += ch_titl0;
-				};
-				document.getElementById("output2").innerText += ch_titl1; 
-				if (name === "지지충"){
-					subj = aa;
-					c_sign = sig_chung.filter(isFind);  //===천간충/극
-					ch_titl2 = aa + cc + " ==> " + c_sign[0][2] + "\n" + c_sign[0][3] + "\n" + c_sign[0][4] + "\n\n" + c_sign[0][5] + "\n" + c_sign[0][6] + "\n" + c_sign[0][7] + "\n" + c_sign[0][8] + "\n" + c_sign[0][9] + "\n\n";
-					document.getElementById("output").innerText += ch_titl2; 
-				};
-			}else{  //--- 합 인 경우
-				cv = "";
-				if (name === "천간합"){ cv = cv_ghab; };				
-				if (name === "간지암합"){ cv = cv_gjxh;};
-				if (name === "지지육합" || name === "지지암합"){ cv = cv_j6sh;};
-				if (name === "지지삼합" || name === "지지방합"){ cv = cv_j3bh;};
-				for (m = 1; m < cv.length; m++){ ckstr = cv[m];
-					ck1 = ckstr.substr(0,1); ck2 = ckstr.substr(1,1); ck3 = ckstr.substr(2,1);
-					if (name === "지지삼합" || name === "지지방합"){  //--- 3글자 합 인 경우
-						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1)) || nfo_chng.includes(aa.substr(2,1))){  //--- 충
-							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 
-						};
-//						if ((sj_ganji.match(/aa.substr(0,1)/g) || []).length > 1 || (sj_ganji.match(/aa.substr(1,1)/g) || []).length > 1 || (sj_ganji.match(/aa.substr(2,1)/g) || []).length > 1){
-//							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };  //--- 쟁합 인 경우
-						if (bb.includes(ck1) && bb.includes(ck2) && bb.includes(ck3)){
-							ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n";
-							if (adt3 != "...불성립"){
-								loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-								loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-								loc = "sj" + String(Number(ck3) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-							};
-							document.getElementById("output2").innerText += ch_titl1; 
-						};
-				        }else{		  //--- 2글자 합 인 경우
-						if (nfo_chng.includes(aa.substr(0,1)) || nfo_chng.includes(aa.substr(1,1))){adt1 = "("; adt2 = ")"; adt3 = "...불성립"; }; //--- 충
-//						if ((sj_ganji.match(/aa.substr(0,1)/g) || []).length > 1 || (sj_ganji.match(/aa.substr(1,1)/g) || []).length > 1){
-//							adt1 = "("; adt2 = ")"; adt3 = "...불성립"; };  //--- 쟁합 인 경우
-						if (bb.includes(ck1) && bb.includes(ck2)){
-							if (name === "천간합"){
-								if (ck1 === "4" || ck2 === "4"){
-									if (sj_dg === "己" || sj_dg === "庚"){adt1 = ""; adt2 = ""; adt3 = "";
-									}else{adt1 = "("; adt2 = ")"; adt3 = "...불성립"; 	};
-								};
-								subj = aa; hwa = habhwa.filter(isFind); 
-								if (isol_y === "고립" && aa.includes(sj_yg)){chg_bgcolor("#sj1",hwa[0][3],ggsgg[1][5]);};
-								if (isol_m === "고립" && aa.includes(sj_mg)){chg_bgcolor("#sj3",hwa[0][3],ggsgg[2][5]);};
-								if (isol_t === "고립" && aa.includes(sj_tg)){chg_bgcolor("#sj7",hwa[0][3],ggsgg[4][5]);};
-							};
-							ch_titl0 = adt1 + aa + cc + adt2 + "\n"; ch_titl1 =  adt1 + aa + cc + adt2 + adt3 + "\n";
-							if (adt3 != "...불성립"){
-								loc = "sj" + String(Number(ck1) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-								loc = "sj" + String(Number(ck2) + 1) + "a"; document.getElementById(loc).innerText += ch_titl0;
-							};
-							document.getElementById("output2").innerText += ch_titl1; 
-						};
-				        };
-				};
-		        };
-		};
-       };
-};
-*/	
-//=============== 성격 display ==============
-function dgjmcharac(){
-	//--------- 일간에 따른 성격 display ---------
-/*	document.getElementById("out").innerText += "<<성격>> \n";
-	subj = sj_dg;
-	dgcharac = dgan_charac.filter(isFind);  //---일간성격
-	dgtext = "\n<내면성격의 성향> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][3] + "\n" + dgcharac[0][4] + "\n" + dgcharac[0][5] + "\n" + dgcharac[0][6] + "\n" + dgcharac[0][7] + "\n" + dgcharac[0][8] + "\n\n";
-//	dgtext1 = "<성격> 일간 " + dgcharac[0][1] + dgcharac[0][2] + " ==> " + dgcharac[0][9] + "\n" + dgcharac[0][10] + "--표면심리--" + dgcharac[0][11] + "\n" + dgcharac[0][12] + "--내면심리--" + dgcharac[0][13] + "\n" + "\n";
-	document.getElementById("output").innerText += dgtext;
-//	document.getElementById("output2").innerText += dgtext1;
-	//--------- 일주에 따른 성격 display ---------
-	subj = sj_dg + sj_dj;
-	dgjcharac = dgabja60_charac.filter(isFind);  //---일주성격
-	dgjtext = "<성격> 일주 " + dgjcharac[0][1] + " ==> "  + dgjcharac[0][2] + "\n" + dgjcharac[0][3] + "\n" + dgjcharac[0][4] + "\n" + dgjcharac[0][5] + "\n" + dgjcharac[0][6] + "\n" + dgjcharac[0][7] + "\n\n";
-	document.getElementById("output").innerText += dgjtext;
-	//--------- 월지(십성)에 따른 성격 display ---------
-	subj = dgss_titl4;
-	mjcharac = mjdjss_charac.filter(isFind);  //---월지성격
-	mjtext = "<환경적 영향> 월지십성 " + mjcharac[0][0] + " " + mjcharac[0][1] + "\n" + mjcharac[0][2] + "\n" + mjcharac[0][3] + "\n" + mjcharac[0][4] + "\n" + mjcharac[0][5] + "\n\n";
-	document.getElementById("output").innerText += mjtext;
-	//--------- 일지(십성)에 따른 성격 display ---------
-	subj = dgss_titl6;
-	djcharac = mjdjss_charac.filter(isFind);  //---일지성격
-	djtext = "<배우자 관련> 일지십성 " + djcharac[0][0] + " " + djcharac[0][1] + "\n" + djcharac[0][6] + "\n" + djcharac[0][7] + "\n\n";
-	document.getElementById("output").innerText += djtext;
-*/
-};
-  </script>
+</script>
+
 
     </body>
 </html>
