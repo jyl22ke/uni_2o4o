@@ -296,7 +296,7 @@ function fread(fn){
 
 <script type="text/javascript">
 	let gj_nfo = new Array; let hgj_nfo = new Array; let hun_list = new Array; let ganhc_nfo = new Array; let jjhc_nfo = new Array; let saju = ""; let saju_h = ""; let symdt = ""; let gendr = ""; 
-	let now = null; let hunD = null; let longungj = ""; let ohtx = ""; let nfo_tugan = ""; let code1 = ""; let hnj = "";
+	let now = null; let hunD = null; let longungj = ""; let ohtx = ""; let nfo_tugan = ""; let code1 = ""; let hnj = ""; let desc = "";
 	let sj_yg = ""; let sj_mg = ""; let sj_dg = ""; let sj_tg = ""; let sj_yj = ""; let sj_mj = ""; let sj_dj = ""; let sj_tj = "";  //--- 사주 (년월일시)간지
 	let hn_lg = ""; let hn_yg = ""; let hn_mg = ""; let hn_dg = ""; 	let hn_lj = ""; let hn_yj = ""; let hn_mj = ""; let hn_dj = "";  //--- 행운 (대세월일)운 간지
 
@@ -453,14 +453,12 @@ $( function() {
 		["일간","","","","","","","","","",""],
 		["시간","","","","","","","","","",""]];
 
-//==== new version test =====(start)=============
 		jjhc_nfo = [
 		["위치","jiji","지지형","원국1","원국2","원국3","대운","연운","월운","일운","시운"],
 		["연지","","","","","","","","","",""],
 		["월지","","","","","","","","","",""],
 		["일지","","","","","","","","","",""],
 		["시지","","","","","","","","","",""]];
-//==== new version test =====(end)=============
 
 		gj_nfo = [
 		["위치","gan","g오행","g십성","통근","jiji","j오행","j십성","십이운성","지장간1","지장간2","지장간3","지1_십성","지2_십성","지3_십성","비고"],
@@ -516,7 +514,7 @@ $( function() {
 		tugan();
 		rootgchk();
 		mpohcnt();
-   		ganhabch();
+  		wongug();
 		hangun();
 // 		dgjmcharac();  //--- 일주 성격 보여주는 함수
 	});
@@ -724,7 +722,7 @@ function yjhab(destin){
 //--- djhab("output1");
 function djhab(destin){
 	subj = rslt.substr(0,2); temp = spec_6hab.filter(isFind);
-	document.getElementById(destin).innerText += "■ 일지합--- " + txt + " " + rslt + "\n ◐ " + temp[0][1] + "\n"; 
+	document.getElementById(destin).innerText += "■ 일지합--- " + txt + " " + rslt + "\n ◐ " + sz + temp[0][1] + "\n"; 
 	if (destin == "output3"){document.getElementById(destin).innerText += "◐ " + temp[0][2] + "\n"; };
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
@@ -743,16 +741,17 @@ function yjchng(destin){
 //====== 일지충 (2)===================
 //--- djchng("output1");
 function djchng(destin){
-	document.getElementById(destin).innerText += "■ 일지충--- " + txt + " " + rslt + "\n ◐ ";
+	document.getElementById(destin).innerText += "■ 일지충--- " + txt + " " + rslt + " " + txt2 + "\n";
 	subj = rslt.substr(0,2); 
-//	console.log("rslt : " + rslt);
 	temp = spec_jjchng.filter(isFind);
-	document.getElementById(destin).innerText += temp[0][1] + "\n ◐ " + temp[0][2] + " \n";
-	document.getElementById(destin).innerText += "◐ 원진귀문 있으면--- 이중성격 증후군(잔소리 폭언-술마시면 드러남) \n";
 	if (destin == "output3"){
+		document.getElementById(destin).innerText += "◐ " + temp[0][1] + "\n ◐ " + temp[0][2] + " \n";
 		document.getElementById(destin).innerText += "◐ 왕신발 쇠자발--- \n";
-		document.getElementById(destin).innerText += "◐ 사고의 개 생왕개지--- \n";
+		jjg_turb();
+	}else{
+		document.getElementById(destin).innerText += "◐ " + sz + temp[0][1] + "\n ◐ " + temp[0][2] + " \n";
 	};
+	document.getElementById(destin).innerText += "◐ 원진귀문 있으면--- 이중성격 증후군(잔소리 폭언-술마시면 드러남) \n";
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
 
@@ -769,7 +768,7 @@ function yjhae(destin){
 //====== 일지해 (3)===================
 //--- djhae(sj_mj,sj_dj,2,"output1"); 또는 djhae(sj_dj,sj_tj,3,"output1");
 function djhae(a,b,c,destin){
-	document.getElementById(destin).innerText += "■ 일지해--- " + txt + " " + rslt + "--- 일간의 육합대상지지 십성에 흉화 \n ◐ 엉뚱한 일을 발생시켜 뜻하지 않게 다투거나 냉담하게 되는 등 매사를 지연시켜 목전에서 포기하게 만드는 흉살이다. \n";
+	document.getElementById(destin).innerText += "■ 일지해--- " + txt + " " + rslt + "--- 일간의 육합대상지지 십성에 흉화 \n ◐ " + sz + " 엉뚱한 일을 발생시켜 뜻하지 않게 다투거나 냉담하게 되는 등 매사를 지연시켜 목전에서 포기하게 만드는 흉살이다. \n";
 	if (c == 2){document.getElementById(destin).innerText += " ◐ 형제와 인연이 박함은 물론 배우자가 대체로 쇠약한 편인데 여명의 경우 흉해가 더 심하다. \n";};
 	if (c == 3){document.getElementById(destin).innerText += " ◐ 배우자와 자식의 덕이 없을 뿐만 아니라 당주의 노년고독과 질병을 암시 \n";};
 	subj = rslt.substr(0,2); temp = spec_djhae.filter(isFind); document.getElementById(destin).innerText += "◐ 육친에 흉화/병증--- " + temp[0][1] + "\n";	  //--- 일지해 -------
@@ -783,9 +782,9 @@ function djhae(a,b,c,destin){
 //====== 합충+해 흉화 (8)===================
 //--- hwunghwa(sj_dj,hnj,"output3");
 function hwunghwa(a,b,destin){
-	document.getElementById(destin).innerText += "■ " + rslt0 + txt + " " + rslt + " \n ◐ ";  //--- 합충-해흉화 (8)
+	document.getElementById(destin).innerText += "■ " + rslt0 + txt + " " + rslt + " \n";  //--- 합충-해흉화 (8)
 	subj = rslt.substr(0,2); temp = spec_djhae.filter(isFind);
-	document.getElementById(destin).innerText += temp[0][1] + "\n";
+	document.getElementById(destin).innerText += "◐ " + sz + temp[0][1] + "\n";
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
 
@@ -801,7 +800,7 @@ function yjpa(destin){
 //====== 일지파 (4)===================
 //--- djpa(sj_mj,sj_dj,"output1"); 또는 djpa(sj_dj,sj_tj,"output1");
 function djpa(a,b,destin){
-	document.getElementById(destin).innerText += "■ 일지파--- " + txt + " " + rslt + "--- 삼합왕지 십성육친에 흉화(암시) 및 동착에 실행 \n ◐ 이탈 파괴 붕괴 분리 절단 반목 대립 파손 파재 이별을 암시하여 매사 장애를 촉발한다. 어떤 일의 중단을 예고하여 새로운 국면으로 전환시키는 역할을 담당하므로 파가 오면 일단 십성육신의 변화는 불가피하다. 파와 연관하는 모든 지지의 삼합 왕지에 변화를 준다.\n";
+	document.getElementById(destin).innerText += "■ 일지파--- " + txt + " " + rslt + "--- 삼합왕지 십성육친에 흉화(암시) 및 동착에 실행 \n ◐ " + sz + " 이탈 파괴 붕괴 분리 절단 반목 대립 파손 파재 이별을 암시하여 매사 장애를 촉발한다. 어떤 일의 중단을 예고하여 새로운 국면으로 전환시키는 역할을 담당하므로 파가 오면 일단 십성육신의 변화는 불가피하다. 파와 연관하는 모든 지지의 삼합 왕지에 변화를 준다.\n";
 	subj = a; temp = spec_samhab.filter(isFindx); tgt = temp[0][0].substr(1,1); sibsng(sj_dg,"",tgt); 
 	ss_simri(js_titl,cgh01_sibsng_simri6chin,0); document.getElementById(destin).innerText += "◐ 육친(" + rslt + ") 흉화 \n";  //--- 월지 삼합왕지 십성육친
 	subj = b; temp = spec_samhab.filter(isFindx); tgt = temp[0][0].substr(1,1); sibsng(sj_dg,"",tgt); 
@@ -832,9 +831,9 @@ function johhe_chk(a,destin){
 };
 	
 	//--- 지지형 a (삼형-인사신)
-function johha_chk(a,destin,m,n){
+function johha_chk(a,destin){
 	let jjh_unsng = "";
-	johhe_chk(a,destin); pose += posd;
+	johhe_chk(a,destin); //pose += posd;
 	for (k = 0; k < posd.length; k++)	{
 		if (posd.substr(k,1) < "5"){
 			jjh_unsng += gj_nfo[Number(posd.substr(k,1))][8];
@@ -878,7 +877,7 @@ function johha_chk(a,destin,m,n){
 };
 
 	//--- 지지형 b (붕형-축술미)
-function johhb_chk(a,destin,m,n){
+function johhb_chk(a,destin){
 	johhe_chk(a,destin); 
 	subj = "3a"; temp = spec_jjhyung.filter(isFind); rslt = rslt_hyng2;
 	document.getElementById(destin).innerText += "★★" + rslt + " 붕형--- \n" + "◐ " + temp[0][2] + "\n"; 
@@ -888,28 +887,99 @@ function johhb_chk(a,destin,m,n){
 };
 
 	//--- 지지형 c (상형-자묘)
-function johhc_chk(a,destin,m,n){
+function johhc_chk(a,destin){
 	johhe_chk(a,destin);
 	subj = "2a"; temp = spec_jjhyung.filter(isFind); rslt = rslt_hyng3;
-	document.getElementById(destin).innerText += "★★ " + rslt + "상형--- " + "\n" + "◐ " + temp[0][2] + "\n"; 
+	document.getElementById(destin).innerText += "★★ " + rslt + " 상형--- " + "\n" + "◐ " + temp[0][2] + "\n"; 
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
 
 	//--- 지지형 d (병존자형-진오유해)
-function johhd_chk(a,destin,m,n){
+function johhd_chk(a,destin){
 	johhe_chk(a,destin);
 	subj = "4a"; temp = spec_jjhyung.filter(isFind); rslt = rslt_hyng4;
-	document.getElementById(destin).innerText += "★★ " + rslt + " " + rslt0 + " \n ◐ " + temp[0][2] + "\n"; 
+	document.getElementById(destin).innerText += "★★ " + rslt + " 자형 \n ◐ " + temp[0][2] + "\n"; 
 	subj = rslt0.substr(0,2); temp = spec_jjhyung.filter(isFind);
 	document.getElementById(destin).innerText += "◐" + subj + " 자형--- " + temp[0][2] + "\n"; 
-	if (rslt0.length == 8 && rslt0.substr(0,2) != rslt0.substr(4,2)){
-		subj = rslt0.substr(4,2); temp = spec_jjhyung.filter(isFind);
+	if (rslt0.length == 6 && rslt0.substr(0,2) != rslt0.substr(3,2)){
+		subj = rslt0.substr(3,2); temp = spec_jjhyung.filter(isFind);
 		document.getElementById(destin).innerText += "◐" + subj + " 자형--- " + temp[0][2] + "\n"; 
 	}
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
 
-//====== gj_nfo, hgj_nfo, hun_list 테이블 작성 ======
+//====== 장간동요 ===================
+function jjg_turb(){  
+	//--- sj_gan: 천간4자, sj_dg+sj_dj: 일주
+	//--- 지장간 일지: gj_nfo[3][9].substr(0,1), gj_nfo[3][10].substr(0,1), gj_nfo[3][11].substr(0,1)
+	//--- 위치: pos_ch = "2": 월지,  "4": 시지,  "24": 원국투충, "": 행운충
+	if (pos_ch.length == 0){pos_ch = "3";	};  //--- 행운충의 경우 일지의 지장간만 적용
+	if ("辰戌丑未".includes(sj_dj)){  //--- 사고의 개
+		sago();
+	}else{  //--- 생왕개지
+		gaeji();
+	};
+};
+
+//--- return true; return false; //--- 반복문에서 현재이후의 모든 상위 반복문 절차까지 탈출
+//--- break; //--- 반복문에서 현재반복문의 나머지절차를 탈출하고 상위 반복문을 계속실행
+//--- continue; //--- 반복문에서 현재반복문의 현재절차만 탈출하고 나머지 절차와 상위반복문을 계속실행
+
+//====== 사고의 개 ===================
+function sago(){  
+	document.getElementById("output3").innerText += "◐ 사고의 개---" + pos_ch + " \n";
+	for (j=0; j<pos_ch.length; j++){
+		m = pos_ch.substr(j,1);
+		for (i=0; i<3; i++){
+			if (gj_nfo[m][i+9] == ""){continue;
+			}else{
+				sjj = gj_nfo[m][i+9].substr(0,1);
+			};
+			if (sj_gan.includes(sjj)){
+				txt4go = gj_nfo[m][i+12] + "(" + sjj + ") 입고(십성) 흉";  //--- 지장간 기물이 천간에 있으면 입고(십성흉)
+				if (txt2.substr(txt2.length-1) == "길"){txt4go += " ==> ★ 무난";};
+			}else{
+				dx = "甲己乙庚丙辛丁壬戊癸".indexOf(sjj);
+				if(dx%2==1){sjg = "甲己乙庚丙辛丁壬戊癸".substr(dx-1,1);}else{sjg = "甲己乙庚丙辛丁壬戊癸".substr(dx+1,1);};
+				if (sj_gan.includes(sjg)){
+					sibsng(sj_dg,sjg,"");  //--- 지장간 기물이 천간에 없지만 합반합거(십성흉)
+					txt4go = gs_titl + "(" + sjg + ") 합반합거(십성) 흉";
+					if (txt2.substr(txt2.length-1) == "길"){txt4go += " ==> ★ 무난";};
+				}else{
+					txt4go = gj_nfo[m][i+12] + "(" + sjj + ") 독야청청(십성) 길";  //--- 지장간 기물이 천간에 없고 독야청청(십성길)
+				};
+			};
+			document.getElementById("output3").innerText += "- " + txt4go + "\n";
+		};
+	};
+};
+
+//====== 생왕개지 ===================
+function gaeji(){  
+	document.getElementById("output3").innerText += "◐ 생왕개지---" + pos_ch + " \n";
+	for (j=0; j<pos_ch.length; j++){
+		m = pos_ch.substr(j,1);
+		if (gj_nfo[m][10] == ""){i=1;	}else{i=0;};
+		sjj = gj_nfo[m][i+10].substr(0,1);
+		if (sj_gan.includes(sjj)){
+			txt4go = gj_nfo[m][i+13] + "(" + sjj + ") 투간(십성) 길";  //--- 지장간 중(본)기 기물이 천간에 있으면 투간(십성길)
+		}else{
+			dx = "甲己乙庚丙辛丁壬戊癸".indexOf(sjj);
+			if(dx%2==1){sjg = "甲己乙庚丙辛丁壬戊癸".substr(dx-1,1);}else{sjg = "甲己乙庚丙辛丁壬戊癸".substr(dx+1,1);};
+			if (sj_gan.includes(sjg)){
+				sibsng(sj_dg,sjg,"");  //--- 지장간 중(본)기 기물이 천간에 없지만 합반합거(십성흉)
+				txt4go = gs_titl + "(" + sjg + ") 합반합거(십성) 흉";
+				if (txt2.substr(txt2.length-1) == "길"){txt4go += " ==> ★ 무난";};
+			}else{
+				txt4go = gj_nfo[m][i+13] + "(" + sjj + ") 독야청청.. 충발에 따른 흉";  //--- 지장간 기물이 천간에 없고 독야청청(십성흉)
+				if (txt2.substr(txt2.length-1) == "길"){txt4go += " ==> ★ 무난";};
+			};
+		};
+		document.getElementById("output3").innerText += "- " + txt4go + "\n";
+	};
+};
+
+//====== gj_nfo, hgj_nfo, hun_list 테이블 작성 ====== mktable(1,hn_lg,hn_lj,hgj_nfo);
 function mktable(a,b,c,fnm){
 	subj = b; temp = gan.filter(isFind); fnm[a][2] = temp[0][4].substr(1,2); fnm[a][15] = temp[0][5]; 
 	subj = c; temp = jiji.filter(isFind); fnm[a][6] = temp[0][4].substr(1,2);  fnm[a][15] += temp[0][5];
@@ -1345,7 +1415,7 @@ function fill_saju(){
 //====== 천간합충 원국/행운 결과 출력 함수 ======
 function result_out(tx,desc,sts,dstin){
 	if (tx != "-"){
-		document.getElementById(dstin).innerText += "■ 일간 " + hcg3 + " " + sts + "--- " + desc + "\n";
+		document.getElementById(dstin).innerText += "■ 일간 " + hcg3 + " " + sts + "--- " + desc; // + "\n";
 		if (tx == "1"){summing1(dstin);};  //--- 합(1)
 		if (tx == "2"){summing2(dstin); summing1(dstin); };  //--- 합화 용신(2)
 		if (tx == "3"){summing3(dstin);};  //--- 불합(3)
@@ -1356,25 +1426,27 @@ function result_out(tx,desc,sts,dstin){
 		if (tx == "8"){summing8(dstin);};  //--- 충발(8) 
 		if (tx == "9"){summing3(dstin); summing6(dstin, sts); summing8(dstin);};  //--- 합파충(9) 
 		if (tx == "b"){summingb(dstin);};  //--- 충거(b) 
-		document.getElementById(dstin).innerText += "--------------------------------------------------------------\n";
+		document.getElementById(dstin).innerText += "\n--------------------------------------------------------------\n";
 	};
 };
 
 //======== 합(1) 내용 summary ========
 function summing1(dstin){
-	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
-	document.getElementById(dstin).innerText += "◐ 일간의 심리--- 1.다정다감 2.부화뇌동 3.부정망상\n" + temp[0][4] + " " + temp[0][6] + "\n 배우자 이상형---" + temp[0][5] + "\n";
-	if (temp[0][8].includes(sj_dg)){ sts = "총명하여 학술과 기예에 관심이 많고, 또 양순하면서도 다정다감하여 대인관계가 원만한 편이다. 하지만 이성으로부터 많은 관심을 받거나 부화뇌동(附和雷同)하려는 심리가 강해 자칫하면 구설에 휘말릴 수 있다.";};  //--- 합화생
-	if (temp[0][9].includes(sj_dg)){ sts = "신강하면 흉화가 없지만 신약하면 소심박약(小心薄弱)하고 편향성(偏向性)을 띠게 된다";};  //--- 합화극
-	document.getElementById(dstin).innerText += sts + "\n 건강에 주의---" + temp[0][11] + "\n";
+	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); sz = "";
+	if (ganhc_nfo[3][4].includes(temp[0][7])){sz = "심리(20~38세)---";};
+	if (ganhc_nfo[3][5].includes(temp[0][7])){sz = "심리(58세~)---";};
 	//--- 정재/정관의 긍정심리
 	subj = temp[0][3].substr(3,2);
 	for (j=1; j< cgh01_sibsng_simri6chin.length; j++){
 		if (cgh01_sibsng_simri6chin[j][0] == subj){
 			rslt = cgh01_sibsng_simri6chin[j][1]; 
-			document.getElementById(dstin).innerText += subj + "심리--- " + rslt + "\n";
+			document.getElementById(dstin).innerText += "\n◐ " + subj + sz + rslt + "\n";
 		};
 	};
+	document.getElementById(dstin).innerText += "◐ 일간의 심리--- 1.다정다감 2.부화뇌동 3.부정망상\n" + temp[0][4] + " " + temp[0][6] + "\n 배우자 이상형---" + temp[0][5] + "\n";
+	if (temp[0][8].includes(sj_dg)){ sts = "총명하여 학술과 기예에 관심이 많고, 또 양순하면서도 다정다감하여 대인관계가 원만한 편이다. 하지만 이성으로부터 많은 관심을 받거나 부화뇌동(附和雷同)하려는 심리가 강해 자칫하면 구설에 휘말릴 수 있다.";};  //--- 합화생
+	if (temp[0][9].includes(sj_dg)){ sts = "신강하면 흉화가 없지만 신약하면 소심박약(小心薄弱)하고 편향성(偏向性)을 띠게 된다";};  //--- 합화극
+	document.getElementById(dstin).innerText += sts + "\n 건강에 주의---" + temp[0][11] + "\n";
 };
 
 //======== 합화(2) 내용 summary ========
@@ -1392,16 +1464,20 @@ function summing2(dstin){
 	if (rslt.includes(sj_dj)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_tj)){ n += 1;}else{ n += 0;};
 	if (hcg3.substr(0,1) == "합"){ if (rslt.includes(sj_tg)){ n += 1;}else{ n += 0;};};
 	if (hcg3.substr(2,1) == "합"){ if (rslt.includes(sj_mg)){ n += 1;}else{ n += 0;};};	
-	if (n == 0){document.getElementById(dstin).innerText += "◐ " + (ganhc_nfo[3][4] + ganhc_nfo[3][5]).substr(0,3) + "합화격 " + temp[0][2] + "오행 용신\n";}else{document.getElementById(dstin).innerText += "◐ " + (ganhc_nfo[3][4] + ganhc_nfo[3][5]).substr(0,3) + "불화 " + "\n";};
+	if (n == 0){document.getElementById(dstin).innerText += "\n◐ " + desc.substr(0,3) + "합화격 " + temp[0][2] + "오행 용신";
+	}else{document.getElementById(dstin).innerText += " + 합오행을 극함\n◐ 성합불화 ";};
 };
 	
 //======== 불합(3) 내용 summary ========
 function summing3(dstin){
-	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); subj = temp[0][3].substr(3,2);
+	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); sz = "";
+	if (ganhc_nfo[3][4].includes(temp[0][7])){sz = "심리(20~38세)---";};
+	if (ganhc_nfo[3][5].includes(temp[0][7])){sz = "심리(58세~)---";};
+	subj = temp[0][3].substr(3,2);
 	for (j=1; j< cgh01_sibsng_simri6chin.length; j++){
 		if (cgh01_sibsng_simri6chin[j][0] == subj){
 			rslt = cgh01_sibsng_simri6chin[j][2]; 
-			document.getElementById(dstin).innerText += "◐ " + subj + "심리--- " + rslt + "\n";
+			document.getElementById(dstin).innerText += "\n◐ " + subj + sz + rslt;// + "\n";
 		};
 	};
 };
@@ -1409,7 +1485,7 @@ function summing3(dstin){
 //======== 합봉(4) 내용 summary ========
 function summing4(dstin){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); 
-	document.getElementById(dstin).innerText += "◐ 건강 흉화 " + temp[0][11] + "\n";
+	document.getElementById(dstin).innerText += "\n◐ 건강 흉화 " + temp[0][11] + "\n";
 	subj = temp[0][3].substr(3,2);
 	temp = cgh01_sibsng_simri6chin.filter(isFind);
 	if (gendr == "남양"){n = 1;}else{n = 2;};
@@ -1420,7 +1496,7 @@ function summing4(dstin){
 //======== 용봉(5) 내용 summary ========
 function summing5(dstin){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind);
-	document.getElementById(dstin).innerText += "◐ " + temp[0][3].substr(3,2) + "운 " + temp[0][4].substr(0,2) + "운 흉화 \n";
+	document.getElementById(dstin).innerText += "\n◐ " + temp[0][3].substr(3,2) + "운 " + temp[0][4].substr(0,2) + "운 흉화 \n";
 	document.getElementById(dstin).innerText += "건강 흉화 " + temp[0][11] + "\n";
 };
 	
@@ -1433,23 +1509,27 @@ function summing6(dstin, sts){
 	if (sts == "월운"){subj = hgj_nfo[3][3];};
 	if (sts == "일운"){subj = hgj_nfo[4][3];};
 	temp = cgh01_sibsng_simri6chin.filter(isFind);
-	document.getElementById(dstin).innerText += "◐ (" + temp[0][n+2] + ") 흉화--- \n";
+	if (sts == "원국"){document.getElementById(dstin).innerText += "\n◐ "+ subj + "(58세~ ) " + "육친의 흉화 (" + temp[0][n+2] + ") \n";
+	}else{	document.getElementById(dstin).innerText += "\n◐ "+ subj + "육친의 흉화 (" + temp[0][n+2] + ") \n";};
 };
 	
 //======== 충 충발(8,) 내용 summary ========
 function summing8(dstin){
+	sz = "";
+	if (ganhc_nfo[3][4].includes("충")){sz = "(20~38세)";};
+	if (ganhc_nfo[3][5].includes("충")){sz += "(58세~ )";};
 	n = "甲乙丙丁戊己庚辛壬癸".indexOf(sj_dg) + 1; 
-	document.getElementById(dstin).innerText += "◐ 충발: 편고함이 지나쳐 객기와 만용을 부리기 쉬우며 대체로 소극적이고 무능한 일면의 부정적경향을 보이거나 정신적 혼란으로 건강을 해치는 등 성격적 결함을 보임 \n";
+	document.getElementById(dstin).innerText += "\n◐ 충발: 편고함이 지나쳐 객기와 만용을 부리기 쉬우며 대체로 소극적이고 무능한 일면의 부정적경향을 보이거나 정신적 혼란으로 건강을 해치는 등 성격적 결함을 보임 \n";
 	if (n < 5){subj = "편관";};
 	if (n > 6){subj = "편재";};
-	document.getElementById(dstin).innerText += subj.substr(1,1) + "성(" + subj + ") 부조화--- \n";	
-	rslt0 = "상신... 몸에 상처가 생김.. ";
+	document.getElementById(dstin).innerText += "◐ " + subj.substr(1,1) + "성(" + subj + ") 부조화--- " + sz + "\n";	
+	rslt0 = "◐ 상신... 몸에 상처가 생김.. ";
 	if (n == 1 || n == 7){rslt0 += "(근육통 골다공증 견통 대머리)\n";}; if (n == 2 || n == 8){rslt0 += "(두통 치통 요통 빙의)\n";}; 
 	if (n == 3 || n == 9){rslt0 += "(심장 또는 신장질환)\n";}; if (n == 4 || n == 10){rslt0 += "(복부 방광 내분비계통 혼인파혼-작파(作破))\n";};
 	document.getElementById(dstin).innerText += rslt0;	
 	temp = cgh01_sibsng_simri6chin.filter(isFind);
 	if (gendr == "남양"){ rslt = temp[0][3]; }else{ rslt = temp[0][4]; };	
-	document.getElementById(dstin).innerText += "육친(" + rslt + ") 불화(반목)--- \n";	
+	document.getElementById(dstin).innerText += "◐ 육친(" + rslt + ") 불화(반목)--- \n";	
 };
 	
 //======== 행운천간합 합화오행 육친십성 흉화(0) 내용 summary ========
@@ -1480,7 +1560,7 @@ function summingb(dstin){
 	n = "甲乙丙丁戊己庚辛壬癸".indexOf(sj_dg) + 1; 
 	if (n < 5){subj = "편관";};
 	if (n > 6){subj = "편재";};
-	document.getElementById(dstin).innerText += "◐ " + subj.substr(1,1) + "성(" + subj + ") 발흥--- \n";	
+	document.getElementById(dstin).innerText += "\n◐ " + subj.substr(1,1) + "성(" + subj + ") 발흥--- \n";	
 	rslt0 = "건강회복... 질병 완화.. ";
 	if (n == 1 || n == 7){rslt0 += "(근육통 골다공증 견통 대머리)\n";}; if (n == 2 || n == 8){rslt0 += "(두통 치통 요통 빙의)\n";}; 
 	if (n == 3 || n == 9){rslt0 += "(심장 또는 신장질환)\n";}; if (n == 4 || n == 10){rslt0 += "(복부 방광 내분비계통)\n";};
@@ -1534,7 +1614,7 @@ function jjhchk(bas,tgt){
 };
 
 //========== 천간합충 지지합충형해파==========
-function ganhabch(){
+function wongug(){
 	hcg1 = ""; hcg2 = ""; hcg3 = ""; hcg4 = ""; rt1 = ""; rt2 = ""; rt3 = ""; sj_org2 = ""; hcj1 = ""; hcj2 = ""; hcj3 = ""; hcj4 = ""; ttlhc = ""; ttlh = ""; hcj = ""; rslt_chng = ""; 
 	rslt_hyng1 = ""; rslt_hyng2 = ""; rslt_hyng3 = ""; rslt_hyng4 = "";
 	
@@ -1595,6 +1675,15 @@ function ganhabch(){
 
 //	johc_chk0("지지원진",6); johc_chk0("지지귀문",6); johc_chk0("지지암합",5); gjhab_chk("간지암명합",7);
 
+	document.getElementById("output4").innerText += "gj_nfo : 천간지지\n" + gj_nfo[0] + "\n" + gj_nfo[1] + "\n" + gj_nfo[2] + "\n" + gj_nfo[3] + "\n" + gj_nfo[4] + "\n";
+	document.getElementById("output4").innerText += "--------------------------------------------------------------\n";
+	document.getElementById("output4").innerText += "hun_list : 대운\n" + hun_list[0] + "\n" + hun_list[1] + "\n" + hun_list[2] + "\n" + hun_list[3] + "\n" + hun_list[4] + "\n" + hun_list[5] + "\n" + hun_list[6] + "\n" + hun_list[7] + "\n" + hun_list[8] + "\n" + hun_list[9] + "\n" + hun_list[10] + "\n" + hun_list[11] + "\n" + hun_list[12] + "\n" + hun_list[13] + "\n" + hun_list[14] + "\n";
+	document.getElementById("output5").innerText += "hgj_nfo : 행운간지\n" + hgj_nfo[0] + "\n" + hgj_nfo[1] + "\n" + hgj_nfo[2] + "\n" + hgj_nfo[3] + "\n" + hgj_nfo[4] + "\n" + hgj_nfo[5] + "\n";
+	document.getElementById("output5").innerText += "--------------------------------------------------------------\n";
+	document.getElementById("output5").innerText += "ganhc_nfo : 천간합충\n" + ganhc_nfo[0] + "\n" + ganhc_nfo[1] + "\n" + ganhc_nfo[2] + "\n" + ganhc_nfo[3] + "\n" + ganhc_nfo[4] + "\n";
+	document.getElementById("output5").innerText += "--------------------------------------------------------------\n";
+	document.getElementById("output5").innerText += "jjhc_nfo : 지지합충형해파\n" + jjhc_nfo[0] + "\n" + jjhc_nfo[1] + "\n" + jjhc_nfo[2] + "\n" + jjhc_nfo[3] + "\n" + jjhc_nfo[4] + "\n";
+
 	//------ 원국 hcg1 코드 생성
 	if (ganhc_nfo[1][3].substr(2,1)==""){	hcg1 += "----";}else{hcg1 += ganhc_nfo[1][3].substr(2,1) + rt1 + "--";}; hcg1 += "-";
 	hcg2 += "-----";   //--- 원국 hcg2 코드 생성
@@ -1606,12 +1695,13 @@ function ganhabch(){
 	if (ganhc_nfo[2][2] == ganhc_nfo[3][2]){hcg3 += "1";}else{hcg3 += "0";};  //--- hcg3에 월지 합오행 체크 추가
 	hcg4 += "-----";    //--- 원국 hcg4 코드 생성
 
-//------ 연간 합충
 	for (i = 0; i < ca10a_ghabch.length; i++){
+		//------ 연간 합충
  		if (ca10a_ghabch[i][0] == "연간" && ca10a_ghabch[i][1] == hcg1 && hcg1 != '-----'){
 			sts = "연간"; document.getElementById("output1").innerText += "■" + sts + " " + hcg1 + " " + ganhc_nfo[1][3] + " " + ca10a_ghabch[i][4] +  "\n";  //--- 원국 연간합충 출력
 			if (ca10a_ghabch[i][5] == "a"){ 
-				document.getElementById("output1").innerText += gj_nfo[1][3] + "--- " + ca10a_ghabch[i][3] + "\n";  //--- 연간충(a)
+				document.getElementById("output1").innerText += gj_nfo[1][3] + "--- " + ca10a_ghabch[i][4] + "--( ~19세)\n";  //--- 연간충(a)-연간
+				document.getElementById("output1").innerText += gj_nfo[2][3] + "--- " + ca10a_ghabch[i][4] + "--(20~38세)\n";  //--- 연간충(a)-월간
 			}else{
 				if (ca10a_ghabch[i][5] == "c"){n = 1;};  //--- 연간합 긍정(c)
 				if (ca10a_ghabch[i][5] == "d"){n = 2;};  //--- 연간합 부정(d)
@@ -1621,47 +1711,69 @@ function ganhabch(){
 			};
 			document.getElementById("output1").innerText += "--------------------------------------------------------------\n";
 		};
+		//------ 일간 합충
 		if (ca10a_ghabch[i][0] == "일간" && ca10a_ghabch[i][1] == hcg3){  //--- 원국코드 (code1) 및 결과코드 (code2) 생성
-			if (ca10a_ghabch[i][5] ==  "-" || ca10a_ghabch[i][5] ==  "b"){code2 = ca10a_ghabch[i][5]; code1 = "-"; code1 += gj_nfo[3][4].substr(0,1); code1 += hcg3.substr(4,1); };
-			if (ca10a_ghabch[i][5] > "0" && ca10a_ghabch[i][5] < "7"){code2 = ca10a_ghabch[i][5]; code1 = code2; code1 += "-"; code1 += hcg3.substr(4,1); };
-			if (ca10a_ghabch[i][5] ==  "7" || ca10a_ghabch[i][5] ==  "8"){code2 = ca10a_ghabch[i][5]; code1 = code2;	code1 += "--"; };
+			code2 = ca10a_ghabch[i][5];
+			if (ca10a_ghabch[i][5] ==  "-" || ca10a_ghabch[i][5] ==  "b"){code1 = "-"; code1 += gj_nfo[3][4].substr(0,1); code1 += hcg3.substr(4,1); };
+			if (ca10a_ghabch[i][5] > "0" && ca10a_ghabch[i][5] < "7"){code1 = code2; code1 += "-"; code1 += hcg3.substr(4,1); };
+			if (ca10a_ghabch[i][5] ==  "7" || ca10a_ghabch[i][5] ==  "8"){code1 = code2; code1 += "--"; };
 
-			if (hcg3.substr(0,4) != '----'){	result_out(code2, ganhc_nfo[3][4] +ganhc_nfo[3][5] + " " + ca10a_ghabch[i][4], "원국", "output1");};  //--- 원국 일간합충 출력
+			if (hcg3.substr(0,4) != '----'){
+				if (code2 == "1" || code2 == "2" || code2 == "3"){
+					if (ganhc_nfo[3][4].includes("합")){desc = ganhc_nfo[3][4] + " " + ca10a_ghabch[i][4];
+					}else{desc = ganhc_nfo[3][5] + " " + ca10a_ghabch[i][4];};
+				}else{	
+					if (code2 == "8"){
+						if (ganhc_nfo[3][4].includes("충")){desc = ganhc_nfo[3][4] + " " + ca10a_ghabch[i][4];
+						}else{desc = ganhc_nfo[3][5] + " " + ca10a_ghabch[i][4];};
+					}else{	desc = ca10a_ghabch[i][4];};
+				};
+				result_out(code2, desc, "원국", "output1");  //--- 원국 일간합충 출력
+			};
 		};
 	};	
 
-//------ new version test 원국 지지 합충형해파 결과 출력 ("output1")
+	//------ new version test 원국 지지 합충형해파 결과 출력 ("output1")
 	hcj1 = jjhc_nfo[1][2]; hcj2 = jjhc_nfo[2][2]; hcj3 = jjhc_nfo[3][2]; hcj4 = jjhc_nfo[4][2]; 
 	ttlhc = hcj1 + hcj2 + hcj3 + hcj4; 
+	johc();
 
+};
+
+//------ new version test 원국 지지 합충형해파 결과 출력 ("output1")
+function johc(){
+	txt = "원국"; sz = ""; pos_ch = "";
 	if (jjhc_nfo[1][3] != ""){
 		if (jjhc_nfo[1][3].includes("합") == true){chkg(sj_yj,sj_mj); rslt += "합"; yjhab("output1");};  //--- 연지합
 		if (jjhc_nfo[1][3].includes("충") == true){chkg(sj_yj,sj_mj); rslt += "충"; yjchng("output1");};  //--- 연지충 
 		if (jjhc_nfo[1][3].includes("해") == true){chkg(sj_yj,sj_mj); rslt += "해"; yjhae("output1");};  //--- 연지해 
 		if (jjhc_nfo[1][3].includes("파") == true){chkg(sj_yj,sj_mj); rslt += "파"; yjpa("output1");};  //--- 연지파 
 	};
-	if (jjhc_nfo[3][4] != ""){
+	if (jjhc_nfo[3][4] != ""){sz = "(20~57세)---";
 		if (jjhc_nfo[3][4].includes("합") == true){chkg(sj_dj,sj_mj); rslt += "합"; djhab("output1");};  //--- 일지합
-		if (jjhc_nfo[3][4].includes("충") == true){chkg(sj_dj,sj_mj); rslt += "충"; rslt_chng += rslt; djchng("output1");};  //--- 일지충 
+		if (jjhc_nfo[3][4].includes("충") == true){chkg(sj_dj,sj_mj); rslt += "충"; rslt_chng += rslt; djchng("output1"); pos_ch += "2";};  //--- 일지충 
 		if (jjhc_nfo[3][4].includes("해") == true){chkg(sj_dj,sj_mj); rslt += "해"; djhae(sj_mj,sj_dj,2,"output1");};  //--- 일지해 
 		if (jjhc_nfo[3][4].includes("파") == true){chkg(sj_dj,sj_mj); rslt += "파"; djpa(sj_mj,sj_dj,"output1");};  //--- 일지파 
+		if (rslt != ""){pos += "23"};
 	};
-	if (jjhc_nfo[3][3] != ""){
+	if (jjhc_nfo[3][3] != ""){sz = "(39세~ )---";
 		if (jjhc_nfo[3][3].includes("합") == true){chkg(sj_dj,sj_tj); rslt += "합"; djhab("output1");};  //--- 일지합
-		if (jjhc_nfo[3][3].includes("충") == true){chkg(sj_dj,sj_tj); rslt += "충"; rslt_chng += rslt; djchng("output1");};  //--- 일지충 
+		if (jjhc_nfo[3][3].includes("충") == true){chkg(sj_dj,sj_tj); rslt += "충"; rslt_chng += rslt; djchng("output1"); pos_ch += "4";};  //--- 일지충 
 		if (jjhc_nfo[3][3].includes("해") == true){chkg(sj_dj,sj_tj); rslt += "해"; djhae(sj_dj,sj_tj,3,"output1");};  //--- 일지해 
 		if (jjhc_nfo[3][3].includes("파") == true){chkg(sj_dj,sj_tj); rslt += "파"; djpa(sj_dj,sj_tj,"output1");};  //--- 일지파 
+		if (rslt != ""){pos += "34"};
 	};
-
+	if (pos_ch != ""){pos_ch = "3" + pos_ch;};
 	if (ttlhc.includes("형")){
 		johga_chk(1,0,0); if (rslt.length == 3){posd = pos; rslt = "寅巳申형"; rslt_hyng1 += rslt; johha_chk(1,"output1",0,0);
-		}else{	if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; rslt_hyng1 += rslt; johha_chk(1,"output1",0,0);};};
+		}else{	if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; rslt_hyng1 += rslt; johha_chk(1,"output1",0,0);};};  //--- 지지형(삼형)
 		johgb_chk(1,0,0); if (rslt.length == 3){posd = pos; rslt = "丑戌未형"; rslt_hyng2 += rslt; johha_chk(1,"output1",0,0);
-		}else{if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; rslt_hyng2 += rslt; johhb_chk(1,"output1",0,0);};};
-		johgc_chk(1,0,0); if (rslt.length > 1){posd = pos; rslt = "子卯형"; rslt_hyng3 += rslt; johhc_chk(1,"output1",0,0);};
-		johgd_chk(1,0,0); if (rslt.length > 2){posd = pos; rslt_hyng4 += rslt; johhd_chk(1,"output1",0,0);};
-	};  //--- 지지형 
-//---■■■■■■■■■■■■■■■■■ ⓐ 원국 chk new version ■■■■■■■■■■■■■■■■■ 작성중 end =====
+		}else{if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; rslt_hyng2 += rslt; johhb_chk(1,"output1",0,0);};};  //--- 지지형(붕형)
+		johgc_chk(1,0,0); if (rslt.length > 1){posd = pos; rslt = "子卯형"; rslt_hyng3 += rslt; johhc_chk(1,"output1",0,0);};  //--- 지지형(상형)
+
+		johgd_chk(1,0,0); if (rslt.length > 1){posd = pos.substr(0,2); rslt_hyng4 = rslt0; rslt = rslt0.substr(0,3); johhd_chk(1,"output1",0,0);
+		if (rslt0.length == 6){posd = pos.substr(2,2); rslt_hyng4 = rslt0; rslt = rslt0.substr(3,3); johhd_chk(1,"output1",0,0);};};  //--- 지지형(자형)
+	};
 };
 
 function johga_chk(a,m,n){
@@ -1709,25 +1821,25 @@ function johgc_chk(a,m,n){
 	};
 	if (a == 2){  //--- 행운
 		if (m == 1){sjj = sj_yj}; if (m == 2){sjj = sj_mj}; if (m == 3){sjj = sj_dj}; if (m == 4){sjj = sj_tj}; 
-		if (sjj == hnj && arr.includes(hnj)){pos += String(n-1); rslt = sjj + hnj + "형";};
+		if (sjj != hnj && arr.includes(hnj)){pos += String(n-1); rslt = sjj + hnj + "형";};
 		rslt0 += rslt;	posd = pos;  
 	};
 };
 
 function johgd_chk(a,m,n){
 //------
-	rslt0 = ""; arr = ["辰","午","酉","亥"]; pos = "";
+	arr = ["辰","午","酉","亥"]; pos = "";
 	rslt = "";
 	if (a == 1){  //--- 원국
-		if (arr.includes(sj_yj) && sj_yj == sj_mj){	pos += "12"; rslt = sj_yj + sj_mj + "형"; };
-		if (arr.includes(sj_mj) && sj_mj == sj_dj){	pos += "23"; rslt = sj_mj + sj_dj + "형"; };
-		if (arr.includes(sj_dj) && sj_dj == sj_tj){ pos += "34"; rslt = sj_dj + sj_tj + "형"; };
-		rslt0 += rslt;	posd = pos;  
+		if (arr.includes(sj_yj) && sj_yj == sj_mj){pos += "12"; rslt += sj_yj + sj_mj + "형"; };
+		if (arr.includes(sj_mj) && sj_mj == sj_dj){	pos += "23"; rslt += sj_mj + sj_dj + "형"; };
+		if (arr.includes(sj_dj) && sj_dj == sj_tj){pos += "34"; rslt += sj_dj + sj_tj + "형"; };
+		rslt0 = rslt;	posd = pos;  
 	};
 	if (a == 2){  //--- 행운
 		if (m == 1){sjj = sj_yj}; if (m == 2){sjj = sj_mj}; if (m == 3){sjj = sj_dj}; if (m == 4){sjj = sj_tj}; 
 		if (sjj == hnj && arr.includes(hnj)){pos += String(n-1); rslt = sjj + hnj + "형";};
-		rslt0 += rslt;	posd = pos;  
+		rslt0 = rslt;	posd = pos;  
 	};
 };
 
@@ -1821,10 +1933,8 @@ function hangun(){
 		wongug_chk(sj_mj,hn_lj); jjhc_nfo[2][6] = rslt; wongug_chk(sj_mj,hn_yj); jjhc_nfo[2][7] = rslt; 
 		wongug_chk(sj_mj,hn_mj); jjhc_nfo[2][8] = rslt; wongug_chk(sj_mj,hn_dj); jjhc_nfo[2][9] = rslt;
 	};
-	if (jjhc_nfo[3][2] != ""){
-		wongug_chk(sj_dj,hn_lj); jjhc_nfo[3][6] = rslt; wongug_chk(sj_dj,hn_yj); jjhc_nfo[3][7] = rslt; 
-		wongug_chk(sj_dj,hn_mj); jjhc_nfo[3][8] = rslt; wongug_chk(sj_dj,hn_dj); jjhc_nfo[3][9] = rslt;
-	};
+	wongug_chk(sj_dj,hn_lj); jjhc_nfo[3][6] = rslt; wongug_chk(sj_dj,hn_yj); jjhc_nfo[3][7] = rslt; 
+	wongug_chk(sj_dj,hn_mj); jjhc_nfo[3][8] = rslt; wongug_chk(sj_dj,hn_dj); jjhc_nfo[3][9] = rslt;
 	if (jjhc_nfo[4][2] != ""){
 		wongug_chk(sj_tj,hn_lj); jjhc_nfo[4][6] = rslt; wongug_chk(sj_tj,hn_yj); jjhc_nfo[4][7] = rslt; 
 		wongug_chk(sj_tj,hn_mj); jjhc_nfo[4][8] = rslt; wongug_chk(sj_tj,hn_dj); jjhc_nfo[4][9] = rslt;
@@ -1860,9 +1970,9 @@ function hangun(){
 	document.getElementById("hunD2").innerText += "\n" + hgj_nfo[4][7] + " " + hgj_nfo[4][6] + " " + hgj_nfo[4][8] + "\n";
 
 	document.getElementById("output3").innerText += "<<행운 운세분석>>..... \n";
-	hunanal(1); document.getElementById("output3").innerText += vwyr + "(" + ageY + ")" + " 연운: (" + hn_yg + hn_yj + ") " + hv8 + "- " + hv9 + "\n";
-	hunanal(2); document.getElementById("output3").innerText += hunD.substr(0,7) + "- 월운: (" + hn_mg + hn_mj + ") " + hv8 + "- " + hv9 + "\n";
-	hunanal(3); document.getElementById("output3").innerText += hunD.substr(2,8) + " 일운: (" + hn_dg + hn_dj + ") " + hv8 + "- " + hv9 + "\n";
+	hanal(1,hn_lg,hn_lj,hn_yg,hn_yj); document.getElementById("output3").innerText += vwyr + "(" + ageY + ") " + hv8 + "... 연운: (" + hn_yg + hn_yj + ") " + hv10 + "- " + hv9 + "\n"; hv10a = "연운: " + hv10;
+	hanal(2,hn_yg,hn_yj,hn_mg,hn_mj); document.getElementById("output3").innerText += hunD.substr(0,7) + "- " + hv8 + "... 월운: (" + hn_mg + hn_mj + ") " + hv10 + "- " + hv9 + "\n"; hv10b = "월운: " + hv10;
+	hanal(3,hn_mg,hn_mj,hn_dg,hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " " + hv8 + "... 일운: (" + hn_dg + hn_dj + ") " + hv10 + "- " + hv9 + "\n"; hv10c = "일운: " + hv10;
 	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
 
 	document.getElementById("output3").innerText += "<<행운결과>>..... \n";
@@ -1870,7 +1980,7 @@ function hangun(){
 	jijihn();
 };
 
-let txt = ""; let txt1 = "";
+let txt = ""; let txt2 = "";
 //--- ⓓ 행운 chk ---------- 지지 행운 합충형해파
 async function jijihn(){
 	smry = "";
@@ -1900,11 +2010,12 @@ async function jijihn(){
 
 function newjjhn(m,n){
 	return new Promise(function (resolve, reject){
-		hncd = ""; texstr = jjhc_nfo[m][n];
+		hncd = ""; texstr = jjhc_nfo[m][n]; // txt2 = "";
 		if (texstr != ""){	hncd = texstr.substr(2);};   //--- 행운 코드 생성
 		hcj = jjhc_nfo[m][2]; 
-		if (n == 6){txt = "대운 "; hnj = hn_lj;}; if (n == 7){txt = "연운 "; hnj = hn_yj;}; if (n == 8){txt = "월운 "; hnj = hn_mj;}; if (n == 9){txt = "일운 "; hnj = hn_dj;};
-		
+		if (n == 6){txt2 = "대운 "; hnj = hn_lj;}; if (n == 7){txt2 = hv10a; hnj = hn_yj;}; if (n == 8){txt2 = hv10b; hnj = hn_mj;}; if (n == 9){txt2 = hv10c; hnj = hn_dj;};
+		txt = txt2.substr(0,4);
+//		console.log(hv10a + hv10b + hv10c + " txt2: " + txt2 + " txt: " + txt);
 		if (hncd != "" && hcj != ""){
 			for (l=0; l<hcj.length; l++){  //--- 원국 코드마다 실행
 				for (j=0; j<hncd.length; j++){  //--- 행운 코드마다 실행
@@ -1925,7 +2036,6 @@ function newjjhn(m,n){
 						};
 					};
 					rslt0 += temp[0][1] + "... " + rslt;
-// 					console.log("========>>> 확인 " + m + n + " 원국: " + hcj + ".. 행운: " + hncd + ".. 결과: " + rslt0 + " " + smry);
 					if (temp[0][2] == "7"){
 						console.log(rslt0 + " " + txt + " " + texstr.substr(0,2) + hncd.substr(j,1));  //--- 정지
 					}else{
@@ -1944,9 +2054,10 @@ function newjjhn(m,n){
 								if (m == 3){djpa(sj_dj,hnj,"output3");};
 								if (m == 4){djpa(sj_tj,hnj,"output3");};};  //--- 파
 							if (temp[0][2] == "5"){
-								johga_chk(2,m,n); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johha_chk(2,"output3",m,n);};
-								johgb_chk(2,m,n); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johhb_chk(2,"output3",m,n);};
-								johgc_chk(2,m,n); if (rslt.length > 1){posd = pos; rslt = "子卯형"; johhc_chk(2,"output3",m,n);};
+								johga_chk(2,m,n); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johha_chk(2,"output3");};
+								johgb_chk(2,m,n); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johhb_chk(2,"output3");};
+								johgc_chk(2,m,n); if (rslt.length > 1){posd = pos; rslt = "子卯형"; johhc_chk(2,"output3");};
+								johgd_chk(2,m,n); if (rslt.length > 1){posd = pos; johhd_chk(2,"output3");};
 							};  //--- 형
 							if (temp[0][2] == "8"){rslt0 = hcj.substr(l,1) + "+해=> 흉화--- "; rslt = texstr.substr(0,2) + hncd.substr(j,1); hwunghwa(sj_dj,hnj,"output3");};  //--- 해 흉화
 						};
@@ -1960,7 +2071,7 @@ function newjjhn(m,n){
 					subj = "-" + hncd.substr(j,1);
 					rslt0 += subj + "=> 행운";
 					temp = ca12_jhabch.filter(isFind); 
-					rslt0 += temp[0][1] + "... ";
+					rslt0 += temp[0][1] + "... "; rslt = texstr.substr(0,2) + hncd.substr(j,1);
 					if (smry.includes(rslt)){
 						continue;
 					}else{
@@ -1970,10 +2081,10 @@ function newjjhn(m,n){
 						if (temp[0][2] == "3"){djhae(sj_dj,hnj,0,"output3");};  //--- 해
 						if (temp[0][2] == "4"){djpa(sj_dj,hnj,"output3");};  //--- 파
 						if (temp[0][2] == "5"){
-							johga_chk(2); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johha_chk(2,"output3",m,n);};
-							johgb_chk(2); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johhb_chk(2,"output3",m,n);};
-							johgc_chk(2); if (rslt.length > 1){posd = pos; rslt = "子卯형"; johhc_chk(2,"output3",m,n);};
-							johgd_chk(2); if (rslt.length > 2){posd = pos; johhd_chk(2,"output3",m,n);};
+							johga_chk(2,m,n); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johha_chk(2,"output3");};
+							johgb_chk(2,m,n); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johhb_chk(2,"output3");};
+							johgc_chk(2,m,n); if (rslt.length > 1){posd = pos; rslt = "子卯형"; johhc_chk(2,"output3");};
+							johgd_chk(2,m,n); if (rslt.length > 2){posd = pos; johhd_chk(2,"output3");};
 						};  //--- 형
 					};
 				};
@@ -1983,12 +2094,10 @@ function newjjhn(m,n){
 	});
 };
 
-//======= 행운 운세분석 ======
-function hunanal(e){
-	hv0 = ""; hv1 = ""; hv2 = ""; hv3 = ""; hv4 = ""; hv5 = ""; hv6 = ""; hv7 = ""; hv8 = ""; hv9 = ""; hs_titl = "";
-	if (e == 1){a = hn_lg; b = hn_lj; c = hn_yg; d = hn_yj;};
-	if (e == 2){a = hn_yg; b = hn_yj; c = hn_mg; d = hn_mj;};
-	if (e == 3){a = hn_mg; b = hn_mj; c = hn_dg; d = hn_dj;};
+//======= 행운 운세분석 ====== ■■■■■■■■ new version ■■■■■■■■
+//--- hanal(e,a,b,c,d); ----- hanal(2,a,b,c,d);
+function hanal(e,a,b,c,d){
+	hv0 = ""; hv1 = ""; hv2 = ""; hv3 = ""; hv4 = ""; hv5 = ""; hv6 = ""; hv7 = ""; hv8 = ""; hv9 = ""; hv10 = ""; hs_titl = "";
 	sibsng(sj_dg,a,b); hv1 = gs_titl; hv2 = js_titl;  //--- 일간기준 행운간지(시기 체)의 십성
 	sibsng(c,"",d); hv4 = js_titl;  //--- 행운간지(실행 용)의 자체십성
 	sibsng(sj_dg,"",sj_dj); hv5 = js_titl;  //--- 일주의 십성
@@ -2013,13 +2122,20 @@ function hunanal(e){
 			if (hunD.substr(5,11) < refD.format('MM-dd HH:mm')){hv3 = hv1;}else{hv3 = hv2;};  //--- 시기 십성 (hv3)
 		};
 	};
+	if (e == 4){
+		if ("子丑寅卯辰巳".includes(d)){hv3 = hv1;}else{hv3 = hv2;};  //--- 시기 십성 (hv3)
+	};
+
 	subj = hv6; hv7 = ca02_actgdbad.filter(isFind);  //--- 실행분석 길흉배열
 	idx = ca02_actgdbad[0].lastIndexOf(hv3);
-	hv8 = ca02_actgdbad[1][idx] + hv7[0][idx];  //--- 실행 길흉 
+	hv8 = ca02_actgdbad[1][idx];  //--- 실행 길흉 
 	sibsTugsin(hv3); hv3 = hs_titl; sibsTugsin(hv6); hv6 = hs_titl;
  	for (i=0; i<ca03_hunresult.length; i++){
  		if (ca03_hunresult[i][0]==hv3 && ca03_hunresult[i][1]==hv6){ hv9 = ca03_hunresult[i][2];};
  	};
+	subj = hv3; temp = ca03a_unse.filter(isFind);
+	idx = temp[0].lastIndexOf(hv6); 
+	if (idx == 1){hv10 = temp[0][2] + "발흥 길";}else{	hv10 = ca03a_unse[1][idx];};
 };
 
 let tmpdb = new Array;
@@ -2043,7 +2159,7 @@ function ganhn1(){
 		for (i = 0; i < ca10a_ghabch.length; i++){
 			if (ca10a_ghabch[i][0] == "연간" && ca10a_ghabch[i][1] == hcg1 && hcg1 == '-----'){
 				for (j=6; j<10; j++){
-					if (ganhc_nfo[1][j] != "" && ganhc_nfo[1][j].substr(2,1) == "합"){
+					if (ganhc_nfo[1][j].includes("합")){
 						document.getElementById("output3").innerText += "■ 연간행운--- " + ganhc_nfo[0][j] + " " + ganhc_nfo[1][j] + " " + ca10a_ghabch[i][4] + "\n";   //--- 행운에 의한 연간 천간합 체크
 						if (ca10a_ghabch[i][5] == "0"){summing0(sj_yg,"output3");};  //--- 합화오행 육친십성 흉화(0) 
 						document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
@@ -2059,7 +2175,7 @@ function ganhn2(){
 		for (i = 0; i < ca10a_ghabch.length; i++){
 			if (ca10a_ghabch[i][0] == "월간" && ca10a_ghabch[i][1] == hcg2 && hcg2 == '-----'){
 				for (j=6; j<10; j++){
-					if (ganhc_nfo[2][j] != "" && ganhc_nfo[2][j].substr(2,1) == "합" && ganhc_nfo[2][3] == "" && ganhc_nfo[2][4] == ""){
+					if (ganhc_nfo[2][j].includes("합") && ganhc_nfo[2][3] == "" && ganhc_nfo[2][4] == ""){
 						document.getElementById("output3").innerText += "■ 월간행운--- " + ganhc_nfo[0][j] + " " + ganhc_nfo[2][j] + " " + ca10a_ghabch[i][4] + "\n";   //--- 행운에 의한 월간 천간합 체크
 						if (ca10a_ghabch[i][5] == "0"){summing0(sj_mg,"output3");};  //--- 합화오행 육친십성 흉화(0) 
 						document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
@@ -2075,7 +2191,7 @@ function ganhn3(){
 		for (i = 0; i < ca10a_ghabch.length; i++){
 			if (ca10a_ghabch[i][0] == "시간" && ca10a_ghabch[i][1] == hcg4 && hcg4 == '-----'){
 				for (j=6; j<10; j++){
-					if (ganhc_nfo[4][j] != "" && ganhc_nfo[4][j].substr(2,1) == "합" && ganhc_nfo[4][5] == ""){
+					if (ganhc_nfo[4][j].includes("합") && ganhc_nfo[4][5] == ""){
 						document.getElementById("output3").innerText += "■ 시간행운--- " + ganhc_nfo[0][j] + " " + ganhc_nfo[4][j] + " " + ca10a_ghabch[i][4] + "\n";   //--- 행운에 의한 월간 천간합 체크
 						if (ca10a_ghabch[i][5] == "0"){summing0(sj_tg,"output3");};  //--- 합화오행 육친십성 흉화(0) 
 						document.getElementById("output3").innerText += "--------------------------------------------------------------\n";
@@ -2287,7 +2403,6 @@ function dganhn4(){
 		resolve();
 	});
 };
-
 
 //======= 십성 to 육신 변환 =======
 function sibsTugsin(a){
