@@ -155,6 +155,20 @@
 		<div class="sjb" id="ssal1"></div>
 		<div class="hun">행운</div>
 		<div class="huna" id="ssal0"></div>
+		<div class="sjct">십성 운성(각주)</div>
+		<div class="sjb" id="ssa4"></div>
+		<div class="sjb" id="ssa3"></div>
+		<div class="sjb" id="ssa2"></div>
+		<div class="sjb" id="ssa1"></div>
+		<div class="hun">행운</div>
+		<div class="huna" id="ssal0"></div>
+		<div class="sjct">지장간(각주)</div>
+		<div class="sjb" id="ssb4"></div>
+		<div class="sjb" id="ssb3"></div>
+		<div class="sjb" id="ssb2"></div>
+		<div class="sjb" id="ssb1"></div>
+		<div class="hun">행운</div>
+		<div class="huna" id="ssal0"></div>
 		<div class="sjut1">대운</div>
 		<div class="sju1" id="sjua9"></div>
 		<div class="sju2" id="sjub9"></div>
@@ -559,20 +573,6 @@ $( function() {
   		wongug();
 		hangun();
 		sinsal();
-/*		sinsal01();
-		sinsal02();
-		sinsal03();
-		sinsal04();
-		sinsal05();
-		sinsal06();
-		sinsal07();
-		sinsal08();
-		sinsal09();
-		sinsal10();
-		sinsal11();
-		sinsal12();
-		sinsal13();*/
-// 		dgjmcharac();  //--- 일주 성격 보여주는 함수
 	});
 });
 
@@ -1491,6 +1491,20 @@ function fill_saju(){
 	document.getElementById("sj4c").innerText += "(일간) " + gj_nfo[2][8] + " \n";  //----- 월지 십이운성 기록
 	document.getElementById("sj6c").innerText += "(일간) " + gj_nfo[3][8] + " \n";  //----- 일지 십이운성 기록
 	document.getElementById("sj8c").innerText += "(일간) " + gj_nfo[4][8] + " \n";  //----- 시지 십이운성 기록
+//	sibsng(a,b,c); //--- a: 기준, b: 천간, c: 지지
+//	unsng(a,b); //--- a: 기준(천간), b: 지지
+	let ssa = ""; let ssb = "";
+	sibsng(sj_yg,"",sj_yj); ssa = js_titl; unsng(sj_yg,sj_yj); ssa += " " + js_titl; 	document.getElementById("ssa1").innerText += ssa ;//+ "\n"; //--- 연주
+	sibsng(sj_mg,"",sj_mj); ssa = js_titl; unsng(sj_mg,sj_mj); ssa += " " + js_titl; 	document.getElementById("ssa2").innerText += ssa ;//+ "\n"; //--- 연주
+	sibsng(sj_dg,"",sj_dj); ssa = js_titl; unsng(sj_dg,sj_dj); ssa += " " + js_titl; 	document.getElementById("ssa3").innerText += ssa ;//+ "\n"; //--- 연주
+	sibsng(sj_tg,"",sj_tj); ssa = js_titl; unsng(sj_tg,sj_tj); ssa += " " + js_titl; 	document.getElementById("ssa4").innerText += ssa ;//+ "\n"; //--- 연주
+
+//	for (i=1; i<5 ; i++){
+//		for (j=0; j<3; j++){
+//			a=gj_nfo[i][j+9].substr(0,1); b=gj_nfo[i][5]; unsng(a,b); ssb += gj_nfo[i][j+9] + " " + js_titl;
+//		}
+//	}
+
 };
 
 //====== 천간합충 원국/행운 결과 출력 함수 ======
@@ -2451,11 +2465,9 @@ async function sinsal(){
 	await sinsal06();
 	await sinsal07();
 	await sinsal08();
-//	await sinsal09();
 	await sinsal10();
 	await sinsal11();
 	await sinsal12();
-//	await sinsal13();
 };
 
 //======= 신살 체크1 =======
