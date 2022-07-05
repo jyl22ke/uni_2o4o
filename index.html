@@ -2089,7 +2089,7 @@ function hangun(){
 	document.getElementById("output3").innerText += "<<행운결과>>..... \n";
 	ganhn();
 	jijihn();
-	sinsalhn();
+	setTimeout(() => sinsalhn(), 50);
 };
 
 //■■■■■■■■■■■■■■■■■■■■
@@ -2098,8 +2098,8 @@ let sinsaltxt1 = ""; let snsal1 = [];
 function sinsalhn_out(destin){
 	snsal1 = sinsaltxt1.split(" ");
 	for (i=0; i<snsal.length; i++){
-		if (snsal[i] != ""){
-			subj = snsal[i]; temp1 = sinsal_gen.filter(isFindx);
+		if (snsal1[i] != ""){
+			subj = snsal1[i]; temp1 = sinsal_gen.filter(isFindx);
 			document.getElementById(destin).innerText += "◐ " + temp1[0][0] + "..... " ;
 			if (temp1[0][1] != ""){document.getElementById(destin).innerText += temp1[0][1] + "\n";};
 			if (temp1[0][4] != ""){document.getElementById(destin).innerText += temp1[0][4] + "\n";};
