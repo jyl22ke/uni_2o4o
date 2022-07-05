@@ -2164,7 +2164,6 @@ function sinsal01(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e:
 			document.getElementById(e).innerText += sinsaltxt1 + "\n";  //----- 행운화면 신살란 기록
 			sinsalhn_out(d);
 			document.getElementById(d).innerText += "--------------------------------------------------------------\n";
-			console.log(sinsaltxt1);
 		};
 		resolve();
 	});
@@ -2536,7 +2535,6 @@ function sinsal00(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e:
 			document.getElementById(e).innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
 			sinsal_out(d);
 			document.getElementById(d).innerText += "--------------------------------------------------------------\n";
-			console.log(sinsaltxt);
 		};
 		resolve();
 	});
@@ -2604,10 +2602,7 @@ async function sinsal(){
 	await sinsal00(sj_mj,sj_tj,sinsal_list1,"db08_mj_ydtj-mj_hyj","output0","ssal4"); //--- 신살 체크8
 };
 
-
 </script>
-
-
 
     </body>
 </html>
