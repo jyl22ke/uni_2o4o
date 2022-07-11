@@ -33,7 +33,7 @@
 		}
 	.insrt {height: 80px;font-size: 0.9em;}
 	#sjtm {width:130px;} #sj {width:130px;}
-	.ifo {margin: 5px; font-size: 1.0em; height: 20px;}
+	.ifo {margin: 5px; font-size: 1.0em; height: 20px; width:770px;}
 	.hangun {grid-column: 15/span 7;grid-row: 1/span 1; color: #000; font-weight: bold;border:1px solid black;}
 	.hunt {grid-column: 15/span 1;grid-row: span 2; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
 	.hun1 {grid-column: 16/span 1;grid-row: span 2; color: #000; border:1px solid black;min-height:30px; font-size: 1.6em; font-weight: bold; border-right: none; font-family:"한양해서";}
@@ -90,7 +90,7 @@
 <div class="container">
 	<div class="insrt">
 		<p class="ifo"> 생년월일시: <input type="datetime-local" id="sjtm" value=""><select id="sel_dt" name="sel_dt"></select>&nbsp; 사주: <input type="text" id="sj" class="ifo" maxlength="9">&nbsp; 성별: <input type="radio" name="gender" value="남양">남(양) <input type="radio" name="gender" value="여음">여(음) &nbsp;<button id="submit1">제 출</button></p><br/> 
-		<p><label for="year02" class="sr-only"> &nbsp; 음력</label> &nbsp;<button id="submit">조회 </button> &nbsp; <input id="bday" class="bday" type="date" name="bday" min="1881-01-01" max="2050-11-18"><span id="sola"></span>
+		<p class="ifo"><label for="year02" class="sr-only"> &nbsp; 음력</label> &nbsp;<button id="submit">조회 </button> &nbsp; <input id="bday" class="bday" type="date" name="bday" min="1881-01-01" max="2050-11-18"><span id="sola"></span>
 		<label class="btn white active" for="isLeap01">	<input type="radio" name="isLeap" id="isLeap01" value="1" checked=""> 평달</label>
 		<label class="btn white" for="isLeap02"><input type="radio" name="isLeap" id="isLeap02" value="0"> 윤달</label>
 		<span class="txt"> 1881년 1월 1일 ∼ 2050년 11월 18일</span> &nbsp;<button id="clear1">지우기</button></p>
