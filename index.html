@@ -366,7 +366,8 @@ function fread(fn){
 	let sj_yg = ""; let sj_mg = ""; let sj_dg = ""; let sj_tg = ""; let sj_yj = ""; let sj_mj = ""; let sj_dj = ""; let sj_tj = "";  //--- 사주 (년월일시)간지
 	let hn_lg = ""; let hn_yg = ""; let hn_mg = ""; let hn_dg = ""; 	let hn_lj = ""; let hn_yj = ""; let hn_mj = ""; let hn_dj = "";  //--- 행운 (대세월일)운 간지
 
-	$('.sjut1').hide(); $('.sju1').hide(); $('.sju2').hide(); $('.sjut2').hide(); $('.seu').hide(); $('.out').hide(); 	$('.sjut3').hide(); $('.mou').hide(); $('.dau').hide();
+//	$('.sjut1').hide(); $('.sju1').hide(); $('.sju2').hide(); $('.sjut2').hide(); $('.seu').hide(); $('.out').hide(); 	$('.sjut3').hide(); $('.mou').hide(); $('.dau').hide();
+	disp(".sjut1",".sju1",".sju2"); disp(".sjut2",".seu",".out"); disp(".sjut3",".mou",".dau");
 
 //=========== 음력 조회 함수 ===========
 $( function() {
@@ -561,7 +562,7 @@ function sjmain(){
 		["13대운","","","","","","","","","","","","","","",""],["14대운","","","","","","","","","","","","","","",""]];
 
 		now = new Date();  //---- 현재시간
-		let tomorrow = new Date(now.setDate(now.getDate() + 0));
+		let tomorrow = new Date(now.setDate(now.getDate() + 1));
 		document.getElementById("hunDate").value = tomorrow.format('yyyy-MM-dd');  //--- 행운일자를 내일로 설정(initial)
 		saju_h = document.getElementById('sj').value;  //--- 직접 입력한 한글사주
 		symdt = document.getElementById('sjtm').value;  //--- 직접 입력한 생년월일시(text)
@@ -1909,7 +1910,7 @@ function wongug(){
 	);
 	$('#output0').append("**********************************************************************");
 	$("#output0").on("click", "span", function(){ 
-		$("#"+$(this).attr("class").substr(5)).toggle(); 
+		disp("#"+$(this).attr("class").substr(5),"",""); 
 	}); 
 
 	//------ 원국 hcg1 코드 생성
@@ -2296,7 +2297,7 @@ function sinsal01(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e:
 			);
 			document.getElementById(e).innerText += sinsaltxt1 + "\n";  //----- 화면 신살란 기록
 			$("#outputb").on("click", "span", function(){ 
-				$("#"+$(this).attr("class").substr(5)).toggle(); 
+				disp("#"+$(this).attr("class").substr(5),"",""); 
 			}); 
 			sinsalhn_out(csno1);
 			$(d).append("--------------------------------------------------------------</br>");
@@ -2689,7 +2690,7 @@ function sinsal00(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e:
 			);
 			document.getElementById(e).innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
 			$("#outputa").on("click", "span", function(){ 
-				$("#"+$(this).attr("class").substr(5)).toggle(); 
+				disp("#"+$(this).attr("class").substr(5),"",""); 
 			}); 
 			sinsal_out(csno);
 			$(d).append("--------------------------------------------------------------</br>");
