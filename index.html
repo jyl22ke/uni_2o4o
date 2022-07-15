@@ -86,11 +86,11 @@
 <div id="dvCSV">
 </div>    
 
-<!-- 메인메뉴 mmenu part -->
+<!-- 메인메뉴 mmenu part align-content: flex-start;-->
 <div class="container">
 	<div class="insrt">
 		<p class="ifo"> 생년월일시: <input type="datetime-local" id="sjtm" value=""><select id="sel_dt" name="sel_dt"></select>&nbsp; 사주: <input type="text" id="sj" class="ifo" maxlength="9">&nbsp; 성별: <input type="radio" name="gender" value="남양">남(양) <input type="radio" name="gender" value="여음">여(음) &nbsp;<button id="submit1">제 출</button></p><br/> 
-		<p class="ifo"><label for="year02" class="sr-only"> &nbsp; 음력</label> &nbsp;<button id="submit">조회 </button> &nbsp; <input id="bday" class="bday" type="date" name="bday" min="1881-01-01" max="2050-11-18"><span id="sola"></span>
+		<p class="ifo"><label for="year02" class="sr-only"> &nbsp; 음력</label> &nbsp; &nbsp;<button id="submit">조회 </button> &nbsp; <input id="bday" class="bday" type="date" name="bday" min="1881-01-01" max="2050-11-18"><span id="sola"></span>
 		<label class="btn white active" for="isLeap01">	<input type="radio" name="isLeap" id="isLeap01" value="1" checked=""> 평달</label>
 		<label class="btn white" for="isLeap02"><input type="radio" name="isLeap" id="isLeap02" value="0"> 윤달</label>
 		<span class="txt"> 1881년 1월 1일 ∼ 2050년 11월 18일</span> &nbsp;<button id="clear1">지우기</button></p>
@@ -175,17 +175,19 @@
 		<div class="sjb" id="ssa2"></div>
 		<div class="sjb" id="ssa1"></div>
 		<div class="hun">행운</div>
-		<div class="huna" id="ssal0"></div>
-		<div class="hunb" id="ssalb"></div>
+		<div class="huna" id="ssa0"></div>
+		<div class="hunb" id="ssab"></div>
 		<div class="sjct">지장간(각주)</div>
 		<div class="sjb" id="ssb4"></div>
 		<div class="sjb" id="ssb3"></div>
 		<div class="sjb" id="ssb2"></div>
 		<div class="sjb" id="ssb1"></div>
 		<div class="hun">행운</div>
-		<div class="huna" id="ssal0"></div>
-		<div class="hunb" id="ssalb"></div>
+		<div class="huna" id="ssb0"></div>
+		<div class="hunb" id="ssbb"></div>
 		<div class="sjut1">대운</div>
+		<div class="sju1" id="sjua10"></div>
+		<div class="sju2" id="sjub10"></div>
 		<div class="sju1" id="sjua9"></div>
 		<div class="sju2" id="sjub9"></div>
 		<div class="sju1" id="sjua8"></div>
@@ -205,6 +207,7 @@
 		<div class="sju1" id="sjua1"></div>
 		<div class="sju2" id="sjub1"></div>
 		<div class="sjut2">연운</div>
+		<div class="seu" id="seu10"></div>
 		<div class="seu" id="seu9"></div>
 		<div class="seu" id="seu8"></div>
 		<div class="seu" id="seu7"></div>
@@ -218,6 +221,7 @@
 		<div class="mou" id="mou3"></div>
 		<div class="mou" id="mou2"></div>
 		<div class="mou" id="mou1"></div>
+		<div class="dau" id="dau7"></div>
 		<div class="dau" id="dau6"></div>
 		<div class="dau" id="dau5"></div>
 		<div class="dau" id="dau4"></div>
@@ -484,10 +488,16 @@ $( function() {
 	});
 });
 
-	//■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-	//=========== 사주 입력시 실행되는 main 함수 ===========
+//■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+//=== 제출버튼 클릭시 실행되는 함수
 $( function() {
 	$( 'button#submit1' ).click( function() {
+		sjmain();
+	});
+});
+
+//=========== 사주 입력시 실행되는 main 함수 ===========
+function sjmain(){
 		//------------------ 변수값 clear RESET start -------------------
 		sj_yg = ""; sj_mg = ""; sj_dg = ""; sj_tg = "";  //--- 사주 (년월일시)간
 		sj_yj = ""; sj_mj = ""; sj_dj = ""; sj_tj = "";  //--- 사주 (년월일시)지
@@ -501,6 +511,10 @@ $( function() {
 		$('#output5').empty();
 		$('#outputa').empty();
 		$('#outputb').empty();
+		$('#ssal0').empty();
+		$('#ssalb').empty();
+		$('.huna').empty();
+		$('.hunb').empty();
 		$('.sj').empty();
 		$('.sja').empty();
 		$('.sjb').empty();
@@ -510,9 +524,9 @@ $( function() {
 		$('.seu').empty();
 		$('.mou').empty();
 		$('.dau').empty();
-		$('.huna').empty();
 		$('.hun1').empty();
 		$('.hun2').empty();
+		$('.hun3').empty();
 		chg_bgcolor('.sj','#fff');
 		
 		ganhc_nfo = [
@@ -545,12 +559,13 @@ $( function() {
 		["9대운","","","","","","","","","","","","","","",""],["10대운","","","","","","","","","","","","","","",""],["11대운","","","","","","","","","","","","","","",""],["12대운","","","","","","","","","","","","","","",""],
 		["13대운","","","","","","","","","","","","","","",""],["14대운","","","","","","","","","","","","","","",""]];
 
-		document.getElementById("hunDate").value = new Date().format('yyyy-MM-dd');  //--- 행운일자를 현재시간으로 설정(initial)
+		now = new Date();  //---- 현재시간
+		let tomorrow = new Date(now.setDate(now.getDate() + 0));
+		document.getElementById("hunDate").value = tomorrow.format('yyyy-MM-dd');  //--- 행운일자를 내일로 설정(initial)
 		saju_h = document.getElementById('sj').value;  //--- 직접 입력한 한글사주
 		symdt = document.getElementById('sjtm').value;  //--- 직접 입력한 생년월일시(text)
 		gendr = $('input[name="gender"]:checked').val();  //--- 성별
 		hunD = document.getElementById('hunDate').value;  //--- 보려는 행운일자(text)
-		now = new Date();  //---- 현재시간
 		if(symdt != ""){
 			convrtsj(symdt);
 			saju = tsj1 + tsj2 + tsj3 + tsj4 + tsj5 + tsj6 + tsj7 + tsj8;
@@ -587,8 +602,7 @@ $( function() {
   		wongug();
 		hangun();
 		sinsal();
-	});
-});
+};
 
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
 function convrtsj(reqD){
@@ -731,10 +745,12 @@ function saju_chk(){
 	};
 };
 
+//========= 같은사주의 날자가 2개 이상인 경우 하나를 선택 =========
 $(function(){
 	$('#sel_dt').change(function(){
-		symdt = $("#sel_dt option:selected").val(); // 선택된 value를 출력한다.    
+		symdt = $("#sel_dt option:selected").val(); // 선택된 날자를 출력한다.    
 		$('#sjtm').val(symdt);
+		sjmain();
 	});
 });
 
@@ -1357,7 +1373,7 @@ function longun(){
 		unsng(sj_dg,jiji[cb][0]); hun_list[i][8] = js_titl;
 		
 		sibsng(sj_dg,gan[ca][0],jiji[cb][0]); hun_list[i][3] = gs_titl; hun_list[i][7] = js_titl; 
-		if (i < 10){
+		if (i < 11){
 			document.getElementById(posb).innerText += "(" + (age + (i - 1) * 10) + ")" + "\n";
 			document.getElementById(posa).innerText += gan[ca][0] + "\n";
 			document.getElementById(posb).innerText += hun_list[i][3] + "\n" + hun_list[i][2] + " \n\n";
@@ -1383,7 +1399,7 @@ function seun(){
 			k += 1;
 			j = 0
 		};
-		if (k < 10){
+		if (k < 11){
 			posi = "seu" + k;
 		}else{
 			posi = "";
@@ -1402,10 +1418,11 @@ function seun(){
 		}else{if (seuj == "丑" || seuj == "未"){idx = sibsungX1[1].lastIndexOf("丑未");
 			}else{idx = sibsungX1[1].lastIndexOf(seuj);};};
 		seujs = temp[0][idx];  //--- (지지)십성 이름
-		seuns = temp1[0].lastIndexOf(seuj);
+		iuns = temp1[0].lastIndexOf(seuj);
+		seuns = unsung[0][iuns]; if (seuns.length>1){seuns = seuns.substr(1);};
 		if (posi != ""){
-			document.getElementById(posi).innerText += seuj + seujs + seujoh + unsung[0][seuns] + "\n";
-			if ((i%10) != 9){document.getElementById(posi).innerText += "-----------------\n";};
+			document.getElementById(posi).innerText += seuj + seujs + seujoh + " " + seuns + "\n";
+			if ((i%10) != 9){document.getElementById(posi).innerText += "--------------\n";};
 		};
 		j += 1;
 	};
@@ -1435,21 +1452,21 @@ function moun(){
 			}else{idx = sibsungX1[1].lastIndexOf(mounj);};};
 		mounjs = temp[0][idx];  //--- (지지)십성 이름
 		iuns = temp1[0].lastIndexOf(mounj);
-		mouns = unsung[0][iuns];
+		mouns = unsung[0][iuns]; if (mouns.length>1){mouns = mouns.substr(1);};
 		document.getElementById(posi).innerText += mountit.format('yyyy-MM') + " (" + mounj + ")\n";
  		document.getElementById(posi).innerText += moung + moungs + moungoh + "\n";
- 		document.getElementById(posi).innerText += mounj + mounjs + mounjoh + mouns + "\n";
-		if (i < 9){document.getElementById(posi).innerText += "-----------------\n";};
+ 		document.getElementById(posi).innerText += mounj + mounjs + mounjoh + " " + mouns + "\n";
+		if (i < 9){document.getElementById(posi).innerText += "--------------\n";};
 	};
 };
 
 //====== 일운 ======
 function dayun(){
 	subj = sj_dg; temp = sibsungX1.filter(isFind); temp1 = unsung.filter(isFind);  //---십성(일간)
-	for (i=0; i<24; i++){
+	for (i=0; i<28; i++){
 		now = new Date();
  		dauntit = new Date(now.setDate(now.getDate() + i - 3));
-		posi = "dau" + (i % 6 + 1);
+		posi = "dau" + (i % 7 + 1);
 		daysg = Math.ceil((dauntit.getTime() - new Date('1908-01-10').getTime()) / 86400000) % 10;
 		if (daysg == 0){daysg = 10};
 		daysj = Math.ceil((dauntit.getTime() - new Date('1908-01-10').getTime()) / 86400000) % 12;
@@ -1466,11 +1483,11 @@ function dayun(){
 			}else{idx = sibsungX1[1].lastIndexOf(daunj);};};
 		daunjs = temp[0][idx];  //--- (지지)십성 이름
 		iuns = temp1[0].lastIndexOf(daunj);
-		dauns = unsung[0][iuns];
+		dauns = unsung[0][iuns]; if (dauns.length>1){dauns = dauns.substr(1);};
 		document.getElementById(posi).innerText += dauntit.format('yyyy-MM-dd') + "\n";
  		document.getElementById(posi).innerText += daung + daungs + daungoh + "\n";
- 		document.getElementById(posi).innerText += daunj + daunjs + daunjoh + dauns + "\n";
-		if (i < 18){document.getElementById(posi).innerText += "-----------------\n";};
+ 		document.getElementById(posi).innerText += daunj + daunjs + daunjoh + " " + dauns + "\n";
+		if (i < 21){document.getElementById(posi).innerText += "--------------\n";};
 	};
 };
 	
@@ -2098,10 +2115,10 @@ $("#hunDate").change(function(){
 //======= 행운 계산 검토 함수 ======
 function hangun(){	
 	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = ""; ageL = 0; ageY = 0; rslt0 = ""; hnj = "";
-	$('.hun1').empty(); $('.hun2').empty(); $('.hun3').empty(); $('.huna').empty();
-	$('#output3').empty(); $('#outputb').empty();
+	$('.hun1').empty(); $('.hun2').empty(); $('.hun3').empty();// $('.huna').empty();
+	$('#output3').empty(); $('#outputb').empty(); $('#ssalb').empty();
 	$('#output4').empty(); $('#output5').empty();
-	hunD = document.getElementById('hunDate').value; 
+	hunD = document.getElementById('hunDate').value;  //--- 행운 일자
 	hunD = hunD + " 04:30"; vwyr = Number(hunD.substr(0,4));
 	//----- 대운
 	for (i=1; i<15; i++){
@@ -2166,7 +2183,7 @@ function hangun(){
 	document.getElementById("hunY1").innerText += hn_yj + "\n";
 	document.getElementById("hunY2").innerText += "\n" + hgj_nfo[2][7] + " " + hgj_nfo[2][6] + " " + hgj_nfo[2][8] + "\n";
 	//----- 월운
-	document.getElementById("hunM2").innerText += hunD.substr(0,7) + " (" + hn_mj + ")\n";
+	document.getElementById("hunM2").innerText += hunD.substr(0,7) + "\n";
 	document.getElementById("hunM1").innerText += hn_mg + "\n";
 	document.getElementById("hunM2").innerText += hgj_nfo[3][3] + " " + hgj_nfo[3][2] + "\n";
 	document.getElementById("hunM1").innerText += hn_mj + "\n";
