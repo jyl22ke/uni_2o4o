@@ -23,10 +23,10 @@
 	body{font-size:100%;}
 	.container{display: flex; flex-direction: column;}
 	.canvas {
-		background: url(./bga.jpg) fixed;
+		background: #e0ebeb;
 		display:grid; 
 		grid-template-columns: repeat(21,38px);
-		padding: 20px;
+		margin: 10px;
 		background-size:cover; 
 		grid-gap: 0px;
 		text-align:center;
@@ -34,7 +34,7 @@
 	.insrt {margin: 10px;height: auto;font-size: 1.0em;}
 	#sjtm, .bday {width:65px;} #sj {width:130px;} #tm {width:65px;}
 	#sel_dt, .txt {font-size: 0.9em; text-align:center; font-weight:bold;}
-	.ifo { font-size: 1.0em; width:770px;}
+	.ifo { font-size: 1.0em; width:798px;}
 	.hangun {grid-column: 15/span 7;grid-row: 1/span 1; color: #000; font-weight: bold;border:1px solid black;}
 	.hunt {grid-column: 15/span 1;grid-row: span 2; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
 	.hun1 {grid-column: 16/span 1;grid-row: span 2; color: #000; border:1px solid black;min-height:30px; font-size: 1.6em; font-weight: bold; border-right: none; font-family:"한양해서";padding-top: 15px;}
@@ -55,17 +55,19 @@
 	.dau {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid blue;min-height:30px; font-size: 0.7em; text-align:left;}
 	.sja,.sjb {grid-column: span 3;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
-	.out { display: flex; min-height: 100px; width: 770px;}
-	.out1 { display: flex; flex-direction: column; float:left; margin: 0 20px; width: 770px;}
+	.out { display: flex; min-height: 100px; width: 798px; padding: 0 10px;}
+	.out1 { display: flex; flex-direction: column; float:left; padding: 0 10px; width: 798px;}
 	#output1,#output2,#output3,#output4,#output5 {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em;}
 	#output1,#output3 { min-height: 400px;}
 	#output0,#output2,#output4,#output5 { min-height: 100px;}
-	#output0 {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:770px; margin-top:10px;}
-	#outputa,#outputb {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:770px; min-height: 100px;}
+	#output0 {color: #000; background: #ffeecc; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:776px;}
+	#outputa,#outputb {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:776px; min-height: 100px;}
+	#output1,#output2,#outputa {background: #ebebe0;}
+	#output3,#output4,#output5,#outputb {background: #f2d9f2;}
 	.spcs, .spct {font-weight: bold;}
 	.spcs:hover, .spct:hover {color:#f00;cursor:pointer;}
 	.txca,.txcb,.txcc{display: none;}
-	.dum {width:770px; display: block;}
+	.dum {width:798px; display: block;}
 
 	.rdat { width: 400px;}
 	.rdat0 {display: inline-block; width: 40px; border-left: 1px solid black; border-bottom: 1px solid black; border-top: 1px solid black; text-align:center;}
@@ -77,7 +79,7 @@
 	#submit, #submit1 {padding: 0; font-weight: bold;}
 	#sola {display:none; font-weight: bold; width: 200px;}
 	#clear1 {padding: 0;}
-	@media screen and (min-width: 800px) {.container{display: block;} .canvas {float: left;} #output0 {width:770px;} #output1 {width:480px;} #output3 {width:560px;} #output2 {width: 300px;} #output4,#output5 {width: 740px;} .out {width: 1040px;}}
+	@media screen and (min-width: 800px) {.container{display: block;} .canvas {float: left;} #output0 {width:776px;} #output1 {width:480px;} #output3 {width:560px;} #output2 {width: 300px;} #output4,#output5 {width: 740px;} .out {width: 1040px;}}
 
   </style>
 
@@ -166,7 +168,7 @@
 		<div class="sjb sjex" id="ssal3"></div>
 		<div class="sjb sjex" id="ssal2"></div>
 		<div class="sjb sjex" id="ssal1"></div>
-		<div class="hun sjex">행운</div>
+		<div class="hun sjex">원국 행운</div>
 		<div class="huna sjex" id="ssal0"></div>
 		<div class="hunb sjex" id="ssalb"></div><!--
 		<div class="sjct sjex">십성 운성(각주)</div>
@@ -290,7 +292,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 </script>
 
 <script type="text/javascript">
-/**/
+
 fread("ca01_actss");	
 fread("ca02_actgdbad");	
 fread("ca03_hunresult");	
@@ -363,7 +365,7 @@ function fread(fn){
 	let gj_nfo = new Array; let hgj_nfo = new Array; let hun_list = new Array; let ganhc_nfo = new Array; let jjhc_nfo = new Array; let saju = ""; let saju_h = ""; let symdt = ""; let gendr = ""; 
 	let now = null; let hunD = null; let longungj = ""; let ohtx = ""; let nfo_tugan = ""; let code1 = ""; let hnj = ""; let desc = ""; let sj_list = new Array; let sjtx = ""; 
 	let sj_yg = ""; let sj_mg = ""; let sj_dg = ""; let sj_tg = ""; let sj_yj = ""; let sj_mj = ""; let sj_dj = ""; let sj_tj = "";  //--- 사주 (년월일시)간지
-	let hn_lg = ""; let hn_yg = ""; let hn_mg = ""; let hn_dg = ""; 	let hn_lj = ""; let hn_yj = ""; let hn_mj = ""; let hn_dj = "";  //--- 행운 (대세월일)운 간지
+	let hn_lg = ""; let hn_yg = ""; let hn_mg = ""; let hn_dg = ""; 	let hn_lj = ""; let hn_yj = ""; let hn_mj = ""; let hn_dj = ""; let hn_ganji = "";  //--- 행운 (대세월일)운 간지
 
 	disp(".sjut1",".sju1",".sju2"); disp(".sjut2",".seu",".out"); disp(".sjut3",".mou",".dau"); disp("#outputa","#outputb","");
 	now = new Date();  //---- 현재시간
@@ -2154,6 +2156,7 @@ function hangun(){
 	mktable(3,hn_mg,hn_mj,hgj_nfo);
 	mktable(4,hn_dg,hn_dj,hgj_nfo);
 //	mktable(5,hn_tg,hn_tj,hgj_nfo);
+	hn_ganji = hn_lg + hn_lj + hn_yg + hn_yj + hn_mg + hn_mj + hn_dg + hn_dj;
 
 	if (ganhc_nfo[1][3].substr(2,1) != "합" && ganhc_nfo[1][3].substr(2,1) != "충"){habchk2(1);};  //--- 원국에 연간합충이 없으면 행운 check (천간합 흉화)
 	if (	(ganhc_nfo[2][3].substr(2,1) != "합" && ganhc_nfo[2][3].substr(2,1) != "충") ||	(ganhc_nfo[2][4].substr(2,1) == "합" || ganhc_nfo[2][4].substr(2,1) == "충")){habchk2(2);};   //--- 월간에 연간합충이 없거나 (천간합 흉화) 일간합충이 있으면 행운 check (일간 행운)
@@ -2204,9 +2207,9 @@ function hangun(){
 	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
 
 	document.getElementById("output3").innerText += "<<행운결과>>..... \n";
-	sinsalhn();
 	ganhn();
 	jijihn();
+	setTimeout(()=> {sinsalhn(), 50});
 };
 
 //■■■■■■■■■■■■■■■■■■■■
@@ -2266,7 +2269,10 @@ async function sinsalhn(){
 	await sinsal01(sj_dj,hn_yj,sinsal_list1,"db05_dj_ymtj-dj_hyj","#outputb","hunY3"); //--- 신살 체크5 -------------------
 	await sinsal01(sj_mj,hn_yj,sinsal_list1,"db08_mj_ydtj-mj_hyj","#outputb","hunY3"); //--- 신살 체크8 -------------------
 	await sinsal01(sj_yj,hn_yj,sinsal_list1,"db09_-yj_hyj","#outputb","hunY3"); //--- 신살 체크9 -------------------
-	pngduh();
+	await pngduh();
+	await chnrjmh();
+	await bogeumh();
+	await baneumh();
 	$("#outputb").on("click", "span", function(){ 
 		disp("#"+$(this).attr("class").substr(5),"",""); 
 	}); 
@@ -2696,6 +2702,29 @@ function sinsal00(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e:
 	});
 };
 
+//======= 신살 체크02 ======= 
+function sinsal02(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e: destin2
+	return new Promise(function (resolve, reject){
+		//========== 배열 영역 (frames) ======================
+		var sslist = $.map(c, function(element, index) {
+			if (element[13] == f) {
+				return [element]
+			};
+		});
+		subj = a; temp = sslist.filter(isFind); sinsaltxt = "";
+		idx = c[0].lastIndexOf(b); sinsaltxt = temp[0][idx];
+		idx = c[0].lastIndexOf(sj_dj); bastxt = temp[0][idx];
+		if (sinsaltxt != "" && bastxt == sinsaltxt){
+			sinsal_tlist += sinsaltxt + " ";
+			apnd1("css_a", "spcs ", sinsaltxt, d);    
+			$(d).append("________ " + a + "___ " + b + "________ " + f + "</br>");
+			apnd2(csno, "txca", sinsaltxt, d); 
+			document.getElementById(e).innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
+		};
+		resolve();
+	});
+};
+
 //-----------------------------------
 function apnd1(a, b, c, d){  //--- a: prefix, b: span_class, c: sinsaltxt, d: destin
 	csno = a + cssn;
@@ -2727,6 +2756,7 @@ function apnd2(a, b, c, d){  //--- a: csno, b: div_class, c: sinsaltxt, d: desti
 async function sinsal(){
 	$('#outputa').empty();
 	$('#outputa').append("■■  (원국) 신살 _____ </br></br>"); sinsal_tlist = ""; cssn = 1; 
+	await sinsal02(sj_dg,sj_yj,sinsal_list1,"da00_dg_ydj","#outputa","ssal1"); //--- 신살 체크0
 	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da01_dg_dtj","#outputa","ssal3"); //--- 신살 체크1
 	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da01_dg_dtj","#outputa","ssal4");}; //--- 신살 체크1
 	await sinsal00(sj_dg,sj_yj,sinsal_list1,"da02_dg_jj","#outputa","ssal1"); //--- 신살 체크2
@@ -2789,72 +2819,234 @@ async function sinsal(){
 	await sinsal00(sj_mj,sj_mg,sinsal_list2,"dc01_mj_gg","#outputa","ssal2"); //--- 신살 체크1
 	await sinsal00(sj_mj,sj_dg,sinsal_list2,"dc01_mj_gg","#outputa","ssal3"); //--- 신살 체크1
 	if (sjtx != "x"){await sinsal00(sj_mj,sj_tg,sinsal_list2,"dc01_mj_gg","#outputa","ssal4");}; //--- 신살 체크1
-	hyuncm()
-	pngdu();
+	await hyuncm();
+	await pngdu();
+	await chnrjm();
+	await chsagm();
+	await chmnsg();
+	await bogeum();
+	await baneum();
 	$('#outputa').on("click", "span", function(){ 
 		disp("#"+$(this).attr("class").substr(5),"",""); 
 	}); 
 };
 
 //======== 평두 (신살) 체크 =========
-let hn_ganji = ""; let cntpd = 0;
+let cntpd = 0; let cntpda = 0;
 function pngdu(){
-	resul = []; cntpd = 0; hn_ganji = hn_lg + hn_lj + hn_yg + hn_yj + hn_mg + hn_mj + hn_dg + hn_dj;
-	resul = sj_ganji.match(/甲/g); if(resul != null) {cntpd += resul.length;};
-	resul = sj_ganji.match(/丙/g); if(resul != null) {cntpd += resul.length;};
-	resul = sj_ganji.match(/丁/g); if(resul != null) {cntpd += resul.length;};
-	resul = sj_ganji.match(/壬/g); if(resul != null) {cntpd += resul.length;};
-	resul = sj_ganji.match(/子/g); if(resul != null) {cntpd += resul.length;};
-	resul = sj_ganji.match(/辰/g); if(resul != null) {cntpd += resul.length;};
-	if (cntpd>3){
-		sinsaltxt = "평두"; 
-		apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
-		$("#outputa").append("</br>");
-		apnd2(csno, "txca", sinsaltxt, "#outputa"); 
-		document.getElementById("ssal0").innerText += "평두\n";  //----- 화면 신살란 기록
-	};
+	return new Promise(function (resolve, reject){
+		resul = []; cntpd = 0; 
+		resul = sj_ganji.match(/甲/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ganji.match(/丙/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ganji.match(/丁/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ganji.match(/壬/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ganji.match(/子/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ganji.match(/辰/g); if(resul != null) {cntpd += resul.length;};
+		if (cntpd==3){cntpda = cntpd;};
+		if (cntpd>3){
+			sinsaltxt = "평두"; 
+			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
+			$("#outputa").append("________ 甲丙丁壬 子辰 ________ </br>");
+			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
+			document.getElementById("ssal0").innerText += "평두\n";  //----- 화면 신살란 기록
+		};
+		resolve();
+	});
 };
 
 //======== 평두 (신살) 행운체크 =========
 function pngduh(){
-	hn_ganji = hn_lg + hn_lj + hn_yg + hn_yj + hn_mg + hn_mj + hn_dg + hn_dj; cntpda = 0;
-	if (cntpd==3){
-		resul = []; cntpda = cntpd;
-		resul = hn_ganji.match(/甲/g); if(resul != null) {cntpda += resul.length;};
-		resul = hn_ganji.match(/丙/g); if(resul != null) {cntpda += resul.length;};
-		resul = hn_ganji.match(/丁/g); if(resul != null) {cntpda += resul.length;};
-		resul = hn_ganji.match(/壬/g); if(resul != null) {cntpda += resul.length;};
-		resul = hn_ganji.match(/子/g); if(resul != null) {cntpda += resul.length;};
-		resul = hn_ganji.match(/辰/g); if(resul != null) {cntpda += resul.length;};
-	};
-	if (cntpda>3){
-		sinsaltxt1 = "평두"; 
-		apnd01("css_c", "spct ", sinsaltxt1, "#outputb");    
-		$("#outputb").append("</br>");
-		apnd02(csno1, "txcc", sinsaltxt1, "#outputb"); 
-		document.getElementById("ssalb").innerText += "평두\n";  //----- 화면 신살란 기록
-	};
+	return new Promise(function (resolve, reject){
+		cntpd = 0;
+		if (cntpda==3){
+			resul = []; cntpd = cntpda;
+			resul = hn_ganji.match(/甲/g); if(resul != null) {cntpd += resul.length;};
+			resul = hn_ganji.match(/丙/g); if(resul != null) {cntpd += resul.length;};
+			resul = hn_ganji.match(/丁/g); if(resul != null) {cntpd += resul.length;};
+			resul = hn_ganji.match(/壬/g); if(resul != null) {cntpd += resul.length;};
+			resul = hn_ganji.match(/子/g); if(resul != null) {cntpd += resul.length;};
+			resul = hn_ganji.match(/辰/g); if(resul != null) {cntpd += resul.length;};
+		};
+		if (cntpd>3){
+			sinsaltxt1 = "평두"; 
+			apnd01("css_c", "spct ", sinsaltxt1, "#outputb");    
+			$("#outputb").append("________ 甲丙丁壬 子辰 ________ </br>");
+			apnd02(csno1, "txcc", sinsaltxt1, "#outputb"); 
+			document.getElementById("ssalb").innerText += "평두\n";  //----- 화면 신살란 기록
+		};
+		resolve();
+	});
 };	
 
 //======== 현침 (신살) 체크 =========
 function hyuncm(){
-	resul = []; cntpd = 0; 
-	resul = sj_ganji.match(/甲/g); if(resul != null) {cntpd += resul.length;};
-	resul = sj_ganji.match(/辛/g); if(resul != null) {cntpd += resul.length;};
-	resul = sj_ganji.match(/卯/g); if(resul != null) {cntpd += resul.length;};
-	resul = sj_ganji.match(/午/g); if(resul != null) {cntpd += resul.length;};
-	resul = sj_ganji.match(/未/g); if(resul != null) {cntpd += resul.length;};
-	resul = sj_ganji.match(/申/g); if(resul != null) {cntpd += resul.length;};
-	if (cntpd>1){
-		sinsaltxt = "현침"; 
-		apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
-		$("#outputa").append("</br>");
-		apnd2(csno, "txca", sinsaltxt, "#outputa"); 
-		document.getElementById("ssal0").innerText += "현침\n";  //----- 화면 신살란 기록
-	};
+	return new Promise(function (resolve, reject){
+		resul = []; cntpd = 0; 
+		resul = sj_ganji.match(/甲/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ganji.match(/辛/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ganji.match(/卯/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ganji.match(/午/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ganji.match(/未/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ganji.match(/申/g); if(resul != null) {cntpd += resul.length;};
+		if (cntpd>1){
+			sinsaltxt = "현침"; 
+			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
+			$("#outputa").append("________ 甲辛 卯午未申 ________ </br>");
+			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
+			document.getElementById("ssal0").innerText += "현침\n";  //----- 화면 신살란 기록
+		};
+		resolve();
+	});
 };
 
+//======== 천라지망 (신살) 체크 =========
+function chnrjm(){
+	return new Promise(function (resolve, reject){
+		resul = []; cntpd = 0; 
+		if ("戌亥辰巳".includes(sj_dj)){	
+			resul = sj_ji.match(/戌/g); if(resul != null) {cntpd += resul.length;};
+			resul = sj_ji.match(/亥/g); if(resul != null) {cntpd += resul.length;};
+			resul = sj_ji.match(/辰/g); if(resul != null) {cntpd += resul.length;};
+			resul = sj_ji.match(/巳/g); if(resul != null) {cntpd += resul.length;};
+		};
+		if (cntpd>1){
+			sinsaltxt = "천라지망"; 
+			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
+			$("#outputa").append("________ 戌亥辰巳 ________ </br>");
+			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
+			document.getElementById("ssal0").innerText += "천라지망\n";  //----- 화면 신살란 기록
+		};
+		resolve();
+	});
+};
+
+//======== 천라지망 (신살) 행운체크 =========
+function chnrjmh(){
+	return new Promise(function (resolve, reject){
+		resul = []; cntpd = 0; 
+		if ("戌亥辰巳".includes(sj_dj)){	
+			resul = hn_ganji.match(/戌/g); if(resul != null) {cntpd += resul.length;};
+			resul = hn_ganji.match(/亥/g); if(resul != null) {cntpd += resul.length;};
+			resul = hn_ganji.match(/辰/g); if(resul != null) {cntpd += resul.length;};
+			resul = hn_ganji.match(/巳/g); if(resul != null) {cntpd += resul.length;};
+		}
+		if (cntpd>0){
+			sinsaltxt = "천라지망"; 
+			apnd01("css_c", "spct ", sinsaltxt, "#outputb");    
+			$("#outputb").append("________ 戌亥辰巳 ________ </br>");
+			apnd02(csno1, "txcc", sinsaltxt, "#outputb"); 
+			document.getElementById("ssalb").innerText += "천라지망\n";  //----- 화면 신살란 기록
+		};
+		resolve();
+	});
+};
+
+//======== 철쇄개금 (신살) 체크 =========
+function chsagm(){
+	return new Promise(function (resolve, reject){
+		resul = []; cntpd = 0; 
+		if ("卯酉戌".includes(sj_dj)){	
+			resul = sj_ji.match(/卯/g); if(resul != null) {cntpd += resul.length;};
+			resul = sj_ji.match(/酉/g); if(resul != null) {cntpd += resul.length;};
+			resul = sj_ji.match(/戌/g); if(resul != null) {cntpd += resul.length;};
+		};
+		if (cntpd>1){
+			sinsaltxt = "철쇄개금"; 
+			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
+			$("#outputa").append("________ 卯酉戌 ________ </br>");
+			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
+			document.getElementById("ssal0").innerText += "철쇄개금\n";  //----- 화면 신살란 기록
+		};
+		resolve();
+	});
+};
+
+//======== 천문성(天門星) (신살) 체크 =========
+function chmnsg(){
+	return new Promise(function (resolve, reject){
+		resul = []; cntpd = 0; 
+		resul = sj_ji.match(/未/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ji.match(/戌/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ji.match(/卯/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ji.match(/亥/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ji.match(/寅/g); if(resul != null) {cntpd += resul.length;};
+		resul = sj_ji.match(/酉/g); if(resul != null) {cntpd += resul.length;};
+		if (cntpd>1 || sj_ji.includes("亥")){
+			sinsaltxt = "천문성"; 
+			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
+			$("#outputa").append("________ 未戌卯亥寅酉 ________ </br>");
+			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
+			document.getElementById("ssal0").innerText += "천문성\n";  //----- 화면 신살란 기록
+		};
+		resolve();
+	});
+};
+
+//======== 복음 (신살) 체크 =========
+function bogeum(){
+	return new Promise(function (resolve, reject){
+		sj_ymtgj = sj_ganji.substr(0,4) + sj_ganji.substr(6)
+		if (sj_ymtgj.includes(sj_dg+sj_dj)){
+			sinsaltxt = "복음"; 
+			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
+			$("#outputa").append("________ 일주간지 원국중첩 ________ </br>");
+			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
+			document.getElementById("ssal0").innerText += "복음\n";  //----- 화면 신살란 기록
+		};
+		resolve();
+	});
+};
+
+//======== 복음 (신살) 행운체크 =========
+function bogeumh(){
+	return new Promise(function (resolve, reject){
+		if (hn_ganji.includes(sj_dg+sj_dj)){
+			sinsaltxt = "복음"; dest = "";
+			apnd01("css_c", "spct ", sinsaltxt, "#outputb");    
+			$("#outputb").append("________ 일주간지 행운중첩 ________ </br>");
+			apnd02(csno1, "txcc", sinsaltxt, "#outputb"); 
+			if (hn_lg+hn_lj == sj_dg+sj_dj){dest="hunL3"}; if (hn_yg+hn_yj == sj_dg+sj_dj){dest="hunY3"}; 
+			if (hn_mg+hn_mj == sj_dg+sj_dj){dest="hunM3"}; if (hn_dg+hn_dj == sj_dg+sj_dj){dest="hunD3"}; 
+			document.getElementById(dest).innerText += "복음\n";  //----- 화면 신살란 기록
+		};
+		resolve();
+	});
+};
+
+//======== 반음(천충지충) (신살) 체크 =========
+function baneum(){
+	return new Promise(function (resolve, reject){
+		if ((ganhc_nfo[2][4].includes("충") && jjhc_nfo[2][4].includes("충")) || (ganhc_nfo[4][5].includes("충") && jjhc_nfo[4][3].includes("충"))){
+			sinsaltxt = "반음"; 
+			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
+			$("#outputa").append("________ 일주 원국 천충지충 ________ </br>");
+			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
+			document.getElementById("ssal0").innerText += "반음\n";  //----- 화면 신살란 기록
+		};
+		resolve();
+	});
+};
+
+//======== 반음(천충지충) (신살) 행운체크 =========
+function baneumh(){
+	return new Promise(function (resolve, reject){
+		for (m=6; m<10; m++){
+			if (ganhc_nfo[3][m].includes("충") && jjhc_nfo[3][m].includes("충")){
+				sinsaltxt = "반음"; dest = "";
+				apnd01("css_c", "spct ", sinsaltxt, "#outputb");    
+				$("#outputb").append("________ 일주 행운 천충지충 ________ </br>");
+				apnd02(csno1, "txcc", sinsaltxt, "#outputb"); 
+				if (m==6){dest="hunL3"}; if (m==7){dest="hunY3"}; if (m==8){dest="hunM3"}; if (m==9){dest="hunD3"}; 
+				document.getElementById(dest).innerText += "반음\n";  //----- 화면 신살란 기록
+			};
+		};
+		resolve();
+	});
+};
+
+
 </script>
+
 
     </body>
 </html>
