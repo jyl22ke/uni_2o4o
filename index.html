@@ -814,9 +814,9 @@ function yjhab(destin){
 //====== 일지합 (1)===================
 //--- djhab("output1");
 function djhab(destin){
-	subj = rslt.substr(0,2); temp = spec_6hab.filter(isFind);
-	document.getElementById(destin).innerText += "■ 일지합--- " + txt + " " + rslt + "\n ◐ 심리적 고조. 오지랖 기운으로 새로운 일을 벌리나 결과는 시원치 않다" + "\n ◐ " + sz + temp[0][1] + "\n"; 
-	if (destin == "output3"){document.getElementById(destin).innerText += "◐ " + temp[0][2] + "\n"; };
+	subj = rslt.substr(0,2); tempj = spec_6hab.filter(isFind);
+	document.getElementById(destin).innerText += "■ 일지합--- " + txt + " " + rslt + "\n ◐ 심리적 고조. 오지랖 기운으로 새로운 일을 벌리나 결과는 시원치 않다" + "\n ◐ " + sz + tempj[0][1] + "\n"; 
+	if (destin == "output3"){document.getElementById(destin).innerText += "◐ " + tempj[0][2] + "\n"; };
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
 		
@@ -836,13 +836,13 @@ function yjchng(destin){
 function djchng(destin){
 	document.getElementById(destin).innerText += "■ 일지충--- " + txt + " " + rslt + "\n";
 	subj = rslt.substr(0,2); 
-	temp = spec_jjchng.filter(isFind);
+	tempj = spec_jjchng.filter(isFind);
 	if (destin == "output3"){
-		document.getElementById(destin).innerText += "◐ " + temp[0][1] + "\n ◐ " + temp[0][2] + " \n";
+		document.getElementById(destin).innerText += "◐ " + tempj[0][1] + "\n ◐ " + tempj[0][2] + " \n";
 		document.getElementById(destin).innerText += "◐ 왕신발 쇠자발--- \n";
 		jjg_turb();
 	}else{
-		document.getElementById(destin).innerText += "◐ " + sz + temp[0][1] + "\n ◐ " + temp[0][2] + " \n";
+		document.getElementById(destin).innerText += "◐ " + sz + tempj[0][1] + "\n ◐ " + tempj[0][2] + " \n";
 	};
 		document.getElementById(destin).innerText += "◐ 원진귀문 있으면--- 이중성격 증후군(잔소리 폭언-술마시면 드러남) \n";
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
@@ -851,9 +851,9 @@ function djchng(destin){
 //====== 연지해 ===================
 function yjhae(destin){
 	document.getElementById(destin).innerText += "■ 연지해--- " + txt + " " + rslt + "일간의 육합대상지지 십성에 대한 부정심리 \n";	  //--- 연지해 -------
-	subj = sj_yj; temp = spec_6hab.filter(isFindx); if (temp[0][0].substr(0,1) == sj_yj){tgt = temp[0][0].substr(1,1);}else{tgt = temp[0][0].substr(0,1);}; sibsng(sj_dg,"",tgt);
+	subj = sj_yj; tempj = spec_6hab.filter(isFindx); if (tempj[0][0].substr(0,1) == sj_yj){tgt = tempj[0][0].substr(1,1);}else{tgt = tempj[0][0].substr(0,1);}; sibsng(sj_dg,"",tgt);
 	ss_simri(js_titl,cgh01_sibsng_simri6chin,2); document.getElementById(destin).innerText += "◐ " + js_titl + " 부정심리(0~19세)--- " + rslt + "\n";
-	subj = sj_mj; temp = spec_6hab.filter(isFindx); if (temp[0][0].substr(0,1) == sj_mj){tgt = temp[0][0].substr(1,1);}else{tgt = temp[0][0].substr(0,1);}; sibsng(sj_dg,"",tgt);
+	subj = sj_mj; tempj = spec_6hab.filter(isFindx); if (tempj[0][0].substr(0,1) == sj_mj){tgt = tempj[0][0].substr(1,1);}else{tgt = tempj[0][0].substr(0,1);}; sibsng(sj_dg,"",tgt);
 	ss_simri(js_titl,cgh01_sibsng_simri6chin,2); document.getElementById(destin).innerText += "◐ " + js_titl + " 부정심리(20~38세)--- " + rslt + "\n";
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
@@ -864,10 +864,10 @@ function djhae(a,b,c,destin){
 	document.getElementById(destin).innerText += "■ 일지해--- " + txt + " " + rslt + "--- 일간의 육합대상지지 십성에 흉화 \n ◐ " + sz + " 엉뚱한 일을 발생시켜 뜻하지 않게 다투거나 냉담하게 되는 등 매사를 지연시켜 목전에서 포기하게 만드는 흉살이다. \n";
 	if (c == 2){document.getElementById(destin).innerText += " ◐ 형제와 인연이 박함은 물론 배우자가 대체로 쇠약한 편인데 여명의 경우 흉해가 더 심하다. \n";};
 	if (c == 3){document.getElementById(destin).innerText += " ◐ 배우자와 자식의 덕이 없을 뿐만 아니라 당주의 노년고독과 질병을 암시 \n";};
-	subj = rslt.substr(0,2); temp = spec_djhae.filter(isFind); document.getElementById(destin).innerText += "◐ 육친에 흉화/병증--- " + temp[0][1] + "\n";	  //--- 일지해 -------
-	subj = a; temp = spec_6hab.filter(isFindx); if (temp[0][0].substr(0,1) == a){tgt = temp[0][0].substr(1,1);}else{tgt = temp[0][0].substr(0,1);}; sibsng(sj_dg,"",tgt);
+	subj = rslt.substr(0,2); tempj = spec_djhae.filter(isFind); document.getElementById(destin).innerText += "◐ 육친에 흉화/병증--- " + tempj[0][1] + "\n";	  //--- 일지해 -------
+	subj = a; tempj = spec_6hab.filter(isFindx); if (tempj[0][0].substr(0,1) == a){tgt = tempj[0][0].substr(1,1);}else{tgt = tempj[0][0].substr(0,1);}; sibsng(sj_dg,"",tgt);
 	ss_simri(js_titl,cgh01_sibsng_simri6chin,0); document.getElementById(destin).innerText += "◐ 육친(" + rslt + ") 흉화 \n";  //---육합대상지지의 십성육친 흉화
-	subj = b; temp = spec_6hab.filter(isFindx); if (temp[0][0].substr(0,1) == b){tgt = temp[0][0].substr(1,1);}else{tgt = temp[0][0].substr(0,1);}; sibsng(sj_dg,"",tgt);
+	subj = b; tempj = spec_6hab.filter(isFindx); if (tempj[0][0].substr(0,1) == b){tgt = tempj[0][0].substr(1,1);}else{tgt = tempj[0][0].substr(0,1);}; sibsng(sj_dg,"",tgt);
 	ss_simri(js_titl,cgh01_sibsng_simri6chin,0); document.getElementById(destin).innerText += "◐ 육친(" + rslt + ") 흉화 \n";  //---일지 육합대상지지의 십성육친 흉화
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
@@ -882,8 +882,8 @@ function suspend(destin){
 //--- hwunghwa(sj_dj,hnj,"output3");
 function hwunghwa(a,b,destin){
 	document.getElementById(destin).innerText += "■ " + rslt0 + " " + txt + " " + rslt + " \n";  //--- 합충-해흉화 (8)
-	subj = rslt.substr(0,2); temp = spec_djhae.filter(isFind);
-	document.getElementById(destin).innerText += "◐ " + sz + temp[0][1] + "\n";
+	subj = rslt.substr(0,2); tempj = spec_djhae.filter(isFind);
+	document.getElementById(destin).innerText += "◐ " + sz + tempj[0][1] + "\n";
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
 
@@ -900,9 +900,9 @@ function yjpa(destin){
 //--- djpa(sj_mj,sj_dj,"output1"); 또는 djpa(sj_dj,sj_tj,"output1");
 function djpa(a,b,destin){
 	document.getElementById(destin).innerText += "■ 일지파--- " + txt + " " + rslt + "--- 삼합왕지 십성육친에 흉화(암시) 및 동착에 실행 \n ◐ " + sz + " 이탈 파괴 붕괴 분리 절단 반목 대립 파손 파재 이별을 암시하여 매사 장애를 촉발한다. 어떤 일의 중단을 예고하여 새로운 국면으로 전환시키는 역할을 담당하므로 파가 오면 일단 십성육신의 변화는 불가피하다. 파와 연관하는 모든 지지의 삼합 왕지에 변화를 준다.\n";
-	subj = a; temp = spec_samhab.filter(isFindx); tgt = temp[0][0].substr(1,1); sibsng(sj_dg,"",tgt); 
+	subj = a; tempj = spec_samhab.filter(isFindx); tgt = tempj[0][0].substr(1,1); sibsng(sj_dg,"",tgt); 
 	ss_simri(js_titl,cgh01_sibsng_simri6chin,0); document.getElementById(destin).innerText += "◐ 육친(" + rslt + ") 흉화 \n";  //--- 일지 삼합왕지 십성육친
-	subj = b; temp = spec_samhab.filter(isFindx); tgt = temp[0][0].substr(1,1); sibsng(sj_dg,"",tgt); 
+	subj = b; tempj = spec_samhab.filter(isFindx); tgt = tempj[0][0].substr(1,1); sibsng(sj_dg,"",tgt); 
 	ss_simri(js_titl,cgh01_sibsng_simri6chin,0); document.getElementById(destin).innerText += "◐ 육친(" + rslt + ") 흉화 \n";  //--- 일지 삼합왕지 십성육친
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
@@ -911,23 +911,23 @@ function djpa(a,b,destin){
 let ifo = false; let jjh_unsng = ""; let posd = ""; let pose = ""; let hcj = ""; let ttlhc = ""; let ttlh = "";
 	//--- 지지형 e (기본)
 function johhe_chk(a,destin){
-	subj = "0a"; temp = spec_jjhyung.filter(isFind); 
-	document.getElementById(destin).innerText += "■<지지형>--- " + txt + " " + rslt + "\n" + "◐ " + temp[0][2] + "\n"; 
+	subj = "0a"; tempj = spec_jjhyung.filter(isFind); 
+	document.getElementById(destin).innerText += "■<지지형>--- " + txt + " " + rslt + "\n" + "◐ " + tempj[0][2] + "\n"; 
 	document.getElementById(destin).innerText += "◐ 육친의 흉화--- \n"; 
 	for (k = 0; k < posd.length; k++){
 		if (((k>0) && (rslt.includes("丑") || rslt.includes("戌") || rslt.includes("未"))) || ((k>0) && (rslt.includes("辰") || rslt.includes("午") || rslt.includes("酉") || rslt.includes("亥")))) {
 			continue;
 		}else{
 			if (posd.substr(k,1) < "5"){
-				sibsTugsin(gj_nfo[Number(posd.substr(k,1))][7]); subj = hs_titl; temp = spec_jjhyung.filter(isFind); 
-				document.getElementById(destin).innerText += "◎ " + subj + "---" + temp[0][2] + "\n";
+				sibsTugsin(gj_nfo[Number(posd.substr(k,1))][7]); subj = hs_titl; tempj = spec_jjhyung.filter(isFind); 
+				document.getElementById(destin).innerText += "◎ " + subj + "---" + tempj[0][2] + "\n";
 				if (posd.length == 4 && (rslt.includes("辰") || rslt.includes("午") || rslt.includes("酉") || rslt.includes("亥"))){
-					sibsTugsin(gj_nfo[3][7]); subj = hs_titl; temp = spec_jjhyung.filter(isFind); 
-					document.getElementById(destin).innerText += "◎ " + subj + "---" + temp[0][2] + "\n";
+					sibsTugsin(gj_nfo[3][7]); subj = hs_titl; tempj = spec_jjhyung.filter(isFind); 
+					document.getElementById(destin).innerText += "◎ " + subj + "---" + tempj[0][2] + "\n";
 				};
 			}else{
-				sibsTugsin(hgj_nfo[Number(posd.substr(k,1))-4][7]); subj = hs_titl; temp = spec_jjhyung.filter(isFind); 
-				document.getElementById(destin).innerText += "◎ " + subj + "---" + temp[0][2] + "\n";
+				sibsTugsin(hgj_nfo[Number(posd.substr(k,1))-4][7]); subj = hs_titl; tempj = spec_jjhyung.filter(isFind); 
+				document.getElementById(destin).innerText += "◎ " + subj + "---" + tempj[0][2] + "\n";
 			};
 		};
 	};
@@ -946,10 +946,10 @@ function johha_chk(a,destin){
 			jjh_unsng += hgj_nfo[Number(posd.substr(k,1))-4][8];
 		};
 	};
-	subj = "1a"; temp = spec_jjhyung.filter(isFind); rslt = rslt_hyng1;
-	document.getElementById(destin).innerText += "★★" + rslt + " 삼형--- \n" + "◐ " + temp[0][2] + "\n"; 
-	subj = "1b"; temp = spec_jjhyung.filter(isFind);
-	document.getElementById(destin).innerText += "◐ " + temp[0][2] + "\n"; 
+	subj = "1a"; tempj = spec_jjhyung.filter(isFind); rslt = rslt_hyng1;
+	document.getElementById(destin).innerText += "★★" + rslt + " 삼형--- \n" + "◐ " + tempj[0][2] + "\n"; 
+	subj = "1b"; tempj = spec_jjhyung.filter(isFind);
+	document.getElementById(destin).innerText += "◐ " + tempj[0][2] + "\n"; 
 	if ((pose.includes("12") || pose.includes("21")) && sj_yj != sj_mj){
 		document.getElementById(destin).innerText += "◐ 잔머리가 발달하여 홀로 겉도는 가운데 성격이 급하고 조열하여 마찰이 잦고 게다가 지구력이 약하여 자모자패(自謀自敗)의 전형적인 유형이다. 심리 불안정 초년 범죄 악행--- \n"; 
 	};
@@ -986,31 +986,31 @@ function johha_chk(a,destin){
 	//--- 지지형 b (붕형-축술미)
 function johhb_chk(a,destin){
 	johhe_chk(a,destin); 
-	subj = "3a"; temp = spec_jjhyung.filter(isFind); rslt = rslt_hyng2;
-	document.getElementById(destin).innerText += "★★" + rslt + " 붕형--- \n" + "◐ " + temp[0][2] + "\n"; 
-	subj = "3b"; temp = spec_jjhyung.filter(isFind);
-	document.getElementById(destin).innerText += "◐ " + temp[0][2] + "\n"; 
+	subj = "3a"; tempj = spec_jjhyung.filter(isFind); rslt = rslt_hyng2;
+	document.getElementById(destin).innerText += "★★" + rslt + " 붕형--- \n" + "◐ " + tempj[0][2] + "\n"; 
+	subj = "3b"; tempj = spec_jjhyung.filter(isFind);
+	document.getElementById(destin).innerText += "◐ " + tempj[0][2] + "\n"; 
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
 
 	//--- 지지형 c (상형-자묘)
 function johhc_chk(a,destin){
 	johhe_chk(a,destin);
-	subj = "2a"; temp = spec_jjhyung.filter(isFind); rslt = rslt_hyng3;
-	document.getElementById(destin).innerText += "★★ " + rslt + " 상형--- " + "\n" + "◐ " + temp[0][2] + "\n"; 
+	subj = "2a"; tempj = spec_jjhyung.filter(isFind); rslt = rslt_hyng3;
+	document.getElementById(destin).innerText += "★★ " + rslt + " 상형--- " + "\n" + "◐ " + tempj[0][2] + "\n"; 
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
 
 	//--- 지지형 d (병존자형-진오유해)
 function johhd_chk(a,destin){
 	johhe_chk(a,destin);
-	subj = "4a"; temp = spec_jjhyung.filter(isFind); rslt = rslt_hyng4;
-	document.getElementById(destin).innerText += "★★ " + rslt + " 자형 \n ◐ " + temp[0][2] + "\n"; 
-	subj = rslt0.substr(0,2); temp = spec_jjhyung.filter(isFind);
-	document.getElementById(destin).innerText += "◐" + subj + " 자형--- " + temp[0][2] + "\n"; 
+	subj = "4a"; tempj = spec_jjhyung.filter(isFind); rslt = rslt_hyng4;
+	document.getElementById(destin).innerText += "★★ " + rslt + " 자형 \n ◐ " + tempj[0][2] + "\n"; 
+	subj = rslt0.substr(0,2); tempj = spec_jjhyung.filter(isFind);
+	document.getElementById(destin).innerText += "◐" + subj + " 자형--- " + tempj[0][2] + "\n"; 
 	if (rslt0.length > 5 && rslt0.includes("자형")){
-		subj = rslt0.substr(3,2); temp = spec_jjhyung.filter(isFind);
-		document.getElementById(destin).innerText += "◐" + subj + " 자형--- " + temp[0][2] + "\n"; 
+		subj = rslt0.substr(3,2); tempj = spec_jjhyung.filter(isFind);
+		document.getElementById(destin).innerText += "◐" + subj + " 자형--- " + tempj[0][2] + "\n"; 
 	};
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
