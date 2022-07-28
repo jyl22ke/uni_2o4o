@@ -2703,8 +2703,8 @@ function sinsal_out(csno, sinsaltxt, g, h, a, b){
 
 //============ 원진 추가 =============
 function wonjin(dest, g, h, a, b){
-	chkg(a,b); subj = rslt; temp = wonjn.filter(isFind); 
-	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp[0][1];
+	chkg(a,b); subj = rslt; temp0 = wonjn.filter(isFind); 
+	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp0[0][1];
 	sibsng(sj_dg,"",a); sibsTugsin(js_titl); subj = hs_titl; temp1 = wonjn.filter(isFind);
 	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp1[0][1];
 	sibsng(sj_dg,"",b); sibsTugsin(js_titl); subj = hs_titl; temp2 = wonjn.filter(isFind);
@@ -2717,8 +2717,8 @@ function wonjin(dest, g, h, a, b){
 
 //============ 귀문 추가 =============
 function guimun(dest, g, h, a, b){
-	chkg(a,b); subj = rslt; temp = gmun.filter(isFind); 
-	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp[0][1];
+	chkg(a,b); subj = rslt; temp0 = gmun.filter(isFind); 
+	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp0[0][1];
 	sibsng(sj_dg,"",a); sibsTugsin(js_titl); aTus = hs_titl;
 	sibsng(sj_dg,"",b); sibsTugsin(js_titl); bTus = hs_titl;
 	if ((gendr == "남양" && (aTus=="재성" || bTus=="재성")) || (gendr == "여음" && (aTus=="관성" || bTus=="관성"))){
