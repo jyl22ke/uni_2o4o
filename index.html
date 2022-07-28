@@ -69,13 +69,13 @@
 	.txca,.txcb,.txcc{display: none;}
 	.dum {width:798px; display: block;}
 
+	table{border: 1px solid black; border-collapse: collapse;}
+	td{border: 1px solid black;}
 	.rdat { width: 400px;}
-	.rdat0 {display: inline-block; width: 40px; border-left: 1px solid black; border-bottom: 1px solid black; border-top: 1px solid black; text-align:center;}
-	.rdat1 {display: inline-block; width: 40px; border-left: 1px solid black; border-bottom: 1px solid black; text-align:center;}
-	.rdat2 {display: inline-block; width: 120px; border: 1px solid black; text-align:center;}
-	.rdau0 {display: inline-block; width: 65px; border-left: 1px solid black; border-bottom: 1px solid black; border-top: 1px solid black; text-align:center;}
-	.rdau1 {display: inline-block; width: 65px; border-left: 1px solid black; border-bottom: 1px solid black; text-align:center;}
-	.rdau2 {display: inline-block; width: 65px; border: 1px solid black; text-align:center;}
+	.rdat0,.rdat1 {width: 40px; text-align:center;}
+	.rdat2 {width: 120px; text-align:center;}
+	.rdau0,.rdau1,.rdau2 {width: 65px; text-align:center;}
+	.rdat0,.rdau0 {font-weight: bold;}
 	#submit, #submit1 {padding: 0; font-weight: bold;}
 	#sola {display:none; font-weight: bold; width: 200px;}
 	#clear1 {padding: 0;}
@@ -530,6 +530,17 @@ function sjmain(){
 
 		jjhc_nfo = [
 		["위치","jiji","합충형해파","원국1","원국2","원국3","대운","연운","월운","일운","시운"],
+		["연지","","","","","","","","","",""],
+		["월지","","","","","","","","","",""],
+		["일지","","","","","","","","","",""],
+		["시지","","","","","","","","","",""]];
+
+		sinsal_nfo = [
+		["기준","ganji","연지","월지","일지","시지","대운","연운","월운","일운","시운"],
+		["연간","","","","","","","","","",""],
+		["월간","","","","","","","","","",""],
+		["일간","","","","","","","","","",""],
+		["시간","","","","","","","","","",""],
 		["연지","","","","","","","","","",""],
 		["월지","","","","","","","","","",""],
 		["일지","","","","","","","","","",""],
@@ -2334,6 +2345,7 @@ function outptt(){
 	ptt(hgj_nfo,"hgj_nfo : 행운간지","#output5");
 	ptt(ganhc_nfo,"ganhc_nfo : 천간합충","#output5");
 	ptt(jjhc_nfo,"jjhc_nfo : 지지합충형해파","#output5");
+	ptt(sinsal_nfo,"sinsal_nfo : 신살","#output5");
 };
 
 //--- "output4" & "output5" 출력 양식 작성하는 함수
@@ -2342,35 +2354,38 @@ function ptt(a,b,destin){
 	$( function() {
 		out_string = ""; rda = "";
 		out_string = "<span class='rdat'>" + b + "</span><br/>";
+		out_string += "<table>";
 		for (i=0; i<a.length; i++){
 			if (a[i].length>12){rda = "rdat"; rda0 = $(".rdat0"); rda1 = $(".rdat1"); rda2 = $(".rdat2");
 			}else{	rda = "rdau"; rda0 = $(".rdau0"); rda1 = $(".rdau1"); rda2 = $(".rdau2");};
+			out_string += "<tr>";
 			for (j=0; j<a[i].length; j++){
 				if (i==0){
 					if (j==0){
-						out_string += "<span class='" + rda + "0'>" + a[i][j];
+						out_string += "<td class='" + rda + "0'>" + a[i][j];
 					}else{
 						if (j==a[i].length-1){
-							out_string += "</span><span class='" + rda + "2'>" + a[i][j];
+							out_string += "</td><td class='" + rda + "2'>" + a[i][j];
 						}else{
-							out_string += "</span><span class='" + rda + "0'>" + a[i][j];
+							out_string += "</td><td class='" + rda + "0'>" + a[i][j];
 						};
 					};
 				}else{
 					if (j==0){
-						out_string += "<span class='" + rda + "1'>" + a[i][j];
+						out_string += "<td class='" + rda + "1'>" + a[i][j];
 					}else{
 						if (j==a[i].length-1){
-							out_string += "</span><span class='" + rda + "2'>" + a[i][j];
+							out_string += "</td><td class='" + rda + "2'>" + a[i][j];
 						}else{
-							out_string += "</span><span class='" + rda + "1'>" + a[i][j];
+							out_string += "</td><td class='" + rda + "1'>" + a[i][j];
 						};
 					};
 				};
 				if (a[i][j]==""){out_string += "-";};
 			};
-			out_string += "</span><br/>";
+			out_string += "</tr>";
 		};
+		out_string += "</table>";
 		$(destin).append(out_string);
 	});
 };
