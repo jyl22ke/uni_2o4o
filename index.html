@@ -901,8 +901,8 @@ function suspend(destin){
 //--- hwunghwa(sj_dj,hnj,"output3");
 function hwunghwa(a,b,destin){
 	document.getElementById(destin).innerText += "■ " + rslt0 + " " + txt + " " + rslt + " \n";  //--- 합충-해흉화 (8)
-	subj = rslt.substr(0,2); temp = spec_djhae.filter(isFind);
-	document.getElementById(destin).innerText += "◐ " + sz + temp[0][1] + "\n";
+	subj = rslt.substr(0,2); temp = spec_djhae.filter(isFind); console.log("line905-- subj: " + subj + "temp[0]: " + temp[0]);
+	document.getElementById(destin).innerText += "◐ " + sz + temp[0][1] + "\n"; 
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
 
@@ -2703,7 +2703,7 @@ function sinsal_out(csno, sinsaltxt, g, h, a, b){
 
 //============ 원진 추가 =============
 function wonjin(dest, g, h, a, b){
-	chkg(a,b); subj = rslt; temp = wonjn.filter(isFind); 
+	chkg(a,b); subj = rslt; temp = wonjn.filter(isFind); console.log("line2707-- subj: " + subj + "temp[0]: " + temp[0]);
 	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp[0][1];
 	sibsng(sj_dg,"",a); sibsTugsin(js_titl); subj = hs_titl; temp1 = wonjn.filter(isFind);
 	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp1[0][1];
@@ -2717,7 +2717,7 @@ function wonjin(dest, g, h, a, b){
 
 //============ 귀문 추가 =============
 function guimun(dest, g, h, a, b){
-	chkg(a,b); subj = rslt; temp = gmun.filter(isFind); 
+	chkg(a,b); subj = rslt; temp = gmun.filter(isFind); console.log("line2721-- subj: " + subj + "temp[0]: " + temp[0]);
 	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp[0][1];
 	sibsng(sj_dg,"",a); sibsTugsin(js_titl); aTus = hs_titl;
 	sibsng(sj_dg,"",b); sibsTugsin(js_titl); bTus = hs_titl;
