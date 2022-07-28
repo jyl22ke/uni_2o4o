@@ -2226,17 +2226,18 @@ function hangun(){
 //■■■■■■■■■■■■■■■■■■■■
 //======= 행운 신살 description =======
 let sinsaltxt1 = ""; let snsal1 = [];
-function sinsalhn_out(csno1, sinsaltxt1){
+function sinsalhn_out(csno1, sinsaltxt1, g, h, a, b){
 	$("#"+csno1).empty();
 	snsal1 = sinsaltxt1.split(" ");
 	for (i=0; i<snsal1.length; i++){
 		if (snsal1[i] != ""){
-			subj = snsal1[i]; temps2 = sinsal_gen.filter(isFindx);
+			subj = snsal1[i]; temps2 = sinsal_gen.filter(isFindx); sinsal_nfo[g][h] += subj + " ";
 			document.getElementById(csno1).innerText += "◐ " + temps2[0][0] + "..... " ;
 			if (temps2[0][1] != ""){document.getElementById(csno1).innerText += temps2[0][1] + "\n";};
 			if (temps2[0][4] != ""){document.getElementById(csno1).innerText += temps2[0][4] + "\n";};
 			if (temps2[0][2] != "" && gendr.substr(0,1) == "남"){document.getElementById(csno1).innerText += temps2[0][2] + "\n";};
 			if (temps2[0][3] != "" && gendr.substr(0,1) == "여"){document.getElementById(csno1).innerText += temps2[0][3] + "\n";};
+			if (subj=="원진"){wonjin(csno1, g, h, a, b);}; if (subj=="귀문"){guimun(csno1, g, h, a, b);};
 		};
 	};
 };
@@ -2244,46 +2245,49 @@ function sinsalhn_out(csno1, sinsaltxt1){
 //======= 행운 신살 조회 =======
 async function sinsalhn(){
 	csno1 = ""; cssn1 = 1; sinsalh_tlist = "";
+	for (i=1; i<9; i++){  //--- 변경에 앞서 기존기록 비우기 (행운 영역)
+		for (j=6; j<11; j++){sinsal_nfo[i][j] = "";};
+	};
 	$('#outputb').append("■■  (행운) 신살 _____ </br></br>");
-	await sinsal01(sj_dg,hn_lj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputb","hunL3"); //--- 신살 체크3 -------------------
-	await sinsal01(sj_dg,hn_yj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputb","hunY3"); //--- 신살 체크3 -------------------
-	await sinsal01(sj_dg,hn_lj,sinsal_list1,"da05_dg_tj-dg_hj","#outputb","hunL3"); //--- 신살 체크5 -------------------
-	await sinsal01(sj_dg,hn_yj,sinsal_list1,"da05_dg_tj-dg_hj","#outputb","hunY3"); //--- 신살 체크5 -------------------
-	await sinsal01(sj_dg,hn_mj,sinsal_list1,"da05_dg_tj-dg_hj","#outputb","hunM3"); //--- 신살 체크5 -------------------
-	await sinsal01(sj_dg,hn_dj,sinsal_list1,"da05_dg_tj-dg_hj","#outputb","hunD3"); //--- 신살 체크5 -------------------
-	await sinsal01(sj_dg,hn_lj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunL3"); //--- 신살 체크7 -------------------
-	await sinsal01(sj_dg,hn_yj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunY3"); //--- 신살 체크7 -------------------
-	await sinsal01(sj_dg,hn_mj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunM3"); //--- 신살 체크7 -------------------
-	await sinsal01(sj_dg,hn_dj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunD3"); //--- 신살 체크7 -------------------
-	await sinsal01(hn_lg,hn_lj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunL3"); //--- 신살 체크8 -------------------
-	await sinsal01(hn_yg,hn_yj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunY3"); //--- 신살 체크8 -------------------
-	await sinsal01(hn_mg,hn_mj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunM3"); //--- 신살 체크8 -------------------
-	await sinsal01(hn_dg,hn_dj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunD3"); //--- 신살 체크8 -------------------
-	await sinsal01(hn_lg,hn_lj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunL3"); //--- 신살 체크12 -------------------
-	await sinsal01(hn_yg,hn_yj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunY3"); //--- 신살 체크12 -------------------
-	await sinsal01(hn_mg,hn_mj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunM3"); //--- 신살 체크12 -------------------
-	await sinsal01(hn_dg,hn_dj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunD3"); //--- 신살 체크12 -------------------
-	await sinsal01(sj_dg,hn_yj,sinsal_list1,"da13_-dg_hyj","#outputb","hunY3"); //--- 신살 체크13 -------------------
+	await sinsal01(sj_dg,hn_lj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputb","hunL3",3,6); //--- 신살 체크3 -------------------
+	await sinsal01(sj_dg,hn_yj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputb","hunY3",3,7); //--- 신살 체크3 -------------------
+	await sinsal01(sj_dg,hn_lj,sinsal_list1,"da05_dg_tj-dg_hj","#outputb","hunL3",3,6); //--- 신살 체크5 -------------------
+	await sinsal01(sj_dg,hn_yj,sinsal_list1,"da05_dg_tj-dg_hj","#outputb","hunY3",3,7); //--- 신살 체크5 -------------------
+	await sinsal01(sj_dg,hn_mj,sinsal_list1,"da05_dg_tj-dg_hj","#outputb","hunM3",3,8); //--- 신살 체크5 -------------------
+	await sinsal01(sj_dg,hn_dj,sinsal_list1,"da05_dg_tj-dg_hj","#outputb","hunD3",3,9); //--- 신살 체크5 -------------------
+	await sinsal01(sj_dg,hn_lj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunL3",3,6); //--- 신살 체크7 -------------------
+	await sinsal01(sj_dg,hn_yj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunY3",3,7); //--- 신살 체크7 -------------------
+	await sinsal01(sj_dg,hn_mj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunM3",3,8); //--- 신살 체크7 -------------------
+	await sinsal01(sj_dg,hn_dj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunD3",3,9); //--- 신살 체크7 -------------------
+	await sinsal01(hn_lg,hn_lj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunL3",8,6); //--- 신살 체크8 -------------------
+	await sinsal01(hn_yg,hn_yj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunY3",8,7); //--- 신살 체크8 -------------------
+	await sinsal01(hn_mg,hn_mj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunM3",8,8); //--- 신살 체크8 -------------------
+	await sinsal01(hn_dg,hn_dj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunD3",8,9); //--- 신살 체크8 -------------------
+	await sinsal01(hn_lg,hn_lj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunL3",8,6); //--- 신살 체크12 -------------------
+	await sinsal01(hn_yg,hn_yj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunY3",8,7); //--- 신살 체크12 -------------------
+	await sinsal01(hn_mg,hn_mj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunM3",8,8); //--- 신살 체크12 -------------------
+	await sinsal01(hn_dg,hn_dj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunD3",8,9); //--- 신살 체크12 -------------------
+	await sinsal01(sj_dg,hn_yj,sinsal_list1,"da13_-dg_hyj","#outputb","hunY3",3,7); //--- 신살 체크13 -------------------
 //------------------------------
-	await sinsal01(sj_dj,hn_lj,sinsal_list1,"db01_dj_jj-dj_hj","#outputb","hunL3"); //--- 신살 체크1 -------------------
-	await sinsal01(sj_dj,hn_yj,sinsal_list1,"db01_dj_jj-dj_hj","#outputb","hunY3"); //--- 신살 체크1 -------------------
-	await sinsal01(sj_dj,hn_mj,sinsal_list1,"db01_dj_jj-dj_hj","#outputb","hunM3"); //--- 신살 체크1 -------------------
-	await sinsal01(sj_dj,hn_dj,sinsal_list1,"db01_dj_jj-dj_hj","#outputb","hunD3"); //--- 신살 체크1 -------------------
-	await sinsal01(sj_dj,hn_lj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputb","hunL3"); //--- 신살 체크2 -------------------
-	await sinsal01(sj_dj,hn_yj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputb","hunY3"); //--- 신살 체크2 -------------------
-	await sinsal01(sj_dj,hn_mj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputb","hunM3"); //--- 신살 체크2 -------------------
-	await sinsal01(sj_dj,hn_dj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputb","hunD3"); //--- 신살 체크2 -------------------
-	await sinsal01(sj_dj,hn_lj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputb","hunL3"); //--- 신살 체크4 -------------------
-	await sinsal01(sj_dj,hn_yj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputb","hunY3"); //--- 신살 체크4 -------------------
-	await sinsal01(sj_dj,hn_mj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputb","hunM3"); //--- 신살 체크4 -------------------
-	await sinsal01(sj_dj,hn_dj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputb","hunD3"); //--- 신살 체크4 -------------------
-	await sinsal01(sj_dj,hn_yj,sinsal_list1,"db05_dj_ymtj-dj_hyj","#outputb","hunY3"); //--- 신살 체크5 -------------------
-	await sinsal01(sj_mj,hn_yj,sinsal_list1,"db08_mj_ydtj-mj_hyj","#outputb","hunY3"); //--- 신살 체크8 -------------------
-	await sinsal01(sj_yj,hn_yj,sinsal_list1,"db09_-yj_hyj","#outputb","hunY3"); //--- 신살 체크9 -------------------
-	await pngduh();
-	await chnrjmh();
-	await bogeumh();
-	await baneumh();
+	await sinsal01(sj_dj,hn_lj,sinsal_list1,"db01_dj_jj-dj_hj","#outputb","hunL3",7,6); //--- 신살 체크1 -------------------
+	await sinsal01(sj_dj,hn_yj,sinsal_list1,"db01_dj_jj-dj_hj","#outputb","hunY3",7,7); //--- 신살 체크1 -------------------
+	await sinsal01(sj_dj,hn_mj,sinsal_list1,"db01_dj_jj-dj_hj","#outputb","hunM3",7,8); //--- 신살 체크1 -------------------
+	await sinsal01(sj_dj,hn_dj,sinsal_list1,"db01_dj_jj-dj_hj","#outputb","hunD3",7,9); //--- 신살 체크1 -------------------
+	await sinsal01(sj_dj,hn_lj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputb","hunL3",7,6); //--- 신살 체크2 -------------------
+	await sinsal01(sj_dj,hn_yj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputb","hunY3",7,7); //--- 신살 체크2 -------------------
+	await sinsal01(sj_dj,hn_mj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputb","hunM3",7,8); //--- 신살 체크2 -------------------
+	await sinsal01(sj_dj,hn_dj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputb","hunD3",7,9); //--- 신살 체크2 -------------------
+	await sinsal01(sj_dj,hn_lj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputb","hunL3",7,6); //--- 신살 체크4 -------------------
+	await sinsal01(sj_dj,hn_yj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputb","hunY3",7,7); //--- 신살 체크4 -------------------
+	await sinsal01(sj_dj,hn_mj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputb","hunM3",7,8); //--- 신살 체크4 -------------------
+	await sinsal01(sj_dj,hn_dj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputb","hunD3",7,9); //--- 신살 체크4 -------------------
+	await sinsal01(sj_dj,hn_yj,sinsal_list1,"db05_dj_ymtj-dj_hyj","#outputb","hunY3",7,7); //--- 신살 체크5 -------------------
+	await sinsal01(sj_mj,hn_yj,sinsal_list1,"db08_mj_ydtj-mj_hyj","#outputb","hunY3",6,7); //--- 신살 체크8 -------------------
+	await sinsal01(sj_yj,hn_yj,sinsal_list1,"db09_-yj_hyj","#outputb","hunY3",5,7); //--- 신살 체크9 -------------------
+	await pngduh(2,10); //--- 평두
+	await chnrjmh(3,10); //--- 천라지망
+	await bogeumh(6,10); //--- 복음
+	await baneumh(7,10); //--- 반음
 	$("#outputb").on("click", "span", function(){ 
 		disp("#"+$(this).attr("class").substr(5),"",""); 
 	}); 
@@ -2291,10 +2295,10 @@ async function sinsalhn(){
 
 //========== 신살 종류별 행운체크 ==============
 	let csno1 = ""; let cssn1 = 1;
-function sinsal01(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e: destin2
+function sinsal01(a,b,c,f,d,e,g,h){ //=== a: base, b: target, c: list, d: destin, e: destin2
 	return new Promise(function (resolve, reject){
 		//========== 배열 영역 (frames) ======================
-		var sslist1 = $.map(c, function(element, index) {
+		let sslist1 = $.map(c, function(element, index) {
 			if (element[13] == f) {
 				return [element]
 			};
@@ -2305,7 +2309,7 @@ function sinsal01(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e:
 			sinsalh_tlist += sinsaltxt1 + " ";
 			apnd01("css_c", "spct ", sinsaltxt1, d);    
 			$(d).append("________ " + a + "___ " + b + "________ " + f + "</br>");
-			apnd02(csno1, "txcc", sinsaltxt1, d); 
+			apnd02(csno1, "txcc", sinsaltxt1, d, g, h, a, b); 
 			document.getElementById(e).innerText += sinsaltxt1 + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
@@ -2313,27 +2317,27 @@ function sinsal01(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e:
 };
 
 //----------- <span></span> ------------------------
-function apnd01(a, b, c, d){  //--- a: prefix, b: span_class, c: sinsaltxt1, d: destin
-	csno1 = a + cssn1;
+function apnd01(css, cla, sin, d){  //--- a: prefix, b: span_class, c: sinsaltxt1, d: destin
+	csno1 = css + cssn1;
 	$(d).append("■ ");
 	$(d).append(
 		$('<span>').prop({
-			className: b + csno1,
-			innerHTML: c
+			className: cla + csno1,
+			innerHTML: sin
 		})
 	);
 };
 
 //----------- <div></div> ------------------------
-function apnd02(a, b, c, d){  //--- a: csno1, b: div_class, c: sinsaltxt1, d: destin
+function apnd02(idn, clb, sin, d, g, h, a, b){  //--- a: csno1, b: div_class, c: sinsaltxt1, d: destin
 	$(d).append(
 		$('<div>').prop({
-			id: a,
+			id: idn,
 			innerHTML: 'description.....',
-			className: b
+			className: clb
 		})
 	);
-	sinsalhn_out(a, c);
+	sinsalhn_out(idn, sin, g, h, a, b);
 	$(d).append("--------------------------------------------------------------</br>");
 	cssn1 += 1;
 };
@@ -2679,27 +2683,62 @@ function sibsTugsin(a){
 //■■■■■■■■■■■■■■■■■■■■
 //======= 신살 description =======
 let sinsaltxt = ""; let snsal = []; let sinsal_tlist = ""; let sinsalh_tlist = "";
-function sinsal_out(csno, sinsaltxt){
+function sinsal_out(csno, sinsaltxt, g, h, a, b){
 	$("#"+csno).empty();
 	snsal = sinsaltxt.split(" ");
 	for (i=0; i<snsal.length; i++){
 		if (snsal[i] != ""){
-			subj = snsal[i]; temps1 = sinsal_gen.filter(isFindx);
+			subj = snsal[i]; temps1 = sinsal_gen.filter(isFindx); sinsal_nfo[g][h] += subj + " ";
 			document.getElementById(csno).innerText += "◐ " + temps1[0][0] + "..... " ;
 			if (temps1[0][1] != ""){document.getElementById(csno).innerText += temps1[0][1] + "\n";};
 			if (temps1[0][4] != ""){document.getElementById(csno).innerText += temps1[0][4] + "\n";};
 			if (temps1[0][2] != "" && gendr.substr(0,1) == "남"){document.getElementById(csno).innerText += temps1[0][2] + "\n";};
-			if (temps1[0][3] != "" && gendr.substr(0,1) == "여"){document.getElementById(csno).innerText += temps1[0][3] + "\n";};
+			if (temps1[0][3] != "" && gendr.substr(0,1) == "여"){document.getElementById(csno).innerText += temps1[0][3] + "\n\n";};
+			if (subj=="원진"){wonjin(csno, g, h, a, b);}; if (subj=="귀문"){guimun(csno, g, h, a, b);}; 
+		};
+	};
+};
+
+//============ 원진 추가 =============
+function wonjin(dest, g, h, a, b){
+	chkg(a,b); subj = rslt; temp = wonjn.filter(isFind); 
+	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp[0][1];
+	sibsng(sj_dg,"",a); sibsTugsin(js_titl); subj = hs_titl; temp1 = wonjn.filter(isFind);
+	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp1[0][1];
+	sibsng(sj_dg,"",b); sibsTugsin(js_titl); subj = hs_titl; temp2 = wonjn.filter(isFind);
+	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp2[0][1];
+	if (g==5){subj="연지"}; if (g==6){subj="월지"}; if (g==7){subj="일지"}; if (g==8){subj="시지"}; temp3 = wonjn.filter(isFind);
+	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp3[0][1];
+	if (h==2){subj="연지"}; if (h==3){subj="월지"}; if (h==4){subj="일지"}; if (h==5){subj="시지"}; if (h>5){subj="행운"}; temp4 = wonjn.filter(isFind);
+	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp4[0][1];
+};
+
+//============ 귀문 추가 =============
+function guimun(dest, g, h, a, b){
+	chkg(a,b); subj = rslt; temp = gmun.filter(isFind); 
+	document.getElementById(dest).innerText += "\n♠ (" + subj + ")---" + temp[0][1];
+	sibsng(sj_dg,"",a); sibsTugsin(js_titl); aTus = hs_titl;
+	sibsng(sj_dg,"",b); sibsTugsin(js_titl); bTus = hs_titl;
+	if ((gendr == "남양" && (aTus=="재성" || bTus=="재성")) || (gendr == "여음" && (aTus=="관성" || bTus=="관성"))){
+		document.getElementById(dest).innerText += "\n♠ (" + gendr.substr(0,1) + ") " + hs_titl + "--- 배우자의 정신 횡포가 심함";
+		if (g==7 && h==5){
+			document.getElementById(dest).innerText += "\n♠ 일지-시지 & (" + gendr.substr(0,1) + ") " + hs_titl + " 귀문--- 배우자가 변태적 성향이 있으며 배우자가 성불감증인 경우가 많음";
+		};
+	};
+	if (h>5){
+		sibsTugsin(hgj_nfo[h-5][7]); 
+		if (hs_titl=="관성" && gendr=="여음"){
+			document.getElementById(dest).innerText += "\n♠ (" + gendr.substr(0,1) + ") " + hs_titl + "행운 귀문관살이 되면--- 부부별리";
 		};
 	};
 };
 
 //======= 신살 체크00 =======
 	let csno = ""; let cssn = 1;
-function sinsal00(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e: destin2
+function sinsal00(a,b,c,f,d,e,g,h){ //=== a: base, b: target, c: list, f: classcode, d: destin, e: destin2, g: base, h: target
 	return new Promise(function (resolve, reject){
 		//========== 배열 영역 (frames) ======================
-		var sslist = $.map(c, function(element, index) {
+		let sslist = $.map(c, function(element, index) {
 			if (element[13] == f) {
 				return [element]
 			};
@@ -2710,18 +2749,18 @@ function sinsal00(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e:
 			sinsal_tlist += sinsaltxt + " ";
 			apnd1("css_a", "spcs ", sinsaltxt, d);    
 			$(d).append("________ " + a + "___ " + b + "________ " + f + "</br>");
-			apnd2(csno, "txca", sinsaltxt, d); 
+			apnd2(csno, "txca", sinsaltxt, d, g, h, a, b); 
 			document.getElementById(e).innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
 	});
 };
 
-//======= 신살 체크02 ======= 
-function sinsal02(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e: destin2
+//======= 신살 체크02 ======= (태극귀인)
+function sinsal02(a,b,c,f,d,e,g,h){ //=== a: base, b: target, c: list, f: classcode, d: destin, e: destin2, g: base, h: target
 	return new Promise(function (resolve, reject){
 		//========== 배열 영역 (frames) ======================
-		var sslist = $.map(c, function(element, index) {
+		let sslist = $.map(c, function(element, index) {
 			if (element[13] == f) {
 				return [element]
 			};
@@ -2733,7 +2772,7 @@ function sinsal02(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e:
 			sinsal_tlist += sinsaltxt + " ";
 			apnd1("css_a", "spcs ", sinsaltxt, d);    
 			$(d).append("________ " + a + "___ " + b + "________ " + f + "</br>");
-			apnd2(csno, "txca", sinsaltxt, d); 
+			apnd2(csno, "txca", sinsaltxt, d, g, h, a, b); 
 			document.getElementById(e).innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
@@ -2741,106 +2780,105 @@ function sinsal02(a,b,c,f,d,e){ //=== a: base, b: target, c: list, d: destin, e:
 };
 
 //-----------------------------------
-function apnd1(a, b, c, d){  //--- a: prefix, b: span_class, c: sinsaltxt, d: destin
-	csno = a + cssn;
+function apnd1(css, cla, sin, d){  //--- css: prefix, cla: span_class, sin: sinsaltxt, d: destin
+	csno = css + cssn;
 	$(d).append("■ ");
 	$(d).append(
 		$('<span>').prop({
-			className: b + csno,
-			innerHTML: c
+			className: cla + csno,
+			innerHTML: sin
 		})
 	);
 };
 
 //-----------------------------------
-function apnd2(a, b, c, d){  //--- a: csno, b: div_class, c: sinsaltxt, d: destin
+function apnd2(idn, clb, sin, d, g, h, a, b){  //--- idn: csno, clb: div_class, sin: sinsaltxt, d: destin, g: base, h: target
 	$(d).append(
 		$('<div>').prop({
-			id: a,
+			id: idn,
 			innerHTML: 'description.....',
-			className: b
+			className: clb
 		})
 	);
-	sinsal_out(a, c);
+	sinsal_out(idn, sin, g, h, a, b);
 	$(d).append("--------------------------------------------------------------</br>");
 	cssn += 1;
 };
-
 
 //======= 신살 조회 =======
 async function sinsal(){
 	$('#outputa').empty();
 	$('#outputa').append("■■  (원국) 신살 _____ </br></br>"); sinsal_tlist = ""; cssn = 1; 
-	await sinsal02(sj_dg,sj_yj,sinsal_list1,"da00_dg_ydj","#outputa","ssal1"); //--- 신살 체크0
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da01_dg_dtj","#outputa","ssal3"); //--- 신살 체크1
-	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da01_dg_dtj","#outputa","ssal4");}; //--- 신살 체크1
-	await sinsal00(sj_dg,sj_yj,sinsal_list1,"da02_dg_jj","#outputa","ssal1"); //--- 신살 체크2
-	await sinsal00(sj_dg,sj_mj,sinsal_list1,"da02_dg_jj","#outputa","ssal2"); //--- 신살 체크2
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da02_dg_jj","#outputa","ssal3"); //--- 신살 체크2
-	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da02_dg_jj","#outputa","ssal4");}; //--- 신살 체크2
-	await sinsal00(sj_dg,sj_yj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputa","ssal1"); //--- 신살 체크3
-	await sinsal00(sj_dg,sj_mj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputa","ssal2"); //--- 신살 체크3
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputa","ssal3"); //--- 신살 체크3
-	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputa","ssal4");}; //--- 신살 체크3
-	await sinsal00(sj_dg,sj_mj,sinsal_list1,"da04_dg_mdtj","#outputa","ssal2"); //--- 신살 체크4
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da04_dg_mdtj","#outputa","ssal3"); //--- 신살 체크4
-	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da04_dg_mdtj","#outputa","ssal4");}; //--- 신살 체크4
-	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da05_dg_tj-dg_hj","#outputa","ssal4");}; //--- 신살 체크5
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da06_gj_dgj","#outputa","ssal3"); //--- 신살 체크6
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputa","ssal3"); //--- 신살 체크7
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da08_gj_dgj-hgj","#outputa","ssal3"); //--- 신살 체크8
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da09_gj_dgj-ymtgj","#outputa","ssal3"); //--- 신살 체크9
+	await sinsal02(sj_dg,sj_yj,sinsal_list1,"da00_dg_ydj","#outputa","ssal1",3,2); //--- 신살 체크0
+	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da01_dg_dtj","#outputa","ssal3",3,4); //--- 신살 체크1
+	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da01_dg_dtj","#outputa","ssal4",3,5);}; //--- 신살 체크1
+	await sinsal00(sj_dg,sj_yj,sinsal_list1,"da02_dg_jj","#outputa","ssal1",3,2); //--- 신살 체크2
+	await sinsal00(sj_dg,sj_mj,sinsal_list1,"da02_dg_jj","#outputa","ssal2",3,3); //--- 신살 체크2
+	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da02_dg_jj","#outputa","ssal3",3,4); //--- 신살 체크2
+	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da02_dg_jj","#outputa","ssal4",3,5);}; //--- 신살 체크2
+	await sinsal00(sj_dg,sj_yj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputa","ssal1",3,2); //--- 신살 체크3
+	await sinsal00(sj_dg,sj_mj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputa","ssal2",3,3); //--- 신살 체크3
+	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputa","ssal3",3,4); //--- 신살 체크3
+	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da03_dg_jj-dg_hlyj","#outputa","ssal4",3,5);}; //--- 신살 체크3
+	await sinsal00(sj_dg,sj_mj,sinsal_list1,"da04_dg_mdtj","#outputa","ssal2",3,3); //--- 신살 체크4
+	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da04_dg_mdtj","#outputa","ssal3",3,4); //--- 신살 체크4
+	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da04_dg_mdtj","#outputa","ssal4",3,5);}; //--- 신살 체크4
+	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da05_dg_tj-dg_hj","#outputa","ssal4",3,5);}; //--- 신살 체크5
+	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da06_gj_dgj","#outputa","ssal3",3,4); //--- 신살 체크6
+	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputa","ssal3",3,4); //--- 신살 체크7
+	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da08_gj_dgj-hgj","#outputa","ssal3",3,4); //--- 신살 체크8
+	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da09_gj_dgj-ymtgj","#outputa","ssal3",3,4); //--- 신살 체크9
 	if (sinsaltxt != ""){
-		await sinsal00(sj_yg,sj_yj,sinsal_list1,"da09_gj_dgj-ymtgj","#outputa","ssal1"); //--- 신살 체크9
-		await sinsal00(sj_mg,sj_mj,sinsal_list1,"da09_gj_dgj-ymtgj","#outputa","ssal2"); //--- 신살 체크9
-		if (sjtx != "x"){await sinsal00(sj_tg,sj_tj,sinsal_list1,"da09_gj_dgj-ymtgj","#outputa","ssal4");}; //--- 신살 체크9
+		await sinsal00(sj_yg,sj_yj,sinsal_list1,"da09_gj_dgj-ymtgj","#outputa","ssal1",1,2); //--- 신살 체크9
+		await sinsal00(sj_mg,sj_mj,sinsal_list1,"da09_gj_dgj-ymtgj","#outputa","ssal2",2,3); //--- 신살 체크9
+		if (sjtx != "x"){await sinsal00(sj_tg,sj_tj,sinsal_list1,"da09_gj_dgj-ymtgj","#outputa","ssal4",4,5);}; //--- 신살 체크9
 	};
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da10_gj_dtgj","#outputa","ssal3"); //--- 신살 체크10
-	if (sjtx != "x"){await sinsal00(sj_tg,sj_tj,sinsal_list1,"da10_gj_dtgj","#outputa","ssal4");}; //--- 신살 체크10
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da11_gj_gj","#outputa","ssal3"); //--- 신살 체크11
-	await sinsal00(sj_yg,sj_yj,sinsal_list1,"da11_gj_gj","#outputa","ssal1"); //--- 신살 체크11
-	await sinsal00(sj_mg,sj_mj,sinsal_list1,"da11_gj_gj","#outputa","ssal2"); //--- 신살 체크11
-	if (sjtx != "x"){await sinsal00(sj_tg,sj_tj,sinsal_list1,"da11_gj_gj","#outputa","ssal4");}; //--- 신살 체크11
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da12_gj_gj-hgj","#outputa","ssal3"); //--- 신살 체크12
-	await sinsal00(sj_yg,sj_yj,sinsal_list1,"da12_gj_gj-hgj","#outputa","ssal1"); //--- 신살 체크12
-	await sinsal00(sj_mg,sj_mj,sinsal_list1,"da12_gj_gj-hgj","#outputa","ssal2"); //--- 신살 체크12
-	if (sjtx != "x"){await sinsal00(sj_tg,sj_tj,sinsal_list1,"da12_gj_gj-hgj","#outputa","ssal4");}; //--- 신살 체크12
+	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da10_gj_dtgj","#outputa","ssal3",3,4); //--- 신살 체크10
+	if (sjtx != "x"){await sinsal00(sj_tg,sj_tj,sinsal_list1,"da10_gj_dtgj","#outputa","ssal4",4,5);}; //--- 신살 체크10
+	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da11_gj_gj","#outputa","ssal3",3,4); //--- 신살 체크11
+	await sinsal00(sj_yg,sj_yj,sinsal_list1,"da11_gj_gj","#outputa","ssal1",1,2); //--- 신살 체크11
+	await sinsal00(sj_mg,sj_mj,sinsal_list1,"da11_gj_gj","#outputa","ssal2",2,3); //--- 신살 체크11
+	if (sjtx != "x"){await sinsal00(sj_tg,sj_tj,sinsal_list1,"da11_gj_gj","#outputa","ssal4",4,5);}; //--- 신살 체크11
+	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da12_gj_gj-hgj","#outputa","ssal3",3,4); //--- 신살 체크12
+	await sinsal00(sj_yg,sj_yj,sinsal_list1,"da12_gj_gj-hgj","#outputa","ssal1",1,2); //--- 신살 체크12
+	await sinsal00(sj_mg,sj_mj,sinsal_list1,"da12_gj_gj-hgj","#outputa","ssal2",2,3); //--- 신살 체크12
+	if (sjtx != "x"){await sinsal00(sj_tg,sj_tj,sinsal_list1,"da12_gj_gj-hgj","#outputa","ssal4",4,5);}; //--- 신살 체크12
 	//------------------------------
-	await sinsal00(sj_dj,sj_yj,sinsal_list1,"db01_dj_jj-dj_hj","#outputa","ssal1"); //--- 신살 체크1
-	await sinsal00(sj_dj,sj_mj,sinsal_list1,"db01_dj_jj-dj_hj","#outputa","ssal2"); //--- 신살 체크1
-	await sinsal00(sj_dj,sj_dj,sinsal_list1,"db01_dj_jj-dj_hj","#outputa","ssal3"); //--- 신살 체크1
-	if (sjtx != "x"){await sinsal00(sj_dj,sj_tj,sinsal_list1,"db01_dj_jj-dj_hj","#outputa","ssal4");}; //--- 신살 체크1
-	await sinsal00(sj_dj,sj_mj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputa","ssal2"); //--- 신살 체크2
-	if (sjtx != "x"){await sinsal00(sj_dj,sj_tj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputa","ssal4");}; //--- 신살 체크2
-	await sinsal00(sj_dj,sj_yj,sinsal_list1,"db03_dj_ymtj","#outputa","ssal1"); //--- 신살 체크3
-	await sinsal00(sj_dj,sj_mj,sinsal_list1,"db03_dj_ymtj","#outputa","ssal2"); //--- 신살 체크3
-	if (sjtx != "x"){await sinsal00(sj_dj,sj_tj,sinsal_list1,"db03_dj_ymtj","#outputa","ssal4");}; //--- 신살 체크3
-	await sinsal00(sj_dj,sj_yj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputa","ssal1"); //--- 신살 체크4
-	await sinsal00(sj_dj,sj_mj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputa","ssal2"); //--- 신살 체크4
-	if (sjtx != "x"){await sinsal00(sj_dj,sj_tj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputa","ssal4");}; //--- 신살 체크4
-	await sinsal00(sj_dj,sj_yj,sinsal_list1,"db05_dj_ymtj-dj_hyj","#outputa","ssal1"); //--- 신살 체크5
-	await sinsal00(sj_dj,sj_mj,sinsal_list1,"db05_dj_ymtj-dj_hyj","#outputa","ssal2"); //--- 신살 체크5
-	if (sjtx != "x"){await sinsal00(sj_dj,sj_tj,sinsal_list1,"db05_dj_ymtj-dj_hyj","#outputa","ssal4");}; //--- 신살 체크5
-	await sinsal00(sj_mj,sj_dj,sinsal_list1,"db06_mj_dtj","#outputa","ssal3"); //--- 신살 체크6
-	if (sjtx != "x"){await sinsal00(sj_mj,sj_tj,sinsal_list1,"db06_mj_dtj","#outputa","ssal4");}; //--- 신살 체크6
-	await sinsal00(sj_mj,sj_yj,sinsal_list1,"db07_mj_ydtj","#outputa","ssal1"); //--- 신살 체크7
-	await sinsal00(sj_mj,sj_dj,sinsal_list1,"db07_mj_ydtj","#outputa","ssal3"); //--- 신살 체크7
-	if (sjtx != "x"){await sinsal00(sj_mj,sj_tj,sinsal_list1,"db07_mj_ydtj","#outputa","ssal4");}; //--- 신살 체크7
-	await sinsal00(sj_mj,sj_yj,sinsal_list1,"db08_mj_ydtj-mj_hyj","#outputa","ssal1"); //--- 신살 체크8
-	await sinsal00(sj_mj,sj_dj,sinsal_list1,"db08_mj_ydtj-mj_hyj","#outputa","ssal3"); //--- 신살 체크8
-	if (sjtx != "x"){await sinsal00(sj_mj,sj_tj,sinsal_list1,"db08_mj_ydtj-mj_hyj","#outputa","ssal4");}; //--- 신살 체크8
+	await sinsal00(sj_dj,sj_yj,sinsal_list1,"db01_dj_jj-dj_hj","#outputa","ssal1",7,2); //--- 신살 체크1
+	await sinsal00(sj_dj,sj_mj,sinsal_list1,"db01_dj_jj-dj_hj","#outputa","ssal2",7,3); //--- 신살 체크1
+	await sinsal00(sj_dj,sj_dj,sinsal_list1,"db01_dj_jj-dj_hj","#outputa","ssal3",7,4); //--- 신살 체크1
+	if (sjtx != "x"){await sinsal00(sj_dj,sj_tj,sinsal_list1,"db01_dj_jj-dj_hj","#outputa","ssal4",7,5);}; //--- 신살 체크1
+	await sinsal00(sj_dj,sj_mj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputa","ssal2",7,3); //--- 신살 체크2
+	if (sjtx != "x"){await sinsal00(sj_dj,sj_tj,sinsal_list1,"db02_dj_mtj-dj_hj","#outputa","ssal4",7,5);}; //--- 신살 체크2
+	await sinsal00(sj_dj,sj_yj,sinsal_list1,"db03_dj_ymtj","#outputa","ssal1",7,2); //--- 신살 체크3
+	await sinsal00(sj_dj,sj_mj,sinsal_list1,"db03_dj_ymtj","#outputa","ssal2",7,3); //--- 신살 체크3
+	if (sjtx != "x"){await sinsal00(sj_dj,sj_tj,sinsal_list1,"db03_dj_ymtj","#outputa","ssal4",7,5);}; //--- 신살 체크3
+	await sinsal00(sj_dj,sj_yj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputa","ssal1",7,2); //--- 신살 체크4
+	await sinsal00(sj_dj,sj_mj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputa","ssal2",7,3); //--- 신살 체크4
+	if (sjtx != "x"){await sinsal00(sj_dj,sj_tj,sinsal_list1,"db04_dj_ymtj-dj_hj","#outputa","ssal4",7,5);}; //--- 신살 체크4
+	await sinsal00(sj_dj,sj_yj,sinsal_list1,"db05_dj_ymtj-dj_hyj","#outputa","ssal1",7,2); //--- 신살 체크5
+	await sinsal00(sj_dj,sj_mj,sinsal_list1,"db05_dj_ymtj-dj_hyj","#outputa","ssal2",7,3); //--- 신살 체크5
+	if (sjtx != "x"){await sinsal00(sj_dj,sj_tj,sinsal_list1,"db05_dj_ymtj-dj_hyj","#outputa","ssal4",7,5);}; //--- 신살 체크5
+	await sinsal00(sj_mj,sj_dj,sinsal_list1,"db06_mj_dtj","#outputa","ssal3",6,4); //--- 신살 체크6
+	if (sjtx != "x"){await sinsal00(sj_mj,sj_tj,sinsal_list1,"db06_mj_dtj","#outputa","ssal4",6,5);}; //--- 신살 체크6
+	await sinsal00(sj_mj,sj_yj,sinsal_list1,"db07_mj_ydtj","#outputa","ssal1",6,2); //--- 신살 체크7
+	await sinsal00(sj_mj,sj_dj,sinsal_list1,"db07_mj_ydtj","#outputa","ssal3",6,4); //--- 신살 체크7
+	if (sjtx != "x"){await sinsal00(sj_mj,sj_tj,sinsal_list1,"db07_mj_ydtj","#outputa","ssal4",6,5);}; //--- 신살 체크7
+	await sinsal00(sj_mj,sj_yj,sinsal_list1,"db08_mj_ydtj-mj_hyj","#outputa","ssal1",6,2); //--- 신살 체크8
+	await sinsal00(sj_mj,sj_dj,sinsal_list1,"db08_mj_ydtj-mj_hyj","#outputa","ssal3",6,4); //--- 신살 체크8
+	if (sjtx != "x"){await sinsal00(sj_mj,sj_tj,sinsal_list1,"db08_mj_ydtj-mj_hyj","#outputa","ssal4",6,5);}; //--- 신살 체크8
 	//------------------------------
-	await sinsal00(sj_mj,sj_yg,sinsal_list2,"dc01_mj_gg","#outputa","ssal1"); //--- 신살 체크1
-	await sinsal00(sj_mj,sj_mg,sinsal_list2,"dc01_mj_gg","#outputa","ssal2"); //--- 신살 체크1
-	await sinsal00(sj_mj,sj_dg,sinsal_list2,"dc01_mj_gg","#outputa","ssal3"); //--- 신살 체크1
-	if (sjtx != "x"){await sinsal00(sj_mj,sj_tg,sinsal_list2,"dc01_mj_gg","#outputa","ssal4");}; //--- 신살 체크1
-	await hyuncm();
-	await pngdu();
-	await chnrjm();
-	await chsagm();
-	await chmnsg();
-	await bogeum();
-	await baneum();
+	await sinsal00(sj_mj,sj_yg,sinsal_list2,"dc01_mj_gg","#outputa","ssal1",1,3); //--- 신살 체크1
+	await sinsal00(sj_mj,sj_mg,sinsal_list2,"dc01_mj_gg","#outputa","ssal2",2,2); //--- 신살 체크1
+	await sinsal00(sj_mj,sj_dg,sinsal_list2,"dc01_mj_gg","#outputa","ssal3",4,2); //--- 신살 체크1
+	if (sjtx != "x"){await sinsal00(sj_mj,sj_tg,sinsal_list2,"dc01_mj_gg","#outputa","ssal4",4,3);}; //--- 신살 체크1
+	await hyuncm(1,10); //--- 현침
+	await pngdu(2,10); //--- 평두
+	await chnrjm(3,10); //--- 천라지망
+	await chsagm(4,10); //--- 철쇄개금
+	await chmnsg(5,10); //--- 천문성
+	await bogeum(6,10); //--- 복음
+	await baneum(7,10); //--- 반음
 	$('#outputa').on("click", "span", function(){ 
 		disp("#"+$(this).attr("class").substr(5),"",""); 
 	}); 
@@ -2848,7 +2886,7 @@ async function sinsal(){
 
 //======== 평두 (신살) 체크 =========
 let cntpd = 0; let cntpda = 0;
-function pngdu(){
+function pngdu(g, h){
 	return new Promise(function (resolve, reject){
 		resul = []; cntpd = 0; 
 		resul = sj_ganji.match(/甲/g); if(resul != null) {cntpd += resul.length;};
@@ -2860,17 +2898,18 @@ function pngdu(){
 		if (cntpd==3){cntpda = cntpd;};
 		if (cntpd>3){
 			sinsaltxt = "평두"; 
+			sinsal_tlist += sinsaltxt + " ";
 			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
 			$("#outputa").append("________ 甲丙丁壬 子辰 ________ </br>");
-			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
-			document.getElementById("ssal0").innerText += "평두\n";  //----- 화면 신살란 기록
+			apnd2(csno, "txca", sinsaltxt, "#outputa", g, h); 
+			document.getElementById("ssal0").innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
 	});
 };
 
 //======== 평두 (신살) 행운체크 =========
-function pngduh(){
+function pngduh(g, h){
 	return new Promise(function (resolve, reject){
 		cntpd = 0;
 		if (cntpda==3){
@@ -2884,17 +2923,18 @@ function pngduh(){
 		};
 		if (cntpd>3){
 			sinsaltxt1 = "평두"; 
+			sinsalh_tlist += sinsaltxt1 + " ";
 			apnd01("css_c", "spct ", sinsaltxt1, "#outputb");    
 			$("#outputb").append("________ 甲丙丁壬 子辰 ________ </br>");
-			apnd02(csno1, "txcc", sinsaltxt1, "#outputb"); 
-			document.getElementById("ssalb").innerText += "평두\n";  //----- 화면 신살란 기록
+			apnd02(csno1, "txcc", sinsaltxt1, "#outputb", g, h); 
+			document.getElementById("ssalb").innerText += sinsaltxt1 + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
 	});
 };	
 
 //======== 현침 (신살) 체크 =========
-function hyuncm(){
+function hyuncm(g, h){
 	return new Promise(function (resolve, reject){
 		resul = []; cntpd = 0; 
 		resul = sj_ganji.match(/甲/g); if(resul != null) {cntpd += resul.length;};
@@ -2905,17 +2945,18 @@ function hyuncm(){
 		resul = sj_ganji.match(/申/g); if(resul != null) {cntpd += resul.length;};
 		if (cntpd>1){
 			sinsaltxt = "현침"; 
+			sinsal_tlist += sinsaltxt + " ";
 			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
 			$("#outputa").append("________ 甲辛 卯午未申 ________ </br>");
-			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
-			document.getElementById("ssal0").innerText += "현침\n";  //----- 화면 신살란 기록
+			apnd2(csno, "txca", sinsaltxt, "#outputa", g, h); 
+			document.getElementById("ssal0").innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
 	});
 };
 
 //======== 천라지망 (신살) 체크 =========
-function chnrjm(){
+function chnrjm(g, h){
 	return new Promise(function (resolve, reject){
 		resul = []; cntpd = 0; 
 		if ("戌亥辰巳".includes(sj_dj)){	
@@ -2926,17 +2967,18 @@ function chnrjm(){
 		};
 		if (cntpd>1){
 			sinsaltxt = "천라지망"; 
+			sinsal_tlist += sinsaltxt + " ";
 			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
 			$("#outputa").append("________ 戌亥辰巳 ________ </br>");
-			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
-			document.getElementById("ssal0").innerText += "천라지망\n";  //----- 화면 신살란 기록
+			apnd2(csno, "txca", sinsaltxt, "#outputa", g, h); 
+			document.getElementById("ssal0").innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
 	});
 };
 
 //======== 천라지망 (신살) 행운체크 =========
-function chnrjmh(){
+function chnrjmh(g, h){
 	return new Promise(function (resolve, reject){
 		resul = []; cntpd = 0; 
 		if ("戌亥辰巳".includes(sj_dj)){	
@@ -2946,18 +2988,19 @@ function chnrjmh(){
 			resul = hn_ganji.match(/巳/g); if(resul != null) {cntpd += resul.length;};
 		}
 		if (cntpd>0){
-			sinsaltxt = "천라지망"; 
-			apnd01("css_c", "spct ", sinsaltxt, "#outputb");    
+			sinsaltxt1 = "천라지망"; 
+			sinsalh_tlist += sinsaltxt1 + " ";
+			apnd01("css_c", "spct ", sinsaltxt1, "#outputb");    
 			$("#outputb").append("________ 戌亥辰巳 ________ </br>");
-			apnd02(csno1, "txcc", sinsaltxt, "#outputb"); 
-			document.getElementById("ssalb").innerText += "천라지망\n";  //----- 화면 신살란 기록
+			apnd02(csno1, "txcc", sinsaltxt1, "#outputb", g, h); 
+			document.getElementById("ssalb").innerText += sinsaltxt1 + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
 	});
 };
 
 //======== 철쇄개금 (신살) 체크 =========
-function chsagm(){
+function chsagm(g, h){
 	return new Promise(function (resolve, reject){
 		resul = []; cntpd = 0; 
 		if ("卯酉戌".includes(sj_dj)){	
@@ -2967,17 +3010,18 @@ function chsagm(){
 		};
 		if (cntpd>1){
 			sinsaltxt = "철쇄개금"; 
+			sinsal_tlist += sinsaltxt + " ";
 			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
 			$("#outputa").append("________ 卯酉戌 ________ </br>");
-			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
-			document.getElementById("ssal0").innerText += "철쇄개금\n";  //----- 화면 신살란 기록
+			apnd2(csno, "txca", sinsaltxt, "#outputa", g, h); 
+			document.getElementById("ssal0").innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
 	});
 };
 
 //======== 천문성(天門星) (신살) 체크 =========
-function chmnsg(){
+function chmnsg(g, h){
 	return new Promise(function (resolve, reject){
 		resul = []; cntpd = 0; 
 		resul = sj_ji.match(/未/g); if(resul != null) {cntpd += resul.length;};
@@ -2988,77 +3032,81 @@ function chmnsg(){
 		resul = sj_ji.match(/酉/g); if(resul != null) {cntpd += resul.length;};
 		if (cntpd>1 || sj_ji.includes("亥")){
 			sinsaltxt = "천문성"; 
+			sinsal_tlist += sinsaltxt + " ";
 			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
 			$("#outputa").append("________ 未戌卯亥寅酉 ________ </br>");
-			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
-			document.getElementById("ssal0").innerText += "천문성\n";  //----- 화면 신살란 기록
+			apnd2(csno, "txca", sinsaltxt, "#outputa", g, h); 
+			document.getElementById("ssal0").innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
 	});
 };
 
 //======== 복음 (신살) 체크 =========
-function bogeum(){
+function bogeum(g, h){
 	return new Promise(function (resolve, reject){
 		sj_ymtgj = sj_ganji.substr(0,4) + sj_ganji.substr(6)
 		if (sj_ymtgj.includes(sj_dg+sj_dj)){
 			sinsaltxt = "복음"; 
+			sinsal_tlist += sinsaltxt + " ";
 			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
 			$("#outputa").append("________ 일주간지 원국중첩 ________ </br>");
-			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
-			document.getElementById("ssal0").innerText += "복음\n";  //----- 화면 신살란 기록
+			apnd2(csno, "txca", sinsaltxt, "#outputa", g, h); 
+			document.getElementById("ssal0").innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
 	});
 };
 
 //======== 복음 (신살) 행운체크 =========
-function bogeumh(){
+function bogeumh(g, h){
 	return new Promise(function (resolve, reject){
 		if (hn_ganji.includes(sj_dg+sj_dj)){
-			sinsaltxt = "복음"; dest = "";
-			apnd01("css_c", "spct ", sinsaltxt, "#outputb");    
+			sinsaltxt1 = "복음"; dest = "";
+			sinsalh_tlist += sinsaltxt1 + " ";
+			apnd01("css_c", "spct ", sinsaltxt1, "#outputb");    
 			$("#outputb").append("________ 일주간지 행운중첩 ________ </br>");
-			apnd02(csno1, "txcc", sinsaltxt, "#outputb"); 
+			apnd02(csno1, "txcc", sinsaltxt1, "#outputb", g, h); 
 			if (hn_lg+hn_lj == sj_dg+sj_dj){dest="hunL3"}; if (hn_yg+hn_yj == sj_dg+sj_dj){dest="hunY3"}; 
 			if (hn_mg+hn_mj == sj_dg+sj_dj){dest="hunM3"}; if (hn_dg+hn_dj == sj_dg+sj_dj){dest="hunD3"}; 
-			document.getElementById(dest).innerText += "복음\n";  //----- 화면 신살란 기록
+			document.getElementById(dest).innerText += sinsaltxt1 + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
 	});
 };
 
 //======== 반음(천충지충) (신살) 체크 =========
-function baneum(){
+function baneum(g, h){
 	return new Promise(function (resolve, reject){
 		if ((ganhc_nfo[2][4].includes("충") && jjhc_nfo[2][4].includes("충")) || (ganhc_nfo[4][5].includes("충") && jjhc_nfo[4][3].includes("충"))){
 			sinsaltxt = "반음"; 
+			sinsal_tlist += sinsaltxt + " ";
 			apnd1("css_a", "spcs ", sinsaltxt, "#outputa");    
 			$("#outputa").append("________ 일주 원국 천충지충 ________ </br>");
-			apnd2(csno, "txca", sinsaltxt, "#outputa"); 
-			document.getElementById("ssal0").innerText += "반음\n";  //----- 화면 신살란 기록
+			apnd2(csno, "txca", sinsaltxt, "#outputa", g, h); 
+			document.getElementById("ssal0").innerText += sinsaltxt + "\n";  //----- 화면 신살란 기록
 		};
 		resolve();
 	});
 };
 
 //======== 반음(천충지충) (신살) 행운체크 =========
-function baneumh(){
+function baneumh(g, h){
 	return new Promise(function (resolve, reject){
 		for (m=6; m<10; m++){
 			if (ganhc_nfo[3][m].includes("충") && jjhc_nfo[3][m].includes("충")){
-				sinsaltxt = "반음"; dest = "";
-				apnd01("css_c", "spct ", sinsaltxt, "#outputb");    
+				sinsaltxt1 = "반음"; dest = "";
+				sinsalh_tlist += sinsaltxt1 + " ";
+				apnd01("css_c", "spct ", sinsaltxt1, "#outputb");    
 				$("#outputb").append("________ 일주 행운 천충지충 ________ </br>");
-				apnd02(csno1, "txcc", sinsaltxt, "#outputb"); 
+				apnd02(csno1, "txcc", sinsaltxt1, "#outputb", g, h); 
 				if (m==6){dest="hunL3"}; if (m==7){dest="hunY3"}; if (m==8){dest="hunM3"}; if (m==9){dest="hunD3"}; 
-				document.getElementById(dest).innerText += "반음\n";  //----- 화면 신살란 기록
+				document.getElementById(dest).innerText += sinsaltxt1 + "\n";  //----- 화면 신살란 기록
 			};
 		};
 		resolve();
 	});
 };
-
 
 </script>
 
