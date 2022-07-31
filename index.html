@@ -762,7 +762,7 @@ function saju_chk(){
 //========= 같은사주의 날자가 2개 이상인 경우 하나를 선택 =========
 $(function(){
 	$('#sel_dt').change(function(){
-		symdt = $("#sel_dt option:selected").val(); // 선택된 날자를 출력한다.  
+		symdt = $("#sel_dt option:selected").val(); // 선택된 날자를 출력한다.  
 		$('#sjtm').val(symdt.substr(2,2) + symdt.substr(5,2) + symdt.substr(8,2));
 		$('#tm').val(symdt.substr(11,5));
 		sjmain();
@@ -901,7 +901,7 @@ function suspend(destin){
 function hwunghwa(a,b,destin){
 	document.getElementById(destin).innerText += "■ " + rslt0 + " " + txt + " " + rslt + " \n";  //--- 합충-해흉화 (8)
 	subj = rslt.substr(0,2); temp = spec_djhae.filter(isFind); 
-	document.getElementById(destin).innerText += "◐ " + sz + temp[0][1] + "\n"; 
+	document.getElementById(destin).innerText += "◐ " + sz + temp[0][1] + "\n";
 	document.getElementById(destin).innerText += "--------------------------------------------------------------\n";
 };
 
@@ -2224,108 +2224,6 @@ function hangun(){
 	sinsalhn();
 };
 
-//■■■■■■■■■■■■■■■■■■■■■■■■
-//======= 행운 년/월/일 변경시 ======
-$("#hunDate").change(function(){
-	hangun();
-});
-
-//======= 행운 계산 검토 함수 ======
-function hangun(){	
-	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = ""; ageL = 0; ageY = 0; rslt0 = ""; hnj = "";
-	$('.hun1').empty(); $('.hun2').empty(); $('.hun3').empty();
-	$('#output3').empty(); $('#outputb').empty(); $('#ssalb').empty();
-	$('#output4').empty(); $('#output5').empty();
-	hunD = document.getElementById('hunDate').value;  //--- 행운 일자
-	hunD = hunD + " 04:30"; vwyr = Number(hunD.substr(0,4));
-	//----- 대운
-	for (i=1; i<15; i++){
-		if (vwyr-birth1.getFullYear()+1 >= age+(i-1)*10 && vwyr-birth1.getFullYear()+1 < age+i*10){
-			hn_lg = hun_list[i][1]; hn_lj = hun_list[i][5]; ageL = age + (i - 1) * 10;
-			document.getElementById("hunL2").innerText += "(" + ageL + ")\n";
-			document.getElementById("hunL1").innerText += hn_lg + "\n";
-			document.getElementById("hunL2").innerText += hun_list[i][3] + " " + hun_list[i][2] + "\n";
-			document.getElementById("hunL1").innerText += hn_lj + "\n";
-			document.getElementById("hunL2").innerText += "\n" + hun_list[i][7] + " " + hun_list[i][6] + " " + hun_list[i][8] + " \n";
-		};
-	};
-	if (hunD >= ca08_monthstart[1][5] && hunD < ca08_monthstart[ca08_monthstart.length-1][5]){	
-		convrtsj(hunD); hunD1 = rqD1;
-		subj = tsj1; temp = gan.filter(isFindj); hn_yg = temp[0][0]; hygoh = temp[0][4].substr(1,2);  //--- 한글 행운간지를 한자로 바꿈
-		subj = tsj2; temp = jiji.filter(isFindj); hn_yj = temp[0][0]; hyjoh = temp[0][4].substr(1,2);  //--- 한글 행운간지를 한자로 바꿈
-		subj = tsj3; temp = gan.filter(isFindj); hn_mg = temp[0][0]; hmgoh = temp[0][4].substr(1,2);  //--- 한글 행운간지를 한자로 바꿈
-		subj = tsj4; temp = jiji.filter(isFindj); hn_mj = temp[0][0]; hmjoh = temp[0][4].substr(1,2);  //--- 한글 행운간지를 한자로 바꿈
-		subj = tsj5; temp = gan.filter(isFindj); hn_dg = temp[0][0]; hdgoh = temp[0][4].substr(1,2);  //--- 한글 행운간지를 한자로 바꿈
-		subj = tsj6; temp = jiji.filter(isFindj); hn_dj = temp[0][0]; hdjoh = temp[0][4].substr(1,2);  //--- 한글 행운간지를 한자로 바꿈
-		subj = tsj7; temp = gan.filter(isFindj); hn_tg = temp[0][0]; htgoh = temp[0][4].substr(1,2);  //--- 한글 행운간지를 한자로 바꿈
-		subj = tsj8; temp = jiji.filter(isFindj); hn_tj = temp[0][0]; htjoh = temp[0][4].substr(1,2);  //--- 한글 행운간지를 한자로 바꿈
-	}else{
-		hyr = (vwyr - 1864) % 60; idx = hyr % 10 + 1; hn_yg = gan[idx][0]; hygoh = gan[idx][4].substr(1,2); idx = hyr % 12 + 1; hn_yj = jiji[idx][0]; hyjoh = jiji[idx][4].substr(1,2);
-		hmo = (hyr % 5) * 12 + Number(hunD.substr(5,2)); idx = hmo % 10 + 1; hn_mg = gan[idx][0]; hmgoh = gan[idx][4].substr(1,2); idx = hmo % 12 + 1; hn_mj = jiji[idx][0]; hmjoh = jiji[idx][4].substr(1,2);
-		hda = Math.ceil((new Date(hunD).getTime() - new Date('1908-01-10').getTime()) / 86400000) % 60; idx = hda % 10 + 1; hn_dg = gan[idx][0]; hdgoh = gan[idx][4].substr(1,2); idx = hda % 12 + 1; hn_dj = jiji[idx][0]; hdjoh = jiji[idx][4].substr(1,2);
-	};
-	hgj_nfo[1][1] = hn_lg; hgj_nfo[1][5] = hn_lj; hgj_nfo[2][1] = hn_yg; hgj_nfo[2][5] = hn_yj; hgj_nfo[3][1] = hn_mg; hgj_nfo[3][5] = hn_mj; hgj_nfo[4][1] = hn_dg; hgj_nfo[4][5] = hn_dj; 
-	mktable(1,hn_lg,hn_lj,hgj_nfo);  //--- 행운 테이블(hgj_nfo) 생성
-	mktable(2,hn_yg,hn_yj,hgj_nfo);
-	mktable(3,hn_mg,hn_mj,hgj_nfo);
-	mktable(4,hn_dg,hn_dj,hgj_nfo);
-//	mktable(5,hn_tg,hn_tj,hgj_nfo);
-	hn_ganji = hn_lg + hn_lj + hn_yg + hn_yj + hn_mg + hn_mj + hn_dg + hn_dj;
-
-	if (ganhc_nfo[1][3].substr(2,1) != "합" && ganhc_nfo[1][3].substr(2,1) != "충"){habchk2(1);};  //--- 원국에 연간합충이 없으면 행운 check (천간합 흉화)
-	if (	(ganhc_nfo[2][3].substr(2,1) != "합" && ganhc_nfo[2][3].substr(2,1) != "충") ||	(ganhc_nfo[2][4].substr(2,1) == "합" || ganhc_nfo[2][4].substr(2,1) == "충")){habchk2(2);};   //--- 월간에 연간합충이 없거나 (천간합 흉화) 일간합충이 있으면 행운 check (일간 행운)
-	habchk2(3);  //--- 행운 check (일간 행운)
-	habchk2(4);  //--- 시간에 일간합충이 있거나 (일간 행운) 없으면 (천간합 흉화) 행운 check
-
-//---------------------------------------------------------------	
-	if (jjhc_nfo[1][2] != ""){
-		wongug_chk(sj_yj,hn_lj); jjhc_nfo[1][6] = rslt; wongug_chk(sj_yj,hn_yj); jjhc_nfo[1][7] = rslt; 
-		wongug_chk(sj_yj,hn_mj); jjhc_nfo[1][8] = rslt; wongug_chk(sj_yj,hn_dj); jjhc_nfo[1][9] = rslt;
-	};
-	if (jjhc_nfo[2][2] != ""){
-		wongug_chk(sj_mj,hn_lj); jjhc_nfo[2][6] = rslt; wongug_chk(sj_mj,hn_yj); jjhc_nfo[2][7] = rslt; 
-		wongug_chk(sj_mj,hn_mj); jjhc_nfo[2][8] = rslt; wongug_chk(sj_mj,hn_dj); jjhc_nfo[2][9] = rslt;
-	};
-	wongug_chk(sj_dj,hn_lj); jjhc_nfo[3][6] = rslt; wongug_chk(sj_dj,hn_yj); jjhc_nfo[3][7] = rslt; 
-	wongug_chk(sj_dj,hn_mj); jjhc_nfo[3][8] = rslt; wongug_chk(sj_dj,hn_dj); jjhc_nfo[3][9] = rslt;
-	if (jjhc_nfo[4][2] != ""){
-		wongug_chk(sj_tj,hn_lj); jjhc_nfo[4][6] = rslt; wongug_chk(sj_tj,hn_yj); jjhc_nfo[4][7] = rslt; 
-		wongug_chk(sj_tj,hn_mj); jjhc_nfo[4][8] = rslt; wongug_chk(sj_tj,hn_dj); jjhc_nfo[4][9] = rslt;
-	};
-//---------------------------------------------------------------
-	outptt();  //--- 참조용 테이블 화면출력 --- "output4" & "output5"
-	//----- 연운
-	ageY = vwyr - birth1.getFullYear() + 1;
-	document.getElementById("hunY2").innerText += vwyr + " (" + ageY + ")\n";
-	document.getElementById("hunY1").innerText += hn_yg + "\n";
-	document.getElementById("hunY2").innerText += hgj_nfo[2][3] + " " + hgj_nfo[2][2] + "\n";
-	document.getElementById("hunY1").innerText += hn_yj + "\n";
-	document.getElementById("hunY2").innerText += "\n" + hgj_nfo[2][7] + " " + hgj_nfo[2][6] + " " + hgj_nfo[2][8] + "\n";
-	//----- 월운
-	document.getElementById("hunM2").innerText += hunD.substr(0,7) + "\n";
-	document.getElementById("hunM1").innerText += hn_mg + "\n";
-	document.getElementById("hunM2").innerText += hgj_nfo[3][3] + " " + hgj_nfo[3][2] + "\n";
-	document.getElementById("hunM1").innerText += hn_mj + "\n";
-	document.getElementById("hunM2").innerText += "\n" + hgj_nfo[3][7] + " " + hgj_nfo[3][6] + " " + hgj_nfo[3][8] + "\n";
-	//----- 일운
-	document.getElementById("hunD2").innerText += hunD.substr(0,10) + "\n";
-	document.getElementById("hunD1").innerText += hn_dg + "\n";
-	document.getElementById("hunD2").innerText += hgj_nfo[4][3] + " " + hgj_nfo[4][2] + "\n";
-	document.getElementById("hunD1").innerText += hn_dj + "\n";
-	document.getElementById("hunD2").innerText += "\n" + hgj_nfo[4][7] + " " + hgj_nfo[4][6] + " " + hgj_nfo[4][8] + "\n";
-
-	document.getElementById("output3").innerText += "<<행운 운세분석>>..... \n";
-	hanal(1,hn_lg,hn_lj,hn_yg,hn_yj); document.getElementById("output3").innerText += vwyr + "(" + ageY + ") " + hv8 + "... 연운: (" + hn_yg + hn_yj + ") " + hv10 + "- " + hv9 + "\n"; hv10a = "연운: " + hv10;
-	hanal(2,hn_yg,hn_yj,hn_mg,hn_mj); document.getElementById("output3").innerText += hunD.substr(0,7) + "- " + hv8 + "... 월운: (" + hn_mg + hn_mj + ") " + hv10 + "- " + hv9 + "\n"; hv10b = "월운: " + hv10;
-	hanal(3,hn_mg,hn_mj,hn_dg,hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " " + hv8 + "... 일운: (" + hn_dg + hn_dj + ") " + hv10 + "- " + hv9 + "\n"; hv10c = "일운: " + hv10;
-	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
-
-	document.getElementById("output3").innerText += "<<행운결과>>..... \n";
-	ganhn();
-	jijihn();
-	sinsalhn();
-};
-
 //■■■■■■■■■■■■■■■■■■■■
 //======= 행운 신살 description =======
 let sinsaltxt1 = ""; let snsal1 = [];
@@ -3213,6 +3111,7 @@ function baneumh(g, h){
 		resolve();
 	});
 };
+
 
 let testg = ["卯戌","卯酉","卯辰","未寅","未子","巳戌","巳申","巳亥","戌未","戌酉","戌子","申卯","申亥","午卯","午未","午午","午亥","酉酉","酉子","寅巳","寅申","寅酉","寅亥","子卯","子午","子丑","辰戌","辰酉","辰辰","辰亥","丑未","丑戌","丑午","丑寅","丑辰","亥亥","寅巳申","丑戌未","甲庚","甲己","甲戊","己癸","戊癸","戊壬","丙庚","丙辛","丙壬","乙辛","乙庚","乙己","丁癸","丁辛","丁壬","甲午","癸巳","己亥","戊子","辛巳","壬午","丁亥"]
 
