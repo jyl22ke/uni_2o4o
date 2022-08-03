@@ -14,19 +14,17 @@
   <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
   <style type="text/css">
-
 	input, button{font-size: 0.8em; text-align:center; font-weight:bold;}
 	input:focus,#ctg:focus{outline: solid red;}
 	.dsp {width: 50px; margin: auto;}
 
 	*{margin:0;padding:0px;list-style:none;text-decoration:none;}
 	body{font-size:100%; display: flex; flex-wrap: wrap;}
-	.contain{display: flex; flex-direction: column; width: 830px;}
+	.contain{display: flex; flex-direction: column;}
 	.canvas {
 		background: #e0ebeb;
 		display:grid; 
 		grid-template-columns: repeat(21,38px);
-		margin: 10px;
 		background-size:cover; 
 		grid-gap: 0px;
 		text-align:center;
@@ -56,19 +54,19 @@
 	.dau {grid-column: span 2;grid-row: span 1; color: #000; border:1px solid blue;min-height:30px; font-size: 0.7em; text-align:left;}
 	.sja,.sjb {grid-column: span 3;grid-row: span 1; color: #000; border:1px solid black;min-height:30px; font-size: 0.8em;}
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
-	.out { display: flex; min-height: 100px; width: 798px; margin: 10px;}
-	.out1 { display: flex; flex-direction: column; float:left; margin-left: 10px; width: 798px;}
+	.out { display: flex; min-height: 100px; width: 798px; padding: 0 10px;}
+	.out1 { display: flex; flex-direction: column; float:left; width: 798px;}
 	#output1,#output2,#output3,#output4,#output5 {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em;}
 	#output1,#output3 { min-height: 400px;}
 	#output0,#output2,#output4,#output5 { min-height: 100px;}
-	#output0 {color: #000; background: #ffeecc; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:776px;}
+	#output0 {color: #000; background: #ffeecc; padding:10px; margin-top:10px; border:1px solid black;text-align:left; font-size: 0.8em; width:776px;}
 	#outputa,#outputb {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:776px; min-height: 100px;}
 	#output1,#output2,#outputa {background: #ebebe0;}
 	#output3,#output4,#output5,#outputb {background: #f2d9f2;}
 	.spcs, .spct {font-weight: bold;}
 	.spcs:hover, .spct:hover {color:#f00;cursor:pointer;}
 	.txca,.txcb,.txcc{display: none;}
-	.dum {width:798px; display: block;}
+	.dum {width:800px; display: block; padding: 10px;}
 
 	table{border: 1px solid black; border-collapse: collapse;}
 	td{border: 1px solid black;}
@@ -80,8 +78,7 @@
 	#submit, #submit1 {padding: 0; font-weight: bold;}
 	#sola {display:none; font-weight: bold; width: 200px;}
 	#clear1 {padding: 0;}
-	@media screen and (min-width: 800px) {.container{display: block;} .canvas {float: left;} #output0 {width:776px;} #output1 {width:458px;} #output3 {width:538px;} #output2 {width: 254px;} #output4,#output5 {width: 742px;} .out {width: 1040px;}}
-
+	@media screen and (min-width: 800px) {.contain{display: block;width:1960px;} .canvas {float: left;} #output0 {width:776px;} #output1 {width:458px;} #output3 {width:538px;} #output2 {width: 254px;} #output4,#output5 {width: 742px;} .out {width: 1040px;}}
   </style>
 
  </head>
