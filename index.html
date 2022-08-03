@@ -76,7 +76,7 @@
 	.rdau0,.rdau1,.rdau2 {width: 65px; text-align:center;}
 	.rdat0,.rdau0 {font-weight: bold;}
 	#submit, #submit1 {padding: 0; font-weight: bold;}
-	#sola {display:none; font-weight: bold; width: 200px;}
+	#sola {display:none; font-weight: bold;}
 	#clear1 {padding: 0;}
 	@media screen and (min-width: 800px) {.contain{display: block;width:1960px;} .canvas {float: left;} #output0 {width:776px;} #output1 {width:458px;} #output3 {width:538px;} #output2 {width: 254px;} #output4,#output5 {width: 742px;} .out {width: 1040px;}}
   </style>
@@ -94,7 +94,7 @@
 		<p class="ifo"><label for="year02" class="sr-only"> &nbsp; 음력</label> <button id="submit">조 회 </button> &nbsp; <input id="bday" class="bday" type="text" name="bday" min="1881-01-01" max="2050-11-18" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 		<label class="btn white active" for="isLeap01">	<input type="radio" name="isLeap" id="isLeap01" value="1" checked=""> 평달</label>
 		<label class="btn white" for="isLeap02"><input type="radio" name="isLeap" id="isLeap02" value="0"> 윤달</label>
-		<span class="txt"> (1881년 1월 1일 ∼ 2050년 11월 18일)</span> &nbsp;<button id="clear1">지우기</button> <select id="sel_dt" name="sel_dt"></select></p><p class="ifo"> &nbsp; <span id="sola"></span></p>
+		<span class="txt"> (1881년 1월 1일 ∼ 2050년 11월 18일)</span> &nbsp;<button id="clear1">지우기</button> <select id="sel_dt" name="sel_dt"></select></p><p class="ifo" id="sola"></p>
 	</div>
 <hr/>
 <div class="dum">
@@ -2004,20 +2004,40 @@ function chkg(a,b){
 
 //======================
 function spclcarac(){
-	//--- 일간 특성 출력(output0) 
-	subj = sj_dg; temps0 = a_gan.filter(isFind);
 	$('#output0').append("■■  나는 어떤 사람인가? </br></br>");
-	$('#output0').append("■ 1 일간: "); 
+	//--- 오행 특성 출력(output0) 
+	subj = gj_nfo[3][2].substr(1);  //--- 일간의 오행
+	oid = o_hang[0].lastIndexOf(subj);
+	$('#output0').append("■ 1 오행: "); 
 	$('#output0').append(
 		$('<span>').prop({
 			className: 'spcs css_b1',
-			innerHTML: subj + "__ " + temps0[0][1] + ".. " + temps0[0][2] + ".. " + temps0[0][4]
+			innerHTML: subj + " (" + o_hang[1][oid] + ")"
 		})
 	);
 	$('#output0').append("</br>");
 	$('#output0').append(
 		$('<div>').prop({
 			id: 'css_b1',
+			innerHTML: "◐ " + o_hang[4][oid] + ".. " + o_hang[5][oid] + " " + o_hang[5][0] + ".. 성정은 " + o_hang[6][oid] + ".. 강점 " + o_hang[7][oid] + ".. 약점 " + o_hang[8][oid] + ".. 장점 " + o_hang[9][oid] + ".. 단점 " + o_hang[10][oid] + "</br>◐ 특성: " + o_hang[12][oid] + "</br>◐ 심리: " + o_hang[13][oid] + "</br>◐ 동기부여: " + o_hang[14][oid],
+			className: 'txcb'
+		})
+	);
+	$('#output0').append("--------------------------------------------------------------</br>");
+
+	//--- 일간 특성 출력(output0) 
+	subj = sj_dg; temps0 = a_gan.filter(isFind);
+	$('#output0').append("■ 2 일간: "); 
+	$('#output0').append(
+		$('<span>').prop({
+			className: 'spcs css_b2',
+			innerHTML: subj + "__ " + temps0[0][1] + ".. " + temps0[0][2] + ".. " + temps0[0][4]
+		})
+	);
+	$('#output0').append("</br>");
+	$('#output0').append(
+		$('<div>').prop({
+			id: 'css_b2',
 			innerHTML: "◐ 특성: " + temps0[0][6] + "</br>◐ 질병: " + temps0[0][7],
 			className: 'txcb'
 		})
@@ -2026,17 +2046,17 @@ function spclcarac(){
 
 	//--- 지지 특성 출력(output0) 
 	subj = sj_dj; temps0 = a_jiji.filter(isFind);
-	$('#output0').append("■ 2 일지: ");
+	$('#output0').append("■ 3 일지: ");
 	$('#output0').append(
 		$('<span>').prop({
-			className: 'spcs css_b2',
+			className: 'spcs css_b3',
 			innerHTML: subj + "__ " + temps0[0][1]
 		})
 	);
 	$('#output0').append("</br>");
 	$('#output0').append(
 		$('<div>').prop({
-			id: 'css_b2',
+			id: 'css_b3',
 			innerHTML: "◐ 특성: " + temps0[0][4] + "</br>◐ 질병: " + temps0[0][5] + "</br>◐ 직업: " + temps0[0][6],
 			className: 'txcb'
 		})
@@ -2045,26 +2065,7 @@ function spclcarac(){
 
 	//--- 일지십성/월지십성 특성 출력(output0) 
 	sibsng(sj_dg,"",sj_dj); subj = js_titl; temps0 = a_ssng.filter(isFind);
-	$('#output0').append("■ 3 일지십성: ");
-	$('#output0').append(
-		$('<span>').prop({
-			className: 'spcs css_b3',
-			innerHTML: subj + "__ " + sj_dg + sj_dj
-		})
-	);
-	$('#output0').append("</br>");
-	$('#output0').append(
-		$('<div>').prop({
-			id: 'css_b3',
-			innerHTML: "- " + temps0[0][2] + "</br>◐ 장점: " + temps0[0][3] + "</br>◐ 단점: " + temps0[0][4] + "</br>◐ 태과: " + temps0[0][5] + "</br>◐ 불급: " + temps0[0][6] + "</br>◐ 충: " + temps0[0][7],
-			className: 'txcb'
-		})
-	);
-	$('#output0').append("--------------------------------------------------------------</br>");
-
-	//--- 십이운성 특성 출력(output0) 
-	unsng(sj_dg,sj_dj); subj = js_titl; temps0 = a_unsng.filter(isFind);
-	$('#output0').append("■ 4 십이운성: ");
+	$('#output0').append("■ 4 일지십성: ");
 	$('#output0').append(
 		$('<span>').prop({
 			className: 'spcs css_b4',
@@ -2075,24 +2076,43 @@ function spclcarac(){
 	$('#output0').append(
 		$('<div>').prop({
 			id: 'css_b4',
+			innerHTML: "- " + temps0[0][2] + "</br>◐ 장점: " + temps0[0][3] + "</br>◐ 단점: " + temps0[0][4] + "</br>◐ 태과: " + temps0[0][5] + "</br>◐ 불급: " + temps0[0][6] + "</br>◐ 충: " + temps0[0][7],
+			className: 'txcb'
+		})
+	);
+	$('#output0').append("--------------------------------------------------------------</br>");
+
+	//--- 십이운성 특성 출력(output0) 
+	unsng(sj_dg,sj_dj); subj = js_titl; temps0 = a_unsng.filter(isFind);
+	$('#output0').append("■ 5 십이운성: ");
+	$('#output0').append(
+		$('<span>').prop({
+			className: 'spcs css_b5',
+			innerHTML: subj + "__ " + sj_dg + sj_dj
+		})
+	);
+	$('#output0').append("</br>");
+	$('#output0').append(
+		$('<div>').prop({
+			id: 'css_b5',
 			innerHTML: "- " + temps0[0][5] + "</br>",
 			className: 'txcb'
 		})
 	);
-	$('#css_b4').append("--------------------------------------------------------------</br>");
+	$('#css_b5').append("--------------------------------------------------------------</br>");
 	
 	//--- 일지 십성/십이운성 특성 출력(output0) 
 	sibsTugsin(gj_nfo[3][7]); let dj_6sin = hs_titl; let dj_n = null;
 	if (dj_6sin == "비겁"){dj_n = 7;}; if (dj_6sin == "식상"){dj_n = 8;}; if (dj_6sin == "재성"){dj_n = 9;}; if (dj_6sin == "관성"){dj_n = 10;}; if (dj_6sin == "인성"){dj_n = 11;};
 	subj = gj_nfo[3][8]; temps0 = a_unsng.filter(isFind);
-	$('#css_b4').append("◐ 육신/운성: " + dj_6sin + "__" + subj + "</br> - " + temps0[0][dj_n] + " </br>");
-	$('#css_b4').append("--------------------------------------------------------------</br>");
+	$('#css_b5').append("◐ 육신/운성: " + dj_6sin + "__" + subj + "</br> - " + temps0[0][dj_n] + " </br>");
+	$('#css_b5').append("--------------------------------------------------------------</br>");
 	unsng(sj_dg,sj_yj); subj = js_titl; temps0 = a_unsng.filter(isFind);
-	$('#css_b4').append("◐ 연지: " + subj + "__ " + sj_yj + "</br>  - " + temps0[0][3] + " </br>");
+	$('#css_b5').append("◐ 연지: " + subj + "__ " + sj_yj + "</br>  - " + temps0[0][3] + " </br>");
 	unsng(sj_dg,sj_mj); subj = js_titl; temps0 = a_unsng.filter(isFind);
-	$('#css_b4').append("◐ 월지: " + subj + "__ " + sj_mj + "</br>  - " + temps0[0][4] + " </br>");
+	$('#css_b5').append("◐ 월지: " + subj + "__ " + sj_mj + "</br>  - " + temps0[0][4] + " </br>");
 	unsng(sj_dg,sj_tj); subj = js_titl; temps0 = a_unsng.filter(isFind);
-	if (sjtx != "x"){ $('#css_b4').append("◐ 시지: " + subj + "__ " + sj_tj + "</br>  - " + temps0[0][6] + " </br>");};
+	if (sjtx != "x"){ $('#css_b5').append("◐ 시지: " + subj + "__ " + sj_tj + "</br>  - " + temps0[0][6] + " </br>");};
 	$('#output0').append("--------------------------------------------------------------</br>");
 
 	//--- 일주론 출력(output0) 
@@ -2100,17 +2120,17 @@ function spclcarac(){
 	st= temps0[0][3].indexOf('여자 :');
 	if (gendr.substr(0,1)=="남"){adt = 6; lks = temps0[0][3].substr(4,st-5);}; 
 	if (gendr.substr(0,1)=="여"){adt = 7; lks = temps0[0][3].substr(st+4);};
-	$('#output0').append("■ 5 일주: ");
+	$('#output0').append("■ 6 일주: ");
 	$('#output0').append(
 		$('<span>').prop({
-			className: 'spcs css_b5',
+			className: 'spcs css_b6',
 			innerHTML: subj
 		})
 	);
 	$('#output0').append("</br>");
 	$('#output0').append(
 		$('<div>').prop({
-			id: 'css_b5',
+			id: 'css_b6',
 			innerHTML: "- " + temps0[0][1] + "</br> - " + temps0[0][2] + "</br> ◐ 외모: " + lks + "</br> ◐ 직업: " + temps0[0][4] + "</br> ◐ 결혼: " + temps0[0][5] + "</br> - " + temps0[0][adt] + "</br> ◐ 가족: " + temps0[0][8] + "</br> ◐ 비고: " + temps0[0][9],
 			className: 'txcb'
 		})
