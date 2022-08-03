@@ -2007,24 +2007,24 @@ function chkg(a,b){
 function spclcarac(){
 	$('#output0').append("■■  나는 어떤 사람인가? </br></br>");
 	//--- 오행 특성 출력(output0) 
-	subj = gj_nfo[3][2].substr(1);  //--- 일간의 오행
-	oid = o_hang[0].lastIndexOf(subj);
-	$('#output0').append("■ 1 오행: "); 
-	$('#output0').append(
-		$('<span>').prop({
-			className: 'spcs css_b1',
-			innerHTML: subj + " (" + o_hang[1][oid] + ")"
-		})
-	);
-	$('#output0').append("</br>");
-	$('#output0').append(
-		$('<div>').prop({
-			id: 'css_b1',
-			innerHTML: "◐ " + o_hang[4][oid] + ".. " + o_hang[5][oid] + " " + o_hang[5][0] + ".. 성정은 " + o_hang[6][oid] + ".. 강점 " + o_hang[7][oid] + ".. 약점 " + o_hang[8][oid] + ".. 장점 " + o_hang[9][oid] + ".. 단점 " + o_hang[10][oid] + "</br>◐ 특성: " + o_hang[12][oid] + "</br>◐ 심리: " + o_hang[13][oid] + "</br>◐ 동기부여: " + o_hang[14][oid],
-			className: 'txcb'
-		})
-	);
-	$('#output0').append("--------------------------------------------------------------</br>");
+//	subj = gj_nfo[3][2].substr(1);  //--- 일간의 오행
+//	oid = o_hang[0].lastIndexOf(subj);
+//	$('#output0').append("■ 1 오행: "); 
+//	$('#output0').append(
+//		$('<span>').prop({
+//			className: 'spcs css_b1',
+//			innerHTML: subj + " (" + o_hang[1][oid] + ")"
+//		})
+//	);
+//	$('#output0').append("</br>");
+//	$('#output0').append(
+//		$('<div>').prop({
+//			id: 'css_b1',
+//			innerHTML: "◐ " + o_hang[4][oid] + ".. " + o_hang[5][oid] + " " + o_hang[5][0] + ".. 성정은 " + o_hang[6][oid] + ".. 강점 " + o_hang[7][oid] + ".. 약점 " + o_hang[8][oid] + ".. 장점 " + o_hang[9][oid] + ".. 단점 " + o_hang[10][oid] + "</br>◐ 특성: " + o_hang[12][oid] + "</br>◐ 심리: " + o_hang[13][oid] + "</br>◐ 동기부여: " + o_hang[14][oid],
+//			className: 'txcb'
+//		})
+//	);
+//	$('#output0').append("--------------------------------------------------------------</br>");
 
 	//--- 일간 특성 출력(output0) 
 	subj = sj_dg; temps0 = a_gan.filter(isFind);
