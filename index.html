@@ -2007,6 +2007,26 @@ function chkg(a,b){
 //======================
 function spclcarac(){
 	$('#output0').append("■■  나는 어떤 사람인가? </br></br>");
+	//--- 음양 특성 출력(output0) 
+	if (gj_nfo[3][2].substr(0,1)=="음"){mptxt = o_hang[3][0] + "사고 지향적. 현재가치 중시. 내향 수동적. 실리(힘 세력) 중시. 수축 수렴 하강 부드러움";};
+	if (gj_nfo[3][2].substr(0,1)=="양"){mptxt = o_hang[2][0] +  "행동 지향적. 미래가치 중시. 외향 능동적. 명분(기세 의리) 중시. 팽창 발산 상승 단단함";};
+	$('#output0').append("■ 0 음양: "); 
+	$('#output0').append(
+		$('<span>').prop({
+			className: 'spcs css_b0',
+			innerHTML: mptxt.substr(0,1) + " (" + mptxt.substr(1,1) + ")"
+		})
+	);
+	$('#output0').append("</br>");
+	$('#output0').append(
+		$('<div>').prop({
+			id: 'css_b0',
+			innerHTML: "◐ " + mptxt.substr(2),
+			className: 'txcb'
+		})
+	);
+	$('#output0').append("--------------------------------------------------------------</br>");
+
 	//--- 오행 특성 출력(output0) 
 	subj = gj_nfo[3][2].substr(1);  //--- 일간의 오행
 	oid = o_hang[0].lastIndexOf(subj);
