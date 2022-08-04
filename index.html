@@ -2137,6 +2137,26 @@ function spclcarac(){
 		})
 	);
 	$('#output0').append("--------------------------------------------------------------</br>");
+
+	//--- 월지십성 특성 출력(output0) 
+	sibsng(sj_dg,"",sj_mj); subj = js_titl; temps0 = a_ssmj.filter(isFind);
+	$('#output0').append("■ 7 월지십성: ");
+	$('#output0').append(
+		$('<span>').prop({
+			className: 'spcs css_b7',
+			innerHTML: subj + "__ " + sj_dg + sj_mj
+		})
+	);
+	$('#output0').append("</br>");
+	$('#output0').append(
+		$('<div>').prop({
+			id: 'css_b7',
+			innerHTML: "◐ 일반: " + temps0[0][1] + "</br>◐ 성향: " + temps0[0][2] + "</br>◐ 성격: " + temps0[0][3],
+			className: 'txcb'
+		})
+	);
+	$('#output0').append("--------------------------------------------------------------</br>");
+	
 	$("#output0").on("click", "span", function(){ 
 		disp("#"+$(this).attr("class").substr(5),"",""); 
 	}); 
