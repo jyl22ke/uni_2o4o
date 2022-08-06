@@ -14,9 +14,9 @@
   <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
   <style type="text/css">
-	input, button{font-size: 0.8em; text-align:center; font-weight:bold;}
+	input, button{font-size: 1.0em; text-align:center; font-weight:bold;}
 	input:focus,#ctg:focus{outline: solid red;}
-	.dsp {width: 50px; margin: auto;}
+	.dsp {width: 55px; margin: auto;}
 
 	*{margin:0;padding:0px;list-style:none;text-decoration:none;}
 	body{font-size:100%; display: flex; flex-wrap: wrap;}
@@ -30,7 +30,7 @@
 		text-align:center;
 		}
 	.insrt {margin: 10px;height: auto;font-size: 1.0em;}
-	#sjtm, .bday {width:85px;} #sj {width:130px;} #tm {width:65px;}
+	#sjtm, .bday {width:85px;} #sj {width:130px;} #tm {width:85px;}
 	#sel_dt, .txt {font-size: 0.9em; text-align:center; font-weight:bold;}
 	.ifo { font-size: 1.0em; width:798px;}
 	.infm { color: red; font-size: 1.1em; font-weight:bold; border: 1px solid red; display: inline-block; width: 778px; margin:10px;}
@@ -613,7 +613,7 @@ function sjmain(){
   		wongug();
 		sinsal();
 		spclcarac();
-		hangun();
+		setTimeout(hangun, 10);
 };
 
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
