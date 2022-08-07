@@ -2313,18 +2313,18 @@ async function sinsalhn(){
 	await sinsal01(sj_dg,hn_yj,sinsal_list1,"da05_dg_tj-dg_hj","#outputb","hunY3",3,7); //--- 신살 체크5 -------------------
 	await sinsal01(sj_dg,hn_mj,sinsal_list1,"da05_dg_tj-dg_hj","#outputb","hunM3",3,8); //--- 신살 체크5 -------------------
 	await sinsal01(sj_dg,hn_dj,sinsal_list1,"da05_dg_tj-dg_hj","#outputb","hunD3",3,9); //--- 신살 체크5 -------------------
-	await sinsal01(sj_dg,hn_lj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunL3",3,6); //--- 신살 체크7 -------------------
-	await sinsal01(sj_dg,hn_yj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunY3",3,7); //--- 신살 체크7 -------------------
-	await sinsal01(sj_dg,hn_mj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunM3",3,8); //--- 신살 체크7 -------------------
-	await sinsal01(sj_dg,hn_dj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputb","hunD3",3,9); //--- 신살 체크7 -------------------
-	await sinsal01(hn_lg,hn_lj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunL3",8,6); //--- 신살 체크8 -------------------
-	await sinsal01(hn_yg,hn_yj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunY3",8,7); //--- 신살 체크8 -------------------
-	await sinsal01(hn_mg,hn_mj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunM3",8,8); //--- 신살 체크8 -------------------
-	await sinsal01(hn_dg,hn_dj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunD3",8,9); //--- 신살 체크8 -------------------
-	await sinsal01(hn_lg,hn_lj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunL3",8,6); //--- 신살 체크12 -------------------
-	await sinsal01(hn_yg,hn_yj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunY3",8,7); //--- 신살 체크12 -------------------
-	await sinsal01(hn_mg,hn_mj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunM3",8,8); //--- 신살 체크12 -------------------
-	await sinsal01(hn_dg,hn_dj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunD3",8,9); //--- 신살 체크12 -------------------
+	if (sinsal_tlist.includes("간여지동")){
+		await sinsal01(hn_lg,hn_lj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunL3",8,6); //--- 신살 체크8 -------------------
+		await sinsal01(hn_yg,hn_yj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunY3",8,7); //--- 신살 체크8 -------------------
+		await sinsal01(hn_mg,hn_mj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunM3",8,8); //--- 신살 체크8 -------------------
+		await sinsal01(hn_dg,hn_dj,sinsal_list1,"da08_gj_dgj-hgj","#outputb","hunD3",8,9); //--- 신살 체크8 -------------------
+	};
+	if (sinsal_tlist.includes("백호")){
+		await sinsal01(hn_lg,hn_lj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunL3",8,6); //--- 신살 체크12 -------------------
+		await sinsal01(hn_yg,hn_yj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunY3",8,7); //--- 신살 체크12 -------------------
+		await sinsal01(hn_mg,hn_mj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunM3",8,8); //--- 신살 체크12 -------------------
+		await sinsal01(hn_dg,hn_dj,sinsal_list1,"da12_gj_gj-hgj","#outputb","hunD3",8,9); //--- 신살 체크12 -------------------
+	};
 	await sinsal01(sj_dg,hn_yj,sinsal_list1,"da13_-dg_hyj","#outputb","hunY3",3,7); //--- 신살 체크13 -------------------
 //------------------------------
 	await sinsal01(sj_dj,hn_lj,sinsal_list1,"db01_dj_jj-dj_hj","#outputb","hunL3",7,6); //--- 신살 체크1 -------------------
@@ -2886,7 +2886,6 @@ async function sinsal(){
 	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da04_dg_mdtj","#outputa","ssal4",3,5);}; //--- 신살 체크4
 	if (sjtx != "x"){await sinsal00(sj_dg,sj_tj,sinsal_list1,"da05_dg_tj-dg_hj","#outputa","ssal4",3,5);}; //--- 신살 체크5
 	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da06_gj_dgj","#outputa","ssal3",3,4); //--- 신살 체크6
-	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da07_gj_dgj-dg_hj","#outputa","ssal3",3,4); //--- 신살 체크7
 	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da08_gj_dgj-hgj","#outputa","ssal3",3,4); //--- 신살 체크8
 	await sinsal00(sj_dg,sj_dj,sinsal_list1,"da09_gj_dgj-ymtgj","#outputa","ssal3",3,4); //--- 신살 체크9
 	if (sinsaltxt != ""){
