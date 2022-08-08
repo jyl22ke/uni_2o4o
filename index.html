@@ -379,11 +379,7 @@ $( function() {
 		ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
 		$('#sola').empty();
 		bdat = document.getElementById('bday').value;
-		if (bdat.substr(0,2)>now.format('yyyy-MM-dd').substr(2,2)){
-			Lbday = new Date("19" + bdat.substr(0,2), bdat.substr(2,2)-1, bdat.substr(4,2)).format('yyyy-MM-dd');
-		}else{
-			Lbday = new Date("20" + bdat.substr(0,2), bdat.substr(2,2)-1, bdat.substr(4,2)).format('yyyy-MM-dd');
-		};
+		Lbday = new Date(bdat.substr(0,4), bdat.substr(4,2)-1, bdat.substr(6,2)).format('yyyy-MM-dd');
 		mtyp = $('input[name="isLeap"]:checked').val();
 		subj = Lbday.substr(0,4); temp = ca11_lunar_cal.filter(isFind);
 		v = Number(Lbday.substr(5,2));  //---- 월(음력)
