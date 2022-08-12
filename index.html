@@ -8,11 +8,10 @@
   <link rel="icon" href="#" type="image/x-icon">
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />        
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-  <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script> 
+  <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>  
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>      
-  <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
+  <script src="http://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
   <style type="text/css">
 	input, button{font-size: 1.0em; text-align:center; font-weight:bold;}
 	input:focus,#ctg:focus{outline: solid red;}
@@ -33,7 +32,7 @@
 	#sjtm, .bday {width:85px;} #sj {width:130px;} #tm {width:85px;}
 	#sel_dt, .txt {font-size: 0.9em; text-align:center; font-weight:bold;}
 	.ifo { font-size: 1.0em; width:798px;}
-	.infm { color: red; font-size: 1.1em; font-weight:bold; border: 1px solid red; display: inline-block; width: 778px; margin:10px;}
+	.infm { color: #f00; font-size: 1.0em; font-weight:bold; border: 1px solid red; display: inline-block; width: 778px; margin:10px;}
 	.hangun {grid-column: 15/span 7;grid-row: 1/span 1; color: #000; font-weight: bold;border:1px solid black;}
 	.hunt {grid-column: 15/span 1;grid-row: span 2; color: #000; font-weight: bold;border:1px solid black;min-height:30px;}
 	.hun1 {grid-column: 16/span 1;grid-row: span 2; color: #000; border:1px solid black;min-height:30px; font-size: 1.6em; font-weight: bold; border-right: none; font-family:"한양해서";padding-top: 15px;}
@@ -57,7 +56,7 @@
 	.out { display: flex; min-height: 100px; width: 798px; padding: 0 10px; margin-bottom:10px;}
 	.out1 { display: flex; flex-direction: column; float:left; width: 798px; margin-bottom:10px;}
 	#output1,#output2,#output3,#output4,#output5 {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em;}
-	#output1,#output3 { min-height: 400px;}
+	#output1,#output3 { min-height: 200px;}
 	#output0,#output2,#output4,#output5 { min-height: 100px;}
 	#output0 {color: #000; background: #ffeecc; padding:10px; margin-top:10px; border:1px solid black;text-align:left; font-size: 0.8em; width:776px;}
 	#outputa,#outputb {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:776px; min-height: 100px;}
@@ -79,6 +78,7 @@
 	#sola {display:none; font-weight: bold;}
 	#clear1 {padding: 0;}
 	@media screen and (min-width: 800px) {.contain{display: block;width:1960px;} .canvas {float: left;} #output0 {width:776px;} #output1 {width:458px;} #output3 {width:538px;} #output2 {width: 254px;} #output4,#output5 {width: 742px;} .out {width: 1040px;}}
+
   </style>
 
  </head>
@@ -96,146 +96,146 @@
 		<label class="btn white" for="isLeap02"><input type="radio" name="isLeap" id="isLeap02" value="0"> 윤달</label>
 		<span class="txt"> (1881년 1월 1일 ∼ 2050년 11월 18일)</span> &nbsp;<button id="clear1">지우기</button> <select id="sel_dt" name="sel_dt"></select></p><p class="ifo" id="sola"></p>
 	</div>
-<hr/>
-<div class="dum">
-	<div class="canvas">
-		<div class="sjat">십성(간)</div>
-		<div class="sja" id="sj7a"></div>
-		<div class="sja" id="sj5a"></div>
-		<div class="sja" id="sj3a"></div>
-		<div class="sja" id="sj1a"></div>
-		<div class="hangun">행운 <input type="date" id="hunDate"></div>
-		<div class="sjt">사주</br></br></br><!---->
-			<input type ="button" class="dsp" onclick="disp('.sjut1','.sju1','.sju2');" value="대운"></button>
-			<input type ="button" class="dsp" onclick="disp('.sjut2','.seu','');" value="연운"></button>
-			<input type ="button" class="dsp" onclick="disp('.sjut3','.mou','.dau');" value="월일"></button>
-			<input type ="button" class="dsp" onclick="disp('.out','',''); disp('#outputa','#outputb','');" value="output"></button></br>
+	<hr/>
+	<div class="dum">
+		<div class="canvas">
+			<div class="sjat">십성(간)</div>
+			<div class="sja" id="sj7a"></div>
+			<div class="sja" id="sj5a"></div>
+			<div class="sja" id="sj3a"></div>
+			<div class="sja" id="sj1a"></div>
+			<div class="hangun">행운 <input type="date" id="hunDate"></div>
+			<div class="sjt">사주</br></br></br><!---->
+				<input type ="button" class="dsp" onclick="disp('.sjut1','.sju1','.sju2');" value="대운"></button>
+				<input type ="button" class="dsp" onclick="disp('.sjut2','.seu','');" value="연운"></button>
+				<input type ="button" class="dsp" onclick="disp('.sjut3','.mou','.dau');" value="월일"></button>
+				<input type ="button" class="dsp" onclick="disp('.out','',''); disp('#outputa','#outputb','');" value="output"></button></br>
+			</div>
+			<div class="sjot">시</div>
+			<div class="sjot">일</div>
+			<div class="sjot">월</div>
+			<div class="sjot">년</div>
+			<div class="hunt">대운</div>
+			<div class="hun1" id="hunL1"></div>
+			<div class="hun2" id="hunL2"></div>
+			<div class="hun3" id="hunL3"></div>
+			<div class="sj" id="sj7"></div>
+			<div class="sj" id="sj5"></div>
+			<div class="sj" id="sj3"></div>
+			<div class="sj" id="sj1"></div>
+			<div class="sjo" id="sjg7"></div>
+			<div class="sjo" id="sjg5"></div>
+			<div class="sjo" id="sjg3"></div>
+			<div class="sjo" id="sjg1"></div>
+			<div class="hunt">연운</div>
+			<div class="hun1" id="hunY1"></div>
+			<div class="hun2" id="hunY2"></div>
+			<div class="hun3" id="hunY3"></div>
+			<div class="sj" id="sj8"></div>
+			<div class="sj" id="sj6"></div>
+			<div class="sj" id="sj4"></div>
+			<div class="sj" id="sj2"></div>
+			<div class="sjo" id="sjg8"></div>
+			<div class="sjo" id="sjg6"></div>
+			<div class="sjo" id="sjg4"></div>
+			<div class="sjo" id="sjg2"></div>
+			<div class="hunt">월운</div>
+			<div class="hun1" id="hunM1"></div>
+			<div class="hun2" id="hunM2"></div>
+			<div class="hun3" id="hunM3"></div>
+			<div class="sjat">십성(지)</div>
+			<div class="sja" id="sj8a"></div>
+			<div class="sja" id="sj6a"></div>
+			<div class="sja" id="sj4a"></div>
+			<div class="sja" id="sj2a"></div>
+			<div class="sjbt">지장간</div>
+			<div class="sjb" id="sj8b"></div>
+			<div class="sjb" id="sj6b"></div>
+			<div class="sjb" id="sj4b"></div>
+			<div class="sjb" id="sj2b"></div>
+			<div class="hunt">일운</div>
+			<div class="hun1" id="hunD1"></div>
+			<div class="hun2" id="hunD2"></div>
+			<div class="hun3" id="hunD3"></div>
+			<div class="sjbt">십이운성</div>
+			<div class="sjb" id="sj8c"></div>
+			<div class="sjb" id="sj6c"></div>
+			<div class="sjb" id="sj4c"></div>
+			<div class="sjb" id="sj2c"></div>
+			<div class="sjbt sjex">신살</div>
+			<div class="sjb sjex" id="ssal4"></div>
+			<div class="sjb sjex" id="ssal3"></div>
+			<div class="sjb sjex" id="ssal2"></div>
+			<div class="sjb sjex" id="ssal1"></div>
+			<div class="hun sjex">원국 행운</div>
+			<div class="huna sjex" id="ssal0"></div>
+			<div class="hunb sjex" id="ssalb"></div><!--
+			<div class="sjct sjex">십성 운성(각주)</div>
+			<div class="sjb sjex" id="ssa4"></div>
+			<div class="sjb sjex" id="ssa3"></div>
+			<div class="sjb sjex" id="ssa2"></div>
+			<div class="sjb sjex" id="ssa1"></div>
+			<div class="hun sjex">행운</div>
+			<div class="huna sjex" id="ssa0"></div>
+			<div class="hunb sjex" id="ssab"></div>
+			<div class="sjct sjex">지장간(각주)</div>
+			<div class="sjb sjex" id="ssb4"></div>
+			<div class="sjb sjex" id="ssb3"></div>
+			<div class="sjb sjex" id="ssb2"></div>
+			<div class="sjb sjex" id="ssb1"></div>
+			<div class="hun sjex">행운</div>
+			<div class="huna sjex" id="ssb0"></div>
+			<div class="hunb sjex" id="ssbb"></div>-->
+			<div class="sjut1">대운</div>
+			<div class="sju1" id="sjua10"></div>
+			<div class="sju2" id="sjub10"></div>
+			<div class="sju1" id="sjua9"></div>
+			<div class="sju2" id="sjub9"></div>
+			<div class="sju1" id="sjua8"></div>
+			<div class="sju2" id="sjub8"></div>
+			<div class="sju1" id="sjua7"></div>
+			<div class="sju2" id="sjub7"></div>
+			<div class="sju1" id="sjua6"></div>
+			<div class="sju2" id="sjub6"></div>
+			<div class="sju1" id="sjua5"></div>
+			<div class="sju2" id="sjub5"></div>
+			<div class="sju1" id="sjua4"></div>
+			<div class="sju2" id="sjub4"></div>
+			<div class="sju1" id="sjua3"></div>
+			<div class="sju2" id="sjub3"></div>
+			<div class="sju1" id="sjua2"></div>
+			<div class="sju2" id="sjub2"></div>
+			<div class="sju1" id="sjua1"></div>
+			<div class="sju2" id="sjub1"></div>
+			<div class="sjut2">연운</div>
+			<div class="seu" id="seu10"></div>
+			<div class="seu" id="seu9"></div>
+			<div class="seu" id="seu8"></div>
+			<div class="seu" id="seu7"></div>
+			<div class="seu" id="seu6"></div>
+			<div class="seu" id="seu5"></div>
+			<div class="seu" id="seu4"></div>
+			<div class="seu" id="seu3"></div>
+			<div class="seu" id="seu2"></div>
+			<div class="seu" id="seu1"></div>		
+			<div class="sjut3">월운 일운</div>
+			<div class="mou" id="mou3"></div>
+			<div class="mou" id="mou2"></div>
+			<div class="mou" id="mou1"></div>
+			<div class="dau" id="dau7"></div>
+			<div class="dau" id="dau6"></div>
+			<div class="dau" id="dau5"></div>
+			<div class="dau" id="dau4"></div>
+			<div class="dau" id="dau3"></div>
+			<div class="dau" id="dau2"></div>
+			<div class="dau" id="dau1"></div>		
 		</div>
-		<div class="sjot">시</div>
-		<div class="sjot">일</div>
-		<div class="sjot">월</div>
-		<div class="sjot">년</div>
-		<div class="hunt">대운</div>
-		<div class="hun1" id="hunL1"></div>
-		<div class="hun2" id="hunL2"></div>
-		<div class="hun3" id="hunL3"></div>
-		<div class="sj" id="sj7"></div>
-		<div class="sj" id="sj5"></div>
-		<div class="sj" id="sj3"></div>
-		<div class="sj" id="sj1"></div>
-		<div class="sjo" id="sjg7"></div>
-		<div class="sjo" id="sjg5"></div>
-		<div class="sjo" id="sjg3"></div>
-		<div class="sjo" id="sjg1"></div>
-		<div class="hunt">연운</div>
-		<div class="hun1" id="hunY1"></div>
-		<div class="hun2" id="hunY2"></div>
-		<div class="hun3" id="hunY3"></div>
-		<div class="sj" id="sj8"></div>
-		<div class="sj" id="sj6"></div>
-		<div class="sj" id="sj4"></div>
-		<div class="sj" id="sj2"></div>
-		<div class="sjo" id="sjg8"></div>
-		<div class="sjo" id="sjg6"></div>
-		<div class="sjo" id="sjg4"></div>
-		<div class="sjo" id="sjg2"></div>
-		<div class="hunt">월운</div>
-		<div class="hun1" id="hunM1"></div>
-		<div class="hun2" id="hunM2"></div>
-		<div class="hun3" id="hunM3"></div>
-		<div class="sjat">십성(지)</div>
-		<div class="sja" id="sj8a"></div>
-		<div class="sja" id="sj6a"></div>
-		<div class="sja" id="sj4a"></div>
-		<div class="sja" id="sj2a"></div>
-		<div class="sjbt">지장간</div>
-		<div class="sjb" id="sj8b"></div>
-		<div class="sjb" id="sj6b"></div>
-		<div class="sjb" id="sj4b"></div>
-		<div class="sjb" id="sj2b"></div>
-		<div class="hunt">일운</div>
-		<div class="hun1" id="hunD1"></div>
-		<div class="hun2" id="hunD2"></div>
-		<div class="hun3" id="hunD3"></div>
-		<div class="sjbt">십이운성</div>
-		<div class="sjb" id="sj8c"></div>
-		<div class="sjb" id="sj6c"></div>
-		<div class="sjb" id="sj4c"></div>
-		<div class="sjb" id="sj2c"></div>
-		<div class="sjbt sjex">신살</div>
-		<div class="sjb sjex" id="ssal4"></div>
-		<div class="sjb sjex" id="ssal3"></div>
-		<div class="sjb sjex" id="ssal2"></div>
-		<div class="sjb sjex" id="ssal1"></div>
-		<div class="hun sjex">원국 행운</div>
-		<div class="huna sjex" id="ssal0"></div>
-		<div class="hunb sjex" id="ssalb"></div><!--
-		<div class="sjct sjex">십성 운성(각주)</div>
-		<div class="sjb sjex" id="ssa4"></div>
-		<div class="sjb sjex" id="ssa3"></div>
-		<div class="sjb sjex" id="ssa2"></div>
-		<div class="sjb sjex" id="ssa1"></div>
-		<div class="hun sjex">행운</div>
-		<div class="huna sjex" id="ssa0"></div>
-		<div class="hunb sjex" id="ssab"></div>
-		<div class="sjct sjex">지장간(각주)</div>
-		<div class="sjb sjex" id="ssb4"></div>
-		<div class="sjb sjex" id="ssb3"></div>
-		<div class="sjb sjex" id="ssb2"></div>
-		<div class="sjb sjex" id="ssb1"></div>
-		<div class="hun sjex">행운</div>
-		<div class="huna sjex" id="ssb0"></div>
-		<div class="hunb sjex" id="ssbb"></div>-->
-		<div class="sjut1">대운</div>
-		<div class="sju1" id="sjua10"></div>
-		<div class="sju2" id="sjub10"></div>
-		<div class="sju1" id="sjua9"></div>
-		<div class="sju2" id="sjub9"></div>
-		<div class="sju1" id="sjua8"></div>
-		<div class="sju2" id="sjub8"></div>
-		<div class="sju1" id="sjua7"></div>
-		<div class="sju2" id="sjub7"></div>
-		<div class="sju1" id="sjua6"></div>
-		<div class="sju2" id="sjub6"></div>
-		<div class="sju1" id="sjua5"></div>
-		<div class="sju2" id="sjub5"></div>
-		<div class="sju1" id="sjua4"></div>
-		<div class="sju2" id="sjub4"></div>
-		<div class="sju1" id="sjua3"></div>
-		<div class="sju2" id="sjub3"></div>
-		<div class="sju1" id="sjua2"></div>
-		<div class="sju2" id="sjub2"></div>
-		<div class="sju1" id="sjua1"></div>
-		<div class="sju2" id="sjub1"></div>
-		<div class="sjut2">연운</div>
-		<div class="seu" id="seu10"></div>
-		<div class="seu" id="seu9"></div>
-		<div class="seu" id="seu8"></div>
-		<div class="seu" id="seu7"></div>
-		<div class="seu" id="seu6"></div>
-		<div class="seu" id="seu5"></div>
-		<div class="seu" id="seu4"></div>
-		<div class="seu" id="seu3"></div>
-		<div class="seu" id="seu2"></div>
-		<div class="seu" id="seu1"></div>		
-		<div class="sjut3">월운 일운</div>
-		<div class="mou" id="mou3"></div>
-		<div class="mou" id="mou2"></div>
-		<div class="mou" id="mou1"></div>
-		<div class="dau" id="dau7"></div>
-		<div class="dau" id="dau6"></div>
-		<div class="dau" id="dau5"></div>
-		<div class="dau" id="dau4"></div>
-		<div class="dau" id="dau3"></div>
-		<div class="dau" id="dau2"></div>
-		<div class="dau" id="dau1"></div>		
+		<div class="out1">
+			<div id="output0"></div>
+			<div id="outputa"></div>
+			<div id="outputb"></div>
+		</div>
 	</div>
-	<div class="out1">
-		<div id="output0"></div>
-		<div id="outputa"></div>
-		<div id="outputb"></div>
-	</div>
-</div>
 	<div class="out">
 		<div id="output1"></div>
 		<div id="output3"></div>
@@ -333,6 +333,11 @@ fread("wonjn");
 fread("sinsal_list1");	
 fread("sinsal_list2");	
 fread("sinsal_gen");	
+fread("a_sungong");	
+fread("a_jjgong");	
+fread("a_nabeum");	
+fread("a_sjgong");	
+fread("a_ssgong");	
 	
 function fread(fn){
     $(function (){
@@ -365,7 +370,7 @@ function fread(fn){
 
 <script type="text/javascript">
 	let gj_nfo = new Array; let hgj_nfo = new Array; let hun_list = new Array; let ganhc_nfo = new Array; let jjhc_nfo = new Array; let saju = ""; let saju_h = ""; let symdt = ""; let gendr = ""; 
-	let now = null; let hunD = null; let longungj = ""; let ohtx = ""; let nfo_tugan = ""; let code1 = ""; let hnj = ""; let desc = ""; let sj_list = new Array; let sjtx = "";
+	let now = null; let hunD = null; let longungj = ""; let ohtx = ""; let nfo_tugan = ""; let code1 = ""; let hnj = ""; let desc = ""; let sj_list = new Array; let sjtx = ""; 
 	let sj_yg = ""; let sj_mg = ""; let sj_dg = ""; let sj_tg = ""; let sj_yj = ""; let sj_mj = ""; let sj_dj = ""; let sj_tj = "";  //--- 사주 (년월일시)간지
 	let hn_lg = ""; let hn_yg = ""; let hn_mg = ""; let hn_dg = ""; 	let hn_lj = ""; let hn_yj = ""; let hn_mj = ""; let hn_dj = ""; let hn_ganji = "";  //--- 행운 (대세월일)운 간지
 
@@ -379,7 +384,11 @@ $( function() {
 		ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
 		$('#sola').empty();
 		bdat = document.getElementById('bday').value;
-		Lbday = new Date(bdat.substr(0,4), bdat.substr(4,2)-1, bdat.substr(6,2)).format('yyyy-MM-dd');
+//		if (bdat.substr(0,2)>now.format('yyyy-MM-dd').substr(2,2)){
+			Lbday = new Date(bdat.substr(0,4), bdat.substr(4,2)-1, bdat.substr(6,2)).format('yyyy-MM-dd');
+//		}else{
+//			Lbday = new Date("20" + bdat.substr(0,2), bdat.substr(2,2)-1, bdat.substr(4,2)).format('yyyy-MM-dd');
+//		};
 		mtyp = $('input[name="isLeap"]:checked').val();
 		subj = Lbday.substr(0,4); temp = ca11_lunar_cal.filter(isFind);
 		v = Number(Lbday.substr(5,2));  //---- 월(음력)
@@ -544,6 +553,12 @@ function sjmain(){
 		["일지","","","","","","","","","",""],
 		["시지","","","","","","","","","",""]];
 
+		gongmang_nfo = [
+		["구분","旬","연지","월지","일지","시지","대운","연운","월운","일운","시운"],
+		["순중(지지)","","","","","","","","","",""],
+		["오행(천간)","","","","","","","","","",""],
+		["사대(납음)","","","","","","","","","",""]];
+
 		gj_nfo = [
 		["위치","gan","g오행","g십성","통근","jiji","j오행","j십성","운성","장간1","장간2","장간3","1십성","2십성","3십성","비고"],
 		["연주","","","","","","","","","","","","","","",""],["월주","","","","","","","","","","","","","","",""],["일주","","","","","","","","","","","","","","",""],["시주","","","","","","","","","","","","","","",""]];
@@ -609,6 +624,7 @@ function sjmain(){
   		wongug();
 		sinsal();
 		spclcarac();
+		gongmang("output1");
 		setTimeout(hangun, 10);
 };
 
@@ -756,11 +772,102 @@ function saju_chk(){
 $(function(){
 	$('#sel_dt').change(function(){
 		symdt = $("#sel_dt option:selected").val(); // 선택된 날자를 출력한다.  
-		$('#sjtm').val(symdt.substr(2,2) + symdt.substr(5,2) + symdt.substr(8,2));
+		$('#sjtm').val(symdt.substr(0,4) + symdt.substr(5,2) + symdt.substr(8,2));
 		$('#tm').val(symdt.substr(11,5));
 		sjmain();
 	});
 });
+
+//========= 원국 공망 check 하는 함수 =========
+function gongmang(d){
+	jijigong = ""; ohgong = ""; gangong = ""; fourgong = "";
+	//---------- 순중(지지)공망 만들기 ----------
+ 	gjdev5 = sinsal_list2[0].indexOf(sj_dg);
+ 	gjdev6 = sinsal_list1[0].indexOf(sj_dj);
+	gjdev = gjdev6 - gjdev5;  //--- 
+	if (gjdev < 2){ gjdev += 12;};
+	sq_sun = 7 - parseInt(gjdev / 2);
+	jijigong = jiji[gjdev-1][0] + jiji[gjdev][0];
+	gongmang_nfo[0][1] = sq_sun + gongmang_nfo[0][1]; gongmang_nfo[1][1] = jijigong;	
+	//---------- (오행,천간,사대)공망 만들기 ----------
+	subj = jiji[gjdev-1][0]; 
+	if (subj == "戌"){
+		ohgong = ""; gangong = ""; fourgong = "수"; gongmang_nfo[2][1] = gangong; gongmang_nfo[3][1] = fourgong;
+	}else{
+		tempn = jiji.filter(isFind); ohgong = tempn[0][2]; //--- 오행공망 만들기
+		subj2 = ohgong; temp2 = gan.filter(isFind2); gangong = temp2[0][0] + temp2[1][0]; gongmang_nfo[2][1] = gangong; //--- 천간공망 만들기
+		if (subj == "辰"){fourgong = "수";}; if (subj == "子" || subj == "午"){fourgong = "금";}; if (subj == "寅" || subj == "申"){fourgong = "";}; //--- 사대공망 만들기
+		 gongmang_nfo[2][1] = gangong; gongmang_nfo[3][1] = fourgong;
+	};
+	subj = jijigong; tempn = a_sungong.filter(isFind);
+	document.getElementById("output1").innerHTML += "■ 공망--- 일주: " + gan[gjdev5][0] + " " + jiji[gjdev6][0] + " </br>";
+	document.getElementById("output1").innerHTML += "◐ 순중공망: " + jijigong + " </br>" + tempn[0][5] + " </br>";
+	document.getElementById("output1").innerHTML += "--------------------------------------------------------------</br>";
+	if (ohgong != ""){
+		document.getElementById("output1").innerHTML += "◐ 오행공망: " + ohgong + " </br>" + tempn[0][6] + " </br>";	
+		document.getElementById("output1").innerHTML += "--------------------------------------------------------------</br>";
+	};
+	sun_gong(sj_yj,2,d); sun_gong(sj_mj,3,d); sun_gong(sj_dj,4,d); sun_gong(sj_tj,5,d);  //---------- 순중(지지)공망 체크 ----------
+	//---------- (오행,천간,사대)공망 체크 ----------
+	ocs_gong(sj_yg,"",2,d); ocs_gong(sj_mg,"",3,d); ocs_gong(sj_dg,"",4,d); ocs_gong(sj_tg,"",5,d);
+	ocs_gong(sj_yg,sj_yj,2,d); ocs_gong(sj_mg,sj_mj,3,d); 
+};
+
+//========= 행운 공망 check 하는 함수 =========
+function gongmangh(d){
+	for (i=1; i<4; i++){
+		for (j=6; j<10; j++){
+			gongmang_nfo[i][j] = "";
+		};
+	};
+	document.getElementById(d).innerHTML += "■ 공망--- 일주: " + gan[gjdev5][0] + " " + jiji[gjdev6][0] + " </br>";
+	sun_gong(hn_yj,7,d); sun_gong(hn_mj,8,d); sun_gong(hn_dj,9,d);
+	ocs_gong(hn_yg,"",7,d); ocs_gong(hn_mg,"",8,d); ocs_gong(hn_dg,"",9,d);
+	ocs_gong(hn_yg,hn_yj,7,d); ocs_gong(hn_mg,hn_mj,8,d); ocs_gong(hn_dg,hn_dj,9,d);
+};
+
+//========= 납음오행 계산 함수 =========
+function nabeum(a,b){
+	subj = a + b; tempg = a_nabeum.filter(isFind);
+	nabg = tempg[0][2]; nab = nabg.substr(2,1);
+};
+
+//========= 순중공망 체크 함수 =========
+function sun_gong(a,b,d){
+	if (b==2){btxt = "연지";}; if (b==3){btxt = "월지";}; if (b==4){btxt = "일지";}; if (b==5){btxt = "시지";}; if (b==7){btxt = "연운지";}; if (b==8){btxt = "월운지";}; if (b==9){btxt = "일운지";}; 
+	if (jijigong.includes(a)==true){
+		gongmang_nfo[1][b] = a; 
+		subj = a; tempn = a_jjgong.filter(isFind);
+		document.getElementById(d).innerHTML += "◐ 지지공망: " + btxt + "__ " + a + " </br>" + tempn[0][5] + " </br> * 흉월: " + tempn[0][4] + " __ * 길월: " + tempn[0][3] + " </br>";
+		document.getElementById(d).innerHTML += "--------------------------------------------------------------</br>";
+		console.log("순중공망: " + jijigong + "__ " + btxt + "공망: " + a + "__ 합충형 상황==> 해공여부");
+	};
+};
+
+//========= (오행,천간,사대)공망 체크 함수 =========
+function ocs_gong(a,b,c,d){
+//	if (c == ""){if (ohgong != ""){console.log("오행공망: " + ohgong);}; if (gangong != ""){console.log("천간공망: " + gangong);};};
+	if (b == ""){
+		atxt = "천간"; 
+		if (c==2){btxt = "연간";}; if (c==3){btxt = "월간";}; if (c==4){btxt = "일간";}; if (c==5){btxt = "시간";}; if (c==7){btxt = "연운간";}; if (c==8){btxt = "월운간";}; if (c==9){btxt = "일운간";}; 
+		if (gangong.includes(a)==true){
+			gongmang_nfo[2][c] = a; 
+			document.getElementById(d).innerHTML += "◐ 천간공망: " + btxt + "__ " + a + " </br>";
+			document.getElementById(d).innerHTML += "--------------------------------------------------------------</br>";
+			console.log(atxt + "공망: " + gangong + "__ " + btxt + "공망: " + a + "__ 합충형 상황==> 해공여부");
+		};
+	}else{
+		atxt = "사대";
+		if (c==2){btxt = "연주";}; if (c==3){btxt = "월주";}; if (c==4){btxt = "일주";}; if (c==5){btxt = "시주";}; if (c==7){btxt = "연운";}; if (c==8){btxt = "월운";}; if (c==9){btxt = "일운";}; 
+		nabeum(a,b); 
+		if (nab == fourgong){
+			gongmang_nfo[3][c] = nabg.substr(0,3); 
+			document.getElementById(d).innerHTML += "◐ 사대공망: " + btxt + "__ " + a + b + "__ " + nabg + " </br>" + tempg[0][3] + "</br>" + tempg[0][6] + "</br>" + tempg[0][7] + " </br>";
+			document.getElementById(d).innerHTML += "--------------------------------------------------------------</br>";
+			console.log(atxt + "공망: " + fourgong + "__ " + btxt + "공망: " + nabg + "__ " + a + b); 
+		};
+	}; //--- console.log(ymgj + fourgong);
+};
 
 //========= 간지 배경색 =========
 function chg_bgcolor(a,b,c) {
@@ -777,6 +884,13 @@ function disp(a,b,c){
 //====== 배열에서 subj 를 가져오는 함수 ====== 부분배열 가져오기
 function isFind(element)  {
 	if(element[0] === subj)  {
+		return true;
+	};
+};
+
+//====== 배열에서 subj 를 가져오는 함수 ====== 부분배열 가져오기
+function isFind2(element)  {
+	if(element[2] === subj2)  {
 		return true;
 	};
 };
@@ -1111,7 +1225,7 @@ function mktable(a,b,c,fnm){
 };
 
 //====== 천간지지 십성 chk ======	
-function sibsng(a,b,c){
+function sibsng(a,b,c){  //--- a: 기준, b: 천간, c: 지지
 	gs_titl = ""; js_titl = "";
 	idb = sibsungX1[0].lastIndexOf(a) - 1;
 	if (b != ""){
@@ -1123,6 +1237,20 @@ function sibsng(a,b,c){
 		}else{if (c == "丑" || c == "未"){idx = sibsungX1[1].lastIndexOf("丑未");
 			}else{idx = sibsungX1[1].lastIndexOf(c);};};
 		js_titl = sibsungX1[idb][idx];  //--- (지지)십성 이름
+	};
+};
+
+//====== 십성으로 천간지지 찾기 ======	
+function f_ganji(a,b,c){  //--- a: 기준천간, b: 천간십성, c: 지지십성
+	g_titl = ""; j_titl = "";
+	subj = a; tempg = sibsungX1.filter(isFind);
+	if (b != ""){
+		idx = tempg[0].lastIndexOf(b);
+		g_titl = sibsungX1[0][idx];  //--- (천간)
+	};
+	if (c != ""){
+		idy = tempg[0].lastIndexOf(c);
+		j_titl = sibsungX1[1][idy];  //--- (지지)
 	};
 };
 
@@ -1293,14 +1421,14 @@ function rootgchk(){
 	//--- output1에 추가 display
 	if(pn != null) {
 		if(pn.length === 3){
-			document.getElementById("output1").innerText += "극신강 사주 ..." + pointr + "\n";
+			document.getElementById("output1").innerText += "■ 극신강 사주 ..." + pointr + "\n";
 		}else{
 			if(pn.length === 2){
-				document.getElementById("output1").innerText += "신강 사주 ..." + pointr + "\n";
+				document.getElementById("output1").innerText += "■ 신강 사주 ..." + pointr + "\n";
 			}else{
 				if(pn.length === 1){
-					document.getElementById("output1").innerText += "신약 사주 ..." + pointr + "\n";}}};
-	}else{document.getElementById("output1").innerText += "극신약 사주 ..." + pointr + "\n";};
+					document.getElementById("output1").innerText += "■ 신약 사주 ..." + pointr + "\n";}}};
+	}else{document.getElementById("output1").innerText += "■ 극신약 사주 ..." + pointr + "\n";};
 	document.getElementById("output1").innerText += "사주격국 (기본) " + js_titl + "格 " + nfo_tugan + "\n\n";
 };	
 	
@@ -1333,7 +1461,7 @@ function pwrcnt(){
 		pointr = pointr + "실세N";
 		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n\n";};
 };
-	
+
 //======= 대운수 & 초기대운일 ======
 function longun(){
 	longungj = ""; 
@@ -2020,9 +2148,9 @@ function spclcarac(){
 	$('#output0').append("--------------------------------------------------------------</br>");
 
 	//--- 오행 특성 출력(output0) 
+	$('#output0').append("■ 1 오행: "); 
 	subj = gj_nfo[3][2].substr(1);  //--- 일간의 오행
 	oid = o_hang[0].lastIndexOf(subj);
-	$('#output0').append("■ 1 오행: "); 
 	$('#output0').append(
 		$('<span>').prop({
 			className: 'spcs css_b1',
@@ -2077,7 +2205,7 @@ function spclcarac(){
 	);
 	$('#output0').append("--------------------------------------------------------------</br>");
 
-	//--- 일지십성/월지십성 특성 출력(output0) 
+	//--- 일지십성 특성 출력(output0) 
 	sibsng(sj_dg,"",sj_dj); subj = js_titl; temps0 = a_ssng.filter(isFind);
 	$('#output0').append("■ 4 일지십성: ");
 	$('#output0').append(
@@ -2169,7 +2297,36 @@ function spclcarac(){
 		})
 	);
 	$('#output0').append("--------------------------------------------------------------</br>");
-	
+
+		//--- 월지십성 특성 출력(output0) 
+	if (gendr.substr(0,1) == "남"){gnr = 4;};
+	if (gendr.substr(0,1) == "여"){gnr = 5;}; outx = "";
+	relstr = a_ssmj[0][gnr].substr(2).split(" ");
+	for (i=0; i<relstr.length; i++){
+		if (relstr[i] != ""){
+			subj = relstr[i]; temp = a_ssmj.filter(isFind);	f_ganji(sj_dg,relstr[i],""); 
+			sibsng(g_titl,"",sj_mj); subj = js_titl;  temps0 = a_ssmj.filter(isFind);
+			outx += "◐ " + temp[0][gnr] + "__ " + g_titl + " " + sj_mj + "__" + js_titl + temps0[0][6] + "</br>";
+			if (i==3){outx += "--------------------------------------------------------------</br>"};
+		};
+	};
+	$('#output0').append("■ 8 육친관계: ");
+	$('#output0').append(
+		$('<span>').prop({
+			className: 'spcs css_b8',
+			innerHTML: "월지__ " + sj_mj + "__ " + gendr.substr(0,1) + "성__ 부모형제 배우자 아들 딸"
+		})
+	);
+	$('#output0').append("</br>");
+	$('#output0').append(
+		$('<div>').prop({
+			id: 'css_b8',
+			innerHTML: outx,
+			className: 'txcb'
+		})
+	);
+	$('#output0').append("--------------------------------------------------------------</br>");
+
 	$("#output0").on("click", "span", function(){ 
 		disp("#"+$(this).attr("class").substr(5),"",""); 
 	}); 
@@ -2275,6 +2432,7 @@ function hangun(){
 	ganhn();
 	jijihn();
 	sinsalhn();
+	gongmangh("output3");
 };
 
 //■■■■■■■■■■■■■■■■■■■■
@@ -2291,7 +2449,7 @@ function sinsalhn_out(csno1, sinsaltxt1, g, h, a, b){
 			if (temps2[0][4] != ""){document.getElementById(csno1).innerHTML += temps2[0][4] + "</br>";};
 			if (temps2[0][2] != "" && gendr.substr(0,1) == "남"){document.getElementById(csno1).innerHTML += temps2[0][2] + "</br>";};
 			if (temps2[0][3] != "" && gendr.substr(0,1) == "여"){document.getElementById(csno1).innerHTML += temps2[0][3] + "</br>";};
-			if (subj=="원진"){wonjin(csno1, g, h, a, b);}; if (subj=="귀문"){guimun(csno1, g, h, a, b);};
+			if (subj=="원진"){wonjin(csno1, g, h, a, b);};
 		};
 	};
 };
@@ -2405,6 +2563,7 @@ function outptt(){
 	ptt(ganhc_nfo,"ganhc_nfo : 천간합충","#output5");
 	ptt(jjhc_nfo,"jjhc_nfo : 지지합충형해파","#output5");
 	ptt(sinsal_nfo,"sinsal_nfo : 신살","#output5");
+	ptt(gongmang_nfo,"gongmang_nfo : 공망","#output5");
 };
 
 //--- "output4" & "output5" 출력 양식 작성하는 함수
@@ -2780,12 +2939,12 @@ function guimun(dest, g, h, a, b){
 			document.getElementById(dest).innerHTML += "♠ 일지-시지 & (" + gendr.substr(0,1) + ") " + hs_titl + " 귀문--- 배우자가 변태적 성향이 있으며 배우자가 성불감증인 경우가 많음" + "</br>";
 		};
 	};
-	if (h>5){
-		sibsTugsin(hgj_nfo[h-5][7]); 
-		if (hs_titl=="관성" && gendr=="여음"){
-			document.getElementById(dest).innerHTML += "♠ (" + gendr.substr(0,1) + ") " + hs_titl + "행운 귀문관살이 되면--- 부부별리" + "</br>";
-		};
-	};
+ 	if (h>5){
+ 		sibsTugsin(hgj_nfo[h-5][7]); 
+ 		if (hs_titl=="관성" && gendr=="여음"){
+ 			document.getElementById(dest).innerHTML += "♠ (" + gendr.substr(0,1) + ") " + hs_titl + "행운 귀문관살이 되면--- 부부별리" + "</br>";
+ 		};
+ 	};
 };
 
 //======= 신살 체크00 =======
@@ -2813,7 +2972,7 @@ function sinsal00(a,b,c,f,d,e,g,h){ //=== a: base, b: target, c: list, f: classc
 };
 
 //======= 신살 체크02 ======= (태극귀인)
-function sinsal02(a,b,c,f,d,e,g,h){ //=== a: base, b: target, c: list, f: classcode, d: destin, e: destin2, g: base, h: target
+function sinsal02(a,b,c,f,d,e,g,h){ //=== a: base, b: target, c: list, f: classcode, d: destin, e: destin2, g: base수, h: target수
 	return new Promise(function (resolve, reject){
 		//========== 배열 영역 (frames) ======================
 		ttgt = ""; if (h==2){ttgt="연지";}; if (h==3){ttgt="월지";}; if (h==4){ttgt="일지";}; if (h==5){ttgt="시지";}; 
