@@ -2266,7 +2266,7 @@ function spclcarac(){
 		//--- 월지십성 특성 출력(output0) 
 	if (gendr.substr(0,1) == "남"){gnr = 4;};
 	if (gendr.substr(0,1) == "여"){gnr = 5;}; outx = "";
-	relstr = a_ssmj[0][gnr].substr(2,29).split(" ");
+	relstr = a_ssmj[0][gnr].substr(2).split(" ");
 	for (i=0; i<relstr.length; i++){
 		if (relstr[i] != ""){
 			subj = relstr[i]; temp = a_ssmj.filter(isFind);	f_ganji(sj_dg,relstr[i],""); 
