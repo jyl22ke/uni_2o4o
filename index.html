@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <link rel="shortcut icon" href="#" type="image/x-icon">
   <link rel="icon" href="#" type="image/x-icon">
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />        
@@ -55,8 +54,8 @@
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
 	.out { display: flex; min-height: 100px; width: 798px; padding: 0 10px; margin-bottom:10px;}
 	.out1 { display: flex; flex-direction: column; float:left; width: 798px; margin-bottom:10px;}
-	#output1,#output2,#output3,#output4,#output5 {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em;}
-	#output1,#output3 { min-height: 200px;}
+	#output1,#output2,#output3,#output4,#output5 {color: #000; padding:10px;border:1px solid black;text-align:left;}
+	#output1,#output2,#output3 { min-height: 200px; font-size: 0.8em;}
 	#output0,#output2,#output4,#output5 { min-height: 100px;}
 	#output0 {color: #000; background: #ffeecc; padding:10px; margin-top:10px; border:1px solid black;text-align:left; font-size: 0.8em; width:776px;}
 	#outputa,#outputb {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:776px; min-height: 100px;}
@@ -69,10 +68,10 @@
 
 	table{border: 1px solid black; border-collapse: collapse;}
 	td{border: 1px solid black;}
-	.rdat { width: 400px;}
-	.rdat0,.rdat1 {width: 40px; text-align:center;}
-	.rdat2 {width: 120px; text-align:center;}
-	.rdau0,.rdau1,.rdau2 {width: 65px; text-align:center;}
+	.rdat { width: 400px; font-size: 0.8em; margin-left: 10px; font-weight: bold;}
+	.rdat0,.rdat1 {width: 40px; text-align:center; font-size: 0.8em;}
+	.rdat2 {width: 120px; text-align:center; font-size: 0.8em;}
+	.rdau0,.rdau1,.rdau2 {width: 65px; text-align:center; font-size: 0.8em;}
 	.rdat0,.rdau0 {font-weight: bold;}
 	#submit, #submit1 {padding: 0; font-weight: bold;}
 	#sola {display:none; font-weight: bold;}
@@ -169,23 +168,7 @@
 			<div class="sjb sjex" id="ssal1"></div>
 			<div class="hun sjex">원국 행운</div>
 			<div class="huna sjex" id="ssal0"></div>
-			<div class="hunb sjex" id="ssalb"></div><!--
-			<div class="sjct sjex">십성 운성(각주)</div>
-			<div class="sjb sjex" id="ssa4"></div>
-			<div class="sjb sjex" id="ssa3"></div>
-			<div class="sjb sjex" id="ssa2"></div>
-			<div class="sjb sjex" id="ssa1"></div>
-			<div class="hun sjex">행운</div>
-			<div class="huna sjex" id="ssa0"></div>
-			<div class="hunb sjex" id="ssab"></div>
-			<div class="sjct sjex">지장간(각주)</div>
-			<div class="sjb sjex" id="ssb4"></div>
-			<div class="sjb sjex" id="ssb3"></div>
-			<div class="sjb sjex" id="ssb2"></div>
-			<div class="sjb sjex" id="ssb1"></div>
-			<div class="hun sjex">행운</div>
-			<div class="huna sjex" id="ssb0"></div>
-			<div class="hunb sjex" id="ssbb"></div>-->
+			<div class="hunb sjex" id="ssalb"></div>
 			<div class="sjut1">대운</div>
 			<div class="sju1" id="sjua10"></div>
 			<div class="sju2" id="sjub10"></div>
@@ -311,7 +294,6 @@ fread("cgh02_dhap_simrihealth");
 fread("gan");	
 fread("ganji_habchung");	
 fread("jiji");	
-fread("o_hang");	
 fread("sibsungX1");	
 fread("unsung");	
 fread("spec_6hab");	
@@ -321,10 +303,10 @@ fread("spec_djhae");
 fread("spec_banghab");	
 fread("spec_samhab");	
 fread("jjref");	
+fread("testg");	
 fread("hc_listg");	
 fread("a_gan");	
 fread("a_jiji");	
-fread("a_ssmj");	
 fread("a_ssng");	
 fread("a_unsng");	
 fread("a_ilju");	
@@ -333,12 +315,14 @@ fread("wonjn");
 fread("sinsal_list1");	
 fread("sinsal_list2");	
 fread("sinsal_gen");	
+fread("o_hang");	
+fread("a_ssmj");	
 fread("a_sungong");	
 fread("a_jjgong");	
 fread("a_nabeum");	
 fread("a_sjgong");	
 fread("a_ssgong");	
-	
+
 function fread(fn){
     $(function (){
 	var fileName = "./" + fn + ".csv";	// 파일 이름
@@ -384,11 +368,7 @@ $( function() {
 		ad2 = "1881-01-29"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
 		$('#sola').empty();
 		bdat = document.getElementById('bday').value;
-//		if (bdat.substr(0,2)>now.format('yyyy-MM-dd').substr(2,2)){
-			Lbday = new Date(bdat.substr(0,4), bdat.substr(4,2)-1, bdat.substr(6,2)).format('yyyy-MM-dd');
-//		}else{
-//			Lbday = new Date("20" + bdat.substr(0,2), bdat.substr(2,2)-1, bdat.substr(4,2)).format('yyyy-MM-dd');
-//		};
+		Lbday = new Date(bdat.substr(0,4), bdat.substr(4,2)-1, bdat.substr(6,2)).format('yyyy-MM-dd');
 		mtyp = $('input[name="isLeap"]:checked').val();
 		subj = Lbday.substr(0,4); temp = ca11_lunar_cal.filter(isFind);
 		v = Number(Lbday.substr(5,2));  //---- 월(음력)
@@ -623,7 +603,7 @@ function sjmain(){
 		mpohcnt();
   		wongug();
 		sinsal();
-//		spclcarac();
+		spclcarac();
 		gongmang("output1");
 		setTimeout(hangun, 10);
 };
@@ -832,19 +812,22 @@ function nabeum(a,b){
 	nabg = tempg[0][2]; nab = nabg.substr(2,1);
 };
 
-//========= 순중공망 체크 함수 =========
+//========= 지지공망 체크 함수 =========
 function sun_gong(a,b,d){
 	if (b==2){btxt = "연지";}; if (b==3){btxt = "월지";}; if (b==4){btxt = "일지";}; if (b==5){btxt = "시지";}; if (b==7){btxt = "연운지";}; if (b==8){btxt = "월운지";}; if (b==9){btxt = "일운지";}; 
 	if (jijigong.includes(a)==true){
 		gongmang_nfo[1][b] = a; 
 		subj = a; tempn = a_jjgong.filter(isFind);
 		document.getElementById(d).innerHTML += "◐ 지지공망: " + btxt + "__ " + a + " </br>" + tempn[0][5] + " </br> * 흉월: " + tempn[0][4] + " __ * 길월: " + tempn[0][3] + " </br>";
+		if (b<6){document.getElementById(d).innerHTML += "◐ " + btxt + "공망: </br>" + a_sjgong[(b-1)*2][1] + " </br>";}; //---사주공망
+		sibsng(sj_dg, "", a); subj = js_titl; temp = a_ssgong.filter(isFindj); 
+		if (temp[0][1].indexOf(subj)==0){idn = 5;}else{idn = 6;};
+		document.getElementById(d).innerHTML += "◐ " + temp[0][0] + ": " + temp[0][2] + "__ " + temp[0][3] + "</br>" + temp[0][4] + "</br> * " + subj + "__ " + temp[0][idn] + " </br>"; //---십성공망
 		document.getElementById(d).innerHTML += "--------------------------------------------------------------</br>";
-		console.log("순중공망: " + jijigong + "__ " + btxt + "공망: " + a + "__ 합충형 상황==> 해공여부");
 	};
 };
 
-//========= (오행,천간,사대)공망 체크 함수 =========
+//========= (천간,사대)공망 체크 함수 =========
 function ocs_gong(a,b,c,d){
 //	if (c == ""){if (ohgong != ""){console.log("오행공망: " + ohgong);}; if (gangong != ""){console.log("천간공망: " + gangong);};};
 	if (b == ""){
@@ -853,8 +836,11 @@ function ocs_gong(a,b,c,d){
 		if (gangong.includes(a)==true){
 			gongmang_nfo[2][c] = a; 
 			document.getElementById(d).innerHTML += "◐ 천간공망: " + btxt + "__ " + a + " </br>";
+			if (c<6){document.getElementById(d).innerHTML += "◐ " + btxt + "공망: </br>" + a_sjgong[(c-2)*2+1][1] + " </br>";}; //---사주공망
+			sibsng(sj_dg, a, ""); subj = gs_titl; temp = a_ssgong.filter(isFindj); 
+			if (temp[0][1].indexOf(subj)==0){idn = 5;}else{idn = 6;};
+			document.getElementById(d).innerHTML += "◐ " + temp[0][0] + ": " + temp[0][2] + "__ " + temp[0][3] + "</br>" + temp[0][4] + "</br> * " + subj + "__ " + temp[0][idn] + " </br>"; //---십성공망
 			document.getElementById(d).innerHTML += "--------------------------------------------------------------</br>";
-			console.log(atxt + "공망: " + gangong + "__ " + btxt + "공망: " + a + "__ 합충형 상황==> 해공여부");
 		};
 	}else{
 		atxt = "사대";
@@ -864,9 +850,8 @@ function ocs_gong(a,b,c,d){
 			gongmang_nfo[3][c] = nabg.substr(0,3); 
 			document.getElementById(d).innerHTML += "◐ 사대공망: " + btxt + "__ " + a + b + "__ " + nabg + " </br>" + tempg[0][3] + "</br>" + tempg[0][6] + "</br>" + tempg[0][7] + " </br>";
 			document.getElementById(d).innerHTML += "--------------------------------------------------------------</br>";
-			console.log(atxt + "공망: " + fourgong + "__ " + btxt + "공망: " + nabg + "__ " + a + b); 
 		};
-	}; //--- console.log(ymgj + fourgong);
+	}; 
 };
 
 //========= 간지 배경색 =========
@@ -1152,10 +1137,6 @@ function jjg_turb(){
 		gaeji();
 	};
 };
-
-//--- return true; return false; //--- 반복문에서 현재이후의 모든 상위 반복문 절차까지 탈출
-//--- break; //--- 반복문에서 현재반복문의 나머지절차를 탈출하고 상위 반복문을 계속실행
-//--- continue; //--- 반복문에서 현재반복문의 현재절차만 탈출하고 나머지 절차와 상위반복문을 계속실행
 
 //====== 사고의 개 ===================
 function sago(){  
@@ -1656,20 +1637,6 @@ function fill_saju(){
 	document.getElementById("sj4c").innerText += "(일간) " + gj_nfo[2][8] + " \n";  //----- 월지 십이운성 기록
 	document.getElementById("sj6c").innerText += "(일간) " + gj_nfo[3][8] + " \n";  //----- 일지 십이운성 기록
 	document.getElementById("sj8c").innerText += "(일간) " + gj_nfo[4][8] + " \n";  //----- 시지 십이운성 기록
-//	sibsng(a,b,c); //--- a: 기준, b: 천간, c: 지지
-//	unsng(a,b); //--- a: 기준(천간), b: 지지
-//	let ssa = ""; let ssb = "";
-//	sibsng(sj_yg,"",sj_yj); ssa = js_titl; unsng(sj_yg,sj_yj); ssa += " " + js_titl; 	document.getElementById("ssa1").innerText += ssa ;//+ "\n"; //--- 연주
-//	sibsng(sj_mg,"",sj_mj); ssa = js_titl; unsng(sj_mg,sj_mj); ssa += " " + js_titl; 	document.getElementById("ssa2").innerText += ssa ;//+ "\n"; //--- 월주
-//	sibsng(sj_dg,"",sj_dj); ssa = js_titl; unsng(sj_dg,sj_dj); ssa += " " + js_titl; 	document.getElementById("ssa3").innerText += ssa ;//+ "\n"; //--- 일주
-//	if (sjtx != "x"){ sibsng(sj_tg,"",sj_tj); ssa = js_titl; unsng(sj_tg,sj_tj); ssa += " " + js_titl; 	document.getElementById("ssa4").innerText += ssa ;};//+ "\n"; //--- 시주
-
-//	for (i=1; i<5 ; i++){
-//		for (j=0; j<3; j++){
-//			a=gj_nfo[i][j+9].substr(0,1); b=gj_nfo[i][5]; unsng(a,b); ssb += gj_nfo[i][j+9] + " " + js_titl;
-//		}
-//	}
-
 };
 
 //====== 천간합충 원국/행운 결과 출력 함수 ======
@@ -1927,8 +1894,6 @@ function wongug(){
 	document.getElementById("sj6a").innerText += jjhc_nfo[3][3] + jjhc_nfo[3][4] + jjhc_nfo[3][5];  //--- 화면양식에 일지 합충파해 기록
 	document.getElementById("sj8a").innerText += jjhc_nfo[4][3] + jjhc_nfo[4][4] + jjhc_nfo[4][5];  //--- 화면양식에 시지 합충파해 기록
 
-//	johc_chk0("지지원진",6); johc_chk0("지지귀문",6); johc_chk0("지지암합",5); gjhab_chk("간지암명합",7);
-
 	//------ 원국 hcg1 코드 생성
 	if (ganhc_nfo[1][3].substr(2,1)==""){hcg1 += "----";
 	}else{	hcg1 += ganhc_nfo[1][3].substr(2,1) + rt1 + "--";}; 
@@ -2123,7 +2088,7 @@ function chkg(a,b){
 		rslt = b + a;
 	};
 };
-let relstr = "";
+
 //======================
 function spclcarac(){
 	$('#output0').append("■■  나는 어떤 사람인가? </br></br>");
@@ -2377,7 +2342,6 @@ function hangun(){
 	mktable(2,hn_yg,hn_yj,hgj_nfo);
 	mktable(3,hn_mg,hn_mj,hgj_nfo);
 	mktable(4,hn_dg,hn_dj,hgj_nfo);
-//	mktable(5,hn_tg,hn_tj,hgj_nfo);
 	hn_ganji = hn_lg + hn_lj + hn_yg + hn_yj + hn_mg + hn_mj + hn_dg + hn_dj;
 
 	if (ganhc_nfo[1][3].substr(2,1) != "합" && ganhc_nfo[1][3].substr(2,1) != "충"){habchk2(1);};  //--- 원국에 연간합충이 없으면 행운 check (천간합 흉화)
@@ -3322,9 +3286,6 @@ function baneumh(g, h){
 		resolve();
 	});
 };
-
-
-let testg = ["卯戌","卯酉","卯辰","未寅","未子","巳戌","巳申","巳亥","戌未","戌酉","戌子","申卯","申亥","午卯","午未","午午","午亥","酉酉","酉子","寅巳","寅申","寅酉","寅亥","子卯","子午","子丑","辰戌","辰酉","辰辰","辰亥","丑未","丑戌","丑午","丑寅","丑辰","亥亥","寅巳申","丑戌未","甲庚","甲己","甲戊","己癸","戊癸","戊壬","丙庚","丙辛","丙壬","乙辛","乙庚","乙己","丁癸","丁辛","丁壬","甲午","癸巳","己亥","戊子","辛巳","壬午","丁亥"]
 
 </script>
 
