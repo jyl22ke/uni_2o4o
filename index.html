@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
   <link rel="shortcut icon" href="#" type="image/x-icon">
   <link rel="icon" href="#" type="image/x-icon">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />        
@@ -54,13 +55,13 @@
 	.sj {grid-column: span 3;grid-row: span 1; color: #000; font-weight: bold;border:1px solid black;height:60px;font-size:3.0em; font-family:"한양해서";}
 	.out { display: flex; min-height: 100px; width: 798px; padding: 0 10px; margin-bottom:10px;}
 	.out1 { display: flex; flex-direction: column; float:left; width: 798px; margin-bottom:10px;}
-	#output1,#output2,#output3,#output4,#output5 {color: #000; padding:10px;border:1px solid black;text-align:left;}
-	#output1,#output2,#output3 { min-height: 200px; font-size: 0.8em;}
+	#output1,#output1a,#output2,#output3,#output3a,#output4,#output5 {color: #000; padding:10px;border:1px solid black;text-align:left;}
+	#output1,#output1a,#output2,#output3,#output3a { min-height: 100px; font-size: 0.8em;}
 	#output0,#output2,#output4,#output5 { min-height: 100px;}
 	#output0 {color: #000; background: #ffeecc; padding:10px; margin-top:10px; border:1px solid black;text-align:left; font-size: 0.8em; width:776px;}
 	#outputa,#outputb {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:776px; min-height: 100px;}
-	#output1,#output2,#outputa {background: #ebebe0;}
-	#output3,#output4,#output5,#outputb {background: #f2d9f2;}
+	#output1,#output1a,#output2,#outputa,#output4 {background: #ebebe0;}
+	#output3,#output3a,#output5,#outputb {background: #f2d9f2;}
 	.spcs, .spct {font-weight: bold;}
 	.spcs:hover, .spct:hover {color:#f00;cursor:pointer;}
 	.txca,.txcb,.txcc{display: none;}
@@ -76,7 +77,7 @@
 	#submit, #submit1 {padding: 0; font-weight: bold;}
 	#sola {display:none; font-weight: bold;}
 	#clear1 {padding: 0;}
-	@media screen and (min-width: 800px) {.contain{display: block;width:1960px;} .canvas {float: left;} #output0 {width:776px;} #output1 {width:458px;} #output3 {width:538px;} #output2 {width: 254px;} #output4,#output5 {width: 742px;} .out {width: 1040px;}}
+	@media screen and (min-width: 800px) {.contain{display: block;width:1960px;} .canvas {float: left;} #output0 {width:776px;} #output1,#output1a {width:458px;} #output3,#output3a {width:538px;} #output2 {width: 254px;} #output4,#output5 {width: 742px;} .out {width: 1040px;}}
 
   </style>
 
@@ -222,6 +223,10 @@
 	<div class="out">
 		<div id="output1"></div>
 		<div id="output3"></div>
+	</div>
+	<div class="out">
+		<div id="output1a"></div>
+		<div id="output3a"></div>
 	</div>
 	<div class="out">
 		<div id="output2"></div>
@@ -484,8 +489,10 @@ function sjmain(){
 		$("#sola").hide();
 		$('#output0').empty();
 		$('#output1').empty();
+		$('#output1a').empty();
 		$('#output2').empty();
 		$('#output3').empty();
+		$('#output3a').empty();
 		$('#output4').empty();
 		$('#output5').empty();
 		$('#outputa').empty();
@@ -534,10 +541,10 @@ function sjmain(){
 		["시지","","","","","","","","","",""]];
 
 		gongmang_nfo = [
-		["구분","旬","연지","월지","일지","시지","대운","연운","월운","일운","시운"],
-		["순중(지지)","","","","","","","","","",""],
-		["오행(천간)","","","","","","","","","",""],
-		["사대(납음)","","","","","","","","","",""]];
+		["구분","旬","연주","월주","일주","시주","대운","연운","월운","일운","시운"],
+		["지지","","","","","","","","","",""],
+		["천간","","","","","","","","","",""],
+		["사대","","","","","","","","","",""]];
 
 		gj_nfo = [
 		["위치","gan","g오행","g십성","통근","jiji","j오행","j십성","운성","장간1","장간2","장간3","1십성","2십성","3십성","비고"],
@@ -604,7 +611,7 @@ function sjmain(){
   		wongug();
 		sinsal();
 		spclcarac();
-		gongmang("output1");
+		gongmang("#output1a");
 		setTimeout(hangun, 10);
 };
 
@@ -759,8 +766,8 @@ $(function(){
 });
 
 //========= 원국 공망 check 하는 함수 =========
-function gongmang(d){
-	jijigong = ""; ohgong = ""; gangong = ""; fourgong = "";
+async function gongmang(d){
+	jijigong = ""; ohgong = ""; gangong = ""; fourgong = ""; txt_gm = "";
 	//---------- 순중(지지)공망 만들기 ----------
  	gjdev5 = sinsal_list2[0].indexOf(sj_dg);
  	gjdev6 = sinsal_list1[0].indexOf(sj_dj);
@@ -780,78 +787,173 @@ function gongmang(d){
 		 gongmang_nfo[2][1] = gangong; gongmang_nfo[3][1] = fourgong;
 	};
 	subj = jijigong; tempn = a_sungong.filter(isFind);
-	document.getElementById("output1").innerHTML += "■ 공망--- 일주: " + gan[gjdev5][0] + " " + jiji[gjdev6][0] + " </br>";
-	document.getElementById("output1").innerHTML += "◐ 순중공망: " + jijigong + " </br>" + tempn[0][5] + " </br>";
-	document.getElementById("output1").innerHTML += "--------------------------------------------------------------</br>";
-	if (ohgong != ""){
-		document.getElementById("output1").innerHTML += "◐ 오행공망: " + ohgong + " </br>" + tempn[0][6] + " </br>";	
-		document.getElementById("output1").innerHTML += "--------------------------------------------------------------</br>";
-	};
-	sun_gong(sj_yj,2,d); sun_gong(sj_mj,3,d); sun_gong(sj_dj,4,d); sun_gong(sj_tj,5,d);  //---------- 순중(지지)공망 체크 ----------
-	//---------- (오행,천간,사대)공망 체크 ----------
-	ocs_gong(sj_yg,"",2,d); ocs_gong(sj_mg,"",3,d); ocs_gong(sj_dg,"",4,d); ocs_gong(sj_tg,"",5,d);
-	ocs_gong(sj_yg,sj_yj,2,d); ocs_gong(sj_mg,sj_mj,3,d); 
+	txt_gm += "■ 공망--- 일주: " + gan[gjdev5][0] + " " + jiji[gjdev6][0] + " </br>";
+	tagging("css_g", "spcs ", "txca", "#output1", "", "", 0, "◐ 순중공망: " + jijigong, tempn[0][5]);
+	if (ohgong != ""){tagging("css_g", "spcs ", "txca", "#output1", "", "", 0, "◐ 오행공망: " + ohgong, tempn[0][6]);};
+	txt_gm += "--------------------------------------------------------------</br>";
+	await sun_gong(sj_yj,2,d); 
+	await sun_gong(sj_mj,3,d); 
+	await sun_gong(sj_dj,4,d); 
+	await sun_gong(sj_tj,5,d);  //---------- 지지공망 체크 ----------
+	await ocs_gong(sj_yg,"",2,d); 
+	await ocs_gong(sj_mg,"",3,d); 
+	await ocs_gong(sj_dg,"",4,d); 
+	await ocs_gong(sj_tg,"",5,d);  //---------- 천간공망 체크 ----------
+	await ocs_gong(sj_yg,sj_yj,2,d); 
+	await ocs_gong(sj_mg,sj_mj,3,d);  //---------- 사대공망 체크 ----------
+ 	twsa1 = sinsal_list2[0].indexOf(sj_mg)+1; if (twsa1>10){twsa1 -= 10;};   //--- 태월 체크
+	twsa2 = sinsal_list1[0].indexOf(sj_mj)+3; if (twsa2>12){twsa2 -= 12;}; 
+	await ocs_gong(sinsal_list2[0][twsa1],sinsal_list1[0][twsa2],1,d);  //---------- 태월공망 체크 ----------
+	$(d).append(txt_gm);
+
+	$(d).on("click", "span", function(){ 
+		disp("#"+$(this).attr("class").substr(5),"",""); 
+	}); 
+};
+
+//========= 납음오행 계산 함수 =========
+function nabeum(e,f){
+	subj = e + f; tempg = a_nabeum.filter(isFind);
+	nabg = tempg[0][2]; nab = nabg.substr(2,1);
+};
+
+//========= 지지공망 출력 확장 함수 =========
+let cssn2 = 0;
+function tagging(a,b,c,d,e,f,g,h,i){  //--- a: css prefix, b: span_css, c: div_css, d: destin, e: gan, f: jiji, g: pos_n, h: title, i: content
+	cssn2 += 1; csno2 = a + cssn2;
+	if (g==1){i = "* 태월이 공망되면 매사불성(每事不成)이고 정신적 측면에서 이상을 호소하는 경우가 많아 정서불안(情緖不安) 및 학문불리(學問不利) 현상이 나타난다.</br>* 특히 사대공망이 태월공망(胎月空亡)에 해당하면 뇌성마비 등의 정신질환에 취약하다.</br>그러나 사주가 청기하고 균형이 잡히면 반드시 비범성을 띄어 천재적 기질을 발휘하나, 그렇지 않으면 둔재로서 정신적 문제를 야기할 수 있으며 특히 육친의 흉화를 면키 어렵다.</br>* 한편, 태월공망과 관계없이 행운에서 태월을 충형(沖刑)하면 신체 손상 및 직업중단수의 우려가 있다.</br>" + i;};
+	txt_gm += '<span class = "' + b + csno2 + '">' + h + '</span></br>';
+	txt_gm += '<div id = "' + csno2 + '" class = "' + c + '">' + i + '</div>';
+};
+
+//========= 지지공망 체크 함수 =========
+function sun_gong(f,g,d){
+	return new Promise(function (resolve, reject){
+		if (g==2){btxt = "연지";}; if (g==3){btxt = "월지";}; if (g==4){btxt = "일지";}; if (g==5){btxt = "시지";};  //--- if (g==7){btxt = "연운지";}; if (g==8){btxt = "월운지";}; if (g==9){btxt = "일운지";}; 
+		if (jijigong.includes(f)==true){
+			gongmang_nfo[1][g] = f; 
+			subj = f; tempn = a_jjgong.filter(isFind);
+			tagging("css_g", "spcs ", "txca", d, "", f, g, "◐ 지지공망: " + btxt + "__ " + f, tempn[0][5] + " </br> * 흉월: " + tempn[0][4] + " __ * 길월: " + tempn[0][3]);
+			sibsng(sj_dg, "", f); subj = js_titl; temp = a_ssgong.filter(isFindj);
+			if (g<6){
+				tagging("css_g", "spcs ", "txca", d, "", f, g, "◐ " + btxt + "공망: " + subj, a_sjgong[(g-1)*2][1]);
+			};
+			if (temp[0][1].indexOf(subj)==0){idn = 5;}else{idn = 6;};
+			tagging("css_g", "spcs ", "txca", d, "", f, g, "◐ " + temp[0][0] + ": " + temp[0][2] + "__ " + temp[0][3], temp[0][4] + "</br> * " + subj + "__ " + temp[0][idn]);
+			txt_gm += "--------------------------------------------------------------</br>";
+			console.log("원국 순중공망: " + jijigong + "__ " + btxt + "공망: " + f + "__ 합충형 상황==> 해공여부");
+		};
+		resolve();
+	});
+};
+
+//========= (천간,사대)공망 체크 함수 =========
+function ocs_gong(e,f,g,d){
+	return new Promise(function (resolve, reject){
+		if (f == ""){
+			if (g==2){btxt = "연간";}; if (g==3){btxt = "월간";}; if (g==4){btxt = "일간";}; if (g==5){btxt = "시간";};  //--- if (g==7){btxt = "연운간";}; if (g==8){btxt = "월운간";}; if (g==9){btxt = "일운간";}; 
+			if (gangong.includes(e)==true){
+				gongmang_nfo[2][g] = e; 
+				txt_gm += "◐ 천간공망: " + btxt + "__ " + e + "</br>";
+				sibsng(sj_dg, e, ""); subj = gs_titl; temp = a_ssgong.filter(isFindj); 
+				if (g<6){
+					tagging("css_g", "spcs ", "txca", d, e, f, g, "◐ " + btxt + "공망: " + subj, a_sjgong[(g-2)*2+1][1]);
+				};
+				if (temp[0][1].indexOf(subj)==0){idn = 5;}else{idn = 6;};
+				tagging("css_g", "spcs ", "txca", d, e, f, g, "◐ " + temp[0][0] + ": " + temp[0][2] + "__ " + temp[0][3], temp[0][4] + "</br> * " + subj + "__ " + temp[0][idn]);
+				txt_gm += "--------------------------------------------------------------</br>";
+				console.log("천간공망: " + gangong + "__ " + btxt + "공망: " + e + "__ 합충형 상황==> 해공여부");
+			};
+		}else{
+			if (g==2){btxt = "연주";}; if (g==3){btxt = "월주";}; if (g==4){btxt = "일주";}; if (g==5){btxt = "시주";}; if (g==1){btxt = "태월";};
+			nabeum(e,f); 
+			if (nab == fourgong){
+				gongmang_nfo[3][g] = nabg.substr(0,3); 
+				tagging("css_g", "spcs ", "txca", d, e, f, g, "◐ 사대공망: " + btxt + "__ " + e + f + "__ " + nabg, " * " + tempg[0][3] + "</br> *" + tempg[0][6] + "__ " + tempg[0][7]);
+				txt_gm += "--------------------------------------------------------------</br>";
+			};
+		}; 
+		resolve();
+	});
 };
 
 //========= 행운 공망 check 하는 함수 =========
-function gongmangh(d){
+async function gongmangh(d){
+	txt_gmh = "";
 	for (i=1; i<4; i++){
 		for (j=6; j<10; j++){
 			gongmang_nfo[i][j] = "";
 		};
 	};
-	document.getElementById(d).innerHTML += "■ 공망--- 일주: " + gan[gjdev5][0] + " " + jiji[gjdev6][0] + " </br>";
-	sun_gong(hn_yj,7,d); sun_gong(hn_mj,8,d); sun_gong(hn_dj,9,d);
-	ocs_gong(hn_yg,"",7,d); ocs_gong(hn_mg,"",8,d); ocs_gong(hn_dg,"",9,d);
-	ocs_gong(hn_yg,hn_yj,7,d); ocs_gong(hn_mg,hn_mj,8,d); ocs_gong(hn_dg,hn_dj,9,d);
-};
-
-//========= 납음오행 계산 함수 =========
-function nabeum(a,b){
-	subj = a + b; tempg = a_nabeum.filter(isFind);
-	nabg = tempg[0][2]; nab = nabg.substr(2,1);
-};
-
-//========= 지지공망 체크 함수 =========
-function sun_gong(a,b,d){
-	if (b==2){btxt = "연지";}; if (b==3){btxt = "월지";}; if (b==4){btxt = "일지";}; if (b==5){btxt = "시지";}; if (b==7){btxt = "연운지";}; if (b==8){btxt = "월운지";}; if (b==9){btxt = "일운지";}; 
-	if (jijigong.includes(a)==true){
-		gongmang_nfo[1][b] = a; 
-		subj = a; tempn = a_jjgong.filter(isFind);
-		document.getElementById(d).innerHTML += "◐ 지지공망: " + btxt + "__ " + a + " </br>" + tempn[0][5] + " </br> * 흉월: " + tempn[0][4] + " __ * 길월: " + tempn[0][3] + " </br>";
-		if (b<6){document.getElementById(d).innerHTML += "◐ " + btxt + "공망: </br>" + a_sjgong[(b-1)*2][1] + " </br>";}; //---사주공망
-		sibsng(sj_dg, "", a); subj = js_titl; temp = a_ssgong.filter(isFindj); 
-		if (temp[0][1].indexOf(subj)==0){idn = 5;}else{idn = 6;};
-		document.getElementById(d).innerHTML += "◐ " + temp[0][0] + ": " + temp[0][2] + "__ " + temp[0][3] + "</br>" + temp[0][4] + "</br> * " + subj + "__ " + temp[0][idn] + " </br>"; //---십성공망
-		document.getElementById(d).innerHTML += "--------------------------------------------------------------</br>";
+	txt_gmh += "■ 공망--- 일주: " + gan[gjdev5][0] + " " + jiji[gjdev6][0] + " </br>";
+	await sunh_gong(hn_yj,7,d); 
+	await sunh_gong(hn_mj,8,d); 
+	await sunh_gong(hn_dj,9,d);
+	await ocsh_gong(hn_yg,"",7,d); 
+	await ocsh_gong(hn_mg,"",8,d); 
+	await ocsh_gong(hn_dg,"",9,d);
+	await ocsh_gong(hn_yg,hn_yj,7,d); 
+	await ocsh_gong(hn_mg,hn_mj,8,d); 
+	await ocsh_gong(hn_dg,hn_dj,9,d);
+	if (txt_gmh.length>67){
+		$(d).append(txt_gmh);
+		$(d).on("click", "span", function(){ 
+			disp("#"+$(this).attr("class").substr(5),"",""); 
+		}); 
 	};
 };
 
-//========= (천간,사대)공망 체크 함수 =========
-function ocs_gong(a,b,c,d){
-//	if (c == ""){if (ohgong != ""){console.log("오행공망: " + ohgong);}; if (gangong != ""){console.log("천간공망: " + gangong);};};
-	if (b == ""){
-		atxt = "천간"; 
-		if (c==2){btxt = "연간";}; if (c==3){btxt = "월간";}; if (c==4){btxt = "일간";}; if (c==5){btxt = "시간";}; if (c==7){btxt = "연운간";}; if (c==8){btxt = "월운간";}; if (c==9){btxt = "일운간";}; 
-		if (gangong.includes(a)==true){
-			gongmang_nfo[2][c] = a; 
-			document.getElementById(d).innerHTML += "◐ 천간공망: " + btxt + "__ " + a + " </br>";
-			if (c<6){document.getElementById(d).innerHTML += "◐ " + btxt + "공망: </br>" + a_sjgong[(c-2)*2+1][1] + " </br>";}; //---사주공망
-			sibsng(sj_dg, a, ""); subj = gs_titl; temp = a_ssgong.filter(isFindj); 
-			if (temp[0][1].indexOf(subj)==0){idn = 5;}else{idn = 6;};
-			document.getElementById(d).innerHTML += "◐ " + temp[0][0] + ": " + temp[0][2] + "__ " + temp[0][3] + "</br>" + temp[0][4] + "</br> * " + subj + "__ " + temp[0][idn] + " </br>"; //---십성공망
-			document.getElementById(d).innerHTML += "--------------------------------------------------------------</br>";
+//========= 행운 지지공망 출력 확장 함수 =========
+let cssn3 = 0;
+function taggingh(a,b,c,d,e,f,g,h,i){  //--- a: css prefix, b: span_css, c: div_css, d: destin, e: gan, f: jiji, g: pos_n, h: title, i: content
+	cssn3 += 1; csno3 = a + cssn3; 
+	txt_gmh += '<span class = "' + b + csno3 + '">' + h + '</span></br>';
+	txt_gmh += '<div id = "' + csno3 + '" class = "' + c + '">' + i + '</div>';
+};
+
+//========= 행운 지지공망 체크 함수 =========
+function sunh_gong(f,g,d){
+	return new Promise(function (resolve, reject){
+		if (g==7){btxt = "연운지";}; if (g==8){btxt = "월운지";}; if (g==9){btxt = "일운지";}; 
+		if (jijigong.includes(f)==true){
+			gongmang_nfo[1][g] = f; 
+			subj = f; tempp = a_jjgong.filter(isFind);
+			taggingh("css_h", "spcs ", "txca", d, "", f, g, "◐ 지지공망: " + btxt + "__ " + f, tempp[0][5] + " </br> * 흉월: " + tempp[0][4] + " __ * 길월: " + tempp[0][3]);
+			sibsng(sj_dg, "", f); subj = js_titl; temph = a_ssgong.filter(isFindj);
+			if (temph[0][1].indexOf(subj)==0){idn = 5;}else{idn = 6;};
+			taggingh("css_h", "spcs ", "txca", d, "", f, g, "◐ " + temph[0][0] + ": " + temph[0][2] + "__ " + temph[0][3], temph[0][4] + "</br> * " + subj + "__ " + temph[0][idn]);
+			txt_gmh += "--------------------------------------------------------------</br>";
+			console.log("순중공망: " + jijigong + "__ " + btxt + "공망: " + f + "__ 합충형 상황==> 해공여부");
 		};
-	}else{
-		atxt = "사대";
-		if (c==2){btxt = "연주";}; if (c==3){btxt = "월주";}; if (c==4){btxt = "일주";}; if (c==5){btxt = "시주";}; if (c==7){btxt = "연운";}; if (c==8){btxt = "월운";}; if (c==9){btxt = "일운";}; 
-		nabeum(a,b); 
-		if (nab == fourgong){
-			gongmang_nfo[3][c] = nabg.substr(0,3); 
-			document.getElementById(d).innerHTML += "◐ 사대공망: " + btxt + "__ " + a + b + "__ " + nabg + " </br>" + tempg[0][3] + "</br>" + tempg[0][6] + "</br>" + tempg[0][7] + " </br>";
-			document.getElementById(d).innerHTML += "--------------------------------------------------------------</br>";
-		};
-	}; 
+		resolve();
+	});
+};
+
+//========= 행운 (천간,사대)공망 체크 함수 =========
+function ocsh_gong(e,f,g,d){
+	return new Promise(function (resolve, reject){
+		if (f == ""){
+			if (g==7){btxt = "연운간";}; if (g==8){btxt = "월운간";}; if (g==9){btxt = "일운간";}; 
+			if (gangong.includes(e)==true){
+				gongmang_nfo[2][g] = e; 
+				txt_gmh += "◐ 천간공망: " + btxt + "__ " + e + "</br>";
+				sibsng(sj_dg, e, ""); subj = gs_titl; temph = a_ssgong.filter(isFindj); 
+				if (temph[0][1].indexOf(subj)==0){idn = 5;}else{idn = 6;};
+				taggingh("css_h", "spcs ", "txca", d, e, f, g, "◐ " + temph[0][0] + ": " + temph[0][2] + "__ " + temph[0][3], temph[0][4] + "</br> * " + subj + "__ " + temph[0][idn]);
+				txt_gmh += "--------------------------------------------------------------</br>";
+				console.log("천간공망: " + gangong + "__ " + btxt + "공망: " + e + "__ 합충형 상황==> 해공여부");
+			};
+		}else{
+			if (g==7){btxt = "연운";}; if (g==8){btxt = "월운";}; if (g==9){btxt = "일운";}; 
+			nabeum(e,f); 
+			if (nab == fourgong){
+				gongmang_nfo[3][g] = nabg.substr(0,3); 
+				taggingh("css_h", "spcs ", "txca", d, e, f, g, "◐ 사대공망: " + btxt + "__ " + e + f + "__ " + nabg, " * " + tempg[0][3] + "</br> *" + tempg[0][6] + "__ " + tempg[0][7]);
+				txt_gmh += "--------------------------------------------------------------</br>";
+			};
+		}; 
+		resolve();
+	});
 };
 
 //========= 간지 배경색 =========
@@ -1137,6 +1239,10 @@ function jjg_turb(){
 		gaeji();
 	};
 };
+
+//--- return true; return false; //--- 반복문에서 현재이후의 모든 상위 반복문 절차까지 탈출
+//--- break; //--- 반복문에서 현재반복문의 나머지절차를 탈출하고 상위 반복문을 계속실행
+//--- continue; //--- 반복문에서 현재반복문의 현재절차만 탈출하고 나머지 절차와 상위반복문을 계속실행
 
 //====== 사고의 개 ===================
 function sago(){  
@@ -1637,6 +1743,20 @@ function fill_saju(){
 	document.getElementById("sj4c").innerText += "(일간) " + gj_nfo[2][8] + " \n";  //----- 월지 십이운성 기록
 	document.getElementById("sj6c").innerText += "(일간) " + gj_nfo[3][8] + " \n";  //----- 일지 십이운성 기록
 	document.getElementById("sj8c").innerText += "(일간) " + gj_nfo[4][8] + " \n";  //----- 시지 십이운성 기록
+//	sibsng(a,b,c); //--- a: 기준, b: 천간, c: 지지
+//	unsng(a,b); //--- a: 기준(천간), b: 지지
+//	let ssa = ""; let ssb = "";
+//	sibsng(sj_yg,"",sj_yj); ssa = js_titl; unsng(sj_yg,sj_yj); ssa += " " + js_titl; 	document.getElementById("ssa1").innerText += ssa ;//+ "\n"; //--- 연주
+//	sibsng(sj_mg,"",sj_mj); ssa = js_titl; unsng(sj_mg,sj_mj); ssa += " " + js_titl; 	document.getElementById("ssa2").innerText += ssa ;//+ "\n"; //--- 월주
+//	sibsng(sj_dg,"",sj_dj); ssa = js_titl; unsng(sj_dg,sj_dj); ssa += " " + js_titl; 	document.getElementById("ssa3").innerText += ssa ;//+ "\n"; //--- 일주
+//	if (sjtx != "x"){ sibsng(sj_tg,"",sj_tj); ssa = js_titl; unsng(sj_tg,sj_tj); ssa += " " + js_titl; 	document.getElementById("ssa4").innerText += ssa ;};//+ "\n"; //--- 시주
+
+//	for (i=1; i<5 ; i++){
+//		for (j=0; j<3; j++){
+//			a=gj_nfo[i][j+9].substr(0,1); b=gj_nfo[i][5]; unsng(a,b); ssb += gj_nfo[i][j+9] + " " + js_titl;
+//		}
+//	}
+
 };
 
 //====== 천간합충 원국/행운 결과 출력 함수 ======
@@ -1894,6 +2014,8 @@ function wongug(){
 	document.getElementById("sj6a").innerText += jjhc_nfo[3][3] + jjhc_nfo[3][4] + jjhc_nfo[3][5];  //--- 화면양식에 일지 합충파해 기록
 	document.getElementById("sj8a").innerText += jjhc_nfo[4][3] + jjhc_nfo[4][4] + jjhc_nfo[4][5];  //--- 화면양식에 시지 합충파해 기록
 
+//	johc_chk0("지지원진",6); johc_chk0("지지귀문",6); johc_chk0("지지암합",5); gjhab_chk("간지암명합",7);
+
 	//------ 원국 hcg1 코드 생성
 	if (ganhc_nfo[1][3].substr(2,1)==""){hcg1 += "----";
 	}else{	hcg1 += ganhc_nfo[1][3].substr(2,1) + rt1 + "--";}; 
@@ -2091,178 +2213,75 @@ function chkg(a,b){
 
 //======================
 function spclcarac(){
-	$('#output0').append("■■  나는 어떤 사람인가? </br></br>");
+	txt_cara = "";
+	txt_cara += "■■  나는 어떤 사람인가? </br></br>";
 	//--- 음양 특성 출력(output0) 
 	if (gj_nfo[3][2].substr(0,1)=="음"){mptxt = o_hang[3][0] + "사고 지향적. 현재가치 중시. 내향 수동적. 실리(힘 세력) 중시. 수축 수렴 하강 부드러움";};
 	if (gj_nfo[3][2].substr(0,1)=="양"){mptxt = o_hang[2][0] +  "행동 지향적. 미래가치 중시. 외향 능동적. 명분(기세 의리) 중시. 팽창 발산 상승 단단함";};
-	$('#output0').append("■ 0 음양: "); 
-	$('#output0').append(
-		$('<span>').prop({
-			className: 'spcs css_b0',
-			innerHTML: mptxt.substr(0,1) + " (" + mptxt.substr(1,1) + ")"
-		})
-	);
-	$('#output0').append("</br>");
-	$('#output0').append(
-		$('<div>').prop({
-			id: 'css_b0',
-			innerHTML: "◐ " + mptxt.substr(2),
-			className: 'txcb'
-		})
-	);
-	$('#output0').append("--------------------------------------------------------------</br>");
-
+	txt_cara += "■ 0 음양: ";
+	txt_cara += '<span class="spcs css_b0">' + mptxt.substr(0,1) + " (" + mptxt.substr(1,1) + ")</span></br>";
+	txt_cara += '<div id="css_b0" class="txcb">' + "◐ " + mptxt.substr(2) + "</div>";
+	txt_cara += "--------------------------------------------------------------</br>";
 	//--- 오행 특성 출력(output0) 
-	$('#output0').append("■ 1 오행: "); 
+	txt_cara += "■ 1 오행: ";
 	subj = gj_nfo[3][2].substr(1);  //--- 일간의 오행
 	oid = o_hang[0].lastIndexOf(subj);
-	$('#output0').append(
-		$('<span>').prop({
-			className: 'spcs css_b1',
-			innerHTML: subj + " (" + o_hang[1][oid] + ")"
-		})
-	);
-	$('#output0').append("</br>");
-	$('#output0').append(
-		$('<div>').prop({
-			id: 'css_b1',
-			innerHTML: "◐ " + o_hang[4][oid] + ".. " + o_hang[5][oid] + " " + o_hang[5][0] + ".. 성정은 " + o_hang[6][oid] + ".. 강점 " + o_hang[7][oid] + ".. 약점 " + o_hang[8][oid] + ".. 장점 " + o_hang[9][oid] + ".. 단점 " + o_hang[10][oid] + "</br>◐ 특성: " + o_hang[12][oid] + "</br>◐ 심리: " + o_hang[13][oid] + "</br>◐ 동기부여: " + o_hang[14][oid],
-			className: 'txcb'
-		})
-	);
-	$('#output0').append("--------------------------------------------------------------</br>");
-
+	txt_cara += '<span class="spcs css_b1">' + subj + " (" + o_hang[1][oid] + ")</span></br>";
+	txt_cara += '<div id="css_b1" class="txcb">' + "◐ " + o_hang[4][oid] + ".. " + o_hang[5][oid] + " " + o_hang[5][0] + ".. 성정은 " + o_hang[6][oid] + ".. 강점 " + o_hang[7][oid] + ".. 약점 " + o_hang[8][oid] + ".. 장점 " + o_hang[9][oid] + ".. 단점 " + o_hang[10][oid] + "</br>◐ 특성: " + o_hang[12][oid] + "</br>◐ 심리: " + o_hang[13][oid] + "</br>◐ 동기부여: " + o_hang[14][oid] + "</div>";
+	txt_cara += "--------------------------------------------------------------</br>";
 	//--- 일간 특성 출력(output0) 
 	subj = sj_dg; temps0 = a_gan.filter(isFind);
-	$('#output0').append("■ 2 일간: "); 
-	$('#output0').append(
-		$('<span>').prop({
-			className: 'spcs css_b2',
-			innerHTML: subj + "__ " + temps0[0][1] + ".. " + temps0[0][2] + ".. " + temps0[0][4]
-		})
-	);
-	$('#output0').append("</br>");
-	$('#output0').append(
-		$('<div>').prop({
-			id: 'css_b2',
-			innerHTML: "◐ 특성: " + temps0[0][6] + "</br>◐ 질병: " + temps0[0][7],
-			className: 'txcb'
-		})
-	);
-	$('#output0').append("--------------------------------------------------------------</br>");
-
+	txt_cara += "■ 2 일간: ";
+	txt_cara += '<span class="spcs css_b2">' + subj + "__ " + temps0[0][1] + ".. " + temps0[0][2] + ".. " + temps0[0][4] + "</span></br>";
+	txt_cara += '<div id="css_b2" class="txcb">' + "◐ 특성: " + temps0[0][6] + "</br>◐ 질병: " + temps0[0][7] + "</div>";
+	txt_cara += "--------------------------------------------------------------</br>";
 	//--- 지지 특성 출력(output0) 
 	subj = sj_dj; temps0 = a_jiji.filter(isFind);
-	$('#output0').append("■ 3 일지: ");
-	$('#output0').append(
-		$('<span>').prop({
-			className: 'spcs css_b3',
-			innerHTML: subj + "__ " + temps0[0][1]
-		})
-	);
-	$('#output0').append("</br>");
-	$('#output0').append(
-		$('<div>').prop({
-			id: 'css_b3',
-			innerHTML: "◐ 특성: " + temps0[0][4] + "</br>◐ 질병: " + temps0[0][5] + "</br>◐ 직업: " + temps0[0][6],
-			className: 'txcb'
-		})
-	);
-	$('#output0').append("--------------------------------------------------------------</br>");
-
+	txt_cara += "■ 3 일지: ";
+	txt_cara += '<span class="spcs css_b3">' + subj + "__ " + temps0[0][1] + "</span></br>";
+	txt_cara += '<div id="css_b3" class="txcb">' + "◐ 특성: " + temps0[0][4] + "</br>◐ 질병: " + temps0[0][5] + "</br>◐ 직업: " + temps0[0][6] + "</div>";
+	txt_cara += "--------------------------------------------------------------</br>";
 	//--- 일지십성 특성 출력(output0) 
 	sibsng(sj_dg,"",sj_dj); subj = js_titl; temps0 = a_ssng.filter(isFind);
-	$('#output0').append("■ 4 일지십성: ");
-	$('#output0').append(
-		$('<span>').prop({
-			className: 'spcs css_b4',
-			innerHTML: subj + "__ " + sj_dg + sj_dj
-		})
-	);
-	$('#output0').append("</br>");
-	$('#output0').append(
-		$('<div>').prop({
-			id: 'css_b4',
-			innerHTML: "- " + temps0[0][2] + "</br>◐ 장점: " + temps0[0][3] + "</br>◐ 단점: " + temps0[0][4] + "</br>◐ 태과: " + temps0[0][5] + "</br>◐ 불급: " + temps0[0][6] + "</br>◐ 충: " + temps0[0][7],
-			className: 'txcb'
-		})
-	);
-	$('#output0').append("--------------------------------------------------------------</br>");
-
+	txt_cara += "■ 4 일지십성: ";
+	txt_cara += '<span class="spcs css_b4">' + subj + "__ " + sj_dg + sj_dj + "</span></br>";
+	txt_cara += '<div id="css_b4" class="txcb">' + "- " + temps0[0][2] + "</br>◐ 장점: " + temps0[0][3] + "</br>◐ 단점: " + temps0[0][4] + "</br>◐ 태과: " + temps0[0][5] + "</br>◐ 불급: " + temps0[0][6] + "</br>◐ 충: " + temps0[0][7] + "</div>";
+	txt_cara += "--------------------------------------------------------------</br>";
 	//--- 십이운성 특성 출력(output0) 
 	unsng(sj_dg,sj_dj); subj = js_titl; temps0 = a_unsng.filter(isFind);
-	$('#output0').append("■ 5 십이운성: ");
-	$('#output0').append(
-		$('<span>').prop({
-			className: 'spcs css_b5',
-			innerHTML: subj + "__ " + sj_dg + sj_dj
-		})
-	);
-	$('#output0').append("</br>");
-	$('#output0').append(
-		$('<div>').prop({
-			id: 'css_b5',
-			innerHTML: "- " + temps0[0][5] + "</br>",
-			className: 'txcb'
-		})
-	);
-	$('#css_b5').append("--------------------------------------------------------------</br>");
-	
+	txt_cara += "■ 5 십이운성: ";
+	txt_cara += '<span class="spcs css_b5">' + subj + "__ " + sj_dg + sj_dj + "</span></br>";
+	txt_cara += '<div id="css_b5" class="txcb">' + "- " + temps0[0][5] + "</br>";
+	txt_cara += "--------------------------------------------------------------</br>";
 	//--- 일지 십성/십이운성 특성 출력(output0) 
 	sibsTugsin(gj_nfo[3][7]); let dj_6sin = hs_titl; let dj_n = null;
 	if (dj_6sin == "비겁"){dj_n = 7;}; if (dj_6sin == "식상"){dj_n = 8;}; if (dj_6sin == "재성"){dj_n = 9;}; if (dj_6sin == "관성"){dj_n = 10;}; if (dj_6sin == "인성"){dj_n = 11;};
 	subj = gj_nfo[3][8]; temps0 = a_unsng.filter(isFind);
-	$('#css_b5').append("◐ 육신/운성: " + dj_6sin + "__" + subj + "</br> - " + temps0[0][dj_n] + " </br>");
-	$('#css_b5').append("--------------------------------------------------------------</br>");
+	txt_cara += "◐ 육신/운성: " + dj_6sin + "__" + subj + "</br> - " + temps0[0][dj_n] + " </br>";
+	txt_cara += "--------------------------------------------------------------</br>";
 	unsng(sj_dg,sj_yj); subj = js_titl; temps0 = a_unsng.filter(isFind);
-	$('#css_b5').append("◐ 연지: " + subj + "__ " + sj_yj + "</br>  - " + temps0[0][3] + " </br>");
+	txt_cara += "◐ 연지: " + subj + "__ " + sj_yj + "</br>  - " + temps0[0][3] + " </br>";
 	unsng(sj_dg,sj_mj); subj = js_titl; temps0 = a_unsng.filter(isFind);
-	$('#css_b5').append("◐ 월지: " + subj + "__ " + sj_mj + "</br>  - " + temps0[0][4] + " </br>");
+	txt_cara += "◐ 월지: " + subj + "__ " + sj_mj + "</br>  - " + temps0[0][4] + " </br>";
 	unsng(sj_dg,sj_tj); subj = js_titl; temps0 = a_unsng.filter(isFind);
 	if (sjtx != "x"){ $('#css_b5').append("◐ 시지: " + subj + "__ " + sj_tj + "</br>  - " + temps0[0][6] + " </br>");};
-	$('#output0').append("--------------------------------------------------------------</br>");
-
+	txt_cara += "◐ 시지: " + subj + "__ " + sj_tj + "</br>  - " + temps0[0][6] + "</div>";
+	txt_cara += "--------------------------------------------------------------</br>";
 	//--- 일주론 출력(output0) 
 	subj = sj_dg + sj_dj; temps0 = a_ilju.filter(isFind);
 	st= temps0[0][3].indexOf('여자 :');
 	if (gendr.substr(0,1)=="남"){adt = 6; lks = temps0[0][3].substr(4,st-5);}; 
 	if (gendr.substr(0,1)=="여"){adt = 7; lks = temps0[0][3].substr(st+4);};
-	$('#output0').append("■ 6 일주: ");
-	$('#output0').append(
-		$('<span>').prop({
-			className: 'spcs css_b6',
-			innerHTML: subj
-		})
-	);
-	$('#output0').append("</br>");
-	$('#output0').append(
-		$('<div>').prop({
-			id: 'css_b6',
-			innerHTML: "- " + temps0[0][1] + "</br> - " + temps0[0][2] + "</br> ◐ 외모: " + lks + "</br> ◐ 직업: " + temps0[0][4] + "</br> ◐ 결혼: " + temps0[0][5] + "</br> - " + temps0[0][adt] + "</br> ◐ 가족: " + temps0[0][8] + "</br> ◐ 비고: " + temps0[0][9],
-			className: 'txcb'
-		})
-	);
-	$('#output0').append("--------------------------------------------------------------</br>");
-
+	txt_cara += "■ 6 일주: ";
+	txt_cara += '<span class="spcs css_b6">' + subj + "</span></br>";
+	txt_cara += '<div id="css_b6" class="txcb">' + "- " + temps0[0][1] + "</br> - " + temps0[0][2] + "</br> ◐ 외모: " + lks + "</br> ◐ 직업: " + temps0[0][4] + "</br> ◐ 결혼: " + temps0[0][5] + "</br> - " + temps0[0][adt] + "</br> ◐ 가족: " + temps0[0][8] + "</br> ◐ 비고: " + temps0[0][9] + "</div>";
+	txt_cara += "--------------------------------------------------------------</br>";
 	//--- 월지십성 특성 출력(output0) 
 	sibsng(sj_dg,"",sj_mj); subj = js_titl; temps0 = a_ssmj.filter(isFind);
-	$('#output0').append("■ 7 월지십성: ");
-	$('#output0').append(
-		$('<span>').prop({
-			className: 'spcs css_b7',
-			innerHTML: subj + "__ " + sj_dg + sj_mj
-		})
-	);
-	$('#output0').append("</br>");
-	$('#output0').append(
-		$('<div>').prop({
-			id: 'css_b7',
-			innerHTML: "◐ 일반: " + temps0[0][1] + "</br>◐ 성향: " + temps0[0][2] + "</br>◐ 성격: " + temps0[0][3],
-			className: 'txcb'
-		})
-	);
-	$('#output0').append("--------------------------------------------------------------</br>");
-
+	txt_cara += "■ 7 월지십성: ";
+	txt_cara += '<span class="spcs css_b7">' + subj + "__ " + sj_dg + sj_mj + "</span></br>";
+	txt_cara += '<div id="css_b7" class="txcb">' + "◐ 일반: " + temps0[0][1] + "</br>◐ 성향: " + temps0[0][2] + "</br>◐ 성격: " + temps0[0][3] + "</div>";
+	txt_cara += "--------------------------------------------------------------</br>";
 		//--- 월지십성 특성 출력(output0) 
 	if (gendr.substr(0,1) == "남"){gnr = 4;};
 	if (gendr.substr(0,1) == "여"){gnr = 5;}; outx = "";
@@ -2275,23 +2294,11 @@ function spclcarac(){
 			if (i==3){outx += "--------------------------------------------------------------</br>"};
 		};
 	};
-	$('#output0').append("■ 8 육친관계: ");
-	$('#output0').append(
-		$('<span>').prop({
-			className: 'spcs css_b8',
-			innerHTML: "월지__ " + sj_mj + "__ " + gendr.substr(0,1) + "성__ 부모형제 배우자 아들 딸"
-		})
-	);
-	$('#output0').append("</br>");
-	$('#output0').append(
-		$('<div>').prop({
-			id: 'css_b8',
-			innerHTML: outx,
-			className: 'txcb'
-		})
-	);
-	$('#output0').append("--------------------------------------------------------------</br>");
-
+	txt_cara += "■ 8 육친관계: ";
+	txt_cara += '<span class="spcs css_b8">' + "월지__ " + sj_mj + "__ " + gendr.substr(0,1) + "성__ 부모형제 배우자 아들 딸" + "</span></br>";
+	txt_cara += '<div id="css_b8" class="txcb">' + outx + "</div>";
+	txt_cara += "--------------------------------------------------------------</br>";
+	$('#output0').append(txt_cara);
 	$("#output0").on("click", "span", function(){ 
 		disp("#"+$(this).attr("class").substr(5),"",""); 
 	}); 
@@ -2308,7 +2315,7 @@ function hangun(){
 	hn_lg = ""; hn_yg = ""; hn_mg = ""; hn_dg = ""; hn_tg = ""; hn_lj = ""; hn_yj = ""; hn_mj = ""; hn_dj = ""; hn_tj = ""; ageL = 0; ageY = 0; rslt0 = ""; hnj = "";
 	$('.hun1').empty(); $('.hun2').empty(); $('.hun3').empty();
 	$('#output3').empty(); $('#outputb').empty(); $('#ssalb').empty();
-	$('#output4').empty(); $('#output5').empty();
+	$('#output3a').empty(); $('#output4').empty(); $('#output5').empty();
 	hunD = document.getElementById('hunDate').value;  //--- 행운 일자
 	hunD = hunD + " 04:30"; vwyr = Number(hunD.substr(0,4));
 	//----- 대운
@@ -2342,6 +2349,7 @@ function hangun(){
 	mktable(2,hn_yg,hn_yj,hgj_nfo);
 	mktable(3,hn_mg,hn_mj,hgj_nfo);
 	mktable(4,hn_dg,hn_dj,hgj_nfo);
+//	mktable(5,hn_tg,hn_tj,hgj_nfo);
 	hn_ganji = hn_lg + hn_lj + hn_yg + hn_yj + hn_mg + hn_mj + hn_dg + hn_dj;
 
 	if (ganhc_nfo[1][3].substr(2,1) != "합" && ganhc_nfo[1][3].substr(2,1) != "충"){habchk2(1);};  //--- 원국에 연간합충이 없으면 행운 check (천간합 흉화)
@@ -2386,17 +2394,17 @@ function hangun(){
 	document.getElementById("hunD1").innerText += hn_dj + "\n";
 	document.getElementById("hunD2").innerText += "\n" + hgj_nfo[4][7] + " " + hgj_nfo[4][6] + " " + hgj_nfo[4][8] + "\n";
 
-	document.getElementById("output3").innerText += "<<행운 운세분석>>..... \n";
-	hanal(1,hn_lg,hn_lj,hn_yg,hn_yj); document.getElementById("output3").innerText += vwyr + "(" + ageY + ") " + hv8 + "... 연운: (" + hn_yg + hn_yj + ") " + hv10 + "- " + hv9 + "\n"; hv10a = "연운: " + hv10;
-	hanal(2,hn_yg,hn_yj,hn_mg,hn_mj); document.getElementById("output3").innerText += hunD.substr(0,7) + "- " + hv8 + "... 월운: (" + hn_mg + hn_mj + ") " + hv10 + "- " + hv9 + "\n"; hv10b = "월운: " + hv10;
-	hanal(3,hn_mg,hn_mj,hn_dg,hn_dj); document.getElementById("output3").innerText += hunD.substr(2,8) + " " + hv8 + "... 일운: (" + hn_dg + hn_dj + ") " + hv10 + "- " + hv9 + "\n"; hv10c = "일운: " + hv10;
-	document.getElementById("output3").innerText += "-----------------------------------------------------------------------------------\n";
+	document.getElementById("output3").innerHTML += "<<행운 운세분석>>..... </br>";
+	hanal(1,hn_lg,hn_lj,hn_yg,hn_yj); document.getElementById("output3").innerHTML += vwyr + "(" + ageY + ") " + hv8 + "... 연운: (" + hn_yg + hn_yj + ") " + hv10 + "- " + hv9 + "</br>"; hv10a = "연운: " + hv10;
+	hanal(2,hn_yg,hn_yj,hn_mg,hn_mj); document.getElementById("output3").innerHTML += hunD.substr(0,7) + "- " + hv8 + "... 월운: (" + hn_mg + hn_mj + ") " + hv10 + "- " + hv9 + "</br>"; hv10b = "월운: " + hv10;
+	hanal(3,hn_mg,hn_mj,hn_dg,hn_dj); document.getElementById("output3").innerHTML += hunD.substr(2,8) + " " + hv8 + "... 일운: (" + hn_dg + hn_dj + ") " + hv10 + "- " + hv9 + "</br>"; hv10c = "일운: " + hv10;
+	document.getElementById("output3").innerHTML += "-----------------------------------------------------------------------------------</br>";
 
-	document.getElementById("output3").innerText += "<<행운결과>>..... \n";
+	document.getElementById("output3").innerHTML += "<<행운결과>>..... </br>";
 	ganhn();
 	jijihn();
 	sinsalhn();
-	gongmangh("output3");
+	gongmangh("#output3a");
 };
 
 //■■■■■■■■■■■■■■■■■■■■
@@ -2527,7 +2535,7 @@ function outptt(){
 	ptt(ganhc_nfo,"ganhc_nfo : 천간합충","#output5");
 	ptt(jjhc_nfo,"jjhc_nfo : 지지합충형해파","#output5");
 	ptt(sinsal_nfo,"sinsal_nfo : 신살","#output5");
-	ptt(gongmang_nfo,"gongmang_nfo : 공망","#output5");
+	ptt(gongmang_nfo,"gongmang_nfo : 공망 __ 순중공망: " + jijigong + " __ 오행공망: " + ohgong,"#output5");
 };
 
 //--- "output4" & "output5" 출력 양식 작성하는 함수
@@ -3286,6 +3294,7 @@ function baneumh(g, h){
 		resolve();
 	});
 };
+
 
 </script>
 
