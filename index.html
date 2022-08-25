@@ -1970,7 +1970,7 @@ function habchk2(a){
 };
 
 //========== 천간합충 지지합충형해파==========
-async function wongug(){
+function wongug(){
 	hcg1 = ""; hcg2 = ""; hcg3 = ""; hcg4 = ""; rt1 = ""; rt2 = ""; rt3 = ""; sj_org2 = ""; hcj1 = ""; hcj2 = ""; hcj3 = ""; hcj4 = ""; ttlhc = ""; ttlh = ""; hcj = ""; rslt_chng = ""; 
 	rslt_hyng1 = ""; rslt_hyng2 = ""; rslt_hyng3 = ""; rslt_hyng4 = "";
 	
@@ -2052,11 +2052,11 @@ async function wongug(){
 	}else{	hcg4 += ganhc_nfo[4][5].substr(2,1) + rt3 + "--";}; 
 	hcg4 += "-";
 	//=======================================
-	await ganhc("#output1");
+	ganhc("#output1");
 	//------ new version test 원국 지지 합충형해파 결과 출력 ("output1")
 	hcj1 = jjhc_nfo[1][2]; hcj2 = jjhc_nfo[2][2]; hcj3 = jjhc_nfo[3][2]; hcj4 = jjhc_nfo[4][2]; 
 	ttlhc = hcj1 + hcj2 + hcj3 + hcj4; 
-	await johc("#output1");
+	johc("#output1");
 	$("#output1").on("click", "span", function(){ 
 		disp("#"+$(this).attr("class").substr(5),"",""); 
 	}); 
@@ -2065,7 +2065,7 @@ async function wongug(){
 //------ 원국 천간 합충 결과 출력 ("#output1")
 let cssn4 = 0; let txt_ganhc = ""; let txt_jjhc = "";
 function ganhc(d){
-	return new Promise(function (resolve, reject){
+//	return new Promise(function (resolve, reject){
 		txt_ganhc = "";
 		for (i = 0; i < ca10a_ghabch.length; i++){
 			//------ 연간 합충
@@ -2106,13 +2106,13 @@ function ganhc(d){
 			};
 		};	
 		$("#output1").append(txt_ganhc);
-		resolve();
-	});
+//		resolve();
+//	});
 };
 
 //------ new version test 원국 지지 합충형해파 결과 출력 ("output1")
 function johc(d){
-	return new Promise(function (resolve, reject){
+//	return new Promise(function (resolve, reject){
 		txt = "원국"; sz = ""; pos_ch = ""; txt_jjhc = "";
 		if (jjhc_nfo[1][3] != ""){
 			if (jjhc_nfo[1][3].includes("합") == true){chkg(sj_yj,sj_mj); rslt += "합"; yjhab(d);};  //--- 연지합
@@ -2156,8 +2156,8 @@ function johc(d){
 				posd = pos; rslt0 += "자형"; rslt_hyng4 += rslt0; johhd_chk(1,"#output1");};  //--- 지지형(자형)
 		};
 		$("#output1").append(txt_jjhc);
-		resolve();
-	});
+//		resolve();
+//	});
 };
 
 function johga_chk(a,m,n){
