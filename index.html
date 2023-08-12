@@ -11,7 +11,9 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
   <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>      
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
+<!--	<link rel="stylesheet" href="sju.css">
+	<script src="sju.js"> </script>
+-->
   <style type="text/css">
 	input, button{font-size: 1.0em; text-align:center; font-weight:bold;}
 	input:focus,#ctg:focus{outline: solid red;}
@@ -61,8 +63,8 @@
 	#output4,#output5 {width: 742px;}
 	#output1,#output1a,#output2,#output3,#output3a,#output4,#output5 {color: #000; padding:10px;border:1px solid black;text-align:left;}
 	#output1,#output1a,#output2,#output3,#output3a { min-height: 100px; font-size: 0.8em;}
-	#output0,#output2,#output4,#output5 { min-height: 100px;}
-	#output0 {color: #000; background: #ffeecc; padding:10px; margin-top:10px; border:1px solid black;text-align:left; font-size: 0.8em; width:776px;}
+	#output0,#outputx,#output2,#output4,#output5 { min-height: 100px;}
+	#output0,#outputx {color: #000; background: #ffeecc; padding:10px; margin-top:10px; border:1px solid black;text-align:left; font-size: 0.8em; width:776px;}
 	#outputa,#outputb {color: #000; padding:10px;border:1px solid black;text-align:left; font-size: 0.8em; width:776px; min-height: 100px;}
 	#output1,#output1a,#output2,#outputa,#output4 {background: #ebebe0;}
 	#output3,#output3a,#output5,#outputb {background: #f2d9f2;}
@@ -93,7 +95,7 @@
 <!-- 메인메뉴 mmenu part -->
 <div class="contain">
 	<div class="insrt">
-		<p class="infm"> &nbsp; 성별은 필수항목이며, 사주와 생년월일(yyyyMMdd)은 택일... 생시는 모르면 생략가능... </p></br></br>
+		<p class="infm"> &nbsp; 성별은 필수항목이며, 사주와 생년월일(yyyyMMdd)은 택일... 생시는 가능하면 정확하게... </p></br></br>
 		<p class="ifo"> &nbsp; 생년월일: <input type="text" id="sjtm" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="8" /> 생시: <input type="time" id="tm" value="">&nbsp; 사주: <input type="text" id="sj" maxlength="9">&nbsp; 성별: <input type="radio" name="gender" value="남양">남(양) <input type="radio" name="gender" value="여음">여(음) &nbsp;<button id="submit1">제 출</button></p><br/> 
 		<p class="ifo"><label for="year02" class="sr-only"> &nbsp; 음력</label> <button id="submit">조 회 </button> &nbsp; <input id="bday" class="bday" type="text" name="bday" min="1881-01-01" max="2050-11-18" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="8" />
 		<label class="btn white active" for="isLeap01">	<input type="radio" name="isLeap" id="isLeap01" value="1" checked=""> 평달</label>
@@ -110,10 +112,10 @@
 			<div class="sja" id="sj1a"></div>
 			<div class="hangun">행운 <input type="date" id="hunDate"></div>
 			<div class="sjt">사주</br></br></br><!---->
-				<input type ="button" class="dsp" onclick="disp('.sjut1','.sju1','.sju2');" value="대운"></button>
+<!--				<input type ="button" class="dsp" onclick="disp('.sjut1','.sju1','.sju2');" value="대운"></button>
 				<input type ="button" class="dsp" onclick="disp('.sjut2','.seu','');" value="연운"></button>
 				<input type ="button" class="dsp" onclick="disp('.sjut3','.mou','.dau');" value="월일"></button>
-				<input type ="button" class="dsp" onclick="disp('.out','',''); disp('#outputa','#outputb','');" value="output"></button></br>
+				<input type ="button" class="dsp" onclick="disp('.out','',''); disp('#outputa','#outputb','');" value="output"></button></br>-->
 			</div>
 			<div class="sjot">시</div>
 			<div class="sjot">일</div>
@@ -220,6 +222,7 @@
 		</div>
 		<div class="out1">
 			<div id="output0"></div>
+<!--			<div id="outputx"></div> -->
 			<div id="outputa"></div>
 			<div id="outputb"></div>
 		</div>
@@ -283,7 +286,7 @@ Number.prototype.zf = function (len) { return this.toString().zf(len); };
 </script>
 
 <script type="text/javascript">
-
+/*
 fread("ca01_actss");	
 fread("ca02_actgdbad");	
 fread("ca03_hunresult");	
@@ -314,56 +317,73 @@ fread("spec_samhab");
 fread("jjref");	
 fread("testg");	
 fread("hc_listg");	
+fread("ysin_johu");	
 fread("a_gan");	
+fread("a_ilgan");	
 fread("a_jiji");	
 fread("a_ssng");	
 fread("a_unsng");	
 fread("a_ilju");	
+fread("a_ilju2");	
 fread("gmun");	
 fread("wonjn");	
 fread("sinsal_list1");	
 fread("sinsal_list2");	
 fread("sinsal_gen");	
+//fread("o_hang");	
 fread("a_ssmj");	
 fread("a_sungong");	
 fread("a_jjgong");	
 fread("a_nabeum");	
 fread("a_sjgong");	
 fread("a_ssgong");	
+//------------------
+fread("b_ilgan");	
+fread("b_ssmj");	
+fread("b_nohng");	
+fread("b_noss");	
+fread("b_noth");	
+fread("b_mohng");	
+fread("b_moss");	
+fread("b_ymdtss");	
+fread("b_ssmgun");	
+fread("b_unsng");	
+fread("b_22ganjiron");	
 
 function fread(fn){
     $(function (){
-//		let fileName = "../uni_2o4o/" + fn + ".csv";	// 파일 이름
-		let fileName = "./" + fn + ".csv";	// 파일 이름
+	var fileName = "../uni_2o4o/" + fn + ".csv";	// 파일 이름
 
-		$.ajax({
-			url:fileName,
-			dataType:'text',
-			success: function(da) {
-				let textLine = '<script type="text/javascript">let ' + fn + '=[';
-							let rows = da.split('\n');
-							for (let i = 0; i < rows.length; i++) {
-					if (i == 0){textLine += '['}else{textLine += ',['};
-					let cells = rows[i].split(',');
-									for (let j = 0; j < cells.length; j++) {
-						textLine += '"';
-						textLine += cells[j].trim();;
-						if (j == cells.length-1){textLine += '"'}else{textLine += '",'};
-					}
-					textLine += ']';
-				}	
-				textLine += ']';			
-				$('#dvCSV').append(textLine);
-			}
-		});
+	$.ajax({
+		url:fileName,
+		dataType:'text',
+		success: function(da) {
+			var textLine = '<script type="text/javascript">var ' + fn + '=[';
+                        var rows = da.split('\n');
+                        for (var i = 0; i < rows.length; i++) {
+				if (i == 0){textLine += '['}else{textLine += ',['};
+				var cells = rows[i].split(',');
+                                for (var j = 0; j < cells.length; j++) {
+					textLine += '"';
+					textLine += cells[j].trim();;
+					if (j == cells.length-1){textLine += '"'}else{textLine += '",'};
+				}
+				textLine += ']';
+			}	
+			textLine += ']';			
+			$('#dvCSV').append(textLine);
+		}
+	});
     });
 };
-
+*/
 </script>	 
 
 <script type="text/javascript">
+
+//============ 변수선언 (define) ==============
 	let gj_nfo = new Array; let hgj_nfo = new Array; let hun_list = new Array; let ganhc_nfo = new Array; let jjhc_nfo = new Array; let saju = ""; let saju_h = ""; let symdt = ""; let gendr = ""; 
-	let now = null; let hunD = null; let longungj = ""; let ohtx = ""; let nfo_tugan = ""; let code1 = ""; let hnj = ""; let desc = ""; let sj_list = new Array; let sjtx = ""; 
+	let now = null; let hunD = null; let longungj = ""; let ohtx = ""; let nfo_tugan = ""; let code1 = ""; let hnj = ""; let desc = ""; let sj_list = new Array; let sjtx = ""; let sstext = "";
 	let sj_yg = ""; let sj_mg = ""; let sj_dg = ""; let sj_tg = ""; let sj_yj = ""; let sj_mj = ""; let sj_dj = ""; let sj_tj = "";  //--- 사주 (년월일시)간지
 	let hn_lg = ""; let hn_yg = ""; let hn_mg = ""; let hn_dg = ""; 	let hn_lj = ""; let hn_yj = ""; let hn_mj = ""; let hn_dj = ""; let hn_ganji = "";  //--- 행운 (대세월일)운 간지
 
@@ -412,7 +432,7 @@ $( function() {
 function slr2lnr(birth0){
 	let ad2 = ""; let devd = null;
 	ad2 = "1881-01-29 23:59"; devd = new Date(ad2);  //---- 초기 시작일(전일,양력)
-	cnt = Math.ceil((birth0.getTime()-devd.getTime()+180000)/86400000);
+	cnt = Math.ceil((birth0.getTime()-devd.getTime()+1800000)/86400000);
 	for (i=0; i<ca11_lunar_cal.length; i++){
 		if (ca11_lunar_cal[i][1] > cnt){
 			yn = ca11_lunar_cal[i-1][0];
@@ -472,7 +492,6 @@ $( function() {
 $("#sjtm").change(function(){
 	$('input#tm').val('');
 });
-
 //=== 제출버튼 클릭시 실행되는 함수
 $( function() {
 	$( 'button#submit1' ).click( function() {
@@ -566,6 +585,14 @@ function sjmain(){
 		["9대운","","","","","","","","","","","","","","",""],["10대운","","","","","","","","","","","","","","",""],["11대운","","","","","","","","","","","","","","",""],["12대운","","","","","","","","","","","","","","",""],
 		["13대운","","","","","","","","","","","","","","",""],["14대운","","","","","","","","","","","","","","",""]];
 		
+		balance = [
+		["구분","dj_인비","mj_인비","bal_인비","강약","인성","비겁","식상","재성","관성","비고"],
+		["원국","","","","","","","","","",""],["종합","합","통근","충해파","결과","","","","","",""],["천간합","","","","","","","","","",""],["삼합","","","","","","","","","",""],["방합","","","","","","","","","",""],["육합","","","","","","","","","",""]];
+
+		yongsin = [
+		["구분","격국용신","억부","조후","병약","통관","종격","일행격","이행격","합화격","비고"],
+		["격국","","","","","","","","","",""],["용신","","","","","","","","","",""],["희신","","","","","","","","","",""]];
+
 		now = new Date();
 		document.getElementById("hunDate").value = now.format('yyyy-MM-dd');  //--- 행운일자를 오늘로 설정(initial)
 		saju_h = document.getElementById('sj').value;  //--- 직접 입력한 한글사주
@@ -581,7 +608,7 @@ function sjmain(){
 			saju = tsj1 + tsj2 + tsj3 + tsj4 + tsj5 + tsj6 + tsj7 + tsj8;
 			birth = rqD; birth0 = rqD0; birth1 = rqD1;
 		}else{
-			saju_chk();
+			saju_chk(saju_h);
 			saju = saju_h;
 		};
 
@@ -611,11 +638,22 @@ function sjmain(){
 		tugan();
 		rootgchk();
 		mpohcnt();
+		inquir(balance[1]);
   		wongug();
 		sinsal("#outputa");
-		spclcarac("#output0");
+//		spclcarac("#output0");
+//		spclcarac1("#outputx");
+		spclcarac2("#output0");
 		gongmang("#output1a");
 		setTimeout(hangun, 10);
+		jagns(/정재/g, "정재");
+		jagns(/편재/g, "편재");
+		jagns(/정관/g, "정관");
+		jagns(/정인/g, "정인");
+		yong0();
+		yong1();
+		yong2();
+
 };
 
 //====== 시간(년월일시)을 사주로 변환하는 함수 ==========
@@ -627,7 +665,7 @@ function convrtsj(reqD){
 	rqD0 = new Date(reqD.substr(0,16));  //--- 입력시간(date)
 	for (i=1; i<ca04_kstadj.length; i++){
 		if (reqD >= ca04_kstadj[i][0] && reqD <= ca04_kstadj[i][1]){
-			crh = Number(ca04_kstadj[i][4]) * 1800000;  //--- 시간보정 수
+			crh = Number(ca04_kstadj[i][4]) * 1800000;  //--- 시간보정 수 (30분 * 개수)
 		};
 	};
 	rqD1 = new Date(rqD0.getTime() - crh);  //--- 보정된 시간(date): 서울표준시
@@ -684,7 +722,7 @@ function convrtsj(reqD){
 };
 	
 //======= 사주 월간/시간 오류 check =======	
-function saju_chk(){
+function saju_chk(saju_h){
 	ya = saju_h.substr(0,1);yb = saju_h.substr(1,1);
 	ma = saju_h.substr(2,1);mb = saju_h.substr(3,1);
 	da = saju_h.substr(4,1);db = saju_h.substr(5,1);
@@ -787,7 +825,7 @@ async function gongmang(d){
 		tempn = jiji.filter(isFind); ohgong = tempn[0][2]; //--- 오행공망 만들기
 		subj2 = ohgong; temp2 = gan.filter(isFind2); gangong = temp2[0][0] + temp2[1][0]; gongmang_nfo[2][1] = gangong; //--- 천간공망 만들기
 		if (subj == "辰"){fourgong = "수";}; if (subj == "子" || subj == "午"){fourgong = "금";}; if (subj == "寅" || subj == "申"){fourgong = "";}; //--- 사대공망 만들기
-		 gongmang_nfo[2][1] = gangong; gongmang_nfo[3][1] = fourgong;
+		gongmang_nfo[2][1] = gangong; gongmang_nfo[3][1] = fourgong;
 	};
 	subj = jijigong; tempn = a_sungong.filter(isFind);
 	txt_gm += "■ 공망--- 일주: " + gan[gjdev5][0] + " " + jiji[gjdev6][0] + " </br>";
@@ -1183,14 +1221,14 @@ function johhe_chk(a,dstin){
 		if (((k>0) && (rslt.includes("丑") || rslt.includes("戌") || rslt.includes("未"))) || ((k>0) && (rslt.includes("辰") || rslt.includes("午") || rslt.includes("酉") || rslt.includes("亥")))) {
 			continue;
 		}else{
-			if (posd.substr(k,1) < "5"){
+			if (posd.substr(k,1) < "5"){  //--- 원국
 				sibsTugsin(gj_nfo[Number(posd.substr(k,1))][7]); subj = hs_titl; temp = spec_jjhyung.filter(isFind); 
 				txd += "◎ " + subj + "---" + temp[0][2] + "</br>";
 				if (posd.length == 4 && (rslt.includes("辰") || rslt.includes("午") || rslt.includes("酉") || rslt.includes("亥"))){
 					sibsTugsin(gj_nfo[3][7]); subj = hs_titl; temp = spec_jjhyung.filter(isFind); 
 					txd += "◎ " + subj + "---" + temp[0][2] + "</br>";
 				};
-			}else{
+			}else{  //--- 행운
 				sibsTugsin(hgj_nfo[Number(posd.substr(k,1))-4][7]); subj = hs_titl; temp = spec_jjhyung.filter(isFind); 
 				txd += "◎ " + subj + "---" + temp[0][2] + "</br>";
 			};
@@ -1204,9 +1242,9 @@ function johha_chk(a,dstin){
 		let jjh_unsng = ""; 	txd = "";	cssn4 += 1; rslt = rslt_hyng1;
 		johhe_chk(a,dstin); //pose += posd;
 		for (k = 0; k < posd.length; k++)	{
-			if (posd.substr(k,1) < "5"){
+			if (posd.substr(k,1) < "5"){  //--- 원국
 				jjh_unsng += gj_nfo[Number(posd.substr(k,1))][8];
-			}else{
+			}else{  //--- 행운
 				jjh_unsng += gj_nfo[3][8];
 				jjh_unsng += hgj_nfo[Number(posd.substr(k,1))-4][8];
 			};
@@ -1345,7 +1383,7 @@ function gaeji(){
 	txd1 += "◐ 생왕개지---" + pos_ch + " </br>";
 	for (j=0; j<pos_ch.length; j++){
 		m = pos_ch.substr(j,1);
-		if (gj_nfo[m][10] == ""){i=1;	}else{i=0;};
+		if (gj_nfo[m][10] == ""){i=1;}else{i=0;};
 		sjj = gj_nfo[m][i+10].substr(0,1);
 		if (sj_gan.includes(sjj)){
 			txt4go = gj_nfo[m][i+13] + "(" + sjj + ") 투간(십성) 길";  //--- 지장간 중(본)기 기물이 천간에 있으면 투간(십성길)
@@ -1445,7 +1483,7 @@ function root_point(a,b,c,d,e,f,g) {
 		idx = b.lastIndexOf(c); tit += sibsungX1[0][idx];
 		idx = b.lastIndexOf(d); tit += sibsungX1[0][idx];
 		idx = b.lastIndexOf(e); tit += sibsungX1[0][idx];
-		idx = b.lastIndexOf(f); tit += sibsungX1[0][idx];		
+		idx = b.lastIndexOf(f); tit += sibsungX1[0][idx];	
 	for (i=1;i<5 ; i++){
 		if (tit.includes(gj_nfo[i][11].substr(0,1))==true){document.getElementById(g).innerText += i + ".... 지장간 " + gj_nfo[i][11] + "\n"; cfm += "kj"; eval('eff' + i + ' += Number(gj_nfo[i][11].substr(1,2))');};
 		if (gj_nfo[i][10] != "" && tit.includes(gj_nfo[i][10].substr(0,1))==true){document.getElementById(g).innerText += i + ".... 지장간b " + gj_nfo[i][10] + "\n"; cfm += "kj"; eval('eff' + i + ' += Number(gj_nfo[i][10].substr(1,2))');};
@@ -1511,7 +1549,7 @@ function tugan(){
 						n = idx + 1;
 					};
 					if (i == 1){ttx = "년지";
-					}else{	if (i == 2){ttx = "월지"; idx = sibsungX1[0].lastIndexOf(jjg); nfo_tugan += "\n월지투간==> " + temp[0][idx] + "格 "+ jjg + "..용신";
+					}else{	if (i == 2){ttx = "월지"; idx = sibsungX1[0].lastIndexOf(jjg); nfo_tugan = "■ 격국용신... 월지투간==> " + temp[0][idx] + "格 "+ jjg + "..용신"; yongsin[1][1] = temp[0][idx] + "格"; yongsin[2][1] = jjg; 
 						}else{	if (i == 3){ttx = "일지";
 							}else{	if (i == 4){ttx = "시지";}}}};
 					document.getElementById("output2").innerText += String(i) + ".... 지장간 " + jjg + eff + "..........." + ttx +" .... " + pos + " 투간... " + eff0 + "%\n";
@@ -1533,6 +1571,18 @@ function mpohcnt(){
 	let sm3 = (ohtx.match(/음토/g) || []).length;
 	let sm4 = (ohtx.match(/음금/g) || []).length;
 	let sm5 = (ohtx.match(/음수/g) || []).length;
+	let nc = 0;
+	if (gj_nfo[3][2].substr(1,1)=="목")	{nc=5;}; if (gj_nfo[3][2].substr(1,1)=="화"){nc=4;}; if (gj_nfo[3][2].substr(1,1)=="토"){nc=3;}; 
+	if (gj_nfo[3][2].substr(1,1)=="금")	{nc=2;}; if (gj_nfo[3][2].substr(1,1)=="수"){nc=1;}; 
+	for (i=1; i<6; i++){
+		ncx = nc + i;
+		if (ncx>9){ ncx=ncx-5; }else{ if (ncx<5){ ncx=ncx+5;}};
+		if (i==1){balance[1][ncx] = "목" + String(sp1+sm1);};
+		if (i==2){balance[1][ncx] = "화" + String(sp2+sm2);};
+		if (i==3){balance[1][ncx] = "토" + String(sp3+sm3);};
+		if (i==4){balance[1][ncx] = "금" + String(sp4+sm4);};
+		if (i==5){balance[1][ncx] = "수" + String(sp5+sm5);};
+	};
 	document.getElementById("output2").innerText += "오행...양...음\n";
 	document.getElementById("output2").innerText += "...목......" + String(sp1) + "......" + String(sm1) + "\n";
 	document.getElementById("output2").innerText += "...화......" + String(sp2) + "......" + String(sm2) + "\n";
@@ -1549,7 +1599,21 @@ function mpohcnt(){
 	document.getElementById("output2").innerText += "...편관......" + (sstx.match(/편관/g) || []).length + "......" + (sstx.match(/정관/g) || []).length + "......정관 \n";
 	document.getElementById("output2").innerText += "\n";
 };
-	
+
+//========= 지지방합 check 하는 함수 ========
+function banghab(){
+
+};	
+
+//========= 지지삼합 check 하는 함수 ========
+function samhab(){
+
+};	
+
+
+
+
+
 //=========== 일간의 통근 상황 확인===========
 function rootgchk(){
 	pointr = ""; 
@@ -1562,17 +1626,19 @@ function rootgchk(){
 	pn1 = pointr.match(/N/g);
 	if(pn != null) {
 		if(pn.length === 3){
-			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr + "\n";
+			document.getElementById("output2").innerText += "극신강 사주 ..." + pointr + "\n"; balance[1][4] = "극신강";
 		}else{
 			if(pn.length === 2){
-				document.getElementById("output2").innerText += "신강 사주 ..." + pointr + "\n";
+				document.getElementById("output2").innerText += "신강 사주 ..." + pointr + "\n"; balance[1][4] = "신강";
 			}else{
 				if(pn.length === 1){
-					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n";}}};
-	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n";};
-	sibsng(sj_dg,"",sj_mj); document.getElementById("output2").innerText += "사주격국 (기본) " + js_titl + "格 " + nfo_tugan + "\n\n";
+					document.getElementById("output2").innerText += "신약 사주 ..." + pointr + "\n"; balance[1][4] = "신약";}}};
+	}else{document.getElementById("output2").innerText += "극신약 사주 ..." + pointr + "\n"; balance[1][4] = "극신약";};
 
-	//--- output1에 추가 display
+	if (nfo_tugan != ""){document.getElementById("output2").innerText += nfo_tugan + "\n\n";
+	}else{	sibsng(sj_dg,"",sj_mj); document.getElementById("output2").innerText += "사주격국 (기본) " + js_titl + "格 " + "\n\n";};
+
+	//--- output1에 추가 display (격국용신)
 	if(pn != null) {
 		if(pn.length === 3){
 			document.getElementById("output1").innerText += "■ 극신강 사주 ..." + pointr + "\n";
@@ -1583,25 +1649,90 @@ function rootgchk(){
 				if(pn.length === 1){
 					document.getElementById("output1").innerText += "■ 신약 사주 ..." + pointr + "\n";}}};
 	}else{document.getElementById("output1").innerText += "■ 극신약 사주 ..." + pointr + "\n";};
-	document.getElementById("output1").innerText += "사주격국 (기본) " + js_titl + "格 " + nfo_tugan + "\n\n";
+
+	//--- output1에 추가 display (조후용신)
+	johu();
+	document.getElementById("output1").innerText += "■ 조후용신 ..." + johu_ys + " 희신: " + johu_hs + "\n";
+	yongsin[2][3] = johu_ys; yongsin[3][3] = johu_hs;
+	if (nfo_tugan != ""){document.getElementById("output1").innerText += nfo_tugan + "\n\n";
+	}else{	sibsng(sj_dg,"",sj_mj); document.getElementById("output1").innerText += "사주격국 (기본) " + js_titl + "格 " + "\n\n";};
+//	yong0();
+//	yong1();
+//	yong2();
 };	
-	
+
+//========= 조후용신 check 하는 함수 ========
+function johu(){
+	subj = sj_dg; temp = ysin_johu.filter(isFind);
+	idx = ysin_johu[0].lastIndexOf(sj_mj);
+	johu_ys = temp[0][idx];
+	johu_hs = temp[1][idx];
+};	
+
+//========= 종격용신법 check 하는 함수 ========
+function yong0(){
+	let n_sjg = ""; let n_ib = "";
+	n_sjg = balance[1][7].substr(1,1) + balance[1][8].substr(1,1) + balance[1][9].substr(1,1);
+	n_ib = balance[1][5].substr(1,1) + balance[1][6].substr(1,1);
+
+	if (n_sjg=="000" && (gj_nfo[2][7]=="비견" || gj_nfo[2][7]=="겁재") && balance[1][6].substr(1,1)>"5"){	
+		yongsin[1][6] = "종왕格"; yongsin[2][6] = "비겁"; yongsin[3][6] = "인성"; 
+	};
+	if (n_sjg=="000" && (gj_nfo[2][7]=="편인" || gj_nfo[2][7]=="정인") && balance[1][5].substr(1,1)>"5"){	
+		yongsin[1][6] = "종강格"; yongsin[2][6] = "인성"; yongsin[3][6] = "비겁"; 
+	};
+	if (n_ib=="00" && (gj_nfo[2][7]=="식신" || gj_nfo[2][7]=="상관") && balance[1][7].substr(1,1)>"3"){	
+		yongsin[1][6] = "종아格"; yongsin[2][6] = "식상"; yongsin[3][6] = "재성"; 
+	};
+	if (n_ib=="00" && (gj_nfo[2][7]=="편재" || gj_nfo[2][7]=="정재") && balance[1][8].substr(1,1)>"3"){	
+		yongsin[1][6] = "종재格"; yongsin[2][6] = "재성"; yongsin[3][6] = "식상"; 
+	};
+	let sstx = gj_nfo[1][3] + gj_nfo[1][7] + gj_nfo[2][3] + gj_nfo[2][7] + gj_nfo[3][3] + gj_nfo[3][7] + gj_nfo[4][3] + gj_nfo[4][7];
+	if (n_ib=="00" && (gj_nfo[2][7]=="편관" || gj_nfo[2][7]=="정관") && balance[1][9].substr(1,1)>"3" && (sstx.match(/상관/g) || []).length==0){	
+		yongsin[1][6] = "종관格"; yongsin[2][6] = "관성"; yongsin[3][6] = "재성"; 
+	};
+};	
+
+//========= 일행격용신법 check 하는 함수 ========
+function yong1(){
+
+
+};
+
+//========= 이행격용신법 check 하는 함수 ========
+function yong2(){
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 //========= 일간의 통근 check 하는 함수 ========
 function dgroot(pos,a){
 	pass = ""; fail = "";
 	if (pos === "정인" || pos === "편인" || pos === "비견" || pos === "겁재"){ 
-		if (a === 1){ pointr = pointr + "득지Y"; pass = "득지\n";
-		}else{if (a === 2){ pointr = pointr + "득령Y"; pass = "득령\n";}else{pass = pos + " 통근\n";}};
+		if (a === 1){ pointr = pointr + "득지Y"; pass = "득지\n"; balance[1][1] = "득지";
+		}else{if (a === 2){ pointr = pointr + "득령Y"; pass = "득령\n"; balance[1][2] = "득령";}else{pass = pos + " 통근\n";}};
 		document.getElementById("output2").innerText += "일간 " + pass;
 	}else{
-		if (a === 1){ pointr = pointr + "실지N"; fail = "실지\n";
-		}else{if (a === 2){ pointr = pointr + "실령N"; fail = "실령\n";}else{ fail = " ";}};
+		if (a === 1){ pointr = pointr + "실지N"; fail = "실지\n"; balance[1][1] = "실지";
+		}else{if (a === 2){ pointr = pointr + "실령N"; fail = "실령\n"; balance[1][2] = "실령";}else{ fail = " ";}};
 		document.getElementById("output2").innerText += fail;};
 };
 	
 //========= 일간의 세력 check 하는 함수 =========
 function pwrcnt(){
-	sstext = gj_nfo[1][3] + gj_nfo[1][7] + gj_nfo[2][3] + gj_nfo[2][7] + gj_nfo[3][7] + gj_nfo[4][3] + gj_nfo[4][7];  //--- 십성
+	sstext = gj_nfo[1][3] + "_" + gj_nfo[1][7] + "_" + gj_nfo[2][3] + "_" + gj_nfo[2][7] + "_" + gj_nfo[3][7] + "_" + gj_nfo[4][3] + "_" + gj_nfo[4][7];  //--- 십성
 	let r1 = (sstext.match(/비견/g) || []).length;
 	let r2 = (sstext.match(/겁재/g) || []).length;
 	let r3 = (sstext.match(/편인/g) || []).length;
@@ -1609,10 +1740,10 @@ function pwrcnt(){
 
 	r0 = r1 + r2 + r3 + r4;
 	if (r0 > 3){
-		pointr = pointr + "득세Y";
+		pointr = pointr + "득세Y"; balance[1][3] = "득세";
 		document.getElementById("output2").innerText += "일간 득세 " + String(r0) + " / " + String(7-r0) + "\n\n";
 	}else{
-		pointr = pointr + "실세N";
+		pointr = pointr + "실세N"; balance[1][3] = "실세";
 		document.getElementById("output2").innerText += "일간 실세 " + String(r0) + " / " + String(7-r0) + "\n\n";};
 };
 
@@ -1839,39 +1970,40 @@ function result_out(tx,desc,sts,dstin){
 //======== 합(1) 내용 summary ========
 function summing1(dstin){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); sz = ""; txd = "";
-	if (ganhc_nfo[3][4].includes(temp[0][7])){sz = "심리(20~38세)---";};
-	if (ganhc_nfo[3][5].includes(temp[0][7])){sz = "심리(58세~)---";};
+	if (ganhc_nfo[3][4].includes(temp[0][8])){sz = "심리(20~38세)---";};
+	if (ganhc_nfo[3][5].includes(temp[0][8])){sz = "심리(58세~)---";};
 	//--- 정재/정관의 긍정심리
-	subj = temp[0][3].substr(3,2);
+	subj = temp[0][4].substr(3,2);
 	for (j=1; j< cgh01_sibsng_simri6chin.length; j++){
 		if (cgh01_sibsng_simri6chin[j][0] == subj){
 			rslt = cgh01_sibsng_simri6chin[j][1]; 
 			txd += "◐ " + subj + sz + rslt + "</br>";
 		};
 	};
-	txd += "◐ 일간의 심리--- 1.다정다감 2.부화뇌동 3.부정망상</br>" + temp[0][4] + " " + temp[0][6] + "</br> 배우자 이상형---" + temp[0][5] + "</br>";
-	if (temp[0][8].includes(sj_dg)){ sts = "총명하여 학술과 기예에 관심이 많고, 또 양순하면서도 다정다감하여 대인관계가 원만한 편이다. 하지만 이성으로부터 많은 관심을 받거나 부화뇌동(附和雷同)하려는 심리가 강해 자칫하면 구설에 휘말릴 수 있다.";};  //--- 합화생
-	if (temp[0][9].includes(sj_dg)){ sts = "신강하면 흉화가 없지만 신약하면 소심박약(小心薄弱)하고 편향성(偏向性)을 띠게 된다";};  //--- 합화극
-	txd += sts + "</br> 건강에 주의---" + temp[0][11] + "</br>";
+	txd += "◐ 일간의 심리--- 1.다정다감 2.부화뇌동 3.부정망상</br>" + temp[0][5] + " " + temp[0][7] + "</br> 배우자 이상형---" + temp[0][6] + "</br>";
+	if (temp[0][9].includes(sj_dg)){ sts = "총명하여 학술과 기예에 관심이 많고, 또 양순하면서도 다정다감하여 대인관계가 원만한 편이다. 하지만 이성으로부터 많은 관심을 받거나 부화뇌동(附和雷同)하려는 심리가 강해 자칫하면 구설에 휘말릴 수 있다.";};  //--- 합화생
+	if (temp[0][10].includes(sj_dg)){ sts = "신강하면 흉화가 없지만 신약하면 소심박약(小心薄弱)하고 편향성(偏向性)을 띠게 된다";};  //--- 합화극
+	txd += sts + "</br> 건강에 주의---" + temp[0][12] + "</br>";
 	if (dstin=="#output1"){txt_ganhc += txd;}else{txt_ganhn += txd;};
 };
 
 //======== 합화(2) 내용 summary ========
-function summing2(dstin){
+function summing2(dstin){  //--- 극의 유무를 확인
 	n = 0; subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); txd = "";
 	for (k = 2; k < sibsungX1.length; k++){
-		if (sibsungX1[k][2].substr(1,1) == temp[0][2]){
-			idx = sibsungX1[k].indexOf('편관');
-			rslt += sibsungX1[0][idx] + sibsungX1[1][idx];
-			idx = sibsungX1[k].indexOf('정관');
-			rslt += sibsungX1[0][idx] + sibsungX1[1][idx];
+		if (sibsungX1[k][2].substr(1,1) == temp[0][2]){  //--- 금(일간오행)==금(합화오행)  k=8,9
+			idx = sibsungX1[k].indexOf('편관');  //--- (8-5), (9-6)
+			rslt += sibsungX1[0][idx] + sibsungX1[1][idx];  //--- 丙巳, 丁午
+			idx = sibsungX1[k].indexOf('정관');  //--- (8-6), (9-5)
+			rslt += sibsungX1[0][idx] + sibsungX1[1][idx];  //--- 丙巳+丁午, 丁午+丙巳 (중복됨) 극에 해당하는 간지
 		};
 	};
-	if (rslt.includes(sj_yg)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_yj)){ n += 1;}else{ n += 0;};	
-	if (rslt.includes(sj_dj)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_tj)){ n += 1;}else{ n += 0;};
-	if (hcg3.substr(0,1) == "합"){ if (rslt.includes(sj_tg)){ n += 1;}else{ n += 0;};};
-	if (hcg3.substr(2,1) == "합"){ if (rslt.includes(sj_mg)){ n += 1;}else{ n += 0;};};	
-	if (n == 0){txd += "◐ " + desc.substr(0,3) + "합화격 " + temp[0][2] + "오행 용신</br>";
+	if (rslt.includes(sj_yg)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_yj)){ n += 1;}else{ n += 0;};	  //--- 연간 연지 극여부
+	if (rslt.includes(sj_dj)){ n += 1;}else{ n += 0;}; if (rslt.includes(sj_tj)){ n += 1;}else{ n += 0;};	  //--- 일지 시지 극여부
+	if (hcg3.substr(0,1) == "합"){ if (rslt.includes(sj_tg)){ n += 1;}else{ n += 0;};};  //--- 일월간합에 시간의 극여부
+	if (hcg3.substr(2,1) == "합"){ if (rslt.includes(sj_mg)){ n += 1;}else{ n += 0;};};	 //--- 일시간합에 월간의 극여부
+	if (n == 0){txd += "◐ " + desc.substr(0,3) + "합화격 " + temp[0][2] + "오행 용신</br>"; 
+		yongsin[1][9] = desc.substr(0,3); yongsin[2][9] = temp[0][2]; yongsin[3][9] = temp[0][3];
 	}else{txd += " + 합오행을 극함</br>◐ 성합불화 ";};
 	if (dstin=="#output1"){txt_ganhc += txd;}else{txt_ganhn += txd;};
 };
@@ -1879,9 +2011,9 @@ function summing2(dstin){
 //======== 불합(3) 내용 summary ========
 function summing3(dstin){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); sz = ""; txd = "";
-	if (ganhc_nfo[3][4].includes(temp[0][7])){sz = "심리(20~38세)---";};
-	if (ganhc_nfo[3][5].includes(temp[0][7])){sz = "심리(58세~)---";};
-	subj = temp[0][3].substr(3,2);
+	if (ganhc_nfo[3][4].includes(temp[0][8])){sz = "심리(20~38세)---";};
+	if (ganhc_nfo[3][5].includes(temp[0][8])){sz = "심리(58세~)---";};
+	subj = temp[0][4].substr(3,2);
 	for (j=1; j< cgh01_sibsng_simri6chin.length; j++){
 		if (cgh01_sibsng_simri6chin[j][0] == subj){
 			rslt = cgh01_sibsng_simri6chin[j][2]; 
@@ -1894,8 +2026,8 @@ function summing3(dstin){
 //======== 합봉(4) 내용 summary ========
 function summing4(dstin){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); txd = "";
-	txd += "◐ 건강 흉화 " + temp[0][11] + "</br>";
-	subj = temp[0][3].substr(3,2);
+	txd += "◐ 건강 흉화 " + temp[0][12] + "</br>";
+	subj = temp[0][4].substr(3,2);
 	temp = cgh01_sibsng_simri6chin.filter(isFind);
 	if (gendr == "남양"){n = 1;}else{n = 2;};
 	txd += "(" + temp[0][n+2] + ") 흉화--- </br>";
@@ -1906,8 +2038,8 @@ function summing4(dstin){
 //======== 용봉(5) 내용 summary ========
 function summing5(dstin){
 	subj = sj_dg; temp = cgh02_dhap_simrihealth.filter(isFind); txd = "";
-	txd += "◐ " + temp[0][3].substr(3,2) + "운 " + temp[0][4].substr(0,2) + "운 흉화 </br>";
-	txd += "건강 흉화 " + temp[0][11] + "</br>";
+	txd += "◐ " + temp[0][4].substr(3,2) + "운 " + temp[0][5].substr(0,2) + "운 흉화 </br>";
+	txd += "건강 흉화 " + temp[0][12] + "</br>";
 	if (dstin=="#output1"){txt_ganhc += txd;}else{txt_ganhn += txd;};
 };
 	
@@ -1951,11 +2083,11 @@ function summing0(a,dstin){
 	temp = sibsungX1.filter(isFind);
 	reln = Math.ceil((temp[0].indexOf(gj_nfo[1][3])-2) / 2);
 	temp = cgh02_dhap_simrihealth.filter(isFind);
-	if (temp[0][4].substr(0,2)=="비견"){reln += 0};
-	if (temp[0][4].substr(0,2)=="식상"){reln += 1};
-	if (temp[0][4].substr(0,2)=="재성"){reln += 2};
-	if (temp[0][4].substr(0,2)=="관성"){reln += 3};
-	if (temp[0][4].substr(0,2)=="인성"){reln += 4};
+	if (temp[0][5].substr(0,2)=="비견"){reln += 0};
+	if (temp[0][5].substr(0,2)=="식상"){reln += 1};
+	if (temp[0][5].substr(0,2)=="재성"){reln += 2};
+	if (temp[0][5].substr(0,2)=="관성"){reln += 3};
+	if (temp[0][5].substr(0,2)=="인성"){reln += 4};
 	if (reln>5){ reln = reln - 5;}	
 
 	if (gendr == "남양"){ 
@@ -2084,8 +2216,15 @@ function wongug(){
 	//--- 원국 hcg3 코드 생성
 	if (ganhc_nfo[3][4].substr(2,1)=="" && ganhc_nfo[3][5].substr(2,1)==""){hcg3 += "----";
 	}else{
-		if (ganhc_nfo[3][4].substr(2,1)==""){if (sj_mg == sj_dg)	{hcg3 += "쟁" + rt2;}else{hcg3 += "--";};
-		}else{	hcg3 += ganhc_nfo[3][4].substr(2,1) + rt2;};
+		if (ganhc_nfo[3][4].substr(2,1)==""){
+			if (sj_mg == sj_dg)	{
+				hcg3 += "쟁" + rt2;
+			}else{
+				hcg3 += "--";
+			};
+		}else{	
+			hcg3 += ganhc_nfo[3][4].substr(2,1) + rt2;
+		};
 		if (ganhc_nfo[3][5].substr(2,1)==""){if (sj_tg == sj_dg){hcg3 += "쟁" + rt3;}else{hcg3 += "--";};	
 		}else{	hcg3 += ganhc_nfo[3][5].substr(2,1) + rt3;}; 
 	};
@@ -2108,7 +2247,6 @@ function wongug(){
 //------ 원국 천간 합충 결과 출력 ("#output1")
 let cssn4 = 0; let txt_ganhc = ""; let txt_jjhc = "";
 function ganhc(d){
-//	return new Promise(function (resolve, reject){
 		txt_ganhc = "";
 		for (i = 0; i < ca10a_ghabch.length; i++){
 			//------ 연간 합충
@@ -2149,13 +2287,8 @@ function ganhc(d){
 			};
 		};	
 		$("#output1").append(txt_ganhc);
-//		resolve();
-//	});
 };
 
-//	return new Promise(function (resolve, reject){
-//		resolve();
-//	});
 //------ new version test 원국 지지 합충형해파 결과 출력 ("output1")
 async function johc(d){
 		txt = "원국"; sz = ""; pos_ch = ""; txt_jjhc = "";
@@ -2277,6 +2410,34 @@ function solution(s) {
 	};
 };
 
+//======= 조건 검색시 (오행, 십신) 조회하는 함수.......... (강약, 글자, 성별은 기존변수 사용) =======
+function inquir( a ){  //--- inquir( balance[1] )
+	for (i=0; i<a.length; i++){
+		if (a[i].includes("목")){ inq_oh1 = a[i] + balance[0][i];};
+		if (a[i].includes("화")){ inq_oh2 = a[i] + balance[0][i];};
+		if (a[i].includes("토")){ inq_oh3 = a[i] + balance[0][i];};
+		if (a[i].includes("금")){ inq_oh4 = a[i] + balance[0][i];};
+		if (a[i].includes("수")){ inq_oh5 = a[i] + balance[0][i];};
+	};
+	nr_oh1 = inq_oh1.substr(1,1);  //--- "목" 오행 갯수 
+	ss_oh1 = inq_oh1.substr(2,);  //--- "목" 육신
+	nr_oh2 = inq_oh2.substr(1,1);  //--- "화" 오행 갯수 
+	ss_oh2 = inq_oh2.substr(2,);  //--- "화" 육신
+	nr_oh3 = inq_oh3.substr(1,1);  //--- "토" 오행 갯수 
+	ss_oh3 = inq_oh3.substr(2,);  //--- "토" 육신
+	nr_oh4 = inq_oh4.substr(1,1);  //--- "금" 오행 갯수 
+	ss_oh4 = inq_oh4.substr(2,);  //--- "금" 육신
+	nr_oh5 = inq_oh5.substr(1,1);  //--- "수" 오행 갯수 
+	ss_oh5 = inq_oh5.substr(2,);  //--- "수" 육신
+};
+	
+//	nr_carac = (sj_ganji.match(/午/g) || []).length;  //--- 글자 갯수 확인
+//	console.log( b, nr_oh, "개 ", ss_oh, balance[1][4], gendr, "글자", nr_carac, "개");
+
+
+
+
+
 //======= 지지 원국/행운 합충형해파 체크 함수 ====== wongug_chk(a,b);  a: base, b: target
 function wongug_chk(a,b){
 	rslt = ""; subj = a;
@@ -2291,7 +2452,8 @@ function wongug_chk(a,b){
 };
 
 function chkg(a,b){
-	if (testg[0].includes(a+b)){
+//	if (testg[0].includes(a+b)){  //--- 서버에서는 [0]없으면 오류
+	if (testg.includes(a+b)){  //--- 로컬에서는 [0]있으면 오류
 		rslt = a + b;
 	}else{
 		rslt = b + a;
@@ -2303,10 +2465,17 @@ function spclcarac(d){
 	txt_wmi = "";
 	txt_wmi += "■■  나는 어떤 사람인가? </br></br>";
 	//--- 음양 특성 출력(output0) 
-	if (gj_nfo[3][2].substr(0,1)=="음"){mptxt = o_hang[3][0] + "사고 지향적. 현재가치 중시. 내향 수동적. 실리(힘 세력) 중시. 수축 수렴 하강 부드러움";};
-	if (gj_nfo[3][2].substr(0,1)=="양"){mptxt = o_hang[2][0] +  "행동 지향적. 미래가치 중시. 외향 능동적. 명분(기세 의리) 중시. 팽창 발산 상승 단단함";};
+	if (gj_nfo[3][2].substr(0,1)=="음"){mptxt = o_hang[3][0];};
+	if (gj_nfo[3][2].substr(0,1)=="양"){mptxt = o_hang[2][0];};
+	if(pn != null) {
+		if (pn.length>=2){mptxt += "신강" + "행동 지향적. 미래가치 중시. 외향 능동적. 명분(기세 의리) 중시. 팽창 발산 상승 단단함"; mptx1 = 11;	}else{	mptxt += "신약" + "사고 지향적. 현재가치 중시. 내향 수동적. 실리(힘 세력) 중시. 수축 수렴 하강 부드러움"; mptx1 = 12;};
+	}else{	mptxt += "신약" + "사고 지향적. 현재가치 중시. 내향 수동적. 실리(힘 세력) 중시. 수축 수렴 하강 부드러움"; mptx1 = 12;};
+
+	if (gendr.substr(0,1)=="남"){mptx2 = 5;}; 
+	if (gendr.substr(0,1)=="여"){mptx2 = 6;}; 
+
 	txt_wmi += "■ 0 음양: "; 
-	txt_wmi += '<span class="spcs css_b0">' + mptxt.substr(0,1) + ' (' + mptxt.substr(1,1) + ')</span></br><div id="css_b0" class="txcb">◐ ' + mptxt.substr(2) + '</div>--------------------------------------------------------------</br>';
+	txt_wmi += '<span class="spcs css_b0">' + mptxt.substr(0,1) + ' (' + mptxt.substr(1,1) + ') ' + mptxt.substr(2,2) + '</span></br><div id="css_b0" class="txcb">--> ⊙ ' + mptxt.substr(4) + '</br>◐ 성격: ' + a_ilgan[mptx1][2] + '</br>◐ 심리: ' + a_ilgan[mptx1][3] + '</br>◐ 직업: ' + a_ilgan[mptx1][4] + '</br>◐ 이성관: ' + a_ilgan[mptx1][mptx2] + '</div>--------------------------------------------------------------</br>';
 
 	//--- 오행 특성 출력(output0) 
 	txt_wmi += "■ 1 오행: "; 
@@ -2352,8 +2521,10 @@ function spclcarac(d){
 	st= temps0[0][3].indexOf('여자 :');
 	if (gendr.substr(0,1)=="남"){adt = 6; lks = temps0[0][3].substr(4,st-5);}; 
 	if (gendr.substr(0,1)=="여"){adt = 7; lks = temps0[0][3].substr(st+4);};
-	txt_wmi += "■ 6 일주: ";
-	txt_wmi += '<span class="spcs css_b6">' + subj + '</span></br><div id="css_b6" class="txcb">- ' + temps0[0][1] + '</br> - ' + temps0[0][2] + '</br> ◐ 외모: ' + lks + '</br> ◐ 직업: ' + temps0[0][4] + '</br> ◐ 결혼: ' + temps0[0][5] + '</br> - ' + temps0[0][adt] + '</br> ◐ 가족: ' + temps0[0][8] + '</br> ◐ 비고: ' + temps0[0][9] + '</div>--------------------------------------------------------------</br>';
+	let txt_tts = "";
+	txt_tts += "■ 6 일주: ";
+	txt_tts += '<span class="spcs css_b6">' + subj + '</span></br><div id="css_b6" class="txcb">- ' + temps0[0][1] + '</br> - ' + temps0[0][2] + '</br> ◐ 외모: ' + lks + '</br> ◐ 직업: ' + temps0[0][4] + '</br> ◐ 결혼: ' + temps0[0][5] + '</br> - ' + temps0[0][adt] + '</br> ◐ 가족: ' + temps0[0][8] + '</br> ◐ 비고: ' + temps0[0][9] + '</div>--------------------------------------------------------------</br>';
+	txt_wmi += txt_tts;
 
 	//--- 월지십성 특성 출력(output0) 
 	sibsng(sj_dg,"",sj_mj); subj = js_titl; temps0 = a_ssmj.filter(isFind);
@@ -2380,8 +2551,14 @@ function spclcarac(d){
 	$(d).append(txt_wmi);
 	$(d).on("click", "span", function(){ 
 		disp("#"+$(this).attr("class").substr(5),"",""); 
+		if ($(this).attr("class").substr(5)=="css_b6" && $("#css_b6").css("display")==="block"){
+			speak(txt_tts, {rate: 0.7, pitch: 0.6, lang: "ko-KR" });
+		}else{
+			window.speechSynthesis.cancel();
+		};
 	}); 
 };
+
 
 //■■■■■■■■■■■■■■■■■■■■■■■■
 //======= 행운 년/월/일 변경시 ======
@@ -2589,6 +2766,8 @@ function sinsal01(a,b,c,f,d,e,g,h){ //=== a: base, b: target, c: list, d: destin
 //--- 참조용 테이블 화면출력 --- "output4" & "output5"
 function outptt(){
 	ptt(gj_nfo,"gj_nfo : 천간지지","#output4");
+	ptt(balance,"balance : 사주강약 균형","#output4");
+	ptt(yongsin,"yongsin : 용신취용","#output4");
 	ptt(hun_list,"hun_list : 대운","#output4");
 	ptt(hgj_nfo,"hgj_nfo : 행운간지","#output5");
 	ptt(ganhc_nfo,"ganhc_nfo : 천간합충","#output5");
@@ -2714,26 +2893,7 @@ function jjhn(m,n){
 							if (smry.includes(rslt)){
 								continue;
 							}else{
-						jjhn_a();
-//								console.log("a " + m + " " + n);
-//								txd = ""; txd += "<span>오류체크 a " + m + " " + n + "</span></br>"; txt_jjhn += txd;
-/*								if (rslt.substr(0,1) == rslt.substr(1,1)){rslt += "자형"; smry += rslt;}else{smry += rslt;};
-								if (temp[0][2] == "1"){djhab("#output3");};  //--- 합
-								if (temp[0][2] == "2"){djchng("#output3");};  //--- 충
-								if (temp[0][2] == "3"){
-									if (m == 2){djhae(sj_mj,hnj,2,"#output3");};
-									if (m == 3){djhae(sj_dj,hnj,0,"#output3");};
-									if (m == 4){djhae(sj_tj,hnj,3,"#output3");};};  //--- 해
-								if (temp[0][2] == "4"){  //--- 파
-									if (m == 2){djpa(sj_mj,hnj,"#output3");};
-									if (m == 3){djpa(sj_dj,hnj,"#output3");};
-									if (m == 4){djpa(sj_tj,hnj,"#output3");};};
-								if (temp[0][2] == "5"){
-									johga_chk(2,m,n); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johha_chk(2,"#output3");};
-									johgb_chk(2,m,n); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johhb_chk(2,"#output3");};
-									johgc_chk(2,m,n); if (rslt.length > 1){posd = pos; rslt = "子卯형"; johhc_chk(2,"#output3");};
-									johgd_chk(2,m,n); if (rslt.length > 1){posd = pos; johhd_chk(2,"#output3");};};  //--- 형
-								if (temp[0][2] == "8"){rslt0 = hcj.substr(l,1) + "+해=> 흉화--- "; rslt = texstr.substr(0,2) + hncd.substr(j,1); hwunghwa(sj_dj,hnj,"#output3");}; */ //--- 해 흉화
+								jjhn_a();
 							};
 						};
 					};
@@ -2762,20 +2922,7 @@ function jjhn(m,n){
 					if (smry.includes(rslt)){
 						continue;
 					}else{
-				jjhn_b();
-//								console.log("b " + m + " " + n);
-//								txd = ""; txd += "<span>오류체크 b " + m + " " + n + "</span></br>"; txt_jjhn += txd;
-/*						smry += rslt;
-						if (temp[0][2] == "1"){djhab("#output3");};  //--- 합
-						if (temp[0][2] == "2"){djchng("#output3");};  //--- 충
-						if (temp[0][2] == "3"){djhae(sj_dj,hnj,0,"#output3");};  //--- 해
-						if (temp[0][2] == "4"){djpa(sj_dj,hnj,"#output3");};  //--- 파
-						if (temp[0][2] == "5"){
-							johga_chk(2,m,n); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johha_chk(2,"#output3");};
-							johgb_chk(2,m,n); if (rslt.length == 2){posd = pos; chkg(rslt.substr(0,1), rslt.substr(1,1)); rslt += "형"; johhb_chk(2,"#output3");};
-							johgc_chk(2,m,n); if (rslt.length > 1){posd = pos; rslt = "子卯형"; johhc_chk(2,"#output3");};
-							johgd_chk(2,m,n); if (rslt.length > 2){posd = pos; johhd_chk(2,"#output3");};
-						}; */ //--- 형
+						jjhn_b();
 					};
 				};
 			};
@@ -2783,9 +2930,6 @@ function jjhn(m,n){
 		resolve();
 	});
 };
-//	return new Promise(function (resolve, reject){
-//		resolve();
-//	});
 
 async function jjhn_a(){
 								if (rslt.substr(0,1) == rslt.substr(1,1)){rslt += "자형"; smry += rslt;}else{smry += rslt;};
@@ -2806,7 +2950,6 @@ async function jjhn_a(){
 									johgd_chk(2,m,n); if (rslt.length > 1){posd = pos; await johhd_chk(2,"#output3");};};  //--- 형
 								if (temp[0][2] == "8"){rslt0 = hcj.substr(l,1) + "+해=> 흉화--- "; rslt = texstr.substr(0,2) + hncd.substr(j,1); await hwunghwa(sj_dj,hnj,"#output3");};  //--- 해 흉화
 };
-
 
 async function jjhn_b(){
 						smry += rslt;
@@ -2906,7 +3049,7 @@ function ganhn0(){
 //====== 천간(일간) 행운합충극
 function dganhn(){
 	return new Promise(function (resolve, reject){
-		let prac = ""; let prad = ""; 
+		let prac = "";  //-- let prad = ""; 
 		if (ganhc_nfo[3][4].includes("합") || ganhc_nfo[3][4].includes("충")){prac += ganhc_nfo[3][4].substr(2);};
 		if (ganhc_nfo[3][5].includes("합") || ganhc_nfo[3][5].includes("충")){prac += ganhc_nfo[3][5].substr(2);};  //--- 원국 "합충"
 
@@ -3415,6 +3558,246 @@ function baneumh(g, h){
 		resolve();
 	});
 };
+
+//======== 남(재관) 여(관식) 파악하기 =========
+function jagns(a,b){  //--- a: /편재/g, /정재/g 등  b: "편재"
+	rr = sstext.match(a);
+	if (rr==null){
+		sstext1 = gj_nfo[1][12] + gj_nfo[1][13] + gj_nfo[1][14] + gj_nfo[2][12] + gj_nfo[2][13] + gj_nfo[2][14] + gj_nfo[3][12] + gj_nfo[3][13] + gj_nfo[3][14] + gj_nfo[4][12] + gj_nfo[4][13] + gj_nfo[4][14]; 
+		rr1 = sstext1.match(a);
+	}else{
+		ai = parseInt(sstext.indexOf(b)/3)+1;
+	};
+};
+
+//======================
+function spclcarac1(dx){
+	txt_wmix = ""; mpx1 = 0; mpx2 = 0; mpx3 = 0;
+	txt_wmix += "■■  나는 어떤 사람인가? </br></br>";
+	//--- 음양 특성 출력(outputx) 
+	if (gj_nfo[3][2].substr(0,1)=="음"){mptxt = o_hang[3][0];};
+	if (gj_nfo[3][2].substr(0,1)=="양"){mptxt = o_hang[2][0];};
+
+	//--- 일간 특성 출력(outputx) 
+	subj = sj_dg; temps0 = b_ilgan.filter(isFind); 
+	txt_wmix += "■ 1 일간: </br>"; 
+	txt_wmix += "◐ 음양: "; 
+	txt_wmix += '<span class="spcs css_x0">' + mptxt.substr(0,1) + ' (' + mptxt.substr(1,1) + ') ' + mptxt.substr(2) + '</span></br><div id="css_x0" class="txcb">* 성격(내적): ' + b_ilgan[temps0[0][4]][2] + '</div>--------------------------------------------------------------</br>';
+
+	txt_wmix += "◐ 일간: "; 
+	txt_wmix += '<span class="spcs css_x1">' + subj + '__ ' + temps0[0][1] + '</span></br><div id="css_x1" class="txcb">* 성격(내적): ' + temps0[0][2] + '</div>--------------------------------------------------------------</br>';
+
+	//--- 월지십성 특성 출력(outputx) 
+	sibsng(sj_dg,"",sj_mj); subj = js_titl; temps0 = b_ssmj.filter(isFind);
+	txt_wmix += "■ 2 월지: </br>";
+	txt_wmix += '◐ 십성: <span class="spcs css_x2">' + subj + "__ " + sj_dg + sj_mj + '</span></br><div id="css_x2" class="txcb">* 성격(외적): ' + temps0[0][1];
+	txt_wmix += '</div>--------------------------------------------------------------</br>';
+
+	//--- 간섭인자(합충형)에 따른 성격 출력(outputx) 
+	txg = hcg1 + hcg3;
+	txj = jjhc_nfo[1][2] + jjhc_nfo[2][2] + jjhc_nfo[3][2] + jjhc_nfo[4][2];
+	if ((txg+txj).includes("합") || (txg+txj).includes("충") || (txg+txj).includes("형")){
+		txt_wmix += "■ 3 합충형: </br>";
+		if (txg.includes("합") || txj.includes("합")){
+			if (txg.includes("합") && txj.includes("합")){ mpx1 = 3;}else{ mpx1 = 2;};
+			txt_wmix += '◐ <span class="spcs css_x3">' + b_ilgan[13][0] + "__ " + b_ilgan[13][4] + '</span></br><div id="css_x3" class="txcb">* 성격: ' + b_ilgan[13][mpx1] + '</div>--------------------------------------------------------------</br>';
+		};
+		if (txg.includes("충")){ mpx2 = 2;}; if (txj.includes("충")){ mpx2 = 3;};			
+		if (mpx2>0){
+			txt_wmix += '◐ <span class="spcs css_x4">' + b_ilgan[14][0] + "__ " + b_ilgan[14][4] + '</span></br><div id="css_x4" class="txcb">* 성격: ' + b_ilgan[14][mpx2] + '</div>--------------------------------------------------------------</br>';
+		};
+		if (txj.includes("형")){
+			if(pn != null) {
+				if (pn.length>=2){ mpx3 = 2;	}else{	mpx3 = 3;};
+			}else{	mpx3 = 3;};
+			txt_wmix += '◐ <span class="spcs css_x5">' + b_ilgan[15][0] + "__ " + b_ilgan[15][4] + '</span></br><div id="css_x5" class="txcb">* 성격: ' + b_ilgan[15][mpx3] + '</div>--------------------------------------------------------------</br>';
+		};
+	};
+
+	//--- 없는것 특성 출력(outputx) 
+	if ((ohtx.match(/목/g) || []).length==0 || (ohtx.match(/화/g) || []).length==0 || (ohtx.match(/토/g) || []).length==0 || (ohtx.match(/금/g) || []).length==0 || (ohtx.match(/수/g) || []).length==0){
+		txt_wmix += "■ 4 원국에 없는것: </br>";
+		txt_wmix += "◐ 오행: </br>"; 
+		if ((ohtx.match(/목/g) || []).length==0){	txt_wmix += '* <span class="spcs css_x6">' + b_nohng[1][0] + '</span><div id="css_x6" class="txcb">: ' + b_nohng[1][1] + '</div>';};
+		if ((ohtx.match(/화/g) || []).length==0){	txt_wmix += '* <span class="spcs css_x7">' + b_nohng[2][0] + '</span><div id="css_x7" class="txcb">: ' + b_nohng[2][1] + '</div>';};
+		if ((ohtx.match(/토/g) || []).length==0){	txt_wmix += '* <span class="spcs css_x8">' + b_nohng[3][0] + '</span><div id="css_x8" class="txcb">: ' + b_nohng[3][1] + '</div>';};
+		if ((ohtx.match(/금/g) || []).length==0){	txt_wmix += '* <span class="spcs css_x9">' + b_nohng[4][0] + '</span><div id="css_x9" class="txcb">: ' + b_nohng[4][1] + '</div>';};
+		if ((ohtx.match(/수/g) || []).length==0){	txt_wmix += '* <span class="spcs css_x10">' + b_nohng[5][0] + '</span><div id="css_x10" class="txcb">: ' + b_nohng[5][1] + '</div>';};
+		if (gendr.substr(0,1)=="남"){ txt_wmix += '</br>* 남자: ' + b_nohng[6][1] + '</br>';}; if (gendr.substr(0,1)=="여"){ txt_wmix += '</br>* 여자: ' + b_nohng[7][1] + '</br>';};
+		txt_wmix += '--------------------------------------------------------------</br>'; 
+	};
+	txt_wmix += "◐ 십성: </br>"; 
+	if ((sstext.match(/비견/g) || []).length==0){	txt_wmix += '* <span class="spcs css_xa">' + b_noss[1][0] + '</span><div id="css_xa" class="txcb">: ' + b_noss[1][1] + '</div>';};
+	if ((sstext.match(/겁재/g) || []).length==0){	txt_wmix += '* <span class="spcs css_xb">' + b_noss[2][0] + '</span><div id="css_xb" class="txcb">: ' + b_noss[2][1] + '</div>';};
+	if ((sstext.match(/식신/g) || []).length==0){	txt_wmix += '* <span class="spcs css_xc">' + b_noss[3][0] + '</span><div id="css_xc" class="txcb">: ' + b_noss[3][1] + '</div>';};
+	if ((sstext.match(/상관/g) || []).length==0){	txt_wmix += '* <span class="spcs css_xd">' + b_noss[4][0] + '</span><div id="css_xd" class="txcb">: ' + b_noss[4][1] + '</div>';};
+	if ((sstext.match(/편재/g) || []).length==0){	txt_wmix += '* <span class="spcs css_xe">' + b_noss[5][0] + '</span><div id="css_xe" class="txcb">: ' + b_noss[5][1] + '</div>';};
+	if ((sstext.match(/정재/g) || []).length==0){	txt_wmix += '* <span class="spcs css_xf">' + b_noss[6][0] + '</span><div id="css_xf" class="txcb">: ' + b_noss[6][1] + '</div>';};
+	if ((sstext.match(/편관/g) || []).length==0){	txt_wmix += '* <span class="spcs css_xg">' + b_noss[7][0] + '</span><div id="css_xg" class="txcb">: ' + b_noss[7][1] + '</div>';};
+	if ((sstext.match(/정관/g) || []).length==0){	txt_wmix += '* <span class="spcs css_xh">' + b_noss[8][0] + '</span><div id="css_xh" class="txcb">: ' + b_noss[8][1] + '</div>';};
+	if ((sstext.match(/편인/g) || []).length==0){	txt_wmix += '* <span class="spcs css_xi">' + b_noss[9][0] + '</span><div id="css_xi" class="txcb">: ' + b_noss[9][1] + '</div>';};
+	if ((sstext.match(/정인/g) || []).length==0){	txt_wmix += '* <span class="spcs css_xj">' + b_noss[10][0] + '</span><div id="css_xj" class="txcb">: ' + b_noss[10][1] + '</div>';};
+	txt_wmix += '</br>--------------------------------------------------------------</br>'; 
+
+	//--- 많은것 특성 출력(outputx) 
+	txt_wmix += "■ 5 원국에 많은것: </br>";
+	txt_wmix += "◐ 오행: </br>"; 
+	if ((ohtx.match(/목/g) || []).length>1){	txt_wmix += '* <span class="spcs css_xk">' + b_mohng[1][0] + '</span><div id="css_xk" class="txcb">: ' + b_mohng[1][2] + '</br>' + b_mohng[1][1] + '</div>';};
+	if ((ohtx.match(/화/g) || []).length>1){	txt_wmix += '* <span class="spcs css_xl">' + b_mohng[2][0] + '</span><div id="css_xl" class="txcb">: ' + b_mohng[2][2] + '</br>' + b_mohng[2][1] + '</div>';};
+	if ((ohtx.match(/토/g) || []).length>1){	txt_wmix += '* <span class="spcs css_xm">' + b_mohng[3][0] + '</span><div id="css_xm" class="txcb">: ' + b_mohng[3][2] + '</br>' + b_mohng[3][1] + '</div>';};
+	if ((ohtx.match(/금/g) || []).length>1){	txt_wmix += '* <span class="spcs css_xn">' + b_mohng[4][0] + '</span><div id="css_xn" class="txcb">: ' + b_mohng[4][2] + '</br>' + b_mohng[4][1] + '</div>';};
+	if ((ohtx.match(/수/g) || []).length>1){	txt_wmix += '* <span class="spcs css_xo">' + b_mohng[5][0] + '</span><div id="css_xo" class="txcb">: ' + b_mohng[5][2] + '</br>' + b_mohng[5][1] + '</div>';};
+	txt_wmix += '</br>--------------------------------------------------------------</br>'; 
+	txt_wmix += "◐ 육친: </br>"; 
+	if (((sstext.match(/비견/g) || []).length + (sstext.match(/겁재/g) || []).length)>1){txt_wmix += '* <span class="spcs css_xp">' + b_moss[1][0] + '</span><div id="css_xp" class="txcb">: ' + b_moss[1][1] + '</div>';};
+	if (((sstext.match(/식신/g) || []).length + (sstext.match(/상관/g) || []).length)>1){txt_wmix += '* <span class="spcs css_xq">' + b_moss[2][0] + '</span><div id="css_xq" class="txcb">: ' + b_moss[2][1] + '</div>';};
+	if (((sstext.match(/편재/g) || []).length + (sstext.match(/정재/g) || []).length)>1){txt_wmix += '* <span class="spcs css_xr">' + b_moss[3][0] + '</span><div id="css_xr" class="txcb">: ' + b_moss[3][1] + '</div>';};
+	if (((sstext.match(/편관/g) || []).length + (sstext.match(/정관/g) || []).length)>1){txt_wmix += '* <span class="spcs css_xs">' + b_moss[4][0] + '</span><div id="css_xs" class="txcb">: ' + b_moss[4][1] + '</div>';};
+	if (((sstext.match(/편인/g) || []).length + (sstext.match(/정인/g) || []).length)>1){txt_wmix += '* <span class="spcs css_xt">' + b_moss[5][0] + '</span><div id="css_xt" class="txcb">: ' + b_moss[5][1] + '</div>';};
+	txt_wmix += '</br>--------------------------------------------------------------</br>'; 
+
+	//--- 근묘화실 출력(outputx) *************************  new version
+	txt_wmix += "■ new 6 근묘화실: </br>";  
+	if (gendr.substr(0,1)=="남"){ gnd_n = 2;}; if (gendr.substr(0,1)=="여"){ gnd_n = 3;};
+	for (i=1; i<5; i++){
+		if (i==1){ txt_wmix += '* 20세이전 소년기의 어린 시절에는 ';};
+		if (i==2){ txt_wmix += '* 20-40세 청년기의 환경적요소.직업.부모.형제 문제는 ';};
+		if (i==3){ txt_wmix += '* 40-60세 장년기의 배우자와 가족문제는 ';};
+		if (i==4){ txt_wmix += '* 60-80세 말년기의 부모.자녀문제는 ';};
+		nnr = (i-1)*4;
+		if (i != 3){
+			r_id = b_ymdtss2[0].indexOf(gj_nfo[i][3]); 	 
+			if (b_ymdtss2[nnr+1][r_id] !=""){txt_wmix += '* ' + b_ymdtss2[nnr+1][r_id] + '</br>';};
+			if (b_ymdtss2[nnr+gnd_n][r_id] !=""){txt_wmix += '* ' + b_ymdtss2[nnr+gnd_n][r_id] + '</br>';};
+		};
+		r_id = b_ymdtss2[0].indexOf(gj_nfo[i][7]); 	
+		if (b_ymdtss2[nnr+1][r_id] !=""){txt_wmix += '* ' + b_ymdtss2[nnr+1][r_id] + '</br>';};
+		if (b_ymdtss2[nnr+gnd_n][r_id] !=""){txt_wmix += '* ' + b_ymdtss2[nnr+gnd_n][r_id] + '</br>';};
+	};
+	txt_wmix += '--------------------------------------------------------------</br>';
+/*
+	r_id = b_ymdtss2[0].indexOf(gj_nfo[1][3]); 	txt_wmix += '* 20세이전 소년기의 어린 시절에는 ' + b_ymdtss2[1][r_id] + '</br>'; 
+	if (gendr.substr(0,1)=="남"){ txt_wmix += '* ' + b_ymdtss2[2][r_id] + '</br>';};
+	if (gendr.substr(0,1)=="여"){ txt_wmix += '* ' + b_ymdtss2[3][r_id] + '</br>';};
+	r_id = b_ymdtss2[0].indexOf(gj_nfo[1][7]); 	txt_wmix += '* ' + b_ymdtss2[1][r_id] + '</br>'; 
+	if (gendr.substr(0,1)=="남"){ txt_wmix += '* ' + b_ymdtss2[2][r_id] + '</br>';};
+	if (gendr.substr(0,1)=="여"){ txt_wmix += '* ' + b_ymdtss2[3][r_id] + '</br>';};
+	r_id = b_ymdtss2[0].indexOf(gj_nfo[2][3]); 	txt_wmix += '* 20-40세 청년기의 환경적요소.직업.부모.형제 문제는 ' + b_ymdtss2[5][r_id] + '</br>'; 
+	if (gendr.substr(0,1)=="남"){ txt_wmix += '* ' + b_ymdtss2[6][r_id] + '</br>';};
+	if (gendr.substr(0,1)=="여"){ txt_wmix += '* ' + b_ymdtss2[7][r_id] + '</br>';};
+	r_id = b_ymdtss2[0].indexOf(gj_nfo[2][7]); 	txt_wmix += '* ' + b_ymdtss2[5][r_id] + '</br>'; 
+	if (gendr.substr(0,1)=="남"){ txt_wmix += '* ' + b_ymdtss2[6][r_id] + '</br>';};
+	if (gendr.substr(0,1)=="여"){ txt_wmix += '* ' + b_ymdtss2[7][r_id] + '</br>';};
+	r_id = b_ymdtss2[0].indexOf(gj_nfo[3][3]); 	txt_wmix += '* 40-60세 장년기의 배우자와 가족문제는 ' + b_ymdtss2[9][r_id] + '</br>'; 
+	if (gendr.substr(0,1)=="남"){ txt_wmix += '* ' + b_ymdtss2[10][r_id] + '</br>';};
+	if (gendr.substr(0,1)=="여"){ txt_wmix += '* ' + b_ymdtss2[11][r_id] + '</br>';};
+	r_id = b_ymdtss2[0].indexOf(gj_nfo[3][7]); 	txt_wmix += '* ' + b_ymdtss2[9][r_id] + '</br>'; 
+	if (gendr.substr(0,1)=="남"){ txt_wmix += '* ' + b_ymdtss2[10][r_id] + '</br>';};
+	if (gendr.substr(0,1)=="여"){ txt_wmix += '* ' + b_ymdtss2[11][r_id] + '</br>';};
+	r_id = b_ymdtss2[0].indexOf(gj_nfo[4][3]); 	txt_wmix += '* 60-80세 말년기의 부모.자녀문제는 ' + b_ymdtss2[13][r_id] + '</br>'; 
+	if (gendr.substr(0,1)=="남"){ txt_wmix += '* ' + b_ymdtss2[14][r_id] + '</br>';};
+	if (gendr.substr(0,1)=="여"){ txt_wmix += '* ' + b_ymdtss2[15][r_id] + '</br>';};
+	r_id = b_ymdtss2[0].indexOf(gj_nfo[4][7]); 	txt_wmix += '* ' + b_ymdtss2[13][r_id] + '</br>'; 
+	if (gendr.substr(0,1)=="남"){ txt_wmix += '* ' + b_ymdtss2[14][r_id] + '</br>';};
+	if (gendr.substr(0,1)=="여"){ txt_wmix += '* ' + b_ymdtss2[15][r_id] + '</br>' + '--------------------------------------------------------------</br>';};
+*/
+	//--- 근묘화실 출력(outputx) 
+	txt_wmix += "■ 6 근묘화실: </br>";
+	txt_wmix += '* ' + b_ymdtss[12][1] + '</br>'; 
+	subj = gj_nfo[1][3]; temps0 = b_ymdtss.filter(isFind);
+	txt_wmix += '◐ <span class="spcs css_y1">' + subj + '</span></br><div id="css_y1" class="txcb">- ' + temps0[0][1] + '</div>';
+	subj = gj_nfo[1][7]; temps0 = b_ymdtss.filter(isFind);
+	txt_wmix += '◐ <span class="spcs css_y2">' + subj + '</span></br><div id="css_y2" class="txcb">- ' + temps0[0][1] + '</div>--------------------------------------------------------------</br>';
+	txt_wmix += '* ' + b_ymdtss[12][2] + '</br>'; 
+	subj = gj_nfo[2][3]; temps0 = b_ymdtss.filter(isFind);
+	txt_wmix += '◐ <span class="spcs css_y3">' + subj + '</span></br><div id="css_y3" class="txcb">- ' + temps0[0][2] + '</div>';
+	subj = gj_nfo[2][7]; temps0 = b_ymdtss.filter(isFind);
+	txt_wmix += '◐ <span class="spcs css_y4">' + subj + '</span></br><div id="css_y4" class="txcb">- ' + temps0[0][2] + '</div>--------------------------------------------------------------</br>';
+	txt_wmix += '* ' + b_ymdtss[12][3] + '</br>'; 
+	subj = gj_nfo[3][7]; temps0 = b_ymdtss.filter(isFind);
+	txt_wmix += '◐ <span class="spcs css_y5">' + subj + '</span></br><div id="css_y5" class="txcb">- ' + temps0[0][3] + '</div>--------------------------------------------------------------</br>';
+	txt_wmix += '* ' + b_ymdtss[12][4] + '</br>'; 
+	subj = gj_nfo[4][3]; temps0 = b_ymdtss.filter(isFind);
+	txt_wmix += '◐ <span class="spcs css_y6">' + subj + '</span></br><div id="css_y6" class="txcb">- ' + temps0[0][4] + '</div>';
+	subj = gj_nfo[4][7]; temps0 = b_ymdtss.filter(isFind);
+	txt_wmix += '◐ <span class="spcs css_y7">' + subj + '</span></br><div id="css_y7" class="txcb">- ' + temps0[0][4] + '</div>--------------------------------------------------------------</br>';
+
+	//--- 직업 출력(outputx) 
+	txt_wmix += "■ 7 직업: </br>";
+
+	$(dx).append(txt_wmix);
+	$(dx).on("click", "span", function(){ 
+		disp("#"+$(this).attr("class").substr(5),"",""); 
+	}); 
+};
+
+//======================
+function spclcarac2(d){
+	txt_wmiy = ""; 
+	if (gendr === "남양"){ n_gen = 3;}; if (gendr === "여음"){ n_gen = 4;};
+	txt_wmiy += "■■  나는 어떤 사람인가? </br></br>";
+	//--- 음양 특성 출력(output0) 
+	if (gj_nfo[3][2].substr(0,1)=="음"){mptxt = o_hang[3][0];};
+	if (gj_nfo[3][2].substr(0,1)=="양"){mptxt = o_hang[2][0];};
+	if(pn != null) {
+		if (pn.length>=2){mptxt += "신강" + "행동 지향적. 미래가치 중시. 외향 능동적. 명분(기세 의리) 중시. 팽창 발산 상승 단단함"; mptx1 = 11;	}else{	mptxt += "신약" + "사고 지향적. 현재가치 중시. 내향 수동적. 실리(힘 세력) 중시. 수축 수렴 하강 부드러움"; mptx1 = 12;};
+	}else{	mptxt += "신약" + "사고 지향적. 현재가치 중시. 내향 수동적. 실리(힘 세력) 중시. 수축 수렴 하강 부드러움"; mptx1 = 12;};
+
+	if (gendr.substr(0,1)=="남"){mptx2 = 5;}; 
+	if (gendr.substr(0,1)=="여"){mptx2 = 6;}; 
+
+	txt_wmiy += "■ 1 음양: "; 
+//	txt_wmiy += '<span class="spcs css_b0">' + mptxt.substr(0,1) + ' (' + mptxt.substr(1,1) + ') ' + mptxt.substr(2,2) + '</span></br><div id="css_b0" class="txcb">--> ⊙ ' + mptxt.substr(4) + '</br></br>◐ 성격: ' + a_ilgan[mptx1][2] + '</br>◐ 심리: ' + a_ilgan[mptx1][3] + '</br>◐ 직업: ' + a_ilgan[mptx1][4] + '</br>◐ 이성관: ' + a_ilgan[mptx1][mptx2] + '</div>--------------------------------------------------------------</br></br>';
+	txt_wmiy += '<span class="spcs css_b0">' + mptxt.substr(0,1) + ' (' + mptxt.substr(1,1) + ') ' + mptxt.substr(2,2) + '</span></br><div id="css_b0" >--> ⊙ ' + mptxt.substr(4) + '</br></br>◐ 성격: ' + a_ilgan[mptx1][2] + '</br>◐ 심리: ' + a_ilgan[mptx1][3] + '</br>◐ 직업: ' + a_ilgan[mptx1][4] + '</br>◐ 이성관: ' + a_ilgan[mptx1][mptx2] + '</div>--------------------------------------------------------------</br></br>';
+
+
+	//--- 일주론 출력(output0) 
+	ilj = sj_dg + sj_dj; 
+	lsts = $.map(a_ilju2, function(element, index) {
+	  if (element[0] == ilj) {
+		return [element]
+	  };
+	});
+	
+	let txt_tts = "";
+	txt_tts += "■ 2 일주: ";
+//	txt_tts += '<span class="spcs css_b6">' + ilj + '</span><div id="css_b6" class="txcb">';
+	txt_tts += '<span class="spcs css_b6">' + ilj + '</span><div id="css_b6" >';
+
+	t_itm = ["항목", "특성", "육친", "학업", "결혼", "직업", "특징", "물상", "신살", "요약", "성", "질병", "직업군", "해석"];
+
+	for (i=0; i<lsts.length; i++){
+		scrpt = "";
+		if (lsts[i][1].includes("10")){ 
+			continue; 
+		}else{
+			if (i!==0 && lsts[i][1].substr(0,2)!==lsts[i-1][1].substr(0,2)){	txt_tts += '</br>--------------------------------------------------------------';	};
+			if (lsts[i][1]==="13"){ txt_tts += ' </br>' }else{ if (lsts[i][1].length===2){ txt_tts += '</br> ◐ ' + t_itm[Number(lsts[i][1])] + ': </br>' };};
+			txt_tts += lsts[i][2];
+			if (lsts[i][n_gen] !==""){ txt_tts += '</br>--->⊙ ' + lsts[i][n_gen]; };
+
+			if (lsts[i][3]!==""){ 
+				scrpt = lsts[i][7];
+				eval(scrpt);
+			};
+		};
+	};
+//--- <<scrpt>> ---  "if (gendr === '여음' && (sj_ganji.includes('申') || sj_ganji.includes('酉'))){ txt_tts += '</br>--->⊙ ' + lsts[i][5] + lsts[i][6];};"
+
+	txt_wmiy += txt_tts;
+	txt_wmiy += '</div></br>--------------------------------------------------------------';
+	$(d).append(txt_wmiy);
+	$(d).on("click", "span", function(){ 
+		disp("#"+$(this).attr("class").substr(5),"",""); 
+//----- 내용 읽어주는 음성 서비스
+//		if ($(this).attr("class").substr(5)=="css_b6" && $("#css_b6").css("display")==="block"){
+//			speak(txt_tts, {rate: 0.7, pitch: 0.6, lang: "ko-KR" });
+//		}else{
+//			window.speechSynthesis.cancel();
+//		};
+	}); 
+};
+
 	
 let o_hang = [["오행", "목", "화", "토", "금", "수"],["오행h", "木", "火", "土", "金", "水"],["양陽", "① 양목\n② 甲\n③ 寅", "① 양화\n② 丙\n③ 巳", "① 양토\n② 戊\n③ 辰戌", "① 양금\n② 庚\n③ 申", "① 양수\n② 壬\n③ 亥"],["음陰", "① 음목\n② 乙\n③ 卯", "① 음화\n② 丁\n③ 午", "① 음토\n② 己\n③ 未丑", "① 음금\n② 辛\n③ 酉", "① 음수\n② 癸\n③ 子"],["인자", "본능인자", "감성인자", "수렴인자", "자율인자", "사고인자"],["심리style", "수성/경쟁", "탐구/표출", "분석/실질", "억지/통제", "통찰/인식"],["성정", "단순함", "정열적", "진중함", "단호함", "복잡함"],["강점", "자존심", "친화적", "중립적", "원칙적", "융통성"],["약점", "의기소침", "감정기복", "무색무취", "강기강성", "생각과도"],["장점", "환경적응", "대인관계", "항구성", "솔직담백", "여유침착"],["단점", "경쟁구도", "유시무종", "애매모호", "편집증적", "비개방성"],["성질(性質)", "곡직(曲直)", "염상(炎上)", "가색(稼穡)", "종혁(從革)", "윤하(潤河)"],["특성", "① 생명의 시작을 의미. 땅에서 솟아나는 기운. 곡직(曲直)</br>② 생목(生木)과 사목(死木)을 구분 않고 목(木)의 범주</br>③ 꽃을 피워 열매를 맺고 갈무리. 주변환경 중시</br>④ 본성은 인(仁). 질서 및 순차적 접근방법 선호. 과정 중시</br>⑤ 푸른색. 간장과 담낭. 동쪽", "① 염상(炎上). 생명체의 에너지원. 예(禮)의 오상(五常)</br>② 양중양(陽中陽)에 해당하며 순양(純陽). 청년기</br>③ 붉은색. 심장과 소장. 순환기계통. 시력. 남쪽", "① 가색(稼穡). 중화지기(中和之氣). 신(信)</br>② 음양의 균형. 고정불변. 중립. 불혹(不惑)의 중년기</br>③ 음토(陰土)는 상냥. 양토(陽土)는 과묵</br>④ 노란색. 위장과 비장. 가운데", "① 종혁(從革). 숙살지기(肅殺之氣). 의(義)의 오상(五常)</br>② 지천명(知天命). 규범적. 체계적. 확정적. 모범적</br>③ 흰색. 폐. 대장. 뼈와 근육. 서쪽", "① 윤하(潤下). 생명의 원천. 지(智). 요산요수(樂山樂水)</br>② 오행의 끝자락. 음중음(陰中陰). 엄동설한 동토(凍土)</br>③ 생명의 에너지원. 우주의 중심. 브레인(책사. 재사. 현인)</br>④ 검은색. 방광. 신장. 북쪽"],["심리", "① 뻗어나가려는 성정. 솔직. 담백. 꿈과 희망의 화신</br>② 환경 적응력. 리더십의 표상. 인기몰이. 호기심</br>③ 매사를 긍정적으로 관조. 천진난만. 단순함. 낙관적</br>④ 자기과시욕 강함. 이성과 재물에 집착하는 경향</br>⑤ 좌절하거나 실패하면 회복이 쉽지 않고 우울증</br>⑥ 현실과 타협. 꼼수 및 잔머리 굴림. 유시무종(有始無終)</br>⑦ 인내와 억압에 따른 반발심리가 강하게 작용. 독단적", "① 미래 지향적. 진취적. 열정적. 감정변화. 욱하는 성질</br>② 사리분별이 분명. 희생과 봉사정신. 모성애적 기질</br>③ 화술. 뒤끝 없음. 호불호 분명. 자기주장 분명. 배려. 동정심</br>④ 여리고 부드러운 감성의 소유자. 개성 강함. 나(我) 개념</br>⑤ 존재감을 확인하기 위해 외형에 관심 많음. 지금에 관심</br>⑥ 감정적. 자기주장이 강함. 다혈질. 즉흥적. 충동적. 분주</br>⑦ 격한 감정으로 말더듬이 증상에 취약", "① 자기중심이 강. 속내를 알 수 없고 좀처럼 내색 않음</br>② 싫은 것은 절대 안 하며 마음에 들어야 반응. 까다로움</br>③ 인내력. 남을 배려하는 성격. 의리를 남발하는 경향</br>④ 현실적. 실리적. 보수적. 고전적 성정. 고지식. 무뚝뚝</br>⑤ 안정과 평화를 중시. 진득함. 지구력. 스트레스에 강</br>⑥ 일단 사귀면 오래가나 조건적 만남이 되기 쉬움</br>⑦ 융통성이 결여. 소심. 자신을 책망하고 후회를 잘함</br>⑧ 주관이 약하고 부화뇌동. 사람을 은근히 평가하며 사귐", "① 순수. 의리파. 비계산적. 정확. 원칙. 결단성. 실행력</br>② 체제유지. 보수성. 순수하고 따뜻함. 인정. 약속준수</br>③ 소유의 구분이 명확함. 꼼꼼. 기억력. 구조적 언어</br>④ 무모한 계획으로 만용. 외골수 기질이 있어 아집. 고집</br>⑤ 한 번 절연하면 뒤도 안돌아봄. 스트레스 자초</br>⑥ 후회를 잘하고 남을 책망하려는 심리가 팽배</br>⑦ 명분이 없으면 나서지 않고. 불리하면 바로 포기</br>⑧ 비가정적인 사람. 융통성과 순발력이 부족</br>⑨ 기억력 좋아 마음속 깊이 원한과 원망을 묻어둠", "① 상황판단. 심사숙고. 분위기에 휘둘리지 않고 느긋함</br>② 자신이 정한 기준을 추구. 지혜로워 실수를 최소화</br>③ 칭찬에 관심 없음. 속내를 감춤. 상황 예의주시</br>④ 기획력. 추진력. 만물박사. 경쟁력. 순리적. 물길(法)</br>⑤ 능굴능신(能屈能伸). 처세의 달인. 발상의 자유로움</br>⑥ 점잖고 조숙. 융통성. 포용력. 순발력. 유연성</br>⑦ 상대를 구분하여 처신. 이중성. 권위 무시. 야당 성향</br>⑧ 사색에 잠겨 있는 고뇌의 형상"],["동기부여 방법", "① 결과를 채근하지 말아야 함</br>② 자존심이 상하는 언행을 삼가고 칭찬</br>③ 일에 따른 우선순위를 정하여 순차적 진행 요망</br>④ 하고자 하는 욕망을 제지하지 말고 밀어줄 것</br>⑤ 중도에서 포기하더라도 용기를 줄 것</br>⑥ 작은 성과에도 크게 감동해줄 것", "① 대화 중 절대로 그들의 말을 끊지 말 것</br>② 결과 못지않게 일의 과정을 중요시 여길 것</br>③ 감정반응에 즉자적으로 나서지 말 것</br>④ 격한 감정과 언행에도 이성적으로 대처하고 참아줄 것</br>⑤ 우월적 자세를 지양하고 겸손하게 대하기</br>⑥ 일단 들어주고 자신의 의견을 짧게 전달하기</br>⑦ 일의 결과와 대화 도중에 분위기에 동조하며 칭찬할 것</br>⑧ 작은 일도 인정해주고 격려해줄 것", "① 허점을 보이지 말고 신의를 지킬 것</br>② 절대 서두르지 말고 차근차근 접근할 것</br>③ 실리를 취하기보다 공생의 관계 설정이 필요</br>④ 속내와 다를 수 있으므로 숨은 뜻을 잘 파악해야 함</br>⑤ 표현이 서툴러도 원하는 바를 다 챙김으로 주의</br>⑥ 감정적으로 틀어지면 사방에 소문내므로 주의</br>⑦ 상황을 예의주시하며 행동함으로 책임 한계가 모호", "① 취중에 한 말이라도 반드시 약속을 지켜야 함</br>② 실수를 용납하지 않으므로 절대 허점을 보이지 말 것</br>③ 무시하거나 자존심이 상하면 반드시 복수하므로 주의</br>④ 칭찬을 해주면 간. 쓸개 다 줄 것처럼 관용을 베푸는 기질</br>⑤ 채근하면 하던 일도 멈추므로 과정과 결과를 존중해야</br>⑥ 은근히 비교 우위에 서고자 하므로 좋은 점을 부각해야</br>⑦ 남성다운 사람을 신뢰하므로 통 큰 사람으로 보일 것</br>⑧ 기억력에 강하므로 필요 이상의 말은 금물</br>⑨ 감정은 절대 금물. 감성적으로 접근해야", "① 앞에서 자랑하지 말 것. 훗날 이용당할 수도 있음</br>② 명확한 목표(guide-line)를 제시하고 의견을 교환해야 함</br>③ 가치관과 정당성을 부각하여 마음을 움직일 것</br>④ 허접한 모습을 보이면 바로 무시당함. 언행일치가 필요</br>⑤ 명분이 없으면 나서지 않으므로 환경 조성이 필요</br>⑥ 주관적 성향이 강하므로 일처리를 종용하지 말 것</br>⑦ 이익 공유제에 관심이 없으므로 사전 조건 제시가 중요"],["의미(意味)", "나무", "불", "흙", "금석", "물"],["오색(五色)", "청(靑)", "적(赤)", "황(黃)", "백(白)", "흑(黑)"],["인자(因子)", "본능인자", "감성인자", "수렴인자", "자율인자", "사고인자"],["일일(一日)", "오전", "한낮", "접목시각", "오후", "저녁"],["오규(五竅)", "눈(目)", "혀(舌)", "입(口)", "코(鼻)", "귀(耳)"],["오장(五臟)", "간", "심장", "비장", "폐", "신장"],["육부(六腑)", "담", "소장", "위", "대장", "방광"],["오체(五體)", "신경계통", "순환계통", "근육계통", "골격계통", "혈액계통"],["오상(五常)", "인(仁)", "예(禮)", "신(信)", "의(義)", "지(智)"],["오미(五味)", "신맛(酸)", "쓴맛(苦)", "단맛(甘)", "매운맛(辛)", "짠맛(鹹)"],["오취(五臭)", "누린내", "탄내", "단내", "비린내", "썩은내"],["오성(五聲)", "어금닛소리", "혓소리", "목구멍소리", "잇소리", "입술소리"],["오기(五氣)", "바람(風)", "더위(熱)", "습기(濕)", "건조(燥)", "추위(寒)"],["오음(五音)", "각(角)", "치(徵)", "궁(宮)", "상(商)", "우(羽)"],["오지(五志)", "노(怒)", "희(喜)", "사(思)", "우(憂)", "공(恐)"],["오곡(五穀)", "보리", "기장", "조", "쌀", "콩"],["선천수", "3•8", "7•2", "5•10", "9•4", "1•6"],["후천수", "1•2", "3•4", "5•6", "7•8", "9•10"],["발음(發音)", "ㄱㅋ", "ㄴㄷㄹㅌ", "ㅇㅎ", "ㅅㅈㅊ", "ㅁㅂㅍ"],["지역(地域)", "강원지역", "영남지역", "중부지역", "호남지역", "서울 경기"],["오문(五門)", "興仁之門", "崇禮門", "普信閣", "敦義門", "肅靖門"],["오신(五神)", "청룡(靑龍)", "주작(朱雀)", "기린(麒麟)", "백호(白虎)", "현무(玄武)"],["강생", "•수다목표(水多木漂): 물이 강하면 나무는 뜬다.", "•목다화식(木多火熄): 나무가 강하면 불은 꺼진다.", "•화다토조(火多土燥): 불이 강하면 흙은 메마른다.", "•토다금매(土多金埋): 흙이 강하면 쇠는 묻힌다.", "•금다수탁(金多水濁): 쇠가 강하면 물이 흐려진다."],["약생", "•목다수축(木多水縮): 나무가 강하면 물은 없어진다.", "•화다목분(火多木焚): 불이 강하면 나무는 소진된다.", "•토다화식(土多火熄): 흙이 강하면 불은 꺼져버린다.", "•금다토박(金多土薄): 쇠가 강하면 흙은 얇아진다.", "•수다금함(水多金陷): 물이 강하면 쇠는 빠진다."],["강극", "•금다목절(金多木折): 쇠가 강하면 나무는 꺾인다.", "•수다화멸(水多火滅): 물이 강하면 불은 꺼진다.", "•목다토붕(木多土崩): 나무가 강하면 흙은 무너진다.", "•화다금용(火多金鎔): 불이 강하면 쇠는 녹아버린다.", "•토다수색(土多水塞): 흙이 강하면 물은 막힌다."],["약극", "•목다금둔(木多金鈍): 나무가 강하면 쇠는 무뎌진다.", "•화다수고(火多水枯): 불이 강하면 물은 증발한다.", "•토다목절(土多木折): 흙이 강하면 나무는 꺾인다.", "•금다화소(金多火消): 쇠가 강하면 불길은 쇠해진다.", "•수다토몰(水多土沒): 물이 강하면 흙은 잠겨버린다."]]
 
